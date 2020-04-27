@@ -3,7 +3,8 @@ import React, { useReducer, createContext } from "react";
 export const AppContext = createContext();
 
 const initialState = {
-    healthcheck: ''
+    healthcheck: '',
+    airtable_records: []
 };
 
 const reducer = (state, action) => {
@@ -12,6 +13,10 @@ const reducer = (state, action) => {
       return {
         healthcheck: action.payload
       };
+    case "GET_AIRTABLE_RECORDS":
+      return {
+        airtable_records: action.payload
+      }
     default:
       return state
   }

@@ -15,10 +15,22 @@ export default function Component() {
         })
     }
 
+    const getAirtableRecords = async () => {
+        const airtable_records = await api.getAirtableRecords()
+        dispatch({
+            type: 'GET_AIRTABLE_RECORDS',
+            payload: airtable_records
+        })
+    }
+
     return (
         <div>
             <button onClick={healthcheck}>Healthcheck</button>
             <div>{state.healthcheck}</div>
+            <button onClick={getAirtableRecords}>Get Airtable Records</button>
+            {state.airtable_records.map((record) => {
+                return <div>{record.Name}</div>
+            })}
         </div>
     );
 }
