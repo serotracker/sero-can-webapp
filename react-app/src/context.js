@@ -16,14 +16,18 @@ const initialState = {
 };
 
 function buildFilterFunction(filters) {
+  // Returns a function that can be used to filter an array of airtable records
   return (record) => {
     for (const filter_key in filters) {
+      // Handle filters that accept multiple values
       if (filters[filter_key] instanceof Set) {
-        if((filters[filter_key].size > 0)){
+        if(filters[filter_key].size > 0){
           if (!(filter_key in record)) {
             return false
           }
           let in_filter = false;
+          // Iterate through the record's values and check if any of them
+          // match the values accepted by the filter
           for (let i = 0; i < record[filter_key].length; i++) {
               if (filters[filter_key].has(record[filter_key][i])) {
                 in_filter = true;
@@ -35,6 +39,7 @@ function buildFilterFunction(filters) {
           }
         }
       }
+      // Handle filters that accept a single value
       else if (filters[filter_key] != null) {
         if (!(filter_key in record) || (record[filter_key] != filters[filter_key])) {
           return false;
