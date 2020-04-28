@@ -1,4 +1,4 @@
-export interface AirtableRecord {
+export type AirtableRecord = {
     name: string,
     source_type?: string | null,
     study_status?: string | null,
@@ -11,7 +11,7 @@ export interface AirtableRecord {
     url: string | null,
 };
 
-export interface Filters {
+export type Filters = {
     source_type?: string | null,
     study_status?: string | null,
     test_type?: string | null,
@@ -19,7 +19,7 @@ export interface Filters {
     populations?: any
 };
 
-export interface State {
+export type State = {
     healthcheck: string,
     airtable_records: AirtableRecord[],
     filtered_records: AirtableRecord[],
