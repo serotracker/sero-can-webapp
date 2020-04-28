@@ -18,8 +18,27 @@ export default class httpClient {
 
     async getAirtableRecords() {
         const response = await this.httpGet('http://localhost:5000/airtable_scraper/records');
-        const airtable_records = response.map((item)=>{  
-            return item.fields; 
+        const airtable_records = response.map((item)=>{ 
+            const field_name_map = {
+                "Source Type": "source_type",
+                "Study Status": "study_status",
+                "Test type": "test_type",
+                "Country": "countries",
+                "Population of Interest": "populations",
+                "Numerator value / expected value": "numerator",
+                "Denominator value / expected value": "denominator",
+                "Serum + prevalence": "seroprevalence",
+                "URL": "url" 
+            }
+
+            // Convert response to AirtableRecord type
+            const record = { name: item.fields.Name }
+            for (const field in field_name_map) {
+                if (field in item.fields) {
+                    record[field_name_map[field]] = item.fields[field]
+                }
+            }
+            return record; 
         }) 
         return airtable_records;
     }

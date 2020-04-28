@@ -7,11 +7,11 @@ const initialState = {
     airtable_records: [],
     filtered_records: [],
     filters: {
-      "Source Type": null,
-      "Study Status": null,
-      "Test type": null,
-      "Population of Interest": new Set(),
-      Country: new Set()
+      source_type: null,
+      study_status: null,
+      test_type: null,
+      populations: new Set(),
+      countries: new Set()
     }
 };
 
