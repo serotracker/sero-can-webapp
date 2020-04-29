@@ -6,6 +6,11 @@ const initialState = {
     healthcheck: '',
     airtable_records: [],
     filtered_records: [],
+    mapState: {
+      "lat": 0,
+      "lng": 0,
+      "zoom": 0
+    },
     filters: {
       "Source Type": null,
       "Study Status": null,
