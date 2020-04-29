@@ -25,11 +25,11 @@ export default function Component() {
 
     const updateFilters = () => {
         const filters = {
-            "Source Type": "Media Report & News Release",
-            "Study Status": null,
-            "Test type": null,
-            "Population of Interest": new Set(),
-            Country: new Set(['United States'])
+            source_type: "Media Report & News Release",
+            study_status: null,
+            test_type: null,
+            populations: new Set(),
+            countries: new Set(['United States'])
         }
         dispatch({
             type: 'UPDATE_FILTERS',
@@ -44,7 +44,7 @@ export default function Component() {
             <button onClick={getAirtableRecords}>Get Airtable Records</button>
             <button onClick={updateFilters}>Update Filters</button>
             {state.filtered_records.map((record) => {
-                return <div>{record.Name}</div>
+                return <div>{record.name}</div>
             })}
             <br></br>
             <div>Airtable records length: {state.airtable_records.length}</div>
