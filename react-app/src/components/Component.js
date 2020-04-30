@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../context";
 import httpClient from "../httpClient"
+import { getAggregateData } from '../metaAnalysis'
 
 export default function Component() {
     const [state, dispatch] = useContext(AppContext);
@@ -50,6 +51,9 @@ export default function Component() {
             <div>Airtable records length: {state.airtable_records.length}</div>
             <div>Filtered records length: {state.filtered_records.length}</div>
             <div>Filters: {JSON.stringify(state.filters)}</div>
+            <br></br>
+            <div>Data aggregated by country</div>
+            <div>{JSON.stringify(getAggregateData(state.filtered_records, "countries"))}</div>
         </div>
     );
 }
