@@ -4,8 +4,10 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'cd react-app'
-        sh 'npm install'  
+        withEnv(["HOME=${env.WORKSPACE}"]) {
+          sh 'cd react-app'
+          sh 'npm install'  
+        }
       }
     }
   }
