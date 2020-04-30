@@ -6,8 +6,9 @@ pipeline {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
           sh 'cd react-app'
-          sh 'npm install'
-          sh 'npm start'
+          sh 'ls'
+          //sh 'npm install'
+          //sh 'npm start'
         }
       }
     }
