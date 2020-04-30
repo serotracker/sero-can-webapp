@@ -3,12 +3,22 @@ import React, { createRef, useContext } from "react";
 import { GeoJSON, Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
-import httpClient from "../../httpClient";
 import Legend from "./Legend";
 import './Map.css';
+import { AirtableRecord } from "../../types";
+
+const countryDict = Countries.features.reduce((map, obj) => {
+  map[obj.name_sort] = obj
+})
 
 export default function Map() {
   const [state, dispatch] = useContext(AppContext);
+  const fileImport = Countries  as any;
+  const geoJsonData = fileImport.features as GeoJSON.FeatureCollection
+
+  const fakeFilteredData: AirtableRecord[] = [ ]
+  geoJsonData.features.forEach(o => )
+  // state.filtered_records.map(o => o.)
 
   const mapRef = createRef<LeafletMap>();
   const geoJsonRef = createRef<GeoJSON>();
@@ -26,13 +36,13 @@ export default function Map() {
 
   // TODO: abstract this to utils function
   const getColor = (d: number) => {
-    return d == 1 ? '#800026' :
-      d == 2 ? '#BD0026' :
-        d == 3 ? '#E31A1C' :
-          d == 4 ? '#FC4E2A' :
-            d == 5 ? '#FD8D3C' :
-              d == 6 ? '#FEB24C' :
-                d == 7 ? '#FED976' :
+    return d === 1 ? '#800026' :
+      d === 2 ? '#BD0026' :
+        d === 3 ? '#E31A1C' :
+          d === 4 ? '#FC4E2A' :
+            d === 5 ? '#FD8D3C' :
+              d === 6 ? '#FEB24C' :
+                d === 7 ? '#FED976' :
                   '#FFEDA0';
   }
 
@@ -79,7 +89,8 @@ export default function Map() {
     })
   }
 
-  const mapboxAccessToken = process.env.MAPBOX_API_KEY;
+  const mapboxAccessToken = process.env.REACT_APP_MAPBOX_API_KEY;
+  console.log(process.env);
   return (
     <LeafletMap
       ref={mapRef}

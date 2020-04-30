@@ -3,7 +3,7 @@ export type AirtableRecord = {
     source_type?: string | null,
     study_status?: string | null,
     test_type: string | null,
-    countries: string[] | null,
+    countries: string | null,
     populations: string[] | null,
     numerator: number | null,
     denominator: number | null,

@@ -1,17 +1,44 @@
-import React, { useReducer, createContext } from "react";
+import React, { useReducer, createContext, Dispatch } from "react";
 import { AirtableRecord, Filters, State } from "./types"
 
-export const AppContext = createContext({});
+export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
 const initialState: State = {
     healthcheck: '',
-    airtable_records: [],
-    filtered_records: [],
-    mapState: {
-      "lat": 0,
-      "lng": 0,
-      "zoom": 0
+    airtable_records: [{
+      name: "test 1",
+      countries: "United Kingdom",
+      numerator: 878,
+      denominator: 10000,
+      seroprevalence: 8.78,
+      test_type: null,
+      populations: null,
+      study_status: null,
+      url: null
     },
+    {
+      name: "test 2",
+      countries: "Canada",
+      numerator: 678,
+      denominator: 10000,
+      seroprevalence: 6.78,
+      test_type: null,
+      populations: null,
+      study_status: null,
+      url: null
+    },
+    {
+      name: "test 3",
+      countries: "United States",
+      numerator: 678,
+      denominator: 10000,
+      seroprevalence: 3.78,
+      test_type: null,
+      populations: null,
+      study_status: null,
+      url: null
+    }],
+    filtered_records: [],
     filters: {
       source_type: null,
       study_status: null,

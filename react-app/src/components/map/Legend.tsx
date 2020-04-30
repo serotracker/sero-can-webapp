@@ -10,13 +10,13 @@ const Legend = () => {
 
     // TODO: Abstract to utility function that gets dynamically set for proper ranges
     const getColor = (d: number) => {
-      return d == 1 ? '#800026' :
-        d == 2 ? '#BD0026' :
-          d == 3 ? '#E31A1C' :
-            d == 4 ? '#FC4E2A' :
-              d == 5 ? '#FD8D3C' :
-                d == 6 ? '#FEB24C' :
-                  d == 7 ? '#FED976' :
+      return d === 1 ? '#800026' :
+        d === 2 ? '#BD0026' :
+          d === 3 ? '#E31A1C' :
+            d === 4 ? '#FC4E2A' :
+              d === 5 ? '#FD8D3C' :
+                d === 6 ? '#FEB24C' :
+                  d === 7 ? '#FED976' :
                     '#FFEDA0';
     }
 
