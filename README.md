@@ -1,3 +1,9 @@
+### Github Pages Deployment
+`npm install`,
+`npm run deploy`
+This will build static assets for the application and commit them to the `gh-pages` branch.
+View the deployed site at https://serosurveillance-can-dev.github.io/sero-can-webapp
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
