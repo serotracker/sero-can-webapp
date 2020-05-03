@@ -1,19 +1,84 @@
-import React, { useReducer, createContext } from "react";
+import React, { useReducer, createContext, Dispatch } from "react";
 import { AirtableRecord, Filters, State } from "./types"
 
-export const AppContext = createContext({});
+export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
 const initialState: State = {
-    healthcheck: '',
-    airtable_records: [],
-    filtered_records: [],
-    filters: {
-      source_type: null,
-      study_status: null,
-      test_type: null,
-      populations: new Set(),
-      countries: new Set()
-    }
+  healthcheck: '',
+  airtable_records: [],
+  filtered_records: [{
+    name: "test 1",
+    countries: ["United Kingdom"],
+    numerator: 878,
+    denominator: 10000,
+    seroprevalence: 8.78,
+    test_type: null,
+    populations: null,
+    study_status: null,
+    url: null
+  },
+  {
+    name: "test 2",
+    countries: ["Canada"],
+    numerator: 678,
+    denominator: 10000,
+    seroprevalence: 6.78,
+    test_type: null,
+    populations: null,
+    study_status: null,
+    url: null
+  },
+  {
+    name: "test 3",
+    countries: ["Brazil"],
+    numerator: 678,
+    denominator: 10000,
+    seroprevalence: 1.78,
+    test_type: null,
+    populations: null,
+    study_status: null,
+    url: null
+  },
+  {
+    name: "test 3",
+    countries: ["Spain"],
+    numerator: 678,
+    denominator: 10000,
+    seroprevalence: 2.78,
+    test_type: null,
+    populations: null,
+    study_status: null,
+    url: null
+  },
+  {
+    name: "test 3",
+    countries: ["Italy"],
+    numerator: 678,
+    denominator: 10000,
+    seroprevalence: 12,
+    test_type: null,
+    populations: null,
+    study_status: null,
+    url: null
+  },
+  {
+    name: "test 3",
+    countries: ["Mongolia"],
+    numerator: 678,
+    denominator: 10000,
+    seroprevalence: 5.6,
+    test_type: null,
+    populations: null,
+    study_status: null,
+    url: null
+  }],
+  filters: {
+    source_type: null,
+    study_status: null,
+    test_type: null,
+    populations: new Set(),
+    countries: new Set()
+  }
 };
 
 function buildFilterFunction(filters: Record<string, any>) {
@@ -22,7 +87,7 @@ function buildFilterFunction(filters: Record<string, any>) {
     for (const filter_key in filters) {
       // Handle filters that accept multiple values
       if (filters[filter_key] instanceof Set) {
-        if(filters[filter_key].size > 0){
+        if (filters[filter_key].size > 0) {
           if (record[filter_key] === null) {
             return false;
           }
@@ -30,10 +95,10 @@ function buildFilterFunction(filters: Record<string, any>) {
           // Iterate through the record's values and check if any of them
           // match the values accepted by the filter
           for (let i = 0; i < record[filter_key].length; i++) {
-              if (filters[filter_key].has(record[filter_key][i])) {
-                in_filter = true;
-                break;
-              }
+            if (filters[filter_key].has(record[filter_key][i])) {
+              in_filter = true;
+              break;
+            }
           }
           if (!in_filter) {
             return false;
@@ -85,9 +150,9 @@ export const AppContextProvider = (props: Record<string, any>) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <AppContext.Provider 
+    <AppContext.Provider
       value={[state, dispatch]}>
-        {props.children}
+      {props.children}
     </AppContext.Provider>
   );
 };
