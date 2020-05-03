@@ -2,9 +2,12 @@ import { useLeaflet } from "react-leaflet";
 import L from "leaflet";
 import { useEffect } from "react";
 
-const Legend = (props: any) => {
+interface legendProps {
+  buckets: number[]
+}
+
+const Legend = (props: legendProps) => {
   const { map } = useLeaflet();
-  console.log(map);
   const buckets = props.buckets as number[]
 
   useEffect(() => {
@@ -29,12 +32,11 @@ const Legend = (props: any) => {
 
     legend.onAdd = () => {
       const div = L.DomUtil.create("div", "info legend");
-      const grades = buckets;
 
-      const labels = grades.map((value, index) => {
-        if (index !== grades.length) {
+      const labels = buckets.map((value, index) => {
+        if (index !== buckets.length) {
           const from = value;
-          const to = grades[index + 1]
+          const to = buckets[index + 1]
           return `<i style="background:${getColor(from + 1)}"></i>${from}${to ? "&ndash;" + to : "+"}`
         }
       })

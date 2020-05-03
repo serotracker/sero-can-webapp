@@ -13,7 +13,6 @@ export default function Map() {
   const geoJsonData = fileImport.features as GeoJSON.Feature[]
   const mapRef = createRef<LeafletMap>();
   const geoJsonRef = createRef<GeoJSON>();
-  const paneRef = createRef<Pane>();
 
   const prevalenceCountryDict = getAggregateData(state.filtered_records, "countries").reduce((a, x) => ({ ...a, [x.name]: x.seroprevalence }), {})
   fileImport.features = geoJsonData.map(feature => {
@@ -37,9 +36,9 @@ export default function Map() {
   }
 
   const getBuckets = (features: GeoJSON.Feature[]) => {
-    var maxSeroprevalence = Math.max.apply(Math, features.filter(o => o.properties?.seroprevalence).map((o) => o?.properties?.seroprevalence));
-    var roundedMax = Math.ceil(maxSeroprevalence);
-    var step = parseFloat((roundedMax / 6).toFixed(1));
+    const maxSeroprevalence = Math.max.apply(Math, features.filter(o => o.properties?.seroprevalence).map((o) => o?.properties?.seroprevalence));
+    const roundedMax = Math.ceil(maxSeroprevalence);
+    const step = parseFloat((roundedMax / 6).toFixed(1));
     const buckets = [];
     for (let x = 1; x <= 6; x++) {
       buckets.push(parseFloat((step * x).toFixed(1)))

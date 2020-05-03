@@ -17,7 +17,7 @@ function App() {
         </div>
       case 'Data':
         return <div>
-          Data
+          
         </div>
       default: 
         return <div/>
