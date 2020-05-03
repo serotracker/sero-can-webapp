@@ -8,7 +8,7 @@ export default function Auth(props: Record<string, any>) {
         e.preventDefault();
         const passwordValid = checkPassword(passEntry);
         if (passwordValid) {
-            props.setAuth(true);
+            props.authenticate();
         }
         else {
             alert('Invalid password entered');

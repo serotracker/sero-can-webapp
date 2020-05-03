@@ -7,7 +7,12 @@ import './App.css';
 
 function App() {
   const [tab, setTab] = useState("Home");
-  const [auth, setAuth] = useState(false);
+
+  let authStatus = false;
+  if (localStorage.hasOwnProperty('authenticated')){
+    authStatus = localStorage.getItem('authenticated') !== null;
+  }
+  const [auth, setAuth] = useState(authStatus);
 
   function renderContent() {
     switch (tab) {
@@ -26,11 +31,17 @@ function App() {
     e.preventDefault()
     setTab(tab)
   }
+
+  function authenticate(){
+    setAuth(true);
+    // Workaround because only string values can be saved to localStorage
+    localStorage.setItem('authenticated', 'true');
+  }
   
   return (
     <div>
       {auth == false ? (
-        <Auth setAuth={setAuth}/>
+        <Auth authenticate={authenticate}/>
       ) : (
         <div className="App">
           <header className="App-header">
