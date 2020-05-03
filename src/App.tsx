@@ -9,9 +9,9 @@ function App() {
   const [tab, setTab] = useState("Home");
 
   let authStatus = false;
-  // if (localStorage.hasOwnProperty('authenticated')){
-  //   authStatus = localStorage.getItem('authenticated') !== null;
-  // }
+  if (localStorage.hasOwnProperty('authenticated')){
+    authStatus = localStorage.getItem('authenticated') !== null;
+  }
   const [auth, setAuth] = useState(authStatus);
 
   function renderContent() {

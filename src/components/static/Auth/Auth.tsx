@@ -23,6 +23,9 @@ export default function Auth(props: Record<string, any>) {
 
     return (
         <div className="col-12 p-0 flex center-item">
+            <h2 className="col-12 p-0 center-item flex">
+                SeroTracker
+            </h2>
             <form onSubmit={handleSubmit} className="input-group col-4 p-0 center-item flex">
                 <Input
                     focus
