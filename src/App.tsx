@@ -9,9 +9,9 @@ function App() {
   const [tab, setTab] = useState("Home");
 
   let authStatus = false;
-  if (localStorage.hasOwnProperty('authenticated')){
-    authStatus = localStorage.getItem('authenticated') !== null;
-  }
+  // if (localStorage.hasOwnProperty('authenticated')){
+  //   authStatus = localStorage.getItem('authenticated') !== null;
+  // }
   const [auth, setAuth] = useState(authStatus);
 
   function renderContent() {
@@ -37,27 +37,31 @@ function App() {
     // Workaround because only string values can be saved to localStorage
     localStorage.setItem('authenticated', 'true');
   }
+
+  const getTabClass = (tabName: string) => {
+    return tabName === tab ? 'bold' : 'regular'
+  }
   
   return (
-    <div>
-      {auth == false ? (
+    <div className="App-container">
+      {auth === false ? (
         <Auth authenticate={authenticate}/>
       ) : (
-        <div className="App">
-          <header className="App-header">
-            <p>
+        <div className="App col-12 p-0">
+          <header className="App-header col-12 px-3">
+            <div className="App-title py-3">
               SeroTracker
-            </p>
+            </div>
             <div className="App-tabs">
-              <a className={tab == 'Home' ? 'bold' : undefined} onClick={(e) => setActiveTab(e, "Home")}>
+              <div className={getTabClass('Home')} onClick={(e) => setActiveTab(e, "Home")}>
                 Home
-              </a>
-              <a className={tab == 'About' ? 'bold' : undefined} onClick={(e) => setActiveTab(e, "About")}>
+              </div>
+              <div className={getTabClass('About')} onClick={(e) => setActiveTab(e, "About")}>
                 About
-              </a>
-              <a className={tab == 'FAQ' ? 'bold' : undefined} onClick={(e) => setActiveTab(e, "FAQ")}>
+              </div>
+              <div className={getTabClass('FAQ')} onClick={(e) => setActiveTab(e, "FAQ")}>
                 FAQ
-              </a>
+              </div>
             </div>
           </header>
           {renderContent()}

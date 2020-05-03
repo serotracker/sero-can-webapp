@@ -1,18 +1,20 @@
-.App {
-    margin-bottom: 20px;
+.App {  
+    flex-wrap: wrap;
 }
 
 .App-header {
-    background-color: #282c34;
+    background-color: #455A64;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-right: 20px;
-    padding-left: 20px;
     font-size: 20px;
     color: white;
-    margin-bottom: 20px;
+    max-height:6vh;
+    font-weight: 300;
+    -moz-box-shadow:    0 0 5px 0 #000000;
+    -webkit-box-shadow: 0 0 5px 0 #000000;
+    box-shadow:         0 0 5px 0 #000000;
 }
 
 .App-tabs {
@@ -22,7 +24,7 @@
     justify-content: space-around;
 }
 
-.App-tabs > a {
+.App-tabs > div {
     margin-left: 20px;
     margin-right: 20px;
     cursor: pointer;
@@ -30,4 +32,23 @@
 
 .bold {
     font-weight: bold;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.center-item {
+    justify-content: center;
+    align-content: center;
+}
+
+.App-container {
+    height: 100vh;
+    display: flex;
+}
+
+.App-title {
+    font-size: 26px;
 }

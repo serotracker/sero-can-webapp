@@ -76,7 +76,7 @@ export default function Home() {
             </div>
             <iframe
                 title="airtable-embed"
-                className="airtable-embed" 
+                className="airtable-embed col-10 p-0" 
                 src="https://airtable.com/embed/shrtxrrlZkOgzEl7O?backgroundColor=blue&viewControls=on" 
                 width="85%"
                 height="650"

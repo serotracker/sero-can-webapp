@@ -16,6 +16,7 @@
     "react-dom": "^16.13.1",
     "react-leaflet": "^2.6.3",
     "react-scripts": "3.4.1",
+    "semantic-ui-react": "^0.88.2",
     "typescript": "^3.8.3"
   },
   "scripts": {
