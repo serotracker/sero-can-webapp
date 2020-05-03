@@ -28,13 +28,16 @@ export function getAggregateData(records: AirtableRecord[], aggregation_factor: 
     const grouped_records: Record<string, AirtableRecord[]> = {}
     records.forEach((record: AirtableRecord) => {
         if ((record.seroprevalence !== null) && (record.denominator !== null) && (record[aggregation_factor] !== null)) {
-            const entry = record[aggregation_factor]!;
-            if (entry in grouped_records) {
-                grouped_records[entry].push(record);
-            }
-            else {
-                grouped_records[entry] = [record];
-            }
+            record[aggregation_factor]!.forEach((entry: string) => {
+
+                if (entry in grouped_records) {
+                    grouped_records[entry].push(record);
+                }
+                else {
+                    grouped_records[entry] = [record];
+                }
+            })
+
         }
     });
 

@@ -8,7 +8,7 @@ const initialState: State = {
   airtable_records: [],
   filtered_records: [{
     name: "test 1",
-    countries: "United Kingdom",
+    countries: ["United Kingdom"],
     numerator: 878,
     denominator: 10000,
     seroprevalence: 8.78,
@@ -19,7 +19,7 @@ const initialState: State = {
   },
   {
     name: "test 2",
-    countries: "Canada",
+    countries: ["Canada"],
     numerator: 678,
     denominator: 10000,
     seroprevalence: 6.78,
@@ -30,7 +30,7 @@ const initialState: State = {
   },
   {
     name: "test 3",
-    countries: "Brazil",
+    countries: ["Brazil"],
     numerator: 678,
     denominator: 10000,
     seroprevalence: 1.78,
@@ -41,7 +41,7 @@ const initialState: State = {
   },
   {
     name: "test 3",
-    countries: "Spain",
+    countries: ["Spain"],
     numerator: 678,
     denominator: 10000,
     seroprevalence: 2.78,
@@ -52,7 +52,7 @@ const initialState: State = {
   },
   {
     name: "test 3",
-    countries: "Italy",
+    countries: ["Italy"],
     numerator: 678,
     denominator: 10000,
     seroprevalence: 12,
@@ -63,7 +63,7 @@ const initialState: State = {
   },
   {
     name: "test 3",
-    countries: "Mongolia",
+    countries: ["Mongolia"],
     numerator: 678,
     denominator: 10000,
     seroprevalence: 5.6,
