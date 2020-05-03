@@ -32,3 +32,30 @@ body {
   margin-right: 8px;
   opacity: 0.7;
 }
+
+
+div.map.leaflet-container.leaflet-touch.leaflet-retina.leaflet-fade-anim {
+  /*border: 5px solid red;*/
+  z-index: 1;
+}
+
+div.slide-pane__content {
+  /*border: 5px solid black;*/
+  z-index: 100;
+}
+
+div.ReactModal__Content.ReactModal__Content--after-open.slide-pane.slide-pane_from_right.some-custom-class {
+  /*border: 5px solid orange;*/
+  z-index: 100;
+}
+
+div.slide-pane__header {
+  /*border: 5px solid orange;*/
+  z-index: 100;
+}
+
+div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some-custom-overlay-class {
+  /*border: 5px solid blue;*/
+  z-index: 100;
+
+}
