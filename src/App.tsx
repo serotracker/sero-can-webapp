@@ -1,24 +1,21 @@
 import React, { useState } from "react";
+import About from './components/static/About';
+import Home from './components/static/Home';
+import FAQ from './components/static/FAQ';
 import './App.css';
 
 function App() {
-  const [tab, setTab] = useState("About");
+  const [tab, setTab] = useState("Home");
 
   // TODO: replace with components
   function renderContent() {
     switch (tab) {
       case 'About':
-        return <div>
-          About
-        </div>
+        return <About/>
       case 'FAQ':
-        return <div>
-          FAQ
-        </div>
-      case 'Data':
-        return <div>
-          
-        </div>
+        return <FAQ/>
+      case 'Home':
+        return <Home/>
       default: 
         return <div/>
     }
@@ -33,17 +30,17 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Serotracker
+          SeroTracker
         </p>
         <div className="App-tabs">
-          <a onClick={(e) => setActiveTab(e, "About")}>
+          <a className={tab == 'Home' ? 'bold' : undefined} onClick={(e) => setActiveTab(e, "Home")}>
+            Home
+          </a>
+          <a className={tab == 'About' ? 'bold' : undefined} onClick={(e) => setActiveTab(e, "About")}>
             About
           </a>
-          <a onClick={(e) => setActiveTab(e, "FAQ")}>
+          <a className={tab == 'FAQ' ? 'bold' : undefined} onClick={(e) => setActiveTab(e, "FAQ")}>
             FAQ
-          </a>
-          <a onClick={(e) => setActiveTab(e, "Data")}>
-            Data
           </a>
         </div>
       </header>
