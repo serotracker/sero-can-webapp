@@ -4,6 +4,15 @@
 This will build static assets for the application and commit them to the `gh-pages` branch.
 Go to the repo settings > github pages > enter `serotracker.com` into the custom domain name field and hit save. 
 
+### Continuous Integration
+The following commands are run on the Jenkins CI Server:  
+```
+npm install  
+npm start
+```  
+Job results can be viewed [here](http://ci-sero.eastus.cloudapp.azure.com/blue/organizations/jenkins/sero-can-webapp/activity) after authenticating with GitHub credentials. GitHub checks are integrated to show the status of each job.  
+  
+  
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
