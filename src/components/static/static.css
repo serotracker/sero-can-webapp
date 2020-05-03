@@ -29,8 +29,13 @@
     margin-block-end: 0.8em;
 }
 
-.bio-container {
+.bio-grid-container {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 1em;
+    grid-column-gap: 1.5em;
     margin-block-end: 1em;
+    width: 100%;
 }
 
 .airtable-embed {

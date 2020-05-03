@@ -79,7 +79,7 @@ export default function Home() {
                 className="airtable-embed" 
                 src="https://airtable.com/embed/shrtxrrlZkOgzEl7O?backgroundColor=blue&viewControls=on" 
                 width="85%"
-                height="533"
+                height="650"
             />
         </div>
     )
