@@ -3,8 +3,16 @@ import About from './components/static/About';
 import Home from './components/static/Home';
 import Dashboard from './components/static/Dashboard';
 import Auth from './components/static/Auth/Auth';
+import Map from './components/map/Map';
 import Icon from './assets/images/two-tone-light.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
+import { AppContextProvider } from "./context";
 
 function App() {
   const [tab, setTab] = useState("Home");
@@ -14,19 +22,6 @@ function App() {
     authStatus = localStorage.getItem('authenticated') !== null;
   }
   const [auth, setAuth] = useState(authStatus);
-
-  function renderContent() {
-    switch (tab) {
-      case 'About':
-        return <About />
-      case 'Home':
-        return <Home />
-      case 'Dashboard':
-        return <Dashboard />
-      default:
-        return <div />
-    }
-  }
 
   function setActiveTab(e: any, tab: string) {
     e.preventDefault()
@@ -48,32 +43,41 @@ function App() {
       {auth === false ? (
         <Auth authenticate={authenticate} />
       ) : (
-          <div className="App col-12 p-0">
-            <header className="App-header col-12 px-3">
-              <div className="App-title py-3 flex center-item" onClick={(e) => setActiveTab(e, "Home")}>
+          <AppContextProvider>
+            {/* <Router>
+              <div className="col-12 p-0 flex">
+                <header className="App-header col-12 px-3">
+                  <div className="App-title py-3 flex center-item" onClick={(e) => setActiveTab(e, "Home")}>
+                    <Link to="/Home" className="flex">
+                      <img src={Icon} width={23} height={23} alt="" />
+                      <div className="col-auto px-2" >SeroTracker</div>
+                    </Link>
+                  </div>
+                  <div className="App-tabs">
+                    <Link className={getTabClass('Home')} to="/Home">Home</Link>
+                    <Link className={getTabClass('About')} to="/About">About</Link>
+                    <Link className={getTabClass('FAQ')} to="/FAQ">FAQ</Link>
+                  </div>
+                </header>
 
-                <img src={Icon} width={23} height={23} alt="" />
-                <div className="col-auto px-2">
-                  SeroTracker
-            </div>
-
+                <Switch>
+                  <Route path="/About">
+                    <About />
+                  </Route>
+                  <Route path="/FAQ">
+                    <FAQ />
+                  </Route>
+                  <Route path="/">
+                    <Home />
+                  </Route>
+                </Switch>
               </div>
-              <div className="App-tabs">
-                <div className={getTabClass('Home')} onClick={(e) => setActiveTab(e, "Home")}>
-                  Home
-                </div>
-                <div className={getTabClass('About')} onClick={(e) => setActiveTab(e, "About")}>
-                  About
-                </div>
-                <div className={getTabClass('Dashboard')} onClick={(e) => setActiveTab(e, "Dashboard")}>
-                  Dashboard
-                </div>
-              </div>
-            </header>
-            {renderContent()}
-          </div>
-        )}
-    </div>
+            </Router> */}
+            <Map></Map>
+            </AppContextProvider>
+        )
+      }
+    </div >
   );
 }
 

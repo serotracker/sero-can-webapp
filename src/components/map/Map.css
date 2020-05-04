@@ -1,5 +1,6 @@
 .map {
-  height: 100vh
+  height: 100vh;
+  position:fixed;
 }
 body {
   margin: 0px;
