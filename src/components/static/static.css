@@ -3,6 +3,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    overflow-y: auto;
+    height: 94vh;
 }
 
 .static-content {
@@ -41,4 +43,9 @@
 .airtable-embed {
     background: transparent; 
     border: 1px solid #ccc;
+    margin-bottom: 20px
+}
+
+.icon {
+    cursor: pointer;
 }
