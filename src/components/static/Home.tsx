@@ -5,39 +5,28 @@ import { Tab, Icon } from "semantic-ui-react";
 export default function Home() {
     const [tabHidden, setTabHidden] = useState(true)
 
-    const panes = [{
-        menuItem: 'Detailed Serosurvey Data (All)',
-        render: () => <Tab.Pane className="col-12 p-0">
-
+    const renderPane = (src: string) => {
+        return <Tab.Pane className="col-12 p-0">
             <iframe
                 title="airtable-embed"
                 className="airtable-embed col-12 p-0"
-                src="https://airtable.com/embed/shrtxrrlZkOgzEl7O?backgroundColor=blue&viewControls=on"
+                src={src}
                 width="85%"
                 height="650"
             /></Tab.Pane>
+    }
+
+    const panes = [{
+        menuItem: 'Detailed Serosurvey Data (All)',
+        render: () => renderPane('https://airtable.com/embed/shrtxrrlZkOgzEl7O?backgroundColor=blue&viewControls=on')
     },
     {
         menuItem: 'Serosurveys Reporting Prevalence',
-        render: () => <Tab.Pane className="col-12 p-0">
-            <iframe
-                title="airtable-embed"
-                className="airtable-embed col-12 p-0"
-                src="https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=blue&viewControls=on"
-                width="85%"
-                height="650"
-            /></Tab.Pane>
+        render: () => renderPane('https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=blue&viewControls=on')
     },
     {
         menuItem: 'Planned Serosurveys',
-        render: () => <Tab.Pane className="col-12 p-0">
-            <iframe
-                title="airtable-embed"
-                className="airtable-embed col-12 p-0"
-                src="https://airtable.com/embed/shr85cDHzwETbjgdu?backgroundColor=blue&viewControls=on"
-                width="85%"
-                height="650"
-            /></Tab.Pane>
+        render: () => renderPane('https://airtable.com/embed/shr85cDHzwETbjgdu?backgroundColor=blue&viewControls=on')
     }
     ]
 
