@@ -22,7 +22,7 @@ export default function About() {
         )
     }
     return (
-        <div className="static-page">
+        <div className="static-page col-12">
             <div className="static-content">
                 <h1>
                     Who We Are
