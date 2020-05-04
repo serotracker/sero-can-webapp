@@ -1,6 +1,8 @@
 .map {
-  height: 100vh;
-  position:fixed;
+  height: 94vh;
+  display: block;
+  flex: 1 1 auto;
+  position:relative
 }
 body {
   margin: 0px;
@@ -34,7 +36,6 @@ body {
   opacity: 0.7;
 }
 
-
 div.map.leaflet-container.leaflet-touch.leaflet-retina.leaflet-fade-anim {
   /*border: 5px solid red;*/
   z-index: 1;
@@ -58,5 +59,8 @@ div.slide-pane__header {
 div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some-custom-overlay-class {
   /*border: 5px solid blue;*/
   z-index: 100;
+}
 
+.map-wrapper {
+  position: relative;
 }

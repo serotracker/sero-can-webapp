@@ -105,20 +105,19 @@ export default function Map() {
     })
   }
 
-  const bounds = latLngBounds([-90, -180], [90, 180]);
+  const bounds = latLngBounds([-90, -200], [90, 180]);
   const maxBounds = latLngBounds([-90, -200], [90, 200]);
 
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_API_KEY;
   return (
-    <div className="map">
       <LeafletMap
         ref={mapRef}
-        zoom={10}
-        className="map"
+        center={[0,0]}
+        zoom={2}
+        className="map w-100 h-94"
         bounceAtZoomLimits={true}
         bounds={bounds}
-        zoomDelta={0.1}
-        minZoom={10}
+        minZoom={2}
         maxBounds={maxBounds}
         enableHighAccuracy={true}
         maxBoundsViscosity={1}
@@ -138,6 +137,5 @@ export default function Map() {
         </GeoJSON>
         <Legend buckets={buckets} />
       </LeafletMap>
-      </div>
   );
 }
