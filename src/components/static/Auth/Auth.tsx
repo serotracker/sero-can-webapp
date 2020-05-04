@@ -23,21 +23,20 @@ export default function Auth(props: Record<string, any>) {
 
     return (
         <div className="col-12 p-0 flex center-item">
-            <Card className="col-4">
+            <Card className="col-sm-11 col-md-8 col-lg-4">
                 <Card.Header className="flex p-3">
                 <img src={Img} width={30} height={30} alt="React Logo" />
                 <h2 className="col-auto m-0 flex">SeroTracker</h2></Card.Header>
                 <Card.Content>
-                        <form onSubmit={handleSubmit} className="input-group col-12 p-0 center-item flex">
+                        <form onSubmit={handleSubmit} className="input-group col-12 px-0 center-item flex">
                             <Input
                                 focus
                                 type="password"
                                 onChange={handleChange}
                                 value={passEntry}
-                                className="col"
+                                className="col my-1"
                                 placeholder="Passphrase" />
-                            <Button type="submit" content="Submit"
-                                className="col-auto" primary>
+                            <Button type="submit" content="Submit" className="col-auto my-1" primary>
                             </Button>
                         </form>
                 </Card.Content>
