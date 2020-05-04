@@ -44,7 +44,7 @@ function App() {
         <Auth authenticate={authenticate} />
       ) : (
           <AppContextProvider>
-            {/* <Router>
+            <Router>
               <div className="col-12 p-0 flex">
                 <header className="App-header col-12 px-3">
                   <div className="App-title py-3 flex center-item" onClick={(e) => setActiveTab(e, "Home")}>
@@ -72,9 +72,8 @@ function App() {
                   </Route>
                 </Switch>
               </div>
-            </Router> */}
-            <Map></Map>
-            </AppContextProvider>
+            </Router>
+          </AppContextProvider>
         )
       }
     </div >
