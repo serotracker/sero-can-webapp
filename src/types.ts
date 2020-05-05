@@ -1,22 +1,28 @@
 export type AirtableRecord = {
-    name: string,
-    source_type?: string | null,
-    study_status?: string | null,
+    article_name: string,
+    authors?: string | null,
+    institution?: string | null,
+    approving_regulator?: string | null,
+    source_type: string | null,
+    study_status: string | null,
     test_type: string | null,
-    countries: string[] | null,
+    isotopes_reported?: string[] | null,
+    country: string | null,
     populations: string[] | null,
-    numerator: number | null,
+    numerator?: number | null,
     denominator: number | null,
     seroprevalence: number | null,
-    url: string | null,
+    url?: string | null,
 };
 
+// Each filter will be a javascript set
+// TODO: find typing to represent sets
 export type Filters = {
-    source_type?: string | null,
-    study_status?: string | null,
-    test_type?: string | null,
-    countries?: any,
-    populations?: any
+    source_type: any,
+    study_status: any,
+    test_type: any,
+    country: any,
+    populations: any
 };
 
 export type State = {

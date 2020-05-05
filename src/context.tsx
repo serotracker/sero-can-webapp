@@ -6,78 +6,13 @@ export const AppContext = createContext({} as [State, Dispatch<Record<string, an
 const initialState: State = {
   healthcheck: '',
   airtable_records: [],
-  filtered_records: [{
-    name: "test 1",
-    countries: ["United Kingdom"],
-    numerator: 878,
-    denominator: 10000,
-    seroprevalence: 8.78,
-    test_type: null,
-    populations: null,
-    study_status: null,
-    url: null
-  },
-  {
-    name: "test 2",
-    countries: ["Canada"],
-    numerator: 678,
-    denominator: 10000,
-    seroprevalence: 6.78,
-    test_type: null,
-    populations: null,
-    study_status: null,
-    url: null
-  },
-  {
-    name: "test 3",
-    countries: ["Brazil"],
-    numerator: 678,
-    denominator: 10000,
-    seroprevalence: 1.78,
-    test_type: null,
-    populations: null,
-    study_status: null,
-    url: null
-  },
-  {
-    name: "test 3",
-    countries: ["Spain"],
-    numerator: 678,
-    denominator: 10000,
-    seroprevalence: 2.78,
-    test_type: null,
-    populations: null,
-    study_status: null,
-    url: null
-  },
-  {
-    name: "test 3",
-    countries: ["Italy"],
-    numerator: 678,
-    denominator: 10000,
-    seroprevalence: 12,
-    test_type: null,
-    populations: null,
-    study_status: null,
-    url: null
-  },
-  {
-    name: "test 3",
-    countries: ["Mongolia"],
-    numerator: 678,
-    denominator: 10000,
-    seroprevalence: 5.6,
-    test_type: null,
-    populations: null,
-    study_status: null,
-    url: null
-  }],
+  filtered_records: [],
   filters: {
-    source_type: null,
-    study_status: null,
-    test_type: null,
+    source_type: new Set(),
+    study_status: new Set(),
+    test_type: new Set(),
     populations: new Set(),
-    countries: new Set()
+    country: new Set()
   }
 };
 
@@ -85,12 +20,12 @@ function buildFilterFunction(filters: Record<string, any>) {
   // Returns a function that can be used to filter an array of airtable records
   return (record: Record<string, any>) => {
     for (const filter_key in filters) {
-      // Handle filters that accept multiple values
-      if (filters[filter_key] instanceof Set) {
-        if (filters[filter_key].size > 0) {
-          if (record[filter_key] === null) {
-            return false;
-          }
+      if ((filters[filter_key] instanceof Set) && (filters[filter_key].size > 0)) {
+        if (record[filter_key] === null) {
+          return false;
+        }
+        // Handle case where field to be filtered is an array
+        if (Array.isArray(record[filter_key])) {
           let in_filter = false;
           // Iterate through the record's values and check if any of them
           // match the values accepted by the filter
@@ -104,11 +39,10 @@ function buildFilterFunction(filters: Record<string, any>) {
             return false;
           }
         }
-      }
-      // Handle filters that accept a single value
-      else if (filters[filter_key] !== null) {
-        if ((record[filter_key] === null) || (record[filter_key] !== filters[filter_key])) {
-          return false;
+        else {
+          if (!(filters[filter_key].has(record[filter_key]))) {
+            return false;
+          }
         }
       }
     }
