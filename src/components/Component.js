@@ -26,11 +26,11 @@ export default function Component() {
 
     const updateFilters = () => {
         const filters = {
-            source_type: "Media Report & News Release",
-            study_status: null,
-            test_type: null,
-            populations: new Set(),
-            countries: new Set(['United States'])
+            source_type: new Set(['Media Report & News Release', 'Preprint']),
+            study_status: new Set(),
+            test_type: new Set(),
+            populations: new Set(['General population']),
+            country: new Set(['United States', 'France'])
         }
         dispatch({
             type: 'UPDATE_FILTERS',
@@ -45,7 +45,7 @@ export default function Component() {
             <button onClick={getAirtableRecords}>Get Airtable Records</button>
             <button onClick={updateFilters}>Update Filters</button>
             {state.filtered_records.map((record) => {
-                return <div>{record.name}</div>
+                return <div>{record.article_name}, {record.country}, {record.source_type}, {record.populations ? record.populations.toString() : ''}</div>
             })}
             <br></br>
             <div>Airtable records length: {state.airtable_records.length}</div>
@@ -53,7 +53,7 @@ export default function Component() {
             <div>Filters: {JSON.stringify(state.filters)}</div>
             <br></br>
             <div>Data aggregated by country</div>
-            <div>{JSON.stringify(getAggregateData(state.filtered_records, "countries"))}</div>
+            <div>{JSON.stringify(getAggregateData(state.filtered_records, "country"))}</div>
         </div>
     );
 }

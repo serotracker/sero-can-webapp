@@ -22,22 +22,20 @@ function calcPooledPrevalence(records: AirtableRecord[]) {
     }
 }
 
-// Given an aggregation factor (either 'countries' or 'populations')
+// Given an aggregation factor (either 'country' or 'populations')
 // get pooled seroprevalence and error bounds for each country or population
-export function getAggregateData(records: AirtableRecord[], aggregation_factor: "countries" | "populations") {
+export function getAggregateData(records: AirtableRecord[], aggregation_factor: "country" | "populations") {
     const grouped_records: Record<string, AirtableRecord[]> = {}
     records.forEach((record: AirtableRecord) => {
-        if ((record.seroprevalence !== null) && (record.denominator !== null) && (record[aggregation_factor] !== null)) {
-            record[aggregation_factor]!.forEach((entry: string) => {
-
-                if (entry in grouped_records) {
-                    grouped_records[entry].push(record);
-                }
-                else {
-                    grouped_records[entry] = [record];
-                }
-            })
-
+        if ((record.seroprevalence !== null) && (record.denominator !== null) && (record[aggregation_factor] != null)) {
+            if (aggregation_factor === 'country') {
+                groupRecords(grouped_records, record, record.country!)
+            }
+            else {
+                record.populations!.forEach((group) => {
+                    groupRecords(grouped_records, record, group)
+                })
+            }
         }
     });
 
@@ -49,4 +47,13 @@ export function getAggregateData(records: AirtableRecord[], aggregation_factor: 
         aggregate_data.push({ ...result, name });
     }
     return aggregate_data;
+}
+
+function groupRecords(grouped_records: Record<string, AirtableRecord[]>, record: AirtableRecord, group: string) {
+    if (group in grouped_records) {
+        grouped_records[group].push(record);
+    }
+    else {
+        grouped_records[group] = [record];
+    }
 }
