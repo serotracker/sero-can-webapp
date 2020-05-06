@@ -8,7 +8,7 @@ export const testRecords: AirtableRecord[] = [
         test_type: 'test1',
         country: 'Canada',
         populations: ['General'],
-        denominator: 500,
+        denominator: 2000,
         seroprevalence: 0.15
     },
     {
@@ -18,8 +18,8 @@ export const testRecords: AirtableRecord[] = [
         test_type: 'test1',
         country: 'Canada',
         populations: ['Adults'],
-        denominator: 500,
-        seroprevalence: 0.15
+        denominator: 1000,
+        seroprevalence: 0.2
     },
     {
         article_name: 'article3',
@@ -28,8 +28,8 @@ export const testRecords: AirtableRecord[] = [
         test_type: 'test1',
         country: 'Canada',
         populations: ['Children'],
-        denominator: 500,
-        seroprevalence: 0.15
+        denominator: 200,
+        seroprevalence: 0.12
     },
     {
         article_name: 'article4',
@@ -48,8 +48,8 @@ export const testRecords: AirtableRecord[] = [
         test_type: 'test1',
         country: 'France',
         populations: ['General'],
-        denominator: 500,
-        seroprevalence: 0.15
+        denominator: 1250,
+        seroprevalence: 0.23
     },
     {
         article_name: 'article2',
@@ -58,8 +58,8 @@ export const testRecords: AirtableRecord[] = [
         test_type: 'test1',
         country: 'France',
         populations: ['Adults'],
-        denominator: 500,
-        seroprevalence: 0.15
+        denominator: 700,
+        seroprevalence: 0.25
     },
     {
         article_name: 'article3',
@@ -68,8 +68,8 @@ export const testRecords: AirtableRecord[] = [
         test_type: 'test1',
         country: 'France',
         populations: ['Children'],
-        denominator: 500,
-        seroprevalence: 0.15
+        denominator: 300,
+        seroprevalence: 0.32
     },
     {
         article_name: 'article4',
@@ -79,7 +79,7 @@ export const testRecords: AirtableRecord[] = [
         country: 'France',
         populations: ['Children', 'Seniors'],
         denominator: 500,
-        seroprevalence: 0.15
+        seroprevalence: 0.2
     }
 ];
 
