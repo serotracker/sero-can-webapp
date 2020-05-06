@@ -1,0 +1,38 @@
+.center-button {
+  position: absolute;
+  left: 48%;
+  top: 1vh;
+  z-index: 1000;
+  text-align: center;
+  cursor: pointer;
+  -moz-box-shadow:    0 0 5px 0 #000000;
+  -webkit-box-shadow: 0 0 5px 0 #000000;
+  box-shadow:         0 0 5px 0 #000000;
+  border-radius: 5px;
+}
+
+.center-highlighted {
+  color: white;
+  font-weight: 500;
+  background-color: #455a64;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.center-regular {
+  color: black;
+  font-weight: 300;
+  background-color: white;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.left-button {
+  border-radius: 5px 0 0 5px;
+  width: 90px;
+}
+
+.right-button {
+  border-radius: 0 5px 5px 0;
+  width: 90px;
+}

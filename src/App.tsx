@@ -9,10 +9,16 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useLocation
 } from "react-router-dom";
 import './App.css';
 import { AppContextProvider } from "./context";
+    
+function usePageViews() {
+  // let location = useLocation();
+  
+}
 
 function App() {
   const [tab, setTab] = useState("Home");
@@ -23,8 +29,7 @@ function App() {
   }
   const [auth, setAuth] = useState(authStatus);
 
-  function setActiveTab(e: any, tab: string) {
-    e.preventDefault()
+  function setActiveTab(tab: string) {
     setTab(tab)
   }
 
@@ -32,12 +37,14 @@ function App() {
     setAuth(true);
     // Workaround because only string values can be saved to localStorage
     localStorage.setItem('authenticated', 'true');
-  }
+    }
+
 
   const getTabClass = (tabName: string) => {
     return tabName === tab ? 'bold' : 'regular'
   }
 
+  usePageViews();
   return (
     <div className="App-container">
       {auth === false ? (
@@ -47,7 +54,7 @@ function App() {
             <Router>
               <div className="col-12 p-0 flex">
                 <header className="App-header col-12 px-3">
-                  <div className="App-title py-3 flex center-item" onClick={(e) => setActiveTab(e, "Home")}>
+                  <div className="App-title py-3 flex center-item">
                     <Link to="/Home" className="flex">
                       <img src={Icon} width={23} height={23} alt="" />
                       <div className="col-auto px-2" >SeroTracker</div>

@@ -1,9 +1,9 @@
 import React from "react";
 import './static.css';
-import Map from '../map/Map'
+import CentralPiece from "../CenterComponent";
 
 export default function FAQ() {
     return (
-        <Map/>
+        <CentralPiece/>
     )
 }
