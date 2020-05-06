@@ -14,7 +14,7 @@ export default function Map() {
   const mapRef = createRef<LeafletMap>();
   const geoJsonRef = createRef<GeoJSON>();
 
-  const prevalenceCountryDict = getAggregateData(state.filtered_records, "countries").reduce((a, x) => ({ ...a, [x.name]: x.seroprevalence }), {})
+  const prevalenceCountryDict = getAggregateData(state.filtered_records, "country").reduce((a, x) => ({ ...a, [x.name]: x.seroprevalence }), {})
   fileImport.features = geoJsonData.map(feature => {
     const seroprevalence = prevalenceCountryDict[feature?.properties?.name_sort as string];
     if (seroprevalence) {

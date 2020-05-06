@@ -23,16 +23,20 @@ export default class httpClient {
         const airtable_records = response.map((item: Record<string, any>)=>{ 
             // Convert response to AirtableRecord type
             const record: AirtableRecord = { 
-                name: item.fields.Name,
-                source_type: ("Source Type" in item.fields) ? item.fields["Source Type"] : null,
-                study_status: ("Study Status" in item.fields) ? item.fields["Study Status"] : null,
-                test_type: ("Test type" in item.fields) ? item.fields["Test type"] : null,
-                countries: ("Country" in item.fields) ? item.fields["Country"] : null,
-                populations: ("Population of Interest" in item.fields) ? item.fields["Population of Interest"] : null,
-                numerator: ("Numerator value / expected value" in item.fields) ? item.fields["Numerator value / expected value"] : null,
-                denominator: ("Denominator value / expected value" in item.fields) ? item.fields["Denominator value / expected value"] : null,
-                seroprevalence: ("Serum + prevalence" in item.fields) ? item.fields["Serum + prevalence"] : null,
-                url: ("URL" in item.fields) ? item.fields["URL"] : null
+                article_name: item.ARTICLE_NAME![0],
+                authors: item.AUTHORS ? item.AUTHORS[0]: null,
+                institution: item.INSTITUTION ? item.INSTITUTION[0] : null,
+                approving_regulator: item.APPROVING_REGULATOR ? item.APPROVING_REGULATOR[0]: null,
+                source_type: item.SOURCE_TYPE ? item.SOURCE_TYPE[0]: null,
+                study_status: item.STUDY_STATUS ? item.STUDY_STATUS[0]: null,
+                test_type: item.TEST_TYPE ? item.TEST_TYPE[0]: null,
+                isotopes_reported: item.ISOTOPED_REPORTED,
+                country: item.COUNTRY ? item.COUNTRY[0] : null,
+                populations: item.POPULATIONS_STUDIED,
+                numerator: item.NUMERATOR_VALUE,
+                denominator: item.DENOMINATOR_VALUE,
+                seroprevalence: item.SERUM_POSITIVE_PREVALENCE,
+                url: item.URL ? item.URL[0] : null
             };
 
             return record; 
