@@ -26,10 +26,10 @@ export default function Map() {
   const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined) => {
     return {
       fillColor: getColor(feature?.properties?.seroprevalence),
-      weight: 2,
+      weight: 1,
       opacity: 1,
       color: 'white',
-      dashArray: '3',
+      dashArray: '0',
       fillOpacity: 0.7,
       zIndex: 650
     }
@@ -114,7 +114,7 @@ export default function Map() {
         ref={mapRef}
         center={[0,0]}
         zoom={2}
-        className="map w-100 h-94"
+        className="page w-100"
         bounceAtZoomLimits={true}
         bounds={bounds}
         minZoom={2}

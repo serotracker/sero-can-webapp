@@ -30,7 +30,7 @@ export default function Home() {
     ]
 
     return (
-        <div className="static-page">
+        <div className="page">
             <div className="static-content">
                 <h1>
                     About SeroTracker
