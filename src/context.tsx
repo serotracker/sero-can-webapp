@@ -50,7 +50,7 @@ function buildFilterFunction(filters: Record<string, any>) {
   }
 }
 
-function filterRecords(filters: Filters, records: AirtableRecord[]) {
+export function filterRecords(filters: Filters, records: AirtableRecord[]) {
   const filter_function = buildFilterFunction(filters);
   const filtered_records = records.filter(filter_function);
   return filtered_records;
