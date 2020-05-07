@@ -9,6 +9,7 @@ pipeline {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
           sh 'npm install'
+          sh 'npm start'
         }
       }
     }
