@@ -7,6 +7,7 @@ pipeline {
     stage('Build') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
+          sh 'rm -rf node_modules'
           sh 'npm install'
         }
       }
@@ -14,7 +15,7 @@ pipeline {
     stage('Test') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-          sh 'npm test'
+          sh 'yarn test'
         }
       }
     }
