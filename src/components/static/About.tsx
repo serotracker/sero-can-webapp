@@ -25,14 +25,14 @@ export default function About() {
         <div className="static-page">
             <div className="static-content">
                 <h1>
-                    Who We Are
+                    Scientific Lead:
                 </h1>
-                <p>
-                    We are an interdisciplinary group of researchers, engineers, and medical trainees.
-                </p>
-                <h2>
+                <div>
+                    {renderBioBlock('Tim Evans', ['Director, School of Population and Global Health, McGill University', 'Executive Director, Canadian COVID-19 Immunity Task Force'])}
+                </div>
+                <h1>
                     Research Team:
-                </h2>
+                </h1>
                 <div className="bio-grid-container">
                     {renderBioBlock('Rahul Arora', ['University of Oxford'])}
                     {renderBioBlock('Niklas Bobrovitz ', ['University of Oxford', 'University of Toronto'])}
@@ -44,9 +44,9 @@ export default function About() {
                 <p>
                     Please direct research-related inquiries to <a href="mailto:niklas.bobrovitz@mail.utoronto.ca">niklas.bobrovitz@mail.utoronto.ca</a>.
                 </p>
-                <h2>
+                <h1>
                     Data Science Team:
-                </h2>
+                </h1>
                 <div className="bio-grid-container">
                     {renderBioBlock('Austin Atmaja', ['University of Waterloo'])}
                     {renderBioBlock('Abel Joseph ', ['University of Waterloo'])}
