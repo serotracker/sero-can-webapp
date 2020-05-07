@@ -2,12 +2,12 @@ pipeline {
   agent { docker { image 'node:latest' } }
   environment {
     REACT_APP_MAPBOX_API_KEY = credentials('mapbox-api-key')
+    CI = 'true' 
   }  
   stages {
     stage('Build') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-          sh 'rm -rf node_modules'
           sh 'npm install'
         }
       }
@@ -15,7 +15,7 @@ pipeline {
     stage('Test') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-          sh 'yarn test'
+          sh 'npm test'
         }
       }
     }
