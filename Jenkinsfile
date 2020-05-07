@@ -12,5 +12,12 @@ pipeline {
         }
       }
     }
+    stage('Test') {
+      steps {
+        withEnv(["HOME=${env.WORKSPACE}"]) {
+          sh 'npm test'
+        }
+      }
+    }
   }
 }
