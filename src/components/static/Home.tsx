@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import './static.css';
-import { Tab, Icon } from "semantic-ui-react";
+import { Tab } from "semantic-ui-react";
 
 export default function Home() {
-    const [tabHidden, setTabHidden] = useState(true)
 
     const renderPane = (src: string) => {
         return <Tab.Pane className="col-12 p-0">
@@ -34,86 +33,40 @@ export default function Home() {
         <div className="static-page">
             <div className="static-content">
                 <h1>
-                    About the Global Serosurveillance Project
+                    About SeroTracker
                 </h1>
-                <h4>
-                    The world is shifting towards building a long-term recovery strategy from the COVID-19 pandemic.
-                </h4>
                 <p>
-                    Antibody (also known as serology) tests are blood-based tests that provide evidence of previous exposure to the virus, regardless of whether someone has developed symptoms. Antibody testing may provide insights to levels of background community immunity, which can help support policy decisions around reopening the economy and returning to normal life.
+                    As the acute phase of the COVID-19 pandemic passes its peak, many countries are accelerating investment in serological testing. Understanding population antibody patterns and potential immunity to SARS-CoV-2 is of great interest to clinicians, public health officials, and policymakers alike. Despite this priority, there have been no published systematic efforts to track or synthesize findings from ongoing SARS-CoV-2 serosurveys. 
                 </p>
-                <h4>
-                    We aim to provide up-to-date synthesis of the results of SARS-CoV-2 sero-surveys from around the world.
-                </h4>
                 <p>
-                    In early April, we noticed the accelerating momentum behind antibody testing. To capture information from these serosurveillance projects, we developed a ‘living’ rapid review, creating the infrastructure to extract serology testing data from governments, research institutions, and corporations as it was released. Given the wide range in sampling strategy, we developed a system to critically appraise the population immunity estimates from news sources, grey literature, and scientific articles. We soon plan to visualize these estimates through an interactive world map.
+                SeroTracker provides the first systematic up-to-date synthesis of SARS-CoV-2 serosurveillance projects globally. We screened 1,845 peer-reviewed articles, preprints, government reports, and media articles, identifying 23 studies reporting 42 prevalence estimates from 14 countries and 50 studies yet to report. Our full methods can be found <a rel="noopener noreferrer" target="_blank" href="https://drive.google.com/file/d/1ckfyprYUoNZRkBPgzbFRfvf1IsXmxvRP/view?usp=sharing">here</a>.
                 </p>
 
                 <h1>
-                    {
-                        tabHidden ?
-                            <Icon name='angle down' className="icon" onClick={() => setTabHidden(false)}></Icon>
-                            :
-                            <Icon name='angle right' className="icon" onClick={() => setTabHidden(true)}></Icon>
-                    }
-                    Our Methods (in a nutshell)
+                    Our Data
                 </h1>
-                {tabHidden ?
-                    <div>
-                        <ol>
-                            <li>
-                                We are conducting an abbreviated systematic review, informed by Cochrane guidance, to capture all proposed, on-going, or completed cross-sectional SARS-CoV-2 serosurveys around the world.
+                <p>
+                    The tables below gather our findings, including detailed information about each study, prevalence estimate, and the associated risk of bias. 
+                </p>
+                <ul>
+                    <li>
+                        <p>
+                            <b>Detailed Serosurvey Data (all)</b> provides thorough data on all prevalence estimates, including both reported estimates and intended studies
+                        </p>
                     </li>
-                            <li>
-                                <div>
-                                    We searched electronic data sources from December 1, 2019 - May 1, 2020:
-                            <ol type="a">
-                                        <li>
-                                            <div>
-                                                Academic literature databases:
-                                        <ol type="i">
-                                                    <li>
-                                                        Published: PubMed, high-impact journals (BMJ, JAMA, NEJM, The Lancet, Annals of Internal Medicine)
-                                            </li>
-                                                    <li>
-                                                        Unpublished: MedRXIV, BioRXIV
-                                            </li>
-                                                </ol>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                Grey literature:
-                                        <ol type="i">
-                                                    <li>
-                                                        Reports: WHO, NIH, CDC, ECDC
-                                            </li>
-                                                    <li>
-                                                        Media: Google News
-                                            </li>
-                                                </ol>
-                                            </div>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </li>
-                            <li>
-                                We continually updated evidence by subscribing to automatic email updates from all sources.
+                    <li>
+                        <p>
+                            <b>Serosurveys Reporting Prevalence</b> mirrors Supplementary Table 1 in our manuscript, providing concise data on all reported seroprevalence estimates
+                        </p>
                     </li>
-                            <li>
-                                We critically appraised evidence based on the Joanna Briggs Institute Critical Appraisal Checklist for Studies Reporting Prevalence Data
+                    <li>
+                        <p>
+                            <b>Planned Serosurveys</b> mirrors Supplementary Table 2 in our manuscript, summarizing intended serosurveys
+                        </p>
                     </li>
-                        </ol>
-                        {/* <p>
-                            Our full methods can be found at:
-                </p> */}
-                    </div>
-                    : null}
-                <h1>
-                    Our Results
-                </h1>
+                </ul>
             </div>
-            <Tab className="col-10 p-0" panes={panes} />
+            <Tab className="col-10 p-0 airtable-embed vertical-spacer" panes={panes} />
         </div>
     )
 }

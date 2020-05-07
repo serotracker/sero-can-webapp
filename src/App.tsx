@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import About from './components/static/About';
 import Home from './components/static/Home';
-import FAQ from './components/static/FAQ';
+import Dashboard from './components/static/Dashboard';
 import Auth from './components/static/Auth/Auth';
 import Icon from './assets/images/two-tone-light.svg';
 import './App.css';
@@ -19,10 +19,10 @@ function App() {
     switch (tab) {
       case 'About':
         return <About />
-      case 'FAQ':
-        return <FAQ />
       case 'Home':
         return <Home />
+      case 'Dashboard':
+        return <Dashboard />
       default:
         return <div />
     }
@@ -61,13 +61,13 @@ function App() {
               <div className="App-tabs">
                 <div className={getTabClass('Home')} onClick={(e) => setActiveTab(e, "Home")}>
                   Home
-              </div>
+                </div>
                 <div className={getTabClass('About')} onClick={(e) => setActiveTab(e, "About")}>
                   About
-              </div>
-                <div className={getTabClass('FAQ')} onClick={(e) => setActiveTab(e, "FAQ")}>
-                  FAQ
-              </div>
+                </div>
+                <div className={getTabClass('Dashboard')} onClick={(e) => setActiveTab(e, "Dashboard")}>
+                  Dashboard
+                </div>
               </div>
             </header>
             {renderContent()}
