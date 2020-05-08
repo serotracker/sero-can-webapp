@@ -31,6 +31,16 @@
     margin-block-end: 0.8em;
 }
 
+.vertical-spacer {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.dashboard-img {
+    width: 80%;
+    border: 1px solid #ccc;
+}
+
 .bio-grid-container {
     display: inline-grid;
     grid-template-columns: repeat(3, 1fr);
@@ -43,7 +53,6 @@
 .airtable-embed {
     background: transparent; 
     border: 1px solid #ccc;
-    margin-bottom: 20px
 }
 
 .icon {
