@@ -20,6 +20,9 @@ export default class httpClient {
 
     async getAirtableRecords() {
         const response = await this.httpGet('/airtable_scraper/records');
+        if(!response) {
+            return [];
+        }
         const airtable_records = response.map((item: Record<string, any>)=>{ 
             // Convert response to AirtableRecord type
             const record: AirtableRecord = { 

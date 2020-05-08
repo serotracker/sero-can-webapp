@@ -6,22 +6,22 @@ test('test country aggregation', () => {
     expect(aggregatedData.length).toBe(2)
     const expectedResult = [ 
         { 
-            seroprevalence: 0.1592131674026495,
-            error: 0.06218947499376402,
+            seroprevalence: 0.1592131674026495 * 100,
+            error: 0.06218947499376402 * 100,
             name: 'Canada' 
         },
         { 
-            seroprevalence: 0.23686475244389382,
-            error: 0.07475981822699498,
+            seroprevalence: 0.23686475244389382 * 100,
+            error: 0.07475981822699498 * 100,
             name: 'France' 
         } 
     ];
 
-    const canadaData = aggregatedData.find(element => element.name == 'Canada')
+    const canadaData = aggregatedData.find(element => element.name === 'Canada')
     expect(canadaData!.seroprevalence).toBe(expectedResult[0].seroprevalence)
     expect(canadaData!.error).toBe(expectedResult[0].error)
 
-    const franceData = aggregatedData.find(element => element.name == 'France')
+    const franceData = aggregatedData.find(element => element.name === 'France')
     expect(franceData!.seroprevalence).toBe(expectedResult[1].seroprevalence)
     expect(franceData!.error).toBe(expectedResult[1].error)
 });
@@ -31,32 +31,32 @@ test('test population aggregation', () => {
     expect(aggregatedData.length).toBe(4)
     const expectedResult = [ 
         { 
-            seroprevalence: 0.17482597478459813,
-            error: 0.02809234571907444,
+            seroprevalence: 0.17482597478459813 * 100,
+            error: 0.02809234571907444 * 100,
             name: 'General' 
         },
         { 
-            seroprevalence: 0.21869782971619364,
-            error: 0.040542027576331206,
+            seroprevalence: 0.21869782971619364 * 100,
+            error: 0.040542027576331206 * 100,
             name: 'Adults' 
         },
         { 
-            seroprevalence: 0.1823481781376518,
-            error: 0.0838076687024125,
+            seroprevalence: 0.1823481781376518 * 100,
+            error: 0.0838076687024125 * 100,
             name: 'Children' 
         },
         { 
-            seroprevalence: 0.17217391304347826,
-            error: 0.04699914892846466,
+            seroprevalence: 0.17217391304347826 * 100,
+            error: 0.04699914892846466 * 100,
             name: 'Seniors' 
         } 
     ]
 
-    const generalData = aggregatedData.find(element => element.name == 'General')
+    const generalData = aggregatedData.find(element => element.name === 'General')
     expect(generalData!.seroprevalence).toBe(expectedResult[0].seroprevalence)
     expect(generalData!.error).toBe(expectedResult[0].error)
 
-    const adultsData = aggregatedData.find(element => element.name == 'Adults')
+    const adultsData = aggregatedData.find(element => element.name === 'Adults')
     expect(adultsData!.seroprevalence).toBe(expectedResult[1].seroprevalence)
     expect(adultsData!.error).toBe(expectedResult[1].error)
 

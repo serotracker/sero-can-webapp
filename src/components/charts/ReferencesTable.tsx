@@ -21,10 +21,11 @@ export default function ReferencesTable() {
   const [direction, setDirection] = useState('ascending');
   const [data, setData] = useState(state.filtered_records);
 
-  const handleSort = (clickedColumn: string) => {
+  const handleSort = (clickedColumn: string) => () => {
     if (column !== clickedColumn) {
       setColumn(clickedColumn);
       setDirection('ascending');
+      return
     }
     else {
       setDirection(direction === 'ascending' ? 'descending' : 'ascending');
