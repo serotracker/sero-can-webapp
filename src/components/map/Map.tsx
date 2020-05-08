@@ -1,6 +1,6 @@
-import L, { Layer } from "leaflet";
+import { Layer, LatLngBounds, latLngBounds } from "leaflet";
 import React, { createRef, useContext } from "react";
-import { GeoJSON, Map as LeafletMap, TileLayer, Pane, Rectangle } from "react-leaflet";
+import { GeoJSON, Map as LeafletMap, TileLayer, LatLng } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
 import { getAggregateData } from "../../metaAnalysis";
@@ -8,15 +8,15 @@ import Legend from "./Legend";
 import './Map.css';
 
 export default function Map() {
-  const [state, dispatch] = useContext(AppContext);
   const fileImport = Countries as any;
   const geoJsonData = fileImport.features as GeoJSON.Feature[]
   const mapRef = createRef<LeafletMap>();
   const geoJsonRef = createRef<GeoJSON>();
+  const [state, dispatch] = useContext(AppContext);
 
   const prevalenceCountryDict = getAggregateData(state.filtered_records, "country").reduce((a, x) => ({ ...a, [x.name]: x.seroprevalence }), {})
   fileImport.features = geoJsonData.map(feature => {
-    const seroprevalence = prevalenceCountryDict[feature?.properties?.name_sort as string];
+    const seroprevalence = prevalenceCountryDict[feature?.properties?.name as string];
     if (seroprevalence) {
       return { ...feature, properties: { ...feature.properties, seroprevalence } }
     }
@@ -26,10 +26,10 @@ export default function Map() {
   const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined) => {
     return {
       fillColor: getColor(feature?.properties?.seroprevalence),
-      weight: 2,
+      weight: 1,
       opacity: 1,
       color: 'white',
-      dashArray: '3',
+      dashArray: '0',
       fillOpacity: 0.7,
       zIndex: 650
     }
@@ -105,20 +105,23 @@ export default function Map() {
     })
   }
 
+  const bounds = latLngBounds([-90, -200], [90, 180]);
+  const maxBounds = latLngBounds([-90, -200], [90, 200]);
+
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_API_KEY;
   return (
-    <div className="map">
       <LeafletMap
         ref={mapRef}
-        zoom={10}
-        className="map"
+        center={[0,0]}
+        zoom={2}
+        className="page w-100"
         bounceAtZoomLimits={true}
-        bounds={[[-90, 200], [90, 200]]}
-        zoomDelta={0.1}
-        minZoom={2.3}
-        maxBounds={[[-90, -200], [90, 200]]}
+        bounds={bounds}
+        minZoom={2}
+        maxBounds={maxBounds}
         enableHighAccuracy={true}
-        maxBoundsViscosity={1}>
+        maxBoundsViscosity={1}
+        >
         <TileLayer
           url={'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -132,16 +135,7 @@ export default function Map() {
           data={fileImport as GeoJSON.GeoJsonObject}
           style={(data) => style(data)}>
         </GeoJSON>
-
-        <TileLayer
-          url={'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png'}
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'          >
-          <Pane name={'labels'} style={{ zIndex: 651, pointerEvents: 'none' }}>
-
-          </Pane>
-        </TileLayer>
         <Legend buckets={buckets} />
       </LeafletMap>
-    </div>
   );
 }

@@ -31,13 +31,13 @@ const Legend = (props: legendProps) => {
     const legend = control({ position: "bottomright" });
 
     legend.onAdd = () => {
-      const div = L.DomUtil.create("div", "info legend");
+      const div = L.DomUtil.create("div", "info flex legend");
 
       const labels = buckets.map((value, index) => {
         if (index !== buckets.length) {
           const from = value;
           const to = buckets[index + 1]
-          return `<i style="background:${getColor(from + 1)}"></i>${from}${to ? "&ndash;" + to : "+"}`
+          return `<div className="col-12 p-0 flex"><i style="background:${getColor(from + 1)}"></i>${from}${to ? "&ndash;" + to : "+"}<div>`
         }
       })
 

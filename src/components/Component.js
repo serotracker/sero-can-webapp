@@ -16,14 +16,6 @@ export default function Component() {
         })
     }
 
-    const getAirtableRecords = async () => {
-        const airtable_records = await api.getAirtableRecords()
-        dispatch({
-            type: 'GET_AIRTABLE_RECORDS',
-            payload: airtable_records
-        })
-    }
-
     const updateFilters = () => {
         const filters = {
             source_type: new Set(['Media Report & News Release', 'Preprint']),
