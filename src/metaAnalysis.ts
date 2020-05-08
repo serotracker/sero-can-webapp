@@ -17,7 +17,7 @@ function calcPooledPrevalence(records: AirtableRecord[]) {
     });
 
     return {
-        seroprevalence: p_over_var_sum / inv_var_sum,
+        seroprevalence: p_over_var_sum / inv_var_sum * 100,
         error: Z_SCORE * Math.sqrt(var_sum)
     }
 }

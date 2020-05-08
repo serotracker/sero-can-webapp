@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Card, Table, Dropdown } from "semantic-ui-react";
 import './Charts.css'
-import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, ResponsiveContainer, ErrorBar } from 'recharts';
+import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, ResponsiveContainer, ErrorBar, LabelList } from 'recharts';
 import ReferencesTable from "./ReferencesTable";
 import { AppContext } from "../../context";
 import { getAggregateData } from "../../metaAnalysis";
@@ -12,8 +12,8 @@ export default function Charts() {
 
   const { filtered_records } = state;
   
-  const chartData = getAggregateData(filtered_records, 'countries')
-  console.table(chartData)
+  const chartData = getAggregateData(filtered_records, 'country')
+  console.table(chartData);
   interface chartData {
     country: string;
     seroprevalence: number;
@@ -25,9 +25,7 @@ export default function Charts() {
   ]
 
   const handleChange = (e: any) => {
-    console.log(typeof (e));
     const { value } = e;
-    console.log(e, value);
     setYAxis(value);
   }
 
@@ -37,6 +35,30 @@ export default function Charts() {
     })
   }
 
+  const CustomTooltip = ({ active, payload, label }: any) => {
+
+    if (active && payload) {
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{`${label} : ${payload[0].value.toFixed(2)}`}</p>
+        </div>
+      );
+    }
+  
+    return null;
+  };
+  
+
+const renderCustomizedLabel = (props: any) => {
+  const { x, y, width, height, value } = props;
+  return (
+    <g>
+      <text x={x + width + 10} y={y + height / 2} fill="#000" textAnchor="right" dominantBaseline="right">
+        {value.toFixed(2)}
+      </text>
+    </g>
+  );
+};
 
   return (
     <div className="charts-page flex">
@@ -69,10 +91,11 @@ export default function Charts() {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" name="Seroprevalence (%)" />
             <YAxis dataKey="name" type="category" />
-            <Tooltip />
+            <Tooltip content={<CustomTooltip />}/>
             <Legend />
             <Bar dataKey="seroprevalence" name="Seroprevalence (%)" fill="#55A6BA">
-              <ErrorBar dataKey="errorX" width={0} strokeWidth={1} />
+              <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
+              <ErrorBar dataKey="error" width={0} strokeWidth={1} />
             </Bar>
           </BarChart>
         </ResponsiveContainer>

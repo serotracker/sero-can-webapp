@@ -1,5 +1,5 @@
-import React, { useReducer, createContext, Dispatch } from "react";
-import { AirtableRecord, Filters, State } from "./types"
+import React, { createContext, Dispatch, useReducer } from "react";
+import { AirtableRecord, Filters, State } from "./types";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
