@@ -13,25 +13,14 @@ export default function Charts() {
   const { filtered_records } = state;
   
   const chartData = getAggregateData(filtered_records, 'country')
-  interface chartData {
-    country: string;
-    seroprevalence: number;
-  }
 
   const yAxisOptions = [
     { key: 'Population', text: 'Population', value: 'Population' },
     { key: 'Geographies', text: 'Geographies', value: 'Geographies' }
   ]
 
-  const handleChange = (e: any) => {
-    const { value } = e;
-    setYAxis(value);
-  }
-
-  const customItems = () => {
-    return yAxisOptions.map(option => {
-      return <Dropdown.Item className="large-dropdown">{option.text}</Dropdown.Item>
-    })
+  const handleChange = (e: any) => {    
+    setYAxis(e.value);
   }
 
   const CustomTooltip = ({ active, payload, label }: any) => {

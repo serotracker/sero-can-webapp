@@ -13,22 +13,6 @@ function App() {
   const [tab, setTab] = useState("Home");
   const [state, dispatch] = useContext(AppContext);
 
-  let authStatus = false;
-  if (localStorage.hasOwnProperty('authenticated')) {
-    authStatus = localStorage.getItem('authenticated') !== null;
-  }
-  const [auth, setAuth] = useState(authStatus);
-
-  function setActiveTab(tab: string) {
-    setTab(tab)
-  }
-
-  function authenticate() {
-    setAuth(true);
-    // Workaround because only string values can be saved to localStorage
-    localStorage.setItem('authenticated', 'true');
-  }
-
   useEffect(() => {
     const api = new httpClient()
     const getAirtableRecords = async () => {
@@ -44,6 +28,23 @@ function App() {
   const getTabClass = (tabName: string) => {
     return tabName === tab ? 'bold' : 'regular'
   }
+  
+  let authStatus = false;
+
+  if (localStorage.hasOwnProperty('authenticated')) {
+    authStatus = localStorage.getItem('authenticated') !== null;
+  }
+  const [auth, setAuth] = useState(authStatus);
+
+  function setActiveTab(tab: string) {
+    setTab(tab)
+  }
+
+  function authenticate() {
+    setAuth(true);
+    // Workaround because only string values can be saved to localStorage
+    localStorage.setItem('authenticated', 'true');
+  }
 
   return (
     <div className="App-container">
@@ -54,7 +55,7 @@ function App() {
             <div className="col-12 p-0 flex">
               <header className="App-header col-12 px-3">
                 <div className="App-title py-3 flex center-item">
-                  <Link to="/Home" className="flex">
+                  <Link to="/Home" className="fx">
                     <img src={Icon} width={23} height={23} alt="" />
                     <div className="col-auto px-2" >SeroTracker</div>
                   </Link>
