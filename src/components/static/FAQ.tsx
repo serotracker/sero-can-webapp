@@ -1,9 +1,12 @@
 import React from "react";
 import './static.css';
-import CentralPiece from "../CenterComponent";
 
 export default function FAQ() {
     return (
-        <CentralPiece/>
+        <div className="page">
+            <h1>
+                Coming Soon
+            </h1>
+        </div>
     )
 }

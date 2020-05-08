@@ -16,7 +16,7 @@ export default function Map() {
 
   const prevalenceCountryDict = getAggregateData(state.filtered_records, "country").reduce((a, x) => ({ ...a, [x.name]: x.seroprevalence }), {})
   fileImport.features = geoJsonData.map(feature => {
-    const seroprevalence = prevalenceCountryDict[feature?.properties?.name_sort as string];
+    const seroprevalence = prevalenceCountryDict[feature?.properties?.name as string];
     if (seroprevalence) {
       return { ...feature, properties: { ...feature.properties, seroprevalence } }
     }
