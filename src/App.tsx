@@ -5,15 +5,9 @@ import Icon from './assets/images/two-tone-light.svg';
 import Data from "./components/pages/Data";
 import About from './components/static/About';
 import Auth from './components/static/Auth/Auth';
-import FAQ from './components/static/FAQ';
 import Home from './components/static/Home';
 import { AppContext, AppContextProvider } from "./context";
 import httpClient from "./httpClient";
-
-function usePageViews() {
-  // let location = useLocation();
-
-}
 
 function App() {
   const [tab, setTab] = useState("Home");
@@ -51,7 +45,6 @@ function App() {
     return tabName === tab ? 'bold' : 'regular'
   }
 
-  usePageViews();
   return (
     <div className="App-container">
       {auth === false ? (
@@ -70,16 +63,12 @@ function App() {
                   <Link className={getTabClass('Home')} to="/Home">Home</Link>
                   <Link className={getTabClass('Data')} to="/Data">Data</Link>
                   <Link className={getTabClass('About')} to="/About">About</Link>
-                  <Link className={getTabClass('FAQ')} to="/FAQ">FAQ</Link>
                 </div>
               </header>
 
               <Switch>
                 <Route path="/About">
                   <About />
-                </Route>
-                <Route path="/FAQ">
-                  <FAQ />
                 </Route>
                 <Route path="/Data">
                   <Data />

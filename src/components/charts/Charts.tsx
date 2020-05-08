@@ -13,7 +13,6 @@ export default function Charts() {
   const { filtered_records } = state;
   
   const chartData = getAggregateData(filtered_records, 'country')
-  console.table(chartData);
   interface chartData {
     country: string;
     seroprevalence: number;
