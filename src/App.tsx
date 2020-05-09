@@ -55,7 +55,7 @@ function App() {
             <div className="col-12 p-0 flex">
               <header className="App-header col-12 px-3">
                 <div className="App-title py-3 flex center-item">
-                  <Link to="/Home" className="fx">
+                  <Link to="/Home" className="flex">
                     <img src={Icon} width={23} height={23} alt="" />
                     <div className="col-auto px-2" >SeroTracker</div>
                   </Link>
