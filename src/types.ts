@@ -29,5 +29,6 @@ export type State = {
     healthcheck: string,
     airtable_records: AirtableRecord[],
     filtered_records: AirtableRecord[],
-    filters: Filters
+    filters: Filters,
+    updated_at: string
 };

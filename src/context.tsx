@@ -13,7 +13,8 @@ const initialState: State = {
     test_type: new Set(),
     populations: new Set(),
     country: new Set()
-  }
+  },
+  updated_at: ''
 };
 
 function buildFilterFunction(filters: Record<string, any>) {
@@ -66,8 +67,9 @@ const reducer = (state: State, action: Record<string, any>) => {
     case "GET_AIRTABLE_RECORDS":
       return {
         ...state,
-        airtable_records: action.payload,
-        filtered_records: filterRecords(state.filters, action.payload),
+        airtable_records: action.payload.airtable_records,
+        filtered_records: filterRecords(state.filters, action.payload.airtable_records),
+        updated_at: action.payload.updated_at
       }
     case "UPDATE_FILTERS":
       return {
