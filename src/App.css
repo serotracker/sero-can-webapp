@@ -49,6 +49,18 @@
     justify-content: flex-end;
 }
 
+.center {
+    text-align: center;
+}
+
+.middle {
+    justify-content: center;
+}
+
+.left {
+    justify-content: flex-start;
+}
+
 .top {
     align-content: flex-start;
 }

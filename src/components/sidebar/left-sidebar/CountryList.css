@@ -1,0 +1,35 @@
+.item-container {
+  justify-content: space-between;
+  border-top: 2px solid #C4C4C4;
+}
+
+.item-container:last-of-type {
+  justify-content: space-between;
+  border-top: 2px solid #C4C4C4;
+  border-bottom: 2px solid #C4C4C4;
+}
+
+.item-container:first-of-type {
+  justify-content: space-between;
+  border-top: 2px solid #C4C4C4;
+}
+
+.country-list-container {
+  border-top: 2px solid #C4C4C4;
+}
+
+
+.country-name {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.country-stat {
+  font-size: 14px;  
+}
+
+.item-list-container {
+  background: white;
+  height: 68vh;
+  overflow: auto;
+}
