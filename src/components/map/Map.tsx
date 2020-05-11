@@ -1,9 +1,9 @@
-import { Layer, LatLngBounds, latLngBounds } from "leaflet";
+import { latLngBounds, Layer } from "leaflet";
 import React, { createRef, useContext } from "react";
-import { GeoJSON, Map as LeafletMap, TileLayer, LatLng } from "react-leaflet";
+import { GeoJSON, Map as LeafletMap, TileLayer } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
-import { getAggregateData } from "../../metaAnalysis";
+import { aggregationFactor, getAggregateData } from "../../metaAnalysis";
 import Legend from "./Legend";
 import './Map.css';
 
@@ -12,9 +12,9 @@ export default function Map() {
   const geoJsonData = fileImport.features as GeoJSON.Feature[]
   const mapRef = createRef<LeafletMap>();
   const geoJsonRef = createRef<GeoJSON>();
-  const [state, dispatch] = useContext(AppContext);
+  const [state] = useContext(AppContext);
 
-  const prevalenceCountryDict = getAggregateData(state.filtered_records, "country").reduce((a, x) => ({ ...a, [x.name]: x.seroprevalence }), {})
+  const prevalenceCountryDict = getAggregateData(state.filtered_records, aggregationFactor.country).reduce((a, x) => ({ ...a, [x.name]: x.seroprevalence }), {})
   fileImport.features = geoJsonData.map(feature => {
     const seroprevalence = prevalenceCountryDict[feature?.properties?.name as string];
     if (seroprevalence) {
@@ -114,7 +114,7 @@ export default function Map() {
         ref={mapRef}
         center={[0,0]}
         zoom={2}
-        className="page w-100"
+        className="map w-100"
         bounceAtZoomLimits={true}
         bounds={bounds}
         minZoom={2}

@@ -21,11 +21,11 @@
 
 .country-name {
   font-weight: 300;
-  font-size: 14px;
+  font-size: 0.875em;
 }
 
 .country-stat {
-  font-size: 14px;  
+  font-size: 0.875em;  
 }
 
 .item-list-container {

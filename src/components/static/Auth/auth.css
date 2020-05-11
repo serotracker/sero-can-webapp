@@ -17,7 +17,7 @@
     margin: 0 0 15px;
     padding: 15px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 0.875em;
 }
 
 .staticrypt-form .staticrypt-decrypt-button {
@@ -28,7 +28,7 @@
     border: 0;
     padding: 15px;
     color: #FFFFFF;
-    font-size: 14px;
+    font-size: 0.875em;
     cursor: pointer;
 }
 

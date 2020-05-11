@@ -18,13 +18,13 @@
 }
 
 .large-dropdown {
-  font-size: 18px;
+  font-size: 1.125em;
   border: none;
   background-color: lightgrey; 
 }
 
 .charts-title {
-  font-size: 18px;
+  font-size: 1.125em;
 }
 
 .custom-tooltip {
