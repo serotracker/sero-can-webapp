@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, Route, Switch, useLocation } from "react-router-dom";
+import { Link, Route, Switch, useLocation, Redirect } from "react-router-dom";
 import './App.css';
 import Icon from './assets/images/two-tone-light.svg';
 import Data from "./components/pages/Data";
@@ -12,7 +12,7 @@ import httpClient from "./httpClient";
 
 
 function App() {
-  const [tab, setTab] = useState("Home");
+  const [tab, setTab] = useState("");
   const [state, dispatch] = useContext(AppContext);
 
   // DATA
@@ -87,9 +87,10 @@ function App() {
               <Route path="/Data">
                 <Data />
               </Route>
-              <Route path="/">
+              <Route path="/Home">
                 <Home />
               </Route>
+              <Redirect exact from="/" to="home" />
             </Switch>
           </div>
         )

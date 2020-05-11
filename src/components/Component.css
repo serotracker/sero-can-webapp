@@ -1,6 +1,6 @@
 .center-button {
   position: absolute;
-  left: 48%;
+  left: calc(50% - 90px);
   top: 1vh;
   z-index: 1000;
   text-align: center;

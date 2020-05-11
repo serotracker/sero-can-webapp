@@ -29,7 +29,7 @@ const Legend = (props: legendProps) => {
     // apparently this is not caught in the typings so I have to any it
     const control = L.control as any
     const legend = control({ position: "bottomright" });
-
+    L.DomUtil.remove(legend)
     legend.onAdd = () => {
       const div = L.DomUtil.create("div", "info flex legend");
 
@@ -44,9 +44,13 @@ const Legend = (props: legendProps) => {
       div.innerHTML = labels.join("<br>");
       return div;
     };
-
     legend.addTo(map);
+
+    return () => {
+      map?.removeControl(legend);
+    }
   });
+
   return null;
 };
 

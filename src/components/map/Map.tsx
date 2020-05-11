@@ -1,5 +1,5 @@
 import { latLngBounds, Layer } from "leaflet";
-import React, { createRef, useContext } from "react";
+import React, { createRef, useContext, useEffect, useState, useRef } from "react";
 import { GeoJSON, Map as LeafletMap, TileLayer } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
@@ -8,20 +8,29 @@ import Legend from "./Legend";
 import './Map.css';
 
 export default function Map() {
-  const fileImport = Countries as any;
-  const geoJsonData = fileImport.features as GeoJSON.Feature[]
   const mapRef = createRef<LeafletMap>();
   const geoJsonRef = createRef<GeoJSON>();
   const [state] = useContext(AppContext);
+  const [mapRecords, setMapRecords] = useState(Countries as any);
+  const [forceUpdate, setForceUpdate] = useState(Math.random());
 
-  const prevalenceCountryDict = getAggregateData(state.filtered_records, aggregationFactor.country).reduce((a, x) => ({ ...a, [x.name]: x.seroprevalence }), {})
-  fileImport.features = geoJsonData.map(feature => {
-    const seroprevalence = prevalenceCountryDict[feature?.properties?.name as string];
-    if (seroprevalence) {
-      return { ...feature, properties: { ...feature.properties, seroprevalence } }
-    }
-    return { ...feature, properties: { ...feature.properties, seroprevalence: null } }
-  })
+  useEffect(() => {
+    const prevalenceCountryDict = getAggregateData(state.filtered_records, aggregationFactor.country).reduce((a, x) => ({ ...a, [x.name]: x.seroprevalence }), {})
+
+    const importGeo = Countries as any;
+    const features = importGeo.features as GeoJSON.Feature[]
+    importGeo.features = features.map(feature => {
+      const seroprevalence = prevalenceCountryDict[feature?.properties?.name as string];
+      if (seroprevalence) {
+        return { ...feature, properties: { ...feature.properties, seroprevalence } }
+      }
+      return { ...feature, properties: { ...feature.properties, seroprevalence: null } }
+    })
+    setMapRecords(importGeo)
+    // we need to update the key on the GEOJSON to let react know it's time to rerender
+    setForceUpdate(Math.random())
+  }, [state.filtered_records])
+
 
   const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined) => {
     return {
@@ -46,7 +55,7 @@ export default function Map() {
     return buckets;
   }
 
-  const buckets: Array<number> = getBuckets(fileImport.features);
+  const buckets: Array<number> = getBuckets(mapRecords.features);
 
   // TODO: abstract this to utils function
   const getColor = (d: number | null) => {
@@ -70,7 +79,7 @@ export default function Map() {
       weight: 5,
       color: '#666',
       dashArray: '',
-      fillOpacity: 0.7,      
+      fillOpacity: 0.7,
       zIndex: 200
     });
     layer.bringToFront();
@@ -110,32 +119,33 @@ export default function Map() {
 
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_API_KEY;
   return (
-      <LeafletMap
-        ref={mapRef}
-        center={[0,0]}
-        zoom={2}
-        className="map w-100"
-        bounceAtZoomLimits={true}
-        bounds={bounds}
-        minZoom={2}
-        maxBounds={maxBounds}
-        enableHighAccuracy={true}
-        maxBoundsViscosity={1}
-        >
-        <TileLayer
-          url={'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken}
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          tileSize={512}
-          id='mapbox/light-v9'
-          zoomOffset={-1}>
-        </TileLayer>
-        <GeoJSON
-          onEachFeature={onEachFeature}
-          ref={geoJsonRef}
-          data={fileImport as GeoJSON.GeoJsonObject}
-          style={(data) => style(data)}>
-        </GeoJSON>
-        <Legend buckets={buckets} />
-      </LeafletMap>
+    <LeafletMap
+      ref={mapRef}
+      center={[0, 0]}
+      zoom={2}
+      className="map w-100"
+      bounceAtZoomLimits={true}
+      bounds={bounds}
+      minZoom={2}
+      maxBounds={maxBounds}
+      enableHighAccuracy={true}
+      maxBoundsViscosity={1}
+    >
+      <TileLayer
+        url={'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken}
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        tileSize={512}
+        id='mapbox/light-v9'
+        zoomOffset={-1}>
+      </TileLayer>
+      <GeoJSON
+        onEachFeature={onEachFeature}
+        ref={geoJsonRef}
+        key={forceUpdate}
+        data={mapRecords as GeoJSON.GeoJsonObject}
+        style={(data) => style(data)}>
+      </GeoJSON>
+      <Legend buckets={buckets} />
+    </LeafletMap>
   );
 }
