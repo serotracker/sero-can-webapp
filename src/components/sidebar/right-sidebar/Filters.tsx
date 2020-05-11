@@ -30,36 +30,47 @@ export default function Filters() {
 
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
     return(
-      <Dropdown 
-        placeholder={placeholder}
-        fluid
-        multiple
-        search 
-        selection 
-        options={formatOptions(state.filter_options[filter_type])}
-        onChange={(e: any, data: any) => {addFilter(data, filter_type)}} 
-      />
+      <div className="pb-3">
+        <div className="pb-2">
+          {placeholder}
+        </div>
+        <Dropdown 
+          placeholder={placeholder}
+          fluid
+          multiple
+          search 
+          selection 
+          options={formatOptions(state.filter_options[filter_type])}
+          onChange={(e: any, data: any) => {addFilter(data, filter_type)}} 
+        />
+      </div>
     )
   }
 
   return (
-    <div className="col-12 p-0 flex">
-      Filters
-      <div>
-        {buildFilterDropdown('country', 'Country')}
-      </div> 
-      <div>
-        {buildFilterDropdown('study_status', 'Study Status')}
-      </div> 
-      <div>
-        {buildFilterDropdown('source_type', 'Source Type')}
-      </div> 
-      <div>
-        {buildFilterDropdown('test_type', 'Test Type')}
-      </div> 
-      <div>
-        {buildFilterDropdown('populations', 'Population')}
-      </div> 
+    <div className="col-12 p-0">
+      <div className="section-title py-3 center">
+        FILTER
+      </div>
+      <div className="row justify-content-center">
+        <div className="col-10 col align-items-center p-0">
+          <div>
+            {buildFilterDropdown('country', 'Country')}
+          </div> 
+          <div>
+            {buildFilterDropdown('study_status', 'Study Status')}
+          </div> 
+          <div>
+            {buildFilterDropdown('source_type', 'Source Type')}
+          </div> 
+          <div>
+            {buildFilterDropdown('test_type', 'Test Type')}
+          </div> 
+          <div>
+            {buildFilterDropdown('populations', 'Population')}
+          </div> 
+        </div>
+      </div>
     </div>
   )
 }
