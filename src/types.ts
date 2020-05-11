@@ -6,7 +6,7 @@ export type AirtableRecord = {
     source_type: string | null,
     study_status: string | null,
     test_type: string | null,
-    isotopes_reported?: string[] | null,
+    isotopes_reported?: string[] | null
     country: string | null,
     populations: string[] | null,
     numerator?: number | null,
