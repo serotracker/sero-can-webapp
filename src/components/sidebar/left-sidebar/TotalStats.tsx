@@ -1,16 +1,14 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../../context";
-import { aggregateRecords, getAggregateData } from "../../../metaAnalysis";
+import { aggregateRecords } from "../../../metaAnalysis";
 import { Statistic } from "semantic-ui-react";
 import './TotalStats.css'
 
 export default function TotalStats() {
   const [state, dispatch] = useContext(AppContext);
 
-  //TODO use a better and less resource intensive way of calculating amount of countries.
   const { seroprevalence, n } = aggregateRecords(state.filtered_records);
-  const aggregatedData = getAggregateData(state.filtered_records, 'country');
-  const countries = aggregatedData.length
+  const countries = state.filter_options.country.size
 
   return (
     <div className="col-12 p-0">

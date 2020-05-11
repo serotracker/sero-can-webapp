@@ -76,22 +76,24 @@ function getFilterOptions(records: AirtableRecord[]) {
   };
 
   records.forEach((record: AirtableRecord) => {
-    if(record.country) {
-      filter_options.country.add(record.country);
-    }
-    if(record.study_status) {
-      filter_options.study_status.add(record.study_status);
-    }
-    if(record.test_type) {
-      filter_options.test_type.add(record.test_type);
-    }
-    if(record.source_type) {
-      filter_options.source_type.add(record.source_type);
-    }
-    if(record.populations){
-      record.populations.forEach((population) => {
-        filter_options.populations.add(population);
-      })
+    if((record.seroprevalence !== null) && (record.denominator !== null)){
+      if(record.country) {
+        filter_options.country.add(record.country);
+      }
+      if(record.study_status) {
+        filter_options.study_status.add(record.study_status);
+      }
+      if(record.test_type) {
+        filter_options.test_type.add(record.test_type);
+      }
+      if(record.source_type) {
+        filter_options.source_type.add(record.source_type);
+      }
+      if(record.populations){
+        record.populations.forEach((population) => {
+          filter_options.populations.add(population);
+        })
+      }
     }
   });
 
