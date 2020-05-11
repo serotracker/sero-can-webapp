@@ -7,6 +7,7 @@ import './TotalStats.css'
 export default function TotalStats() {
   const [state, dispatch] = useContext(AppContext);
 
+  //TODO use a better and less resource intensive way of calculating amount of countries.
   const { seroprevalence, n } = aggregateRecords(state.filtered_records);
   const aggregatedData = getAggregateData(state.filtered_records, 'country');
   const countries = aggregatedData.length
