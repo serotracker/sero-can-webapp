@@ -99,6 +99,7 @@ function getFilterOptions(records: AirtableRecord[]) {
 }
 
 const reducer = (state: State, action: Record<string, any>) => {
+  const new_filters: any = state.filters;
   switch (action.type) {
     case "HEALTHCHECK":
       return {
@@ -113,11 +114,12 @@ const reducer = (state: State, action: Record<string, any>) => {
         updated_at: action.payload.updated_at,
         filter_options: getFilterOptions(action.payload.airtable_records)
       }
-    case "UPDATE_FILTERS":
+    case "UPDATE_FILTER":
+      new_filters[action.payload.filter_type] = new Set(action.payload.filter_value)
       return {
         ...state,
-        filters: action.payload,
-        filtered_records: filterRecords(action.payload, state.airtable_records)
+        filters: new_filters,
+        filtered_records: filterRecords(new_filters, state.airtable_records)
       }
     default:
       return state
