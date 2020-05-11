@@ -3,11 +3,20 @@ import { AirtableRecord, Filters, State } from "./types";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
+// Note: filters = elements that user has chosen to filter by
+// filter_options = all the elements that users could filter by
 const initialState: State = {
   healthcheck: '',
   airtable_records: [],
   filtered_records: [],
   filters: {
+    source_type: new Set(),
+    study_status: new Set(),
+    test_type: new Set(),
+    populations: new Set(),
+    country: new Set()
+  },
+  filter_options: {
     source_type: new Set(),
     study_status: new Set(),
     test_type: new Set(),
@@ -57,6 +66,38 @@ export function filterRecords(filters: Filters, records: AirtableRecord[]) {
   return filtered_records;
 }
 
+function getFilterOptions(records: AirtableRecord[]) {
+  const filter_options: Filters = {
+    source_type: new Set(),
+    study_status: new Set(),
+    test_type: new Set(),
+    populations: new Set(),
+    country: new Set()
+  };
+
+  records.forEach((record: AirtableRecord) => {
+    if(record.country) {
+      filter_options.country.add(record.country);
+    }
+    if(record.study_status) {
+      filter_options.study_status.add(record.study_status);
+    }
+    if(record.test_type) {
+      filter_options.test_type.add(record.test_type);
+    }
+    if(record.source_type) {
+      filter_options.source_type.add(record.source_type);
+    }
+    if(record.populations){
+      record.populations.forEach((population) => {
+        filter_options.populations.add(population);
+      })
+    }
+  });
+
+  return filter_options;
+}
+
 const reducer = (state: State, action: Record<string, any>) => {
   switch (action.type) {
     case "HEALTHCHECK":
@@ -69,7 +110,8 @@ const reducer = (state: State, action: Record<string, any>) => {
         ...state,
         airtable_records: action.payload.airtable_records,
         filtered_records: filterRecords(state.filters, action.payload.airtable_records),
-        updated_at: action.payload.updated_at
+        updated_at: action.payload.updated_at,
+        filter_options: getFilterOptions(action.payload.airtable_records)
       }
     case "UPDATE_FILTERS":
       return {

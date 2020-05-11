@@ -30,5 +30,6 @@ export type State = {
     airtable_records: AirtableRecord[],
     filtered_records: AirtableRecord[],
     filters: Filters,
+    filter_options: Filters,
     updated_at: string
 };
