@@ -25,9 +25,13 @@ export type Filters = {
     populations: any
 };
 
+export type FilterType =  'country' | 'populations' | 'study_status' | 'test_type' | 'source_type'
+
 export type State = {
     healthcheck: string,
     airtable_records: AirtableRecord[],
     filtered_records: AirtableRecord[],
-    filters: Filters
+    filters: Filters,
+    filter_options: Filters,
+    updated_at: string
 };

@@ -19,11 +19,11 @@ function App() {
   useEffect(() => {
     const api = new httpClient()
     const getAirtableRecords = async () => {
-      const airtable_records = await api.getAirtableRecords()
+      const response = await api.getAirtableRecords()
       dispatch({
         type: 'GET_AIRTABLE_RECORDS',
-        payload: airtable_records
-      })
+        payload: response
+      });
     }
     getAirtableRecords();
   }, [dispatch])

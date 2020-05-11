@@ -23,7 +23,7 @@ export default class httpClient {
         if(!response) {
             return [];
         }
-        const airtable_records = response.map((item: Record<string, any>)=>{ 
+        const airtable_records = response.records!.map((item: Record<string, any>)=>{ 
             // Convert response to AirtableRecord type
             const record: AirtableRecord = { 
                 article_name: item.ARTICLE_NAME![0],
@@ -43,7 +43,11 @@ export default class httpClient {
             };
 
             return record; 
-        }) 
-        return airtable_records;
+        });
+
+        return {
+            airtable_records,
+            updated_at: response.updated_at!
+        };
     }
 }
