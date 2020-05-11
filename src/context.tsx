@@ -3,6 +3,8 @@ import { AirtableRecord, Filters, State } from "./types";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
+// Note: filters = elements that user has chosen to filter by
+// filter_options = all the elements that users could filter by
 const initialState: State = {
   healthcheck: '',
   airtable_records: [],
@@ -13,7 +15,15 @@ const initialState: State = {
     test_type: new Set(),
     populations: new Set(),
     country: new Set()
-  }
+  },
+  filter_options: {
+    source_type: new Set(),
+    study_status: new Set(),
+    test_type: new Set(),
+    populations: new Set(),
+    country: new Set()
+  },
+  updated_at: ''
 };
 
 function buildFilterFunction(filters: Record<string, any>) {
@@ -56,7 +66,42 @@ export function filterRecords(filters: Filters, records: AirtableRecord[]) {
   return filtered_records;
 }
 
+function getFilterOptions(records: AirtableRecord[]) {
+  const filter_options: Filters = {
+    source_type: new Set(),
+    study_status: new Set(),
+    test_type: new Set(),
+    populations: new Set(),
+    country: new Set()
+  };
+
+  records.forEach((record: AirtableRecord) => {
+    if((record.seroprevalence !== null) && (record.denominator !== null)){
+      if(record.country) {
+        filter_options.country.add(record.country);
+      }
+      if(record.study_status) {
+        filter_options.study_status.add(record.study_status);
+      }
+      if(record.test_type) {
+        filter_options.test_type.add(record.test_type);
+      }
+      if(record.source_type) {
+        filter_options.source_type.add(record.source_type);
+      }
+      if(record.populations){
+        record.populations.forEach((population) => {
+          filter_options.populations.add(population);
+        })
+      }
+    }
+  });
+
+  return filter_options;
+}
+
 const reducer = (state: State, action: Record<string, any>) => {
+  const new_filters: any = state.filters;
   switch (action.type) {
     case "HEALTHCHECK":
       return {
@@ -66,14 +111,17 @@ const reducer = (state: State, action: Record<string, any>) => {
     case "GET_AIRTABLE_RECORDS":
       return {
         ...state,
-        airtable_records: action.payload,
-        filtered_records: filterRecords(state.filters, action.payload),
+        airtable_records: action.payload.airtable_records,
+        filtered_records: filterRecords(state.filters, action.payload.airtable_records),
+        updated_at: action.payload.updated_at,
+        filter_options: getFilterOptions(action.payload.airtable_records)
       }
-    case "UPDATE_FILTERS":
+    case "UPDATE_FILTER":
+      new_filters[action.payload.filter_type] = new Set(action.payload.filter_value)
       return {
         ...state,
-        filters: action.payload,
-        filtered_records: filterRecords(action.payload, state.airtable_records)
+        filters: new_filters,
+        filtered_records: filterRecords(new_filters, state.airtable_records)
       }
     default:
       return state
