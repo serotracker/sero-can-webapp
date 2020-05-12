@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../../context";
 import { aggregateRecords } from "../../../metaAnalysis";
-import { Statistic } from "semantic-ui-react";
-import './TotalStats.css'
+import './TotalStats.css';
 
 export default function TotalStats() {
   const [state] = useContext(AppContext);

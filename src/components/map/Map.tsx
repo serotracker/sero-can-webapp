@@ -3,9 +3,10 @@ import React, { createRef, useContext, useEffect, useState, useRef } from "react
 import { GeoJSON, Map as LeafletMap, TileLayer } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
-import { aggregationFactor, getAggregateData } from "../../metaAnalysis";
+import { getAggregateData } from "../../metaAnalysis";
 import Legend from "./Legend";
 import './Map.css';
+import { AggregationFactor } from "../../types";
 
 export default function Map() {
   const mapRef = createRef<LeafletMap>();
@@ -15,7 +16,7 @@ export default function Map() {
   const [forceUpdate, setForceUpdate] = useState(Math.random());
 
   useEffect(() => {
-    const prevalenceCountryDict = getAggregateData(state.filtered_records, aggregationFactor.country).reduce((a, x) => ({ ...a, [x.name]: x.seroprevalence }), {})
+    const prevalenceCountryDict = getAggregateData(state.filtered_records, AggregationFactor.country).reduce((a, x) => ({ ...a, [x.name]: x.seroprevalence }), {})
 
     const importGeo = Countries as any;
     const features = importGeo.features as GeoJSON.Feature[]

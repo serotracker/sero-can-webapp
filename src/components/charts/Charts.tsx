@@ -3,20 +3,21 @@ import React, { useContext, useEffect, useState, SyntheticEvent } from "react";
 import { Bar, BarChart, CartesianGrid, ErrorBar, LabelList, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Dropdown, DropdownProps } from "semantic-ui-react";
 import { AppContext } from "../../context";
-import { aggregationFactor, getAggregateData } from "../../metaAnalysis";
+import { getAggregateData } from "../../metaAnalysis";
 import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
+import { AggregationFactor } from "../../types";
 
 export default function Charts() {
-  const [yAxisSelection, setYAxis] = useState(aggregationFactor.country);
+  const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
   const [state] = useContext(AppContext);
   const { filtered_records } = state;
   const aggregatedRecords = getAggregateData(filtered_records, yAxisSelection);
   const [records, setRecords] = useState(aggregatedRecords);
 
   const yAxisOptions = [
-    { key: 'Population', text: 'Population', value: aggregationFactor.population },
-    { key: 'Geographies', text: 'Geographies', value: aggregationFactor.country }
+    { key: 'Population', text: 'Population', value: AggregationFactor.population },
+    { key: 'Geographies', text: 'Geographies', value: AggregationFactor.country }
   ]
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function Charts() {
   }, [yAxisSelection, state, filtered_records])
 
   const handleChange = (event: SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
-    setYAxis(data.value as aggregationFactor);
+    setYAxis(data.value as AggregationFactor);
   }
 
   const CustomTooltip = ({ active, payload, label }: any) => {
@@ -76,7 +77,6 @@ export default function Charts() {
               placeholder='Select Independent Variable'
               defaultValue={'1'}
               fluid selection
-              // item={true}
               className="col large-dropdown"
               onChange={handleChange}
               options={yAxisOptions}

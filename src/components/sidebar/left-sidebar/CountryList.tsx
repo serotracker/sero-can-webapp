@@ -1,13 +1,14 @@
+import _ from "lodash";
 import React, { useContext } from "react";
 import { AppContext } from "../../../context";
-import { getAggregateData, aggregationFactor } from "../../../metaAnalysis";
+import { getAggregateData } from "../../../metaAnalysis";
+import { AggregationFactor } from "../../../types";
 import './CountryList.css';
-import _ from "lodash";
 
 export default function CountryList() {
   const [state] = useContext(AppContext);
 
-  const aggregatedData = _.sortBy(getAggregateData(state.filtered_records, aggregationFactor.country), ['seroprevalence']).reverse();
+  const aggregatedData = _.sortBy(getAggregateData(state.filtered_records, AggregationFactor.country), ['seroprevalence']).reverse();
 
   return (
     <div className="col-12 px-0 country-list-container">
