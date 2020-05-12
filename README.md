@@ -12,7 +12,7 @@ npm start
 ```  
 Job results can be viewed [here](http://ci-sero.eastus.cloudapp.azure.com/blue/organizations/jenkins/sero-can-webapp/activity) after authenticating with GitHub credentials. GitHub checks are integrated to show the status of each job.  
   
-  
+___
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
