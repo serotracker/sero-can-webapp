@@ -2,7 +2,7 @@
   height: 93vh;
   display: block;
   flex: 1 1 auto;
-  position:relative
+  position: relative;
 }
 body {
   margin: 0px;
@@ -63,4 +63,13 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
 
 .map-wrapper {
   position: relative;
+}
+
+.map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: hidden;
+  height: 95vh;
 }

@@ -12,10 +12,10 @@ export default function ReferencesTable() {
   const [siblingRange, setSiblingRange] = useState(1);
   const [totalPages, setTotalPages] = useState(10);
 
-    const handlePaginationChange = (e : any, event: any) => { 
-      const { activePage } = event;
-      setActivePage(activePage)
-    }
+  const handlePaginationChange = (e: any, event: any) => {
+    const { activePage } = event;
+    setActivePage(activePage)
+  }
 
 
   const [direction, setDirection] = useState('ascending');
@@ -35,12 +35,12 @@ export default function ReferencesTable() {
   useEffect(() => {
     const newData = _.sortBy(state.filtered_records, [column]);
     setData(newData);
-    if(direction === 'descending'){
+    if (direction === 'descending') {
       setData(newData.reverse());
-    }      
+    }
 
     const pageLength = 5;
-    const splicedData = newData.splice( (activePage - 1) * pageLength, pageLength);
+    const splicedData = newData.splice((activePage - 1) * pageLength, pageLength);
     setData(splicedData);
     setTotalPages(Math.ceil(state.filtered_records.length / pageLength));
   }, [activePage, column, direction, state.filtered_records])
@@ -60,6 +60,18 @@ export default function ReferencesTable() {
               Name
           </Table.HeaderCell>
             <Table.HeaderCell
+              sorted={column === 'country' ? direction as any : null}
+              onClick={handleSort('country')}
+            >
+              Country
+          </Table.HeaderCell>
+            <Table.HeaderCell
+              sorted={column === 'populations' ? direction as any : null}
+              onClick={handleSort('populations')}
+            >
+              Populations
+          </Table.HeaderCell>
+            <Table.HeaderCell
               sorted={column === 'denominator' ? direction as any : null}
               onClick={handleSort('denominator')}
             >
@@ -71,24 +83,20 @@ export default function ReferencesTable() {
             >
               Prevalence (%)
           </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'populations' ? direction as any : null}
-              onClick={handleSort('populations')}
-            >
-              Populations
-          </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {_.map(data, ({ article_name, denominator, populations, seroprevalence }) => (
+          {_.map(data, ({ article_name, country, denominator, populations, seroprevalence, url }) => (
             <Table.Row key={Math.random()}>
-              <Table.Cell>{article_name}</Table.Cell>
+              <Table.Cell><a href={url ? url : '#'} target="_blank">{article_name}</a></Table.Cell>              
+              <Table.Cell>{country}</Table.Cell>
+              <Table.Cell>{populations}</Table.Cell>
               <Table.Cell>{denominator}</Table.Cell>
               <Table.Cell>{seroprevalence ? (seroprevalence * 100).toFixed(2) : "No prevalence data"}</Table.Cell>
-              <Table.Cell>{populations}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
+        <Table.Footer>
           <Pagination
             activePage={activePage}
             boundaryRange={boundaryRange}
@@ -96,13 +104,8 @@ export default function ReferencesTable() {
             size='mini'
             siblingRange={siblingRange}
             totalPages={totalPages}
-            // Heads up! All items are powered by shorthands, if you want to hide one of them, just pass `null` as value
-            // ellipsisItem={showEllipsis ? undefined : null}
-            // firstItem={showFirstAndLastNav ? undefined : null}
-            // lastItem={showFirstAndLastNav ? undefined : null}
-            // prevItem={showPreviousAndNextNav ? undefined : null}
-            // nextItem={showPreviousAndNextNav ? undefined : null}
           />
+        </Table.Footer>
       </Table>
     </div>
   );

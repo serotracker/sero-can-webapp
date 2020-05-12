@@ -4,7 +4,7 @@ import './Component.css'
 import Charts from "./charts/Charts";
 
 export default function CentralPiece() {
-  const [showMap, setShowMap] = useState(false);
+  const [showMap, setShowMap] = useState(true);
 
   const getClass = (shouldHighlight: boolean) => {
     if(shouldHighlight === showMap) {

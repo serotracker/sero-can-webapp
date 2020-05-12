@@ -1,6 +1,6 @@
 .center-button {
   position: absolute;
-  left: 48%;
+  left: calc(50% - 90px);
   top: 1vh;
   z-index: 1000;
   text-align: center;
@@ -15,7 +15,7 @@
   color: white;
   font-weight: 500;
   background-color: #455a64;
-  font-size: 18px;
+  font-size: 1.125em;
   padding: 10px;
 }
 
@@ -23,7 +23,7 @@
   color: black;
   font-weight: 300;
   background-color: white;
-  font-size: 18px;
+  font-size: 1.125em;
   padding: 10px;
 }
 

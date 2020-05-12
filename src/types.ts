@@ -35,3 +35,8 @@ export type State = {
     filter_options: Filters,
     updated_at: string
 };
+
+export enum AggregationFactor {
+    country = 'country',
+    population = 'populations'
+}

@@ -1,6 +1,6 @@
 .main-statistic-title {
   font-weight: 300;
-  font-size: 24px;
+  font-size: 1.5em;
   line-height: 28px;
   color: #468ac1;
 }
@@ -8,19 +8,19 @@
 .main-statistic {
   color: #468ac1;
   font-weight: 300;
-  font-size: 48px;
+  font-size: 3em;
   line-height: 56px;
 }
 
 .secondary-statistic-title {
   font-weight: 200;
-  font-size: 18px;
+  font-size: 1.125em;
   line-height: 21px;
 }
 
 .secondary-statistic {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 1.25em;
   line-height: 23px;
   text-align: center;  
   color: #455A64;

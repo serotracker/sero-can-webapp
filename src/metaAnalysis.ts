@@ -1,4 +1,4 @@
-import { AirtableRecord } from "./types"
+import { AirtableRecord, AggregationFactor } from "./types"
 
 const Z_SCORE: number = 1.96;
 
@@ -27,11 +27,12 @@ export function aggregateRecords(records: AirtableRecord[]) {
 
 // Given an aggregation factor (either 'country' or 'populations')
 // get pooled seroprevalence, error bounds, and n (total number of tests) for each country or population
-export function getAggregateData(records: AirtableRecord[], aggregation_factor: "country" | "populations") {
+export function getAggregateData(records: AirtableRecord[], aggregation_factor: AggregationFactor) {
     const grouped_records: Record<string, AirtableRecord[]> = {}
+    const aggregationString: string = aggregation_factor.toString();
     records.forEach((record: AirtableRecord) => {
-        if ((record.seroprevalence !== null) && (record.denominator !== null) && (record[aggregation_factor] != null)) {
-            if (aggregation_factor === 'country') {
+        if ((record.seroprevalence !== null) && (record.denominator !== null) && (record[aggregationString as "country" | "populations"] != null)) {
+            if (aggregationString === 'country') {
                 groupRecords(grouped_records, record, record.country!)
             }
             else {

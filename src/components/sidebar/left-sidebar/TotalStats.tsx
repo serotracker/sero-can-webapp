@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../../context";
 import { aggregateRecords } from "../../../metaAnalysis";
-import { Statistic } from "semantic-ui-react";
-import './TotalStats.css'
+import './TotalStats.css';
 
 export default function TotalStats() {
-  const [state, dispatch] = useContext(AppContext);
+  const [state] = useContext(AppContext);
 
   const { seroprevalence, n } = aggregateRecords(state.filtered_records);
   const countries = state.filter_options.country.size
