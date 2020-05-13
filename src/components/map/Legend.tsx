@@ -1,47 +1,37 @@
 import { useLeaflet } from "react-leaflet";
 import L from "leaflet";
 import { useEffect } from "react";
-
+import "./Legend.css"
 interface legendProps {
-  buckets: number[]
+  buckets: number[],
+  getColor: (d: number | null) => string
 }
 
 const Legend = (props: legendProps) => {
   const { map } = useLeaflet();
   const buckets = props.buckets as number[]
-
+  const getColor = props.getColor;
   useEffect(() => {
-
-    // TODO: Abstract to utility function that gets dynamically set for proper ranges
-    const getColor = (d: number | null) => {
-      if (d === null) {
-        return "#EEEEEE"
-      }
-      return d <= buckets[0] ? '#F8FCF1' :
-        d <= buckets[1] ? '#D2EAC8' :
-          d <= buckets[2] ? '#B3DCB8' :
-            d <= buckets[3] ? '#8ECAC4' :
-              d <= buckets[4] ? '#6AB1CF' :
-                d <= buckets[5] ? '#498ABA' :
-                  '#265799';
-    }
-
-    // apparently this is not caught in the typings so I have to any it
     const control = L.control as any
     const legend = control({ position: "bottomright" });
+    // apparently this is not caught in the typings so I have to any it
     L.DomUtil.remove(legend)
     legend.onAdd = () => {
-      const div = L.DomUtil.create("div", "info flex legend");
-
+      const div = L.DomUtil.create("div", "info flex legend center-item");
+      const title = '<h4 className="legend-title col-12 p-0 flex middle">Seroprevalence</h4>'
       const labels = buckets.map((value, index) => {
         if (index !== buckets.length) {
           const from = value;
           const to = buckets[index + 1]
-          return `<div className="col-12 p-0 flex"><i style="background:${getColor(from + 1)}"></i>${from}${to ? "&ndash;" + to : "+"}<div>`
+          return `<div className="col-12 p-0 flex">
+          <div className="col-12 p-0"> ${from}%${to ? "&ndash;" + to + "%" : "+"}</div>
+          <i className="legend col-12 p-0"style="background:${getColor(from + 1)}"></i>
+          </div>`
         }
       })
-
-      div.innerHTML = labels.join("<br>");
+      labels.push(title);
+      console.log(labels);
+      div.innerHTML = labels.join("");
       return div;
     };
     legend.addTo(map);

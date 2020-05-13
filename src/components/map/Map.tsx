@@ -1,4 +1,4 @@
-import { latLngBounds, Layer } from "leaflet";
+import L, { latLngBounds, Layer, LeafletMouseEvent } from "leaflet";
 import React, { createRef, useContext, useEffect, useState, useRef } from "react";
 import { GeoJSON, Map as LeafletMap, TileLayer } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
@@ -15,9 +15,12 @@ export default function Map() {
   const [mapRecords, setMapRecords] = useState(Countries as any);
   const [forceUpdate, setForceUpdate] = useState(Math.random());
 
+  const colors = [
+    '#76E57F', '#62CA7C', '#4FB079', '#3B9577', '#277A74', '#146071', '#00456E', "#EEEEEE"
+  ]
+
   useEffect(() => {
     const prevalenceCountryDict = getAggregateData(state.filtered_records, AggregationFactor.country).reduce((a, x) => ({ ...a, [x.name]: x.seroprevalence }), {})
-
     const importGeo = Countries as any;
     const features = importGeo.features as GeoJSON.Feature[]
     importGeo.features = features.map(feature => {
@@ -49,7 +52,7 @@ export default function Map() {
     const maxSeroprevalence = Math.max.apply(Math, features.filter(o => o.properties?.seroprevalence).map((o) => o?.properties?.seroprevalence));
     const roundedMax = Math.ceil(maxSeroprevalence);
     const step = parseFloat((roundedMax / 6).toFixed(1));
-    const buckets = [];
+    const buckets = [0];
     for (let x = 1; x <= 6; x++) {
       buckets.push(parseFloat((step * x).toFixed(1)))
     }
@@ -61,21 +64,20 @@ export default function Map() {
   // TODO: abstract this to utils function
   const getColor = (d: number | null) => {
     if (d === null) {
-      return "#EEEEEE"
+      return colors[7];
     }
-    return d <= buckets[0] ? '#F8FCF1' :
-      d <= buckets[1] ? '#D2EAC8' :
-        d <= buckets[2] ? '#B3DCB8' :
-          d <= buckets[3] ? '#8ECAC4' :
-            d <= buckets[4] ? '#6AB1CF' :
-              d <= buckets[5] ? '#498ABA' :
-                '#265799';
+    return d <= buckets[1] ? colors[0] :
+      d <= buckets[2] ? colors[1] :
+        d <= buckets[3] ? colors[2] :
+          d <= buckets[4] ? colors[3] :
+            d <= buckets[5] ? colors[4] :
+              d <= buckets[6] ? colors[5] :
+                colors[6]
   }
 
   //TODO: add in typing for event
   const highlightFeature = (e: any) => {
     const layer = e.target;
-
     layer.setStyle({
       weight: 5,
       color: '#666',
@@ -108,6 +110,20 @@ export default function Map() {
 
   // This method sets all the functionality for each GeoJSON item
   const onEachFeature = (feature: GeoJSON.Feature, layer: Layer) => {
+    if (feature.properties?.seroprevalence) {
+      layer.bindPopup(`${feature.properties.name}: ${feature.properties?.seroprevalence.toFixed(2)}%`, { closeButton: false, autoPan: false });
+    }
+    else {
+      layer.bindPopup(`${feature.properties?.name}: No data recorded`, { closeButton: false, autoPan: false });
+    }
+
+    layer.on({
+      mouseover: () => { layer.openPopup() },
+      mouseout: () => { layer.closePopup(); },
+      mousemove: (e: LeafletMouseEvent) => {
+        layer.getPopup()?.setLatLng(e.latlng);
+      }
+    })
     layer.on({
       mouseover: highlightFeature,
       mouseout: resetHighlight,
@@ -146,7 +162,7 @@ export default function Map() {
         data={mapRecords as GeoJSON.GeoJsonObject}
         style={(data) => style(data)}>
       </GeoJSON>
-      <Legend buckets={buckets} />
+      <Legend buckets={buckets} getColor={getColor} />
     </LeafletMap>
   );
 }
