@@ -48,13 +48,27 @@ export default function Map() {
     }
   }
 
+  const getLogit = (percentage: number) => {
+    const decimal = percentage / 100;
+    return Math.log(decimal) - Math.log(1 - decimal);
+  }
+
+  const getDecimalFromLogit = (logit: number) => {
+    return Math.exp(logit) / (Math.exp(logit) + 1) * 100
+  }
+
   const getBuckets = (features: GeoJSON.Feature[]) => {
     const maxSeroprevalence = Math.max.apply(Math, features.filter(o => o.properties?.seroprevalence).map((o) => o?.properties?.seroprevalence));
     const roundedMax = Math.ceil(maxSeroprevalence);
-    const step = parseFloat((roundedMax / 6).toFixed(1));
+    const maxLogit = getLogit(roundedMax);
+    const lowerEnd = -7;
+    const differenceScale = maxLogit - lowerEnd
+    const bucketSegments = 6
+    const step = differenceScale / bucketSegments;
     const buckets = [0];
     for (let x = 1; x <= 6; x++) {
-      buckets.push(parseFloat((step * x).toFixed(1)))
+      const logitStep = parseFloat(getDecimalFromLogit(-7 + step * x).toFixed(1));
+      buckets.push(logitStep);
     }
     return buckets;
   }
@@ -66,12 +80,12 @@ export default function Map() {
     if (d === null) {
       return colors[7];
     }
-    return d <= buckets[1] ? colors[0] :
-      d <= buckets[2] ? colors[1] :
-        d <= buckets[3] ? colors[2] :
-          d <= buckets[4] ? colors[3] :
-            d <= buckets[5] ? colors[4] :
-              d <= buckets[6] ? colors[5] :
+    return d < buckets[1] ? colors[0] :
+      d < buckets[2] ? colors[1] :
+        d < buckets[3] ? colors[2] :
+          d < buckets[4] ? colors[3] :
+            d < buckets[5] ? colors[4] :
+              d < buckets[6] ? colors[5] :
                 colors[6]
   }
 

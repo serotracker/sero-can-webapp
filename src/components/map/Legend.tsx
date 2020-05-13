@@ -18,14 +18,14 @@ const Legend = (props: legendProps) => {
     L.DomUtil.remove(legend)
     legend.onAdd = () => {
       const div = L.DomUtil.create("div", "info flex legend center-item");
-      const title = '<h4 className="legend-title col-12 p-0 flex middle">Seroprevalence</h4>'
+      const title = '<h4 className="legend-title col-12 p-0 flex middle">Seroprevalence (logit scale) </h4>'
       const labels = buckets.map((value, index) => {
         if (index !== buckets.length) {
           const from = value;
           const to = buckets[index + 1]
           return `<div className="col-12 p-0 flex">
           <div className="col-12 p-0"> ${from}%${to ? "&ndash;" + to + "%" : "+"}</div>
-          <i className="legend col-12 p-0"style="background:${getColor(from + 1)}"></i>
+          <i className="legend col-12 p-0"style="background:${getColor(from)}"></i>
           </div>`
         }
       })
