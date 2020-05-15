@@ -48,15 +48,18 @@ export default function Map() {
     }
   }
 
+  // Abstract to utils
   const getLogit = (percentage: number) => {
     const decimal = percentage / 100;
     return Math.log(decimal) - Math.log(1 - decimal);
   }
 
+  // Abstract to utils
   const getDecimalFromLogit = (logit: number) => {
     return Math.exp(logit) / (Math.exp(logit) + 1) * 100
   }
 
+  // Abstract to utils
   const getBuckets = (features: GeoJSON.Feature[]) => {
     const maxSeroprevalence = Math.max.apply(Math, features.filter(o => o.properties?.seroprevalence).map((o) => o?.properties?.seroprevalence));
     const roundedMax = Math.ceil(maxSeroprevalence);
