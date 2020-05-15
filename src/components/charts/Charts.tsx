@@ -74,8 +74,7 @@ export default function Charts() {
               Seroprevalence by
             </div>
             <Dropdown
-              placeholder='Select Independent Variable'
-              defaultValue={'1'}
+              placeholder='Geographies'
               fluid selection
               className="col large-dropdown"
               onChange={handleChange}
@@ -96,7 +95,7 @@ export default function Charts() {
             <Legend />
             <Bar dataKey="seroprevalence" name="Seroprevalence (%)" fill="#55A6BA">
               <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
-              <ErrorBar dataKey="error" width={4} strokeWidth={2} />
+              <ErrorBar dataKey="error" width={4} strokeWidth={2}/>
             </Bar>
           </BarChart>
         </ResponsiveContainer>
