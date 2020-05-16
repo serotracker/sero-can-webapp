@@ -2,7 +2,11 @@ import { AirtableRecord } from "./types"
 
 export default class httpClient {
     async httpGet(url: string){
-        const res = await fetch(url);
+        let url_full = url;
+        if(process.env.REACT_APP_ROUTE){
+            url_full = process.env.REACT_APP_ROUTE + url_full;
+        }
+        const res = await fetch(url_full);
         if(res.status !== 200) {
             console.error(res.status);
             return;
@@ -14,7 +18,7 @@ export default class httpClient {
     }
 
     async getHealthcheck() {
-        const healthcheck: string = await this.httpGet('http://localhost:5000/healthcheck');
+        const healthcheck: string = await this.httpGet('/healthcheck');
         return healthcheck;
     }
 
