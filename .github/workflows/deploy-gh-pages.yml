@@ -20,8 +20,8 @@ jobs:
         npm install
         npm run build
       env:
-        MAPBOX_API_KEY: ${{ secrets.MAPBOX_API_KEY }}
-        ROUTE: ${{ secrets.ROUTE }}
+        REACT_APP_MAPBOX_API_KEY: ${{ secrets.MAPBOX_API_KEY }}
+        REACT_APP_ROUTE: ${{ secrets.ROUTE }}
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
