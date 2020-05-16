@@ -62,8 +62,12 @@ function buildFilterFunction(filters: Record<string, any>) {
 
 export function filterRecords(filters: Filters, records: AirtableRecord[]) {
   const filter_function = buildFilterFunction(filters);
-  const filtered_records = records.filter(filter_function);
-  return filtered_records;
+  if(records) {
+    const filtered_records = records.filter(filter_function);
+    return filtered_records;
+  }
+  return [];
+  
 }
 
 function getFilterOptions(records: AirtableRecord[]) {
@@ -75,6 +79,9 @@ function getFilterOptions(records: AirtableRecord[]) {
     country: new Set()
   };
 
+  if(!records) {
+    return filter_options;
+  }
   records.forEach((record: AirtableRecord) => {
     if((record.seroprevalence !== null) && (record.denominator !== null)){
       if(record.country) {
