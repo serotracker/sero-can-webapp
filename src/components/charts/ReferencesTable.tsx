@@ -5,24 +5,25 @@ import { AppContext } from "../../context";
 import './Charts.css';
 
 export default function ReferencesTable() {
-  const [column, setColumn] = useState('');
-  const [state, dispatch] = useContext(AppContext);
+  const [state] = useContext(AppContext);
   const [activePage, setActivePage] = useState(1);
-  const [boundaryRange, setBoundaryRange] = useState(1);
-  const [siblingRange, setSiblingRange] = useState(1);
+  const [boundaryRange] = useState(1);
+  const [siblingRange] = useState(1);
   const [totalPages, setTotalPages] = useState(10);
+
+  const [column, setColumn] = useState('denominator');
+  const [direction, setDirection] = useState('descending');
+  const [data, setData] = useState(state.filtered_records);
 
   const handlePaginationChange = (e: any, event: any) => {
     const { activePage } = event;
     setActivePage(activePage)
   }
 
-
-  const [direction, setDirection] = useState('ascending');
-  const [data, setData] = useState(state.filtered_records);
-
   const handleSort = (clickedColumn: string) => () => {
     if (column !== clickedColumn) {
+
+      setActivePage(1);
       setColumn(clickedColumn);
       setDirection('ascending');
       return
@@ -33,10 +34,10 @@ export default function ReferencesTable() {
   }
 
   useEffect(() => {
-    const newData = _.sortBy(state.filtered_records, [column]);
-    setData(newData);
+    let newData = _.orderBy(state.filtered_records, [column], ['asc']);
+
     if (direction === 'descending') {
-      setData(newData.reverse());
+      newData = _.orderBy(state.filtered_records, [(o: any) => { return o[column] || '' }], ['desc']);
     }
 
     const pageLength = 5;
@@ -46,11 +47,11 @@ export default function ReferencesTable() {
   }, [activePage, column, direction, state.filtered_records])
 
   return (
-    <div className="container col-10 m-4 center-item flex">
+    <div className="container col-11 m-4 center-item flex">
       <div className="col-12 px-0 py-3 section-title">
         REFERENCES
       </div>
-      <Table celled sortable fixed className="mb-3 mt-0">
+      <Table celled sortable fixed striped className="table mb-3 mt-0">
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell
@@ -85,14 +86,14 @@ export default function ReferencesTable() {
           </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-        <Table.Body>
+        <Table.Body className="col-12 p-0">
           {_.map(data, ({ article_name, country, denominator, populations, seroprevalence, url }) => (
             <Table.Row key={Math.random()}>
-              <Table.Cell><a href={url ? url : '#'} target="_blank">{article_name}</a></Table.Cell>              
-              <Table.Cell>{country}</Table.Cell>
-              <Table.Cell>{populations}</Table.Cell>
-              <Table.Cell>{denominator}</Table.Cell>
-              <Table.Cell>{seroprevalence ? (seroprevalence * 100).toFixed(2) : "No prevalence data"}</Table.Cell>
+              <Table.Cell><a href={url ? url : '#'} target="_blank" rel="noopener noreferrer">{article_name}</a></Table.Cell>
+              <Table.Cell>{country ? country : "Not Reported"}</Table.Cell>
+              <Table.Cell>{populations ? populations : "Not Reported"}</Table.Cell>
+              <Table.Cell>{denominator ? denominator : "Not Reported"}</Table.Cell>
+              <Table.Cell>{seroprevalence ? `${(seroprevalence * 100).toFixed(2)}` : "Not Reported"}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

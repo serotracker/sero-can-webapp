@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../../../context";
 
 export default function LastUpdated() {
-  const [state, dispatch] = useContext(AppContext);
+  const [state] = useContext(AppContext);
 
   return (
     <div className="col-12 pb-4">

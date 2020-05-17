@@ -1,28 +1,35 @@
-import { AirtableRecord, AggregationFactor } from "./types"
+import { AirtableRecord, AggregationFactor, AggregatedRecord } from "./types"
 
 const Z_SCORE: number = 1.96;
 
 export function aggregateRecords(records: AirtableRecord[]) {
-    let var_sum = 0;
-    let inv_var_sum = 0;
-    let p_over_var_sum = 0;
-    let n = 0;
+    let total_positive = 0;
+    let total_tested = 0;
 
-    records.forEach((record: AirtableRecord) => {
-        if ((record.seroprevalence !== null) && (record.denominator !== null)) {
-            const variance = (record.seroprevalence * (1 - record.seroprevalence)) / record.denominator;
-            var_sum = var_sum + variance;
-            inv_var_sum = inv_var_sum + (1 / variance);
-            p_over_var_sum = p_over_var_sum + (record.seroprevalence / variance);
-            n = n + record.denominator;
-        }
+    const filteredRecords = records.filter(record => ((record.seroprevalence !== null) && (record.denominator !== null && record.denominator > 0)));
+    const n_studies = filteredRecords.length;
+
+    filteredRecords.forEach((record: AirtableRecord) => {
+        total_positive += (record.seroprevalence as number) * (record.denominator as number);
+        total_tested += (record.denominator as number);
     });
 
-    return {
-        seroprevalence: p_over_var_sum / inv_var_sum * 100,
-        error: Z_SCORE * Math.sqrt(var_sum) * 100,
-        n
+    const pooled_p = total_positive / total_tested;
+    const pooled_var = ((pooled_p) * (1 - pooled_p)) / total_tested;
+    const error_sym = Z_SCORE * Math.sqrt(pooled_var)
+    let error: number | number[] = error_sym * 100;
+    if (error_sym > pooled_p) {
+        error = [pooled_p * 100, error_sym * 100];
     }
+
+    const aggregatedRecord: AggregatedRecord = {
+        seroprevalence: pooled_p * 100,
+        error,
+        n: total_tested,
+        num_studies: n_studies,
+        name: ""
+    }
+    return aggregatedRecord
 }
 
 // Given an aggregation factor (either 'country' or 'populations')
@@ -44,7 +51,7 @@ export function getAggregateData(records: AirtableRecord[], aggregation_factor: 
     });
 
 
-    const aggregate_data: Record<string, string | number>[] = []
+    const aggregate_data: AggregatedRecord[] = []
 
     for (const name in grouped_records) {
         const result = aggregateRecords(grouped_records[name]);

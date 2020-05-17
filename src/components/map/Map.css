@@ -59,3 +59,18 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
   overflow-y: hidden;
   height: 95vh;
 }
+
+.popup-header {
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 1.25em;
+  line-height: 1.2;
+  margin-bottom: 0.25em;
+  font-weight: 600;
+}
+
+.popup-content {
+  font-size: 1.25em;
+  background: #fff;
+  font-style: normal;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}

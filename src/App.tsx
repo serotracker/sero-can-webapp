@@ -9,11 +9,9 @@ import Home from './components/static/Home';
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
 
-
-
 function App() {
   const [tab, setTab] = useState("");
-  const [state, dispatch] = useContext(AppContext);
+  const [, dispatch] = useContext(AppContext);
 
   // DATA
   useEffect(() => {
@@ -50,9 +48,6 @@ function App() {
   }
   const [auth, setAuth] = useState(authStatus);
 
-  function setActiveTab(tab: string) {
-    setTab(tab)
-  }
 
   function authenticate() {
     setAuth(true);

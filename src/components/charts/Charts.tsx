@@ -53,7 +53,7 @@ export default function Charts() {
     );
   };
 
-  const getYAxisWidth = (chartData: Record<string, string | number>[]) => {
+  const getYAxisWidth = (chartData: Record<string, string | number | number[]>[]) => {
     let longestWord = 0;
     chartData.filter(o => o.name)
       .forEach(o => {
@@ -65,7 +65,7 @@ export default function Charts() {
 
   return (
     <div className="charts-page flex">
-      <div className="charts container col-10 center-item flex">
+      <div className="charts container col-11 center-item flex">
         <div className="col-12 p-0 center-item flex">
           <div className="col-3">
           </div>
@@ -93,7 +93,7 @@ export default function Charts() {
             <YAxis dataKey="name" type="category" width={getYAxisWidth(records) * 7} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
-            <Bar dataKey="seroprevalence" name="Seroprevalence (%)" fill="#55A6BA">
+            <Bar dataKey="seroprevalence" name="Seroprevalence (%)" fill="#55A6BA" maxBarSize={60}>
               <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
               <ErrorBar dataKey="error" width={4} strokeWidth={2}/>
             </Bar>

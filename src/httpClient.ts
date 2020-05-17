@@ -3,6 +3,7 @@ import { AirtableRecord } from "./types"
 export default class httpClient {
     async httpGet(url: string){
         const res = await fetch(url);
+        console.log(res);
         if(res.status !== 200) {
             console.error(res.status);
             return;
@@ -21,6 +22,7 @@ export default class httpClient {
     async getAirtableRecords() {
         const response = await this.httpGet('/airtable_scraper/records');
         if(!response) {
+            console.log(response)
             return [];
         }
         const airtable_records = response.records!.map((item: Record<string, any>)=>{ 
