@@ -8,7 +8,6 @@ export default class httpClient {
         }
         const res = await fetch(url_full);
         if(res.status !== 200) {
-            console.error(res.status);
             return;
         }
         else {
@@ -25,7 +24,6 @@ export default class httpClient {
     async getAirtableRecords() {
         const response = await this.httpGet('/airtable_scraper/records');
         if(!response) {
-            console.log(response)
             return [];
         }
         const airtable_records = response.records!.map((item: Record<string, any>)=>{ 

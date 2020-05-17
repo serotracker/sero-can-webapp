@@ -23,6 +23,9 @@ const initialState: State = {
     populations: new Set(),
     country: new Set()
   },
+  data_page_state: {
+    mapOpen: true
+  },
   updated_at: ''
 };
 
@@ -62,12 +65,12 @@ function buildFilterFunction(filters: Record<string, any>) {
 
 export function filterRecords(filters: Filters, records: AirtableRecord[]) {
   const filter_function = buildFilterFunction(filters);
-  if(records) {
+  if (records) {
     const filtered_records = records.filter(filter_function);
     return filtered_records;
   }
   return [];
-  
+
 }
 
 function getFilterOptions(records: AirtableRecord[]) {
@@ -79,24 +82,24 @@ function getFilterOptions(records: AirtableRecord[]) {
     country: new Set()
   };
 
-  if(!records) {
+  if (!records) {
     return filter_options;
   }
   records.forEach((record: AirtableRecord) => {
-    if((record.seroprevalence !== null) && (record.denominator !== null)){
-      if(record.country) {
+    if ((record.seroprevalence !== null) && (record.denominator !== null)) {
+      if (record.country) {
         filter_options.country.add(record.country);
       }
-      if(record.study_status) {
+      if (record.study_status) {
         filter_options.study_status.add(record.study_status);
       }
-      if(record.test_type) {
+      if (record.test_type) {
         filter_options.test_type.add(record.test_type);
       }
-      if(record.source_type) {
+      if (record.source_type) {
         filter_options.source_type.add(record.source_type);
       }
-      if(record.populations){
+      if (record.populations) {
         record.populations.forEach((population) => {
           filter_options.populations.add(population);
         })
@@ -115,6 +118,11 @@ const reducer = (state: State, action: Record<string, any>) => {
         ...state,
         healthcheck: action.payload
       };
+    case "SELECT_DATA_TAB":
+      return {
+        ...state,
+        data_page_state: { ...state.data_page_state, mapOpen: action.payload }
+      }
     case "GET_AIRTABLE_RECORDS":
       return {
         ...state,

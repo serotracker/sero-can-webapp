@@ -35,7 +35,7 @@
 .table tbody{
 display:block;
 overflow: auto;
-height: 400px;
+height: 230px;
 }
 
 .table thead tr {

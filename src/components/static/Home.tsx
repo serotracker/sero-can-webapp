@@ -2,7 +2,7 @@ import React from "react";
 import './static.css';
 import { Tab } from "semantic-ui-react";
 
-export default function Home() {
+export default function Data() {
 
     const renderPane = (src: string) => {
         return <Tab.Pane className="col-12 p-0">

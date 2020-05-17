@@ -41,10 +41,15 @@ export type State = {
     filtered_records: AirtableRecord[],
     filters: Filters,
     filter_options: Filters,
-    updated_at: string
+    updated_at: string,
+    data_page_state: DataPageState
 };
 
 export enum AggregationFactor {
     country = 'country',
     population = 'populations'
+}
+
+export type DataPageState = {
+    mapOpen: boolean
 }

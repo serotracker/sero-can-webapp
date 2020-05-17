@@ -26,6 +26,9 @@ export default function Map() {
 
     const importGeo = Countries as any;
     const features = importGeo.features as GeoJSON.Feature[]
+
+    // We will iterate through all the features in the geoJson
+    // if they are in the country dict we will attach their aggregated data to the feature for displaying
     importGeo.features = features.map(feature => {
       const country = prevalenceCountryDict[feature?.properties?.name];
       if (country && country.seroprevalence) {
@@ -66,9 +69,13 @@ export default function Map() {
 
   // Abstract to utils
   const getBuckets = (features: GeoJSON.Feature[]) => {
+    // This is some javascript voodoo to get maxSeroprevalence
     const maxSeroprevalence = Math.max.apply(Math, features.filter(o => o.properties?.seroprevalence).map((o) => o?.properties?.seroprevalence));
     const roundedMax = Math.ceil(maxSeroprevalence);
     const maxLogit = getLogit(roundedMax);
+
+    // This is an arbitrary value that I chose because on the logit scale
+    // as you decrease in size you approach infinity, not 0
     const lowerEnd = -7;
     const differenceScale = maxLogit - lowerEnd
     const bucketSegments = 6

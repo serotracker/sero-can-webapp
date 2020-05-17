@@ -46,54 +46,41 @@ export default function ReferencesTable() {
     setTotalPages(Math.ceil(state.filtered_records.length / pageLength));
   }, [activePage, column, direction, state.filtered_records])
 
+  const buildHeaderCell = (sortColumn: string, displayName: string, className: string) => {
+    return (
+      <Table.HeaderCell
+      className={className}
+        sorted={column === sortColumn ? direction as any : null}
+        onClick={handleSort(sortColumn)}
+      >
+        {displayName}
+      </Table.HeaderCell>)
+
+  }
+
   return (
     <div className="container col-11 m-4 center-item flex">
       <div className="col-12 px-0 py-3 section-title">
         REFERENCES
       </div>
       <Table celled sortable fixed striped className="table mb-3 mt-0">
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell
-              sorted={column === 'title' ? direction as any : null}
-              onClick={handleSort('title')}
-            >
-              Name
-          </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'country' ? direction as any : null}
-              onClick={handleSort('country')}
-            >
-              Country
-          </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'populations' ? direction as any : null}
-              onClick={handleSort('populations')}
-            >
-              Populations
-          </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'denominator' ? direction as any : null}
-              onClick={handleSort('denominator')}
-            >
-              N
-          </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'seroprevalence' ? direction as any : null}
-              onClick={handleSort('seroprevalence')}
-            >
-              Prevalence (%)
-          </Table.HeaderCell>
+        <Table.Header className="flex col-12 p-0">
+          <Table.Row className="flex col-12 p-0">
+          {buildHeaderCell('title', 'Name', 'col-5 p-1')}
+          {buildHeaderCell('country', 'Country', 'col-2 p-1')}
+          {buildHeaderCell('populations', 'Populations', 'col-2 p-1')}
+          {buildHeaderCell('denominator', 'N', 'col-1 p-1')}
+          {buildHeaderCell('seroprevalence', 'Prevalence (%)', 'col-2 p-1')}
           </Table.Row>
         </Table.Header>
         <Table.Body className="col-12 p-0">
           {_.map(data, ({ article_name, country, denominator, populations, seroprevalence, url }) => (
-            <Table.Row key={Math.random()}>
-              <Table.Cell><a href={url ? url : '#'} target="_blank" rel="noopener noreferrer">{article_name}</a></Table.Cell>
-              <Table.Cell>{country ? country : "Not Reported"}</Table.Cell>
-              <Table.Cell>{populations ? populations : "Not Reported"}</Table.Cell>
-              <Table.Cell>{denominator ? denominator : "Not Reported"}</Table.Cell>
-              <Table.Cell>{seroprevalence ? `${(seroprevalence * 100).toFixed(2)}` : "Not Reported"}</Table.Cell>
+            <Table.Row className="flex col-12 p-0" key={Math.random()}>
+              <Table.Cell className="flex col-5 p-1"><a href={url ? url : '#'} target="_blank" rel="noopener noreferrer">{article_name}</a></Table.Cell>
+              <Table.Cell className="flex col-2 p-1">{country ? country : "Not Reported"}</Table.Cell>
+              <Table.Cell className="flex col-2 p-1">{populations ? populations : "Not Reported"}</Table.Cell>
+              <Table.Cell className="flex col-1 p-1">{denominator ? denominator : "Not Reported"}</Table.Cell>
+              <Table.Cell className="flex col-2 p-1">{seroprevalence ? `${(seroprevalence * 100).toFixed(2)}` : "Not Reported"}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

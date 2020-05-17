@@ -6,23 +6,28 @@ import { Popup } from "semantic-ui-react";
 interface InformationIconProps {
   color: string;
   size: "xs" | "lg" | "sm" | "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x" | "10x" | undefined,
+  position?: "top left" | "top right" | "bottom right" | "bottom left" | "right center" | "left center" | "top center" | "bottom center" | undefined,
   tooltip: string;
   tooltipHeader: string;
+  offset: string | number;
 }
 
 export default function InformationIcon(props: InformationIconProps) {
-  const { color, size, tooltip, tooltipHeader } = props;
+  const { color, size, tooltip, tooltipHeader, offset, position } = props;
   return (
     <div className="px-2">
       <Popup
-        content={tooltip}
-        header={tooltipHeader}
         key={Math.random()}
+        offset={offset}
+        position={position}
         trigger={
           <FontAwesomeIcon
             icon={faInfoCircle}
             color={color}
-            size={size} />} />
+            size={size} />}>
+        <Popup.Header className="flex left">{tooltipHeader}</Popup.Header>
+        <Popup.Content className="flex left">{tooltip}</Popup.Content>
+      </Popup>
     </div>
   );
 }

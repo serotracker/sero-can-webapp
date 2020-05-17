@@ -1,5 +1,5 @@
 import L from "leaflet";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ReactDOMServer from "react-dom/server";
 import { useLeaflet } from "react-leaflet";
 import "./Legend.css";
@@ -9,7 +9,6 @@ interface legendProps {
 }
 
 const Legend = (props: legendProps) => {
-
   const { map } = useLeaflet();
   const buckets = props.buckets as number[]
   const getColor = props.getColor;
@@ -24,9 +23,9 @@ const Legend = (props: legendProps) => {
       }
       const title = ReactDOMServer.renderToString(
         <h4 className="legend-title p-0 middle">Seroprevalence
-          <span className="flex">
-            <div className="popup-header col-12 flex left">Header</div>
-            <div className="popup-content col-12 flex start-item left">Made from the logit transform of the maximum value to determine the 'bins'</div>
+          <span className="flex popup">
+            <div className="popup-header col-12 p-0 flex left">Seroprevalence Scale</div>
+            <div className="popup-content col-12 p-0 flex start-item left">Made from the logit transform of the maximum value to determine the 'bins'</div>
           </span>
         </h4>)
 

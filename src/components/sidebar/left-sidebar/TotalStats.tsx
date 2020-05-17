@@ -33,6 +33,7 @@ export default function TotalStats() {
         <div className="main-statistic-title col-12 p-0 center-item flex">Seroprevalence
           <InformationIcon
             color="#468ac1"
+            offset={-12}
             tooltip="Total number of positive results divided by total tests administered, using filtered data"
             size="xs"
             tooltipHeader="Aggregated Prevalence" /></div>
