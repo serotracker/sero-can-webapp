@@ -68,7 +68,7 @@ function App() {
                   <div className="col-auto px-2" >SeroTracker</div>
                 </Link>
               </div>
-              <div className="App-tabs col-sm-4 col-lg-2">
+              <div className="App-tabs col-sm-5 col-lg-3">
                 <Link className={getTabClass('/Dashboard')} to="/Dashboard">Dashboard</Link>
                 <Link className={getTabClass('/Data')} to="/Data">Data</Link>
                 <Link className={getTabClass('/About')} to="/About">About</Link>

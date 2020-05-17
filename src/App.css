@@ -71,6 +71,10 @@
     align-content: flex-start;
 }
 
+.space-between {
+    justify-content: space-between;
+}
+
 .section-title {
     font-weight: bold;
     font-size: 1em;

@@ -23,7 +23,7 @@ export default function TotalStats() {
   const countries = countryDict.length;
 
   const countriesOrCountry = () => {
-    return countries > 1 && countries !== 0 ? "Countries": "Country"
+    return countries > 1 && countries !== 0 ? "Countries" : "Country"
   }
 
   return (
@@ -34,10 +34,10 @@ export default function TotalStats() {
           <InformationIcon
             color="#468ac1"
             offset={-12}
-            tooltip="Total number of positive results divided by total tests administered, using filtered data"
+            tooltip="Total number of positive individuals who test positive for antibodies against SARS-CoV-2 (the virus that causes COVID-19) divided by total tests administered, using filtered data"
             size="xs"
             tooltipHeader="Aggregated Prevalence" /></div>
-        <div className="main-statistic col-12 p-0 center">{seroprevalence ? `${seroprevalence.toFixed(2)}%`: "No Data"}</div>
+        <div className="main-statistic col-12 p-0 center">{seroprevalence ? `${seroprevalence.toFixed(2)}%` : "No Data"}</div>
       </div>
       <div className="col-12 flex middle py-2">
         <div className="secondary-statistic-title center p-0 col-12">Tests Administered</div>
@@ -45,7 +45,7 @@ export default function TotalStats() {
       </div>
       <div className="col-12 flex middle py-2">
         <div className="secondary-statistic px-1 center">{countries}</div>
-  <div className="secondary-statistic-title px-1 center">{countriesOrCountry()}</div>
+        <div className="secondary-statistic-title px-1 center">{countriesOrCountry()}</div>
       </div>
     </div>
   )
