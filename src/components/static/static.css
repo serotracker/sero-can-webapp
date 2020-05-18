@@ -58,3 +58,8 @@
 .icon {
     cursor: pointer;
 }
+
+.team-name-text {
+    font-weight: normal;
+    font-style: italic;
+}
