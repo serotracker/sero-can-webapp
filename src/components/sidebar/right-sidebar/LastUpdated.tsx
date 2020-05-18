@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../../context";
 import InformationIcon from "../../shared/InformationIcon";
-import './LastUpdated.css';
+import './RightSidebar.css';
 
 export default function LastUpdated() {
   const [state] = useContext(AppContext);
