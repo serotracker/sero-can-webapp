@@ -32,7 +32,7 @@ test('test country aggregation', () => {
 });
 
 test('test population aggregation', () => {
-    const aggregatedData = getAggregateData(testRecords, AggregationFactor.population)
+    const aggregatedData = getAggregateData(testRecords, AggregationFactor.population_group)
     expect(aggregatedData.length).toBe(4)
     const expectedResult = [ 
         { 

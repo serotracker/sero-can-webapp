@@ -42,6 +42,7 @@ export default function Filters() {
           selection 
           options={formatOptions(state.filter_options[filter_type])}
           onChange={(e: any, data: any) => {addFilter(data, filter_type)}} 
+          defaultValue={Array.from(state.filters[filter_type])}
         />
       </div>
     )
@@ -67,7 +68,13 @@ export default function Filters() {
             {buildFilterDropdown('test_type', 'Test Type')}
           </div> 
           <div>
-            {buildFilterDropdown('populations', 'Population')}
+            {buildFilterDropdown('population_group', 'Population Group')}
+          </div> 
+          <div>
+            {buildFilterDropdown('sex', 'Sex')}
+          </div> 
+          <div>
+            {buildFilterDropdown('age', 'Age')}
           </div> 
         </div>
       </div>

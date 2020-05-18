@@ -49,20 +49,34 @@ test('test country filter', () => {
 
 test('test population filter', () => {
   const filters = getEmptyFilters()
-  filters.populations.add('Children')
+  filters.population_group.add('Children')
   let filteredRecords = filterRecords(filters, testRecords)
   expect(filteredRecords.length).toBe(4)
-  filters.populations.add('Seniors')
+  filters.population_group.add('Seniors')
   filteredRecords = filterRecords(filters, testRecords)
   expect(filteredRecords.length).toBe(4)
-  filters.populations.add('Adults')
+  filters.population_group.add('Adults')
   filteredRecords = filterRecords(filters, testRecords)
   expect(filteredRecords.length).toBe(6)
 });
 
+test('test sex filter', () => {
+  const filters = getEmptyFilters()
+  filters.sex.add('Male')
+  let filteredRecords = filterRecords(filters, testRecords)
+  expect(filteredRecords.length).toBe(1)
+});
+
+test('test age filter', () => {
+  const filters = getEmptyFilters()
+  filters.age.add('Youth (15-24)')
+  let filteredRecords = filterRecords(filters, testRecords)
+  expect(filteredRecords.length).toBe(7)
+});
+
 test('test multiple filters', () => {
   const filters = getEmptyFilters()
-  filters.populations.add('Children')
+  filters.population_group.add('Children')
   filters.country.add('Canada')
   let filteredRecords = filterRecords(filters, testRecords)
   expect(filteredRecords.length).toBe(2)

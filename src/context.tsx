@@ -13,14 +13,18 @@ const initialState: State = {
     source_type: new Set(),
     study_status: new Set(),
     test_type: new Set(),
-    populations: new Set(),
+    population_group: new Set(),
+    sex: new Set(),
+    age: new Set(),
     country: new Set()
   },
   filter_options: {
     source_type: new Set(),
     study_status: new Set(),
     test_type: new Set(),
-    populations: new Set(),
+    population_group: new Set(),
+    sex: new Set(),
+    age: new Set(),
     country: new Set()
   },
   data_page_state: {
@@ -78,7 +82,9 @@ function getFilterOptions(records: AirtableRecord[]) {
     source_type: new Set(),
     study_status: new Set(),
     test_type: new Set(),
-    populations: new Set(),
+    population_group: new Set(),
+    sex: new Set(),
+    age: new Set(),
     country: new Set()
   };
 
@@ -93,16 +99,26 @@ function getFilterOptions(records: AirtableRecord[]) {
       if (record.study_status) {
         filter_options.study_status.add(record.study_status);
       }
-      if (record.test_type) {
-        filter_options.test_type.add(record.test_type);
-      }
-      if (record.source_type) {
+      if(record.source_type) {
         filter_options.source_type.add(record.source_type);
       }
-      if (record.populations) {
-        record.populations.forEach((population) => {
-          filter_options.populations.add(population);
+      if(record.sex) {
+        filter_options.sex.add(record.sex);
+      }
+      if(record.test_type) {
+        record.test_type.forEach((test_type) => {
+          filter_options.test_type.add(test_type);
         })
+      }
+      if(record.population_group){
+        record.population_group.forEach((population_group) => {
+          filter_options.population_group.add(population_group);
+        });
+      }
+      if(record.age){
+        record.age.forEach((age) => {
+          filter_options.age.add(age);
+        });
       }
     }
   });

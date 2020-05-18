@@ -29,19 +29,26 @@ export default class httpClient {
         const airtable_records = response.records!.map((item: Record<string, any>)=>{ 
             // Convert response to AirtableRecord type
             const record: AirtableRecord = { 
-                article_name: item.ARTICLE_NAME![0],
-                authors: item.AUTHORS ? item.AUTHORS[0]: null,
-                institution: item.INSTITUTION ? item.INSTITUTION[0] : null,
-                approving_regulator: item.APPROVING_REGULATOR ? item.APPROVING_REGULATOR[0]: null,
+                source_name: item.SOURCE_NAME ? item.SOURCE_NAME[0] : null,
+                lead_org: item.LEAD_ORG ? item.LEAD_ORG[0] : null,
+                first_author: item.FIRST_AUTHOR ? item.FIRST_AUTHOR[0]: null,
                 source_type: item.SOURCE_TYPE ? item.SOURCE_TYPE[0]: null,
                 study_status: item.STUDY_STATUS ? item.STUDY_STATUS[0]: null,
-                test_type: item.TEST_TYPE ? item.TEST_TYPE[0]: null,
+                test_type: item.TEST_TYPE,
                 isotopes_reported: item.ISOTOPED_REPORTED,
+                manufacturer: item.MANUFACTURER,
+                approving_regulator: item.APPROVAL,
+                sensitivity: item.SENSITIVITY,
+                specificity: item.SPECIFICITY,
                 country: item.COUNTRY ? item.COUNTRY[0] : null,
-                populations: item.POPULATIONS_STUDIED,
-                numerator: item.NUMERATOR_VALUE,
-                denominator: item.DENOMINATOR_VALUE,
-                seroprevalence: item.SERUM_POSITIVE_PREVALENCE,
+                state: item.STATE,
+                city: item.CITY,
+                population_group: item.POPULATION_GROUP,
+                sex: item.SEX,
+                age: item.AGE,
+                denominator: item.DENOMINATOR,
+                seroprevalence: item.SERUM_POS_PREVALENCE,
+                risk_of_bias: item.OVERALL_RISK_OF_BIAS ? item.OVERALL_RISK_OF_BIAS[0] : null,
                 url: item.URL ? item.URL[0] : null
             };
 

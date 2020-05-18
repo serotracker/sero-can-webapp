@@ -21,7 +21,7 @@ export function aggregateRecords(records: AirtableRecord[]) {
     if (error_sym > pooled_p) {
         error = [pooled_p * 100, error_sym * 100];
     }
-
+    
     const aggregatedRecord: AggregatedRecord = {
         seroprevalence: pooled_p * 100,
         error,
@@ -38,12 +38,12 @@ export function getAggregateData(records: AirtableRecord[], aggregation_factor: 
     const grouped_records: Record<string, AirtableRecord[]> = {}
     const aggregationString: string = aggregation_factor.toString();
     records.forEach((record: AirtableRecord) => {
-        if ((record.seroprevalence !== null) && (record.denominator !== null) && (record[aggregationString as "country" | "populations"] != null)) {
+        if ((record.seroprevalence !== null) && (record.denominator !== null) && (record[aggregationString as "country" | "population_group"] != null)) {
             if (aggregationString === 'country') {
                 groupRecords(grouped_records, record, record.country!)
             }
             else {
-                record.populations!.forEach((group) => {
+                record.population_group!.forEach((group) => {
                     groupRecords(grouped_records, record, group)
                 })
             }

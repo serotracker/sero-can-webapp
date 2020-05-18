@@ -1,0 +1,12 @@
+.last-updated-tooltip {
+    margin-top: -1px;
+}
+
+.filters-container {
+    overflow: auto;
+    -ms-overflow-style: none;
+}
+
+.filters-container::-webkit-scrollbar {
+    display: none;
+}
