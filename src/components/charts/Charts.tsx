@@ -7,6 +7,7 @@ import { getAggregateData } from "../../metaAnalysis";
 import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
 import { AggregationFactor } from "../../types";
+import InformationIcon from "../shared/InformationIcon";
 
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
@@ -30,11 +31,19 @@ export default function Charts() {
     setYAxis(data.value as AggregationFactor);
   }
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = (e: any) => {
+    const { active, payload, label } = e
     if (active && payload) {
+      const seroprevalence =  payload[0].value;
+      const recordError = records.find(o => o.name === label)?.error || 0;
+      const toolTipError = Array.isArray(recordError) ? recordError[1] : recordError;
       return (
-        <div className="custom-tooltip">
-          <p className="label">{`${label} : ${payload[0].value.toFixed(2)}`}</p>
+        <div className="col flex popup">
+          <div className="col-12 p-0 popup-header">{label}</div>
+          <div className="col-12 p-0 popup-content">Seroprevalence: {seroprevalence.toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">95% Confidence Interval:  {(seroprevalence - toolTipError).toFixed(2)}%-{(seroprevalence + toolTipError).toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">Total Tests: {payload[0].payload.n}</div>
+          <div className="col-12 p-0 popup-content">Total Studies: {payload[0].payload.num_studies}</div>
         </div>
       );
     }
@@ -43,17 +52,21 @@ export default function Charts() {
 
 
   const renderCustomizedLabel = (props: any) => {
-    const { x, y, width, height, value } = props;
+    const { x, y, width, height, value, index } = props;
+    let recordError = records[index].error;
+    const ratio = width / value;
+    const error = Array.isArray(recordError) ? recordError[1] : recordError;
+    const errorBarWidth = ratio * error;
     return (
       <g>
-        <text x={x + width + 10} y={y + height / 2} fill="#000" textAnchor="right" dominantBaseline="right">
+        <text x={x + width + 10 + (errorBarWidth as number)} y={y + height / 2 + 5} fill="#000" textAnchor="right" dominantBaseline="right">
           {value.toFixed(2)}
         </text>
       </g>
     );
   };
 
-  const getYAxisWidth = (chartData: Record<string, string | number>[]) => {
+  const getYAxisWidth = (chartData: Record<string, string | number | number[]>[]) => {
     let longestWord = 0;
     chartData.filter(o => o.name)
       .forEach(o => {
@@ -65,7 +78,7 @@ export default function Charts() {
 
   return (
     <div className="charts-page flex">
-      <div className="charts container col-10 center-item flex">
+      <div className="charts container col-11 center-item flex">
         <div className="col-12 p-0 center-item flex">
           <div className="col-3">
           </div>
@@ -84,16 +97,23 @@ export default function Charts() {
           </div>
           <div className=" col-3 flex top right">
             95% CI
+            <InformationIcon
+            offset="10px"
+            position="bottom right"
+            color="#455a64"
+            size="sm"
+            tooltip={`Error bars are calculated using the formula for variance: \n prevalence * (1 - prevalence) / total tests`}
+            tooltipHeader="95% Confidence Interval"/>
           </div>
         </div>
-        <ResponsiveContainer width="80%" height="80%">
+        <ResponsiveContainer width="100%" height="80%">
           <BarChart data={records} layout='vertical'>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" name="Seroprevalence (%)" />
             <YAxis dataKey="name" type="category" width={getYAxisWidth(records) * 7} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
-            <Bar dataKey="seroprevalence" name="Seroprevalence (%)" fill="#55A6BA">
+            <Bar dataKey="seroprevalence" name="Seroprevalence (%)" fill="#55A6BA" maxBarSize={60}>
               <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
               <ErrorBar dataKey="error" width={4} strokeWidth={2}/>
             </Bar>

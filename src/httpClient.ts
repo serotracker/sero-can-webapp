@@ -8,7 +8,6 @@ export default class httpClient {
         }
         const res = await fetch(url_full);
         if(res.status !== 200) {
-            console.error(res.status);
             return;
         }
         else {

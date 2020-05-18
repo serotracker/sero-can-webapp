@@ -27,6 +27,22 @@
   font-size: 1.125em;
 }
 
-.custom-tooltip {
-  
+.table{
+  table-layout: auto;
+  border-collapse: collapse;
+}
+
+.table tbody{
+display:block;
+overflow: auto;
+height: 230px;
+}
+
+.table thead tr {
+ display: flex;
+}
+
+.table th, .table td {
+text-align: left;
+width: 20%;
 }

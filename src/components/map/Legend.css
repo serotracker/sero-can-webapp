@@ -12,3 +12,29 @@
   float: left;
   opacity: 0.7;
 }
+
+.bin {
+  width: 14.2857%
+}
+
+h4.legend-title:hover {
+  position: relative
+}
+h4.legend-title span {
+  display: none
+}
+h4.legend-title:hover span {
+  display: flex;
+  margin: 10px;
+  position: absolute;
+  width: 300px;
+  border-radius: 5px;
+  bottom: 10px;
+  padding: 1em;
+  font-weight: 400;
+  font-size: 0.875em;
+  background-color: #fff;  
+  color: #000;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
+  box-shadow: 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
+}

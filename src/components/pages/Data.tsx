@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import CentralPiece from "../CenterComponent";
 import LeftSidebar from "../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../sidebar/right-sidebar/RightSidebar";
 
-export default function Data() {
+export default function Dashboard() {
   return (
     <div className="col-12 p-0 flex">
       <div className="col-2 p-0">
