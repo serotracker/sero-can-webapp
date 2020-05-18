@@ -3,3 +3,7 @@
   border-top: none;
   height: 95vh;
 }
+
+.right-sidebar {
+  overflow-y: auto;
+}

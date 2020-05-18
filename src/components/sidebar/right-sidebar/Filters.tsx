@@ -42,6 +42,7 @@ export default function Filters() {
           selection 
           options={formatOptions(state.filter_options[filter_type])}
           onChange={(e: any, data: any) => {addFilter(data, filter_type)}} 
+          defaultValue={Array.from(state.filters[filter_type])}
         />
       </div>
     )

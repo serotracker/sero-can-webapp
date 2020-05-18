@@ -5,7 +5,7 @@ import "../sidebar.css"
 
 export default function RightSidebar() {
   return (
-    <div className="col-12 p-0 d-flex flex-column justify-content-between sidebar-container">
+    <div className="col-12 p-0 d-flex flex-column justify-content-between sidebar-container right-sidebar">
       <div>
         <Filters/>
       </div>
