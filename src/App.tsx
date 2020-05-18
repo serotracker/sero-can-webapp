@@ -37,7 +37,7 @@ function App() {
   usePageViews()
 
   const getTabClass = (tabName: string) => {
-    return tabName === tab ? 'bold col-4 center' : 'regular col-4 center'
+    return tabName === tab ? 'bold center' : 'regular center'
   }
 
   // AUTHENTICATION

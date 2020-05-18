@@ -23,7 +23,7 @@ export default class httpClient {
 
     async getAirtableRecords() {
         const response = await this.httpGet('/airtable_scraper/records');
-        if(!response) {
+        if(!response || !("records" in response) || !("updated_at" in response)) {
             return [];
         }
         const airtable_records = response.records!.map((item: Record<string, any>)=>{ 
@@ -54,10 +54,14 @@ export default class httpClient {
 
             return record; 
         });
+        
+        // Remove timestamp from updated at string
+        const updated_at_words = response.updated_at!.split(" ", 4);
+        const updated_at_string = updated_at_words.join(" ");
 
         return {
             airtable_records,
-            updated_at: response.updated_at!
+            updated_at: updated_at_string
         };
     }
 }

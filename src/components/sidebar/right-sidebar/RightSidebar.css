@@ -3,7 +3,8 @@
 }
 
 .filters-container {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     -ms-overflow-style: none;
 }
 
