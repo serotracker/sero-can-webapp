@@ -17,7 +17,7 @@ export default function Charts() {
   const [records, setRecords] = useState(aggregatedRecords);
 
   const yAxisOptions = [
-    { key: 'Population', text: 'Population', value: AggregationFactor.population },
+    { key: 'Population', text: 'Population', value: AggregationFactor.population_group },
     { key: 'Geographies', text: 'Geographies', value: AggregationFactor.country }
   ]
 

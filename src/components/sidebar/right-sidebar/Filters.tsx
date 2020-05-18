@@ -67,7 +67,13 @@ export default function Filters() {
             {buildFilterDropdown('test_type', 'Test Type')}
           </div> 
           <div>
-            {buildFilterDropdown('populations', 'Population')}
+            {buildFilterDropdown('population_group', 'Population Group')}
+          </div> 
+          <div>
+            {buildFilterDropdown('sex', 'Sex')}
+          </div> 
+          <div>
+            {buildFilterDropdown('age', 'Age')}
           </div> 
         </div>
       </div>

@@ -82,11 +82,11 @@ export default function ReferencesTable() {
           </Table.Row>
         </Table.Header>
         <Table.Body className="col-12 p-0">
-          {_.map(data, ({ article_name, country, denominator, populations, seroprevalence, url }) => (
+          {_.map(data, ({ source_name, country, denominator, population_group, seroprevalence, url }) => (
             <Table.Row className="flex col-12 p-0" key={Math.random()}>
-              <Table.Cell className="flex col-5 p-1"><a href={url ? url : '#'} target="_blank" rel="noopener noreferrer">{article_name}</a></Table.Cell>
+              <Table.Cell className="flex col-5 p-1"><a href={url ? url : '#'} target="_blank" rel="noopener noreferrer">{source_name}</a></Table.Cell>
               <Table.Cell className="flex col-2 p-1">{country ? country : "Not Reported"}</Table.Cell>
-              <Table.Cell className="flex col-2 p-1">{populations ? populations : "Not Reported"}</Table.Cell>
+              <Table.Cell className="flex col-2 p-1">{population_group ? population_group : "Not Reported"}</Table.Cell>
               <Table.Cell className="flex col-1 p-1">{denominator ? denominator : "Not Reported"}</Table.Cell>
               <Table.Cell className="flex col-2 p-1">{seroprevalence ? `${(seroprevalence * 100).toFixed(2)}` : "Not Reported"}</Table.Cell>
             </Table.Row>
