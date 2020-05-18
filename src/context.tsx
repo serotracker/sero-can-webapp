@@ -13,7 +13,7 @@ const initialState: State = {
     source_type: new Set(),
     study_status: new Set(),
     test_type: new Set(),
-    population_group: new Set(),
+    population_group: new Set(["General population"]),
     sex: new Set(),
     age: new Set(),
     country: new Set()
