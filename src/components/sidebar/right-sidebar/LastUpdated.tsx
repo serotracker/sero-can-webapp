@@ -17,9 +17,10 @@ export default function LastUpdated() {
               offset={10}
               position="top right"
               color="#455a64"
-              popupSize="mini"
+              tooltipHeader={"Last Updated"}
+              popupSize="small"
               size="sm"
-              tooltip={`Updated every 24 hours.`}/>
+              tooltip={'Last time the data was refreshed from the database, which gets updated every 24 hours.'}/>
         </div>
       </div>
       <div className="py-2 center">

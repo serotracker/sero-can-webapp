@@ -57,9 +57,9 @@ function App() {
 
   return (
     <div className="App-container">
-      {auth === false ? (
+      {/* {auth === false ? (
         <Auth authenticate={authenticate} />
-      ) : (
+      ) : ( */}
           <div className="col-12 p-0 flex">
             <header className="App-header col-12 px-3">
               <div className="App-title py-3 flex center-item">

@@ -18,7 +18,15 @@ export type AirtableRecord = {
     age: string[] | null,
     denominator: number | null,
     seroprevalence: number | null,
+    publish_date?: string | null,
+    publisher?: string | null,
     risk_of_bias?: string | null,
+    study_type?: string | null,
+    sample_size?: string | null,
+    sampling_method?: string | null,
+    sampling_start_date?: string | null,
+    sampling_end_date?: string | null,
+    summary?: string | null,
     url?: string | null,
 };
 
