@@ -1,8 +1,5 @@
 ### Github Pages Deployment
-`npm install`,
-`npm run deploy`
-This will build static assets for the application and commit them to the `gh-pages` branch. 
-Go to the repo settings > github pages > enter `serotracker.com` into the custom domain name field and hit save.  
+Deployment of static assets for the application occurs on each push to master. The full configuration can be viewed [here](.github/workflows/deploy-gh-pages.yml).
 
 ### Continuous Integration
 The following commands are run on the Jenkins CI Server:  
