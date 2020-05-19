@@ -28,7 +28,7 @@ const initialState: State = {
     country: new Set()
   },
   data_page_state: {
-    mapOpen: false
+    mapOpen: true
   },
   updated_at: ''
 };

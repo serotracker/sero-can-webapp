@@ -44,8 +44,8 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
     test_type, sensitivity, specificity, isotopes_reported, manufacturer, approving_regulator
   } = props.record
   return (
-    <Modal centered={true} size="large" style={inlineStyle.modal} trigger={<Button>Study Details</Button>}>
-      <Modal.Header>Study Details</Modal.Header>
+    <Modal centered={true} size="large" style={inlineStyle.modal} trigger={<Button style={{padding: '8px'}}>Details</Button>}>
+      <Modal.Header>Prevalence Estimate Details</Modal.Header>
       <Modal.Content>
         <Modal.Description>
           <div className="col-12 p-0 flex">
@@ -67,14 +67,21 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
             <div className="col-12 px-0 py-1">
               <div className="col-12 p-0 section-title">STUDY</div>
               <div className="col-12 px-2 py-1 flex section-container modal-text-container">
-                <div className="col-12 p-0 secondary-text flex">
-                  <div className="secondary-title">Summary: </div>{getPossibleNullString(summary)}
+                <div className="col-12 p-0 secondary-text">
+                  <div>
+                    <span className="secondary-title">Summary: </span>
+                    {getPossibleNullString(summary)}
+                  </div>
                 </div>
-                <div className="col-6 p-0 secondary-text flex">
-                  <div className="secondary-title">Status: </div>{getPossibleNullString(study_status)}
+                <div className="col-6 p-0 secondary-text">
+                  <div>
+                    <span className="secondary-title">Status: </span>{getPossibleNullString(study_status)}
+                  </div>
                 </div>
-                <div className="col-6 p-0 secondary-text flex">
-                  <div className="secondary-title">Study Type: </div>{getPossibleNullString(study_type)}
+                <div className="col-6 p-0 secondary-text">
+                  <div>
+                    <span className="secondary-title">Study Type: </span>{getPossibleNullString(study_type)}
+                  </div>
                 </div>
               </div>
             </div>
@@ -82,17 +89,19 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
             <div className="col-12 px-0 py-1">
               <div className="col-12 p-0 section-title">DEMOGRAPHICS</div>
               <div className="col-12 px-2 py-1 flex section-container modal-text-container">
-                <div className="col-6 p-0 secondary-text flex">
-                  <div className="secondary-title">Population: </div>{getPossibleNullStringArray(population_group)}
+                <div className="col-6 p-0 secondary-text">
+                  <span className="secondary-title">Population: </span>{getPossibleNullStringArray(population_group)}
                 </div>
-                <div className="col-6 p-0 secondary-text flex">
-                  <div className="secondary-title">Age Group: </div>{getPossibleNullStringArray(age)}
+                <div className="col-6 p-0 secondary-text">
+                  <span className="secondary-title">Age Group: </span>{getPossibleNullStringArray(age)}
                 </div>
-                <div className="col-6 p-0 secondary-text flex">
-                  <div className="secondary-title">Location: </div>{city ? `${city.join(", ")}, ` : ""}{state ? `${state.join(", ")}, ` : ""}{country ? country : ""}
+                <div className="col-6 p-0 secondary-text">
+                  <span>
+                    <span className="secondary-title">Location: </span>{city ? `${city.join(", ")}, ` : ""}{state ? `${state.join(", ")}, ` : ""}{country ? country : ""}
+                  </span>
                 </div>
-                <div className="col-6 p-0 secondary-text flex">
-                  <div className="secondary-title">Sex: </div>{getPossibleNullString(sex)}
+                <div className="col-6 p-0 secondary-text">
+                  <span className="secondary-title">Sex: </span>{getPossibleNullString(sex)}
                 </div>
               </div>
             </div>
@@ -100,14 +109,14 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
             <div className="col-6 pl-0 pr-2 py-1">
               <div className="col-12 p-0 section-title">PREVALENCE</div>
               <div className="col-12 px-2 py-1 flex section-container modal-text-container">
-                <div className="col-12 p-0 secondary-text flex">
-                  <div className="secondary-title">Prevalence: </div>{seroprevalence?.toFixed(2)}%
+                <div className="col-12 p-0 secondary-text">
+                  <span className="secondary-title">Prevalence: </span>{seroprevalence ? (seroprevalence * 100).toFixed(2) : "Not Reported"}%
                 </div>
-                <div className="col-12 p-0 secondary-text flex">
-                  <div className="secondary-title">Sample Size: </div>{getPossibleNullString(denominator)}
+                <div className="col-12 p-0 secondary-text">
+                  <span className="secondary-title">Sample Size: </span>{getPossibleNullString(denominator)}
                 </div>
-                <div className="col-12 p-0 secondary-text flex">
-                  <div className="secondary-title">Risk of Bias: </div>{getPossibleNullString(risk_of_bias)}
+                <div className="col-12 p-0 secondary-text">
+                  <span className="secondary-title">Risk of Bias: </span>{getPossibleNullString(risk_of_bias)}
                 </div>
               </div>
             </div>
@@ -115,14 +124,20 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
             <div className="col-6 pl-2 pr-0 py-1">
               <div className="col-12 p-0 section-title">SAMPLING</div>
               <div className="col-12 px-2 py-1 flex section-container modal-text-container">
-                <div className="col-12 p-0 secondary-text flex">
-                  <div className="secondary-title">Method: </div>{getPossibleNullString(sampling_method)}
+                <div className="col-12 p-0 secondary-text">
+                  <div>
+                    <span className="secondary-title">Sampling Method: </span>{getPossibleNullString(sampling_method)}
+                  </div>
                 </div>
-                <div className="col-12 p-0 secondary-text flex">
-                  <div className="secondary-title">Start Date: </div>{getPossibleNullString(sampling_start_date)}
+                <div className="col-12 p-0 secondary-text">
+                  <div>
+                    <span className="secondary-title">Start Date: </span>{getPossibleNullString(sampling_start_date)}
+                  </div>
                 </div>
-                <div className="col-12 p-0 secondary-text flex">
-                  <div className="secondary-title">End Date: </div>{getPossibleNullString(sampling_end_date)}
+                <div className="col-12 p-0 secondary-text">
+                  <div>
+                    <span className="secondary-title">End Date: </span>{getPossibleNullString(sampling_end_date)}
+                  </div>
                 </div>
               </div>
             </div>
@@ -130,29 +145,45 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
             <div className="col-12 px-0 py-1">
               <div className="col-12 p-0 section-title">TEST DETAILS</div>
               <div className="col-12 px-2 py-1 flex section-container modal-text-container">
-                <div className="col-6 p-0 secondary-text flex">
-                  <div className="secondary-title">Test Used: </div>{getPossibleNullStringArray(test_type)}
+                <div className="col-6 p-0">
+                  <div className="col-12 p-0 secondary-text">
+                    <div>
+                      <span className="secondary-title">Manufacturer: </span>{getPossibleNullString(manufacturer)}
+                    </div>
+                  </div>
+                  <div className="col-12 p-0 secondary-text">
+                    <div>
+                      <span className="secondary-title">Test Used: </span>{getPossibleNullStringArray(test_type)}
+                    </div>
+                  </div>
+                  <div className="col-12 p-0 secondary-text">
+                    <div>
+                      <span className="secondary-title">Isotypes: </span>{getPossibleNullStringArray(isotopes_reported)}
+                    </div>
+                  </div>
                 </div>
-                <div className="col-6 p-0 secondary-text flex">
-                  <div className="secondary-title">Isotypes: </div>{getPossibleNullStringArray(isotopes_reported)} 
-                </div>
-                <div className="col-6 p-0 secondary-text flex">
-                  <div className="secondary-title">Sensitivity: </div>{getPossibleNullString(sensitivity?.toFixed(2))}
-                </div>
-                <div className="col-6 p-0 secondary-text flex">
-                  <div className="secondary-title">Manufacturer: </div>{getPossibleNullString(manufacturer)}
-                </div>
-                <div className="col-6 p-0 secondary-text flex">
-                  <div className="secondary-title">Specificity: </div>{getPossibleNullString(specificity?.toFixed(2))}
-                </div>
-                <div className="col-6 p-0 secondary-text flex">
-                  <div className="secondary-title">Regulatory Approval: </div>{getPossibleNullString(approving_regulator)}
+                <div className="col-6 p-0">
+                  <div className="col-12 p-0 secondary-text">
+                    <div>
+                      <span className="secondary-title">Specificity: </span>{specificity ? `${(specificity * 100).toFixed(2)}%` : "Not Reported"}
+                    </div>
+                  </div>
+                  <div className="col-12 p-0 secondary-text">
+                    <div>
+                      <span className="secondary-title">Sensitivity: </span>{sensitivity ? `${(sensitivity * 100).toFixed(2)}%` : "Not Reported"}
+                    </div>
+                  </div>
+                  <div className="col-126 p-0 secondary-text">
+                    <div>
+                      <span className="secondary-title">Regulatory Approval: </span>{getPossibleNullString(approving_regulator)}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </Modal.Description>
       </Modal.Content>
-    </Modal>
+    </Modal >
   )
 } 

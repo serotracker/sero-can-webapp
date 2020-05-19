@@ -71,7 +71,9 @@ export default function ReferencesTable() {
     if (!population_group) {
       return "Not Reported";
     }
-    return `${sex ? `${sex}, ` : ""}${age ? `${age.join(", ")}, ` : ""}${population_group.join(", ")}`;
+    const displaySex =  sex && sex !== "All" && sex !== "Unspecified";
+    const displayAge = age && age[0] !== "All" && age[0] !== "Unspecified";
+    return `${displaySex ? `${sex}, ` : ""}${displayAge ? `${(age as string[]).join(", ")}, ` : ""}${population_group.join(", ")}`;
   }
 
   const getGeography = (city: string[] | null | undefined, state: string[] | null | undefined, country: string | null) => {
@@ -85,7 +87,7 @@ export default function ReferencesTable() {
     if (!source) {
       return "Not Reported";
     }
-    return `${author}: ${source} (${source_type})`
+    return `${source} (${source_type})`
   }
   const getTestDetails = (manufacturer: string | null | undefined,
     test_type: string[] | null,
@@ -113,7 +115,7 @@ export default function ReferencesTable() {
       </div>
       <Table celled sortable fixed striped className="table mb-3 mt-0">
         <Table.Header className="flex col-12 p-0">
-          <Table.Row className="flex col-12 p-0 mr-1">
+          <Table.Row className="flex col-12 p-0">
             {buildHeaderCell('title', 'Name', 'col-3 p-1')}
             {buildHeaderCell('country', 'Geography', 'col-2 p-1')}
             {buildHeaderCell('populations', 'Populations', 'col-2 p-1')}
@@ -127,7 +129,7 @@ export default function ReferencesTable() {
           {_.map(data,
             (record) => {
               const {
-                source_name, first_author, source_type, url,
+                source_name, source_type, url,
                 country, state, city,
                 denominator,
                 sex, age, population_group,
@@ -136,8 +138,9 @@ export default function ReferencesTable() {
               } = record
               return (
                 <Table.Row className="flex col-12 p-0" key={Math.random()}>
-                  <Table.Cell className="flex col-3 p-1">
-                    <a href={url ? url : '#'} target="_blank" rel="noopener noreferrer">{getTitle(first_author, source_name, source_type)}</a>
+                  <Table.Cell className="col-3 p-1">
+              <a href={url ? url : '#'} target="_blank" rel="noopener noreferrer">{source_name}</a>
+              <i className="px-1">({source_type})</i>
                   </Table.Cell>
                   <Table.Cell className="flex col-2 p-1">{getGeography(city, state, country)}</Table.Cell>
                   <Table.Cell className="flex col-2 p-1">{getPopulation(sex, age, population_group)}</Table.Cell>

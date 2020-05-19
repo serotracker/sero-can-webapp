@@ -1,8 +1,9 @@
 .container {
-    -moz-box-shadow:    0 0 5px 0 #000000;
+  -moz-box-shadow: 0 0 5px 0 #000000;
   -webkit-box-shadow: 0 0 5px 0 #000000;
-  box-shadow:         0px 0px 2px 2px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;    
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  background: white;
 }
 
 .charts {
@@ -12,6 +13,7 @@
 
 .charts-page {
   display: flex;
+  background: lightgray;
   justify-content: center;
   overflow-y: auto;
   height: 95vh;
@@ -20,29 +22,50 @@
 .large-dropdown {
   font-size: 1.125em;
   border: none;
-  background-color: lightgrey; 
+  background-color: lightgrey;
 }
 
 .charts-title {
   font-size: 1.125em;
 }
 
-.table{
+.table {
   table-layout: auto;
   border-collapse: collapse;
 }
 
-.table tbody{
-display:block;
-overflow: auto;
-height: 230px;
+.table tbody {
+  display: block;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 230px;
 }
 
 .table thead tr {
- display: flex;
+  display: flex;
+  overflow-y: scroll;
 }
 
-.table th, .table td {
-text-align: left;
-width: 20%;
+.table thead tr::-webkit-scrollbar {
+  background-color: white;
+  color: white;
+}
+
+table thead tr::-webkit-scrollbar {
+  width: 11px;
+}
+table thead tr::-webkit-scrollbar-track {
+  background: #f9fafb;
+}
+table thead tr::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
+
+
+.table th,
+.table td {
+  text-align: left;
+  width: 20%;
 }
