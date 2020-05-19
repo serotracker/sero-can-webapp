@@ -9,17 +9,46 @@ export function aggregateRecords(records: AirtableRecord[]) {
     const filteredRecords = records.filter(record => ((record.seroprevalence !== null) && (record.denominator !== null && record.denominator > 0)));
     const n_studies = filteredRecords.length;
 
-    filteredRecords.forEach((record: AirtableRecord) => {
-        total_positive += (record.seroprevalence as number) * (record.denominator as number);
-        total_tested += (record.denominator as number);
-    });
+    let method: string = "naive_pooling";
+    let pooled_p: number = 0;
+    let error: number | number[] = 0;
 
-    const pooled_p = total_positive / total_tested;
-    const pooled_var = ((pooled_p) * (1 - pooled_p)) / total_tested;
-    const error_sym = Z_SCORE * Math.sqrt(pooled_var)
-    let error: number | number[] = error_sym * 100;
-    if (error_sym > pooled_p) {
-        error = [pooled_p * 100, error_sym * 100];
+    if (method == "naive_pooling"){
+        filteredRecords.forEach((record: AirtableRecord) => {
+            total_positive += (record.seroprevalence as number) * (record.denominator as number);
+            total_tested += (record.denominator as number);
+        });
+
+        pooled_p = total_positive / total_tested;
+        
+    }
+
+    if (method == "inverse_variance"){
+        let var_sum = 0;
+        let inv_var_sum = 0;
+        let p_over_var_sum = 0;
+        let n = 0;
+        
+        filteredRecords.forEach((record: AirtableRecord) => {
+            if ((record.seroprevalence !== null) && (record.denominator !== null)) {
+                const variance = (record.seroprevalence * (1 - record.seroprevalence)) / record.denominator;
+                var_sum = var_sum + variance;
+                inv_var_sum = inv_var_sum + (1 / variance);
+                p_over_var_sum = p_over_var_sum + (record.seroprevalence / variance);
+                n = n + record.denominator;
+            }
+        })
+
+        pooled_p = p_over_var_sum / inv_var_sum;
+    }
+
+    if (method == "naive_pooling" || method == "inverse_variance"){
+        const pooled_var = ((pooled_p) * (1 - pooled_p)) / total_tested;
+        const error_sym = Z_SCORE * Math.sqrt(pooled_var);
+        error = error_sym * 100;
+        if (error_sym > pooled_p) {
+            error = [pooled_p * 100, error_sym * 100];
+        }
     }
     
     const aggregatedRecord: AggregatedRecord = {
