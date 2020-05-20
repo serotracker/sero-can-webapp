@@ -3,30 +3,27 @@ import { AirtableRecord, Filters, State } from "./types";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
+export function getEmptyFilters(): Filters{
+  return {
+      source_type: new Set(),
+      study_status: new Set(),
+      test_type: new Set(),
+      country: new Set(),
+      population_group: new Set(),
+      sex: new Set(),
+      age: new Set(),
+      risk_of_bias: new Set()
+  }
+}
+
 // Note: filters = elements that user has chosen to filter by
 // filter_options = all the elements that users could filter by
 const initialState: State = {
   healthcheck: '',
   airtable_records: [],
   filtered_records: [],
-  filters: {
-    source_type: new Set(),
-    study_status: new Set(),
-    test_type: new Set(),
-    population_group: new Set(["General population"]),
-    sex: new Set(),
-    age: new Set(),
-    country: new Set()
-  },
-  filter_options: {
-    source_type: new Set(),
-    study_status: new Set(),
-    test_type: new Set(),
-    population_group: new Set(),
-    sex: new Set(),
-    age: new Set(),
-    country: new Set()
-  },
+  filters: getEmptyFilters(),
+  filter_options: getEmptyFilters(),
   data_page_state: {
     mapOpen: true
   },
@@ -78,15 +75,7 @@ export function filterRecords(filters: Filters, records: AirtableRecord[]) {
 }
 
 function getFilterOptions(records: AirtableRecord[]) {
-  const filter_options: Filters = {
-    source_type: new Set(),
-    study_status: new Set(),
-    test_type: new Set(),
-    population_group: new Set(),
-    sex: new Set(),
-    age: new Set(),
-    country: new Set()
-  };
+  const filter_options: Filters = getEmptyFilters();
 
   if (!records) {
     return filter_options;
@@ -104,6 +93,9 @@ function getFilterOptions(records: AirtableRecord[]) {
       }
       if(record.sex) {
         filter_options.sex.add(record.sex);
+      }
+      if(record.risk_of_bias) {
+        filter_options.risk_of_bias.add(record.risk_of_bias);
       }
       if(record.test_type) {
         record.test_type.forEach((test_type) => {

@@ -76,6 +76,9 @@ export default function Filters() {
           <div>
             {buildFilterDropdown('age', 'Age')}
           </div> 
+          <div>
+            {buildFilterDropdown('risk_of_bias', 'Overall Risk of Bias (JBI)')}
+          </div> 
         </div>
       </div>
     </div>
