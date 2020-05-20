@@ -95,7 +95,7 @@ export function aggregateRecords(records: AirtableRecord[], method: string = "na
         });
 
         pooled_p = p_over_var_sum / inv_var_sum;
-        let conf_inter = [pooled_p - Z_SCORE * Math.sqrt(var_sum), pooled_p + Z_SCORE * Math.sqrt(var_sum)]
+        const conf_inter = [pooled_p - Z_SCORE * Math.sqrt(var_sum), pooled_p + Z_SCORE * Math.sqrt(var_sum)]
 
         pooled_p = backTransform(pooled_p, method)!; 
         error = [pooled_p - backTransform(conf_inter[0], method)!, backTransform(conf_inter[1], method)! - pooled_p];
