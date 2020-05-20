@@ -35,13 +35,14 @@ export default function Charts() {
     const { active, payload, label } = e
     if (active && payload) {
       const seroprevalence =  payload[0].value;
-      const recordError = records.find(o => o.name === label)?.error || 0;
-      const toolTipError = Array.isArray(recordError) ? recordError[1] : recordError;
+      const recordError = records.find(o => o.name === label)?.error || [0, 0];
+      const toolTipErrorLower = recordError[0];
+      const toolTipErrorUpper = recordError[1];
       return (
         <div className="col flex popup">
           <div className="col-12 p-0 popup-header">{label}</div>
           <div className="col-12 p-0 popup-content">Seroprevalence: {seroprevalence.toFixed(2)}%</div>
-          <div className="col-12 p-0 popup-content">95% Confidence Interval:  {(seroprevalence - toolTipError).toFixed(2)}%-{(seroprevalence + toolTipError).toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">95% Confidence Interval:  {(seroprevalence - toolTipErrorLower).toFixed(2)}%-{(seroprevalence + toolTipErrorUpper).toFixed(2)}%</div>
           <div className="col-12 p-0 popup-content">Total Tests: {payload[0].payload.n}</div>
           <div className="col-12 p-0 popup-content">Total Studies: {payload[0].payload.num_studies}</div>
         </div>
