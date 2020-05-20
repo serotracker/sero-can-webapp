@@ -1,7 +1,4 @@
 import { AirtableRecord, AggregationFactor, AggregatedRecord } from "./types"
-import { faPassport } from "@fortawesome/free-solid-svg-icons";
-
-// BROKEN NOW: CONFIDENCE INTERVAL TOOLTIPS 
 
 const Z_SCORE: number = 1.96;
 
