@@ -14,7 +14,7 @@ function transformPrevalence (p: number, N: number, method: string){
             return Math.asin(Math.sqrt(p))
         }
         case "double_arcsin": {
-            let n = N * p
+            const n = N * p
             return Math.asin(Math.sqrt(n / (N + 1))) + Math.asin(Math.sqrt((n + 1) / (N + 1)))
         }
     }
