@@ -22,6 +22,8 @@ export default function InformationIcon(props: InformationIconProps) {
         offset={offset}
         position={position}
         size={popupSize}
+        //fix for janky popup positioning due to overflow styling
+        popperModifiers={{ preventOverflow: { boundariesElement: "window" } }}
         trigger={
           <FontAwesomeIcon
             icon={faInfoCircle}

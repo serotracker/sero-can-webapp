@@ -1,13 +1,9 @@
-.last-updated-tooltip {
+.tooltip-vert-adj {
     margin-top: -1px;
 }
 
 .filters-container {
     overflow-y: auto;
     overflow-x: hidden;
-    -ms-overflow-style: none;
-}
-
-.filters-container::-webkit-scrollbar {
-    display: none;
+    border-bottom: 2px solid #C4C4C4;
 }

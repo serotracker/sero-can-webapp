@@ -12,7 +12,7 @@ export default function LastUpdated() {
         <div className="section-title">
           LAST UPDATED
         </div>
-        <div className="last-updated-tooltip">
+        <div className="tooltip-vert-adj">
           <InformationIcon
               offset={10}
               position="top right"
