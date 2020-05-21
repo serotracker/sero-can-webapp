@@ -1,9 +1,7 @@
 import { AirtableRecord, AggregationFactor, AggregatedRecord } from "./types"
-import { faPassport } from "@fortawesome/free-solid-svg-icons";
-
-// BROKEN NOW: CONFIDENCE INTERVAL TOOLTIPS 
 
 const Z_SCORE: number = 1.96;
+const MIN_DENOMINATOR: number = 150;
 
 function transformPrevalence (p: number, N: number, method: string){
     switch(method as any) {
@@ -17,8 +15,12 @@ function transformPrevalence (p: number, N: number, method: string){
             return Math.asin(Math.sqrt(p))
         }
         case "double_arcsin": {
-            let n = N * p
-            return Math.asin(Math.sqrt(n / (N + 1))) + Math.asin(Math.sqrt((n + 1) / (N + 1)))
+            const n = N * p
+            return (Math.asin(Math.sqrt(n / (N + 1))) + Math.asin(Math.sqrt((n + 1) / (N + 1))) )
+        }
+        case "double_arcsin_RSM": {
+            const n = N * p
+            return 0.5 * (Math.asin(Math.sqrt(n / (N + 1))) + Math.asin(Math.sqrt((n + 1) / (N + 1))) )
         }
     }
 }
@@ -35,12 +37,15 @@ function transformVariance(p: number, N: number, method: string){
             return 1 / (4 * N)
         }
         case "double_arcsin": {
+            return 1 / (N + 0.5)
+        }
+        case "double_arcsin_RSM": {
             return 1 / (4 * N + 2)
         }
     }
 }
 
-function backTransform(t: number, method: string){
+function backTransform(t: number, n: number, method: string){
     switch(method as any){
         case "inverse_variance": {
             return t;
@@ -54,14 +59,18 @@ function backTransform(t: number, method: string){
         case "double_arcsin": {
             return Math.sin(t / 2) ** 2
         }
+        case "double_arcsin_RSM": {
+            return 0.5 * (1 - Math.sign(Math.cos(t)) 
+            * Math.sqrt(1 - (Math.sin(2 * t) + (Math.sin(2 * t) - 2 * Math.sin(2 * t)) / n) ** 2))
+        }
     }
 }
 
-export function aggregateRecords(records: AirtableRecord[], method: string = "naive_pooling") {
+export function aggregateRecords(records: AirtableRecord[], method: string = "double_arcsin_RSM") {
     let total_positive = 0;
     let total_tested = 0;
 
-    const filteredRecords = records.filter(record => ((record.seroprevalence !== null) && (record.denominator !== null && record.denominator > 0)));
+    const filteredRecords = records.filter(record => ((record.seroprevalence !== null) && (record.denominator !== null && record.denominator >= MIN_DENOMINATOR)));
     const n_studies = filteredRecords.length;
 
     let pooled_p: number = 0;
@@ -81,7 +90,7 @@ export function aggregateRecords(records: AirtableRecord[], method: string = "na
         let var_sum = 0;
         let inv_var_sum = 0;
         let p_over_var_sum = 0;
-        let n = 0;
+        let inv_n_sum = 0;
         let prevalence = 0;
         let variance = 0;
 
@@ -93,15 +102,18 @@ export function aggregateRecords(records: AirtableRecord[], method: string = "na
                 var_sum = var_sum + variance;
                 inv_var_sum = inv_var_sum + (1 / variance);
                 p_over_var_sum = p_over_var_sum + (prevalence / variance);
-                n = n + record.denominator;
+                total_tested = total_tested + record.denominator;
+                inv_n_sum = inv_n_sum + 1 / record.denominator;
             }
         });
 
         pooled_p = p_over_var_sum / inv_var_sum;
-        let conf_inter = [pooled_p - Z_SCORE * Math.sqrt(var_sum), pooled_p + Z_SCORE * Math.sqrt(var_sum)]
+        const conf_inter = [pooled_p - Z_SCORE * Math.sqrt(var_sum), pooled_p + Z_SCORE * Math.sqrt(var_sum)]
 
-        pooled_p = backTransform(pooled_p, method)!; 
-        error = [pooled_p - backTransform(conf_inter[0], method)!, backTransform(conf_inter[1], method)! - pooled_p];
+        const overall_n = 1 / (inv_n_sum / n_studies)
+
+        pooled_p = backTransform(pooled_p, overall_n, method)!; 
+        error = [pooled_p - backTransform(conf_inter[0], overall_n, method)!, backTransform(conf_inter[1], overall_n, method)! - pooled_p];
     }
 
     if (pooled_p - error[0] < 0) {error[0] = pooled_p}

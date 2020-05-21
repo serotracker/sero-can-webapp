@@ -70,3 +70,8 @@ export enum AggregationFactor {
 export type DataPageState = {
     mapOpen: boolean
 }
+
+export type CustomMatcherResult = {
+    pass: boolean
+    message: string 
+}
