@@ -9,7 +9,7 @@ export function getEmptyFilters(): Filters{
       study_status: new Set(),
       test_type: new Set(),
       country: new Set(),
-      population_group: new Set(),
+      population_group: new Set(['General population']),
       sex: new Set(),
       age: new Set(),
       risk_of_bias: new Set()

@@ -29,26 +29,31 @@ export default function Filters() {
     });
   }
 
-  const buildFilterDropdown = (filter_type: FilterType, placeholder: string, tooltip_text?: string) => {
+  const buildSectionHeader = (header_text: string, tooltip_text?: string, tooltip_header?: string) => {
+    return(
+      <div className="pb-2 flex">
+        <div className="filter-section-header">{header_text}</div>
+        {tooltip_text && (
+          <div className="tooltip-vert-adj">
+            <InformationIcon
+                offset={10}
+                position="bottom right"
+                color="#455a64"
+                tooltipHeader={tooltip_header ? tooltip_header : header_text}
+                popupSize="small"
+                size="sm"
+                tooltip={tooltip_text}/>
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
     return(
       <div className="pb-3">
-        <div className="pb-2 flex">
-          {placeholder}
-          {tooltip_text && (
-            <div className="tooltip-vert-adj">
-              <InformationIcon
-                  offset={10}
-                  position="bottom right"
-                  color="#455a64"
-                  tooltipHeader={placeholder}
-                  popupSize="small"
-                  size="sm"
-                  tooltip={tooltip_text}/>
-            </div>
-          )}
-        </div>
         <Dropdown 
-          placeholder={placeholder}
+          text={placeholder}
           fluid
           multiple
           search 
@@ -80,29 +85,49 @@ export default function Filters() {
       </div>
       <div className="row justify-content-center">
         <div className="col-10 col align-items-center p-0">
-          <div>
-            {buildFilterDropdown('country', 'Country')}
-          </div> 
-          <div>
-            {buildFilterDropdown('study_status', 'Study Status')}
-          </div> 
-          <div>
-            {buildFilterDropdown('source_type', 'Source Type')}
-          </div> 
-          <div>
-            {buildFilterDropdown('test_type', 'Test Type')}
-          </div> 
-          <div>
-            {buildFilterDropdown('population_group', 'Population Group')}
-          </div> 
-          <div>
-            {buildFilterDropdown('sex', 'Sex')}
-          </div> 
-          <div>
-            {buildFilterDropdown('age', 'Age')}
-          </div> 
-          <div>
-            {buildFilterDropdown('risk_of_bias', 'Overall Risk of Bias (JBI)', 'Some content')}
+          <div className="pb-1">
+            <div>
+              {buildSectionHeader('Geography', 'TODO: INSERT TOOLTIP CONTENT')}
+            </div>
+            <div>
+              {buildFilterDropdown('country', 'Country')}
+            </div> 
+          </div>
+          <div className="pb-1">
+            <div>
+              {buildSectionHeader('Study Information', 'TODO: INSERT TOOLTIP CONTENT')}
+            </div>
+            <div>
+              {buildFilterDropdown('source_type', 'Source Type')}
+            </div> 
+            <div>
+              {buildFilterDropdown('study_status', 'Study Status')}
+            </div> 
+            <div>
+              {buildFilterDropdown('risk_of_bias', 'Overall Risk of Bias (JBI)')}
+            </div> 
+          </div>
+          <div className="pb-1">
+            <div>
+              {buildSectionHeader('Demographics', 'TODO: INSERT TOOLTIP CONTENT')}
+            </div>
+            <div>
+              {buildFilterDropdown('population_group', 'Population Group')}
+            </div> 
+            <div>
+              {buildFilterDropdown('sex', 'Sex')}
+            </div> 
+            <div>
+              {buildFilterDropdown('age', 'Age')}
+            </div>
+          </div>
+          <div className="pb-1">
+            <div>
+              {buildSectionHeader('Test Information', 'TODO: INSERT TOOLTIP CONTENT')}
+            </div>
+            <div>
+              {buildFilterDropdown('test_type', 'Test Type')}
+            </div>
           </div> 
         </div>
       </div>
