@@ -137,14 +137,11 @@ export default function Map() {
   const createPopup = (properties: any) => {
     if (properties.seroprevalence) {
       let error = properties?.error;
-      if(Array.isArray(properties?.error)) {
-        error = error[1];
-      }
       return (
         <div className="col-12 p-0 flex">
           <div className="col-12 p-0 popup-header">{properties.name}</div>
           <div className="col-12 p-0 popup-content">Seroprevalence: {properties?.seroprevalence.toFixed(2)}%</div>
-          <div className="col-12 p-0 popup-content">95% CI: {(properties?.seroprevalence - error).toFixed(2)}%-{(properties?.seroprevalence + error).toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">95% CI: {(properties?.seroprevalence - error[0]).toFixed(2)}%-{(properties?.seroprevalence + error[1]).toFixed(2)}%</div>
           <div className="col-12 p-0 popup-content">Total Tests: {properties?.n}</div>
           <div className="col-12 p-0 popup-content">Total Studies: {properties?.num_studies}</div>
         </div>)

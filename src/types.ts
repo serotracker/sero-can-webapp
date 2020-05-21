@@ -31,7 +31,7 @@ export type AirtableRecord = {
 };
 
 export type AggregatedRecord = {
-    error: number | number[];
+    error: number[];
     n: number;
     name: string;
     num_studies: number;
@@ -69,4 +69,9 @@ export enum AggregationFactor {
 
 export type DataPageState = {
     mapOpen: boolean
+}
+
+export type CustomMatcherResult = {
+    pass: boolean
+    message: string 
 }
