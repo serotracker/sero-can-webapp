@@ -128,6 +128,9 @@ export default function Filters() {
             <div>
               {buildFilterDropdown('test_type', 'Test Type')}
             </div>
+            <div>
+              {buildFilterDropdown('isotypes_reported', 'Isotypes Reported')}
+            </div>
           </div> 
         </div>
       </div>

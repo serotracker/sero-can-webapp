@@ -12,7 +12,8 @@ export const testRecords: AirtableRecord[] = [
         age: ['Youth (15-24)'],
         denominator: 2000,
         seroprevalence: 0.15,
-        risk_of_bias: "Low"
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
         source_name: 'article2',
@@ -25,7 +26,8 @@ export const testRecords: AirtableRecord[] = [
         age: ['Youth (15-24)'],
         denominator: 1000,
         seroprevalence: 0.2,
-        risk_of_bias: "Low"
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
         source_name: 'article3',
@@ -38,7 +40,8 @@ export const testRecords: AirtableRecord[] = [
         age: ['Youth (15-24)'],
         denominator: 200,
         seroprevalence: 0.12,
-        risk_of_bias: "Low"
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
         source_name: 'article4',
@@ -51,7 +54,8 @@ export const testRecords: AirtableRecord[] = [
         age: ['Youth (15-24)'],
         denominator: 500,
         seroprevalence: 0.15,
-        risk_of_bias: "Low"
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
         source_name: 'article1',
@@ -64,7 +68,8 @@ export const testRecords: AirtableRecord[] = [
         age: ['Youth (15-24)'],
         denominator: 1250,
         seroprevalence: 0.23,
-        risk_of_bias: "Low"
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
         source_name: 'article2',
@@ -77,7 +82,8 @@ export const testRecords: AirtableRecord[] = [
         age: ['Youth (15-24)'],
         denominator: 700,
         seroprevalence: 0.25,
-        risk_of_bias: "Low"
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
         source_name: 'article3',
@@ -90,7 +96,8 @@ export const testRecords: AirtableRecord[] = [
         age: ['Youth (15-24)'],
         denominator: 300,
         seroprevalence: 0.32,
-        risk_of_bias: "Low"
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
         source_name: 'article4',
@@ -103,6 +110,7 @@ export const testRecords: AirtableRecord[] = [
         age: ['Adults (25-49)'],
         denominator: 500,
         seroprevalence: 0.2,
-        risk_of_bias: "High"
+        risk_of_bias: "High",
+        isotypes_reported: ['IgM', 'IgA']
     }
 ];

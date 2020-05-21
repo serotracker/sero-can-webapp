@@ -41,7 +41,7 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
     population_group, age, city, state, country, sex,
     seroprevalence, risk_of_bias, denominator,
     sampling_method, sampling_end_date, sampling_start_date,
-    test_type, sensitivity, specificity, isotopes_reported, manufacturer, approving_regulator
+    test_type, sensitivity, specificity, isotypes_reported, manufacturer, approving_regulator
   } = props.record
   return (
     <Modal centered={true} size="large" style={inlineStyle.modal} trigger={<Button style={{padding: '8px'}}>Details</Button>}>
@@ -158,7 +158,7 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
                   </div>
                   <div className="col-12 p-0 secondary-text">
                     <div>
-                      <span className="secondary-title">Isotypes: </span>{getPossibleNullStringArray(isotopes_reported)}
+                      <span className="secondary-title">Isotypes: </span>{getPossibleNullStringArray(isotypes_reported)}
                     </div>
                   </div>
                 </div>

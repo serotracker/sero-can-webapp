@@ -92,7 +92,7 @@ export default function ReferencesTable() {
   const getTestDetails = (manufacturer: string | null | undefined,
     test_type: string[] | null,
     approving_regulator: string | null | undefined,
-    isotopes_reported: string[] | null | undefined,
+    isotypes_reported: string[] | null | undefined,
     sensitivity: number | null | undefined,
     specificity: number | null | undefined) => {
     if (!test_type) {
@@ -103,7 +103,7 @@ export default function ReferencesTable() {
     ${test_type ? `${test_type.join(", ")}, ` : ""} 
     ${approving_regulator ? `${approving_regulator}, ` : ""}
     ${test_type ? `${test_type.join(", ")}, ` : ""}
-    ${isotopes_reported ? `${isotopes_reported.join(", ")}, ` : ""}    
+    ${isotypes_reported ? `${isotypes_reported.join(", ")}, ` : ""}    
     ${sensitivity ? `Sensitivity: ${sensitivity}, ` : ""}
     ${specificity ? `Specificity: ${specificity}, ` : ""}
     `

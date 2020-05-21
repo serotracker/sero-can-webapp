@@ -36,7 +36,7 @@ export default class httpClient {
                 study_status: item.STUDY_STATUS ? item.STUDY_STATUS[0]: null,
                 study_type: item.STUDY_TYPE,
                 test_type: item.TEST_TYPE,
-                isotopes_reported: item.ISOTOPED_REPORTED,
+                isotypes_reported: item.ISOTYPES,
                 manufacturer: item.MANUFACTURER,
                 approving_regulator: item.APPROVAL,
                 sensitivity: item.SENSITIVITY,
