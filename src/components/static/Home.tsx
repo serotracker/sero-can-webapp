@@ -31,10 +31,10 @@ export default function Data() {
                     Methods
                 </h1>
                 <p>
-                    SeroTracker provides an up-to-date systematic synthesis of SARS-CoV-2 serosurveillance projects globally. We screened peer-reviewed articles, preprints, government reports, and media articles to identify the prevalence estimates reported below. Our data is updated daily with all new reports of seroprevalence findings that were captured in our search.
+                    SeroTracker provides an up-to-date systematic synthesis of SARS-CoV-2 serosurveillance projects globally. We screened peer-reviewed articles, preprints, government reports, and media articles to identify the prevalence estimates reported below. Our data is updated daily with all new reports of seroprevalence findings that were captured in our search. 
                 </p>
                 <p>
-                    You can view our full methods <a target="_blank" href="https://docs.google.com/document/d/1NYpszkr-u__aZspFDFa_fa4VBzjAAAAxNxM1rZ1txWU/edit?usp=sharing">here</a>. To submit a SARS-CoV-2 seroprevalence study that we have not yet captured below, use <a target="_blank" href="https://forms.gle/XWHQ7QPjQnzQMXSz8">this form</a>.
+                You can view our full methods <a target="_blank" href="https://docs.google.com/document/d/1NYpszkr-u__aZspFDFa_fa4VBzjAAAAxNxM1rZ1txWU/edit?usp=sharing">here.</a> To submit a SARS-CoV-2 seroprevalence study that we have not yet captured below, use <a target="_blank" href="https://forms.gle/XWHQ7QPjQnzQMXSz8">this form</a>.
                 </p>
                 <h1>
                     Paper

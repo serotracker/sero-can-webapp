@@ -143,7 +143,7 @@ export default function Map() {
           <div className="col-12 p-0 popup-content">Seroprevalence: {properties?.seroprevalence.toFixed(2)}%</div>
           <div className="col-12 p-0 popup-content">95% CI: {(properties?.seroprevalence - error[0]).toFixed(2)}%-{(properties?.seroprevalence + error[1]).toFixed(2)}%</div>
           <div className="col-12 p-0 popup-content">Total Tests: {properties?.n}</div>
-          <div className="col-12 p-0 popup-content">Total Studies: {properties?.num_studies}</div>
+          <div className="col-12 p-0 popup-content">Total Estimates: {properties?.num_studies}</div>
         </div>)
     };
     return (
