@@ -35,7 +35,7 @@ export default function TotalStats() {
           <InformationIcon
             color="#468ac1"
             offset={-12}
-            tooltip="Prevalence of antibodies against SARS-CoV-2, aggregated within the filters you have selected.\n\nNB: This should not be interpreted as a representative estimate of seroprevalence in the region of interest, especially if the aggregated studies have biased samples.\n\nPooling technique: fixed effects inverse-variance weighted aggregation of records with sample size over {MIN_DENOMINATOR}."
+            tooltip={`Prevalence of antibodies against SARS-CoV-2, aggregated within the filters you have selected.\n\nNB: This should not be interpreted as a representative estimate of seroprevalence in the region of interest, especially if the aggregated studies have biased samples.\n\nPooling technique: fixed effects inverse-variance weighted aggregation of records with sample size over ${MIN_DENOMINATOR}.`}
             size="xs"
             tooltipHeader="Aggregated Prevalence" /></div>
         <div className="main-statistic col-12 p-0 center">{seroprevalence ? `${seroprevalence.toFixed(2)}%` : "No Data"}</div>
