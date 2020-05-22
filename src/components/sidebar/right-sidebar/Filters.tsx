@@ -80,14 +80,14 @@ export default function Filters() {
               tooltipHeader={"Filters"}
               popupSize="small"
               size="sm"
-              tooltip={'Some content.'}/>
+              tooltip={'Filter the SeroTracker dataset based on geography, study, demographics, and test. Only studies matching all of the listed filters will be included.'}/>
         </div>
       </div>
       <div className="row justify-content-center">
         <div className="col-10 col align-items-center p-0">
           <div className="pb-1">
             <div>
-              {buildSectionHeader('Geography', 'TODO: INSERT TOOLTIP CONTENT')}
+              {buildSectionHeader('Geography', 'Select countries of interest.')}
             </div>
             <div>
               {buildFilterDropdown('country', 'Country')}
@@ -95,7 +95,7 @@ export default function Filters() {
           </div>
           <div className="pb-1">
             <div>
-              {buildSectionHeader('Study Information', 'TODO: INSERT TOOLTIP CONTENT')}
+              {buildSectionHeader('Study Information', 'Filter on study details, including source type (publication, preprint, news, or report) and study status (ongoing, completed).\n\nRisk of Bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates.')}
             </div>
             <div>
               {buildFilterDropdown('source_type', 'Source Type')}
@@ -104,12 +104,12 @@ export default function Filters() {
               {buildFilterDropdown('study_status', 'Study Status')}
             </div> 
             <div>
-              {buildFilterDropdown('risk_of_bias', 'Overall Risk of Bias (JBI)')}
+              {buildFilterDropdown('risk_of_bias', 'Overall Risk of Bias')}
             </div> 
           </div>
           <div className="pb-1">
             <div>
-              {buildSectionHeader('Demographics', 'TODO: INSERT TOOLTIP CONTENT')}
+              {buildSectionHeader('Demographics', 'Filter on demographic variables, including population group, sex, and age group.')}
             </div>
             <div>
               {buildFilterDropdown('population_group', 'Population Group')}
@@ -123,7 +123,7 @@ export default function Filters() {
           </div>
           <div className="pb-1">
             <div>
-              {buildSectionHeader('Test Information', 'TODO: INSERT TOOLTIP CONTENT')}
+              {buildSectionHeader('Test Information', 'Filter on test details, including assay type and antibody isotype.')}
             </div>
             <div>
               {buildFilterDropdown('test_type', 'Test Type')}

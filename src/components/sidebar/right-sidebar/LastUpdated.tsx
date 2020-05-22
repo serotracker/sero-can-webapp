@@ -20,7 +20,7 @@ export default function LastUpdated() {
               tooltipHeader={"Last Updated"}
               popupSize="small"
               size="sm"
-              tooltip={'Last time the data was refreshed from the database, which gets updated every 24 hours.'}/>
+              tooltip={'SeroTracker is continuously updated with findings from newly-released serological studies. We include new studies from our search within 48 hours of publication.'}/>
         </div>
       </div>
       <div className="py-2 center">

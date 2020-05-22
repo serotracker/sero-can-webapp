@@ -101,7 +101,7 @@ export default function Charts() {
             position="bottom right"
             color="#455a64"
             size="sm"
-            tooltip={`Error bars are calculated using the formula for variance: \n prevalence * (1 - prevalence) / total tests`}
+            tooltip={"Wider error bars indicate greater uncertainty in the pooled seroprevalence estimate."}
             tooltipHeader="95% Confidence Interval"/>
           </div>
         </div>

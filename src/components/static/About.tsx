@@ -30,9 +30,18 @@ export default function About() {
                 <p>
                     As the acute phase of the COVID-19 pandemic passes its peak, many countries are accelerating their investments in serological (antibody) testing. Understanding population antibody patterns and potential immunity is of great interest to clinicians, public health officials, and policymakers alike. <b>SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide.</b>
                 </p>
-                <h1>
+                <h2>
+                    Supporters
+                </h2>
+                <p>
+                    <a href="https://www.covid19immunitytaskforce.ca/"><img src="https://www.covid19immunitytaskforce.ca/wp-content/themes/pena-lite-child/CITF_logo_ENG.svg" alt="COVID-19 Immunity Task Force Logo" height="45"></img></a>
+                </p>
+                <p>
+                    SeroTracker is supported by <a href="https://www.covid19immunitytaskforce.ca/">Canada's COVID-19 Immunity Task Force</a> and provides content for their <a href = "https://www.covid19immunitytaskforce.ca/research/global-serological-knowledge-hub/">Global Serological Knowledge Hub</a>.
+                </p>
+                <h2>
                     Contact Us
-                </h1>
+                </h2>
                 <p>
                     We are an interdisciplinary team of researchers and engineers at the University of Oxford, University of Toronto, University of Waterloo, University of Calgary, and Harvard University.
                 </p>

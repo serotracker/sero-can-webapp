@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../../../context";
 import { aggregateRecords } from "../../../metaAnalysis";
 import InformationIcon from "../../shared/InformationIcon";
+import { MIN_DENOMINATOR } from "../../../metaAnalysis"
 import './TotalStats.css';
 
 
@@ -34,7 +35,7 @@ export default function TotalStats() {
           <InformationIcon
             color="#468ac1"
             offset={-12}
-            tooltip="Total number of positive individuals who test positive for antibodies against SARS-CoV-2 (the virus that causes COVID-19) divided by total tests administered, using filtered data"
+            tooltip="Prevalence of antibodies against SARS-CoV-2, aggregated within the filters you have selected.\n\nNB: This should not be interpreted as a representative estimate of seroprevalence in the region of interest, especially if the aggregated studies have biased samples.\n\nPooling technique: fixed effects inverse-variance weighted aggregation of records with sample size over {MIN_DENOMINATOR}."
             size="xs"
             tooltipHeader="Aggregated Prevalence" /></div>
         <div className="main-statistic col-12 p-0 center">{seroprevalence ? `${seroprevalence.toFixed(2)}%` : "No Data"}</div>
