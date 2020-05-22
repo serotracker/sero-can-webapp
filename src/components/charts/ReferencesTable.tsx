@@ -4,6 +4,7 @@ import { Dropdown, DropdownProps, Pagination, Table } from "semantic-ui-react";
 import { AppContext } from "../../context";
 import './Charts.css';
 import StudyDetailsModal from './StudyDetailsModal';
+import { useMediaQuery } from 'react-responsive';
 
 export default function ReferencesTable() {
   const [state] = useContext(AppContext);
@@ -15,6 +16,8 @@ export default function ReferencesTable() {
   const [column, setColumn] = useState('denominator');
   const [direction, setDirection] = useState('descending');
   const [data, setData] = useState(state.filtered_records);
+
+  const isMobileDevice = useMediaQuery({ maxDeviceWidth: 600 })
 
   const handlePaginationChange = (e: any, event: any) => {
     const { activePage } = event;
@@ -52,8 +55,14 @@ export default function ReferencesTable() {
 
     const splicedData = newData.splice((activePage - 1) * pageLength, pageLength);
     setData(splicedData);
-    setTotalPages(Math.ceil(state.filtered_records.length / pageLength));
-  }, [activePage, column, direction, pageLength, state.filtered_records])
+
+    if (isMobileDevice) {
+      setPageLength(Math.ceil(state.filtered_records.length))
+    }
+    else {
+      setTotalPages(Math.ceil(state.filtered_records.length / pageLength));
+    }
+  }, [activePage, column, direction, isMobileDevice, pageLength, state.filtered_records])
 
   const buildHeaderCell = (sortColumn: string, displayName: string, className: string) => {
     return (
@@ -71,7 +80,7 @@ export default function ReferencesTable() {
     if (!population_group) {
       return "Not Reported";
     }
-    const displaySex =  sex && sex !== "All" && sex !== "Unspecified";
+    const displaySex = sex && sex !== "All" && sex !== "Unspecified";
     const displayAge = age && age[0] !== "All" && age[0] !== "Unspecified";
     return `${displaySex ? `${sex}, ` : ""}${displayAge ? `${(age as string[]).join(", ")}, ` : ""}${population_group.join(", ")}`;
   }
@@ -82,6 +91,7 @@ export default function ReferencesTable() {
     }
     return `${city ? `${city.join(", ")}, ` : ""}${state ? `${state.join(", ")}, ` : ""}${country}`;
   }
+
 
   return (
     <div className="container col-11 m-4 center-item flex">
@@ -97,7 +107,7 @@ export default function ReferencesTable() {
             {buildHeaderCell('denominator', 'N', 'col-sm-12 col-lg-1 p-1')}
             {buildHeaderCell('seroprevalence', 'Prevalence', 'col-sm-12 col-lg-1 p-1')}
             {buildHeaderCell('risk_of_bias', 'Risk Of Bias', 'col-sm-12 col-lg-2 p-1')}
-            {buildHeaderCell('', 'Details', 'col-sm-12     col-1 p-1')}
+            {buildHeaderCell('', 'Details', 'col-sm-12 col-lg-1 p-1')}
           </Table.Row>
         </Table.Header>
         <Table.Body className="col-12 p-0">
@@ -114,8 +124,8 @@ export default function ReferencesTable() {
               return (
                 <Table.Row className="flex col-12 p-0" key={Math.random()}>
                   <Table.Cell className=" col-sm-12 col-lg-3 p-1">
-              <a href={url ? url : '#'} target="_blank" rel="noopener noreferrer">{source_name}</a>
-              <i className="px-1">({source_type})</i>
+                    <a href={url ? url : '#'} target="_blank" rel="noopener noreferrer">{source_name}</a>
+                    <i className="px-1">({source_type})</i>
                   </Table.Cell>
                   <Table.Cell className="flex col-sm-12 col-lg-2 p-1">{getGeography(city, state, country)}</Table.Cell>
                   <Table.Cell className="flex col-sm-12 col-lg-2 p-1">{getPopulation(sex, age, population_group)}</Table.Cell>
@@ -127,26 +137,29 @@ export default function ReferencesTable() {
               )
             })}
         </Table.Body>
-        <Table.Footer className="flex space-between">
-          <Pagination
-            activePage={activePage}
-            boundaryRange={boundaryRange}
-            onPageChange={handlePaginationChange}
-            size='mini'
-            siblingRange={siblingRange}
-            totalPages={totalPages}
-          />
-          <div className="p-2 flex">
-            <Dropdown inline
-              options={pageLengthOptions}
-              defaultValue={pageLengthOptions[0].value}
-              onChange={handlePageLengthChange} />
-            <div className="px-2">
-              studies per page
+        {
+          !isMobileDevice ?
+            <Table.Footer className="flex space-between">
+              <Pagination
+                activePage={activePage}
+                boundaryRange={boundaryRange}
+                onPageChange={handlePaginationChange}
+                size='mini'
+                siblingRange={siblingRange}
+                totalPages={totalPages}
+              />
+              <div className="p-2 flex">
+                <Dropdown inline
+                  options={pageLengthOptions}
+                  defaultValue={pageLengthOptions[0].value}
+                  onChange={handlePageLengthChange} />
+                <div className="px-2">
+                  studies per page
               </div>
-
-          </div>
-        </Table.Footer>
+              </div>
+            </Table.Footer> :
+            null
+        }
       </Table>
     </div>
   );

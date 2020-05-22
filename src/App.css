@@ -11,6 +11,7 @@
     font-size: 1.25;
     color: white;
     font-weight: 300;
+    height: 6vh;
     -moz-box-shadow: 0 0 5px 0 #000000;
     -webkit-box-shadow: 0 0 5px 0 #000000;
     box-shadow: 0 0 5px 0 #000000;
@@ -149,4 +150,8 @@
 
 .icon {
     margin: 3px 5px;
+}
+
+.cursor {
+    cursor: pointer;
 }

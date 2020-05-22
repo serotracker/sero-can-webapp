@@ -13,7 +13,7 @@ const Legend = (props: legendProps) => {
   const { map } = useLeaflet();
   const buckets = props.buckets as number[]
   const getColor = props.getColor;
-  const isTabletOrMobileDevice = useMediaQuery({ maxDeviceWidth: 1224 })
+  const isTabletOrMobileDevice = useMediaQuery({ maxDeviceWidth: 1200 })
   useEffect(() => {
     const control = L.control as any
     const legend = control({ position: "bottomright" });
@@ -46,7 +46,8 @@ const Legend = (props: legendProps) => {
           // TODO: Check into passing in an array of colours instead of the getColor function
           return ReactDOMServer.renderToString(
             <div className="bin flex">
-              <div className={isTabletOrMobileDevice ? "col-12 mobile-text p-0" : "col-12 p-0"}>{from}%{to ? `- ${to}%` : "+"}</div>
+              <div className={isTabletOrMobileDevice ? "col-12 mobile-text p-0" : "col-12 p-0"}>
+          {isTabletOrMobileDevice ? `${from}%${to ? '' : "+"}`:`${from}%${to ? `- ${to}%` : "+"}`}</div>
               <i className="col-12 p-0" style={{ background: getColor(from) }}></i>
             </div>
           )

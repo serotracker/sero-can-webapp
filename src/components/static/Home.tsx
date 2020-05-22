@@ -1,9 +1,12 @@
 import React from "react";
 import './static.css';
 import { Tab } from "semantic-ui-react";
+import { useMediaQuery } from "react-responsive";
 
 export default function Data() {
 
+    
+  const isTabletOrMobileDevice = useMediaQuery({ maxDeviceWidth: 600 })
     const renderPane = (src: string) => {
         return <Tab.Pane className="col-12 p-0">
             <iframe
@@ -16,7 +19,7 @@ export default function Data() {
     }
 
     const panes = [{
-        menuItem: 'Serosurveys Reporting Prevalence',
+        menuItem: isTabletOrMobileDevice ? 'Serosurveys' : 'Serosurveys Reporting Prevalence',
         render: () => renderPane('https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=blue&viewControls=on')
     },
     {

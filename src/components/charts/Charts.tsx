@@ -35,7 +35,7 @@ export default function Charts() {
   const CustomTooltip = (e: any) => {
     const { active, payload, label } = e
     if (active && payload) {
-      const seroprevalence =  payload[0].value;
+      const seroprevalence = payload[0].value;
       const recordError = records.find(o => o.name === label)?.error || [0, 0];
       return (
         <div className="col flex popup">
@@ -75,14 +75,16 @@ export default function Charts() {
       })
     return longestWord;
   }
-  
+
+
+  const isMobileDevice = useMediaQuery({ maxDeviceWidth: 1200 })
   return (
     <div className="charts-page flex">
-      <div className="charts container col-11 center-item flex">
+      <div className={isMobileDevice ? "mobile-charts container col-11 center-item flex" : "charts container col-11 center-item flex"}>
         <div className="col-12 p-0 center-item flex">
-          <div className="col-sm-1 col-3">
+          <div className="col-sm-1 col-lg-3">
           </div>
-          <div className="charts-title flex p-sm-3 p-lg-0 col-sm-8 col-lg-6">
+          <div className="charts-title flex p-0 mt-2 p-lg-0 col-sm-8 col-lg-6">
             <div className="col-auto flex center-item">
               Seroprevalence by
             </div>
@@ -95,27 +97,27 @@ export default function Charts() {
             >
             </Dropdown>
           </div>
-          <div className=" col-3 flex top right">
+          <div className="col-sm-6 col-lg-3 flex top right">
             95% CI
             <InformationIcon
-            offset="10px"
-            position="bottom right"
-            color="#455a64"
-            size="sm"
-            tooltip={`Error bars are calculated using the formula for variance: \n prevalence * (1 - prevalence) / total tests`}
-            tooltipHeader="95% Confidence Interval"/>
+              offset="10px"
+              position="bottom right"
+              color="#455a64"
+              size="sm"
+              tooltip={`Error bars are calculated using the formula for variance: prevalence * (1 - prevalence) / total tests`}
+              tooltipHeader="95% Confidence Interval" />
           </div>
         </div>
         <ResponsiveContainer width="100%" height="80%">
           <BarChart data={records} layout='vertical'>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" name="Seroprevalence (%)" />
+            <XAxis type="number" name="Seroprevalence (%)" padding={{ left: 0, right: 30 }} />
             <YAxis dataKey="name" type="category" width={getYAxisWidth(records) * 7} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
             <Bar dataKey="seroprevalence" name="Seroprevalence (%)" fill="#55A6BA" maxBarSize={60}>
               <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
-              <ErrorBar dataKey="error" width={4} strokeWidth={2}/>
+              <ErrorBar dataKey="error" width={4} strokeWidth={2} />
             </Bar>
           </BarChart>
         </ResponsiveContainer>

@@ -61,8 +61,8 @@ function App() {
         <Auth authenticate={authenticate} />
       ) : ( */}
           <div className="col-12 p-0">
-            <header className="App-header col-12 px-3">
-              <div className="App-title col-sm-4 py-3 px-0 flex left ">
+            <header className="App-header col-12 px-sm-2">
+              <div className="App-title col-auto py-3 px-0 flex left ">
                 <Link to="/" className="flex">
                   <img src={Icon} width={23} height={23} alt="" />
                   <div className="col-auto px-2" >SeroTracker</div>

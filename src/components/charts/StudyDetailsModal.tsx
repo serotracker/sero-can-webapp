@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./StudyDetailsModal.css"
 import { Modal, Button, Header } from "semantic-ui-react";
 import { AirtableRecord } from "../../types";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 // TODO: Extract this into a modal service 
 
@@ -10,6 +12,8 @@ interface StudyDetailsModalProps {
   record: AirtableRecord
 }
 export default function StudyDetailsModal(props: StudyDetailsModalProps) {
+  const [open, setOpen] = useState(false);
+
   const inlineStyle = {
     modal: {
       marginTop: '0px !important',
@@ -47,11 +51,18 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
     <Modal
       centered={true}
       size="large"
+      closeOnEscape={true}
+      closeOnDimmerClick={true}
+      onClose={() => {setOpen(false)}}
+      open={open}
       style={inlineStyle.modal}
-      trigger={<Button style={{ padding: '8px' }}
-        closeIcon
-      >Details</Button>}>
-      <Modal.Header>Prevalence Estimate Details</Modal.Header>
+      trigger={
+        <Button onClick={() => setOpen(true)} style={{ padding: '8px' }}>
+          Details
+      </Button>}>
+      <Modal.Header>Prevalence Estimate Details
+        <FontAwesomeIcon onClick={() => setOpen(false)} icon={faTimes} size={"sm"} className="float-right cursor" />
+      </Modal.Header>
       <Modal.Content>
         <Modal.Description>
           <div className="col-12 p-0 flex">

@@ -11,6 +11,10 @@
   margin-top: 6vh;
 }
 
+.mobile-charts {
+  margin-top: 60px;
+  min-height: 50vh;
+}
 .charts-page {
   display: flex;
   background: lightgray;
@@ -20,7 +24,7 @@
 }
 
 .large-dropdown {
-  font-size: 1.125em;
+  font-size: 1.0em;
   border: none;
   background-color: lightgrey;
 }
