@@ -44,7 +44,13 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
     test_type, sensitivity, specificity, isotopes_reported, manufacturer, approving_regulator
   } = props.record
   return (
-    <Modal centered={true} size="large" style={inlineStyle.modal} trigger={<Button style={{padding: '8px'}}>Details</Button>}>
+    <Modal
+      centered={true}
+      size="large"
+      style={inlineStyle.modal}
+      trigger={<Button style={{ padding: '8px' }}
+        closeIcon
+      >Details</Button>}>
       <Modal.Header>Prevalence Estimate Details</Modal.Header>
       <Modal.Content>
         <Modal.Description>

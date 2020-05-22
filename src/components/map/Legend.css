@@ -6,7 +6,20 @@
   color: #555;
 }
 
-.legend i {
+.legend-mobile {
+  text-align: center;
+  line-height: 18px;
+  right: calc(50% - 46vw);
+  max-width: 92vw;
+  color: #555;
+}
+
+.mobile-text { 
+  
+  font-size: 11px;
+}
+
+.legend,.legend-mobile i {
   width: 6vw;
   height: 18px;
   float: left;

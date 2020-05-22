@@ -60,15 +60,15 @@ function App() {
       {/* {auth === false ? (
         <Auth authenticate={authenticate} />
       ) : ( */}
-          <div className="col-12 p-0 flex">
+          <div className="col-12 p-0">
             <header className="App-header col-12 px-3">
-              <div className="App-title py-3 flex center-item">
+              <div className="App-title col-sm-4 py-3 px-0 flex left ">
                 <Link to="/" className="flex">
                   <img src={Icon} width={23} height={23} alt="" />
                   <div className="col-auto px-2" >SeroTracker</div>
                 </Link>
               </div>
-              <div className="App-tabs col-sm-5 col-lg-3">
+              <div className="App-tabs p-0 col-sm-8 col-lg-3">
                 <Link className={getTabClass('/Dashboard')} to="/Dashboard">Dashboard</Link>
                 <Link className={getTabClass('/Data')} to="/Data">Data</Link>
                 <Link className={getTabClass('/About')} to="/About">About</Link>
