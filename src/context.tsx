@@ -9,7 +9,7 @@ export function getEmptyFilters(): Filters{
       study_status: new Set(),
       test_type: new Set(),
       country: new Set(),
-      population_group: new Set(['General population']),
+      population_group: new Set(),
       sex: new Set(),
       age: new Set(),
       risk_of_bias: new Set(),
@@ -19,6 +19,8 @@ export function getEmptyFilters(): Filters{
 
 // Note: filters = elements that user has chosen to filter by
 // filter_options = all the elements that users could filter by
+const initial_filters: Filters = getEmptyFilters();
+initial_filters.population_group.add(['General population']);
 const initialState: State = {
   healthcheck: '',
   airtable_records: [],

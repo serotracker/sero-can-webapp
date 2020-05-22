@@ -73,11 +73,22 @@ test('test age filter', () => {
   let filteredRecords = filterRecords(filters, testRecords)
   expect(filteredRecords.length).toBe(7)
 });
+
 test('test risk of bias filter', () => {
   const filters = getEmptyFilters()
   filters.risk_of_bias.add('Low')
   let filteredRecords = filterRecords(filters, testRecords)
   expect(filteredRecords.length).toBe(7)
+});
+
+test('test isotype filter', () => {
+  const filters = getEmptyFilters()
+  filters.isotypes_reported.add('IgM')
+  let filteredRecords = filterRecords(filters, testRecords)
+  expect(filteredRecords.length).toBe(8)
+  filters.isotypes_reported.add('IgA')
+  filteredRecords = filterRecords(filters, testRecords)
+  expect(filteredRecords.length).toBe(1)
 });
 
 test('test multiple filters', () => {
