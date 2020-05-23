@@ -82,8 +82,8 @@ export default function About() {
                     {renderBioBlock('Tingting Yan', ['University of Toronto'])}
                     {renderBioBlock('Christian Cao', ['University of Calgary'])}
                     {renderBioBlock('Claire Donnici', ['University of Calgary'])}
+                    {renderBioBlock('Natasha Ilincic', ['University of Guelph'])}
                     {renderBioBlock('Michael Liu', ['University of Oxford', 'Harvard University'])}
-                    {renderBioBlock('Brianna Rosgen', ['University of Calgary'])}
                     {renderBioBlock('Mitchell Segal', ['University of Toronto'])}
                 </div>
                 <h2 className="team-name-text">
