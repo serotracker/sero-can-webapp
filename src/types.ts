@@ -1,3 +1,5 @@
+import { AnyRecord } from "dns";
+
 export type AirtableRecord = {
     source_name: string | null,
     lead_org?: string | null,
@@ -5,7 +7,7 @@ export type AirtableRecord = {
     source_type: string | null,
     study_status: string | null,
     test_type: string[] | null,
-    isotopes_reported?: string[] | null,
+    isotypes_reported: string[] | null,
     manufacturer?: string | null,
     approving_regulator?: string | null,
     sensitivity?: number | null,
@@ -20,7 +22,7 @@ export type AirtableRecord = {
     seroprevalence: number | null,
     publish_date?: string | null,
     publisher?: string | null,
-    risk_of_bias?: string | null,
+    risk_of_bias: string | null,
     study_type?: string | null,
     sample_size?: string | null,
     sampling_method?: string | null,
@@ -47,10 +49,12 @@ export type Filters = {
     country: any,
     population_group: any,
     sex: any,
-    age: any
+    age: any,
+    risk_of_bias: any,
+    isotypes_reported: any
 };
 
-export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type';
+export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported';
 
 export type State = {
     healthcheck: string,

@@ -100,12 +100,12 @@ export default function Charts() {
           <div className="col-sm-6 col-lg-3 flex top right">
             95% CI
             <InformationIcon
-              offset="10px"
-              position="bottom right"
-              color="#455a64"
-              size="sm"
-              tooltip={`Error bars are calculated using the formula for variance: prevalence * (1 - prevalence) / total tests`}
-              tooltipHeader="95% Confidence Interval" />
+            offset="10px"
+            position="bottom right"
+            color="#455a64"
+            size="sm"
+            tooltip={"Wider error bars indicate greater uncertainty in the pooled seroprevalence estimate."}
+            tooltipHeader="95% Confidence Interval"/>
           </div>
         </div>
         <ResponsiveContainer width="100%" height="80%">
