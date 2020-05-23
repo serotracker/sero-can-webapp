@@ -1,8 +1,11 @@
 import React from "react";
 import './static.css';
+import { useMediaQuery } from "react-responsive";
+import { mobileDeviceOrTabletWidth } from "../../constants";
 
 export default function About() {
-
+    
+    const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
     function renderBioBlock(name: string, description: string[]){
         return (
             <div>
@@ -23,7 +26,7 @@ export default function About() {
     }
     return (
         <div className="page col-12">
-            <div className="static-content pb-2">
+            <div className={isMobileDeviceOrTablet ? "pb-2" : "static-content pb-2"}>
                 <h1>
                     About SeroTracker
                 </h1>
@@ -56,7 +59,7 @@ export default function About() {
                         For <b>dashboard-related inquiries</b>, please contact Jordan Van Wyk at <a href="mailto:jordan.vanwyk@uwaterloo.ca">jordan.vanwyk@uwaterloo.ca</a>.     
                     </li>
                     <li>
-                        To make us aware of <b>new SARS-CoV-2 seroprevalence studies</b> or studies that we have not yet captured, please fill out <a target="_blank" href="https://forms.gle/XWHQ7QPjQnzQMXSz8">this form</a>. 
+                        To make us aware of <b>new SARS-CoV-2 seroprevalence studies</b> or studies that we have not yet captured, please fill out <a rel="noopener noreferrer" target="_blank" href="https://forms.gle/XWHQ7QPjQnzQMXSz8">this form</a>. 
                     </li>
                 </ul>
                 <h1>

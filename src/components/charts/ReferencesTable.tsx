@@ -4,6 +4,8 @@ import { Dropdown, DropdownProps, Pagination, Table } from "semantic-ui-react";
 import { AppContext } from "../../context";
 import './Charts.css';
 import StudyDetailsModal from './StudyDetailsModal';
+import { mobileDeviceWidth } from '../../constants';
+import { useMediaQuery } from 'react-responsive';
 
 export default function ReferencesTable() {
   const [state] = useContext(AppContext);
@@ -42,6 +44,8 @@ export default function ReferencesTable() {
       setDirection(direction === 'ascending' ? 'descending' : 'ascending');
     }
   }
+  
+  const isMobileDevice = useMediaQuery({ maxDeviceWidth: mobileDeviceWidth })
 
   useEffect(() => {
     let newData = _.orderBy(state.filtered_records, [column], ['asc']);
@@ -52,8 +56,14 @@ export default function ReferencesTable() {
 
     const splicedData = newData.splice((activePage - 1) * pageLength, pageLength);
     setData(splicedData);
-    setTotalPages(Math.ceil(state.filtered_records.length / pageLength));
-  }, [activePage, column, direction, pageLength, state.filtered_records])
+
+    if (isMobileDevice) {
+      setPageLength(Math.ceil(state.filtered_records.length))
+    }
+    else {
+      setTotalPages(Math.ceil(state.filtered_records.length / pageLength));
+    }
+  }, [activePage, column, direction, isMobileDevice, pageLength, state.filtered_records])
 
   const buildHeaderCell = (sortColumn: string, displayName: string, className: string) => {
     return (
@@ -71,7 +81,7 @@ export default function ReferencesTable() {
     if (!population_group) {
       return "Not Reported";
     }
-    const displaySex =  sex && sex !== "All" && sex !== "Unspecified";
+    const displaySex = sex && sex !== "All" && sex !== "Unspecified";
     const displayAge = age && age[0] !== "All" && age[0] !== "Unspecified";
     return `${displaySex ? `${sex}, ` : ""}${displayAge ? `${(age as string[]).join(", ")}, ` : ""}${population_group.join(", ")}`;
   }
@@ -83,31 +93,7 @@ export default function ReferencesTable() {
     return `${city ? `${city.join(", ")}, ` : ""}${state ? `${state.join(", ")}, ` : ""}${country}`;
   }
 
-  const getTitle = (author: string | null | undefined, source: string | null, source_type: string | null) => {
-    if (!source) {
-      return "Not Reported";
-    }
-    return `${source} (${source_type})`
-  }
-  const getTestDetails = (manufacturer: string | null | undefined,
-    test_type: string[] | null,
-    approving_regulator: string | null | undefined,
-    isotypes_reported: string[] | null | undefined,
-    sensitivity: number | null | undefined,
-    specificity: number | null | undefined) => {
-    if (!test_type) {
-      return "Not Reported";
-    }
-    return `
-    ${manufacturer ? `${manufacturer}, ` : ""}
-    ${test_type ? `${test_type.join(", ")}, ` : ""} 
-    ${approving_regulator ? `${approving_regulator}, ` : ""}
-    ${test_type ? `${test_type.join(", ")}, ` : ""}
-    ${isotypes_reported ? `${isotypes_reported.join(", ")}, ` : ""}    
-    ${sensitivity ? `Sensitivity: ${sensitivity}, ` : ""}
-    ${specificity ? `Specificity: ${specificity}, ` : ""}
-    `
-  }
+
   return (
     <div className="container col-11 m-4 center-item flex">
       <div className="col-12 px-0 py-3 section-title">
@@ -116,13 +102,13 @@ export default function ReferencesTable() {
       <Table celled sortable fixed striped className="table mb-3 mt-0">
         <Table.Header className="flex col-12 p-0">
           <Table.Row className="flex col-12 p-0">
-            {buildHeaderCell('title', 'Name', 'col-3 p-1')}
-            {buildHeaderCell('country', 'Geography', 'col-2 p-1')}
-            {buildHeaderCell('populations', 'Populations', 'col-2 p-1')}
-            {buildHeaderCell('denominator', 'N', 'col-1 p-1')}
-            {buildHeaderCell('seroprevalence', 'Prevalence', 'col-1 p-1')}
-            {buildHeaderCell('risk_of_bias', 'Risk Of Bias', 'col-2 p-1')}
-            {buildHeaderCell('', 'Details', 'col-1 p-1')}
+            {buildHeaderCell('title', 'Name', 'col-sm-12 col-lg-3 p-1')}
+            {buildHeaderCell('country', 'Geography', 'col-sm-12 col-lg-2 p-1')}
+            {buildHeaderCell('populations', 'Populations', 'col-sm-12 col-lg-2 p-1')}
+            {buildHeaderCell('denominator', 'N', 'col-sm-12 col-lg-1 p-1')}
+            {buildHeaderCell('seroprevalence', 'Prevalence', 'col-sm-12 col-lg-1 p-1')}
+            {buildHeaderCell('risk_of_bias', 'Risk Of Bias', 'col-sm-12 col-lg-2 p-1')}
+            {buildHeaderCell('', 'Details', 'col-sm-12 col-lg-1 p-1')}
           </Table.Row>
         </Table.Header>
         <Table.Body className="col-12 p-0">
@@ -138,40 +124,43 @@ export default function ReferencesTable() {
               } = record
               return (
                 <Table.Row className="flex col-12 p-0" key={Math.random()}>
-                  <Table.Cell className="col-3 p-1">
-              <a href={url ? url : '#'} target="_blank" rel="noopener noreferrer">{source_name}</a>
-              <i className="px-1">({source_type})</i>
+                  <Table.Cell className=" col-sm-12 col-lg-3 p-1">
+                    <a href={url ? url : '#'} target="_blank" rel="noopener noreferrer">{source_name}</a>
+                    <i className="px-1">({source_type})</i>
                   </Table.Cell>
-                  <Table.Cell className="flex col-2 p-1">{getGeography(city, state, country)}</Table.Cell>
-                  <Table.Cell className="flex col-2 p-1">{getPopulation(sex, age, population_group)}</Table.Cell>
-                  <Table.Cell className="flex col-1 p-1">{denominator ? denominator : "Not Reported"}</Table.Cell>
-                  <Table.Cell className="flex col-1 p-1">{seroprevalence ? `${(seroprevalence * 100).toFixed(2)}%` : "Not Reported"}</Table.Cell>
-                  <Table.Cell className="flex col-2 p-1">{risk_of_bias ? risk_of_bias : "Not Reported"}</Table.Cell>
-                  <Table.Cell className="flex col-1 p-0 center-item"><StudyDetailsModal record={record} /></Table.Cell>
+                  <Table.Cell className="flex col-sm-12 col-lg-2 p-1">{getGeography(city, state, country)}</Table.Cell>
+                  <Table.Cell className="flex col-sm-12 col-lg-2 p-1">{getPopulation(sex, age, population_group)}</Table.Cell>
+                  <Table.Cell className="flex col-sm-12 col-lg-1 p-1">{denominator ? denominator : "Not Reported"}</Table.Cell>
+                  <Table.Cell className="flex col-sm-12 col-lg-1 p-1">{seroprevalence ? `${(seroprevalence * 100).toFixed(2)}%` : "Not Reported"}</Table.Cell>
+                  <Table.Cell className="flex col-sm-12 col-lg-2 p-1">{risk_of_bias ? risk_of_bias : "Not Reported"}</Table.Cell>
+                  <Table.Cell className="flex col-sm-12 col-lg-1 p-0 center-item"><StudyDetailsModal record={record} /></Table.Cell>
                 </Table.Row>
               )
             })}
         </Table.Body>
-        <Table.Footer className="flex space-between">
-          <Pagination
-            activePage={activePage}
-            boundaryRange={boundaryRange}
-            onPageChange={handlePaginationChange}
-            size='mini'
-            siblingRange={siblingRange}
-            totalPages={totalPages}
-          />
-          <div className="p-2 flex">
-            <Dropdown inline
-              options={pageLengthOptions}
-              defaultValue={pageLengthOptions[0].value}
-              onChange={handlePageLengthChange} />
-            <div className="px-2">
-              studies per page
+        {
+          !isMobileDevice ?
+            <Table.Footer className="flex space-between">
+              <Pagination
+                activePage={activePage}
+                boundaryRange={boundaryRange}
+                onPageChange={handlePaginationChange}
+                size='mini'
+                siblingRange={siblingRange}
+                totalPages={totalPages}
+              />
+              <div className="p-2 flex">
+                <Dropdown inline
+                  options={pageLengthOptions}
+                  defaultValue={pageLengthOptions[0].value}
+                  onChange={handlePageLengthChange} />
+                <div className="px-2">
+                  studies per page
               </div>
-
-          </div>
-        </Table.Footer>
+              </div>
+            </Table.Footer> :
+            null
+        }
       </Table>
     </div>
   );

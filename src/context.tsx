@@ -46,7 +46,7 @@ function buildFilterFunction(filters: Record<string, any>) {
           // Note: isotypes filter works on an 'and' basis
           // Unlike other filters, which work on an 'or' basis
           // TODO: make logic flow here more generalized in case we need other filters in the future with similar behaviour
-          if(filter_key == 'isotypes_reported'){
+          if(filter_key === 'isotypes_reported'){
             let match = true;
             filters[filter_key].forEach((item: string) => {
               if(!(record[filter_key].includes(item))){
@@ -130,7 +130,7 @@ function getFilterOptions(records: AirtableRecord[]) {
       }
       if(record.isotypes_reported){
         record.isotypes_reported.forEach((isotype_reported) => {
-          if(isotype_reported != 'Not reported'){
+          if(isotype_reported !== 'Not reported'){
             filter_options.isotypes_reported.add(isotype_reported);
           }
         });
