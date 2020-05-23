@@ -1,15 +1,15 @@
 import _ from "lodash";
-import React, { useContext, useEffect, useState, SyntheticEvent } from "react";
+import React, { SyntheticEvent, useContext, useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { Bar, BarChart, CartesianGrid, ErrorBar, LabelList, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Dropdown, DropdownProps } from "semantic-ui-react";
+import { mobileDeviceOrTabletWidth } from "../../constants";
 import { AppContext } from "../../context";
 import { getAggregateData } from "../../metaAnalysis";
-import './Charts.css';
-import ReferencesTable from "./ReferencesTable";
 import { AggregationFactor } from "../../types";
 import InformationIcon from "../shared/InformationIcon";
-import { useMediaQuery } from "react-responsive";
-import { mobileDeviceWidth } from "../../constants";
+import './Charts.css';
+import ReferencesTable from "./ReferencesTable";
 
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
@@ -77,11 +77,11 @@ export default function Charts() {
     return longestWord;
   }
 
-  const isMobileDevice = useMediaQuery({ maxDeviceWidth: mobileDeviceWidth })
+  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
 
   return (
     <div className="charts-page flex">
-      <div className={isMobileDevice ? "mobile-charts container col-11 center-item flex" : "charts container col-11 center-item flex"}>
+      <div className={isMobileDeviceOrTablet ? "mobile-charts container col-11 center-item flex" : "charts container col-11 center-item flex"}>
         <div className="col-12 p-0 center-item flex">
           <div className="col-sm-1 col-lg-3">
           </div>

@@ -14,6 +14,7 @@ const Legend = (props: legendProps) => {
   const { map } = useLeaflet();
   const buckets = props.buckets as number[]
   const getColor = props.getColor;
+
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
   useEffect(() => {
     const control = L.control as any
