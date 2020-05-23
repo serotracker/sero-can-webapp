@@ -1,12 +1,13 @@
-import L, { latLngBounds, Layer, LeafletMouseEvent } from "leaflet";
-import React, { createRef, useContext, useEffect, useState, useRef } from "react";
+import { latLngBounds, Layer, LeafletMouseEvent } from "leaflet";
+import React, { createRef, useContext, useEffect, useState } from "react";
+import ReactDOMServer from 'react-dom/server';
 import { GeoJSON, Map as LeafletMap, TileLayer } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
 import { getAggregateData } from "../../metaAnalysis";
+import { AggregatedRecord, AggregationFactor } from "../../types";
 import Legend from "./Legend";
 import './Map.css';
-import { AggregationFactor } from "../../types";
 
 export default function Map() {
   const mapRef = createRef<LeafletMap>();
@@ -20,17 +21,24 @@ export default function Map() {
   ]
 
   useEffect(() => {
-    const prevalenceCountryDict = getAggregateData(state.filtered_records, AggregationFactor.country).reduce((a, x) => ({ ...a, [x.name]: x.seroprevalence }), {})
+    const prevalenceCountryDict: Record<string, AggregatedRecord> = getAggregateData(state.filtered_records, AggregationFactor.country)
+      .reduce((a, x: AggregatedRecord) => ({ ...a, [x.name]: x }), {})
+
     const importGeo = Countries as any;
     const features = importGeo.features as GeoJSON.Feature[]
+
+    // We will iterate through all the features in the geoJson
+    // if they are in the country dict we will attach their aggregated data to the feature for displaying
     importGeo.features = features.map(feature => {
-      const seroprevalence = prevalenceCountryDict[feature?.properties?.name as string];
-      if (seroprevalence) {
-        return { ...feature, properties: { ...feature.properties, seroprevalence } }
+      const country = prevalenceCountryDict[feature?.properties?.name];
+      if (country && country.seroprevalence) {
+        const { seroprevalence, error, n, num_studies } = country;
+        return { ...feature, properties: { ...feature.properties, seroprevalence, error, n, num_studies } }
       }
-      return { ...feature, properties: { ...feature.properties, seroprevalence: null } }
+      return { ...feature, properties: { ...feature.properties, seroprevalence: null, error: null, n: null, num_studies: null } }
     })
     setMapRecords(importGeo)
+
     // we need to update the key on the GEOJSON to let react know it's time to rerender
     setForceUpdate(Math.random())
   }, [state.filtered_records])
@@ -61,9 +69,13 @@ export default function Map() {
 
   // Abstract to utils
   const getBuckets = (features: GeoJSON.Feature[]) => {
+    // This is some javascript voodoo to get maxSeroprevalence
     const maxSeroprevalence = Math.max.apply(Math, features.filter(o => o.properties?.seroprevalence).map((o) => o?.properties?.seroprevalence));
     const roundedMax = Math.ceil(maxSeroprevalence);
     const maxLogit = getLogit(roundedMax);
+
+    // This is an arbitrary value that I chose because on the logit scale
+    // as you decrease in size you approach infinity, not 0
     const lowerEnd = -7;
     const differenceScale = maxLogit - lowerEnd
     const bucketSegments = 6
@@ -92,8 +104,7 @@ export default function Map() {
                 colors[6]
   }
 
-  //TODO: add in typing for event
-  const highlightFeature = (e: any) => {
+  const highlightFeature = (e: LeafletMouseEvent) => {
     const layer = e.target;
     layer.setStyle({
       weight: 5,
@@ -106,45 +117,63 @@ export default function Map() {
 
   }
 
-  //TODO: add in typing for event
-  const zoomToFeature = (e: any) => {
+  const zoomToFeature = (e: LeafletMouseEvent) => {
     const map = mapRef?.current?.leafletElement
     map?.fitBounds(e.target.getBounds());
   };
 
-  //TODO: add in typing for event
-  const resetHighlight = (e: any) => {
+  const resetHighlight = (e: LeafletMouseEvent) => {
     const layer = e.target;
 
     layer.setStyle({
       weight: 2,
       opacity: 1,
       color: 'white',
-      dashArray: '3',
+      dashArray: '',
       fillOpacity: 0.7
     });
   };
 
+  const createPopup = (properties: any) => {
+    if (properties.seroprevalence) {
+      let error = properties?.error;
+      return (
+        <div className="col-12 p-0 flex">
+          <div className="col-12 p-0 popup-header">{properties.name}</div>
+          <div className="col-12 p-0 popup-content">Seroprevalence: {properties?.seroprevalence.toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">95% CI: {(properties?.seroprevalence - error[0]).toFixed(2)}%-{(properties?.seroprevalence + error[1]).toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">Total Tests: {properties?.n}</div>
+          <div className="col-12 p-0 popup-content">Total Estimates: {properties?.num_studies}</div>
+        </div>)
+    };
+    return (
+      <div className="col-12 p-0 flex">
+        <h3 className="col-12 p-0 flex popup-header">{properties.name}</h3>
+        <div className="col-12 p-0 flex popup-content">No data</div>
+      </div>)
+  }
+
+
   // This method sets all the functionality for each GeoJSON item
   const onEachFeature = (feature: GeoJSON.Feature, layer: Layer) => {
-    if (feature.properties?.seroprevalence) {
-      layer.bindPopup(`${feature.properties.name}: ${feature.properties?.seroprevalence.toFixed(2)}%`, { closeButton: false, autoPan: false });
-    }
-    else {
-      layer.bindPopup(`${feature.properties?.name}: No data recorded`, { closeButton: false, autoPan: false });
-    }
+
+    layer.bindPopup(ReactDOMServer.renderToString(createPopup(feature.properties)), { closeButton: false, autoPan: false });
 
     layer.on({
-      mouseover: () => { layer.openPopup() },
-      mouseout: () => { layer.closePopup(); },
+      mouseover: (e: LeafletMouseEvent) => {
+        layer.openPopup();
+        highlightFeature(e)
+      },
+      mouseout: (e: LeafletMouseEvent) => {
+        layer.closePopup();
+        resetHighlight(e)
+      },
       mousemove: (e: LeafletMouseEvent) => {
         layer.getPopup()?.setLatLng(e.latlng);
+      },
+      click: (e: LeafletMouseEvent) => {
+        zoomToFeature(e);
       }
-    })
-    layer.on({
-      mouseover: highlightFeature,
-      mouseout: resetHighlight,
-      click: zoomToFeature
     })
   }
 

@@ -2,93 +2,115 @@ import { AirtableRecord, Filters } from "../types"
 
 export const testRecords: AirtableRecord[] = [
     {
-        article_name: 'article1',
+        source_name: 'article1',
         source_type: 'source1',
         study_status: 'status1',
-        test_type: 'test1',
+        test_type: ['test1'],
         country: 'Canada',
-        populations: ['General'],
+        population_group: ['General'],
+        sex: 'All',
+        age: ['Youth (15-24)'],
         denominator: 2000,
-        seroprevalence: 0.15
+        seroprevalence: 0.15,
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
-        article_name: 'article2',
+        source_name: 'article2',
         source_type: 'source2',
         study_status: 'status1',
-        test_type: 'test1',
+        test_type: ['test1'],
         country: 'Canada',
-        populations: ['Adults'],
+        population_group: ['Adults'],
+        sex: 'All',
+        age: ['Youth (15-24)'],
         denominator: 1000,
-        seroprevalence: 0.2
+        seroprevalence: 0.2,
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
-        article_name: 'article3',
+        source_name: 'article3',
         source_type: 'source1',
         study_status: 'status2',
-        test_type: 'test1',
+        test_type: ['test1'],
         country: 'Canada',
-        populations: ['Children'],
+        population_group: ['Children'],
+        sex: 'All',
+        age: ['Youth (15-24)'],
         denominator: 200,
-        seroprevalence: 0.12
+        seroprevalence: 0.12,
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
-        article_name: 'article4',
+        source_name: 'article4',
         source_type: 'source1',
         study_status: 'status1',
-        test_type: 'test2',
+        test_type: ['test2'],
         country: 'Canada',
-        populations: ['Children', 'Seniors'],
+        population_group: ['Children', 'Seniors'],
+        sex: 'All',
+        age: ['Youth (15-24)'],
         denominator: 500,
-        seroprevalence: 0.15
+        seroprevalence: 0.15,
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
-        article_name: 'article1',
+        source_name: 'article1',
         source_type: 'source1',
         study_status: 'status1',
-        test_type: 'test1',
+        test_type: ['test1'],
         country: 'France',
-        populations: ['General'],
+        population_group: ['General'],
+        sex: 'All',
+        age: ['Youth (15-24)'],
         denominator: 1250,
-        seroprevalence: 0.23
+        seroprevalence: 0.23,
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
-        article_name: 'article2',
+        source_name: 'article2',
         source_type: 'source2',
         study_status: 'status1',
-        test_type: 'test1',
+        test_type: ['test1'],
         country: 'France',
-        populations: ['Adults'],
+        population_group: ['Adults'],
+        sex: 'All',
+        age: ['Youth (15-24)'],
         denominator: 700,
-        seroprevalence: 0.25
+        seroprevalence: 0.25,
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
-        article_name: 'article3',
+        source_name: 'article3',
         source_type: 'source1',
         study_status: 'status2',
-        test_type: 'test1',
+        test_type: ['test1'],
         country: 'France',
-        populations: ['Children'],
+        population_group: ['Children'],
+        sex: 'All',
+        age: ['Youth (15-24)'],
         denominator: 300,
-        seroprevalence: 0.32
+        seroprevalence: 0.32,
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
     },
     {
-        article_name: 'article4',
+        source_name: 'article4',
         source_type: 'source1',
         study_status: 'status1',
-        test_type: 'test2',
+        test_type: ['test2'],
         country: 'France',
-        populations: ['Children', 'Seniors'],
+        population_group: ['Children', 'Seniors'],
+        sex: 'Male',
+        age: ['Adults (25-49)'],
         denominator: 500,
-        seroprevalence: 0.2
+        seroprevalence: 0.2,
+        risk_of_bias: "High",
+        isotypes_reported: ['IgM', 'IgA']
     }
 ];
-
-export function getEmptyFilters(): Filters{
-    return {
-        source_type: new Set(),
-        study_status: new Set(),
-        test_type: new Set(),
-        country: new Set(),
-        populations: new Set()
-    }
-}

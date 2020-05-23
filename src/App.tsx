@@ -1,19 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, Route, Switch, useLocation, Redirect } from "react-router-dom";
+import { Link, Redirect, Route, Switch, useLocation } from "react-router-dom";
 import './App.css';
 import Icon from './assets/images/two-tone-light.svg';
-import Data from "./components/pages/Data";
+import Dashboard from "./components/pages/Data";
 import About from './components/static/About';
-import Auth from './components/static/Auth/Auth';
-import Home from './components/static/Home';
+import Data from './components/static/Home';
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
 
-
-
 function App() {
   const [tab, setTab] = useState("");
-  const [state, dispatch] = useContext(AppContext);
+  const [, dispatch] = useContext(AppContext);
 
   // DATA
   useEffect(() => {
@@ -39,42 +36,39 @@ function App() {
   usePageViews()
 
   const getTabClass = (tabName: string) => {
-    return tabName === tab ? 'bold col-4 center' : 'regular col-4 center'
+    return tabName === tab ? 'bold center' : 'regular center'
   }
 
   // AUTHENTICATION
-  let authStatus = false;
+  // let authStatus = false;
 
-  if (localStorage.hasOwnProperty('authenticated')) {
-    authStatus = localStorage.getItem('authenticated') !== null;
-  }
-  const [auth, setAuth] = useState(authStatus);
+  // if (localStorage.hasOwnProperty('authenticated')) {
+  //   authStatus = localStorage.getItem('authenticated') !== null;
+  // }
+  // const [auth, setAuth] = useState(authStatus);
 
-  function setActiveTab(tab: string) {
-    setTab(tab)
-  }
 
-  function authenticate() {
-    setAuth(true);
-    // Workaround because only string values can be saved to localStorage
-    localStorage.setItem('authenticated', 'true');
-  }
+  // function authenticate() {
+  //   setAuth(true);
+  //   // Workaround because only string values can be saved to localStorage
+  //   localStorage.setItem('authenticated', 'true');
+  // }
 
   return (
     <div className="App-container">
-      {auth === false ? (
+      {/* {auth === false ? (
         <Auth authenticate={authenticate} />
-      ) : (
-          <div className="col-12 p-0 flex">
-            <header className="App-header col-12 px-3">
-              <div className="App-title py-3 flex center-item">
-                <Link to="/Home" className="flex">
+      ) : ( */}
+          <div className="col-12 p-0">
+            <header className="App-header col-12 px-sm-2">
+              <div className="App-title col-auto py-3 px-0 flex left ">
+                <Link to="/" className="flex">
                   <img src={Icon} width={23} height={23} alt="" />
                   <div className="col-auto px-2" >SeroTracker</div>
                 </Link>
               </div>
-              <div className="App-tabs col-sm-4 col-lg-2">
-                <Link className={getTabClass('/Home')} to="/Home">Home</Link>
+              <div className="App-tabs p-0 col-sm-8 col-lg-3">
+                <Link className={getTabClass('/Dashboard')} to="/Dashboard">Dashboard</Link>
                 <Link className={getTabClass('/Data')} to="/Data">Data</Link>
                 <Link className={getTabClass('/About')} to="/About">About</Link>
               </div>
@@ -84,13 +78,13 @@ function App() {
               <Route path="/About">
                 <About />
               </Route>
+              <Route path="/Dashboard">
+                <Dashboard />
+              </Route>
               <Route path="/Data">
                 <Data />
               </Route>
-              <Route path="/Home">
-                <Home />
-              </Route>
-              <Redirect exact from="/" to="home" />
+              <Redirect exact from="/" to="/Dashboard" />
             </Switch>
           </div>
         )

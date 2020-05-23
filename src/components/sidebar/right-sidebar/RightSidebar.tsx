@@ -2,11 +2,12 @@ import React from "react";
 import Filters from "./Filters";
 import LastUpdated from "./LastUpdated";
 import "../sidebar.css"
+import "./RightSidebar.css"
 
 export default function RightSidebar() {
   return (
     <div className="col-12 p-0 d-flex flex-column justify-content-between sidebar-container">
-      <div>
+      <div className="filters-container mb-3">
         <Filters/>
       </div>
       <div>

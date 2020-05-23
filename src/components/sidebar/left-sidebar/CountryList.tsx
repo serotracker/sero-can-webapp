@@ -13,7 +13,7 @@ export default function CountryList() {
   return (
     <div className="col-12 px-0 country-list-container">
       <div className="section-title py-2 center">
-        COUNTRIES BY SEROPREVALENCE
+        SEROPREVALENCE BY COUNTRY
       </div>
       <div className="item-list-container">
         {aggregatedData.map(o => {

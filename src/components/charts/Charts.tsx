@@ -1,12 +1,15 @@
 import _ from "lodash";
-import React, { useContext, useEffect, useState, SyntheticEvent } from "react";
+import React, { SyntheticEvent, useContext, useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { Bar, BarChart, CartesianGrid, ErrorBar, LabelList, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Dropdown, DropdownProps } from "semantic-ui-react";
+import { mobileDeviceOrTabletWidth } from "../../constants";
 import { AppContext } from "../../context";
 import { getAggregateData } from "../../metaAnalysis";
+import { AggregationFactor } from "../../types";
+import InformationIcon from "../shared/InformationIcon";
 import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
-import { AggregationFactor } from "../../types";
 
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
@@ -16,7 +19,7 @@ export default function Charts() {
   const [records, setRecords] = useState(aggregatedRecords);
 
   const yAxisOptions = [
-    { key: 'Population', text: 'Population', value: AggregationFactor.population },
+    { key: 'Population', text: 'Population', value: AggregationFactor.population_group },
     { key: 'Geographies', text: 'Geographies', value: AggregationFactor.country }
   ]
 
@@ -30,11 +33,18 @@ export default function Charts() {
     setYAxis(data.value as AggregationFactor);
   }
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = (e: any) => {
+    const { active, payload, label } = e
     if (active && payload) {
+      const seroprevalence = payload[0].value;
+      const recordError = records.find(o => o.name === label)?.error || [0, 0];
       return (
-        <div className="custom-tooltip">
-          <p className="label">{`${label} : ${payload[0].value.toFixed(2)}`}</p>
+        <div className="col flex popup">
+          <div className="col-12 p-0 popup-header">{label}</div>
+          <div className="col-12 p-0 popup-content">Seroprevalence: {seroprevalence.toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">95% Confidence Interval:  {(seroprevalence - recordError[0]).toFixed(2)}%-{(seroprevalence + recordError[1]).toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">Total Tests: {payload[0].payload.n}</div>
+          <div className="col-12 p-0 popup-content">Total Estimates: {payload[0].payload.num_studies}</div>
         </div>
       );
     }
@@ -43,17 +53,21 @@ export default function Charts() {
 
 
   const renderCustomizedLabel = (props: any) => {
-    const { x, y, width, height, value } = props;
+    const { x, y, width, height, value, index } = props;
+    let recordError = records[index].error;
+    const ratio = width / value;
+    const error = Array.isArray(recordError) ? recordError[1] : recordError;
+    const errorBarWidth = ratio * error;
     return (
       <g>
-        <text x={x + width + 10} y={y + height / 2} fill="#000" textAnchor="right" dominantBaseline="right">
+        <text x={x + width + 10 + (errorBarWidth as number)} y={y + height / 2 + 5} fill="#000" textAnchor="right" dominantBaseline="right">
           {value.toFixed(2)}
         </text>
       </g>
     );
   };
 
-  const getYAxisWidth = (chartData: Record<string, string | number>[]) => {
+  const getYAxisWidth = (chartData: Record<string, string | number | number[]>[]) => {
     let longestWord = 0;
     chartData.filter(o => o.name)
       .forEach(o => {
@@ -63,13 +77,15 @@ export default function Charts() {
     return longestWord;
   }
 
+  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
+
   return (
     <div className="charts-page flex">
-      <div className="charts container col-10 center-item flex">
+      <div className={isMobileDeviceOrTablet ? "mobile-charts container col-11 center-item flex" : "charts container col-11 center-item flex"}>
         <div className="col-12 p-0 center-item flex">
-          <div className="col-3">
+          <div className="col-sm-1 col-lg-3">
           </div>
-          <div className="charts-title flex col-6">
+          <div className="charts-title flex p-0 mt-2 p-lg-0 col-sm-8 col-lg-6">
             <div className="col-auto flex center-item">
               Seroprevalence by
             </div>
@@ -82,20 +98,27 @@ export default function Charts() {
             >
             </Dropdown>
           </div>
-          <div className=" col-3 flex top right">
+          <div className="col-sm-6 col-lg-3 flex top right">
             95% CI
+            <InformationIcon
+            offset="10px"
+            position="bottom right"
+            color="#455a64"
+            size="sm"
+            tooltip={"Wider error bars indicate greater uncertainty in the pooled seroprevalence estimate."}
+            tooltipHeader="95% Confidence Interval"/>
           </div>
         </div>
-        <ResponsiveContainer width="80%" height="80%">
+        <ResponsiveContainer width="100%" height="80%">
           <BarChart data={records} layout='vertical'>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" name="Seroprevalence (%)" />
+            <XAxis type="number" name="Seroprevalence (%)" padding={{ left: 0, right: 30 }} />
             <YAxis dataKey="name" type="category" width={getYAxisWidth(records) * 7} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
-            <Bar dataKey="seroprevalence" name="Seroprevalence (%)" fill="#55A6BA">
+            <Bar dataKey="seroprevalence" name="Seroprevalence (%)" fill="#55A6BA" maxBarSize={60}>
               <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
-              <ErrorBar dataKey="error" width={4} strokeWidth={2}/>
+              <ErrorBar dataKey="error" width={4} strokeWidth={2} />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
