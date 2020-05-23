@@ -22,6 +22,7 @@ jobs:
       env:
         REACT_APP_MAPBOX_API_KEY: ${{ secrets.MAPBOX_API_KEY }}
         REACT_APP_ROUTE: ${{ secrets.ROUTE }}
+        PUBLIC_URL: ${{ secrets.PUBLIC_URL }}
         CI: false
 
     - name: Deploy
