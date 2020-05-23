@@ -1,4 +1,3 @@
-import { AnyRecord } from "dns";
 
 export type AirtableRecord = {
     source_name: string | null,

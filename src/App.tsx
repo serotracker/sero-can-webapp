@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, Route, Switch, useLocation, Redirect } from "react-router-dom";
+import { Link, Redirect, Route, Switch, useLocation } from "react-router-dom";
 import './App.css';
 import Icon from './assets/images/two-tone-light.svg';
 import Dashboard from "./components/pages/Data";
 import About from './components/static/About';
-import Auth from './components/static/Auth/Auth';
 import Data from './components/static/Home';
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
@@ -41,19 +40,19 @@ function App() {
   }
 
   // AUTHENTICATION
-  let authStatus = false;
+  // let authStatus = false;
 
-  if (localStorage.hasOwnProperty('authenticated')) {
-    authStatus = localStorage.getItem('authenticated') !== null;
-  }
-  const [auth, setAuth] = useState(authStatus);
+  // if (localStorage.hasOwnProperty('authenticated')) {
+  //   authStatus = localStorage.getItem('authenticated') !== null;
+  // }
+  // const [auth, setAuth] = useState(authStatus);
 
 
-  function authenticate() {
-    setAuth(true);
-    // Workaround because only string values can be saved to localStorage
-    localStorage.setItem('authenticated', 'true');
-  }
+  // function authenticate() {
+  //   setAuth(true);
+  //   // Workaround because only string values can be saved to localStorage
+  //   localStorage.setItem('authenticated', 'true');
+  // }
 
   return (
     <div className="App-container">

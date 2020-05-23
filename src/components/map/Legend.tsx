@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import ReactDOMServer from "react-dom/server";
 import { useLeaflet } from "react-leaflet";
 import "./Legend.css";
-import { useMediaQuery } from "react-responsive";
+import { isMobileDeviceOrTablet } from "../../contants";
 interface legendProps {
   buckets: number[],
   getColor: (d: number | null) => string
@@ -13,7 +13,6 @@ const Legend = (props: legendProps) => {
   const { map } = useLeaflet();
   const buckets = props.buckets as number[]
   const getColor = props.getColor;
-  const isTabletOrMobileDevice = useMediaQuery({ maxDeviceWidth: 1200 })
   useEffect(() => {
     const control = L.control as any
     const legend = control({ position: "bottomright" });
@@ -21,7 +20,7 @@ const Legend = (props: legendProps) => {
     legend.onAdd = () => {
       let div = L.DomUtil.create("div", "info flex legend center-item");
 
-      if (isTabletOrMobileDevice) {
+      if (isMobileDeviceOrTablet) {
         div = L.DomUtil.create("div", "info flex legend-mobile center-item");
       }
 
@@ -46,8 +45,8 @@ const Legend = (props: legendProps) => {
           // TODO: Check into passing in an array of colours instead of the getColor function
           return ReactDOMServer.renderToString(
             <div className="bin flex">
-              <div className={isTabletOrMobileDevice ? "col-12 mobile-text p-0" : "col-12 p-0"}>
-          {isTabletOrMobileDevice ? `${from}%${to ? '' : "+"}`:`${from}%${to ? `- ${to}%` : "+"}`}</div>
+              <div className={isMobileDeviceOrTablet ? "col-12 mobile-text p-0" : "col-12 p-0"}>
+          {isMobileDeviceOrTablet ? `${from}%${to ? '' : "+"}`:`${from}%${to ? `- ${to}%` : "+"}`}</div>
               <i className="col-12 p-0" style={{ background: getColor(from) }}></i>
             </div>
           )

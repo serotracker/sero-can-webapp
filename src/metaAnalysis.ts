@@ -76,7 +76,7 @@ export function aggregateRecords(records: AirtableRecord[], method: string = "do
     let pooled_p: number = 0;
     let error: number[] = [0, 0];
 
-    if (method == "naive_pooling"){
+    if (method === "naive_pooling"){
         filteredRecords.forEach((record: AirtableRecord) => {
             total_positive += (record.seroprevalence as number) * (record.denominator as number);
             total_tested += (record.denominator as number);

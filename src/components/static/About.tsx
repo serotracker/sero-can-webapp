@@ -56,7 +56,7 @@ export default function About() {
                         For <b>dashboard-related inquiries</b>, please contact Jordan Van Wyk at <a href="mailto:jordan.vanwyk@uwaterloo.ca">jordan.vanwyk@uwaterloo.ca</a>.     
                     </li>
                     <li>
-                        To make us aware of <b>new SARS-CoV-2 seroprevalence studies</b> or studies that we have not yet captured, please fill out <a target="_blank" href="https://forms.gle/XWHQ7QPjQnzQMXSz8">this form</a>. 
+                        To make us aware of <b>new SARS-CoV-2 seroprevalence studies</b> or studies that we have not yet captured, please fill out <a rel="noopener noreferrer" target="_blank" href="https://forms.gle/XWHQ7QPjQnzQMXSz8">this form</a>. 
                     </li>
                 </ul>
                 <h1>

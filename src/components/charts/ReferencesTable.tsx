@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import React, { useContext, useEffect, useState } from "react";
 import { Dropdown, DropdownProps, Pagination, Table } from "semantic-ui-react";
+import { isMobileDevice } from '../../contants';
 import { AppContext } from "../../context";
 import './Charts.css';
 import StudyDetailsModal from './StudyDetailsModal';
-import { useMediaQuery } from 'react-responsive';
 
 export default function ReferencesTable() {
   const [state] = useContext(AppContext);
@@ -16,8 +16,6 @@ export default function ReferencesTable() {
   const [column, setColumn] = useState('denominator');
   const [direction, setDirection] = useState('descending');
   const [data, setData] = useState(state.filtered_records);
-
-  const isMobileDevice = useMediaQuery({ maxDeviceWidth: 600 })
 
   const handlePaginationChange = (e: any, event: any) => {
     const { activePage } = event;
@@ -62,7 +60,7 @@ export default function ReferencesTable() {
     else {
       setTotalPages(Math.ceil(state.filtered_records.length / pageLength));
     }
-  }, [activePage, column, direction, isMobileDevice, pageLength, state.filtered_records])
+  }, [activePage, column, direction, pageLength, state.filtered_records])
 
   const buildHeaderCell = (sortColumn: string, displayName: string, className: string) => {
     return (

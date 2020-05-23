@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import "./StudyDetailsModal.css"
-import { Modal, Button, Header } from "semantic-ui-react";
-import { AirtableRecord } from "../../types";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Button, Modal } from "semantic-ui-react";
+import { AirtableRecord } from "../../types";
+import "./StudyDetailsModal.css";
 
 // TODO: Extract this into a modal service 
 
