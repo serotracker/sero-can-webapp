@@ -8,7 +8,8 @@ import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
 import { AggregationFactor } from "../../types";
 import InformationIcon from "../shared/InformationIcon";
-import { isMobileDevice } from "../../contants";
+import { useMediaQuery } from "react-responsive";
+import { mobileDeviceWidth } from "../../constants";
 
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
@@ -75,6 +76,8 @@ export default function Charts() {
       })
     return longestWord;
   }
+
+  const isMobileDevice = useMediaQuery({ maxDeviceWidth: mobileDeviceWidth })
 
   return (
     <div className="charts-page flex">

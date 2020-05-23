@@ -1,9 +1,11 @@
 import React from "react";
 import { Tab } from "semantic-ui-react";
-import { isMobileDeviceOrTablet } from "../../contants";
 import './static.css';
+import { useMediaQuery } from "react-responsive";
+import { mobileDeviceOrTabletWidth } from "../../constants";
 
 export default function Data() {
+    const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
     const renderPane = (src: string) => {
         return <Tab.Pane className="col-12 p-0">
             <iframe

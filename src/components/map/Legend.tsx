@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import ReactDOMServer from "react-dom/server";
 import { useLeaflet } from "react-leaflet";
 import "./Legend.css";
-import { isMobileDeviceOrTablet } from "../../contants";
+import { useMediaQuery } from "react-responsive";
+import { mobileDeviceOrTabletWidth } from "../../constants";
 interface legendProps {
   buckets: number[],
   getColor: (d: number | null) => string
@@ -13,6 +14,7 @@ const Legend = (props: legendProps) => {
   const { map } = useLeaflet();
   const buckets = props.buckets as number[]
   const getColor = props.getColor;
+  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
   useEffect(() => {
     const control = L.control as any
     const legend = control({ position: "bottomright" });

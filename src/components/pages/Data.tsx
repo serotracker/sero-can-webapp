@@ -1,12 +1,14 @@
 import React from "react";
-import { isMobileDeviceOrTablet } from "../../contants";
+import { mobileDeviceOrTabletWidth } from "../../constants";
 import CentralPiece from "../CenterComponent";
 import MobileComponents from '../mobile/MobileComponents';
 import LeftSidebar from "../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../sidebar/right-sidebar/RightSidebar";
+import { useMediaQuery } from "react-responsive";
 
 export default function Dashboard() {
 
+  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
   return (
     <div className="col-12 p-0 flex">
       {!isMobileDeviceOrTablet ?
