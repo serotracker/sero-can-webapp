@@ -27,8 +27,8 @@ export default function Data() {
     }];
 
     return (
-        <div className="page">
-            <div className="static-content">
+        <div className="col-12 page">
+            <div className={isMobileDeviceOrTablet ? "pb-2" : "static-content pb-2"}>
                 <h1>
                     Methods
                 </h1>

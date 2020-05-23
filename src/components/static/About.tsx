@@ -1,8 +1,11 @@
 import React from "react";
 import './static.css';
+import { useMediaQuery } from "react-responsive";
+import { mobileDeviceOrTabletWidth } from "../../constants";
 
 export default function About() {
-
+    
+    const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
     function renderBioBlock(name: string, description: string[]){
         return (
             <div>
@@ -23,7 +26,7 @@ export default function About() {
     }
     return (
         <div className="page col-12">
-            <div className="static-content pb-2">
+            <div className={isMobileDeviceOrTablet ? "pb-2" : "static-content pb-2"}>
                 <h1>
                     About SeroTracker
                 </h1>
