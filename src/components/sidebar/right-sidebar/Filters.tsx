@@ -29,7 +29,7 @@ export default function Filters() {
     });
   }
 
-  const buildSectionHeader = (header_text: string, tooltip_text?: string, tooltip_header?: string) => {
+  const buildSectionHeader = (header_text: string, tooltip_text?: string | React.ReactNode, tooltip_header?: string) => {
     return(
       <div className="pb-2 flex">
         <div className="filter-section-header">{header_text}</div>
@@ -95,7 +95,17 @@ export default function Filters() {
           </div>
           <div className="pb-1">
             <div>
-              {buildSectionHeader('Study Information', 'Filter on study details, including source type (publication, preprint, news, or report) and study status (ongoing, completed).\n\nRisk of Bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates.')}
+              {
+                buildSectionHeader('Study Information', 
+                <div>
+                  <p>
+                    Filter on study details, including source type (publication, preprint, news, or report) and study status (ongoing, completed).
+                  </p>
+                  <p>
+                  Risk of Bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates.
+                  </p>
+                </div>)
+              }
             </div>
             <div>
               {buildFilterDropdown('source_type', 'Source Type')}
