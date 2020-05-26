@@ -1,7 +1,7 @@
 import { AirtableRecord, AggregationFactor, AggregatedRecord } from "./types"
 
 const Z_SCORE: number = 1.96;
-export const MIN_DENOMINATOR: number = 150;
+export const MIN_DENOMINATOR: number = 0;
 
 function transformPrevalence (p: number, N: number, method: string){
     switch(method as any) {

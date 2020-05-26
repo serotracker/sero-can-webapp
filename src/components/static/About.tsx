@@ -39,6 +39,9 @@ export default function About() {
                 <p>
                     SeroTracker is supported by <a href="https://www.covid19immunitytaskforce.ca/">Canada's COVID-19 Immunity Task Force</a>, which brings together university, hospital and public health expertise to map the scope of coronavirus infection in Canada. The Task Force is funded by the Government of Canada and its secretariat is housed at <a href="https://www.mcgill.ca/spgh/">McGill University’s School of Population and Global Health</a>. SeroTracker also provides content for the Task Force's <a href = "https://www.covid19immunitytaskforce.ca/research/global-serological-knowledge-hub/">Global Serological Knowledge Hub</a>.
                 </p>
+                <p>
+                    <a href="https://www.mapbox.com/">Mapbox</a> supports SeroTracker's mapping infrastructure.
+                </p>
                 <h2>
                     Contact Us
                 </h2>
