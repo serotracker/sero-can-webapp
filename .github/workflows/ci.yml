@@ -1,9 +1,6 @@
-name: Deploy
+name: CI
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
   build:
@@ -24,9 +21,6 @@ jobs:
         REACT_APP_ROUTE: ${{ secrets.ROUTE }}
         CI: false
 
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
+    - name: Test
+      run: |
+        npm test
