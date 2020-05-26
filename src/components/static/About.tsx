@@ -5,7 +5,7 @@ import { mobileDeviceOrTabletWidth } from "../../constants";
 
 export default function About() {
     
-    const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
+    const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
     function renderBioBlock(name: string, description: string[]){
         return (
             <div>

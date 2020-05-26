@@ -45,7 +45,7 @@ export default function ReferencesTable() {
     }
   }
   
-  const isMobileDevice = useMediaQuery({ maxDeviceWidth: mobileDeviceWidth })
+  const isMobileDevice = useMediaQuery({ maxWidth: mobileDeviceWidth })
 
   useEffect(() => {
     let newData = _.orderBy(state.filtered_records, [column], ['asc']);

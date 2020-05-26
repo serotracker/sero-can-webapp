@@ -8,7 +8,7 @@ import { useMediaQuery } from "react-responsive";
 
 export default function Dashboard() {
 
-  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
+  const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
   return (
     <div className="col-12 p-0 flex">
       {!isMobileDeviceOrTablet ?

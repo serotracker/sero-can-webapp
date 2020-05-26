@@ -15,7 +15,7 @@ const Legend = (props: legendProps) => {
   const buckets = props.buckets as number[]
   const getColor = props.getColor;
 
-  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
+  const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
   useEffect(() => {
     const control = L.control as any
     const legend = control({ position: "bottomright" });

@@ -77,7 +77,7 @@ export default function Charts() {
     return longestWord;
   }
 
-  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
+  const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
 
   return (
     <div className="charts-page flex">

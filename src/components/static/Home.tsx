@@ -5,7 +5,7 @@ import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 
 export default function Data() {
-    const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
+    const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
     const renderPane = (src: string) => {
         return <Tab.Pane className="col-12 p-0">
             <iframe
