@@ -44,7 +44,7 @@ export default function TotalStats() {
                 NB: This should not be interpreted as a representative estimate of seroprevalence in the region of interest, especially if the aggregated studies have biased samples.
               </p>
               <p>
-                {`Pooling technique: fixed effects inverse-variance weighted aggregation${(MIN_DENOMINATOR == 0) ? "." : 'of records with sample size over ' + MIN_DENOMINATOR + '.'}.`}
+                {`Pooling technique: fixed effects inverse-variance weighted aggregation${(MIN_DENOMINATOR == 0) ? "." : 'of records with sample size over ' + MIN_DENOMINATOR + '.'}`}
               </p>
             </div>
             }
