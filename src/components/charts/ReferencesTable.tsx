@@ -6,6 +6,7 @@ import './Charts.css';
 import StudyDetailsModal from './StudyDetailsModal';
 import { mobileDeviceWidth } from '../../constants';
 import { useMediaQuery } from 'react-responsive';
+import { AirtableRecord } from '../../types';
 
 export default function ReferencesTable() {
   const [state] = useContext(AppContext);
@@ -16,7 +17,8 @@ export default function ReferencesTable() {
   const [pageLength, setPageLength] = useState(5);
   const [column, setColumn] = useState('denominator');
   const [direction, setDirection] = useState('descending');
-  const [data, setData] = useState(state.filtered_records);
+  const initialDataState: AirtableRecord[] = [];
+  const [data, setData] = useState(initialDataState);
 
   const handlePaginationChange = (e: any, event: any) => {
     const { activePage } = event;
@@ -48,10 +50,13 @@ export default function ReferencesTable() {
   const isMobileDevice = useMediaQuery({ maxWidth: mobileDeviceWidth })
 
   useEffect(() => {
-    let newData = _.orderBy(state.filtered_records, [column], ['asc']);
+    let newData = [];
 
     if (direction === 'descending') {
       newData = _.orderBy(state.filtered_records, [(o: any) => { return o[column] || '' }], ['desc']);
+    }
+    else {
+      newData =  _.orderBy(state.filtered_records, [column], ['asc']);
     }
 
     const splicedData = newData.splice((activePage - 1) * pageLength, pageLength);
@@ -95,7 +100,7 @@ export default function ReferencesTable() {
 
 
   return (
-    <div className="container col-11 m-4 center-item flex">
+    <div className="container col-11 mt-3 top">
       <div className="col-12 px-0 py-3 section-title">
         REFERENCES
       </div>

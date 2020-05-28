@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faFilter, faBars } from "@fortawesome/free-solid-svg-icons";
 import TotalStats from "../sidebar/left-sidebar/TotalStats";
 import CountryList from "../sidebar/left-sidebar/CountryList";
-import CentralPiece from "../CenterComponent";
+import CentralPiece from "../pages/Dashboard/CenterComponent";
 
 
 export default function MobileComponents() {

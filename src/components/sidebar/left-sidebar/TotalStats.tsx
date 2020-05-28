@@ -4,6 +4,7 @@ import { aggregateRecords } from "../../../metaAnalysis";
 import InformationIcon from "../../shared/InformationIcon";
 import { MIN_DENOMINATOR } from "../../../metaAnalysis"
 import './TotalStats.css';
+import Translate from "../../../utils/translate/translateService";
 
 
 export default function TotalStats() {
@@ -24,36 +25,37 @@ export default function TotalStats() {
   const countries = countryDict.length;
 
   const countriesOrCountry = () => {
-    return countries > 1 && countries !== 0 ? "Countries" : "Country"
+    return Translate(countries > 1 && countries !== 0 ? "Countries" : "Country")
   }
 
   return (
     <div className="col-12 p-0">
-      <div className="col-12 py-3 section-title center">SUMMARY STATISTICS</div>
+      <div className="col-12 py-3 section-title center">{Translate('SummaryStatistics').toUpperCase()}</div>
       <div className="col-12 p-0 flex">
-        <div className="main-statistic-title col-12 p-0 center-item flex">Seroprevalence
+        <div className="main-statistic-title col-12 p-0 center-item flex">
+          {Translate('Seroprevalence')}
           <InformationIcon
             color="#468ac1"
             offset={-12}
             tooltip={
-            <div>
-              <p>
-                Prevalence of antibodies against SARS-CoV-2, aggregated within the filters you have selected.
-              </p>
-              <p>
-                NB: This should not be interpreted as a representative estimate of seroprevalence in the region of interest, especially if the aggregated studies have biased samples.
-              </p>
-              <p>
-                {`Pooling technique: fixed effects inverse-variance weighted aggregation${(MIN_DENOMINATOR == 0) ? "." : 'of records with sample size over ' + MIN_DENOMINATOR + '.'}`}
-              </p>
-            </div>
+              <div>
+                <p>
+                  {Translate("SeroprevalenceTooltip", ['FirstParagraph'])}
+                </p>
+                <p>
+                  {Translate("SeroprevalenceTooltip", ['SecondParagraph'])}
+                </p>
+                <p>
+                  {Translate("SeroprevalenceTooltip", ['ThirdParagraph'], { "MIN_DENOMINATOR": MIN_DENOMINATOR })}
+                </p>
+              </div>
             }
             size="xs"
-            tooltipHeader="Aggregated Prevalence" /></div>
-        <div className="main-statistic col-12 p-0 center">{seroprevalence ? `${seroprevalence.toFixed(2)}%` : "No Data"}</div>
+            tooltipHeader={Translate("AggregatedPrevalence")} /></div>
+        <div className="main-statistic col-12 p-0 center">{seroprevalence ? `${seroprevalence.toFixed(2)}%` : Translate("NoData")}</div>
       </div>
       <div className="col-12 flex middle py-2">
-        <div className="secondary-statistic-title center p-0 col-12">Tests Administered</div>
+        <div className="secondary-statistic-title center p-0 col-12">{Translate("TestsAdministered")}</div>
         <div className="secondary-statistic col-12 p-0 center">{n}</div>
       </div>
       <div className="col-12 flex middle py-2">

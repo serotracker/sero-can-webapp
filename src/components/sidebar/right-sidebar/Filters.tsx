@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../../context";
 import { Dropdown } from 'semantic-ui-react'
-import {FilterType} from '../../../types';
+import { FilterType } from '../../../types';
 import InformationIcon from "../../shared/InformationIcon";
 
 export default function Filters() {
@@ -30,19 +30,19 @@ export default function Filters() {
   }
 
   const buildSectionHeader = (header_text: string, tooltip_text?: string | React.ReactNode, tooltip_header?: string) => {
-    return(
+    return (
       <div className="pb-2 flex">
         <div className="filter-section-header">{header_text}</div>
         {tooltip_text && (
           <div className="tooltip-vert-adj">
             <InformationIcon
-                offset={10}
-                position="bottom right"
-                color="#455a64"
-                tooltipHeader={tooltip_header ? tooltip_header : header_text}
-                popupSize="small"
-                size="sm"
-                tooltip={tooltip_text}/>
+              offset={10}
+              position="bottom right"
+              color="#455a64"
+              tooltipHeader={tooltip_header ? tooltip_header : header_text}
+              popupSize="small"
+              size="sm"
+              tooltip={tooltip_text} />
           </div>
         )}
       </div>
@@ -50,16 +50,17 @@ export default function Filters() {
   }
 
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
-    return(
+    return (
       <div className="pb-3">
-        <Dropdown 
+        <Dropdown
           text={placeholder}
           fluid
           multiple
-          search 
-          selection 
+          search
+          clearable
+          selection
           options={formatOptions(state.filter_options[filter_type])}
-          onChange={(e: any, data: any) => {addFilter(data, filter_type)}} 
+          onChange={(e: any, data: any) => { addFilter(data, filter_type) }}
           defaultValue={Array.from(state.filters[filter_type])}
         />
       </div>
@@ -74,13 +75,13 @@ export default function Filters() {
         </div>
         <div className="tooltip-vert-adj">
           <InformationIcon
-              offset={10}
-              position="bottom right"
-              color="#455a64"
-              tooltipHeader={"Filters"}
-              popupSize="small"
-              size="sm"
-              tooltip={'Filter the SeroTracker dataset based on geography, study, demographics, and test. Only studies matching all of the listed filters will be included.'}/>
+            offset={10}
+            position="bottom right"
+            color="#455a64"
+            tooltipHeader={"Filters"}
+            popupSize="small"
+            size="sm"
+            tooltip={'Filter the SeroTracker dataset based on geography, study, demographics, and test. Only studies matching all of the listed filters will be included.'} />
         </div>
       </div>
       <div className="row justify-content-center">
@@ -91,31 +92,31 @@ export default function Filters() {
             </div>
             <div>
               {buildFilterDropdown('country', 'Country')}
-            </div> 
+            </div>
           </div>
           <div className="pb-1">
             <div>
               {
-                buildSectionHeader('Study Information', 
-                <div>
-                  <p>
-                    Filter on study details, including source type (publication, preprint, news, or report) and study status (ongoing, completed).
+                buildSectionHeader('Study Information',
+                  <div>
+                    <p>
+                      Filter on study details, including source type (publication, preprint, news, or report) and study status (ongoing, completed).
                   </p>
-                  <p>
-                  Risk of Bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates.
+                    <p>
+                      Risk of Bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates.
                   </p>
-                </div>)
+                  </div>)
               }
             </div>
             <div>
               {buildFilterDropdown('source_type', 'Source Type')}
-            </div> 
+            </div>
             <div>
               {buildFilterDropdown('study_status', 'Study Status')}
-            </div> 
+            </div>
             <div>
               {buildFilterDropdown('risk_of_bias', 'Overall Risk of Bias')}
-            </div> 
+            </div>
           </div>
           <div className="pb-1">
             <div>
@@ -123,10 +124,10 @@ export default function Filters() {
             </div>
             <div>
               {buildFilterDropdown('population_group', 'Population Group')}
-            </div> 
+            </div>
             <div>
               {buildFilterDropdown('sex', 'Sex')}
-            </div> 
+            </div>
             <div>
               {buildFilterDropdown('age', 'Age')}
             </div>
@@ -141,7 +142,7 @@ export default function Filters() {
             <div>
               {buildFilterDropdown('isotypes_reported', 'Isotypes Reported')}
             </div>
-          </div> 
+          </div>
         </div>
       </div>
     </div>

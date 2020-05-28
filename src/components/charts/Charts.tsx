@@ -10,6 +10,7 @@ import { AggregationFactor } from "../../types";
 import InformationIcon from "../shared/InformationIcon";
 import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
+import Translate from "../../utils/translate/translateService";
 
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
@@ -41,10 +42,10 @@ export default function Charts() {
       return (
         <div className="col flex popup">
           <div className="col-12 p-0 popup-header">{label}</div>
-          <div className="col-12 p-0 popup-content">Seroprevalence: {seroprevalence.toFixed(2)}%</div>
-          <div className="col-12 p-0 popup-content">95% Confidence Interval:  {(seroprevalence - recordError[0]).toFixed(2)}%-{(seroprevalence + recordError[1]).toFixed(2)}%</div>
-          <div className="col-12 p-0 popup-content">Total Tests: {payload[0].payload.n}</div>
-          <div className="col-12 p-0 popup-content">Total Estimates: {payload[0].payload.num_studies}</div>
+          <div className="col-12 p-0 popup-content">{Translate("Seroprevalence")}: {seroprevalence.toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">{Translate("95%ConfidenceInterval")}:  {(seroprevalence - recordError[0]).toFixed(2)}%-{(seroprevalence + recordError[1]).toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">{Translate('TotalTests')}: {payload[0].payload.n}</div>
+          <div className="col-12 p-0 popup-content">{Translate('TotalEstimates')}: {payload[0].payload.num_studies}</div>
         </div>
       );
     }
@@ -105,15 +106,15 @@ export default function Charts() {
             position="bottom right"
             color="#455a64"
             size="sm"
-            tooltip={"Wider error bars indicate greater uncertainty in the pooled seroprevalence estimate."}
-            tooltipHeader="95% Confidence Interval"/>
+            tooltip={Translate("95%ConfidenceIntervalTooltip")}
+            tooltipHeader={Translate("95%ConfidenceInterval")}/>
           </div>
         </div>
         <ResponsiveContainer width="100%" height="80%">
           <BarChart data={records} layout='vertical'>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" name="Seroprevalence (%)" padding={{ left: 0, right: 30 }} />
-            <YAxis dataKey="name" type="category" width={getYAxisWidth(records) * 7} />
+            <XAxis type="number" name={`${Translate("Seroprevalence")} (%)`} padding={{ left: 0, right: 30 }} />
+            <YAxis dataKey="name" type="category" interval={0} width={getYAxisWidth(records) * 7} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
             <Bar dataKey="seroprevalence" name="Seroprevalence (%)" fill="#55A6BA" maxBarSize={60}>

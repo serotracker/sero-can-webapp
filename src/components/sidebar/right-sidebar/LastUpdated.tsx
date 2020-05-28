@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../../../context";
 import InformationIcon from "../../shared/InformationIcon";
 import './RightSidebar.css';
+import Translate from "../../../utils/translate/translateService";
 
 export default function LastUpdated() {
   const [state] = useContext(AppContext);
@@ -10,17 +11,17 @@ export default function LastUpdated() {
     <div className="col-12 pb-4">
       <div className='col-12 p-0 center-item flex'>
         <div className="section-title">
-          LAST UPDATED
+        {Translate("LastUpdated").toUpperCase()}
         </div>
         <div className="tooltip-vert-adj">
           <InformationIcon
               offset={10}
               position="top right"
               color="#455a64"
-              tooltipHeader={"Last Updated"}
+              tooltipHeader={Translate("LastUpdated")}
               popupSize="small"
               size="sm"
-              tooltip={'SeroTracker is continuously updated with findings from newly-released serological studies. We include new studies from our search within 48 hours of publication.'}/>
+              tooltip={Translate("LastUpdatedTooltip")}/>
         </div>
       </div>
       <div className="py-2 center">

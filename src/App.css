@@ -12,9 +12,7 @@
     color: white;
     font-weight: 300;
     height: 6vh;
-    -moz-box-shadow: 0 0 5px 0 #000000;
-    -webkit-box-shadow: 0 0 5px 0 #000000;
-    box-shadow: 0 0 5px 0 #000000;
+    border-bottom: 2px solid #64767E;
 }
 
 .App-tabs {
@@ -22,16 +20,22 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-}
-
-.App-tabs > a {
-    color: white;
     font-size: 1.25em;
-    cursor: pointer;
 }
 
 .bold {
-    font-weight: bold;
+    border-bottom: 3px solid white;
+}
+
+.bold a {
+    font-weight: 500;
+    margin-bottom: -3px;
+    color: white;
+}
+
+.regular a {
+    font-weight: 500;
+    color: lightgrey;
 }
 
 .flex {
@@ -74,6 +78,10 @@
 
 .space-between {
     justify-content: space-between;
+}
+
+.space-evenly {
+    justify-content: space-evenly;
 }
 
 .section-title {
