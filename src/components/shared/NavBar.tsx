@@ -7,11 +7,12 @@ import LanguageSelector from '../sidebar/right-sidebar/LanguageSelector'
 import { useMediaQuery } from 'react-responsive'
 import { mobileDeviceOrTabletWidth } from '../../constants'
 import MultiColorIcon from '../../assets/images/colored-icon.svg';
+import Translate from '../../utils/translate/translateService'
+import { Settings } from './Settings'
 
 
 export const NavBar = () => {
   const [tab, setTab] = useState("");
-  const [showSettings, setShowSettings] = useState(false);
 
   const getTabClass = (tabName: string) => {
     return tabName === tab ? 'bold col-auto h-100 flex center-item' : 'regular col-auto h-100 flex center-item';
@@ -39,49 +40,25 @@ export const NavBar = () => {
           <Link to="/Dashboard">
             {isMobileDeviceOrTablet ?
               <FontAwesomeIcon icon={faGlobeAmericas} size="lg" /> :
-              'Dashboard'}
+              Translate('Dashboard')}
           </Link>
         </div>
         <div className={getTabClass('/Data')}>
           <Link to="/Data">
             {isMobileDeviceOrTablet ?
               <FontAwesomeIcon icon={faFileAlt} size="lg" /> :
-              'Data'}
+              Translate('Data')}
           </Link>
         </div>
         <div className={getTabClass('/About')}>
           <Link to="/About">
             {isMobileDeviceOrTablet ?
               <FontAwesomeIcon icon={faUsers} size="lg" /> :
-              'About'}
+              Translate('About')}
           </Link>
         </div>
-
         <div className={getTabClass('')}>
-          <Dropdown
-            icon={null}
-            trigger={isMobileDeviceOrTablet ?
-              <FontAwesomeIcon icon={faCog} size="lg" onClick={() => setShowSettings(!showSettings)} /> :
-              <div onClick={() => setShowSettings(!showSettings)}>Settings</div>}
-            open={showSettings}
-            selectOnBlur={false}
-            onChange={() => { }}
-            onClose={(event: React.SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
-              if (!event || !event.nativeEvent) {
-                setShowSettings(false);
-              }
-            }}
-            pointing={false}
-            floating
-          >
-            <Dropdown.Menu direction="left">
-              <Dropdown.Header icon='cog' content='Change settings' />
-              <Dropdown.Divider />
-              <Dropdown.Item onClick={(e, a) => e.preventDefault()}>
-                <LanguageSelector />
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          <Settings />
         </div>
       </div>
     </header >

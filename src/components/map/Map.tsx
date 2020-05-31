@@ -8,6 +8,7 @@ import { getAggregateData } from "../../metaAnalysis";
 import { AggregatedRecord, AggregationFactor } from "../../types";
 import Legend from "./Legend";
 import './Map.css';
+import Translate from "../../utils/translate/translateService";
 
 export default function Map() {
   const mapRef = createRef<LeafletMap>();
@@ -134,22 +135,28 @@ export default function Map() {
     });
   };
 
+  const seroPrevalence = Translate("Seroprevalence")
+  const confInterval = Translate("95%ConfidenceInterval");
+  const tests = Translate("95%TotalTests");
+  const totalEstimates = Translate('TotalEstimates');
+  const noData = Translate('NoData')
+
   const createPopup = (properties: any) => {
     if (properties.seroprevalence) {
       let error = properties?.error;
       return (
         <div className="col-12 p-0 flex">
           <div className="col-12 p-0 popup-header">{properties.name}</div>
-          <div className="col-12 p-0 popup-content">Seroprevalence: {properties?.seroprevalence.toFixed(2)}%</div>
-          <div className="col-12 p-0 popup-content">95% CI: {(properties?.seroprevalence - error[0]).toFixed(2)}%-{(properties?.seroprevalence + error[1]).toFixed(2)}%</div>
-          <div className="col-12 p-0 popup-content">Total Tests: {properties?.n}</div>
-          <div className="col-12 p-0 popup-content">Total Estimates: {properties?.num_studies}</div>
+          <div className="col-12 p-0 popup-content">{seroPrevalence}: {properties?.seroprevalence.toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">{confInterval}: {(properties?.seroprevalence - error[0]).toFixed(2)}%-{(properties?.seroprevalence + error[1]).toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">{tests}: {properties?.n}</div>
+          <div className="col-12 p-0 popup-content">{totalEstimates}: {properties?.num_studies}</div>
         </div>)
     };
     return (
       <div className="col-12 p-0 flex">
         <h3 className="col-12 p-0 flex popup-header">{properties.name}</h3>
-        <div className="col-12 p-0 flex popup-content">No data</div>
+        <div className="col-12 p-0 flex popup-content">{noData}</div>
       </div>)
   }
 

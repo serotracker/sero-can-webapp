@@ -8,6 +8,10 @@ interface TranslateStringProps {
   text: string;
 }
 
+// Recursive Typings for nested JSON objects
+type JsonRecord<T> = Record<string, T | string>;
+interface Json extends JsonRecord<Json> { };
+
 const recursiveFind = (object: any, keys: string[], index: number): string => {
   const key = keys[index];
   const nextObj = object[key];
@@ -19,11 +23,16 @@ const recursiveFind = (object: any, keys: string[], index: number): string => {
 
 }
 
-export default function Translate(text: string, specifier: string[] | null = null, substitution: Record<string, string | number> | null = null): string {
+export default function Translate(
+  text: string,
+  specifier: string[] | null = null,
+  substitution: Record<string, string | number> | null = null,
+  addSpaces: [boolean, boolean] | null = null
+): string {
   const [{ language }] = useContext(AppContext)
 
-  const translationDictionary: Record<string, string | Record<string, string>> = language === LanguageType.english ?
-    English as Record<string, string | Record<string, string>> : French as Record<string, string | Record<string, string>>;
+  const translationDictionary: Json = language === LanguageType.english ?
+    English as Json : French as Json;
 
   try {
     let translatedString = translationDictionary[text];
@@ -42,6 +51,14 @@ export default function Translate(text: string, specifier: string[] | null = nul
         const replace = new RegExp(key, "g");
         translatedString = (translatedString as string).replace(replace, `${value}`);
       });
+    }
+
+    if (addSpaces && addSpaces[0]) {
+      translatedString = " " + translatedString;
+    }
+
+    if (addSpaces && addSpaces[1]) {
+      translatedString += " ";
     }
     return translatedString as string;
   }

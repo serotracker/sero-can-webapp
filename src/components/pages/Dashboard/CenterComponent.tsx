@@ -3,6 +3,7 @@ import { AppContext } from "../../../context";
 import Charts from "../../charts/Charts";
 import './Component.css';
 import Map from '../../map/Map';
+import Translate from "../../../utils/translate/translateService";
 
 export default function CentralPiece() {
   const [state, dispatch] = useContext(AppContext);
@@ -26,14 +27,14 @@ export default function CentralPiece() {
             type: 'SELECT_DATA_TAB',
             payload: true
           })}>
-          Explore
+          {Translate('Explore')}
           </div>
         <div className={`right-button ${getClass(false)}`} onClick={() =>
           dispatch({
             type: 'SELECT_DATA_TAB',
             payload: false
           })}>
-          Analyze
+          {Translate('Analyze')}
           </div>
       </div>
       {displayCenter()}

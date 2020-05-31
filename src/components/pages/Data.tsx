@@ -3,6 +3,7 @@ import { Tab } from "semantic-ui-react";
 import './static.css';
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
+import Translate from "../../utils/translate/translateService";
 
 export default function Data() {
     const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
@@ -18,11 +19,11 @@ export default function Data() {
     }
 
     const panes = [{
-        menuItem: isMobileDeviceOrTablet ? 'Serosurveys' : 'Serosurveys Reporting Prevalence',
+        menuItem: isMobileDeviceOrTablet ? Translate('Serosurveys') : Translate('SerosurveysReportingPrevalence'),
         render: () => renderPane('https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=blue&viewControls=on')
     },
     {
-        menuItem: 'Planned Serosurveys',
+        menuItem: Translate('PlannedSerosurveys'),
         render: () => renderPane('https://airtable.com/embed/shr85cDHzwETbjgdu?backgroundColor=blue&viewControls=on')
     }];
 
@@ -30,35 +31,35 @@ export default function Data() {
         <div className="col-12 page">
             <div className={isMobileDeviceOrTablet ? "pb-2" : "static-content pb-2"}>
                 <h1>
-                    Methods
+                    {Translate('Methods')}
                 </h1>
                 <p>
-                    SeroTracker provides an up-to-date systematic synthesis of SARS-CoV-2 serosurveillance projects globally. We screened peer-reviewed articles, preprints, government reports, and media articles to identify the prevalence estimates reported below. Our data is updated daily with all new reports of seroprevalence findings that were captured in our search. 
+                    {Translate('MethodsText', ['FirstParagraph'])}
                 </p>
                 <p>
-                You can view our full methods <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1NYpszkr-u__aZspFDFa_fa4VBzjAAAAxNxM1rZ1txWU/edit?usp=sharing">here.</a> To submit a SARS-CoV-2 seroprevalence study that we have not yet captured below, use <a rel="noopener noreferrer" target="_blank" href="https://forms.gle/XWHQ7QPjQnzQMXSz8">this form</a>.
-                </p>
-                <h1>
-                    Paper
-                </h1>
-                <p>
-                    Our first manuscript, describing lessons from serosurveys up to May 1, can be found on <a target="_blank" rel="noopener noreferrer" href="https://www.medrxiv.org/content/10.1101/2020.05.10.20097451v1">medRxiv</a>.
+                    {Translate('MethodsText', ['SecondParagraphPartOne'])} <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1NYpszkr-u__aZspFDFa_fa4VBzjAAAAxNxM1rZ1txWU/edit?usp=sharing">{Translate('Here').toLocaleLowerCase()}.</a> {Translate('MethodsText', ['SecondParagraphPartTwo'])} <a rel="noopener noreferrer" target="_blank" href="https://forms.gle/XWHQ7QPjQnzQMXSz8">{Translate('ThisForm').toLowerCase()}</a>.
                 </p>
                 <h1>
-                    Our Data
+                    {Translate('Paper')}
                 </h1>
                 <p>
-                    The tables below describe our findings, including detailed information about each study, each prevalence estimate, and the associated risk of bias.  
+                    {Translate('PaperText', null, null, [false, true])}<a target="_blank" rel="noopener noreferrer" href="https://www.medrxiv.org/content/10.1101/2020.05.10.20097451v1">medRxiv</a>.
+                </p>
+                <h1>
+                    {Translate('OurData')}
+                </h1>
+                <p>
+                    {Translate('OurDataText', ['Text'])}
                 </p>
                 <ul>
                     <li>
                         <p>
-                            <b>Serosurveys Reporting Prevalence</b> captures all studies reporting prevalence estimates
+                            <b>{Translate('SerosurveysReportingPrevalence')}</b>{Translate('OurDataText', ['PointOne'], null, [true, false])}
                         </p>
                     </li>
                     <li>
                         <p>
-                            <b>Planned Serosurveys</b> describes studies that have not yet reported seroprevalence estimates
+                            <b>{Translate('PlannedSerosurveys')}</b>{Translate('OurDataText', ['PointTwo'], null, [true, false])}
                         </p>
                     </li>
                 </ul>

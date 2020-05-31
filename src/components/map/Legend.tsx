@@ -5,6 +5,7 @@ import { useLeaflet } from "react-leaflet";
 import "./Legend.css";
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
+import Translate from "../../utils/translate/translateService";
 interface legendProps {
   buckets: number[],
   getColor: (d: number | null) => string
@@ -15,6 +16,9 @@ const Legend = (props: legendProps) => {
   const buckets = props.buckets as number[]
   const getColor = props.getColor;
 
+  const scaleTitle = Translate('Seroprevalence');
+  const scaleTooltipTitle = Translate("SeroprevalenceScale");
+  const scaleTooltip = Translate("SeroprevalenceScaleTooltip");
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
   useEffect(() => {
     const control = L.control as any
@@ -34,10 +38,10 @@ const Legend = (props: legendProps) => {
 
       // Title underneath scale with tooltip
       const title = ReactDOMServer.renderToString(
-        <h4 className="legend-title p-0 middle">Seroprevalence
+        <h4 className="legend-title p-0 middle">{scaleTitle}
           <span className="flex popup">
-            <div className="popup-header col-12 p-0 flex left">Seroprevalence Scale</div>
-            <div className="popup-content col-12 p-0 flex start-item left">Made from the logit transform of the maximum value to determine the 'bins'</div>
+            <div className="popup-header col-12 p-0 flex left">{scaleTooltipTitle}</div>
+            <div className="popup-content col-12 p-0 flex start-item left">{scaleTooltip}</div>
           </span>
         </h4>)
 

@@ -30,7 +30,7 @@ const initialState: State = {
   data_page_state: {
     mapOpen: true
   },
-  language: LanguageType.english,
+  language: LanguageType.french,
   updated_at: ''
 };
 

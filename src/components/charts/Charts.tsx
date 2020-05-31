@@ -20,8 +20,8 @@ export default function Charts() {
   const [records, setRecords] = useState(aggregatedRecords);
 
   const yAxisOptions = [
-    { key: 'Population', text: 'Population', value: AggregationFactor.population_group },
-    { key: 'Geographies', text: 'Geographies', value: AggregationFactor.country }
+    { key: 'Population', text: Translate('Population'), value: AggregationFactor.population_group },
+    { key: 'Geographies', text: Translate('Geographies'), value: AggregationFactor.country }
   ]
 
   useEffect(() => {
@@ -88,10 +88,10 @@ export default function Charts() {
           </div>
           <div className="charts-title flex p-0 mt-2 p-lg-0 col-sm-8 col-lg-6">
             <div className="col-auto flex center-item">
-              Seroprevalence by
+              {Translate('SeroprevalenceBy')}
             </div>
             <Dropdown
-              placeholder='Geographies'
+              placeholder={Translate('Geographies')}
               fluid selection
               className="col large-dropdown"
               onChange={handleChange}
@@ -117,7 +117,7 @@ export default function Charts() {
             <YAxis dataKey="name" type="category" interval={0} width={getYAxisWidth(records) * 7} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
-            <Bar dataKey="seroprevalence" name="Seroprevalence (%)" fill="#55A6BA" maxBarSize={60}>
+            <Bar dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60}>
               <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
               <ErrorBar dataKey="error" width={4} strokeWidth={2} />
             </Bar>

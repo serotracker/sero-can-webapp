@@ -7,6 +7,7 @@ import StudyDetailsModal from './StudyDetailsModal';
 import { mobileDeviceWidth } from '../../constants';
 import { useMediaQuery } from 'react-responsive';
 import { AirtableRecord } from '../../types';
+import Translate from '../../utils/translate/translateService';
 
 export default function ReferencesTable() {
   const [state] = useContext(AppContext);
@@ -102,18 +103,18 @@ export default function ReferencesTable() {
   return (
     <div className="container col-11 mt-3 top">
       <div className="col-12 px-0 py-3 section-title">
-        REFERENCES
+        {Translate('References').toUpperCase()}
       </div>
       <Table celled sortable fixed striped className="table mb-3 mt-0">
         <Table.Header className="flex col-12 p-0">
           <Table.Row className="flex col-12 p-0">
-            {buildHeaderCell('title', 'Name', 'col-sm-12 col-lg-3 p-1')}
-            {buildHeaderCell('country', 'Geography', 'col-sm-12 col-lg-2 p-1')}
-            {buildHeaderCell('populations', 'Populations', 'col-sm-12 col-lg-2 p-1')}
-            {buildHeaderCell('denominator', 'N', 'col-sm-12 col-lg-1 p-1')}
-            {buildHeaderCell('seroprevalence', 'Prevalence', 'col-sm-12 col-lg-1 p-1')}
-            {buildHeaderCell('risk_of_bias', 'Risk Of Bias', 'col-sm-12 col-lg-2 p-1')}
-            {buildHeaderCell('', 'Details', 'col-sm-12 col-lg-1 p-1')}
+            {buildHeaderCell('title', Translate('Name'), 'col-sm-12 col-lg-3 p-1')}
+            {buildHeaderCell('country', Translate('Geography'), 'col-sm-12 col-lg-2 p-1')}
+            {buildHeaderCell('populations', Translate('Populations'), 'col-sm-12 col-lg-2 p-1')}
+            {buildHeaderCell('denominator', Translate('N'), 'col-sm-12 col-lg-1 p-1')}
+            {buildHeaderCell('seroprevalence', Translate('Prevalence'), 'col-sm-12 col-lg-1 p-1')}
+            {buildHeaderCell('risk_of_bias', Translate('RiskOfBias'), 'col-sm-12 col-lg-2 p-1')}
+            {buildHeaderCell('', Translate('Details'), 'col-sm-12 col-lg-1 p-1')}
           </Table.Row>
         </Table.Header>
         <Table.Body className="col-12 p-0">
@@ -160,7 +161,7 @@ export default function ReferencesTable() {
                   defaultValue={pageLengthOptions[0].value}
                   onChange={handlePageLengthChange} />
                 <div className="px-2">
-                  studies per page
+                  {Translate('StudiesPerPage')}
               </div>
               </div>
             </Table.Footer> :

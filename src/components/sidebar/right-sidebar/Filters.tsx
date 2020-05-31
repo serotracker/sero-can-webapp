@@ -3,6 +3,7 @@ import { AppContext } from "../../../context";
 import { Dropdown } from 'semantic-ui-react'
 import { FilterType } from '../../../types';
 import InformationIcon from "../../shared/InformationIcon";
+import Translate from "../../../utils/translate/translateService";
 
 export default function Filters() {
   const [state, dispatch] = useContext(AppContext);
@@ -71,76 +72,77 @@ export default function Filters() {
     <div className="col-12 p-0">
       <div className="py-3 center flex">
         <div className="section-title">
-          FILTER
+          {Translate("Filter").toUpperCase()}
         </div>
         <div className="tooltip-vert-adj">
           <InformationIcon
             offset={10}
             position="bottom right"
             color="#455a64"
-            tooltipHeader={"Filters"}
+            tooltipHeader={Translate("Filter")}
             popupSize="small"
             size="sm"
-            tooltip={'Filter the SeroTracker dataset based on geography, study, demographics, and test. Only studies matching all of the listed filters will be included.'} />
+            tooltip={Translate('FilterTooltip')} />
         </div>
       </div>
       <div className="row justify-content-center">
         <div className="col-10 col align-items-center p-0">
           <div className="pb-1">
             <div>
-              {buildSectionHeader('Geography', 'Select countries of interest.')}
+              {buildSectionHeader(Translate('Geography'), Translate('GeographyTooltip'))}
             </div>
             <div>
-              {buildFilterDropdown('country', 'Country')}
+              {buildFilterDropdown('country', Translate('Country'))}
             </div>
           </div>
           <div className="pb-1">
             <div>
               {
-                buildSectionHeader('Study Information',
+                buildSectionHeader(Translate('StudyInformation'),
                   <div>
                     <p>
-                      Filter on study details, including source type (publication, preprint, news, or report) and study status (ongoing, completed).
-                  </p>
+                      {Translate('StudyInformationTooltip', ['FirstParagraph'])}
+                    </p>
                     <p>
-                      Risk of Bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates.
-                  </p>
+
+                      {Translate('StudyInformationTooltip', ['SecondParagraph'])}
+                    </p>
                   </div>)
               }
             </div>
             <div>
-              {buildFilterDropdown('source_type', 'Source Type')}
+              {buildFilterDropdown('source_type', Translate('SourceType'))}
             </div>
             <div>
-              {buildFilterDropdown('study_status', 'Study Status')}
+              {buildFilterDropdown('study_status', Translate('StudyStatus'))}
             </div>
             <div>
-              {buildFilterDropdown('risk_of_bias', 'Overall Risk of Bias')}
-            </div>
-          </div>
-          <div className="pb-1">
-            <div>
-              {buildSectionHeader('Demographics', 'Filter on demographic variables, including population group, sex, and age group.')}
-            </div>
-            <div>
-              {buildFilterDropdown('population_group', 'Population Group')}
-            </div>
-            <div>
-              {buildFilterDropdown('sex', 'Sex')}
-            </div>
-            <div>
-              {buildFilterDropdown('age', 'Age')}
+              {buildFilterDropdown('risk_of_bias', Translate('OverallRiskOfBias'))}
             </div>
           </div>
           <div className="pb-1">
             <div>
-              {buildSectionHeader('Test Information', 'Filter on test details, including assay type and antibody isotype.')}
+              {buildSectionHeader(Translate('Demographics'), Translate('DemographicsTooltip'))}
             </div>
             <div>
-              {buildFilterDropdown('test_type', 'Test Type')}
+              {buildFilterDropdown('population_group', Translate('PopulationGroup'))}
             </div>
             <div>
-              {buildFilterDropdown('isotypes_reported', 'Isotypes Reported')}
+              {buildFilterDropdown('sex', Translate('Sex'))}
+            </div>
+            <div>
+              {buildFilterDropdown('age', Translate('Age'))}
+            </div>
+          </div>
+          <div className="pb-1">
+            <div>
+              {buildSectionHeader(Translate('TestInformation'), Translate('TestInformationTooltip'))}
+            </div>
+            <div>
+              {buildFilterDropdown('test_type', Translate('TestType'))}
+            </div>
+            <div>
+              {buildFilterDropdown('isotypes_reported', Translate('IsotypesReported'))}
             </div>
           </div>
         </div>

@@ -1,26 +1,37 @@
+import { faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import './static.css';
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
+import Translate from "../../utils/translate/translateService";
+import './static.css';
 
 export default function About() {
-    
+
     const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
-    function renderBioBlock(name: string, description: string[]){
+    function renderBioBlock(name: string,
+        description: string[],
+        linkedIn: string | null = null,
+        email: string | null = null,
+        twitter: string | null = null) {
         return (
             <div>
                 <b>
                     {name}
                 </b>
-                <br/>
+                <br />
                 {description.map((line) => {
                     return (
                         <div>
                             {line}
-                            <br/>
+                            <br />
                         </div>
                     )
                 })}
+                {linkedIn ? <a href={linkedIn} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faLinkedin} className="mr-1 linked-in" /></a> : null}
+                {twitter ? <a href={twitter} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitter} className="mx-1 twitter" /></a> : null}
+                {email ? <a href={`mailto:${email}`}><FontAwesomeIcon icon={faEnvelope} className="ml-1 email" /></a> : null}
             </div>
         )
     }
@@ -28,85 +39,107 @@ export default function About() {
         <div className="page col-12">
             <div className={isMobileDeviceOrTablet ? "pb-2" : "static-content pb-2"}>
                 <h1>
-                    About SeroTracker
+                    {Translate('AboutSeroTracker')}
                 </h1>
                 <p>
-                    As the acute phase of the COVID-19 pandemic passes its peak, many countries are accelerating their investments in serological (antibody) testing. Understanding population antibody patterns and potential immunity is of great interest to clinicians, public health officials, and policymakers alike. <b>SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide.</b>
+                    {Translate('AboutPage', ['AboutSection', 'PartOne'])}<b>{Translate('AboutPage', ['AboutSection', 'PartTwo'], null, [true, false])}</b>
                 </p>
                 <p>
-                    <a href="https://www.covid19immunitytaskforce.ca/"><img src="https://www.covid19immunitytaskforce.ca/wp-content/themes/pena-lite-child/CITF_logo_ENG.svg" alt="COVID-19 Immunity Task Force Logo" height="45"></img></a>
+                    <a href="https://www.covid19immunitytaskforce.ca/">
+                        <img src="https://www.covid19immunitytaskforce.ca/wp-content/themes/pena-lite-child/CITF_logo_ENG.svg" alt="COVID-19 Immunity Task Force Logo" height="45"></img>
+                    </a>
                 </p>
                 <p>
-                    SeroTracker is supported by <a href="https://www.covid19immunitytaskforce.ca/">Canada's COVID-19 Immunity Task Force</a>, which brings together university, hospital and public health expertise to map the scope of coronavirus infection in Canada. The Task Force is funded by the Government of Canada and its secretariat is housed at <a href="https://www.mcgill.ca/spgh/">McGill University’s School of Population and Global Health</a>. SeroTracker also provides content for the Task Force's <a href = "https://www.covid19immunitytaskforce.ca/research/global-serological-knowledge-hub/">Global Serological Knowledge Hub</a>.
+                    {Translate('AboutPage', ['AboutSection', 'PartThree'])}
+                    <a href="https://www.covid19immunitytaskforce.ca/">{Translate('AboutPage', ['AboutSection', 'PartFour'], null, [true, true])}</a>
+                    {Translate('AboutPage', ['AboutSection', 'PartFive'])}
+                    <a href="https://www.mcgill.ca/spgh/">{Translate('AboutPage', ['AboutSection', 'PartSix'], null, [true, false])}</a>.
+                     {Translate('AboutPage', ['AboutSection', 'PartSeven'], null, [true, false])}
+                    <a href="https://www.covid19immunitytaskforce.ca/research/global-serological-knowledge-hub/">{Translate('AboutPage', ['AboutSection', 'PartEight'], null, [true, false])}</a>.
                 </p>
                 <p>
-                    <a href="https://www.mapbox.com/">Mapbox</a> supports SeroTracker's mapping infrastructure.
+                    <a href="https://www.mapbox.com/">Mapbox</a> {Translate('AboutPage', ['Mapbox'])}.
                 </p>
                 <h2>
-                    Contact Us
+                    {Translate('ContactUs')}
                 </h2>
                 <p>
-                    We are an interdisciplinary team of researchers and engineers at the University of Oxford, University of Toronto, University of Waterloo, University of Calgary, and Harvard University.
+
+                    {Translate('AboutPage', ['ContactSection', 'SectionOne'])}
                 </p>
                 <ul>
                     <li>
-                        If you would like to <b>support our efforts or collaborate with us</b>, please contact Rahul Arora at <a href="mailto:rahul.arora@balliol.ox.ac.uk">rahul.arora@balliol.ox.ac.uk</a> and Tingting Yan at <a href="mailto:tingting.yan@mail.utoronto.ca">tingting.yan@mail.utoronto.ca</a>.
+                        {Translate('AboutPage', ['ContactSection', 'BulletPointOne', 'PartOne'], null, [true, true])}
+                        <b>{Translate('AboutPage', ['ContactSection', 'BulletPointOne', 'PartTwo'])}</b>,
+                        {Translate('AboutPage', ['ContactSection', 'BulletPointOne', 'PartThree'], null, [true, true])}
+                        <a href="mailto:rahul.arora@balliol.ox.ac.uk">rahul.arora@balliol.ox.ac.uk</a>
+                        {Translate('AboutPage', ['ContactSection', 'BulletPointOne', 'PartFour'], null, [true, true])}
+                        <a href="mailto:tingting.yan@mail.utoronto.ca">tingting.yan@mail.utoronto.ca</a>.
                     </li>
                     <li>
-                        For <b>research methods-related inquiries</b>, please contact Nik Bobrovitz at <a href="mailto:niklas.bobrovitz@mail.utoronto.ca">niklas.bobrovitz@mail.utoronto.ca</a>.
+                        {Translate('For')}<b>{Translate('AboutPage', ['ContactSection', 'BulletPointTwo', 'PartOne'], null, [true, false])}</b>,
+                        {Translate('AboutPage', ['ContactSection', 'BulletPointTwo', 'PartTwo'], null, [true, true])}
+                        <a href="mailto:niklas.bobrovitz@mail.utoronto.ca">niklas.bobrovitz@mail.utoronto.ca</a>.
                     </li>
                     <li>
-                        For <b>data and AirTable-related inquiries</b>, please contact Nathan Duarte at <a href="mailto:niduarte@uwaterloo.ca">niduarte@uwaterloo.ca</a>.    
+                        {Translate('For')}<b>{Translate('AboutPage', ['ContactSection', 'BulletPointThree', 'PartOne'], null, [true, false])}</b>,
+                         {Translate('AboutPage', ['ContactSection', 'BulletPointThree', 'PartTwo'], null, [true, true])}
+                        <a href="mailto:niduarte@uwaterloo.ca"> niduarte@uwaterloo.ca</a>.
                     </li>
                     <li>
-                        For <b>dashboard-related inquiries</b>, please contact Jordan Van Wyk at <a href="mailto:jordan.vanwyk@uwaterloo.ca">jordan.vanwyk@uwaterloo.ca</a>.     
+                        {Translate('For')} <b>{Translate('AboutPage', ['ContactSection', 'BulletPointFour', 'PartOne'], null, [true, false])}</b>,
+                         {Translate('AboutPage', ['ContactSection', 'BulletPointFour', 'PartTwo'], null, [true, true])}
+                        <a href="mailto:jordan.vanwyk@uwaterloo.ca"> jordan.vanwyk@uwaterloo.ca</a>.
                     </li>
                     <li>
-                        To make us aware of <b>new SARS-CoV-2 seroprevalence studies</b> or studies that we have not yet captured, please fill out <a rel="noopener noreferrer" target="_blank" href="https://forms.gle/XWHQ7QPjQnzQMXSz8">this form</a>. 
+                        {Translate('AboutPage', ['ContactSection', 'BulletPointFive', 'PartOne'])}
+                        <b>{Translate('AboutPage', ['ContactSection', 'BulletPointFive', 'PartTwo'], null, [true, false])}</b>
+                        {Translate('AboutPage', ['ContactSection', 'BulletPointFive', 'PartThree'], null, [true, true])}
+                        <a rel="noopener noreferrer" target="_blank" href="https://forms.gle/XWHQ7QPjQnzQMXSz8">{Translate('ThisForm').toLowerCase()}</a>.
                     </li>
                 </ul>
                 <h1>
-                    Our Team
+                    {Translate('OurTeam')}
                 </h1>
                 <h2 className="team-name-text">
-                    Scientific Lead
+                    {Translate('ScientificLead')}
                 </h2>
                 <div>
-                    {renderBioBlock('Tim Evans', ['Director, School of Population and Global Health, McGill University', 'Executive Director, Canadian COVID-19 Immunity Task Force'])}
+                    {renderBioBlock('Tim Evans', [Translate('TimBiography', ['PartOne']), Translate('TimBiography', ['PartTwo'])])}
                 </div>
                 <h2 className="team-name-text">
-                    Research Team
+                    {Translate('ResearchTeam')}
                 </h2>
                 <div className="bio-grid-container">
-                    {renderBioBlock('Niklas Bobrovitz ', ['University of Oxford', 'University of Toronto'])}
-                    {renderBioBlock('Emily Boucher', ['University of Calgary'])}
-                    {renderBioBlock('Nathan Duarte', ['University of Waterloo'])}
-                    {renderBioBlock('Hannah Rahim', ['University of Calgary'])}
-                    {renderBioBlock('Tingting Yan', ['University of Toronto'])}
-                    {renderBioBlock('Christian Cao', ['University of Calgary'])}
-                    {renderBioBlock('Claire Donnici', ['University of Calgary'])}
-                    {renderBioBlock('Natasha Ilincic', ['University of Guelph'])}
-                    {renderBioBlock('Michael Liu', ['University of Oxford', 'Harvard University'])}
-                    {renderBioBlock('Brianna Rosgen', ['University of Calgary'])}
-                    {renderBioBlock('Mitchell Segal', ['University of Toronto'])}
+                    {renderBioBlock('Niklas Bobrovitz ', [Translate('UniversityOf', null, { "NAME": "Oxford" }), Translate('UniversityOf', null, { "NAME": "Toronto" })], 'https://www.linkedin.com/in/nik-bobrovitz-19a117179/', null, 'https://twitter.com/nikbobrovitz')}
+                    {renderBioBlock('Emily Boucher', [Translate('UniversityOf', null, { "NAME": "Calgary" })], null, 'emily.boucher@ucalgary.ca')}
+                    {renderBioBlock('Nathan Duarte', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/duartenathan/', 'nathanduarte1@gmail.com', 'https://twitter.com/_nathan_duarte_')}
+                    {renderBioBlock('Hannah Rahim', [Translate('UniversityOf', null, { "NAME": "Calgary" })], 'https://www.linkedin.com/in/hannah-rahim/', null, 'https://twitter.com/Hannah_Rahim1')}
+                    {renderBioBlock('Tingting Yan', [Translate('UniversityOf', null, { "NAME": "Toronto" })], 'https://www.linkedin.com/in/tingting-yan/', '', 'https://twitter.com/TingtingYan_')}
+                    {renderBioBlock('Christian Cao', [Translate('UniversityOf', null, { "NAME": "Calgary" })], 'https://ca.linkedin.com/in/christian-cao-275b78190', 'ccao.canada@gmail.com')}
+                    {renderBioBlock('Claire Donnici', [Translate('UniversityOf', null, { "NAME": "Calgary" })], null, 'claire.donnici@ucalgary.ca', 'https://twitter.com/ClaireDonnici')}
+                    {renderBioBlock('Natasha Ilincic', [Translate('UniversityOf', null, { "NAME": "Guelph" })], null, 'natasha.ilincic@gmail.com')}
+                    {renderBioBlock('Michael Liu', [Translate('UniversityOf', null, { "NAME": "Oxford" }), Translate('BlankUniversity', null, { "NAME": "Harvard" })], 'https://www.linkedin.com/in/michael-liu-8728249a/', 'liu.michael222@gmail.com', 'https://twitter.com/mliu_canada')}
+                    {renderBioBlock('Brianna Rosgen', [Translate('UniversityOf', null, { "NAME": "Calgary" })])}
+                    {renderBioBlock('Mitchell Segal', [Translate('UniversityOf', null, { "NAME": "Toronto" })], null, 'mitchell.segal@mail.utoronto.ca')}
                 </div>
                 <h2 className="team-name-text">
                     Development Team
                 </h2>
                 <div className="bio-grid-container">
-                    {renderBioBlock('Austin Atmaja', ['University of Waterloo'])}
-                    {renderBioBlock('Rahul Arora', ['University of Oxford'])}
-                    {renderBioBlock('Abel Joseph ', ['University of Waterloo'])}
-                    {renderBioBlock('Ewan May', ['University of Calgary'])}
-                    {renderBioBlock('Simona Rocco', ['University of Waterloo'])}
-                    {renderBioBlock('Jordan Van Wyk', ['University of Waterloo'])}
-                    {renderBioBlock('Abhinav Pillai	', ['University of Calgary'])}
+                    {renderBioBlock('Austin Atmaja', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/austinatmaja', null, null)}
+                    {renderBioBlock('Rahul Arora', [Translate('UniversityOf', null, { "NAME": "Oxford" })], 'https://www.linkedin.com/in/rahularorayyc/', 'rahularoradfs@gmail.com', 'https://mobile.twitter.com/RahulAroraAB')}
+                    {renderBioBlock('Abel Joseph ', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/abel-joseph/', 'abel.joseph@uwaterloo.ca')}
+                    {renderBioBlock('Ewan May', [Translate('SchoolName', ['Schulich']), Translate('UniversityOf', null, { "NAME": "Calgary" })], 'https://www.linkedin.com/in/ewan-may', 'ewan.may@ucalgary.ca')}
+                    {renderBioBlock('Simona Rocco', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/simona-rocco/', 'serocco@uwaterloo.ca')}
+                    {renderBioBlock('Jordan Van Wyk', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/jordanvanwyk/', 'jordanvanwyk@outlook.com', 'https://twitter.com/jordanvw_')}
+                    {renderBioBlock('Abhinav Pillai	', [Translate('UniversityOf', null, { "NAME": "Calgary" })], null, 'abhinav.arunpillai@ucalgary.ca')}
                 </div>
                 <h2 className="team-name-text">
                     Economics Team
                 </h2>
                 <div className="bio-grid-container">
-                    {renderBioBlock('Ruby Zhang', ['Harvard University'])}
+                    {renderBioBlock('Ruby Zhang', ['Harvard University'], 'https://www.linkedin.com/in/ruby-zhang-022821ab')}
                     {renderBioBlock('Sahil Bablani ', ['CPP Investment Board'])}
                 </div>
             </div>
