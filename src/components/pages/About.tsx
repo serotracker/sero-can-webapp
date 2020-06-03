@@ -8,7 +8,6 @@ import Translate from "../../utils/translate/translateService";
 import './static.css';
 
 export default function About() {
-
     const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
     function renderBioBlock(name: string,
         description: string[],

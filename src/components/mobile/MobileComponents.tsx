@@ -62,7 +62,7 @@ export default function MobileComponents() {
           style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
           size={"lg"} />
       </Sidebar>
-      <Sidebar.Pusher className="col-12 p-0">
+      <Sidebar.Pusher className="col-12 p-0 flex">
         <CentralPiece />
         {/* Icons */}
         <div className="icon-container"
