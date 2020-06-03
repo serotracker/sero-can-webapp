@@ -20,8 +20,15 @@ export default function Charts() {
   const [records, setRecords] = useState(aggregatedRecords);
 
   const yAxisOptions = [
-    { key: 'Population', text: Translate('Population'), value: AggregationFactor.population_group },
-    { key: 'Geographies', text: Translate('Geographies'), value: AggregationFactor.country }
+    { key: 'Geographies',       text: Translate('Geographies'),      value: AggregationFactor.country },
+    { key: 'Population',        text: Translate('Population'),       value: AggregationFactor.population_group },
+    { key: 'Sex',               text: Translate('Sex'),              value: AggregationFactor.sex },
+    { key: 'Age',               text: Translate('Age'),              value: AggregationFactor.age },
+    { key: 'Study Status',      text: Translate('StudyStatus'),      value: AggregationFactor.study_status },
+    { key: 'Test Type',         text: Translate('TestType'),         value: AggregationFactor.test_type },
+    { key: 'Source Type',       text: Translate('SourceType'),       value: AggregationFactor.source_type },
+    { key: 'Risk Of Bias',      text: Translate('RiskOfBias'),       value: AggregationFactor.risk_of_bias },
+    { key: 'Isotypes Reported', text: Translate('IsotypesReported'), value: AggregationFactor.isotypes_reported },
   ]
 
   useEffect(() => {

@@ -73,7 +73,14 @@ export type State = {
 
 export enum AggregationFactor {
     country = 'country',
-    population_group = 'population_group'
+    population_group = 'population_group',
+    sex = 'sex',
+    age = 'age',
+    study_status = 'study_status',
+    test_type = 'test_type',
+    source_type = 'source_type',
+    risk_of_bias = 'risk_of_bias',
+    isotypes_reported = 'isotypes_reported',
 }
 
 export type DataPageState = {
