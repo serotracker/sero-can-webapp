@@ -33,5 +33,10 @@ export const colors = ['#76E57F', '#62CA7C', '#4FB079', '#3B9577', '#277A74', '#
 
 // TODO: abstract this to utils function
 export const getColor = (d: number | null, buckets: number[]) => {
-  return colors[buckets.findIndex(max => d && d < max) || 7];
+  if (d === null) return colors[7];
+  // for (let i = 0, last = colors[6]; i < buckets.length; last = colors[i++]) {
+  //   if (d < buckets[i]) return last;
+  // }
+  let i = buckets.findIndex(max => d <= max);
+  return colors[i !== null ? i - 1 : 6 ];
 }
