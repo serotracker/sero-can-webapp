@@ -20,6 +20,7 @@
     "@types/recharts": "^1.8.10",
     "crypto-js": "^4.0.0",
     "gh-pages": "^2.2.0",
+    "i18n-iso-countries": "^6.0.0",
     "leaflet": "^1.6.0",
     "lodash": "^4.17.15",
     "react": "^16.13.1",

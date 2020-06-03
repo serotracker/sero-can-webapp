@@ -120,7 +120,7 @@ export default function About() {
                     {renderBioBlock('Claire Donnici', [Translate('UniversityOf', null, { "NAME": "Calgary" })], null, 'claire.donnici@ucalgary.ca', 'https://twitter.com/ClaireDonnici')}
                     {renderBioBlock('Natasha Ilincic', [Translate('UniversityOf', null, { "NAME": "Guelph" })], null, 'natasha.ilincic@gmail.com')}
                     {renderBioBlock('Michael Liu', [Translate('UniversityOf', null, { "NAME": "Oxford" }), Translate('BlankUniversity', null, { "NAME": "Harvard" })], 'https://www.linkedin.com/in/michael-liu-8728249a/', 'liu.michael222@gmail.com', 'https://twitter.com/mliu_canada')}
-                    {renderBioBlock('Brianna Rosgen', [Translate('UniversityOf', null, { "NAME": "Calgary" })])}
+                    {renderBioBlock('Brianna Rosgen', [Translate('UniversityOf', null, { "NAME": "Calgary" })], 'https://ca.linkedin.com/in/brianna-rosgen-b12136134', 'Brianna.rosgen@ucalgary.ca', 'https://twitter.com/briannarosgen')}
                     {renderBioBlock('Mitchell Segal', [Translate('UniversityOf', null, { "NAME": "Toronto" })], null, 'mitchell.segal@mail.utoronto.ca')}
                 </div>
                 <h2 className="team-name-text">

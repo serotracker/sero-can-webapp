@@ -30,7 +30,6 @@ export default function Translate(
   addSpaces: [boolean, boolean] | null = null
 ): string {
   const [{ language }] = useContext(AppContext)
-
   const translationDictionary: Json = language === LanguageType.english ?
     English as Json : French as Json;
 

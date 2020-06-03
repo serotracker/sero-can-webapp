@@ -29,7 +29,7 @@ export default function TotalStats() {
   }
 
   return (
-    <div className="col-12 p-0">
+    <div className="col-12 p-0 stats-container">
       <div className="col-12 py-3 section-title center">{Translate('SummaryStatistics').toUpperCase()}</div>
       <div className="col-12 p-0 flex">
         <div className="main-statistic-title col-12 p-0 center-item flex">

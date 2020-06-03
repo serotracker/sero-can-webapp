@@ -56,8 +56,8 @@ export type Filters = {
 export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported';
 
 export enum LanguageType  {
-  french = 'french',
-  english ='english' 
+  french = 'fr',
+  english ='en' 
 }
 
 export type State = {

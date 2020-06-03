@@ -131,6 +131,50 @@
   "Settings": "Settings",
   "Sex": "Sex",
   "Source": "Source",
+  "SourceTypeFilterOptions": {
+    "Preprint": "Preprint",
+    "MediaReport&NewsRelease": "Media Report & News Release",
+    "PublishedAcademicStudy": "Published Academic Study",
+    "Government/NGO/HealthSystemReport": "Government / NGO / Health System Report"
+  },
+  "StudyStatusFilterOptions": {
+    "Completed": "Completed",
+    "Ongoing": "Ongoing"
+  },
+  "RiskOfBiasFilterOptions": {
+    "High": "High",
+    "Moderate": "Moderate",
+    "Unclear": "Unclear",
+    "Low": "Low"
+  },
+  "PopulationGroupFilterOptions": {
+    "Students": "Students",
+    "Generalpopulation": "General Population",
+    "Healthcareworkers": "Health Care Workers",
+    "Non-COVIDhospitalizedpatients": "Non-COVID hospitalized patients",
+    "Industryspecificemployees": "Industry specific employees",
+    "Pregnantorparturientwomen": "Pregnant or Parturient Women"
+  },
+  "SexFilterOptions": {
+    "All": "All",
+    "Unspecified": "Unspecified",
+    "Female": "Female"
+  },
+  "AgeFilterOptions": {
+    "Unspecified": "Unspecified",
+    "Seniors(65+)": "Seniors (65+)",
+    "All": "All",
+    "Children(0-12)": "Children (0-12)",
+    "Youth(13-17)": "Youth (13-17)",
+    "Adults(18-64)": "Adults (18-64)"
+  },
+  "TestInformationFilterOptions": {
+    "NotReported": "Not Reported",
+    "ChemiluminescenceImmunoassay": "Chemiluminescence Immunoassay",
+    "Neutralizationassay": "Neutralization assay",
+    "Solidphaseimmunochromatograph": "Solid phase immunochromatograph",
+    "Microsphereimmunoassay": "Microsphere immunoassay"
+  },
   "SourceType": "Source Type",
   "Specificity": "Specificity",
   "StartDate": "Start Date",

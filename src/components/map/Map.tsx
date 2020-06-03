@@ -6,9 +6,10 @@ import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
 import { getAggregateData } from "../../metaAnalysis";
 import { AggregatedRecord, AggregationFactor } from "../../types";
+import { getBuckets, getColor } from "../../utils/mapUtils";
+import Translate from "../../utils/translate/translateService";
 import Legend from "./Legend";
 import './Map.css';
-import Translate from "../../utils/translate/translateService";
 
 export default function Map() {
   const mapRef = createRef<LeafletMap>();
@@ -16,10 +17,7 @@ export default function Map() {
   const [state] = useContext(AppContext);
   const [mapRecords, setMapRecords] = useState(Countries as any);
   const [forceUpdate, setForceUpdate] = useState(Math.random());
-
-  const colors = [
-    '#76E57F', '#62CA7C', '#4FB079', '#3B9577', '#277A74', '#146071', '#00456E', "#EEEEEE"
-  ]
+  const buckets = getBuckets(mapRecords.features);
 
   useEffect(() => {
     const prevalenceCountryDict: Record<string, AggregatedRecord> = getAggregateData(state.filtered_records, AggregationFactor.country)
@@ -47,7 +45,7 @@ export default function Map() {
 
   const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined) => {
     return {
-      fillColor: getColor(feature?.properties?.seroprevalence),
+      fillColor: getColor(feature?.properties?.seroprevalence, buckets),
       weight: 1,
       opacity: 1,
       color: 'white',
@@ -55,54 +53,6 @@ export default function Map() {
       fillOpacity: 0.7,
       zIndex: 650
     }
-  }
-
-  // Abstract to utils
-  const getLogit = (percentage: number) => {
-    const decimal = percentage / 100;
-    return Math.log(decimal) - Math.log(1 - decimal);
-  }
-
-  // Abstract to utils
-  const getDecimalFromLogit = (logit: number) => {
-    return Math.exp(logit) / (Math.exp(logit) + 1) * 100
-  }
-
-  // Abstract to utils
-  const getBuckets = (features: GeoJSON.Feature[]) => {
-    // This is some javascript voodoo to get maxSeroprevalence
-    const maxSeroprevalence = Math.max.apply(Math, features.filter(o => o.properties?.seroprevalence).map((o) => o?.properties?.seroprevalence));
-    const roundedMax = Math.ceil(maxSeroprevalence);
-    const maxLogit = getLogit(roundedMax);
-
-    // This is an arbitrary value that I chose because on the logit scale
-    // as you decrease in size you approach infinity, not 0
-    const lowerEnd = -7;
-    const differenceScale = maxLogit - lowerEnd
-    const bucketSegments = 6
-    const step = differenceScale / bucketSegments;
-    const buckets = [0];
-    for (let x = 1; x <= 6; x++) {
-      const logitStep = parseFloat(getDecimalFromLogit(-7 + step * x).toFixed(1));
-      buckets.push(logitStep);
-    }
-    return buckets;
-  }
-
-  const buckets: Array<number> = getBuckets(mapRecords.features);
-
-  // TODO: abstract this to utils function
-  const getColor = (d: number | null) => {
-    if (d === null) {
-      return colors[7];
-    }
-    return d < buckets[1] ? colors[0] :
-      d < buckets[2] ? colors[1] :
-        d < buckets[3] ? colors[2] :
-          d < buckets[4] ? colors[3] :
-            d < buckets[5] ? colors[4] :
-              d < buckets[6] ? colors[5] :
-                colors[6]
   }
 
   const highlightFeature = (e: LeafletMouseEvent) => {
@@ -215,7 +165,7 @@ export default function Map() {
         data={mapRecords as GeoJSON.GeoJsonObject}
         style={(data) => style(data)}>
       </GeoJSON>
-      <Legend buckets={buckets} getColor={getColor} />
+      <Legend buckets={buckets} />
     </LeafletMap>
   );
 }

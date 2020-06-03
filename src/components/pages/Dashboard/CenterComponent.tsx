@@ -20,7 +20,7 @@ export default function CentralPiece() {
     return state.data_page_state.mapOpen ? <Map /> : <Charts />
   }
   return (
-    <div className="col-12 p-0">
+    <div className="col-12 p-0 flex">
       <div className="center-button flex">
         <div className={`center-item left-button ${getClass(true)}`} onClick={() =>
           dispatch({

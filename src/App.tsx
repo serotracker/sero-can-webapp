@@ -10,7 +10,6 @@ import { NavBar } from "./components/shared/NavBar";
 
 function App() {
   const [, dispatch] = useContext(AppContext);
-
   // DATA
   useEffect(() => {
     const api = new httpClient()
@@ -21,30 +20,34 @@ function App() {
         payload: response
       });
     }
+
+    const handleResize = () => {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    window.addEventListener('resize', handleResize)
     getAirtableRecords();
+    handleResize();
   }, [dispatch])
 
   // ROUTING TABS
   return (
-    <div className="App-container">
-      <div className="col-12 p-0">
-        <NavBar />
-        <Switch>
-          <Route path="/About">
-            <About />
-          </Route>
-          <Route path="/Dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/Data">
-            <Data />
-          </Route>
-          <Redirect exact from="/" to="/Dashboard" />
-        </Switch>
-      </div>
-  )
-}
-    </div >
+    <div className="col-12 p-0 App">
+      <NavBar />
+      <Switch>
+        <Route path="/About">
+          <About />
+        </Route>
+        <Route path="/Dashboard">
+          <Dashboard />
+        </Route>
+        <Route path="/Data">
+          <Data />
+        </Route>
+        <Redirect exact from="/" to="/Dashboard" />
+      </Switch>
+    </div>
   );
 }
 
