@@ -3,6 +3,25 @@
   border-top: 2px solid #C4C4C4;
 }
 
+.country-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+}
+
+.list-container {
+  min-height: -webkit-min-content;
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
 .item-container:last-of-type {
   justify-content: space-between;
   border-top: 2px solid #C4C4C4;
@@ -30,6 +49,5 @@
 
 .item-list-container {
   background: white;
-  height: 68vh;
   overflow: auto;
 }

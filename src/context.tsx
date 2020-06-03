@@ -1,19 +1,19 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import { AirtableRecord, Filters, State } from "./types";
+import { AirtableRecord, Filters, State, LanguageType } from "./types";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
-export function getEmptyFilters(): Filters{
+export function getEmptyFilters(): Filters {
   return {
-      source_type: new Set(),
-      study_status: new Set(),
-      test_type: new Set(),
-      country: new Set(),
-      population_group: new Set(),
-      sex: new Set(),
-      age: new Set(),
-      risk_of_bias: new Set(),
-      isotypes_reported: new Set()
+    source_type: new Set(),
+    study_status: new Set(),
+    test_type: new Set(),
+    country: new Set(),
+    population_group: new Set(),
+    sex: new Set(),
+    age: new Set(),
+    risk_of_bias: new Set(),
+    isotypes_reported: new Set()
   }
 }
 
@@ -30,6 +30,7 @@ const initialState: State = {
   data_page_state: {
     mapOpen: true
   },
+  language: LanguageType.english,
   updated_at: ''
 };
 
@@ -46,10 +47,10 @@ function buildFilterFunction(filters: Record<string, any>) {
           // Note: isotypes filter works on an 'and' basis
           // Unlike other filters, which work on an 'or' basis
           // TODO: make logic flow here more generalized in case we need other filters in the future with similar behaviour
-          if(filter_key === 'isotypes_reported'){
+          if (filter_key === 'isotypes_reported') {
             let match = true;
             filters[filter_key].forEach((item: string) => {
-              if(!(record[filter_key].includes(item))){
+              if (!(record[filter_key].includes(item))) {
                 match = false;
               }
             });
@@ -104,33 +105,33 @@ function getFilterOptions(records: AirtableRecord[]) {
       if (record.study_status) {
         filter_options.study_status.add(record.study_status);
       }
-      if(record.source_type) {
+      if (record.source_type) {
         filter_options.source_type.add(record.source_type);
       }
-      if(record.sex) {
+      if (record.sex) {
         filter_options.sex.add(record.sex);
       }
-      if(record.risk_of_bias) {
+      if (record.risk_of_bias) {
         filter_options.risk_of_bias.add(record.risk_of_bias);
       }
-      if(record.test_type) {
+      if (record.test_type) {
         record.test_type.forEach((test_type) => {
           filter_options.test_type.add(test_type);
         })
       }
-      if(record.population_group){
+      if (record.population_group) {
         record.population_group.forEach((population_group) => {
           filter_options.population_group.add(population_group);
         });
       }
-      if(record.age){
+      if (record.age) {
         record.age.forEach((age) => {
           filter_options.age.add(age);
         });
       }
-      if(record.isotypes_reported){
+      if (record.isotypes_reported) {
         record.isotypes_reported.forEach((isotype_reported) => {
-          if(isotype_reported !== 'Not reported'){
+          if (isotype_reported !== 'Not reported') {
             filter_options.isotypes_reported.add(isotype_reported);
           }
         });
@@ -153,6 +154,11 @@ const reducer = (state: State, action: Record<string, any>) => {
       return {
         ...state,
         data_page_state: { ...state.data_page_state, mapOpen: action.payload }
+      }
+    case "SELECT_LANGUAGE":
+      return {
+        ...state,
+        language: action.payload
       }
     case "GET_AIRTABLE_RECORDS":
       return {

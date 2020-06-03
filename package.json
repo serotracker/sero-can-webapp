@@ -5,6 +5,7 @@
   "homepage": "https://serotracker.com",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@testing-library/jest-dom": "^4.2.4",
@@ -19,6 +20,7 @@
     "@types/recharts": "^1.8.10",
     "crypto-js": "^4.0.0",
     "gh-pages": "^2.2.0",
+    "i18n-iso-countries": "^6.0.0",
     "leaflet": "^1.6.0",
     "lodash": "^4.17.15",
     "react": "^16.13.1",

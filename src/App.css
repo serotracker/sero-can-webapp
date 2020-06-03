@@ -1,5 +1,8 @@
 .App {
-    flex-wrap: wrap;
+    flex: 1 1 auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
 }
 
 .App-header {
@@ -9,12 +12,11 @@
     align-items: center;
     justify-content: space-between;
     font-size: 1.25;
+    flex: 1 1;
     color: white;
     font-weight: 300;
-    height: 6vh;
-    -moz-box-shadow: 0 0 5px 0 #000000;
-    -webkit-box-shadow: 0 0 5px 0 #000000;
-    box-shadow: 0 0 5px 0 #000000;
+    height: 50px;
+    border-bottom: 2px solid #64767e;
 }
 
 .App-tabs {
@@ -22,16 +24,22 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-}
-
-.App-tabs > a {
-    color: white;
     font-size: 1.25em;
-    cursor: pointer;
 }
 
 .bold {
-    font-weight: bold;
+    border-bottom: 3px solid white;
+}
+
+.bold a {
+    font-weight: 500;
+    margin-bottom: -3px;
+    color: white;
+}
+
+.regular a {
+    font-weight: 500;
+    color: lightgrey;
 }
 
 .flex {
@@ -76,6 +84,10 @@
     justify-content: space-between;
 }
 
+.space-evenly {
+    justify-content: space-evenly;
+}
+
 .section-title {
     font-weight: bold;
     font-size: 1em;
@@ -89,8 +101,8 @@
 }
 
 .App-container {
-    height: 100vh;
-    overflow: hidden;
+    flex-direction: column;
+    flex-wrap: wrap;
     display: flex;
 }
 
@@ -98,15 +110,6 @@
     color: white;
     font-size: 1.625em;
     cursor: pointer;
-}
-
-.map {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    overflow-y: hidden;
-    height: 95vh;
 }
 
 .popup-header {

@@ -1,0 +1,217 @@
+{
+  "95%ConfidenceInterval": "95% Confidence Interval",
+  "95%ConfidenceIntervalTooltip": "Wider error bars indicate greater uncertainty in the pooled seroprevalence estimate.",
+  "About": "About",
+  "AboutPage": {
+    "AboutSection": {
+      "PartEight": "Global Serological Knowledge Hub",
+      "PartFive": "which brings together university, hospital and public health expertise to map the scope of coronavirus infection in Canada. The Task Force is funded by the Government of Canada and its secretariat is housed at",
+      "PartFour": "Canada's COVID-19 Immunity Task Force",
+      "PartOne": "As the acute phase of the COVID-19 pandemic passes its peak, many countries are accelerating their investments in serological (antibody) testing. Understanding population antibody patterns and potential immunity is of great interest to clinicians, public health officials, and policymakers alike.",
+      "PartSeven": "SeroTracker also provides content for the Task Force's",
+      "PartSix": "McGill University’s School of Population and Global Health",
+      "PartThree": "SeroTracker is supported by",
+      "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide."
+    },
+    "ContactSection": {
+      "BulletPointFive": {
+        "PartOne": "To make us aware of",
+        "PartThree": "or studies that we have not yet captured, please fill out",
+        "PartTwo": "new SARS-CoV-2 seroprevalence studies"
+      },
+      "BulletPointFour": {
+        "PartOne": "dashboard-related inquiries",
+        "PartTwo": "please contact Jordan Van Wyk at"
+      },
+      "BulletPointOne": {
+        "PartFour": "and Tingting Yan at",
+        "PartOne": "If you would like to",
+        "PartThree": "please contact Rahul Arora at",
+        "PartTwo": "support our efforts or collaborate with us"
+      },
+      "BulletPointThree": {
+        "PartOne": "data and AirTable-related inquiries",
+        "PartTwo": "please contact Nathan Duarte at"
+      },
+      "BulletPointTwo": {
+        "PartOne": "research methods-related inquiries",
+        "PartTwo": "please contact Nik Bobrovitz at"
+      },
+      "SectionOne": "We are an interdisciplinary team of researchers and engineers at the University of Oxford, University of Toronto, University of Waterloo, University of Calgary, and Harvard University."
+    },
+    "Mapbox": "supports SeroTracker's mapping infrastructure."
+  },
+  "AboutSeroTracker": "About SeroTracker",
+  "Age": "Age",
+  "AgeGroup": "Age Group",
+  "AggregatedPrevalence": "Aggregated Prevalence",
+  "Analyze": "Analyze",
+  "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
+  "BlankUniversity": "NAME University",
+  "ChangeSettings": "Change Settings",
+  "ContactUs": "Contact Us",
+  "Countries": "Countries",
+  "Country": "Country",
+  "CPPInvestmentBoard": "CPP Investment Board",
+  "Dashboard": "Dashboard",
+  "Data": "Data",
+  "Demographics": "Demographics",
+  "DemographicsTooltip": "Filter on demographic variables, including population group, sex, and age group.",
+  "Details": "Details",
+  "DevelopmentTeam": "Development Team",
+  "EconomicsTeam": "Economics Team",
+  "EndDate": "End Date",
+  "Estimate": "Estimate",
+  "Explore": "Explore",
+  "Filter": "Filter",
+  "FilterTooltip": "Filter the SeroTracker dataset based on geography, study, demographics, and test. Only studies matching all of the listed filters will be included.",
+  "For": "For",
+  "Geographies": "Geographies",
+  "Geography": "Geography",
+  "GeographyTooltip": "Select countries of interest.",
+  "Here": "Here",
+  "Isotypes": "Isotypes",
+  "IsotypesReported": "Isotypes Reported",
+  "LastUpdated": "Last Updated",
+  "LastUpdatedTooltip": "SeroTracker is continuously updated with findings from newly-released serological studies. We include new studies from our search within 48 hours of publication.",
+  "Location": "Location",
+  "Manufacturer": "Manufacturer",
+  "Methods": "Methods",
+  "MethodsText": {
+    "FirstParagraph": "SeroTracker provides an up-to-date systematic synthesis of SARS-CoV-2 serosurveillance projects globally. We screened peer-reviewed articles, preprints, government reports, and media articles to identify the prevalence estimates reported below. Our data is updated daily with all new reports of seroprevalence findings that were captured in our search",
+    "SecondParagraphPartOne": "You can view our full methods",
+    "SecondParagraphPartTwo": "To submit a SARS-CoV-2 seroprevalence study that we have not yet captured below, use"
+  },
+  "N": "N",
+  "Name": "Name",
+  "NoData": "No Data",
+  "NotReported": "Not Reported",
+  "OurData": "Our Data",
+  "OurDataText": {
+    "PointOne": "captures all studies reporting prevalence estimates",
+    "PointTwo": "describes studies that have not yet reported seroprevalence estimates",
+    "Text": "The tables below describe our findings, including detailed information about each study, each prevalence estimate, and the associated risk of bias."
+  },
+  "English": "English",
+  "French": "Français",
+  "OurTeam": "Our Team",
+  "OverallRiskOfBias": "Overall Risk Of Bias",
+  "Paper": "Paper",
+  "PaperText": "Our first manuscript, describing lessons from serosurveys up to May 1, can be found on",
+  "PlannedSerosurveys": "Planned Serosurveys",
+  "Population": "Population",
+  "PopulationGroup": "Population Group",
+  "Populations": "Populations",
+  "PrevalenceEstimateDetails": "Prevalence Estimate Details",
+  "Published": "Published",
+  "References": "References",
+  "RegulatoryApproval": "Regulatory Approval",
+  "ResearchTeam": "Research Team",
+  "RiskOfBias": "Risk Of Bias",
+  "SampleSize": "Sample Size",
+  "Sampling": "Sampling",
+  "SamplingMethod": "Sampling Method",
+  "SchoolName": {
+    "Schulich": "Schulich School of Engineering"
+  },
+  "ScientificLead": "Scientific Lead",
+  "Sensitivity": "Sensitivity",
+  "Seroprevalence": "Seroprevalence",
+  "SeroprevalenceBy": "Seroprevalence by",
+  "SeroPrevalenceByCountry": "Seroprevalence by Country",
+  "SeroprevalenceScale": "Seroprevalence Scale",
+  "SeroprevalenceScaleTooltip": "Made from the logit transform of the maximum value to determine the 'bins'",
+  "SeroprevalenceTooltip": {
+    "FirstParagraph": "Prevalence of antibodies against SARS-CoV-2, aggregated within the filters you have selected.",
+    "SecondParagraph": "NB: This should not be interpreted as a representative estimate of seroprevalence in the region of interest, especially if the aggregated studies have biased samples.",
+    "ThirdParagraph": "Pooling technique: fixed effects inverse-variance weighted aggregation of records with sample size over MIN_DENOMINATOR."
+  },
+  "Serosurveys": "Serosurveys",
+  "SerosurveysReportingPrevalence": "Serosurveys Reporting Prevalence",
+  "Settings": "Settings",
+  "Sex": "Sex",
+  "Source": "Source",
+  "SourceTypeFilterOptions": {
+    "Preprint": "Preprint",
+    "MediaReport&NewsRelease": "Media Report & News Release",
+    "PublishedAcademicStudy": "Published Academic Study",
+    "Government/NGO/HealthSystemReport": "Government / NGO / Health System Report"
+  },
+  "StudyStatusFilterOptions": {
+    "Completed": "Completed",
+    "Ongoing": "Ongoing"
+  },
+  "RiskOfBiasFilterOptions": {
+    "High": "High",
+    "Moderate": "Moderate",
+    "Unclear": "Unclear",
+    "Low": "Low"
+  },
+  "PopulationGroupFilterOptions": {
+    "Students": "Students",
+    "Generalpopulation": "General Population",
+    "Healthcareworkers": "Health Care Workers",
+    "Non-COVIDhospitalizedpatients": "Non-COVID hospitalized patients",
+    "Industryspecificemployees": "Industry specific employees",
+    "Pregnantorparturientwomen": "Pregnant or Parturient Women"
+  },
+  "SexFilterOptions": {
+    "All": "All",
+    "Unspecified": "Unspecified",
+    "Female": "Female"
+  },
+  "AgeFilterOptions": {
+    "Unspecified": "Unspecified",
+    "Seniors(65+)": "Seniors (65+)",
+    "All": "All",
+    "Children(0-12)": "Children (0-12)",
+    "Youth(13-17)": "Youth (13-17)",
+    "Adults(18-64)": "Adults (18-64)"
+  },
+  "TestInformationFilterOptions": {
+    "NotReported": "Not Reported",
+    "ChemiluminescenceImmunoassay": "Chemiluminescence Immunoassay",
+    "Neutralizationassay": "Neutralization assay",
+    "Solidphaseimmunochromatograph": "Solid phase immunochromatograph",
+    "Microsphereimmunoassay": "Microsphere immunoassay"
+  },
+  "SourceType": "Source Type",
+  "Specificity": "Specificity",
+  "StartDate": "Start Date",
+  "Status": "Status",
+  "StudiesPerPage": "Studies per page",
+  "Study": "Study",
+  "StudyDetailsAuthorString": {
+    "LeadOrg": "By FIRST_AUTHOR at LEAD_ORG",
+    "NoLeadOrg": "By FIRST_AUTHOR"
+  },
+  "StudyDetailsPublishString": {
+    "NoPublishDate": "Published by PUBLISHER",
+    "NoPublisher": "Published on PUBLISH_DATE",
+    "PublisherAndDate": "Published on PUBLISH_DATE by PUBLISHER"
+  },
+  "StudyInformation": "Study Information",
+  "StudyInformationTooltip": {
+    "FirstParagraph": "Filter on study details, including source type (publication, preprint, news, or report) and study status (ongoing, completed).",
+    "SecondParagraph": "Risk of Bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates."
+  },
+  "StudySize": "Study Size",
+  "StudyStatus": "Study Status",
+  "StudyType": "Study Type",
+  "Summary": "Summary",
+  "SummaryStatistics": "Summary Statistics",
+  "TestDetails": "Test Details",
+  "TestInformation": "Test Information",
+  "TestInformationTooltip": "Filter on test details, including assay type and antibody isotype.",
+  "TestsAdministered": "Tests Administered",
+  "TestType": "Test Type",
+  "TestUsed": "Test Used",
+  "ThisForm": "This form",
+  "TimBiography": {
+    "PartOne": "Director, School of Population and Global Health, McGill University",
+    "PartTwo": "Executive Director, Canadian COVID-19 Immunity Task Force"
+  },
+  "TotalEstimates": "Total Estimates",
+  "TotalTests": "Total Tests",
+  "UniversityOf": "University of NAME"
+}
