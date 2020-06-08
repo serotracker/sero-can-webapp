@@ -31,7 +31,6 @@ const getLogit = (percentage: number) => {
   return Math.log(decimal) - Math.log(1 - decimal);
 }
 
-// Abstract to utils
 const getDecimalFromLogit = (logit: number) => {
   return Math.exp(logit) / (Math.exp(logit) + 1) * 100
 }
@@ -44,14 +43,16 @@ export const getMapUrl = (language: LanguageType) => {
 
 export const colors = ['#76E57F', '#62CA7C', '#4FB079', '#3B9577', '#277A74', '#146071', '#00456E', "#EEEEEE"]
 
-// TODO: abstract this to utils function
 export const getColor = (d: number | null, buckets: number[]) => {
   if (d === null) return colors[7];
-  // for (let i = 0, last = colors[6]; i < buckets.length; last = colors[i++]) {
-  //   if (d < buckets[i]) return last;
-  // }
-  let i = buckets.findIndex(max => d <= max);
-  return colors[i !== null ? i - 1 : 6 ];
+  
+  return d < buckets[1] ? colors[0] :
+    d < buckets[2] ? colors[1] :
+      d < buckets[3] ? colors[2] :
+        d < buckets[4] ? colors[3] :
+          d < buckets[5] ? colors[4] :
+            d < buckets[6] ? colors[5] :
+              colors[6]
 }
 
 Countries.registerLocale(English);
