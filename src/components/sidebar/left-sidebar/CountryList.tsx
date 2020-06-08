@@ -12,15 +12,15 @@ export default function CountryList() {
   const aggregatedData = _.sortBy(getAggregateData(state.filtered_records, AggregationFactor.country), ['seroprevalence']).reverse();
 
   return (
-    <div className="col-12 px-0 country-list">
+    <div className="country-list">
       <div className="section-title py-2 center">
         {Translate('SeroPrevalenceByCountry').toUpperCase()}
       </div>
       <div className="list">
-        <div className="list-container col-12 p-0">
+        {/* <div className="list-container"> */}
           {aggregatedData.map(o => {
             return (
-              <div className="col-12 p-0 flex item-container" key={Math.random()}>
+              <div className="flex item-container" key={Math.random()}>
                 <div className="p-2 country-name center-item">
                   {o.name}
                 </div>
@@ -30,7 +30,7 @@ export default function CountryList() {
               </div>
             )
           })}
-        </div>
+        {/* </div> */}
       </div>
     </div>
   )

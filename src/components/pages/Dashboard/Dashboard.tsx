@@ -10,9 +10,9 @@ export default function Dashboard() {
 
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
   return (
-    <div className="col-12 p-0 flex dashboard">
+    <div className="fill flex dashboard">
       {!isMobileDeviceOrTablet ?
-        (<div className="col-12 p-0 flex">
+        (<div className="fill flex">
           <div className="col-2 p-0 flex">
             <LeftSidebar />
           </div>
@@ -24,7 +24,7 @@ export default function Dashboard() {
           </div>
         </div>) :
         (
-          <div className="col-12 p-0 flex">
+          <div className="fill flex">
             <MobileComponents />
           </div>
         )}

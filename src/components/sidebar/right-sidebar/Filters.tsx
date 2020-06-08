@@ -4,19 +4,38 @@ import { Dropdown } from 'semantic-ui-react'
 import { FilterType } from '../../../types';
 import InformationIcon from "../../shared/InformationIcon";
 import Translate from "../../../utils/translate/translateService";
+import { toPascalCase } from "../../../utils/translate/caseChanger";
+import { getCountryName } from "../../../utils/mapUtils";
 
 export default function Filters() {
   const [state, dispatch] = useContext(AppContext);
 
-  const formatOptions = (options: any) => {
+  const formatOptions = (options: any, filter_type: FilterType) => {
     const formatted_options: Record<string, string>[] = [];
-    options.forEach((o: string) => {
-      formatted_options.push({
-        key: o,
-        text: o,
-        value: o
-      })
-    });
+    const optionString = toPascalCase(filter_type.toString());
+    const jsonObjectString = `${optionString}Options`;
+    switch (filter_type) {
+      case 'country':
+        options.forEach((o: string) => {
+          formatted_options.push({
+            key: o,
+            text: getCountryName(o, state.language, jsonObjectString),
+            value: o
+          })
+        });
+        break;
+      default:
+        options.forEach((o: string) => {
+          const translatedString = Translate(jsonObjectString, [toPascalCase(o)]);
+          const alternativeString = Translate(jsonObjectString, [o.replace(/ /g, '')]);
+
+          formatted_options.push({
+            key: o,
+            text: translatedString ? translatedString : alternativeString,
+            value: o
+          })
+        });
+    };
     return formatted_options;
   }
 
@@ -60,7 +79,7 @@ export default function Filters() {
           search
           clearable
           selection
-          options={formatOptions(state.filter_options[filter_type])}
+          options={formatOptions(state.filter_options[filter_type], filter_type)}
           onChange={(e: any, data: any) => { addFilter(data, filter_type) }}
           defaultValue={Array.from(state.filters[filter_type])}
         />

@@ -1,4 +1,11 @@
 
+import * as Countries from 'i18n-iso-countries';
+import English from "i18n-iso-countries/langs/en.json"
+import French from "i18n-iso-countries/langs/fr.json"
+import { LanguageType } from "../types";
+import { toPascalCase } from './translate/caseChanger';
+import Translate from './translate/translateService';
+
 export const getBuckets = (features: GeoJSON.Feature[]) => {
   // This is some javascript voodoo to get maxSeroprevalence
   const maxSeroprevalence = Math.max.apply(Math, features.filter(o => o.properties?.seroprevalence).map((o) => o?.properties?.seroprevalence));
@@ -29,6 +36,12 @@ const getDecimalFromLogit = (logit: number) => {
   return Math.exp(logit) / (Math.exp(logit) + 1) * 100
 }
 
+
+export const getMapUrl = (language: LanguageType) => {
+  return language === LanguageType.english ? 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token='
+    : 'https://api.mapbox.com/styles/v1/serotracker/ckb5pp5aj33xn1it8hivdofiv/tiles/512/{z}/{x}/{y}?access_token='
+}
+
 export const colors = ['#76E57F', '#62CA7C', '#4FB079', '#3B9577', '#277A74', '#146071', '#00456E', "#EEEEEE"]
 
 // TODO: abstract this to utils function
@@ -39,4 +52,15 @@ export const getColor = (d: number | null, buckets: number[]) => {
   // }
   let i = buckets.findIndex(max => d <= max);
   return colors[i !== null ? i - 1 : 6 ];
+}
+
+Countries.registerLocale(English);
+Countries.registerLocale(French);
+
+export const getCountryName = (country: string, language: LanguageType, optionString: string) => {
+  const code = Countries.getAlpha2Code(country, 'en');
+  console.log(code);
+  const translatedCountryName = Countries.getName(code, language);
+  const displayText = translatedCountryName ? translatedCountryName : Translate(optionString, [toPascalCase(country)]);
+  return displayText;
 }

@@ -6,7 +6,7 @@ import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
 import { getAggregateData } from "../../metaAnalysis";
 import { AggregatedRecord, AggregationFactor } from "../../types";
-import { getBuckets, getColor } from "../../utils/mapUtils";
+import { getBuckets, getColor, getCountryName, getMapUrl } from "../../utils/mapUtils";
 import Translate from "../../utils/translate/translateService";
 import Legend from "./Legend";
 import './Map.css';
@@ -40,7 +40,7 @@ export default function Map() {
 
     // we need to update the key on the GEOJSON to let react know it's time to rerender
     setForceUpdate(Math.random())
-  }, [state.filtered_records])
+  }, [state.filtered_records, state.language])
 
 
   const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined) => {
@@ -84,19 +84,17 @@ export default function Map() {
       fillOpacity: 0.7
     });
   };
-
   const seroPrevalence = Translate("Seroprevalence")
   const confInterval = Translate("95%ConfidenceInterval");
-  const tests = Translate("95%TotalTests");
+  const tests = Translate("TotalTests");
   const totalEstimates = Translate('TotalEstimates');
-  const noData = Translate('NoData')
-
+  const noData = Translate('NoData');
   const createPopup = (properties: any) => {
     if (properties.seroprevalence) {
       let error = properties?.error;
       return (
         <div className="col-12 p-0 flex">
-          <div className="col-12 p-0 popup-header">{properties.name}</div>
+          <div className="col-12 p-0 popup-header">{getCountryName(properties.name, state.language, "CountryOptions")}</div>
           <div className="col-12 p-0 popup-content">{seroPrevalence}: {properties?.seroprevalence.toFixed(2)}%</div>
           <div className="col-12 p-0 popup-content">{confInterval}: {(properties?.seroprevalence - error[0]).toFixed(2)}%-{(properties?.seroprevalence + error[1]).toFixed(2)}%</div>
           <div className="col-12 p-0 popup-content">{tests}: {properties?.n}</div>
@@ -105,7 +103,7 @@ export default function Map() {
     };
     return (
       <div className="col-12 p-0 flex">
-        <h3 className="col-12 p-0 flex popup-header">{properties.name}</h3>
+        <div className="col-12 p-0 popup-header">{getCountryName(properties.name, state.language, "CountryOptions")}</div>
         <div className="col-12 p-0 flex popup-content">{noData}</div>
       </div>)
   }
@@ -152,10 +150,10 @@ export default function Map() {
       maxBoundsViscosity={1}
     >
       <TileLayer
-        url={'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken}
+        url={getMapUrl(state.language) + mapboxAccessToken}
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         tileSize={512}
-        id='mapbox/light-v9'
+        id={'mapbox/light-v9'}
         zoomOffset={-1}>
       </TileLayer>
       <GeoJSON

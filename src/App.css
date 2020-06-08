@@ -2,7 +2,9 @@
     flex: 1 1 auto;
     flex-direction: column;
     flex-wrap: nowrap;
-    overflow-y: hidden;
+    overflow-y: hidden;  
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 .App-header {
@@ -45,6 +47,11 @@
 .flex {
     display: flex;
     flex-wrap: wrap;
+    max-height: 100%;
+}
+
+.fill {
+    flex: 1 1;
 }
 
 .start-item {

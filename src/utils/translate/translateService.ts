@@ -23,13 +23,18 @@ const recursiveFind = (object: any, keys: string[], index: number): string => {
 
 }
 
+let language: LanguageType = LanguageType.english;
+
+export const setLanguageType = (newLanguage: LanguageType) => {
+  language = newLanguage;
+}
+
 export default function Translate(
   text: string,
   specifier: string[] | null = null,
   substitution: Record<string, string | number> | null = null,
   addSpaces: [boolean, boolean] | null = null
 ): string {
-  const [{ language }] = useContext(AppContext)
   const translationDictionary: Json = language === LanguageType.english ?
     English as Json : French as Json;
 
@@ -37,7 +42,7 @@ export default function Translate(
     let translatedString = translationDictionary[text];
 
     if (!translatedString) {
-      return text + "*"
+      return (specifier ? specifier[specifier.length - 1] : text) + "*";
     }
 
     if (specifier) {

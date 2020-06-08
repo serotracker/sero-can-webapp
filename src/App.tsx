@@ -1,15 +1,16 @@
 import React, { useContext, useEffect } from "react";
-import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
 import Dashboard from "./components/pages/Dashboard/Dashboard";
 import Data from './components/pages/Data';
+import { NavBar } from "./components/shared/NavBar";
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
-import { NavBar } from "./components/shared/NavBar";
+import { setLanguageType } from "./utils/translate/translateService";
 
 function App() {
-  const [, dispatch] = useContext(AppContext);
+  const [{ language }, dispatch] = useContext(AppContext);
   // DATA
   useEffect(() => {
     const api = new httpClient()
@@ -29,11 +30,13 @@ function App() {
     window.addEventListener('resize', handleResize)
     getAirtableRecords();
     handleResize();
-  }, [dispatch])
+
+    setLanguageType(language);
+  }, [dispatch, language])
 
   // ROUTING TABS
   return (
-    <div className="col-12 p-0 App">
+    <div className="App">
       <NavBar />
       <Switch>
         <Route path="/About">

@@ -23,7 +23,7 @@ export default function Legend(props: LegendProps) {
       const to = buckets[index + 1]
       // TODO: Check into passing in an array of colours instead of the getColor function
       return (
-        <div className="bin flex">
+        <div className="bin flex" key={Math.random()}>
           <div className={isMobileDeviceOrTablet ? "col-12 mobile-text p-0" : "col-12 p-0"}>
             {isMobileDeviceOrTablet ? `${from}%${to ? '' : "+"}` : `${from}%${to ? `- ${to}%` : "+"}`}</div>
           <i className="col-12 p-0" style={{ background: getColor(from, buckets) }}></i>
