@@ -96,7 +96,7 @@ export function aggregateRecords(records: AirtableRecord[], method: string = "do
 
         
         filteredRecords.forEach((record: AirtableRecord) => {
-            if ((record.seroprevalence !== null) && (record.denominator !== null) && (record.seroprevalence !== 0) && (record.denominator !== 0)) {
+            if ((record.seroprevalence !== null) && (record.denominator !== null) && (record.denominator !== 0)) {
                 prevalence = transformPrevalence(record.seroprevalence, record.denominator, method)!;
                 variance = transformVariance(record.seroprevalence, record.denominator, method)!;
                 var_sum = var_sum + variance;
