@@ -163,3 +163,15 @@
     bottom: auto;
     right: auto;
 }
+
+.modal-content {
+    background-color: black !important;
+}
+
+.modal-content > p {
+    color: white;
+}
+
+.blm-img {
+    margin: auto;
+}
