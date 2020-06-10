@@ -46,7 +46,7 @@ function App() {
   const BLMModal = () => (
     <Modal className="modal" open={showModal} onClose={closeModal} closeIcon>
       <Modal.Content className="modal-content">
-          <p>The SeroTracker team stands in solidarity with the Black community in the fight against racism, injustice and systemic discrimination. On Wednesday, June 10, SeroTracker is recognizing #ShutDownSTEM. Our dashboard remains available for researchers who rely upon it for their urgent work against COVID-19. s.</p>
+          <p>The SeroTracker team stands in solidarity with the Black community in the fight against racism, injustice and systemic discrimination. On Wednesday, June 10, SeroTracker is recognizing #ShutDownSTEM. Our dashboard remains available for researchers who rely upon it for their urgent work against COVID-19.</p>
           <p>This pandemic has highlighted and magnified existing health disparities for communities facing systemic discrimination, emphasizing the need to advocate for racial justice. We commit to educate ourselves about this critical issue, to listen, to speak out against racial injustice, and to challenge our own implicit biases.</p>
           <p>For more information on #ShutDownSTEM, please visit <a href="https://www.shutdownstem.com/">https://www.shutdownstem.com</a>. We are living in a time where “silence is betrayal” (Martin Luther King Jr). </p>
           <div>
