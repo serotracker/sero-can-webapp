@@ -7,9 +7,11 @@ import About from './components/static/About';
 import Data from './components/static/Home';
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
+import { Modal } from "semantic-ui-react";
 
 function App() {
   const [tab, setTab] = useState("");
+  const [showModal, toggleModal] = useState(true);
   const [, dispatch] = useContext(AppContext);
 
   // DATA
@@ -38,6 +40,21 @@ function App() {
   const getTabClass = (tabName: string) => {
     return tabName === tab ? 'bold center' : 'regular center'
   }
+
+  const closeModal = () => toggleModal(false);
+
+  const BLMModal = () => (
+    <Modal className="modal" open={showModal} onClose={closeModal} closeIcon>
+      <Modal.Header>Select a Photo</Modal.Header>
+      <Modal.Content>
+          <p>
+            We've found the following gravatar image associated with your e-mail
+            address.
+          </p>
+          <p>Is it okay to use this photo?</p>
+      </Modal.Content>
+    </Modal>
+  )
 
   // AUTHENTICATION
   // let authStatus = false;
@@ -72,6 +89,7 @@ function App() {
                 <Link className={getTabClass('/Data')} to="/Data">Data</Link>
                 <Link className={getTabClass('/About')} to="/About">About</Link>
               </div>
+              <BLMModal/>
             </header>
 
             <Switch>
