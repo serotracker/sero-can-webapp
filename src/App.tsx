@@ -7,11 +7,9 @@ import About from './components/static/About';
 import Data from './components/static/Home';
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
-import { Modal, Image } from "semantic-ui-react";
 
 function App() {
   const [tab, setTab] = useState("");
-  const [showModal, toggleModal] = useState(true);
   const [, dispatch] = useContext(AppContext);
 
   // DATA
@@ -40,21 +38,6 @@ function App() {
   const getTabClass = (tabName: string) => {
     return tabName === tab ? 'bold center' : 'regular center'
   }
-
-  const closeModal = () => toggleModal(false);
-
-  const BLMModal = () => (
-    <Modal className="modal" open={showModal} onClose={closeModal} closeIcon>
-      <Modal.Content className="modal-content">
-          <p>The SeroTracker team stands in solidarity with the Black community in the fight against racism, injustice and systemic discrimination. On Wednesday, June 10, SeroTracker is recognizing #ShutDownSTEM. Our dashboard remains available for researchers who rely upon it for their urgent work against COVID-19.</p>
-          <p>This pandemic has highlighted and magnified existing health disparities for communities facing systemic discrimination, emphasizing the need to advocate for racial justice. We commit to educate ourselves about this critical issue, to listen, to speak out against racial injustice, and to challenge our own implicit biases.</p>
-          <p>For more information on #ShutDownSTEM, please visit <a href="https://www.shutdownstem.com/">https://www.shutdownstem.com</a>. We are living in a time where “silence is betrayal” (Martin Luther King Jr). </p>
-          <div>
-            <Image className="blm-img" src='https://images.squarespace-cdn.com/content/v1/5ed6c369f19ebe008aeff12e/1591340053331-0GWA2PR4F4ZN7SI4E2JH/ke17ZwdGBToddI8pDm48kJK4Mm1kch8SFO9ZNkN1NT97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmN9YSRtfoTLg6dUq-6F17A0FFZK5fArcnK1IqGweyunyWChwIwkIJ_P7MaZif-uMs/%23ShutDownSTEM2.png?format=300w'/>
-          </div>
-      </Modal.Content>
-    </Modal>
-  )
 
   // AUTHENTICATION
   // let authStatus = false;
@@ -89,7 +72,6 @@ function App() {
                 <Link className={getTabClass('/Data')} to="/Data">Data</Link>
                 <Link className={getTabClass('/About')} to="/About">About</Link>
               </div>
-              <BLMModal/>
             </header>
 
             <Switch>
