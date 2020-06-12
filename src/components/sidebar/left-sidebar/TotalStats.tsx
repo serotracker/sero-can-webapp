@@ -24,6 +24,7 @@ export default function TotalStats() {
     .filter(onlyUnique);
   const countries = countryDict.length;
 
+  //TODO: Extract to utils
   const countriesOrCountry = () => {
     return Translate(countries > 1 && countries !== 0 ? "Countries" : "Country")
   }

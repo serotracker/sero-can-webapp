@@ -17,7 +17,6 @@ export default function CountryList() {
         {Translate('SeroPrevalenceByCountry').toUpperCase()}
       </div>
       <div className="list">
-        {/* <div className="list-container"> */}
           {aggregatedData.map(o => {
             return (
               <div className="flex item-container" key={Math.random()}>
@@ -30,7 +29,6 @@ export default function CountryList() {
               </div>
             )
           })}
-        {/* </div> */}
       </div>
     </div>
   )

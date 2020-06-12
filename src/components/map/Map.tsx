@@ -84,27 +84,22 @@ export default function Map() {
       fillOpacity: 0.7
     });
   };
-  const seroPrevalence = Translate("Seroprevalence")
-  const confInterval = Translate("95%ConfidenceInterval");
-  const tests = Translate("TotalTests");
-  const totalEstimates = Translate('TotalEstimates');
-  const noData = Translate('NoData');
   const createPopup = (properties: any) => {
     if (properties.seroprevalence) {
       let error = properties?.error;
       return (
         <div className="col-12 p-0 flex">
           <div className="col-12 p-0 popup-header">{getCountryName(properties.name, state.language, "CountryOptions")}</div>
-          <div className="col-12 p-0 popup-content">{seroPrevalence}: {properties?.seroprevalence.toFixed(2)}%</div>
-          <div className="col-12 p-0 popup-content">{confInterval}: {(properties?.seroprevalence - error[0]).toFixed(2)}%-{(properties?.seroprevalence + error[1]).toFixed(2)}%</div>
-          <div className="col-12 p-0 popup-content">{tests}: {properties?.n}</div>
-          <div className="col-12 p-0 popup-content">{totalEstimates}: {properties?.num_studies}</div>
+          <div className="col-12 p-0 popup-content">{Translate("Seroprevalence")}: {properties?.seroprevalence.toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">{Translate("95%ConfidenceInterval")}: {(properties?.seroprevalence - error[0]).toFixed(2)}%-{(properties?.seroprevalence + error[1]).toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">{Translate("TotalTests")}: {properties?.n}</div>
+          <div className="col-12 p-0 popup-content">{Translate('TotalEstimates')}: {properties?.num_studies}</div>
         </div>)
     };
     return (
       <div className="col-12 p-0 flex">
         <div className="col-12 p-0 popup-header">{getCountryName(properties.name, state.language, "CountryOptions")}</div>
-        <div className="col-12 p-0 flex popup-content">{noData}</div>
+        <div className="col-12 p-0 flex popup-content">{Translate('NoData')}</div>
       </div>)
   }
 
