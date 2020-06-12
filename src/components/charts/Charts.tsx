@@ -88,9 +88,9 @@ export default function Charts() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
 
   return (
-    <div className="charts-page flex">
+    <div className="charts-page">
       <div className={isMobileDeviceOrTablet ? "mobile-charts container col-11 center-item flex" : "charts container col-11 center-item flex"}>
-        <div className="col-12 p-0 center-item flex">
+        <div className="col-12 p-0 flex">
           <div className="col-sm-1 col-lg-3">
           </div>
           <div className="charts-title flex p-0 mt-2 p-lg-0 col-sm-8 col-lg-6">
@@ -118,13 +118,13 @@ export default function Charts() {
           </div>
         </div>
         <ResponsiveContainer width="100%" height="80%">
-          <BarChart data={records} layout='vertical'>
+          <BarChart data={records} layout='vertical' barCategoryGap={10} barGap={20}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" name={`${Translate("Seroprevalence")} (%)`} padding={{ left: 0, right: 30 }} />
             <YAxis dataKey="name" type="category" interval={0} width={getYAxisWidth(records) * 7} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
-            <Bar dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60}>
+            <Bar dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60} barSize={40} minPointSize={40}>
               <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
               <ErrorBar dataKey="error" width={4} strokeWidth={2} />
             </Bar>

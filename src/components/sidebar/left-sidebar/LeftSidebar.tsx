@@ -5,7 +5,7 @@ import "../sidebar.css"
 
 export default function LeftSidebar() {
   return (
-    <div className="sidebar-container">
+    <div className="sidebar-container flex">
       <TotalStats/>
       <CountryList/>
     </div>

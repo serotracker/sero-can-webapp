@@ -101,7 +101,7 @@ export default function ReferencesTable() {
 
 
   return (
-    <div className="container col-11 mt-3 top">
+    <div className="container col-11 mt-3 top references">
       <div className="col-12 px-0 py-3 section-title">
         {Translate('References').toUpperCase()}
       </div>
