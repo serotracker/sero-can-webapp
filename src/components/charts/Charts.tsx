@@ -118,13 +118,13 @@ export default function Charts() {
           </div>
         </div>
         <ResponsiveContainer width="100%" height="80%">
-          <BarChart data={records} layout='vertical' barCategoryGap={10} barGap={20}>
+          <BarChart data={records} layout='vertical' barGap={10}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" name={`${Translate("Seroprevalence")} (%)`} padding={{ left: 0, right: 30 }} />
             <YAxis dataKey="name" type="category" interval={0} width={getYAxisWidth(records) * 7} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
-            <Bar dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60} barSize={40} minPointSize={40}>
+            <Bar dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60} barSize={20} minPointSize={20}>
               <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
               <ErrorBar dataKey="error" width={4} strokeWidth={2} />
             </Bar>

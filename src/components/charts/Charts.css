@@ -12,7 +12,7 @@
 
 .mobile-charts {
   margin-top: 60px;
-  min-height: 50vh;
+  max-height: 100vh;
 }
 
 .charts-page {

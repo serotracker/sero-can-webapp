@@ -19,7 +19,8 @@ export default function MobileComponents() {
   }
 
   return (
-    <div className="col-12 p-0"> <Sidebar.Pushable as={Segment} className="col-12 p-0">
+    <div className="fill flex"> 
+    <Sidebar.Pushable as={Segment} className="fill flex">
       {/* Filters */}
       <Sidebar
         as={Menu}
@@ -62,7 +63,7 @@ export default function MobileComponents() {
           style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
           size={"lg"} />
       </Sidebar>
-      <Sidebar.Pusher className="col-12 p-0 flex">
+      <Sidebar.Pusher className="fill flex">
         <CentralPiece />
         {/* Icons */}
         <div className="icon-container"
