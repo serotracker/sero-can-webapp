@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Button, Modal } from "semantic-ui-react";
 import { AirtableRecord } from "../../types";
 import "./StudyDetailsModal.css";
+import Translate from "../../utils/translate/translateService";
 
 // TODO: Extract this into a modal service 
 
@@ -39,6 +40,29 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
     return nullString.join(", ")
   }
 
+  const getAuthorString = (first_author: string | undefined | null, lead_org: string | null | undefined) => {
+    if (lead_org && first_author) {
+      return Translate('StudyDetailsAuthorString', ['LeadOrg'], { 'FIRST_AUTHOR': first_author, 'LEAD_ORG': lead_org })
+    }
+    else if (first_author) {
+      return Translate('StudyDetailsAuthorString', ['NoLeadOrg'], { 'FIRST_AUTHOR': first_author })
+    }
+    return Translate('AuthorAndLeadOrganizationNotReported')
+  }
+
+  const getPublishString = (publish_date: string | undefined | null, publisher: string | null | undefined) => {
+    if (publish_date && publisher) {
+      return Translate('StudyDetailsPublishString', ['PublisherAndDate'], { 'PUBLISH_DATE': publish_date, 'PUBLISHER': publisher })
+    }
+    else if (publish_date) {
+      return Translate('StudyDetailsPublishString', ['NoPublisher'], { 'PUBLISH_DATE': publish_date })
+    }
+    else if (publisher) {
+      return Translate('StudyDetailsPublishString', ['NoPublishDate'], { 'PUBLISHER': publisher })
+    }
+    return null
+  }
+
   const {
     source_name, first_author, lead_org, publish_date, publisher, url,
     summary, study_status, study_type,
@@ -53,146 +77,146 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
       size="large"
       closeOnEscape={true}
       closeOnDimmerClick={true}
-      onClose={() => {setOpen(false)}}
+      onClose={() => { setOpen(false) }}
       open={open}
       style={inlineStyle.modal}
       trigger={
         <Button onClick={() => setOpen(true)} style={{ padding: '8px' }}>
-          Details
-      </Button>}>
-      <Modal.Header>Prevalence Estimate Details
+          {Translate('Details')}
+        </Button>}>
+      <Modal.Header>{Translate('PrevalenceEstimateDetails')}
         <FontAwesomeIcon onClick={() => setOpen(false)} icon={faTimes} size={"sm"} className="float-right cursor" />
       </Modal.Header>
       <Modal.Content>
         <Modal.Description>
           <div className="col-12 p-0 flex">
             <div className="col-12 px-0 py-1">
-              <div className="col-12 p-0 section-title">SOURCE</div>
+              <div className="col-12 p-0 section-title">{Translate('Source').toUpperCase()}</div>
               <div className="col-12 px-2 py-1 section-container modal-text-container">
                 <Link to={url || ""} className="col-12 p-0 name-text">
                   {source_name}
                 </Link>
                 <div className="col-12 p-0 secondary-text">
-                  {`By ${first_author} `}{lead_org ? `at ${lead_org}` : ""}
+                  {getAuthorString(first_author, lead_org)}
                 </div>
                 <div className="col-12 p-0 tertiary-text">
-                  {publish_date ? `Published ${publish_date} ` : ""}{publisher ? `by ${publisher}` : ""}
+                  {getPublishString(publish_date, publisher)}
                 </div>
               </div>
             </div>
 
             <div className="col-12 px-0 py-1">
-              <div className="col-12 p-0 section-title">STUDY</div>
+              <div className="col-12 p-0 section-title">{Translate('Study').toUpperCase()}</div>
               <div className="col-12 px-2 py-1 flex section-container modal-text-container">
                 <div className="col-12 p-0 secondary-text">
                   <div>
-                    <span className="secondary-title">Summary: </span>
+                    <span className="secondary-title">{Translate('Summary')}: </span>
                     {getPossibleNullString(summary)}
                   </div>
                 </div>
                 <div className="col-6 p-0 secondary-text">
                   <div>
-                    <span className="secondary-title">Status: </span>{getPossibleNullString(study_status)}
+                    <span className="secondary-title">{Translate('Status')}: </span>{getPossibleNullString(study_status)}
                   </div>
                 </div>
                 <div className="col-6 p-0 secondary-text">
                   <div>
-                    <span className="secondary-title">Study Type: </span>{getPossibleNullString(study_type)}
+                    <span className="secondary-title">{Translate('StudyType')}: </span>{getPossibleNullString(study_type)}
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="col-12 px-0 py-1">
-              <div className="col-12 p-0 section-title">DEMOGRAPHICS</div>
+              <div className="col-12 p-0 section-title">{Translate('Demographics').toUpperCase()}</div>
               <div className="col-12 px-2 py-1 flex section-container modal-text-container">
                 <div className="col-6 p-0 secondary-text">
-                  <span className="secondary-title">Population: </span>{getPossibleNullStringArray(population_group)}
+                  <span className="secondary-title">{Translate('Population')}: </span>{getPossibleNullStringArray(population_group)}
                 </div>
                 <div className="col-6 p-0 secondary-text">
-                  <span className="secondary-title">Age Group: </span>{getPossibleNullStringArray(age)}
+                  <span className="secondary-title">{Translate('AgeGroup')}: </span>{getPossibleNullStringArray(age)}
                 </div>
                 <div className="col-6 p-0 secondary-text">
                   <span>
-                    <span className="secondary-title">Location: </span>{city ? `${city.join(", ")}, ` : ""}{state ? `${state.join(", ")}, ` : ""}{country ? country : ""}
+                    <span className="secondary-title">{Translate('Location')}: </span>{city ? `${city.join(", ")}, ` : ""}{state ? `${state.join(", ")}, ` : ""}{country ? country : ""}
                   </span>
                 </div>
                 <div className="col-6 p-0 secondary-text">
-                  <span className="secondary-title">Sex: </span>{getPossibleNullString(sex)}
+                  <span className="secondary-title">{Translate('Sex')}: </span>{getPossibleNullString(sex)}
                 </div>
               </div>
             </div>
 
             <div className="col-6 pl-0 pr-2 py-1">
-              <div className="col-12 p-0 section-title">PREVALENCE</div>
+              <div className="col-12 p-0 section-title">{Translate('Prevalence').toUpperCase()}</div>
               <div className="col-12 px-2 py-1 flex section-container modal-text-container">
                 <div className="col-12 p-0 secondary-text">
-                  <span className="secondary-title">Prevalence: </span>{seroprevalence ? (seroprevalence * 100).toFixed(2) : "Not Reported"}%
+                  <span className="secondary-title">{Translate('Estimate')}: </span>{seroprevalence ? (seroprevalence * 100).toFixed(2) : "Not Reported"}%
                 </div>
                 <div className="col-12 p-0 secondary-text">
-                  <span className="secondary-title">Sample Size: </span>{getPossibleNullString(denominator)}
+                  <span className="secondary-title">{Translate('StudySize')}: </span>{getPossibleNullString(denominator)}
                 </div>
                 <div className="col-12 p-0 secondary-text">
-                  <span className="secondary-title">Risk of Bias: </span>{getPossibleNullString(risk_of_bias)}
+                  <span className="secondary-title">{Translate('RiskOfBias')}: </span>{getPossibleNullString(risk_of_bias)}
                 </div>
               </div>
             </div>
 
             <div className="col-6 pl-2 pr-0 py-1">
-              <div className="col-12 p-0 section-title">SAMPLING</div>
+              <div className="col-12 p-0 section-title">{Translate('Sampling').toUpperCase()}</div>
               <div className="col-12 px-2 py-1 flex section-container modal-text-container">
                 <div className="col-12 p-0 secondary-text">
                   <div>
-                    <span className="secondary-title">Sampling Method: </span>{getPossibleNullString(sampling_method)}
+                    <span className="secondary-title">{Translate('SamplingMethod')}: </span>{getPossibleNullString(sampling_method)}
                   </div>
                 </div>
                 <div className="col-12 p-0 secondary-text">
                   <div>
-                    <span className="secondary-title">Start Date: </span>{getPossibleNullString(sampling_start_date)}
+                    <span className="secondary-title">{Translate('StartDate')}: </span>{getPossibleNullString(sampling_start_date)}
                   </div>
                 </div>
                 <div className="col-12 p-0 secondary-text">
                   <div>
-                    <span className="secondary-title">End Date: </span>{getPossibleNullString(sampling_end_date)}
+                    <span className="secondary-title">{Translate('EndDate')}: </span>{getPossibleNullString(sampling_end_date)}
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="col-12 px-0 py-1">
-              <div className="col-12 p-0 section-title">TEST DETAILS</div>
+              <div className="col-12 p-0 section-title">{Translate('TestDetails').toUpperCase()}</div>
               <div className="col-12 px-2 py-1 flex section-container modal-text-container">
                 <div className="col-6 p-0">
                   <div className="col-12 p-0 secondary-text">
                     <div>
-                      <span className="secondary-title">Manufacturer: </span>{getPossibleNullString(manufacturer)}
+                      <span className="secondary-title">{Translate('Manufacturer')}: </span>{getPossibleNullString(manufacturer)}
                     </div>
                   </div>
                   <div className="col-12 p-0 secondary-text">
                     <div>
-                      <span className="secondary-title">Test Used: </span>{getPossibleNullStringArray(test_type)}
+                      <span className="secondary-title">{Translate('TestUsed')}: </span>{getPossibleNullStringArray(test_type)}
                     </div>
                   </div>
                   <div className="col-12 p-0 secondary-text">
                     <div>
-                      <span className="secondary-title">Isotypes: </span>{getPossibleNullStringArray(isotypes_reported)}
+                      <span className="secondary-title">{Translate('Isotypes')}: </span>{getPossibleNullStringArray(isotypes_reported)}
                     </div>
                   </div>
                 </div>
                 <div className="col-6 p-0">
                   <div className="col-12 p-0 secondary-text">
                     <div>
-                      <span className="secondary-title">Specificity: </span>{specificity ? `${(specificity * 100).toFixed(2)}%` : "Not Reported"}
+                      <span className="secondary-title">{Translate('Specificity')}: </span>{specificity ? `${(specificity * 100).toFixed(2)}%` : "Not Reported"}
                     </div>
                   </div>
                   <div className="col-12 p-0 secondary-text">
                     <div>
-                      <span className="secondary-title">Sensitivity: </span>{sensitivity ? `${(sensitivity * 100).toFixed(2)}%` : "Not Reported"}
+                      <span className="secondary-title">{Translate('Sensitivity')}: </span>{sensitivity ? `${(sensitivity * 100).toFixed(2)}%` : "Not Reported"}
                     </div>
                   </div>
                   <div className="col-126 p-0 secondary-text">
                     <div>
-                      <span className="secondary-title">Regulatory Approval: </span>{getPossibleNullString(approving_regulator)}
+                      <span className="secondary-title">{Translate('RegulatoryApproval')}: </span>{getPossibleNullString(approving_regulator)}
                     </div>
                   </div>
                 </div>

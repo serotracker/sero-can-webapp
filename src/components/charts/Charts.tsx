@@ -10,6 +10,7 @@ import { AggregationFactor } from "../../types";
 import InformationIcon from "../shared/InformationIcon";
 import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
+import Translate from "../../utils/translate/translateService";
 
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
@@ -19,8 +20,15 @@ export default function Charts() {
   const [records, setRecords] = useState(aggregatedRecords);
 
   const yAxisOptions = [
-    { key: 'Population', text: 'Population', value: AggregationFactor.population_group },
-    { key: 'Geographies', text: 'Geographies', value: AggregationFactor.country }
+    { key: 'Geographies',       text: Translate('Geographies'),      value: AggregationFactor.country },
+    { key: 'Population',        text: Translate('Population'),       value: AggregationFactor.population_group },
+    { key: 'Sex',               text: Translate('Sex'),              value: AggregationFactor.sex },
+    { key: 'Age',               text: Translate('Age'),              value: AggregationFactor.age },
+    { key: 'Study Status',      text: Translate('StudyStatus'),      value: AggregationFactor.study_status },
+    { key: 'Test Type',         text: Translate('TestType'),         value: AggregationFactor.test_type },
+    { key: 'Source Type',       text: Translate('SourceType'),       value: AggregationFactor.source_type },
+    { key: 'Risk Of Bias',      text: Translate('RiskOfBias'),       value: AggregationFactor.risk_of_bias },
+    { key: 'Isotypes Reported', text: Translate('IsotypesReported'), value: AggregationFactor.isotypes_reported },
   ]
 
   useEffect(() => {
@@ -41,10 +49,10 @@ export default function Charts() {
       return (
         <div className="col flex popup">
           <div className="col-12 p-0 popup-header">{label}</div>
-          <div className="col-12 p-0 popup-content">Seroprevalence: {seroprevalence.toFixed(2)}%</div>
-          <div className="col-12 p-0 popup-content">95% Confidence Interval:  {(seroprevalence - recordError[0]).toFixed(2)}%-{(seroprevalence + recordError[1]).toFixed(2)}%</div>
-          <div className="col-12 p-0 popup-content">Total Tests: {payload[0].payload.n}</div>
-          <div className="col-12 p-0 popup-content">Total Estimates: {payload[0].payload.num_studies}</div>
+          <div className="col-12 p-0 popup-content">{Translate("Seroprevalence")}: {seroprevalence.toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">{Translate("95%ConfidenceInterval")}:  {(seroprevalence - recordError[0]).toFixed(2)}%-{(seroprevalence + recordError[1]).toFixed(2)}%</div>
+          <div className="col-12 p-0 popup-content">{Translate('TotalTests')}: {payload[0].payload.n}</div>
+          <div className="col-12 p-0 popup-content">{Translate('TotalEstimates')}: {payload[0].payload.num_studies}</div>
         </div>
       );
     }
@@ -80,17 +88,17 @@ export default function Charts() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
 
   return (
-    <div className="charts-page flex">
+    <div className="charts-page">
       <div className={isMobileDeviceOrTablet ? "mobile-charts container col-11 center-item flex" : "charts container col-11 center-item flex"}>
-        <div className="col-12 p-0 center-item flex">
+        <div className="col-12 p-0 flex">
           <div className="col-sm-1 col-lg-3">
           </div>
           <div className="charts-title flex p-0 mt-2 p-lg-0 col-sm-8 col-lg-6">
             <div className="col-auto flex center-item">
-              Seroprevalence by
+              {Translate('SeroprevalenceBy')}
             </div>
             <Dropdown
-              placeholder='Geographies'
+              placeholder={Translate('Geographies')}
               fluid selection
               className="col large-dropdown"
               onChange={handleChange}
@@ -105,18 +113,18 @@ export default function Charts() {
             position="bottom right"
             color="#455a64"
             size="sm"
-            tooltip={"Wider error bars indicate greater uncertainty in the pooled seroprevalence estimate."}
-            tooltipHeader="95% Confidence Interval"/>
+            tooltip={Translate("95%ConfidenceIntervalTooltip")}
+            tooltipHeader={Translate("95%ConfidenceInterval")}/>
           </div>
         </div>
         <ResponsiveContainer width="100%" height="80%">
-          <BarChart data={records} layout='vertical'>
+          <BarChart data={records} layout='vertical' barCategoryGap={10} barGap={20}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" name="Seroprevalence (%)" padding={{ left: 0, right: 30 }} />
-            <YAxis dataKey="name" type="category" width={getYAxisWidth(records) * 7} />
+            <XAxis type="number" name={`${Translate("Seroprevalence")} (%)`} padding={{ left: 0, right: 30 }} />
+            <YAxis dataKey="name" type="category" interval={0} width={getYAxisWidth(records) * 7} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
-            <Bar dataKey="seroprevalence" name="Seroprevalence (%)" fill="#55A6BA" maxBarSize={60}>
+            <Bar dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60} barSize={40} minPointSize={40}>
               <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
               <ErrorBar dataKey="error" width={4} strokeWidth={2} />
             </Bar>

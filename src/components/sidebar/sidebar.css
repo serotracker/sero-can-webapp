@@ -1,5 +1,7 @@
 .sidebar-container {
   border: 1px solid #C7C7C7;
   border-top: none;
-  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }

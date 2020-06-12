@@ -1,17 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, Redirect, Route, Switch, useLocation } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 import './App.css';
-import Icon from './assets/images/two-tone-light.svg';
-import Dashboard from "./components/pages/Data";
-import About from './components/static/About';
-import Data from './components/static/Home';
+import About from './components/pages/About';
+import Dashboard from "./components/pages/Dashboard/Dashboard";
+import Data from './components/pages/Data';
+import { NavBar } from "./components/shared/NavBar";
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
+import { setLanguageType } from "./utils/translate/translateService";
 
 function App() {
-  const [tab, setTab] = useState("");
-  const [, dispatch] = useContext(AppContext);
-
+  const [{ language }, dispatch] = useContext(AppContext);
   // DATA
   useEffect(() => {
     const api = new httpClient()
@@ -23,73 +22,26 @@ function App() {
       });
     }
     getAirtableRecords();
-  }, [dispatch])
+    setLanguageType(language);
+  }, [dispatch, language])
 
   // ROUTING TABS
-  const usePageViews = () => {
-    let location = useLocation();
-    useEffect(() => {
-      setTab(location.pathname)
-    }, [location]);
-  }
-  
-  usePageViews()
-
-  const getTabClass = (tabName: string) => {
-    return tabName === tab ? 'bold center' : 'regular center'
-  }
-
-  // AUTHENTICATION
-  // let authStatus = false;
-
-  // if (localStorage.hasOwnProperty('authenticated')) {
-  //   authStatus = localStorage.getItem('authenticated') !== null;
-  // }
-  // const [auth, setAuth] = useState(authStatus);
-
-
-  // function authenticate() {
-  //   setAuth(true);
-  //   // Workaround because only string values can be saved to localStorage
-  //   localStorage.setItem('authenticated', 'true');
-  // }
-
   return (
-    <div className="App-container">
-      {/* {auth === false ? (
-        <Auth authenticate={authenticate} />
-      ) : ( */}
-          <div className="col-12 p-0">
-            <header className="App-header col-12 px-sm-2">
-              <div className="App-title col-auto py-3 px-0 flex left ">
-                <Link to="/" className="flex">
-                  <img src={Icon} width={23} height={23} alt="" />
-                  <div className="col-auto px-2" >SeroTracker</div>
-                </Link>
-              </div>
-              <div className="App-tabs p-0 col-sm-8 col-lg-3">
-                <Link className={getTabClass('/Dashboard')} to="/Dashboard">Dashboard</Link>
-                <Link className={getTabClass('/Data')} to="/Data">Data</Link>
-                <Link className={getTabClass('/About')} to="/About">About</Link>
-              </div>
-            </header>
-
-            <Switch>
-              <Route path="/About">
-                <About />
-              </Route>
-              <Route path="/Dashboard">
-                <Dashboard />
-              </Route>
-              <Route path="/Data">
-                <Data />
-              </Route>
-              <Redirect exact from="/" to="/Dashboard" />
-            </Switch>
-          </div>
-        )
-      }
-    </div >
+    <div className="App">
+      <NavBar />
+      <Switch>
+        <Route path="/About">
+          <About />
+        </Route>
+        <Route path="/Dashboard">
+          <Dashboard />
+        </Route>
+        <Route path="/Data">
+          <Data />
+        </Route>
+        <Redirect exact from="/" to="/Dashboard" />
+      </Switch>
+    </div>
   );
 }
 

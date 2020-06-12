@@ -26,3 +26,7 @@
   color: #455A64;
   
 }
+
+.stats-container {
+  flex: 1
+}

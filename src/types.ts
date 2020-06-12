@@ -55,6 +55,11 @@ export type Filters = {
 
 export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported';
 
+export enum LanguageType  {
+  french = 'fr',
+  english ='en' 
+}
+
 export type State = {
     healthcheck: string,
     airtable_records: AirtableRecord[],
@@ -62,12 +67,20 @@ export type State = {
     filters: Filters,
     filter_options: Filters,
     updated_at: string,
-    data_page_state: DataPageState
+    data_page_state: DataPageState,
+    language: LanguageType
 };
 
 export enum AggregationFactor {
     country = 'country',
-    population_group = 'population_group'
+    population_group = 'population_group',
+    sex = 'sex',
+    age = 'age',
+    study_status = 'study_status',
+    test_type = 'test_type',
+    source_type = 'source_type',
+    risk_of_bias = 'risk_of_bias',
+    isotypes_reported = 'isotypes_reported',
 }
 
 export type DataPageState = {

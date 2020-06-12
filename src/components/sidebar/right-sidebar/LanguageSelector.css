@@ -1,0 +1,11 @@
+.highlighted-language {
+  color: #455A64;
+}
+
+.regular-language {
+  font-weight: 300;
+}
+      
+.language-selector-container {
+  border-top: 1px grey
+}

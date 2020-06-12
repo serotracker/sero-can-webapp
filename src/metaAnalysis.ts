@@ -1,4 +1,4 @@
-import { AirtableRecord, AggregationFactor, AggregatedRecord } from "./types"
+import { AirtableRecord, AggregationFactor, AggregatedRecord, FilterType } from "./types"
 
 const Z_SCORE: number = 1.96;
 export const MIN_DENOMINATOR: number = 0;
@@ -135,15 +135,10 @@ export function getAggregateData(records: AirtableRecord[], aggregation_factor: 
     const grouped_records: Record<string, AirtableRecord[]> = {}
     const aggregationString: string = aggregation_factor.toString();
     records.forEach((record: AirtableRecord) => {
-        if ((record.seroprevalence !== null) && (record.denominator !== null) && (record[aggregationString as "country" | "population_group"] != null)) {
-            if (aggregationString === 'country') {
-                groupRecords(grouped_records, record, record.country!)
-            }
-            else {
-                record.population_group!.forEach((group) => {
-                    groupRecords(grouped_records, record, group)
-                })
-            }
+        const recordStrings = record[aggregationString as FilterType];
+        if ((record.seroprevalence !== null) && (record.denominator !== null) && (recordStrings != null)) {
+            const strings = recordStrings instanceof Array ? recordStrings : [recordStrings];
+            strings.forEach( group => groupRecords(grouped_records, record, group) )
         }
     });
 

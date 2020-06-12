@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faFilter, faBars } from "@fortawesome/free-solid-svg-icons";
 import TotalStats from "../sidebar/left-sidebar/TotalStats";
 import CountryList from "../sidebar/left-sidebar/CountryList";
-import CentralPiece from "../CenterComponent";
+import CentralPiece from "../pages/Dashboard/CenterComponent";
 
 
 export default function MobileComponents() {
@@ -62,7 +62,7 @@ export default function MobileComponents() {
           style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
           size={"lg"} />
       </Sidebar>
-      <Sidebar.Pusher className="col-12 p-0">
+      <Sidebar.Pusher className="col-12 p-0 flex">
         <CentralPiece />
         {/* Icons */}
         <div className="icon-container"
