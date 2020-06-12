@@ -57,9 +57,9 @@ export const NavBar = () => {
               Translate('About')}
           </Link>
         </div>
-        <div className={getTabClass('')}>
+        {/* <div className={getTabClass('')}>
           <Settings />
-        </div>
+        </div> */}
       </div>
     </header >
   )
