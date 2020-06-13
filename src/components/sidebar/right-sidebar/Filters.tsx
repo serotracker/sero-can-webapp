@@ -163,6 +163,9 @@ export default function Filters() {
             <div>
               {buildFilterDropdown('isotypes_reported', Translate('IsotypesReported'))}
             </div>
+            <div>
+              {buildFilterDropdown('specimen_type', Translate('SpecimenType'))}
+            </div>
           </div>
         </div>
       </div>

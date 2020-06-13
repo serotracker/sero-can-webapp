@@ -1,4 +1,4 @@
-import { AirtableRecord, Filters } from "../types"
+import { AirtableRecord } from "../types"
 
 export const testRecords: AirtableRecord[] = [
     {
@@ -6,6 +6,7 @@ export const testRecords: AirtableRecord[] = [
         source_type: 'source1',
         study_status: 'status1',
         test_type: ['test1'],
+        specimen_type: 'serum',
         country: 'Canada',
         population_group: ['General'],
         sex: 'All',
@@ -20,6 +21,7 @@ export const testRecords: AirtableRecord[] = [
         source_type: 'source2',
         study_status: 'status1',
         test_type: ['test1'],
+        specimen_type: 'serum',
         country: 'Canada',
         population_group: ['Adults'],
         sex: 'All',
@@ -34,6 +36,7 @@ export const testRecords: AirtableRecord[] = [
         source_type: 'source1',
         study_status: 'status2',
         test_type: ['test1'],
+        specimen_type: 'serum',
         country: 'Canada',
         population_group: ['Children'],
         sex: 'All',
@@ -48,6 +51,7 @@ export const testRecords: AirtableRecord[] = [
         source_type: 'source1',
         study_status: 'status1',
         test_type: ['test2'],
+        specimen_type: 'serum',
         country: 'Canada',
         population_group: ['Children', 'Seniors'],
         sex: 'All',
@@ -62,6 +66,7 @@ export const testRecords: AirtableRecord[] = [
         source_type: 'source1',
         study_status: 'status1',
         test_type: ['test1'],
+        specimen_type: 'serum',
         country: 'France',
         population_group: ['General'],
         sex: 'All',
@@ -76,6 +81,7 @@ export const testRecords: AirtableRecord[] = [
         source_type: 'source2',
         study_status: 'status1',
         test_type: ['test1'],
+        specimen_type: 'serum',
         country: 'France',
         population_group: ['Adults'],
         sex: 'All',
@@ -90,6 +96,7 @@ export const testRecords: AirtableRecord[] = [
         source_type: 'source1',
         study_status: 'status2',
         test_type: ['test1'],
+        specimen_type: 'plasma',
         country: 'France',
         population_group: ['Children'],
         sex: 'All',
@@ -104,6 +111,7 @@ export const testRecords: AirtableRecord[] = [
         source_type: 'source1',
         study_status: 'status1',
         test_type: ['test2'],
+        specimen_type: null,
         country: 'France',
         population_group: ['Children', 'Seniors'],
         sex: 'Male',
