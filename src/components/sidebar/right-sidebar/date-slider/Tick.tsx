@@ -1,6 +1,16 @@
 import React from "react"
+import { SliderItem } from "react-compound-slider"
 
-export function Tick({ tick, count, format }) {
+interface TickProps {
+  tick: SliderItem,
+  count: number
+}
+
+export function Tick({ tick, count }: TickProps) {
+
+  const format = (value: number) => {
+    return value
+  }
   return (
     <div>
       <div
@@ -28,18 +38,4 @@ export function Tick({ tick, count, format }) {
       </div>
     </div>
   )
-}
-
-Tick.propTypes = {
-  tick: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    value: PropTypes.number.isRequired,
-    percent: PropTypes.number.isRequired,
-  }).isRequired,
-  count: PropTypes.number.isRequired,
-  format: PropTypes.func.isRequired,
-}
-
-Tick.defaultProps = {
-  format: d => d,
 }

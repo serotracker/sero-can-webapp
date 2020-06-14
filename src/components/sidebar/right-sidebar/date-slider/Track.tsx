@@ -1,37 +1,30 @@
 import React from "react"
+import { SliderItem } from "react-compound-slider"
 
-export function Track({ source, target, getTrackProps, disabled }) {
+interface TrackProps {
+  source: SliderItem,
+  target: SliderItem,
+  disabled: boolean,
+  getTrackProps: Function
+}
+
+export function Track({ source, target, getTrackProps, disabled }: TrackProps) {
+
+  const getPosition = () => {
+    const left = `${source.percent}%`;
+    const width = `${target.percent - source.percent}%`
+
+    return {
+      left, width
+    }
+  }
+
   return (
-    <div
-      style={{
-        position: 'absolute',
-        transform: 'translate(0%, -50%)',
-        height: 14,
-        zIndex: 1,
-        backgroundColor: disabled ? '#999' : '#b28900',
-        borderRadius: 7,
-        cursor: 'pointer',
-        left: `${source.percent}%`,
-        width: `${target.percent - source.percent}%`,
-      }}
+    <div className="track"
+      style={getPosition()}
       {...getTrackProps()}
     />
   )
-}
-
-Track.propTypes = {
-  source: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    value: PropTypes.number.isRequired,
-    percent: PropTypes.number.isRequired,
-  }).isRequired,
-  target: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    value: PropTypes.number.isRequired,
-    percent: PropTypes.number.isRequired,
-  }).isRequired,
-  getTrackProps: PropTypes.func.isRequired,
-  disabled: PropTypes.bool,
 }
 
 Track.defaultProps = {

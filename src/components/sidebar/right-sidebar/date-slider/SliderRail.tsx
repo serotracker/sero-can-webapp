@@ -1,32 +1,15 @@
-const railOuterStyle = {
-  position: 'absolute',
-  width: '100%',
-  height: 42,
-  transform: 'translate(0%, -50%)',
-  borderRadius: 7,
-  cursor: 'pointer',
-  // border: '1px solid white',
+import { Fragment } from "react"
+import React from 'react'
+
+interface SliderRailProps {
+  getRailProps: Function
 }
 
-const railInnerStyle = {
-  position: 'absolute',
-  width: '100%',
-  height: 14,
-  transform: 'translate(0%, -50%)',
-  borderRadius: 7,
-  pointerEvents: 'none',
-  backgroundColor: 'rgb(155,155,155)',
-}
-
-export function SliderRail({ getRailProps }) {
+export function SliderRail({ getRailProps }: SliderRailProps) {
   return (
     <Fragment>
-      <div style={railOuterStyle} {...getRailProps()} />
-      <div style={railInnerStyle} />
+      <div className="outer-rail" {...getRailProps()} />
+      <div className="inner-slider-rail" />
     </Fragment>
   )
-}
-
-SliderRail.propTypes = {
-  getRailProps: PropTypes.func.isRequired,
 }

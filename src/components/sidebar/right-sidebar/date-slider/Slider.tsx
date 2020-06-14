@@ -1,37 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Handles, Rail, Slider, Ticks, Tracks } from 'react-compound-slider'
-import { Handle, SliderRail, Tick, Track } from './components' // example render components - source below
-
-const sliderStyle = {
-  position: 'relative',
-  width: '100%',
-}
+import { SliderRail } from './SliderRail'
+import { Handle } from './Handle'
+import { Tick } from './Tick'
+import { Track } from './Track'
+import './Styles.scss';
 
 const domain = [100, 500]
-const defaultValues = [150, 300, 400, 450]
+const defaultValues: readonly number[] = [150, 300, 400, 450]
 
 export default function Example() {
-  const state = {
-    values: defaultValues.slice(),
-    update: defaultValues.slice(),
-  }
+  const [values, setValues] = useState(defaultValues);
+  const [update, setUpdate] = useState(defaultValues);
 
   const onUpdate = (update: readonly number[]) => {
-    this.setState({ update })
+   setUpdate(update);
   }
 
   const onChange = (values: readonly number[]) => {
-    this.setState({ values })
+    setValues(values);
   }
 
-
   return (
-    <div style={{ height: 120, width: '100%' }}>
+    <div className="slider-container">
       <Slider
         mode={2}
         step={5}
         domain={domain}
-        rootStyle={sliderStyle}
+        className="slider"
         onUpdate={onUpdate}
         onChange={onChange}
         values={values}
@@ -47,6 +43,7 @@ export default function Example() {
                   key={handle.id}
                   handle={handle}
                   domain={domain}
+                  disabled={false}
                   getHandleProps={getHandleProps}
                 />
               ))}
