@@ -1,6 +1,6 @@
 import { testRecords } from './testData'
 import { getAggregateData, aggregateRecords } from '../metaAnalysis'
-import { AggregationFactor, AggregatedRecord, CustomMatcherResult } from '../types';
+import { AggregationFactor, AggregatedRecord } from '../types';
 
 function inZeroHundred (x: number) {
     if ((x >= 0) && (x <= 100)) {return true}

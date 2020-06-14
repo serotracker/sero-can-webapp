@@ -15,8 +15,10 @@ import Translate from "../../utils/translate/translateService";
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
   const [state] = useContext(AppContext);
-  const { filtered_records } = state;
-  const aggregatedRecords = getAggregateData(filtered_records, yAxisSelection);
+  const { filtered_records, filters } = state;
+  // Factor in "include_in_n" for population unfiltered geography estimates
+  const must_include_in_n = yAxisSelection == AggregationFactor.country ? filters.population_group.size === 0 : false;
+  const aggregatedRecords = getAggregateData(filtered_records, yAxisSelection, must_include_in_n);
   const [records, setRecords] = useState(aggregatedRecords);
 
   const yAxisOptions = [
@@ -32,10 +34,12 @@ export default function Charts() {
   ]
 
   useEffect(() => {
-    const reAggregatedRecords = getAggregateData(filtered_records, yAxisSelection);
+    // Factor in "include_in_n" for population unfiltered geography estimates
+    const must_include_in_n = yAxisSelection == AggregationFactor.country ? filters.population_group.size === 0 : false;
+    const reAggregatedRecords = getAggregateData(filtered_records, yAxisSelection, must_include_in_n);
     const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
     setRecords(chartData);
-  }, [yAxisSelection, state, filtered_records])
+  }, [yAxisSelection, state, filtered_records, filters])
 
   const handleChange = (event: SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
     setYAxis(data.value as AggregationFactor);

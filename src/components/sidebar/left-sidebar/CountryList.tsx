@@ -8,8 +8,9 @@ import Translate from "../../../utils/translate/translateService";
 
 export default function CountryList() {
   const [state] = useContext(AppContext);
-
-  const aggregatedData = _.sortBy(getAggregateData(state.filtered_records, AggregationFactor.country), ['seroprevalence']).reverse();
+  // Factor in "include_in_n" for population unfiltered geography estimates
+  const must_include_in_n = state.filters.population_group.size === 0;
+  const aggregatedData = _.sortBy(getAggregateData(state.filtered_records, AggregationFactor.country, must_include_in_n), ['seroprevalence']).reverse();
 
   return (
     <div className="country-list">
