@@ -30,6 +30,7 @@ export type AirtableRecord = {
     sampling_end_date?: string | null,
     summary?: string | null,
     url?: string | null,
+    include_in_n: boolean
 };
 
 export type AggregatedRecord = {

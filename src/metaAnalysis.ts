@@ -131,14 +131,18 @@ export function aggregateRecords(records: AirtableRecord[], method: string = "do
 
 // Given an aggregation factor (either 'country' or 'populations')
 // get pooled seroprevalence, error bounds, and n (total number of tests) for each country or population
-export function getAggregateData(records: AirtableRecord[], aggregation_factor: AggregationFactor) {
+// if must_include_in_n = true, only records tagged as "include_in_n" will be incorporated into seroprevalence estimates
+export function getAggregateData(records: AirtableRecord[], aggregation_factor: AggregationFactor, must_include_in_n: boolean = false) {
     const grouped_records: Record<string, AirtableRecord[]> = {}
     const aggregationString: string = aggregation_factor.toString();
     records.forEach((record: AirtableRecord) => {
-        const recordStrings = record[aggregationString as FilterType];
-        if ((record.seroprevalence !== null) && (record.denominator !== null) && (recordStrings != null)) {
-            const strings = recordStrings instanceof Array ? recordStrings : [recordStrings];
-            strings.forEach( group => groupRecords(grouped_records, record, group) )
+        const to_include = must_include_in_n ? record.include_in_n : true;
+        if(to_include){
+            const recordStrings = record[aggregationString as FilterType];
+            if ((record.seroprevalence !== null) && (record.denominator !== null) && (recordStrings != null)) {
+                const strings = recordStrings instanceof Array ? recordStrings : [recordStrings];
+                strings.forEach( group => groupRecords(grouped_records, record, group) )
+            }
         }
     });
 

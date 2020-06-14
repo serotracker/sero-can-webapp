@@ -58,7 +58,8 @@ export default class httpClient {
                 sampling_start_date: item.SAMPLING_START,
                 sampling_end_date: item.SAMPLING_END,
                 risk_of_bias: item.OVERALL_RISK_OF_BIAS ? item.OVERALL_RISK_OF_BIAS[0] : null,
-                url: item.URL ? item.URL[0] : null
+                url: item.URL ? item.URL[0] : null,
+                include_in_n: item.INCLUDE_IN_N ? true : false
             };
 
             return record; 

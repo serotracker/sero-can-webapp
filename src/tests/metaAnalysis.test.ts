@@ -35,6 +35,26 @@ test('test country aggregation', () => {
     }
 });
 
+test('test country aggregation include in n', () => {
+    const aggregatedData: AggregatedRecord[] = getAggregateData(testRecords, AggregationFactor.country, true)
+    expect(aggregatedData.length).toBe(2)
+    const expectedResult = [ 
+        { 
+            name: 'Canada',
+            n: 3200 
+        },
+        { 
+            name: 'France',
+            n: 2250 
+        } 
+    ];
+
+    for (let i = 0; i < expectedResult.length; i++) {
+        const data = aggregatedData.find(element => element.name === expectedResult[i].name)
+        expect(checkAggregatedRecord(data!, expectedResult[i].n)).toBe(true)
+    }
+});
+
 test('test population aggregation', () => {
     const aggregatedData = getAggregateData(testRecords, AggregationFactor.population_group)
     expect(aggregatedData.length).toBe(4)
