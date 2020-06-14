@@ -124,7 +124,7 @@ export default function Charts() {
             <YAxis dataKey="name" type="category" interval={0} width={getYAxisWidth(records) * 7} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
-            <Bar dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60} barSize={20} minPointSize={20}>
+            <Bar dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60} barSize={20}>
               <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
               <ErrorBar dataKey="error" width={4} strokeWidth={2} />
             </Bar>
