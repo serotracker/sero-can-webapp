@@ -50,12 +50,14 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
     return Translate('AuthorAndLeadOrganizationNotReported')
   }
 
-  const getPublishString = (publish_date: string | undefined | null, publisher: string | null | undefined) => {
-    if (publish_date && publisher) {
-      return Translate('StudyDetailsPublishString', ['PublisherAndDate'], { 'PUBLISH_DATE': publish_date, 'PUBLISHER': publisher })
+  const getPublishString = (publish_date: string | string[] | undefined | null, publisher: string | null | undefined) => {
+
+    const date = publish_date instanceof Array ? publish_date[0] : publish_date;
+    if (date && publisher) {
+      return Translate('StudyDetailsPublishString', ['PublisherAndDate'], { 'PUBLISH_DATE': date, 'PUBLISHER': publisher })
     }
-    else if (publish_date) {
-      return Translate('StudyDetailsPublishString', ['NoPublisher'], { 'PUBLISH_DATE': publish_date })
+    else if (date) {
+      return Translate('StudyDetailsPublishString', ['NoPublisher'], { 'PUBLISH_DATE': date })
     }
     else if (publisher) {
       return Translate('StudyDetailsPublishString', ['NoPublishDate'], { 'PUBLISHER': publisher })

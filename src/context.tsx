@@ -13,7 +13,8 @@ export function getEmptyFilters(): Filters {
     sex: new Set(),
     age: new Set(),
     risk_of_bias: new Set(),
-    isotypes_reported: new Set()
+    isotypes_reported: new Set(),
+    date_range: []
   }
 }
 
@@ -33,6 +34,13 @@ const initialState: State = {
   language: LanguageType.english,
   updated_at: ''
 };
+
+function filterByDate(dateRange: number[], records: AirtableRecord[]) {
+  return records
+    .filter(o => o.publish_date !== null && o.publish_date !== undefined)
+    .map(o => o.publish_date instanceof Array ? Date.parse(o.publish_date[0] as string) : Date.parse(o.publish_date as string))
+    .filter(o => o > dateRange[0] && o < dateRange[1])
+}
 
 function buildFilterFunction(filters: Record<string, any>) {
   // Returns a function that can be used to filter an array of airtable records
@@ -84,7 +92,8 @@ export function filterRecords(filters: Filters, records: AirtableRecord[]) {
   const filter_function = buildFilterFunction(filters);
   if (records) {
     const filtered_records = records.filter(filter_function);
-    return filtered_records;
+    const date_filtered_records = filterByDate(filters.date_range, filtered_records);
+    return date_filtered_records;
   }
   return [];
 
@@ -170,6 +179,14 @@ const reducer = (state: State, action: Record<string, any>) => {
       }
     case "UPDATE_FILTER":
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value)
+      return {
+        ...state,
+        filters: new_filters,
+        filtered_records: filterRecords(new_filters, state.airtable_records)
+      }
+
+    case "UPDATE_DATE_FILTER":
+      new_filters[action.payload.filter_type] = action.payload.filter_value
       return {
         ...state,
         filters: new_filters,

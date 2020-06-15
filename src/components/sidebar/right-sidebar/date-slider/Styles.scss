@@ -1,6 +1,7 @@
 .slider-container { 
   height: 120px;
-  width: 100%
+  width: 100%;
+  padding: 0 20px;
 }
 
 .inner-slider-rail {   
@@ -25,6 +26,7 @@
 .slider {  
   position: relative;
   width: 100%;
+  margin-top: 20px;
 }
 
 .track {  
@@ -61,4 +63,23 @@
     border-radius: 50%;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
     background-color: #468ac1;
+  }
+
+  .tick-container {
+    position: absolute;
+    margin-top: 14px;
+    width: 1px;
+    height: 5px;
+    background-color: rgb(200,200,200);
+  }
+
+  .tick {    
+    position: absolute;
+    margin-top: 22px;
+    font-size: 10px;
+    text-align: 'center';
+  }
+
+  .dates {
+    font-weight: 200;
   }

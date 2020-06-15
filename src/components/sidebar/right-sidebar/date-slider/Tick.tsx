@@ -3,38 +3,22 @@ import { SliderItem } from "react-compound-slider"
 
 interface TickProps {
   tick: SliderItem,
-  count: number
+  count: number,
+  label: string
 }
 
-export function Tick({ tick, count }: TickProps) {
-
-  const format = (value: number) => {
-    return value
-  }
+export function Tick({ tick, count, label }: TickProps) {
   return (
     <div>
-      <div
+      <div className="tick-container" style={{ left: `${tick.percent}%` }} />
+      <div className="tick"
         style={{
-          position: 'absolute',
-          marginTop: 14,
-          width: 1,
-          height: 5,
-          backgroundColor: 'rgb(200,200,200)',
-          left: `${tick.percent}%`,
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          marginTop: 22,
-          fontSize: 10,
-          textAlign: 'center',
           marginLeft: `${-(100 / count) / 2}%`,
           width: `${100 / count}%`,
           left: `${tick.percent}%`,
         }}
       >
-        {format(tick.value)}
+        {label}
       </div>
     </div>
   )

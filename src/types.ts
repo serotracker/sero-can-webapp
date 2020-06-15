@@ -19,7 +19,7 @@ export type AirtableRecord = {
     age: string[] | null,
     denominator: number | null,
     seroprevalence: number | null,
-    publish_date?: string | null,
+    publish_date?: string[] | string | null,
     publisher?: string | null,
     risk_of_bias: string | null,
     study_type?: string | null,
@@ -50,7 +50,8 @@ export type Filters = {
     sex: any,
     age: any,
     risk_of_bias: any,
-    isotypes_reported: any
+    isotypes_reported: any,
+    date_range: any
 };
 
 export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported';
