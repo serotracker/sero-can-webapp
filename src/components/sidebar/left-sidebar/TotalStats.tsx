@@ -10,7 +10,13 @@ import Translate from "../../../utils/translate/translateService";
 export default function TotalStats() {
   const [state] = useContext(AppContext);
 
-  const { seroprevalence, n } = aggregateRecords(state.filtered_records);
+  const aggregateResult = aggregateRecords(state.filtered_records);
+  let seroprevalence, n = null;
+  if(aggregateResult){
+    seroprevalence = aggregateResult.seroprevalence;
+    n = aggregateResult.n;
+  }
+
   function onlyUnique(value: any, index: number, self: any) {
     return self.indexOf(value) === index && value !== null;
   }
@@ -57,7 +63,7 @@ export default function TotalStats() {
       </div>
       <div className="col-12 flex middle py-2">
         <div className="secondary-statistic-title center p-0 col-12">{Translate("TestsAdministered")}</div>
-        <div className="secondary-statistic col-12 p-0 center">{n}</div>
+        <div className="secondary-statistic col-12 p-0 center">{n ? n : Translate("NoData")}</div>
       </div>
       <div className="col-12 flex middle py-2">
         <div className="secondary-statistic px-1 center">{countries}</div>

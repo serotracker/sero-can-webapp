@@ -2,6 +2,7 @@ import { AirtableRecord, AggregationFactor, AggregatedRecord, FilterType } from 
 
 const Z_SCORE: number = 1.96;
 export const MIN_DENOMINATOR: number = 100;
+const SP_ZERO_BLACKLIST: string[] = ["inverse_variance", "logit"];
 
 function transformPrevalence (p: number, N: number, method: string){
     switch(method as any) {
@@ -94,9 +95,11 @@ export function aggregateRecords(records: AirtableRecord[], method: string = "do
         let prevalence = 0;
         let variance = 0;
 
+        let records_included = false;
         
         filteredRecords.forEach((record: AirtableRecord) => {
-            if ((record.seroprevalence !== null) && (record.denominator !== null) && (record.seroprevalence !== 0) && (record.denominator !== 0)) {
+            if ((record.seroprevalence !== null) && (record.denominator !== null) && 
+            (record.seroprevalence !== 0 || SP_ZERO_BLACKLIST.includes(method)) && (record.denominator !== 0)) {
                 prevalence = transformPrevalence(record.seroprevalence, record.denominator, method)!;
                 variance = transformVariance(record.seroprevalence, record.denominator, method)!;
                 var_sum = var_sum + variance;
@@ -104,8 +107,14 @@ export function aggregateRecords(records: AirtableRecord[], method: string = "do
                 p_over_var_sum = p_over_var_sum + (prevalence / variance);
                 total_tested = total_tested + record.denominator;
                 inv_n_sum = inv_n_sum + 1 / record.denominator;
+                records_included = true;
             }
         });
+
+        // If no records included, return null
+        if(!records_included){
+            return null;
+        }
 
         pooled_p = p_over_var_sum / inv_var_sum;
         const conf_inter = [pooled_p - Z_SCORE * Math.sqrt(var_sum), pooled_p + Z_SCORE * Math.sqrt(var_sum)]
@@ -147,7 +156,9 @@ export function getAggregateData(records: AirtableRecord[], aggregation_factor: 
 
     for (const name in grouped_records) {
         const result = aggregateRecords(grouped_records[name]);
-        aggregate_data.push({ ...result, name });
+        if(result){
+            aggregate_data.push({ ...result, name });
+        }
     }
     return aggregate_data;
 }
