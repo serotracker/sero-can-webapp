@@ -1,4 +1,4 @@
-import { testRecords } from './testData'
+import { testRecords, edgeCaseRecords } from './testData'
 import { getAggregateData, aggregateRecords } from '../metaAnalysis'
 import { AggregationFactor, AggregatedRecord, CustomMatcherResult } from '../types';
 
@@ -70,4 +70,34 @@ test('test overall aggregation', () => {
     }
 
     expect(checkAggregatedRecord(aggregatedData!, expectedResult.n)).toBe(true)
+});
+
+test('test aggregation of edge case records', () => {
+    // Use double_arcsin_RSM, thus records with seroprevalence = 0 should be included
+    // Records with denominator = 0 should never be included
+    let aggregatedData = getAggregateData(edgeCaseRecords, AggregationFactor.country);
+    const expectedResult = [
+        {
+            name: 'Canada',
+            n: 4000
+        },
+        {
+            name: 'France',
+            n: 2000
+        }
+    ];
+    for (let i = 0; i < expectedResult.length; i++) {
+        const data = aggregatedData.find(element => element.name === expectedResult[i].name);
+        expect(checkAggregatedRecord(data!, expectedResult[i].n)).toBe(true);
+    }
+
+    // Use inverse_variance, thus records with seroprevalence = 0 should not be included
+    aggregatedData = getAggregateData(edgeCaseRecords, AggregationFactor.country, "inverse_variance");
+    const expected = {
+        name: 'Canada',
+        n: 2000
+    };
+    expect(aggregatedData.length === 1);
+    const data = aggregatedData.find(element => element.name === expected.name);
+    expect(checkAggregatedRecord(data!, expected.n)).toBe(true);
 });

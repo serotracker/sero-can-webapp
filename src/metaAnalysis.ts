@@ -99,7 +99,7 @@ export function aggregateRecords(records: AirtableRecord[], method: string = "do
         
         filteredRecords.forEach((record: AirtableRecord) => {
             if ((record.seroprevalence !== null) && (record.denominator !== null) && 
-            (record.seroprevalence !== 0 || SP_ZERO_BLACKLIST.includes(method)) && (record.denominator !== 0)) {
+            (record.seroprevalence !== 0 || !SP_ZERO_BLACKLIST.includes(method)) && (record.denominator !== 0)) {
                 prevalence = transformPrevalence(record.seroprevalence, record.denominator, method)!;
                 variance = transformVariance(record.seroprevalence, record.denominator, method)!;
                 var_sum = var_sum + variance;
@@ -140,7 +140,7 @@ export function aggregateRecords(records: AirtableRecord[], method: string = "do
 
 // Given an aggregation factor (either 'country' or 'populations')
 // get pooled seroprevalence, error bounds, and n (total number of tests) for each country or population
-export function getAggregateData(records: AirtableRecord[], aggregation_factor: AggregationFactor) {
+export function getAggregateData(records: AirtableRecord[], aggregation_factor: AggregationFactor, method: string = "double_arcsin_RSM") {
     const grouped_records: Record<string, AirtableRecord[]> = {}
     const aggregationString: string = aggregation_factor.toString();
     records.forEach((record: AirtableRecord) => {
@@ -155,7 +155,7 @@ export function getAggregateData(records: AirtableRecord[], aggregation_factor: 
     const aggregate_data: AggregatedRecord[] = []
 
     for (const name in grouped_records) {
-        const result = aggregateRecords(grouped_records[name]);
+        const result = aggregateRecords(grouped_records[name], method);
         if(result){
             aggregate_data.push({ ...result, name });
         }

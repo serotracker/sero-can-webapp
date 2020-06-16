@@ -114,3 +114,63 @@ export const testRecords: AirtableRecord[] = [
         isotypes_reported: ['IgM', 'IgA']
     }
 ];
+
+// Contains records with seroprevalence = 0 and denominator = 0
+export const edgeCaseRecords: AirtableRecord[] = [
+    {
+        source_name: 'article1',
+        source_type: 'source1',
+        study_status: 'status1',
+        test_type: ['test1'],
+        country: 'Canada',
+        population_group: ['General'],
+        sex: 'All',
+        age: ['Youth (15-24)'],
+        denominator: 2000,
+        seroprevalence: 0.15,
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
+    },
+    {
+        source_name: 'article2',
+        source_type: 'source2',
+        study_status: 'status1',
+        test_type: ['test1'],
+        country: 'Canada',
+        population_group: ['Adults'],
+        sex: 'All',
+        age: ['Youth (15-24)'],
+        denominator: 2000,
+        seroprevalence: 0,
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
+    },
+    {
+        source_name: 'article3',
+        source_type: 'source1',
+        study_status: 'status2',
+        test_type: ['test1'],
+        country: 'Canada',
+        population_group: ['Children'],
+        sex: 'All',
+        age: ['Youth (15-24)'],
+        denominator: 0,
+        seroprevalence: 0.12,
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
+    },
+    {
+        source_name: 'article1',
+        source_type: 'source1',
+        study_status: 'status1',
+        test_type: ['test1'],
+        country: 'France',
+        population_group: ['General'],
+        sex: 'All',
+        age: ['Youth (15-24)'],
+        denominator: 2000,
+        seroprevalence: 0,
+        risk_of_bias: "Low",
+        isotypes_reported: ['IgM']
+    }
+];
