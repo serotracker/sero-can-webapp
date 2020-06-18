@@ -14,7 +14,7 @@ export function getEmptyFilters(): Filters {
     age: new Set(),
     risk_of_bias: new Set(),
     isotypes_reported: new Set(),
-    date_range: []
+    publish_date: new Set()
   }
 }
 
@@ -34,13 +34,6 @@ const initialState: State = {
   language: LanguageType.english,
   updated_at: ''
 };
-
-function filterByDate(dateRange: number[], records: AirtableRecord[]) {
-  return records
-    .filter(o => o.publish_date !== null && o.publish_date !== undefined)
-    .map(o => o.publish_date instanceof Array ? Date.parse(o.publish_date[0] as string) : Date.parse(o.publish_date as string))
-    .filter(o => o > dateRange[0] && o < dateRange[1])
-}
 
 function buildFilterFunction(filters: Record<string, any>) {
   // Returns a function that can be used to filter an array of airtable records
@@ -63,6 +56,13 @@ function buildFilterFunction(filters: Record<string, any>) {
               }
             });
             return match;
+          }
+
+          if (filter_key === 'publish_date') {
+            const publishDate = record[filter_key];
+            const dateInMillis = publishDate instanceof Array ? Date.parse(publishDate[0] as string) : Date.parse(publishDate as string)
+            const dates: number[] = Array.from(filters[filter_key].values())
+            return dateInMillis >= dates[0] && dateInMillis <= dates[1]
           }
           // Iterate through the record's values and check if any of them
           // match the values accepted by the filter
@@ -91,9 +91,12 @@ function buildFilterFunction(filters: Record<string, any>) {
 export function filterRecords(filters: Filters, records: AirtableRecord[]) {
   const filter_function = buildFilterFunction(filters);
   if (records) {
+    console.log("%c Time stamps", "color: blue; font-size: 24px");
+    console.groupCollapsed();
     const filtered_records = records.filter(filter_function);
-    const date_filtered_records = filterByDate(filters.date_range, filtered_records);
-    return date_filtered_records;
+    console.groupEnd();
+    console.log("%c Records post initial filtration", "color: orange; font-size: 24px");
+    return filtered_records
   }
   return [];
 
@@ -151,7 +154,7 @@ function getFilterOptions(records: AirtableRecord[]) {
   return filter_options;
 }
 
-const reducer = (state: State, action: Record<string, any>) => {
+const reducer = (state: State, action: Record<string, any>): State => {
   const new_filters: any = state.filters;
   switch (action.type) {
     case "HEALTHCHECK":
@@ -178,15 +181,10 @@ const reducer = (state: State, action: Record<string, any>) => {
         filter_options: getFilterOptions(action.payload.airtable_records)
       }
     case "UPDATE_FILTER":
+      console.log("%c Incoming reducer update", "color: green; font-size: 24px");
+      console.log(action.payload.filter_value);
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value)
-      return {
-        ...state,
-        filters: new_filters,
-        filtered_records: filterRecords(new_filters, state.airtable_records)
-      }
-
-    case "UPDATE_DATE_FILTER":
-      new_filters[action.payload.filter_type] = action.payload.filter_value
+      console.log(new_filters[action.payload.filter_type]);
       return {
         ...state,
         filters: new_filters,

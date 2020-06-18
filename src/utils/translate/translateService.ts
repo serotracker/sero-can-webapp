@@ -1,8 +1,6 @@
-import { useContext } from "react";
-import { AppContext } from "../../context";
+import { LanguageType } from "../../types";
 import English from './en.json';
 import French from './fr.json';
-import { LanguageType } from "../../types";
 
 interface TranslateStringProps {
   text: string;

@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { faFileAlt, faGlobeAmericas, faUsers } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGlobeAmericas, faFileAlt, faUsers, faCog } from '@fortawesome/free-solid-svg-icons'
-import { Dropdown, DropdownProps } from 'semantic-ui-react'
-import LanguageSelector from '../sidebar/right-sidebar/LanguageSelector'
+import React, { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
+import { Link, useLocation } from 'react-router-dom'
+import MultiColorIcon from '../../assets/images/colored-icon.svg'
 import { mobileDeviceOrTabletWidth } from '../../constants'
-import MultiColorIcon from '../../assets/images/colored-icon.svg';
 import Translate from '../../utils/translate/translateService'
 import { Settings } from './Settings'
 

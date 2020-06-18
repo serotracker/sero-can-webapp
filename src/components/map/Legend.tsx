@@ -1,7 +1,4 @@
-import L from "leaflet";
-import React, { useEffect } from "react";
-import ReactDOMServer from "react-dom/server";
-import { useLeaflet } from "react-leaflet";
+import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import { getColor } from "../../utils/mapUtils";
@@ -13,7 +10,7 @@ interface LegendProps {
 }
 
 export default function Legend(props: LegendProps) {
-  const { map } = useLeaflet();
+  
   const { buckets } = props;
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
 
@@ -30,6 +27,7 @@ export default function Legend(props: LegendProps) {
         </div>
       )
     }
+    return null;
   })
   
   return (

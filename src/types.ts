@@ -51,7 +51,7 @@ export type Filters = {
     age: any,
     risk_of_bias: any,
     isotypes_reported: any,
-    date_range: any
+    publish_date: any
 };
 
 export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported';
