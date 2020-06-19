@@ -240,5 +240,12 @@
   },
   "TotalEstimates": "Total Estimates",
   "TotalTests": "Total Tests",
-  "UniversityOf": "University of NAME"
+  "UniversityOf": "University of NAME",
+  "SpecimenType": "Specimen Type",
+  "SpecimenTypeOptions": {
+    "Serum": "Serum",
+    "Plasma": "Plasma",
+    "WholeBlood": "Whole blood",
+    "DriedBlood": "Dried blood"
+  }
 }

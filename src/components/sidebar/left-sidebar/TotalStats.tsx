@@ -10,11 +10,14 @@ import Translate from "../../../utils/translate/translateService";
 export default function TotalStats() {
   const [state] = useContext(AppContext);
 
-  const { seroprevalence, n } = aggregateRecords(state.filtered_records);
+  // Factor in "include_in_n" for population unfiltered geography estimates
+  const included_records = state.filters.population_group.size === 0 ? state.filtered_records.filter(r => r.include_in_n) : state.filtered_records;
+
+  const { seroprevalence, n } = aggregateRecords(included_records);
   function onlyUnique(value: any, index: number, self: any) {
     return self.indexOf(value) === index && value !== null;
   }
-  const countryDict = state.filtered_records
+  const countryDict = included_records
     .map(o => {
       if (o.seroprevalence !== null && o.denominator !== null) {
         return o.country

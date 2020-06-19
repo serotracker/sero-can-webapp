@@ -8,7 +8,7 @@ export default function LastUpdated() {
   const [state] = useContext(AppContext);
 
   return (
-    <div className="col-12 pb-4">
+    <div className="col-12 pb-2">
       <div className='col-12 p-0 center-item flex'>
         <div className="section-title">
         {Translate("LastUpdated").toUpperCase()}
