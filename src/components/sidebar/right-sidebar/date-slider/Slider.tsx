@@ -24,9 +24,6 @@ export default function DateRangeSlider() {
   // The end moment should technically be after the start moment
   const [startBound, setStartBound] = useState(endMoment - 1);
   const [endBound,] = useState(endMoment);
-  const [loaded, setLoaded] = useState(false);
-
-
 
   useEffect(() => {
 
@@ -93,7 +90,6 @@ export default function DateRangeSlider() {
     }
     setStartDate(values[0]);
     setEndDate(values[1]);
-    setLoaded(true);
     dispatch({
       type: 'UPDATE_FILTER',
       payload: {

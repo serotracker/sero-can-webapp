@@ -44,6 +44,14 @@
   "AboutSeroTracker": "About SeroTracker",
   "Age": "Age",
   "AgeGroup": "Age Group",
+  "AgeOptions": {
+    "Adults(18-64)": "Adults (18-64)",
+    "All": "All",
+    "Children(0-12)": "Children (0-12)",
+    "Seniors(65+)": "Seniors (65+)",
+    "Unspecified": "Unspecified",
+    "Youth(13-17)": "Youth (13-17)"
+  },
   "AggregatedPrevalence": "Aggregated Prevalence",
   "Analyze": "Analyze",
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
@@ -52,26 +60,41 @@
   "ContactUs": "Contact Us",
   "Countries": "Countries",
   "Country": "Country",
+  "CountryOptions": {
+    "England": "England",
+    "Iran": "Iran",
+    "Scotland": "Scotland",
+    "UnitedStates": "United States"
+  },
   "CPPInvestmentBoard": "CPP Investment Board",
   "Dashboard": "Dashboard",
   "Data": "Data",
+  "DateRange": "Date Range",
   "Demographics": "Demographics",
   "DemographicsTooltip": "Filter on demographic variables, including population group, sex, and age group.",
   "Details": "Details",
   "DevelopmentTeam": "Development Team",
   "EconomicsTeam": "Economics Team",
   "EndDate": "End Date",
+  "English": "English",
   "Estimate": "Estimate",
   "Explore": "Explore",
   "Filter": "Filter",
   "FilterTooltip": "Filter the SeroTracker dataset based on geography, study, demographics, and test. Only studies matching all of the listed filters will be included.",
   "For": "For",
+  "French": "Français",
   "Geographies": "Geographies",
   "Geography": "Geography",
   "GeographyTooltip": "Select countries of interest.",
   "Here": "Here",
   "Isotypes": "Isotypes",
   "IsotypesReported": "Isotypes Reported",
+  "IsotypesReportedOptions": {
+    "IgA": "IgA",
+    "IgG": "IgG",
+    "IgM": "IgM",
+    "IgMIgG": "IgM IgG"
+  },
   "LastUpdated": "Last Updated",
   "LastUpdatedTooltip": "SeroTracker is continuously updated with findings from newly-released serological studies. We include new studies from our search within 48 hours of publication.",
   "Location": "Location",
@@ -92,8 +115,6 @@
     "PointTwo": "describes studies that have not yet reported seroprevalence estimates",
     "Text": "The tables below describe our findings, including detailed information about each study, each prevalence estimate, and the associated risk of bias."
   },
-  "English": "English",
-  "French": "Français",
   "OurTeam": "Our Team",
   "OverallRiskOfBias": "Overall Risk Of Bias",
   "Paper": "Paper",
@@ -101,6 +122,22 @@
   "PlannedSerosurveys": "Planned Serosurveys",
   "Population": "Population",
   "PopulationGroup": "Population Group",
+  "PopulationGroupOptions": {
+    "All": "All",
+    "BloodDonors": "Blood donors",
+    "Children": "Children",
+    "CommunityResident": "Community resident",
+    "FactoryWorker": "Factory worker",
+    "GeneralPopulation": "General Population",
+    "HealthCareWorkers": "Health Care Workers",
+    "HotelStaffMember": "Hotel staff member",
+    "IndustrySpecificEmployees": "Industry specific employees",
+    "NonCovidHospitalizedPatients": "Non-COVID hospitalized patients",
+    "PregnantOrParturientWomen": "Pregnant or Parturient Women",
+    "RelativeOfHealthCareWorker": "Relative of health care worker",
+    "Students": "Students",
+    "Unspecified": "Unspecified"
+  },
   "Populations": "Populations",
   "PrevalenceEstimateDetails": "Prevalence Estimate Details",
   "Published": "Published",
@@ -108,6 +145,12 @@
   "RegulatoryApproval": "Regulatory Approval",
   "ResearchTeam": "Research Team",
   "RiskOfBias": "Risk Of Bias",
+  "RiskOfBiasOptions": {
+    "High": "High",
+    "Low": "Low",
+    "Moderate": "Moderate",
+    "Unclear": "Unclear"
+  },
   "SampleSize": "Sample Size",
   "Sampling": "Sampling",
   "SamplingMethod": "Sampling Method",
@@ -130,80 +173,29 @@
   "SerosurveysReportingPrevalence": "Serosurveys Reporting Prevalence",
   "Settings": "Settings",
   "Sex": "Sex",
-  "Source": "Source",
-  "IsotypesReportedOptions": {
-    "IgG": "IgG",
-    "IgA": "IgA",
-    "IgM": "IgM"
-  },
-  "SourceTypeOptions": {
-    "Preprint": "Preprint",
-    "MediaReport&NewsRelease": "Media Report & News Release",
-    "PublishedAcademicStudy": "Published Academic Study",
-    "PreprintNowPublished": "Preprint (now published)",
-    "Government/NGO/HealthSystemReport": "Government / NGO / Health System Report"
-  },
-  "RiskOfBiasOptions": {
-    "High": "High",
-    "Moderate": "Moderate",
-    "Unclear": "Unclear",
-    "Low": "Low"
-  },
-  "CountryOptions": {
-    "Iran": "Iran",
-    "England": "England",
-    "Scotland": "Scotland",
-    "UnitedStates": "United States"
-  },
-  "PopulationGroupOptions": {
-    "Students": "Students",
-    "Children": "Children",
-    "BloodDonors": "Blood donors",
-    "GeneralPopulation": "General Population",
-    
-    "All": "All",
-    "Unspecified": "Unspecified",
-    "HealthCareWorkers": "Health Care Workers",
-    "NonCovidHospitalizedPatients": "Non-COVID hospitalized patients",
-    "IndustrySpecificEmployees": "Industry specific employees",
-    "PregnantOrParturientWomen": "Pregnant or Parturient Women",
-    "HotelStaffMember": "Hotel staff member",
-    "RelativeOfHealthCareWorker": "Relative of health care worker",
-    "CommunityResident": "Community resident",
-    "FactoryWorker": "Factory worker"
-  },
   "SexOptions": {
     "All": "All",
-    "Unspecified": "Unspecified",
+    "Female": "Female",
     "Male": "Male",
-    "Female": "Female"
+    "Unspecified": "Unspecified"
   },
-  "StudyStatusOptions": {
-    "Completed": "Completed",
-    "Ongoing": "Ongoing"
-  },
-  "AgeOptions": {
-    "All": "All",
-    "Unspecified": "Unspecified",
-    "Seniors(65+)": "Seniors (65+)",
-    "Children(0-12)": "Children (0-12)",
-    "Youth(13-17)": "Youth (13-17)",
-    "Adults(18-64)": "Adults (18-64)"
-  },
-  "TestTypeOptions": {
-    "ELISA": "ELISA",
-    "LIPS": "LIPS",
-    "LFIA": "LFIA",
-    "RDT": "RDT",
-    "NotReported": "NotReported",
-    "ChemiluminescenceImmunoassay": "Chemiluminescence Immunoassay",
-    "RapidImmunochromatographicTest": "Rapid immunochromatographic test",
-    "NeutralizationAssay": "Neutralization assay",
-    "SolidPhaseImmunochromatography": "Solid phase immunochromatography",
-    "MicrosphereImmunoassay": "Microsphere immunoassay"
-  },
+  "Source": "Source",
   "SourceType": "Source Type",
+  "SourceTypeOptions": {
+    "Government/NGO/HealthSystemReport": "Government / NGO / Health System Report",
+    "MediaReport&NewsRelease": "Media Report & News Release",
+    "Preprint": "Preprint",
+    "PreprintNowPublished": "Preprint (now published)",
+    "PublishedAcademicStudy": "Published Academic Study"
+  },
   "Specificity": "Specificity",
+  "SpecimenType": "Specimen Type",
+  "SpecimenTypeOptions": {
+    "DriedBlood": "Dried blood",
+    "Plasma": "Plasma",
+    "Serum": "Serum",
+    "WholeBlood": "Whole blood"
+  },
   "StartDate": "Start Date",
   "Status": "Status",
   "StudiesPerPage": "Studies per page",
@@ -224,6 +216,10 @@
   },
   "StudySize": "Study Size",
   "StudyStatus": "Study Status",
+  "StudyStatusOptions": {
+    "Completed": "Completed",
+    "Ongoing": "Ongoing"
+  },
   "StudyType": "Study Type",
   "Summary": "Summary",
   "SummaryStatistics": "Summary Statistics",
@@ -232,25 +228,28 @@
   "TestInformationTooltip": "Filter on test details, including assay type and antibody isotype.",
   "TestsAdministered": "Tests Administered",
   "TestType": "Test Type",
+  "TestTypeOptions": {
+    "ChemiluminescenceImmunoassay": "Chemiluminescence Immunoassay",
+    "ColloidalGold": "Colloidal gold",
+    "ElectroChemiluminescenceImmunoassay": "Electro Chemiluminescence Immunoassay",
+    "ELISA": "ELISA",
+    "LFIA": "LFIA",
+    "LIPS": "LIPS",
+    "MicrosphereImmunoassay": "Microsphere immunoassay",
+    "NeutralizationAssay": "Neutralization assay",
+    "NotReported": "NotReported",
+    "RapidImmunochromatographicTest": "Rapid immunochromatographic test",
+    "RDT": "RDT",
+    "SolidPhaseImmunochromatography": "Solid phase immunochromatography"
+  },
   "TestUsed": "Test Used",
   "ThisForm": "This form",
   "TimBiography": {
     "PartOne": "Director, School of Population and Global Health, McGill University",
     "PartTwo": "Executive Director, Canadian COVID-19 Immunity Task Force"
   },
+  "Today": "Today",
   "TotalEstimates": "Total Estimates",
   "TotalTests": "Total Tests",
-  "UniversityOf": "University of NAME",
-  "SpecimenType": "Specimen Type",
-  "SpecimenTypeOptions": {
-    "Serum": "Serum",
-    "Plasma": "Plasma",
-    "WholeBlood": "Whole blood",
-    "DriedBlood": "Dried blood"
-  }
+  "UniversityOf": "University of NAME"
 }
-    "ColloidalGold": "Colloidal gold",
-    "ElectroChemiluminescenceImmunoassay": "Electro Chemiluminescence Immunoassay",
-    "IgMIgG": "IgM IgG"
-  "DateRange": "Date Range",
-  "Today": "Today",

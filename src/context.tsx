@@ -14,7 +14,7 @@ export function getEmptyFilters(): Filters {
     age: new Set(),
     risk_of_bias: new Set(),
     isotypes_reported: new Set(),
-    specimen_type: new Set()
+    specimen_type: new Set(),
     publish_date: new Set()
   }
 }
