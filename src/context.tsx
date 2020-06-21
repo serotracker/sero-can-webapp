@@ -91,11 +91,7 @@ function buildFilterFunction(filters: Record<string, any>) {
 export function filterRecords(filters: Filters, records: AirtableRecord[]) {
   const filter_function = buildFilterFunction(filters);
   if (records) {
-    console.log("%c Time stamps", "color: blue; font-size: 24px");
-    console.groupCollapsed();
     const filtered_records = records.filter(filter_function);
-    console.groupEnd();
-    console.log("%c Records post initial filtration", "color: orange; font-size: 24px");
     return filtered_records
   }
   return [];
@@ -181,10 +177,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
         filter_options: getFilterOptions(action.payload.airtable_records)
       }
     case "UPDATE_FILTER":
-      console.log("%c Incoming reducer update", "color: green; font-size: 24px");
-      console.log(action.payload.filter_value);
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value)
-      console.log(new_filters[action.payload.filter_type]);
       return {
         ...state,
         filters: new_filters,

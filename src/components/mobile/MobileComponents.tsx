@@ -7,6 +7,8 @@ import { faTimes, faFilter, faBars } from "@fortawesome/free-solid-svg-icons";
 import TotalStats from "../sidebar/left-sidebar/TotalStats";
 import CountryList from "../sidebar/left-sidebar/CountryList";
 import CentralPiece from "../pages/Dashboard/CenterComponent";
+import DateRangeSlider from "../sidebar/right-sidebar/date-slider/Slider";
+import LastUpdated from "../sidebar/right-sidebar/LastUpdated";
 
 
 export default function MobileComponents() {
@@ -33,6 +35,8 @@ export default function MobileComponents() {
       >
 
         <Filters />
+        <DateRangeSlider/>
+        <LastUpdated/>
         <FontAwesomeIcon
           icon={faTimes}
           onClick={() => handleFilterToggle(false, false)}

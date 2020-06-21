@@ -136,7 +136,8 @@
   "IsotypesReportedOptions": {
     "IgG": "IgG",
     "IgA": "IgA",
-    "IgM": "IgM"
+    "IgM": "IgM",
+    "IgMIgG": "IgM IgG"
   },
   "SourceTypeOptions": {
     "Preprint": "Preprint",
@@ -199,6 +200,8 @@
     "RDT": "RDT",
     "NotReported": "NotReported",
     "ChemiluminescenceImmunoassay": "Chemiluminescence Immunoassay",
+    "ElectroChemiluminescenceImmunoassay": "Electro Chemiluminescence Immunoassay",
+    "ColloidalGold": "Colloidal gold",
     "RapidImmunochromatographicTest": "Rapid immunochromatographic test",
     "NeutralizationAssay": "Neutralization assay",
     "SolidPhaseImmunochromatography": "Solid phase immunochromatography",

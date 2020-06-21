@@ -10,8 +10,6 @@ export default function RightSidebar() {
     <div className="justify-content-between sidebar-container">
       <div className="filters-container mb-3">
         <Filters/>
-      </div>
-      <div>
         <Slider/>
       </div>
       <div>

@@ -19,7 +19,7 @@ export default function DateRangeSlider() {
   const [state, dispatch] = useContext(AppContext);
   const endMoment = new Date().getTime();
 
-  const [displayStartDate, setStartDate] = useState(endMoment - 1);
+  const [displayStartDate, setStartDate] = useState(endMoment - 2);
   const [displayEndDate, setEndDate] = useState(endMoment);
   // The end moment should technically be after the start moment
   const [startBound, setStartBound] = useState(endMoment - 1);
@@ -87,30 +87,20 @@ export default function DateRangeSlider() {
 
 
   const onChange = async (values: readonly number[]) => {
-    // So because the step is set up to be every day, the time of day is set for all steps at the time of the first step
-    // We need to set all the hours and minutes to 0 for us to compare the dates. 
-    // We do not have to do this for the startdate
-    if(values[0] === values[1]) {
+
+    if (values[0] === values[1]) {
       return null;
     }
-    const isInitialEndDate = new Date(endBound).setHours(0, 0, 0, 0) === new Date(values[1]).setHours(0, 0, 0, 0);
-    const isInitialStartDate = new Date(startBound).setHours(0, 0, 0, 0) === new Date(values[0]).setHours(0, 0, 0, 0);
-    if (
-      (!loaded && isInitialStartDate && isInitialEndDate) ||
-      (loaded)
-      ) {
-        console.log(startBound, endBound);
-      setStartDate(values[0]);
-      setEndDate(values[1]);
-      setLoaded(true);
-      dispatch({
-        type: 'UPDATE_FILTER',
-        payload: {
-          filter_type: 'publish_date',
-          filter_value: values
-        }
-      })
-    }
+    setStartDate(values[0]);
+    setEndDate(values[1]);
+    setLoaded(true);
+    dispatch({
+      type: 'UPDATE_FILTER',
+      payload: {
+        filter_type: 'publish_date',
+        filter_value: values
+      }
+    })
   }
 
   if (startBound === undefined || endBound === undefined) {
