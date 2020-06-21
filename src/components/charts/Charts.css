@@ -7,26 +7,31 @@
 }
 
 .charts {
-  height: 50%;
   margin-top: 6vh;
 }
 
 .mobile-charts {
   margin-top: 60px;
-  min-height: 50vh;
+  max-height: 100vh;
 }
+
 .charts-page {
   display: flex;
   background: lightgray;
-  justify-content: center;
+  flex-direction: column;
+  max-height: 100%;
   overflow-y: auto;
-  height: 95vh;
+  flex: 1 1
 }
 
 .large-dropdown {
   font-size: 1.0em;
   border: none;
   background-color: lightgrey;
+}
+
+.references {
+  flex: 0 1
 }
 
 .charts-title {

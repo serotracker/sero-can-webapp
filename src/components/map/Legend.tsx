@@ -1,4 +1,7 @@
-import React from "react";
+import L from "leaflet";
+import React, { useEffect } from "react";
+import ReactDOMServer from "react-dom/server";
+import { useLeaflet } from "react-leaflet";
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import { getColor } from "../../utils/mapUtils";
@@ -27,7 +30,6 @@ export default function Legend(props: LegendProps) {
         </div>
       )
     }
-    return null;
   })
   
   return (

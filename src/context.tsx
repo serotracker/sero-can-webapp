@@ -14,6 +14,7 @@ export function getEmptyFilters(): Filters {
     age: new Set(),
     risk_of_bias: new Set(),
     isotypes_reported: new Set(),
+    specimen_type: new Set()
     publish_date: new Set()
   }
 }
@@ -143,6 +144,9 @@ function getFilterOptions(records: AirtableRecord[]) {
             filter_options.isotypes_reported.add(isotype_reported);
           }
         });
+      }
+      if (record.specimen_type && record.specimen_type !== 'Not reported') {
+        filter_options.specimen_type.add(record.specimen_type);
       }
     }
   });

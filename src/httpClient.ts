@@ -36,6 +36,7 @@ export default class httpClient {
                 study_status: item.STUDY_STATUS ? item.STUDY_STATUS[0]: null,
                 study_type: item.STUDY_TYPE,
                 test_type: item.TEST_TYPE,
+                specimen_type: item.SPECIMEN_TYPE ? item.SPECIMEN_TYPE[0] : null,
                 isotypes_reported: item.ISOTYPES,
                 manufacturer: item.MANUFACTURER,
                 approving_regulator: item.APPROVAL,
@@ -57,7 +58,8 @@ export default class httpClient {
                 sampling_start_date: item.SAMPLING_START,
                 sampling_end_date: item.SAMPLING_END,
                 risk_of_bias: item.OVERALL_RISK_OF_BIAS ? item.OVERALL_RISK_OF_BIAS[0] : null,
-                url: item.URL ? item.URL[0] : null
+                url: item.URL ? item.URL[0] : null,
+                include_in_n: item.INCLUDE_IN_N ? true : false
             };
 
             return record; 

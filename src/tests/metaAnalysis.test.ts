@@ -1,6 +1,6 @@
 import { testRecords } from './testData'
 import { getAggregateData, aggregateRecords } from '../metaAnalysis'
-import { AggregationFactor, AggregatedRecord, CustomMatcherResult } from '../types';
+import { AggregationFactor, AggregatedRecord } from '../types';
 
 function inZeroHundred (x: number) {
     if ((x >= 0) && (x <= 100)) {return true}
@@ -26,6 +26,26 @@ test('test country aggregation', () => {
         { 
             name: 'France',
             n: 2750 
+        } 
+    ];
+
+    for (let i = 0; i < expectedResult.length; i++) {
+        const data = aggregatedData.find(element => element.name === expectedResult[i].name)
+        expect(checkAggregatedRecord(data!, expectedResult[i].n)).toBe(true)
+    }
+});
+
+test('test country aggregation include in n', () => {
+    const aggregatedData: AggregatedRecord[] = getAggregateData(testRecords, AggregationFactor.country, true)
+    expect(aggregatedData.length).toBe(2)
+    const expectedResult = [ 
+        { 
+            name: 'Canada',
+            n: 3200 
+        },
+        { 
+            name: 'France',
+            n: 2250 
         } 
     ];
 

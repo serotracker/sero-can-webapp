@@ -1,12 +1,9 @@
 name: CI
-
 on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
 
     - name: Checkout
@@ -24,3 +21,4 @@ jobs:
     - name: Test
       run: |
         npm test
+

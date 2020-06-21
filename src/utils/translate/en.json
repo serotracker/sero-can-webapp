@@ -60,7 +60,6 @@
   "Details": "Details",
   "DevelopmentTeam": "Development Team",
   "EconomicsTeam": "Economics Team",
-  "Today": "Today",
   "EndDate": "End Date",
   "Estimate": "Estimate",
   "Explore": "Explore",
@@ -72,7 +71,6 @@
   "GeographyTooltip": "Select countries of interest.",
   "Here": "Here",
   "Isotypes": "Isotypes",
-  "DateRange": "Date Range",
   "IsotypesReported": "Isotypes Reported",
   "LastUpdated": "Last Updated",
   "LastUpdatedTooltip": "SeroTracker is continuously updated with findings from newly-released serological studies. We include new studies from our search within 48 hours of publication.",
@@ -136,8 +134,7 @@
   "IsotypesReportedOptions": {
     "IgG": "IgG",
     "IgA": "IgA",
-    "IgM": "IgM",
-    "IgMIgG": "IgM IgG"
+    "IgM": "IgM"
   },
   "SourceTypeOptions": {
     "Preprint": "Preprint",
@@ -200,8 +197,6 @@
     "RDT": "RDT",
     "NotReported": "NotReported",
     "ChemiluminescenceImmunoassay": "Chemiluminescence Immunoassay",
-    "ElectroChemiluminescenceImmunoassay": "Electro Chemiluminescence Immunoassay",
-    "ColloidalGold": "Colloidal gold",
     "RapidImmunochromatographicTest": "Rapid immunochromatographic test",
     "NeutralizationAssay": "Neutralization assay",
     "SolidPhaseImmunochromatography": "Solid phase immunochromatography",
@@ -245,5 +240,17 @@
   },
   "TotalEstimates": "Total Estimates",
   "TotalTests": "Total Tests",
-  "UniversityOf": "University of NAME"
+  "UniversityOf": "University of NAME",
+  "SpecimenType": "Specimen Type",
+  "SpecimenTypeOptions": {
+    "Serum": "Serum",
+    "Plasma": "Plasma",
+    "WholeBlood": "Whole blood",
+    "DriedBlood": "Dried blood"
+  }
 }
+    "ColloidalGold": "Colloidal gold",
+    "ElectroChemiluminescenceImmunoassay": "Electro Chemiluminescence Immunoassay",
+    "IgMIgG": "IgM IgG"
+  "DateRange": "Date Range",
+  "Today": "Today",

@@ -15,8 +15,10 @@ import Translate from "../../utils/translate/translateService";
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
   const [state] = useContext(AppContext);
-  const { filtered_records } = state;
-  const aggregatedRecords = getAggregateData(filtered_records, yAxisSelection);
+  const { filtered_records, filters } = state;
+  // Factor in "include_in_n" for population unfiltered geography estimates
+  const must_include_in_n = yAxisSelection == AggregationFactor.country ? filters.population_group.size === 0 : false;
+  const aggregatedRecords = getAggregateData(filtered_records, yAxisSelection, must_include_in_n);
   const [records, setRecords] = useState(aggregatedRecords);
 
   const yAxisOptions = [
@@ -32,10 +34,12 @@ export default function Charts() {
   ]
 
   useEffect(() => {
-    const reAggregatedRecords = getAggregateData(filtered_records, yAxisSelection);
+    // Factor in "include_in_n" for population unfiltered geography estimates
+    const must_include_in_n = yAxisSelection == AggregationFactor.country ? filters.population_group.size === 0 : false;
+    const reAggregatedRecords = getAggregateData(filtered_records, yAxisSelection, must_include_in_n);
     const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
     setRecords(chartData);
-  }, [yAxisSelection, state, filtered_records])
+  }, [yAxisSelection, state, filtered_records, filters])
 
   const handleChange = (event: SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
     setYAxis(data.value as AggregationFactor);
@@ -88,9 +92,9 @@ export default function Charts() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
 
   return (
-    <div className="charts-page flex">
+    <div className="charts-page">
       <div className={isMobileDeviceOrTablet ? "mobile-charts container col-11 center-item flex" : "charts container col-11 center-item flex"}>
-        <div className="col-12 p-0 center-item flex">
+        <div className="col-12 p-0 flex">
           <div className="col-sm-1 col-lg-3">
           </div>
           <div className="charts-title flex p-0 mt-2 p-lg-0 col-sm-8 col-lg-6">
@@ -118,13 +122,13 @@ export default function Charts() {
           </div>
         </div>
         <ResponsiveContainer width="100%" height="80%">
-          <BarChart data={records} layout='vertical'>
+          <BarChart data={records} layout='vertical' barGap={10}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" name={`${Translate("Seroprevalence")} (%)`} padding={{ left: 0, right: 30 }} />
             <YAxis dataKey="name" type="category" interval={0} width={getYAxisWidth(records) * 7} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
-            <Bar dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60}>
+            <Bar dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60} barSize={20}>
               <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
               <ErrorBar dataKey="error" width={4} strokeWidth={2} />
             </Bar>
