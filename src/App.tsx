@@ -7,9 +7,12 @@ import Data from './components/pages/Data';
 import { NavBar } from "./components/shared/NavBar";
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
+import ReactGA from 'react-ga';
 import { setLanguageType } from "./utils/translate/translateService";
 
 function App() {
+  ReactGA.initialize('UA-168119924-1');
+  
   const [{ language }, dispatch] = useContext(AppContext);
   // DATA
   useEffect(() => {

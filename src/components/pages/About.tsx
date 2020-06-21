@@ -6,8 +6,10 @@ import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import Translate from "../../utils/translate/translateService";
 import './static.css';
+import ReactGA from 'react-ga';
 
 export default function About() {
+    ReactGA.pageview('/about');
     const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
     function renderBioBlock(name: string,
         description: string[],
