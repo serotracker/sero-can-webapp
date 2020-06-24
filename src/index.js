@@ -5,12 +5,15 @@ import App from './App';
 import { AppContextProvider } from './context';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import GAListener from './utils/analyticsUtils';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AppContextProvider>
-        <App />
+        <GAListener trackingId={process.env.REACT_APP_GA_TRACKERID}>
+          <App />
+        </GAListener>
       </AppContextProvider>
     </Router>
   </React.StrictMode>,
