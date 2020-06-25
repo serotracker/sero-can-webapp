@@ -2,6 +2,7 @@ import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Popup } from "semantic-ui-react";
+import ReactGA from 'react-ga';
 
 interface InformationIconProps {
   color: string;
@@ -14,7 +15,7 @@ interface InformationIconProps {
 }
 
 export default function InformationIcon(props: InformationIconProps) {
-  const { color, size, tooltip, tooltipHeader, offset, position, popupSize="small" } = props;
+  const { color, size, tooltip, tooltipHeader, offset, position, popupSize = "small" } = props;
   return (
     <div className="px-2">
       <Popup
@@ -22,6 +23,17 @@ export default function InformationIcon(props: InformationIconProps) {
         offset={offset}
         position={position}
         size={popupSize}
+        onOpen={() => {
+          ReactGA.event({
+            /** Typically the object that was interacted with (e.g. 'Video') */
+            category: 'Tooltip',
+            /** The type of interaction (e.g. 'play') */
+            action: 'opening',
+            /** Useful for categorizing events (e.g. 'Fall Campaign') */
+            label: tooltipHeader
+            /** A numeric value associated with the event (e.g. 42) */
+          })
+        }}
         //fix for janky popup positioning due to overflow styling
         popperModifiers={{ preventOverflow: { boundariesElement: "window" } }}
         trigger={
@@ -30,6 +42,7 @@ export default function InformationIcon(props: InformationIconProps) {
             color={color}
             size={size} />}>
         {tooltipHeader && (
+
           <Popup.Header className="flex left">{tooltipHeader}</Popup.Header>
         )}
         <Popup.Content className="flex left">{tooltip}</Popup.Content>

@@ -10,6 +10,7 @@ import httpClient from "./httpClient";
 import { setLanguageType } from "./utils/translate/translateService";
 
 function App() {
+
   const [{ language }, dispatch] = useContext(AppContext);
   // DATA
   useEffect(() => {

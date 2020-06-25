@@ -10,7 +10,6 @@ interface LegendProps {
 }
 
 export default function Legend(props: LegendProps) {
-  
   const { buckets } = props;
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
 
@@ -34,9 +33,9 @@ export default function Legend(props: LegendProps) {
     <div className={isMobileDeviceOrTablet ? "info flex legend-mobile center-item" : "info flex legend center-item"}>
       {labels}
       <h4 className="legend-title p-0 middle">{Translate('Seroprevalence')}
-        <span className="flex popup">
-          <div className="popup-header col-12 p-0 flex left">{Translate("SeroprevalenceScale")}</div>
-          <div className="popup-content col-12 p-0 flex start-item left">{Translate("SeroprevalenceScaleTooltip")}</div>
+        <span className="popup">
+          <div className="popup-header">{Translate("SeroprevalenceScale")}</div>
+          <div className="popup-content">{Translate("SeroprevalenceScaleTooltip")}</div>
         </span>
       </h4>
     </div>
