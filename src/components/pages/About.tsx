@@ -22,7 +22,7 @@ export default function About() {
                 <br />
                 {description.map((line) => {
                     return (
-                        <div>
+                        <div key={line}>
                             {line}
                             <br />
                         </div>

@@ -17,7 +17,7 @@ export default function Charts() {
   const [state] = useContext(AppContext);
   const { filtered_records, filters } = state;
   // Factor in "include_in_n" for population unfiltered geography estimates
-  const must_include_in_n = yAxisSelection == AggregationFactor.country ? filters.population_group.size === 0 : false;
+  const must_include_in_n = yAxisSelection === AggregationFactor.country ? filters.population_group.size === 0 : false;
   const aggregatedRecords = getAggregateData(filtered_records, yAxisSelection, must_include_in_n);
   const [records, setRecords] = useState(aggregatedRecords);
 
@@ -35,7 +35,7 @@ export default function Charts() {
 
   useEffect(() => {
     // Factor in "include_in_n" for population unfiltered geography estimates
-    const must_include_in_n = yAxisSelection == AggregationFactor.country ? filters.population_group.size === 0 : false;
+    const must_include_in_n = yAxisSelection === AggregationFactor.country ? filters.population_group.size === 0 : false;
     const reAggregatedRecords = getAggregateData(filtered_records, yAxisSelection, must_include_in_n);
     const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
     setRecords(chartData);
