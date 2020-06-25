@@ -8,6 +8,7 @@ import { SliderRail } from './SliderRail'
 import './Styles.scss'
 import { Tick } from './Tick'
 import { Track } from './Track'
+import { LanguageType } from '../../../../types'
 
 interface TickItem {
   tick: SliderItem,
@@ -69,13 +70,16 @@ export default function DateRangeSlider() {
       count: totalCount,
       label: Translate("Today")
     }
+
+    const localeDate = state.language === LanguageType.english ? "en-US" : "fr-FR";
+
     const monthTicks: TickItem[] = monthRange.map(o => ({
       tick: {
         id: o.date.toString(),
         value: o.date.getTime(),
         percent: o.percentage
       },
-      label: o.date.toLocaleDateString("en-US", formatOptions),
+      label: o.date.toLocaleDateString(localeDate, formatOptions),
       count: totalCount
     }))
 
