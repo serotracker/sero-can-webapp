@@ -16,6 +16,27 @@ export default class httpClient {
         }
     }
 
+    async httpPost(url: string, data: Record<string, any>){
+        let url_full = url;
+        if(process.env.REACT_APP_ROUTE){
+            url_full = process.env.REACT_APP_ROUTE + url_full;
+        }
+        const res = await fetch(url_full, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+        });
+        if(res.status !== 200) {
+            return;
+        }
+        else {
+            const response_json = await res.json();
+            return response_json;
+        }
+    }
+
     async getHealthcheck() {
         const healthcheck: string = await this.httpGet('/healthcheck');
         return healthcheck;
@@ -73,5 +94,38 @@ export default class httpClient {
             airtable_records,
             updated_at: updated_at_string
         };
+    }
+
+    async postMetaAnalysis(records: AirtableRecord[], aggregation_variable: string, meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise'){
+        const formatted_records = records!.map((item: AirtableRecord)=>{ 
+            // Convert response to AirtableRecord type
+            const record = { 
+                SERUM_POS_PREVALENCE: item.seroprevalence,
+                DENOMINATOR: item.denominator,
+                COUNTRY: item.country,
+                STATE: item.state,
+                CITY: item.city,
+                POPULATION_GROUP: item.population_group,
+                SEX: item.sex,
+                AGE: item.age,
+                STUDY_STATUS: item.study_status,
+                SOURCE_TYPE: item.source_type,
+                SPECIMEN_TYPE: item.specimen_type,
+                ISOTYPES: item.isotypes_reported,
+                TEST_TYPE: item.test_type,
+                OVERALL_RISK_OF_BIAS: item.risk_of_bias
+            };
+
+            return record; 
+        });
+
+        const req_body = {
+            records: formatted_records,
+            aggregation_variable,
+            meta_analysis_technique,
+            meta_analysis_transformation
+        }
+        const response = await this.httpPost('/meta_analysis/records', req_body);
+        return response;
     }
 }

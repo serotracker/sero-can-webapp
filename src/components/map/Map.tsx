@@ -10,6 +10,7 @@ import { getBuckets, getColor, getCountryName, getMapUrl } from "../../utils/map
 import Translate from "../../utils/translate/translateService";
 import Legend from "./Legend";
 import './Map.css';
+import httpClient from "../../httpClient";
 
 export default function Map() {
   const mapRef = createRef<LeafletMap>();
@@ -27,6 +28,9 @@ export default function Map() {
 
     const importGeo = Countries as any;
     const features = importGeo.features as GeoJSON.Feature[]
+
+    const api = new httpClient()
+    console.log(api.postMetaAnalysis(state.filtered_records, 'COUNTRY'));
 
     // We will iterate through all the features in the geoJson
     // if they are in the country dict we will attach their aggregated data to the feature for displaying
