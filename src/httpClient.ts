@@ -98,22 +98,22 @@ export default class httpClient {
 
     async postMetaAnalysis(records: AirtableRecord[], aggregation_variable: string, meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise'){
         const formatted_records = records!.map((item: AirtableRecord)=>{ 
-            // Convert response to AirtableRecord type
+            // Note, all aggregation variable fields must be string arrays
             const record = { 
                 SERUM_POS_PREVALENCE: item.seroprevalence,
                 DENOMINATOR: item.denominator,
-                COUNTRY: item.country,
-                STATE: item.state,
-                CITY: item.city,
-                POPULATION_GROUP: item.population_group,
-                SEX: item.sex,
-                AGE: item.age,
-                STUDY_STATUS: item.study_status,
-                SOURCE_TYPE: item.source_type,
-                SPECIMEN_TYPE: item.specimen_type,
-                ISOTYPES: item.isotypes_reported,
-                TEST_TYPE: item.test_type,
-                OVERALL_RISK_OF_BIAS: item.risk_of_bias
+                country: [item.country],
+                state: item.state,
+                city: item.city,
+                population_group: item.population_group ? item.population_group : [],
+                sex: item.sex ? [item.sex] : [],
+                age: item.age ? item.age : [],
+                study_status: item.study_status ? [item.study_status] : [],
+                source_type: item.source_type ? [item.source_type] : [],
+                specimen_type: item.specimen_type ? [item.specimen_type] : [],
+                isotypes_reported: item.isotypes_reported ? item.isotypes_reported : [],
+                test_type: item.test_type ? item.test_type : [],
+                risk_of_bias: item.risk_of_bias ? [item.risk_of_bias] : []
             };
 
             return record; 

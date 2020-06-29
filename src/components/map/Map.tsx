@@ -24,7 +24,7 @@ export default function Map() {
     if(state.filtered_records.length > 0){
       const api = new httpClient();
       const updateMap = async () => {
-        const response = await api.postMetaAnalysis(state.filtered_records, 'COUNTRY');
+        const response = await api.postMetaAnalysis(state.filtered_records, AggregationFactor.country);
         const prevalenceCountryDict: Record<string, AggregatedRecord> = response.reduce((a: any, x: AggregatedRecord) => ({ ...a, [x.name]: x }), {});
 
         const importGeo = Countries as any;

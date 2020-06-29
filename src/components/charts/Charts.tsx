@@ -12,6 +12,7 @@ import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
 import Translate from "../../utils/translate/translateService";
 import ReactGA from 'react-ga';
+import httpClient from "../../httpClient";
 
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
@@ -35,11 +36,15 @@ export default function Charts() {
   ]
 
   useEffect(() => {
-    // Factor in "include_in_n" for population unfiltered geography estimates
-    const must_include_in_n = yAxisSelection === AggregationFactor.country ? filters.population_group.size === 0 : false;
-    const reAggregatedRecords = getAggregateData(filtered_records, yAxisSelection, must_include_in_n);
-    const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
-    setRecords(chartData);
+    if(filtered_records.length > 0){
+      const updateCharts = async () => {
+        const api = new httpClient();
+        const reAggregatedRecords = await api.postMetaAnalysis(state.filtered_records, yAxisSelection);
+        const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
+        setRecords(chartData);
+      } 
+      updateCharts();
+    }
   }, [yAxisSelection, state, filtered_records, filters])
 
   const handleChange = (event: SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
