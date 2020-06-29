@@ -13,7 +13,9 @@ export function getEmptyFilters(): Filters {
     sex: new Set(),
     age: new Set(),
     risk_of_bias: new Set(),
-    isotypes_reported: new Set()
+    isotypes_reported: new Set(),
+    specimen_type: new Set(),
+    publish_date: new Set()
   }
 }
 
@@ -56,6 +58,13 @@ function buildFilterFunction(filters: Record<string, any>) {
             });
             return match;
           }
+
+          if (filter_key === 'publish_date') {
+            const publishDate = record[filter_key];
+            const dateInMillis = publishDate instanceof Array ? Date.parse(publishDate[0] as string) : Date.parse(publishDate as string)
+            const dates: number[] = Array.from(filters[filter_key].values())
+            return dateInMillis >= dates[0] && dateInMillis <= dates[1]
+          }
           // Iterate through the record's values and check if any of them
           // match the values accepted by the filter
           let in_filter = false;
@@ -84,7 +93,7 @@ export function filterRecords(filters: Filters, records: AirtableRecord[]) {
   const filter_function = buildFilterFunction(filters);
   if (records) {
     const filtered_records = records.filter(filter_function);
-    return filtered_records;
+    return filtered_records
   }
   return [];
 
@@ -136,13 +145,16 @@ function getFilterOptions(records: AirtableRecord[]) {
           }
         });
       }
+      if (record.specimen_type && record.specimen_type !== 'Not reported') {
+        filter_options.specimen_type.add(record.specimen_type);
+      }
     }
   });
 
   return filter_options;
 }
 
-const reducer = (state: State, action: Record<string, any>) => {
+const reducer = (state: State, action: Record<string, any>): State => {
   const new_filters: any = state.filters;
   switch (action.type) {
     case "HEALTHCHECK":

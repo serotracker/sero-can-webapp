@@ -91,6 +91,16 @@ test('test isotype filter', () => {
   expect(filteredRecords.length).toBe(1)
 });
 
+test('test specimen type filter', () => {
+  const filters = getEmptyFilters()
+  filters.specimen_type.add('serum')
+  let filteredRecords = filterRecords(filters, testRecords)
+  expect(filteredRecords.length).toBe(6)
+  filters.specimen_type.add('plasma')
+  filteredRecords = filterRecords(filters, testRecords)
+  expect(filteredRecords.length).toBe(7)
+});
+
 test('test multiple filters', () => {
   const filters = getEmptyFilters()
   filters.population_group.add('Children')

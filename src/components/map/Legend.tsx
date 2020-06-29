@@ -1,7 +1,4 @@
-import L from "leaflet";
-import React, { useEffect } from "react";
-import ReactDOMServer from "react-dom/server";
-import { useLeaflet } from "react-leaflet";
+import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import { getColor } from "../../utils/mapUtils";
@@ -13,7 +10,6 @@ interface LegendProps {
 }
 
 export default function Legend(props: LegendProps) {
-  const { map } = useLeaflet();
   const { buckets } = props;
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
 
@@ -30,15 +26,16 @@ export default function Legend(props: LegendProps) {
         </div>
       )
     }
+    return null;
   })
   
   return (
     <div className={isMobileDeviceOrTablet ? "info flex legend-mobile center-item" : "info flex legend center-item"}>
       {labels}
       <h4 className="legend-title p-0 middle">{Translate('Seroprevalence')}
-        <span className="flex popup">
-          <div className="popup-header col-12 p-0 flex left">{Translate("SeroprevalenceScale")}</div>
-          <div className="popup-content col-12 p-0 flex start-item left">{Translate("SeroprevalenceScaleTooltip")}</div>
+        <span className="popup">
+          <div className="popup-header">{Translate("SeroprevalenceScale")}</div>
+          <div className="popup-content">{Translate("SeroprevalenceScaleTooltip")}</div>
         </span>
       </h4>
     </div>

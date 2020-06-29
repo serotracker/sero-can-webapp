@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../../context";
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, DropdownProps, LabelProps } from 'semantic-ui-react'
 import { FilterType } from '../../../types';
 import InformationIcon from "../../shared/InformationIcon";
 import Translate from "../../../utils/translate/translateService";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
 import { getCountryName } from "../../../utils/mapUtils";
+import ReactGA from 'react-ga';
 
 export default function Filters() {
   const [state, dispatch] = useContext(AppContext);
@@ -28,10 +29,10 @@ export default function Filters() {
         options.forEach((o: string) => {
           const translatedString = Translate(jsonObjectString, [toPascalCase(o)]);
           const alternativeString = Translate(jsonObjectString, [o.replace(/ /g, '')]);
-
+          let text = !alternativeString && !translatedString ? o + "*" : (translatedString ? translatedString : alternativeString);
           formatted_options.push({
             key: o,
-            text: translatedString ? translatedString : alternativeString,
+            text: text,
             value: o
           })
         });
@@ -80,7 +81,18 @@ export default function Filters() {
           clearable
           selection
           options={formatOptions(state.filter_options[filter_type], filter_type)}
-          onChange={(e: any, data: any) => { addFilter(data, filter_type) }}
+          onChange={(e: any, data: any) => {
+            addFilter(data, filter_type)
+            ReactGA.event({
+              /** Typically the object that was interacted with (e.g. 'Video') */
+              category: 'Filter',
+              /** The type of interaction (e.g. 'play') */
+              action: 'selection',
+              /** Useful for categorizing events (e.g. 'Fall Campaign') */
+              label: `${filter_type.toString()} - ${data.value}`
+              /** A numeric value associated with the event (e.g. 42) */
+            })
+          }}
           defaultValue={Array.from(state.filters[filter_type])}
         />
       </div>
@@ -162,6 +174,9 @@ export default function Filters() {
             </div>
             <div>
               {buildFilterDropdown('isotypes_reported', Translate('IsotypesReported'))}
+            </div>
+            <div>
+              {buildFilterDropdown('specimen_type', Translate('SpecimenType'))}
             </div>
           </div>
         </div>

@@ -20,7 +20,9 @@ export default function Map() {
   const buckets = getBuckets(mapRecords.features);
 
   useEffect(() => {
-    const prevalenceCountryDict: Record<string, AggregatedRecord> = getAggregateData(state.filtered_records, AggregationFactor.country)
+    // Factor in "include_in_n" for population unfiltered geography estimates
+    const must_include_in_n = state.filters.population_group.size === 0;
+    const prevalenceCountryDict: Record<string, AggregatedRecord> = getAggregateData(state.filtered_records, AggregationFactor.country, must_include_in_n)
       .reduce((a, x: AggregatedRecord) => ({ ...a, [x.name]: x }), {})
 
     const importGeo = Countries as any;
@@ -40,7 +42,7 @@ export default function Map() {
 
     // we need to update the key on the GEOJSON to let react know it's time to rerender
     setForceUpdate(Math.random())
-  }, [state.filtered_records, state.language])
+  }, [state.filtered_records, state.language, state.filters])
 
 
   const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined) => {

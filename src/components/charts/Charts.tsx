@@ -11,34 +11,44 @@ import InformationIcon from "../shared/InformationIcon";
 import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
 import Translate from "../../utils/translate/translateService";
+import ReactGA from 'react-ga';
 
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
   const [state] = useContext(AppContext);
-  const { filtered_records } = state;
-  const aggregatedRecords = getAggregateData(filtered_records, yAxisSelection);
+  const { filtered_records, filters } = state;
+  // Factor in "include_in_n" for population unfiltered geography estimates
+  const must_include_in_n = yAxisSelection === AggregationFactor.country ? filters.population_group.size === 0 : false;
+  const aggregatedRecords = getAggregateData(filtered_records, yAxisSelection, must_include_in_n);
   const [records, setRecords] = useState(aggregatedRecords);
 
   const yAxisOptions = [
-    { key: 'Geographies',       text: Translate('Geographies'),      value: AggregationFactor.country },
-    { key: 'Population',        text: Translate('Population'),       value: AggregationFactor.population_group },
-    { key: 'Sex',               text: Translate('Sex'),              value: AggregationFactor.sex },
-    { key: 'Age',               text: Translate('Age'),              value: AggregationFactor.age },
-    { key: 'Study Status',      text: Translate('StudyStatus'),      value: AggregationFactor.study_status },
-    { key: 'Test Type',         text: Translate('TestType'),         value: AggregationFactor.test_type },
-    { key: 'Source Type',       text: Translate('SourceType'),       value: AggregationFactor.source_type },
-    { key: 'Risk Of Bias',      text: Translate('RiskOfBias'),       value: AggregationFactor.risk_of_bias },
+    { key: 'Geographies', text: Translate('Geographies'), value: AggregationFactor.country },
+    { key: 'Population', text: Translate('Population'), value: AggregationFactor.population_group },
+    { key: 'Sex', text: Translate('Sex'), value: AggregationFactor.sex },
+    { key: 'Age', text: Translate('Age'), value: AggregationFactor.age },
+    { key: 'Study Status', text: Translate('StudyStatus'), value: AggregationFactor.study_status },
+    { key: 'Test Type', text: Translate('TestType'), value: AggregationFactor.test_type },
+    { key: 'Source Type', text: Translate('SourceType'), value: AggregationFactor.source_type },
+    { key: 'Risk Of Bias', text: Translate('RiskOfBias'), value: AggregationFactor.risk_of_bias },
     { key: 'Isotypes Reported', text: Translate('IsotypesReported'), value: AggregationFactor.isotypes_reported },
   ]
 
   useEffect(() => {
-    const reAggregatedRecords = getAggregateData(filtered_records, yAxisSelection);
+    // Factor in "include_in_n" for population unfiltered geography estimates
+    const must_include_in_n = yAxisSelection === AggregationFactor.country ? filters.population_group.size === 0 : false;
+    const reAggregatedRecords = getAggregateData(filtered_records, yAxisSelection, must_include_in_n);
     const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
     setRecords(chartData);
-  }, [yAxisSelection, state, filtered_records])
+  }, [yAxisSelection, state, filtered_records, filters])
 
   const handleChange = (event: SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
     setYAxis(data.value as AggregationFactor);
+    ReactGA.event({
+      category: 'Independent Variable',
+      action: 'selection',
+      label:  data.text || "Unknown"
+    })
   }
 
   const CustomTooltip = (e: any) => {
@@ -109,12 +119,12 @@ export default function Charts() {
           <div className="col-sm-6 col-lg-3 flex top right">
             95% CI
             <InformationIcon
-            offset="10px"
-            position="bottom right"
-            color="#455a64"
-            size="sm"
-            tooltip={Translate("95%ConfidenceIntervalTooltip")}
-            tooltipHeader={Translate("95%ConfidenceInterval")}/>
+              offset="10px"
+              position="bottom right"
+              color="#455a64"
+              size="sm"
+              tooltip={Translate("95%ConfidenceIntervalTooltip")}
+              tooltipHeader={Translate("95%ConfidenceInterval")} />
           </div>
         </div>
         <ResponsiveContainer width="100%" height="80%">

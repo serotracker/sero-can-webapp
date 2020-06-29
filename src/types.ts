@@ -6,6 +6,7 @@ export type AirtableRecord = {
     source_type: string | null,
     study_status: string | null,
     test_type: string[] | null,
+    specimen_type: string | null,
     isotypes_reported: string[] | null,
     manufacturer?: string | null,
     approving_regulator?: string | null,
@@ -19,7 +20,7 @@ export type AirtableRecord = {
     age: string[] | null,
     denominator: number | null,
     seroprevalence: number | null,
-    publish_date?: string | null,
+    publish_date?: string[] | string | null,
     publisher?: string | null,
     risk_of_bias: string | null,
     study_type?: string | null,
@@ -29,6 +30,7 @@ export type AirtableRecord = {
     sampling_end_date?: string | null,
     summary?: string | null,
     url?: string | null,
+    include_in_n: boolean
 };
 
 export type AggregatedRecord = {
@@ -50,10 +52,12 @@ export type Filters = {
     sex: any,
     age: any,
     risk_of_bias: any,
-    isotypes_reported: any
+    isotypes_reported: any,
+    specimen_type: any
+    publish_date: any
 };
 
-export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported';
+export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported' | 'specimen_type';
 
 export enum LanguageType  {
   french = 'fr',

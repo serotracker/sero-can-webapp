@@ -6,9 +6,27 @@ import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import Translate from "../../utils/translate/translateService";
 import './static.css';
+import ReactGA from 'react-ga';
 
 export default function About() {
     const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
+
+    const selectItem = (label: string, name: string) => {
+        ReactGA.event({
+            category: 'Social Media Link',
+            action: 'click',
+            label: `${label} - ${name}`
+        })
+    }
+
+    const selectLink = (link: string) => {
+        ReactGA.event({
+            category: 'About Page Link',
+            action: 'click',
+            label: link
+        })
+    }
+
     function renderBioBlock(name: string,
         description: string[],
         linkedIn: string | null = null,
@@ -22,15 +40,15 @@ export default function About() {
                 <br />
                 {description.map((line) => {
                     return (
-                        <div>
+                        <div key={line}>
                             {line}
                             <br />
                         </div>
                     )
                 })}
-                {linkedIn ? <a href={linkedIn} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faLinkedin} className="mr-1 linked-in" /></a> : null}
-                {twitter ? <a href={twitter} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitter} className="mx-1 twitter" /></a> : null}
-                {email ? <a href={`mailto:${email}`}><FontAwesomeIcon icon={faEnvelope} className="ml-1 email" /></a> : null}
+                {linkedIn ? <a href={linkedIn} onClick={() => selectItem('LinkedIn', name)} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faLinkedin} className="mr-1 linked-in" /></a> : null}
+                {twitter ? <a href={twitter} onClick={() => selectItem('Twitter', name)} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitter} className="mx-1 twitter" /></a> : null}
+                {email ? <a href={`mailto:${email}`} onClick={() => selectItem('Email', name)}><FontAwesomeIcon icon={faEnvelope} className="ml-1 email" /></a> : null}
             </div>
         )
     }
@@ -50,14 +68,14 @@ export default function About() {
                 </p>
                 <p>
                     {Translate('AboutPage', ['AboutSection', 'PartThree'])}
-                    <a href="https://www.covid19immunitytaskforce.ca/">{Translate('AboutPage', ['AboutSection', 'PartFour'], null, [true, true])}</a>
+                    <a onClick={() => selectLink('ITF Website')} href="https://www.covid19immunitytaskforce.ca/">{Translate('AboutPage', ['AboutSection', 'PartFour'], null, [true, true])}</a>
                     {Translate('AboutPage', ['AboutSection', 'PartFive'])}
-                    <a href="https://www.mcgill.ca/spgh/">{Translate('AboutPage', ['AboutSection', 'PartSix'], null, [true, false])}</a>.
+                    <a onClick={() => selectLink('McGill Website')} href="https://www.mcgill.ca/spgh/">{Translate('AboutPage', ['AboutSection', 'PartSix'], null, [true, false])}</a>.
                      {Translate('AboutPage', ['AboutSection', 'PartSeven'], null, [true, false])}
-                    <a href="https://www.covid19immunitytaskforce.ca/research/global-serological-knowledge-hub/">{Translate('AboutPage', ['AboutSection', 'PartEight'], null, [true, false])}</a>.
+                    <a onClick={() => selectLink('Serological Hub')} href="https://www.covid19immunitytaskforce.ca/research/global-serological-knowledge-hub/">{Translate('AboutPage', ['AboutSection', 'PartEight'], null, [true, false])}</a>.
                 </p>
                 <p>
-                    <a href="https://www.mapbox.com/">Mapbox</a> {Translate('AboutPage', ['Mapbox'])}.
+                    <a onClick={() => selectLink('Mapbox')} href="https://www.mapbox.com/">Mapbox</a> {Translate('AboutPage', ['Mapbox'])}.
                 </p>
                 <h2>
                     {Translate('ContactUs')}
@@ -94,7 +112,7 @@ export default function About() {
                         {Translate('AboutPage', ['ContactSection', 'BulletPointFive', 'PartOne'])}
                         <b>{Translate('AboutPage', ['ContactSection', 'BulletPointFive', 'PartTwo'], null, [true, false])}</b>
                         {Translate('AboutPage', ['ContactSection', 'BulletPointFive', 'PartThree'], null, [true, true])}
-                        <a rel="noopener noreferrer" target="_blank" href="https://forms.gle/XWHQ7QPjQnzQMXSz8">{Translate('ThisForm').toLowerCase()}</a>.
+                        <a onClick={() => selectLink('Form Open')} rel="noopener noreferrer" target="_blank" href="https://forms.gle/XWHQ7QPjQnzQMXSz8">{Translate('ThisForm').toLowerCase()}</a>.
                     </li>
                 </ul>
                 <h1>
