@@ -1,4 +1,4 @@
-import { AirtableRecord } from "./types"
+import { AirtableRecord, AggregatedRecord } from "./types"
 
 export default class httpClient {
     async httpGet(url: string){
@@ -125,7 +125,21 @@ export default class httpClient {
             meta_analysis_technique,
             meta_analysis_transformation
         }
+
         const response = await this.httpPost('/meta_analysis/records', req_body);
+        if(response){
+            // Convert response to aggregatedRecord object
+            const formatted_response: AggregatedRecord[] = Object.keys(response).filter((key: string) => response[key] !== null).map((key: string) => {
+                return {
+                    error: response[key].error_percent,
+                    n: response[key].total_N,
+                    name: key,
+                    num_studies: response[key].n_studies,
+                    seroprevalence: response[key].seroprevalence_percent,
+                }
+            });
+            return formatted_response;
+        }
         return response;
     }
 }
