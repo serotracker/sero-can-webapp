@@ -101,12 +101,15 @@ export default class httpClient {
     }
 
     async postMetaAnalysis(records: AirtableRecord[], aggregation_variable: AggregationFactor, meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise'){
+        // Note: while the rest of the aggregation variables can stay consistent with frontend nomenclature
+        // the aggregation variable "country" must be changed to "COUNTRY"
+        const formatted_agg_var = aggregation_variable === AggregationFactor.country ? "COUNTRY" : aggregation_variable;
         const formatted_records = records!.filter(item => item[aggregation_variable] != null).map((item: AirtableRecord)=>{ 
             // Note, all aggregation variable fields must be string arrays
             const record: Record<string, any> = { 
                 SERUM_POS_PREVALENCE: item.seroprevalence,
                 DENOMINATOR: item.denominator,
-                COUNTRY: item.country
+                COUNTRY: [item.country]
             };
             if(aggregation_variable !== AggregationFactor.country){
                 record[aggregation_variable] = Array.isArray(item[aggregation_variable]) ? item[aggregation_variable] : [item[aggregation_variable]];
@@ -116,7 +119,7 @@ export default class httpClient {
 
         const req_body = {
             records: formatted_records,
-            aggregation_variable,
+            aggregation_variable: formatted_agg_var,
             meta_analysis_technique,
             meta_analysis_transformation
         };
