@@ -44,6 +44,15 @@ export default function Map() {
 
       updateMap();
     }
+    else{
+      // Initialize map so that it starts out colourless
+      const initImportGeo = Countries as any;
+      const features = initImportGeo.features as GeoJSON.Feature[]
+      initImportGeo.features = features.map(feature => {
+        return { ...feature, properties: { ...feature.properties, seroprevalence: null, error: null, n: null, num_studies: null } }
+      })
+      setMapRecords(initImportGeo);
+    }
   }, [state.country_prevalences, state.language, state.filters])
 
 
