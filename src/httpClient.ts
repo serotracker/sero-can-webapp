@@ -1,4 +1,4 @@
-import { AirtableRecord, AggregatedRecord } from "./types"
+import { AirtableRecord, AggregatedRecord, AggregationFactor } from "./types"
 
 export default class httpClient {
     async httpGet(url: string){
@@ -100,26 +100,14 @@ export default class httpClient {
         };
     }
 
-    async postMetaAnalysis(records: AirtableRecord[], aggregation_variable: string, meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise'){
-        const formatted_records = records!.map((item: AirtableRecord)=>{ 
+    async postMetaAnalysis(records: AirtableRecord[], aggregation_variable: AggregationFactor, meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise'){
+        const formatted_records = records!.filter(item => item[aggregation_variable] != null).map((item: AirtableRecord)=>{ 
             // Note, all aggregation variable fields must be string arrays
-            const record = { 
+            const record: Record<string, any> = { 
                 SERUM_POS_PREVALENCE: item.seroprevalence,
                 DENOMINATOR: item.denominator,
-                country: [item.country],
-                state: item.state,
-                city: item.city,
-                population_group: item.population_group ? item.population_group : [],
-                sex: item.sex ? [item.sex] : [],
-                age: item.age ? item.age : [],
-                study_status: item.study_status ? [item.study_status] : [],
-                source_type: item.source_type ? [item.source_type] : [],
-                specimen_type: item.specimen_type ? [item.specimen_type] : [],
-                isotypes_reported: item.isotypes_reported ? item.isotypes_reported : [],
-                test_type: item.test_type ? item.test_type : [],
-                risk_of_bias: item.risk_of_bias ? [item.risk_of_bias] : []
             };
-
+            record[aggregation_variable] = Array.isArray(item[aggregation_variable]) ? item[aggregation_variable] : [item[aggregation_variable]];
             return record; 
         });
 
