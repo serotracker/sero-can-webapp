@@ -106,8 +106,11 @@ export default class httpClient {
             const record: Record<string, any> = { 
                 SERUM_POS_PREVALENCE: item.seroprevalence,
                 DENOMINATOR: item.denominator,
+                COUNTRY: item.country
             };
-            record[aggregation_variable] = Array.isArray(item[aggregation_variable]) ? item[aggregation_variable] : [item[aggregation_variable]];
+            if(aggregation_variable !== AggregationFactor.country){
+                record[aggregation_variable] = Array.isArray(item[aggregation_variable]) ? item[aggregation_variable] : [item[aggregation_variable]];
+            }
             return record; 
         });
 
@@ -136,6 +139,7 @@ export default class httpClient {
     }
 
     // Aggregation of all records, to support TotalStats view
+    // TODO: Consolidate this function with postMetaAnalysis
     async postMetaAnalysisAll(records: AirtableRecord[], meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise'){
         const formatted_records = records!.map((item: AirtableRecord)=>{ 
             const record = { 
