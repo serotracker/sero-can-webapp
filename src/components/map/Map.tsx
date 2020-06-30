@@ -4,13 +4,11 @@ import ReactDOMServer from 'react-dom/server';
 import { GeoJSON, Map as LeafletMap, TileLayer } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
-import { getAggregateData } from "../../metaAnalysis";
-import { AggregatedRecord, AggregationFactor } from "../../types";
+import { AggregatedRecord } from "../../types";
 import { getBuckets, getColor, getCountryName, getMapUrl } from "../../utils/mapUtils";
 import Translate from "../../utils/translate/translateService";
 import Legend from "./Legend";
 import './Map.css';
-import httpClient from "../../httpClient";
 
 export default function Map() {
   const mapRef = createRef<LeafletMap>();
@@ -21,11 +19,9 @@ export default function Map() {
   const buckets = getBuckets(mapRecords.features);
 
   useEffect(() => {
-    if(state.filtered_records.length > 0){
-      const api = new httpClient();
+    if(state.country_prevalences.length > 0){
       const updateMap = async () => {
-        const response = await api.postMetaAnalysis(state.filtered_records, AggregationFactor.country);
-        const prevalenceCountryDict: Record<string, AggregatedRecord> = response.reduce((a: any, x: AggregatedRecord) => ({ ...a, [x.name]: x }), {});
+        const prevalenceCountryDict: Record<string, AggregatedRecord> = state.country_prevalences.reduce((a: any, x: AggregatedRecord) => ({ ...a, [x.name]: x }), {});
 
         const importGeo = Countries as any;
         const features = importGeo.features as GeoJSON.Feature[]
@@ -48,7 +44,7 @@ export default function Map() {
 
       updateMap();
     }
-  }, [state.filtered_records, state.language, state.filters])
+  }, [state.country_prevalences, state.language, state.filters])
 
 
   const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined) => {

@@ -5,8 +5,7 @@ import { Bar, BarChart, CartesianGrid, ErrorBar, LabelList, Legend, ResponsiveCo
 import { Dropdown, DropdownProps } from "semantic-ui-react";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import { AppContext } from "../../context";
-import { getAggregateData } from "../../metaAnalysis";
-import { AggregationFactor } from "../../types";
+import { AggregationFactor, AggregatedRecord } from "../../types";
 import InformationIcon from "../shared/InformationIcon";
 import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
@@ -18,10 +17,8 @@ export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
   const [state] = useContext(AppContext);
   const { filtered_records, filters } = state;
-  // Factor in "include_in_n" for population unfiltered geography estimates
-  const must_include_in_n = yAxisSelection === AggregationFactor.country ? filters.population_group.size === 0 : false;
-  const aggregatedRecords = getAggregateData(filtered_records, yAxisSelection, must_include_in_n);
-  const [records, setRecords] = useState(aggregatedRecords);
+  const initState = [] as AggregatedRecord[];
+  const [records, setRecords] = useState(initState);
 
   const yAxisOptions = [
     { key: 'Geographies', text: Translate('Geographies'), value: AggregationFactor.country },
