@@ -1,16 +1,12 @@
 import _ from "lodash";
 import React, { useContext } from "react";
 import { AppContext } from "../../../context";
-import { getAggregateData } from "../../../metaAnalysis";
-import { AggregationFactor } from "../../../types";
 import './CountryList.css';
 import Translate from "../../../utils/translate/translateService";
 
 export default function CountryList() {
   const [state] = useContext(AppContext);
-  // Factor in "include_in_n" for population unfiltered geography estimates
-  const must_include_in_n = state.filters.population_group.size === 0;
-  const aggregatedData = _.sortBy(getAggregateData(state.filtered_records, AggregationFactor.country, must_include_in_n), ['seroprevalence']).reverse();
+  const aggregatedData = _.sortBy(state.country_prevalences, ['seroprevalence']).reverse();
 
   return (
     <div className="country-list">

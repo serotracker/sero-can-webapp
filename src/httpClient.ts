@@ -8,6 +8,8 @@ export default class httpClient {
         }
         const res = await fetch(url_full);
         if(res.status !== 200) {
+            const error_msg = res.json();
+            console.error(error_msg);
             return;
         }
         else {
@@ -29,6 +31,8 @@ export default class httpClient {
             body: JSON.stringify(data) // body data type must match "Content-Type" header
         });
         if(res.status !== 200) {
+            const error_msg = res.json();
+            console.error(error_msg);
             return;
         }
         else {
@@ -124,7 +128,7 @@ export default class httpClient {
             aggregation_variable,
             meta_analysis_technique,
             meta_analysis_transformation
-        }
+        };
 
         const response = await this.httpPost('/meta_analysis/records', req_body);
         if(response){
@@ -141,5 +145,33 @@ export default class httpClient {
             return formatted_response;
         }
         return response;
+    }
+
+    // Aggregation of all records, to support TotalStats view
+    async postMetaAnalysisAll(records: AirtableRecord[], meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise'){
+        const formatted_records = records!.map((item: AirtableRecord)=>{ 
+            const record = { 
+                SERUM_POS_PREVALENCE: item.seroprevalence,
+                DENOMINATOR: item.denominator,
+                COUNTRY: [item.country]
+            };
+            return record; 
+        });
+
+        const req_body = {
+            records: formatted_records,
+            meta_analysis_technique,
+            meta_analysis_transformation
+        };
+
+        const response = await this.httpPost('/meta_analysis/records', req_body);
+        const formatted_response = {
+            error: response.error_percent,
+            n: response.total_N,
+            countries: response.countries,
+            num_studies: response.n_studies,
+            seroprevalence: response.seroprevalence_percent
+        }
+        return formatted_response;
     }
 }
