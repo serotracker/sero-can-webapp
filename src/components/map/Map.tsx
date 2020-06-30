@@ -4,8 +4,7 @@ import ReactDOMServer from 'react-dom/server';
 import { GeoJSON, Map as LeafletMap, TileLayer } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
-import { getAggregateData } from "../../metaAnalysis";
-import { AggregatedRecord, AggregationFactor } from "../../types";
+import { AggregatedRecord } from "../../types";
 import { getBuckets, getColor, getCountryName, getMapUrl } from "../../utils/mapUtils";
 import Translate from "../../utils/translate/translateService";
 import Legend from "./Legend";
@@ -20,29 +19,41 @@ export default function Map() {
   const buckets = getBuckets(mapRecords.features);
 
   useEffect(() => {
-    // Factor in "include_in_n" for population unfiltered geography estimates
-    const must_include_in_n = state.filters.population_group.size === 0;
-    const prevalenceCountryDict: Record<string, AggregatedRecord> = getAggregateData(state.filtered_records, AggregationFactor.country, must_include_in_n)
-      .reduce((a, x: AggregatedRecord) => ({ ...a, [x.name]: x }), {})
+    if(state.country_prevalences.length > 0){
+      const updateMap = async () => {
+        const prevalenceCountryDict: Record<string, AggregatedRecord> = state.country_prevalences.reduce((a: any, x: AggregatedRecord) => ({ ...a, [x.name]: x }), {});
 
-    const importGeo = Countries as any;
-    const features = importGeo.features as GeoJSON.Feature[]
+        const importGeo = Countries as any;
+        const features = importGeo.features as GeoJSON.Feature[]
 
-    // We will iterate through all the features in the geoJson
-    // if they are in the country dict we will attach their aggregated data to the feature for displaying
-    importGeo.features = features.map(feature => {
-      const country = prevalenceCountryDict[feature?.properties?.name];
-      if (country && country.seroprevalence) {
-        const { seroprevalence, error, n, num_studies } = country;
-        return { ...feature, properties: { ...feature.properties, seroprevalence, error, n, num_studies } }
+        // We will iterate through all the features in the geoJson
+        // if they are in the country dict we will attach their aggregated data to the feature for displaying
+        importGeo.features = features.map(feature => {
+          const country = prevalenceCountryDict![feature?.properties?.name];
+          if (country && country.seroprevalence) {
+            const { seroprevalence, error, n, num_studies } = country;
+            return { ...feature, properties: { ...feature.properties, seroprevalence, error, n, num_studies } }
+          }
+          return { ...feature, properties: { ...feature.properties, seroprevalence: null, error: null, n: null, num_studies: null } }
+        })
+        setMapRecords(importGeo)
+
+        // we need to update the key on the GEOJSON to let react know it's time to rerender
+        setForceUpdate(Math.random())
       }
-      return { ...feature, properties: { ...feature.properties, seroprevalence: null, error: null, n: null, num_studies: null } }
-    })
-    setMapRecords(importGeo)
 
-    // we need to update the key on the GEOJSON to let react know it's time to rerender
-    setForceUpdate(Math.random())
-  }, [state.filtered_records, state.language, state.filters])
+      updateMap();
+    }
+    else{
+      // Initialize map so that it starts out colourless
+      const initImportGeo = Countries as any;
+      const features = initImportGeo.features as GeoJSON.Feature[]
+      initImportGeo.features = features.map(feature => {
+        return { ...feature, properties: { ...feature.properties, seroprevalence: null, error: null, n: null, num_studies: null } }
+      })
+      setMapRecords(initImportGeo);
+    }
+  }, [state.country_prevalences, state.language, state.filters])
 
 
   const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined) => {

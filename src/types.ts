@@ -72,7 +72,8 @@ export type State = {
     filter_options: Filters,
     updated_at: string,
     data_page_state: DataPageState,
-    language: LanguageType
+    language: LanguageType,
+    country_prevalences: AggregatedRecord[]
 };
 
 export enum AggregationFactor {
