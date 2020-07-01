@@ -1,5 +1,5 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import { AirtableRecord, Filters, State, LanguageType } from "./types";
+import { AirtableRecord, Filters, State, LanguageType, AggregatedRecord } from "./types";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
@@ -33,7 +33,8 @@ const initialState: State = {
     mapOpen: true
   },
   language: LanguageType.english,
-  updated_at: ''
+  updated_at: '',
+  country_prevalences: []
 };
 
 function buildFilterFunction(filters: Record<string, any>) {
@@ -186,6 +187,11 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         filters: new_filters,
         filtered_records: filterRecords(new_filters, state.airtable_records)
+      }
+    case "UPDATE_COUNTRY_PREVALENCES":
+      return {
+        ...state,
+        country_prevalences: action.payload
       }
     default:
       return state
