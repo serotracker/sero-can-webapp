@@ -7,6 +7,16 @@
     height: 95vh;
 }
 
+.policy-container {
+    flex-direction: column;
+    display: flex;    
+}
+
+.policy-iframe {
+    border: none;
+    border-left: 2px solid grey
+}
+
 .dashboard {
     max-height: calc(100% - 50px);
     height: 100%;

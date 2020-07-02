@@ -13,20 +13,22 @@ interface Props {
   trackingId?: string;
 }
 const GAListener = ({ children, trackingId }: Props): JSX.Element => {
+  const isDev = process.env.NODE_ENV === "development";
   const history = useHistory()
   useEffect((): UnregisterCallback | void => {
     if (trackingId) {
       ReactGA.initialize(trackingId,
         {
           titleCase: false,
+          debug: isDev,
           gaOptions: {
-            cookieDomain: 'none'
+            cookieDomain: isDev ? 'none' : 'auto'
           }
         })
       sendPageView(history.location, 'REPLACE')
       return history.listen(sendPageView)
     }
-  }, [history, trackingId])
+  }, [history, isDev, trackingId])
 
   return children
 }

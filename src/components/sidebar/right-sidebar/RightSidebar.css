@@ -6,7 +6,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     border-bottom: 2px solid #C4C4C4;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 17%);
 }
 
 .filter-section-header {

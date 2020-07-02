@@ -122,6 +122,7 @@
   "PlannedSerosurveys": "Planned Serosurveys",
   "Population": "Population",
   "PopulationGroup": "Population Group",
+  "PrivacyPolicy": "Privacy Policy",
   "PopulationGroupOptions": {
     "All": "All",
     "BloodDonors": "Blood donors",
@@ -180,6 +181,8 @@
     "Male": "Male",
     "Unspecified": "Unspecified"
   },
+  "TermsOfUse": "Terms of Use",
+  "CookiePolicy": "CookiePolicy",
   "Source": "Source",
   "SourceType": "Source Type",
   "SourceTypeOptions": {

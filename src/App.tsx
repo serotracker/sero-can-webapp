@@ -4,10 +4,13 @@ import './App.css';
 import About from './components/pages/About';
 import Dashboard from "./components/pages/Dashboard/Dashboard";
 import Data from './components/pages/Data';
+import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import { NavBar } from "./components/shared/NavBar";
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
 import { setLanguageType } from "./utils/translate/translateService";
+import CookiePolicy from "./components/pages/CookiePolicy";
+import TermsOfUse from "./components/pages/TermsOfUse";
 
 function App() {
 
@@ -48,6 +51,15 @@ function App() {
         </Route>
         <Route path="/Data">
           <Data />
+        </Route>
+        <Route path="/PrivacyPolicy">
+          <PrivacyPolicy />
+        </Route>
+        <Route path="/CookiePolicy">
+          <CookiePolicy />
+        </Route>
+        <Route path="/TermsOfUse">
+          <TermsOfUse />
         </Route>
         <Redirect exact from="/" to="/Dashboard" />
       </Switch>
