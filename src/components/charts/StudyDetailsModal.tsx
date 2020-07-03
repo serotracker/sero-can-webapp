@@ -1,7 +1,6 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { Button, Modal } from "semantic-ui-react";
 import { AirtableRecord } from "../../types";
 import "./StudyDetailsModal.css";
@@ -102,9 +101,9 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
             <div className="col-12 px-0 py-1">
               <div className="col-12 p-0 section-title">{Translate('Source').toUpperCase()}</div>
               <div className="col-12 px-2 py-1 section-container modal-text-container">
-                <Link to={url || ""} className="col-12 p-0 name-text">
+                <a href={url || ""} target="_blank" rel="noopener noreferrer" className="col-12 p-0 name-text">
                   {source_name}
-                </Link>
+                </a>
                 <div className="col-12 p-0 secondary-text">
                   {getAuthorString(first_author, lead_org)}
                 </div>

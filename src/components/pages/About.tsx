@@ -75,7 +75,7 @@ export default function About() {
                     <a onClick={() => selectLink('Serological Hub')} href="https://www.covid19immunitytaskforce.ca/research/global-serological-knowledge-hub/">{Translate('AboutPage', ['AboutSection', 'PartEight'], null, [true, false])}</a>.
                 </p>
                 <p>
-                    <a onClick={() => selectLink('Mapbox')} href="https://www.mapbox.com/">Mapbox</a> {Translate('AboutPage', ['Mapbox'])}.
+                    <a onClick={() => selectLink('Mapbox')} href="https://www.mapbox.com/">Mapbox</a> {Translate('AboutPage', ['Mapbox'])}
                 </p>
                 <h2>
                     {Translate('ContactUs')}

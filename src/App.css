@@ -50,6 +50,14 @@
     max-height: 100%;
 }
 
+.column {
+    flex-direction: column;
+}
+
+.fit {
+    flex: 0 1;
+}
+
 .fill {
     flex: 1 1;
 }
