@@ -125,6 +125,13 @@ export default function About() {
                     {renderBioBlock('Tim Evans', [Translate('TimBiography', ['PartOne']), Translate('TimBiography', ['PartTwo'])])}
                 </div>
                 <h2 className="team-name-text">
+                    {Translate('TeamLead')}
+                </h2>
+                <div className="bio-grid-container">
+                    {renderBioBlock('Rahul Arora', [Translate('ExecutiveDirector'), Translate('UniversityOf', null, { "NAME": "Oxford" })], 'https://www.linkedin.com/in/rahularorayyc/', 'rahularoradfs@gmail.com', 'https://mobile.twitter.com/RahulAroraAB')}
+                    {renderBioBlock('Tingting Yan', [Translate('CoDirector'), Translate('UniversityOf', null, { "NAME": "Toronto" })], 'https://www.linkedin.com/in/tingting-yan/', '', 'https://twitter.com/TingtingYan_')}
+                </div>
+                <h2 className="team-name-text">
                     {Translate('ResearchTeam')}
                 </h2>
                 <div className="bio-grid-container">
@@ -132,7 +139,6 @@ export default function About() {
                     {renderBioBlock('Emily Boucher', [Translate('UniversityOf', null, { "NAME": "Calgary" })], null, 'emily.boucher@ucalgary.ca')}
                     {renderBioBlock('Nathan Duarte', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/duartenathan/', 'nathanduarte1@gmail.com', 'https://twitter.com/_nathan_duarte_')}
                     {renderBioBlock('Hannah Rahim', [Translate('UniversityOf', null, { "NAME": "Calgary" })], 'https://www.linkedin.com/in/hannah-rahim/', null, 'https://twitter.com/Hannah_Rahim1')}
-                    {renderBioBlock('Tingting Yan', [Translate('UniversityOf', null, { "NAME": "Toronto" })], 'https://www.linkedin.com/in/tingting-yan/', '', 'https://twitter.com/TingtingYan_')}
                     {renderBioBlock('Christian Cao', [Translate('UniversityOf', null, { "NAME": "Calgary" })], 'https://ca.linkedin.com/in/christian-cao-275b78190', 'ccao.canada@gmail.com')}
                     {renderBioBlock('Claire Donnici', [Translate('UniversityOf', null, { "NAME": "Calgary" })], null, 'claire.donnici@ucalgary.ca', 'https://twitter.com/ClaireDonnici')}
                     {renderBioBlock('Natasha Ilincic', [Translate('UniversityOf', null, { "NAME": "Guelph" })], null, 'natasha.ilincic@gmail.com')}
@@ -145,7 +151,6 @@ export default function About() {
                 </h2>
                 <div className="bio-grid-container">
                     {renderBioBlock('Austin Atmaja', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/austinatmaja', null, null)}
-                    {renderBioBlock('Rahul Arora', [Translate('UniversityOf', null, { "NAME": "Oxford" })], 'https://www.linkedin.com/in/rahularorayyc/', 'rahularoradfs@gmail.com', 'https://mobile.twitter.com/RahulAroraAB')}
                     {renderBioBlock('Abel Joseph ', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/abel-joseph/', 'abel.joseph@uwaterloo.ca')}
                     {renderBioBlock('Ewan May', [Translate('SchoolName', ['Schulich']), Translate('UniversityOf', null, { "NAME": "Calgary" })], 'https://www.linkedin.com/in/ewan-may', 'ewan.may@ucalgary.ca')}
                     {renderBioBlock('Simona Rocco', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/simona-rocco/', 'serocco@uwaterloo.ca')}
