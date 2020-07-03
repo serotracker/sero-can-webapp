@@ -33,7 +33,8 @@ const initialState: State = {
     mapOpen: true
   },
   language: LanguageType.english,
-  updated_at: ''
+  updated_at: '',
+  accepted_cookies: false
 };
 
 function buildFilterFunction(filters: Record<string, any>) {
@@ -162,6 +163,11 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         healthcheck: action.payload
       };
+    case "ACCEPT_COOKIES": 
+      return {
+        ...state,
+        accepted_cookies: true
+      }
     case "SELECT_DATA_TAB":
       return {
         ...state,

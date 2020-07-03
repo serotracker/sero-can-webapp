@@ -11,7 +11,7 @@ import InformationIcon from "../shared/InformationIcon";
 import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
 import Translate from "../../utils/translate/translateService";
-import ReactGA from 'react-ga';
+import { sendAnalyticsEvent } from '../../utils/analyticsUtils';
 
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
@@ -44,10 +44,10 @@ export default function Charts() {
 
   const handleChange = (event: SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
     setYAxis(data.value as AggregationFactor);
-    ReactGA.event({
+    sendAnalyticsEvent({
       category: 'Independent Variable',
       action: 'selection',
-      label:  data.text || "Unknown"
+      label: data.text || "Unknown"
     })
   }
 

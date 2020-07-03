@@ -11,6 +11,7 @@ import httpClient from "./httpClient";
 import { setLanguageType } from "./utils/translate/translateService";
 import CookiePolicy from "./components/pages/CookiePolicy";
 import TermsOfUse from "./components/pages/TermsOfUse";
+import { CookieBanner } from "./components/shared/CookieBanner";
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      <CookieBanner/>
       <Switch>
         <Route path="/About">
           <About />

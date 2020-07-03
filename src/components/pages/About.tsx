@@ -6,13 +6,13 @@ import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import Translate from "../../utils/translate/translateService";
 import './static.css';
-import ReactGA from 'react-ga';
+import { sendAnalyticsEvent } from '../../utils/analyticsUtils';
 
 export default function About() {
     const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
 
     const selectItem = (label: string, name: string) => {
-        ReactGA.event({
+        sendAnalyticsEvent({
             category: 'Social Media Link',
             action: 'click',
             label: `${label} - ${name}`
@@ -20,7 +20,7 @@ export default function About() {
     }
 
     const selectLink = (link: string) => {
-        ReactGA.event({
+        sendAnalyticsEvent({
             category: 'About Page Link',
             action: 'click',
             label: link

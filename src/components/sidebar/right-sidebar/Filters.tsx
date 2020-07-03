@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import ReactGA from 'react-ga';
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType } from '../../../types';
@@ -7,6 +6,7 @@ import { getCountryName } from "../../../utils/mapUtils";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
 import Translate from "../../../utils/translate/translateService";
 import InformationIcon from "../../shared/InformationIcon";
+import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 
 export default function Filters() {
   const [state, dispatch] = useContext(AppContext);
@@ -83,7 +83,7 @@ export default function Filters() {
           options={formatOptions(state.filter_options[filter_type], filter_type)}
           onChange={(e: any, data: any) => {
             addFilter(data, filter_type)
-            ReactGA.event({
+            sendAnalyticsEvent({
               /** Typically the object that was interacted with (e.g. 'Video') */
               category: 'Filter',
               /** The type of interaction (e.g. 'play') */
