@@ -55,7 +55,7 @@ export default function Data() {
                     {Translate('OurDataText', ['Text'])}
                 </p>
             </div>
-            {renderAirtable('https://airtable.com/embed/shr85cDHzwETbjgdu?backgroundColor=blue&viewControls=on')}
+            {renderAirtable('https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=blue&viewControls=on')}
         </div>
     )
 }
