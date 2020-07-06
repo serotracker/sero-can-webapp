@@ -1,5 +1,7 @@
 import React, { createContext, Dispatch, useReducer } from "react";
 import { AirtableRecord, Filters, State, LanguageType, AggregatedRecord } from "./types";
+import Translate from "./utils/translate/translateService";
+import { toPascalCase } from "./utils/translate/caseChanger";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
@@ -22,12 +24,15 @@ export function getEmptyFilters(): Filters {
 // Note: filters = elements that user has chosen to filter by
 // filter_options = all the elements that users could filter by
 const initial_filters: Filters = getEmptyFilters();
-initial_filters.population_group.add(['General population']);
+// Note: 
+initial_filters.population_group.add(Translate('PopulationGroupOptions', ['GeneralPopulation']));
+initial_filters.risk_of_bias.add(Translate('RiskOfBiasOptions', ['Moderate']));
+initial_filters.risk_of_bias.add(Translate('RiskOfBiasOptions', ['Low']));
 const initialState: State = {
   healthcheck: '',
   airtable_records: [],
   filtered_records: [],
-  filters: getEmptyFilters(),
+  filters: initial_filters,
   filter_options: getEmptyFilters(),
   data_page_state: {
     mapOpen: true

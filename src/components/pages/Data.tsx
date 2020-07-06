@@ -8,15 +8,15 @@ import ReactGA from 'react-ga';
 
 export default function Data() {
     const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
-    const renderPane = (src: string) => {
-        return <Tab.Pane className="col-12 p-0">
+    const renderAirtable = (src: string) => {
+        return <div className="col-10 p-0 airtable-embed vertical-spacer">
             <iframe
                 title="airtable-embed"
                 className="airtable-embed col-12 p-0"
                 src={src}
                 width="85%"
                 height="650"
-            /></Tab.Pane>
+            /></div>
     }
 
     const clickLink = (link: string) => {
@@ -26,15 +26,6 @@ export default function Data() {
             label: link
         })
     }
-
-    const panes = [{
-        menuItem: isMobileDeviceOrTablet ? Translate('Serosurveys') : Translate('SerosurveysReportingPrevalence'),
-        render: () => renderPane('https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=blue&viewControls=on')
-    },
-    {
-        menuItem: Translate('PlannedSerosurveys'),
-        render: () => renderPane('https://airtable.com/embed/shr85cDHzwETbjgdu?backgroundColor=blue&viewControls=on')
-    }];
 
     return (
         <div className="col-12 page">
@@ -63,20 +54,8 @@ export default function Data() {
                 <p>
                     {Translate('OurDataText', ['Text'])}
                 </p>
-                <ul>
-                    <li>
-                        <p>
-                            <b>{Translate('SerosurveysReportingPrevalence')}</b>{Translate('OurDataText', ['PointOne'], null, [true, false])}
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <b>{Translate('PlannedSerosurveys')}</b>{Translate('OurDataText', ['PointTwo'], null, [true, false])}
-                        </p>
-                    </li>
-                </ul>
             </div>
-            <Tab className="col-10 p-0 airtable-embed vertical-spacer" panes={panes} />
+            {renderAirtable('https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=blue&viewControls=on')}
         </div>
     )
 }
