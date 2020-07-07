@@ -145,6 +145,7 @@ export default function About() {
                     {renderBioBlock('Michael Liu', [Translate('UniversityOf', null, { "NAME": "Oxford" }), Translate('BlankUniversity', null, { "NAME": "Harvard" })], 'https://www.linkedin.com/in/michael-liu-8728249a/', 'liu.michael222@gmail.com', 'https://twitter.com/mliu_canada')}
                     {renderBioBlock('Brianna Rosgen', [Translate('UniversityOf', null, { "NAME": "Calgary" })], 'https://ca.linkedin.com/in/brianna-rosgen-b12136134', 'Brianna.rosgen@ucalgary.ca', 'https://twitter.com/briannarosgen')}
                     {renderBioBlock('Mitchell Segal', [Translate('UniversityOf', null, { "NAME": "Toronto" })], null, 'mitchell.segal@mail.utoronto.ca')}
+                    {renderBioBlock('Jamie Chen', [Translate('BlankUniversity', null, { "NAME": "Johns Hopkins" })], 'https://www.linkedin.com/in/jamieechen/', 'jamieevelynchen@gmail.com')}
                 </div>
                 <h2 className="team-name-text">
                     Development Team
@@ -153,6 +154,7 @@ export default function About() {
                     {renderBioBlock('Austin Atmaja', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/austinatmaja', null, null)}
                     {renderBioBlock('Abel Joseph ', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/abel-joseph/', 'abel.joseph@uwaterloo.ca')}
                     {renderBioBlock('Ewan May', [Translate('SchoolName', ['Schulich']), Translate('UniversityOf', null, { "NAME": "Calgary" })], 'https://www.linkedin.com/in/ewan-may', 'ewan.may@ucalgary.ca')}
+                    {renderBioBlock('Brett Dziedzic', [Translate('UniversityOf', null, { "NAME": "Lethbridge" })], 'https://www.linkedin.com/in/brett-dziedzic/', 'brettdziedzic@gmail.com')}
                     {renderBioBlock('Simona Rocco', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/simona-rocco/', 'serocco@uwaterloo.ca')}
                     {renderBioBlock('Jordan Van Wyk', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/jordanvanwyk/', 'jordanvanwyk@outlook.com', 'https://twitter.com/jordanvw_')}
                     {renderBioBlock('Abhinav Pillai	', [Translate('UniversityOf', null, { "NAME": "Calgary" })], null, 'abhinav.arunpillai@ucalgary.ca')}
