@@ -19,6 +19,12 @@ function App() {
   // DATA
   useEffect(() => {
     const api = new httpClient()
+    const alreadyAcceptedCookes = localStorage.getItem('acceptedCookies');
+    if (alreadyAcceptedCookes) {
+      dispatch({
+        type: 'ACCEPT_COOKIES'
+      });
+    }
     const getAirtableRecords = async () => {
       const response = await api.getAirtableRecords()
       dispatch({
@@ -43,7 +49,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <CookieBanner/>
+      <CookieBanner />
       <Switch>
         <Route path="/About">
           <About />

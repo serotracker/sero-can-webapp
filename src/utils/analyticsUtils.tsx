@@ -29,9 +29,8 @@ const GAListener = ({ children, trackingId }: Props): JSX.Element => {
   const isDev = process.env.NODE_ENV === "development";
   const history = useHistory()
   const [state] = useContext(AppContext);
-  
   useEffect((): UnregisterCallback | void => {
-    cookieAcceptance = state.accepted_cookies;
+    cookieAcceptance = state.acceptedCookies;
     if (trackingId && cookieAcceptance) {
       ReactGA.initialize(trackingId,
         {
@@ -44,7 +43,7 @@ const GAListener = ({ children, trackingId }: Props): JSX.Element => {
       sendPageView(history.location, 'REPLACE')
       return history.listen(sendPageView)
     }
-  }, [history, isDev, state.accepted_cookies, trackingId])
+  }, [history, isDev, state.acceptedCookies, trackingId])
 
   return children
 }
