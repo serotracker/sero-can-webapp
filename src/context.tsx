@@ -1,5 +1,7 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import { AirtableRecord, Filters, State, LanguageType } from "./types";
+import { AirtableRecord, Filters, State, LanguageType, AggregatedRecord } from "./types";
+import Translate from "./utils/translate/translateService";
+import { toPascalCase } from "./utils/translate/caseChanger";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
@@ -22,18 +24,22 @@ export function getEmptyFilters(): Filters {
 // Note: filters = elements that user has chosen to filter by
 // filter_options = all the elements that users could filter by
 const initial_filters: Filters = getEmptyFilters();
-initial_filters.population_group.add(['General population']);
+// Note: 
+initial_filters.population_group.add(Translate('PopulationGroupOptions', ['GeneralPopulation']));
+initial_filters.risk_of_bias.add(Translate('RiskOfBiasOptions', ['Moderate']));
+initial_filters.risk_of_bias.add(Translate('RiskOfBiasOptions', ['Low']));
 const initialState: State = {
   healthcheck: '',
   airtable_records: [],
   filtered_records: [],
-  filters: getEmptyFilters(),
+  filters: initial_filters,
   filter_options: getEmptyFilters(),
   data_page_state: {
     mapOpen: true
   },
   language: LanguageType.english,
   updated_at: '',
+  country_prevalences: []
   accepted_cookies: false
 };
 
@@ -192,6 +198,11 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         filters: new_filters,
         filtered_records: filterRecords(new_filters, state.airtable_records)
+      }
+    case "UPDATE_COUNTRY_PREVALENCES":
+      return {
+        ...state,
+        country_prevalences: action.payload
       }
     default:
       return state

@@ -34,7 +34,7 @@
         "PartTwo": "please contact Nathan Duarte at"
       },
       "BulletPointTwo": {
-        "PartOne": "research methods-related inquiries",
+        "PartOne": "research methods-related inquiries, or if you are a journalist interested in reporting on our findings,",
         "PartTwo": "please contact Nik Bobrovitz at"
       },
       "SectionOne": "We are an interdisciplinary team of researchers and engineers at the University of Oxford, University of Toronto, University of Waterloo, University of Calgary, and Harvard University."
@@ -57,6 +57,7 @@
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
   "BlankUniversity": "NAME University",
   "ChangeSettings": "Change Settings",
+  "CoDirector": "Co-Director",
   "ContactUs": "Contact Us",
   "Countries": "Countries",
   "Country": "Country",
@@ -78,6 +79,7 @@
   "EndDate": "End Date",
   "English": "English",
   "Estimate": "Estimate",
+  "ExecutiveDirector": "Executive Director",
   "Explore": "Explore",
   "Filter": "Filter",
   "FilterTooltip": "Filter the SeroTracker dataset based on geography, study, demographics, and test. Only studies matching all of the listed filters will be included.",
@@ -129,15 +131,17 @@
     "Children": "Children",
     "CommunityResident": "Community resident",
     "FactoryWorker": "Factory worker",
-    "GeneralPopulation": "General Population",
-    "HealthCareWorkers": "Health Care Workers",
+    "GeneralPopulation": "General population",
+    "HealthCareWorkers": "Health care workers",
     "HotelStaffMember": "Hotel staff member",
     "IndustrySpecificEmployees": "Industry specific employees",
     "NonCovidHospitalizedPatients": "Non-COVID hospitalized patients",
+    "NonCovidPatientsInHealthCareSettings": "Non-COVID patients in health care settings",
     "PregnantOrParturientWomen": "Pregnant or Parturient Women",
     "RelativeOfHealthCareWorker": "Relative of health care worker",
     "Students": "Students",
-    "Unspecified": "Unspecified"
+    "Unspecified": "Unspecified",
+    "FirstResponders": "First responders"
   },
   "Populations": "Populations",
   "PrevalenceEstimateDetails": "Prevalence Estimate Details",
@@ -228,6 +232,7 @@
   "StudyType": "Study Type",
   "Summary": "Summary",
   "SummaryStatistics": "Summary Statistics",
+  "TeamLead": "Team Leads",
   "TestDetails": "Test Details",
   "TestInformation": "Test Information",
   "TestInformationTooltip": "Filter on test details, including assay type and antibody isotype.",

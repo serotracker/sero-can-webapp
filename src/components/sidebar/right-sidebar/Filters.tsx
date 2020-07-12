@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import ReactGA from 'react-ga';
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType } from '../../../types';

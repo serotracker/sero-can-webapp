@@ -1,31 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../context";
-import { aggregateRecords } from "../../../metaAnalysis";
 import InformationIcon from "../../shared/InformationIcon";
 import { MIN_DENOMINATOR } from "../../../metaAnalysis"
 import './TotalStats.css';
 import Translate from "../../../utils/translate/translateService";
+import httpClient from "../../../httpClient";
 
 
 export default function TotalStats() {
   const [state] = useContext(AppContext);
+  const [countries, setNumCountries] = useState(0);
+  const [seroprevalence, setSeroprevalence] = useState<any>(null);
+  const [n, setN] = useState(0);
 
-  // Factor in "include_in_n" for population unfiltered geography estimates
-  const included_records = state.filters.population_group.size === 0 ? state.filtered_records.filter(r => r.include_in_n) : state.filtered_records;
-
-  const { seroprevalence, n } = aggregateRecords(included_records);
-  function onlyUnique(value: any, index: number, self: any) {
-    return self.indexOf(value) === index && value !== null;
-  }
-  const countryDict = included_records
-    .map(o => {
-      if (o.seroprevalence !== null && o.denominator !== null) {
-        return o.country
-      }
-      return null;
-    })
-    .filter(onlyUnique);
-  const countries = countryDict.length;
+  useEffect(() => {
+    if(state.filtered_records.length > 0){
+      const updateCountryPrevalence = async () => {
+        const api = new httpClient();
+        const results = await api.postMetaAnalysisAll(state.filtered_records);
+        setNumCountries(results.countries);
+        setSeroprevalence(results.seroprevalence);
+        setN(results.n);
+      } 
+      updateCountryPrevalence();
+    }
+  }, [state.filtered_records])
 
   //TODO: Extract to utils
   const countriesOrCountry = () => {
@@ -56,7 +55,7 @@ export default function TotalStats() {
             }
             size="xs"
             tooltipHeader={Translate("AggregatedPrevalence")} /></div>
-        <div className="main-statistic col-12 p-0 center">{seroprevalence ? `${seroprevalence.toFixed(2)}%` : Translate("NoData")}</div>
+        <div className="main-statistic col-12 p-0 center">{seroprevalence ? `${seroprevalence!.toFixed(2)}%` : Translate("NoData")}</div>
       </div>
       <div className="col-12 flex middle py-2">
         <div className="secondary-statistic-title center p-0 col-12">{Translate("TestsAdministered")}</div>

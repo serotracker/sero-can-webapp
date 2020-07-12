@@ -73,6 +73,7 @@ export type State = {
     updated_at: string,
     data_page_state: DataPageState,
     language: LanguageType,
+    country_prevalences: AggregatedRecord[]
     accepted_cookies: boolean
 };
 
