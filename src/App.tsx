@@ -26,6 +26,14 @@ function App() {
       });
     }
 
+    const getCaseCounts = async () => {
+      const response = await api.getCaseCounts()
+      dispatch({
+        type: 'GET_CASE_COUNT_RECORDS',
+        payload: response
+      });
+    }
+
     const handleResize = () => {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -34,6 +42,7 @@ function App() {
     window.addEventListener('resize', handleResize)
     getAirtableRecords();
     handleResize();
+    getCaseCounts();
 
     setLanguageType(language);
   }, [dispatch, language])

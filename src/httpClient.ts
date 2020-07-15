@@ -1,4 +1,4 @@
-import { AirtableRecord, AggregatedRecord, AggregationFactor } from "./types"
+import { AirtableRecord, CaseCountRecord, AggregatedRecord, AggregationFactor } from "./types"
 
 export default class httpClient {
     async httpGet(url: string){
@@ -98,6 +98,27 @@ export default class httpClient {
             airtable_records,
             updated_at: updated_at_string
         };
+    }
+
+    async getCaseCounts()
+    {
+        const response = await this.httpGet('/cases_count_scraper/records');
+        const caseCountRecords = response.records.Countries.filter((o: { Country: string; }) =>o.Country).map((item: Record<string,any>)=>{
+            const record: CaseCountRecord = {
+                country: item.Country,
+                countryCode: item.CountryCode,
+                date: item.Date,
+                newConfirmed: item.NewConfirmed,
+                newDeaths: item.NewDeaths,
+                newRecovered: item.NewRecovered,
+                totalConfirmed: item.TotalConfirmed,
+                totalDeaths: item.TotalDeaths,
+                totalRecovered: item.TotalRecovered,
+            }
+            return record;
+        }
+        )
+        return caseCountRecords;
     }
 
     async postMetaAnalysis(records: AirtableRecord[], aggregation_variable: AggregationFactor, meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise'){

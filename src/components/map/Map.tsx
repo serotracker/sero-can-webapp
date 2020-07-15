@@ -1,10 +1,11 @@
 import { latLngBounds, Layer, LeafletMouseEvent } from "leaflet";
 import React, { createRef, useContext, useEffect, useState } from "react";
 import ReactDOMServer from 'react-dom/server';
-import { GeoJSON, Map as LeafletMap, TileLayer } from "react-leaflet";
+import { GeoJSON, Map as LeafletMap, TileLayer, Circle } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
+import Centroids from "../../assets/centroids.json";
 import { AppContext } from "../../context";
-import { AggregatedRecord } from "../../types";
+import { AggregatedRecord, CaseCountRecord } from "../../types";
 import { getBuckets, getColor, getCountryName, getMapUrl } from "../../utils/mapUtils";
 import Translate from "../../utils/translate/translateService";
 import Legend from "./Legend";
@@ -49,7 +50,20 @@ export default function Map() {
       })
       setMapRecords(initImportGeo);
     }
-  }, [state.country_prevalences, state.language, state.filters])
+    if(state.caseCountRecords.length> 0 ){
+      const caseCountCountryDict: Record<string,CaseCountRecord> = state.caseCountRecords.reduce((a: any, x: CaseCountRecord) => ({...a, [x.country]: x}), {});
+      
+      const importCentroids = Centroids as any;
+      const features = importCentroids.features as GeoJSON.Feature[]
+
+      importCentroids.features = features.map(feature => {
+        const country = caseCountCountryDict![feature?.properties?.name];
+
+        return {...feature, properties: {...feature.properties, newConfirmed}}
+      })
+
+    }
+  }, [state.country_prevalences, state.caseCountRecords])
 
 
   const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined) => {
@@ -135,6 +149,14 @@ export default function Map() {
       }
     })
   }
+
+  const onEachCentroid = () => {
+
+    <Circle center={[0,0]} fillColor="blue" radius={2000000} />
+
+  }
+
+
 
   const bounds = latLngBounds([-90, -200], [90, 180]);
   const maxBounds = latLngBounds([-90, -200], [90, 200]);
