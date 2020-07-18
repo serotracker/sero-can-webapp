@@ -1,5 +1,5 @@
 ### Github Pages Deployment
-Deployment of static assets for the application occurs on each push to master. The full configuration can be viewed [here](.github/workflows/deploy-gh-pages.yml).
+Deployment of static assets for the application occurs on each push to master. The full configuration can be viewed [here](.github/workflows/deploy-gh-pages.yml). 
 
 ### Continuous Integration
 The following commands with GitHub Actions:  
