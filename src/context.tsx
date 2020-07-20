@@ -162,6 +162,7 @@ function getFilterOptions(records: AirtableRecord[]) {
 
 const reducer = (state: State, action: Record<string, any>): State => {
   const new_filters: any = state.filters;
+  let filtered_records: AirtableRecord[] = state.filtered_records;
   switch (action.type) {
     case "HEALTHCHECK":
       return {
@@ -179,19 +180,22 @@ const reducer = (state: State, action: Record<string, any>): State => {
         language: action.payload
       }
     case "GET_AIRTABLE_RECORDS":
+      filtered_records = filterRecords(new_filters, action.payload.airtable_records);
       return {
         ...state,
         airtable_records: action.payload.airtable_records,
-        filtered_records: filterRecords(state.filters, action.payload.airtable_records),
+        filtered_records,
         updated_at: action.payload.updated_at,
-        filter_options: getFilterOptions(action.payload.airtable_records)
+        filter_options: getFilterOptions(filtered_records)
       }
     case "UPDATE_FILTER":
-      new_filters[action.payload.filter_type] = new Set(action.payload.filter_value)
+      new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
+      filtered_records = filterRecords(new_filters, state.airtable_records);
       return {
         ...state,
         filters: new_filters,
-        filtered_records: filterRecords(new_filters, state.airtable_records)
+        filtered_records,
+        filter_options: getFilterOptions(filtered_records)
       }
     case "UPDATE_COUNTRY_PREVALENCES":
       return {
