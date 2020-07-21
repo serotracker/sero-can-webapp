@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Button, Modal } from "semantic-ui-react";
 import { AirtableRecord } from "../../types";
-import "./StudyDetailsModal.css";
 import Translate from "../../utils/translate/translateService";
-import ReactGA from 'react-ga';
+import "./StudyDetailsModal.css";
+import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 
 // TODO: Extract this into a modal service 
 
@@ -80,7 +80,7 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
       closeOnDimmerClick={true}
       onClose={() => { setOpen(false) }}
       onOpen={() => {
-        ReactGA.event({
+        sendAnalyticsEvent({
           category: 'Study Details Modal',
           action: 'opening',
           label: props.record.source_name || "Unknown"

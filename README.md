@@ -2,12 +2,12 @@
 Deployment of static assets for the application occurs on each push to master. The full configuration can be viewed [here](.github/workflows/deploy-gh-pages.yml).
 
 ### Continuous Integration
-The following commands are run on the Jenkins CI Server:  
+The following commands with GitHub Actions:  
 ```
-npm install  
-npm start
+npm install
+npm run build
 ```  
-Job results can be viewed [here](http://ci-sero.eastus.cloudapp.azure.com/blue/organizations/jenkins/sero-can-webapp/activity) after authenticating with GitHub credentials. GitHub checks are integrated to show the status of each job.  
+Job results can be viewed [here](https://github.com/serotracker/sero-can-webapp/actions?query=workflow%3ACI).  
   
 ___
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

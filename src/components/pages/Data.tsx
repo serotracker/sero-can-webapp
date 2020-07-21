@@ -1,10 +1,10 @@
 import React from "react";
-import { Tab } from "semantic-ui-react";
-import './static.css';
 import { useMediaQuery } from "react-responsive";
+import { Tab } from "semantic-ui-react";
 import { mobileDeviceOrTabletWidth } from "../../constants";
+import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 import Translate from "../../utils/translate/translateService";
-import ReactGA from 'react-ga';
+import './static.css';
 
 export default function Data() {
     const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
@@ -20,7 +20,7 @@ export default function Data() {
     }
 
     const clickLink = (link: string) => {
-        ReactGA.event({
+        sendAnalyticsEvent({
             category: 'Data Link Click',
             action: 'click',
             label: link

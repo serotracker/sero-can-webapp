@@ -1,7 +1,6 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import { AirtableRecord, Filters, State, LanguageType, AggregatedRecord } from "./types";
+import { AirtableRecord, Filters, LanguageType, State } from "./types";
 import Translate from "./utils/translate/translateService";
-import { toPascalCase } from "./utils/translate/caseChanger";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
@@ -39,7 +38,9 @@ const initialState: State = {
   },
   language: LanguageType.english,
   updated_at: '',
-  country_prevalences: []
+  country_prevalences: [],
+  acceptedCookies: false,
+  showCookieBanner: true
 };
 
 function buildFilterFunction(filters: Record<string, any>) {
@@ -168,6 +169,17 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         healthcheck: action.payload
       };
+    case "ACCEPT_COOKIES":
+      return {
+        ...state,
+        acceptedCookies: true,
+        showCookieBanner: false
+      }
+    case "CLOSE_COOKIE_BANNER":
+      return {
+        ...state,
+        showCookieBanner: false
+      }
     case "SELECT_DATA_TAB":
       return {
         ...state,
