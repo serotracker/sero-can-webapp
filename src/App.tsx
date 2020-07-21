@@ -11,6 +11,7 @@ import httpClient from "./httpClient";
 import { setLanguageType } from "./utils/translate/translateService";
 import CookiePolicy from "./components/pages/CookiePolicy";
 import TermsOfUse from "./components/pages/TermsOfUse";
+import Insights from "./components/pages/insights/Insights";
 import { CookieBanner } from "./components/shared/CookieBanner";
 
 function App() {
@@ -68,6 +69,9 @@ function App() {
         </Route>
         <Route path="/TermsOfUse">
           <TermsOfUse />
+        </Route>
+        <Route path="/Insights">
+          <Insights />
         </Route>
         <Redirect exact from="/" to="/Dashboard" />
       </Switch>

@@ -1,4 +1,4 @@
-import { faFileAlt, faGlobeAmericas, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faFileAlt, faGlobeAmericas, faUsers, faTable } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
@@ -43,8 +43,15 @@ export const NavBar = () => {
         <div className={getTabClass('/Data')}>
           <Link to="/Data">
             {isMobileDeviceOrTablet ?
-              <FontAwesomeIcon icon={faFileAlt} size="lg" /> :
+              <FontAwesomeIcon icon={faTable} size="lg" /> :
               Translate('Data')}
+          </Link>
+        </div>
+        <div className={getTabClass('/Insights')}>
+          <Link to="/Insights">
+            {isMobileDeviceOrTablet ?
+              <FontAwesomeIcon icon={faFileAlt} size="lg" /> :
+              Translate('Insights')}
           </Link>
         </div>
         <div className={getTabClass('/About')}>

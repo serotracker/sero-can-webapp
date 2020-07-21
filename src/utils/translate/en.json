@@ -198,6 +198,11 @@
     "Male": "Male",
     "Unspecified": "Unspecified"
   },
+  "Insights": "Insights",
+  "ReportsAndArticles": "Reports & Articles",
+  "Report": "Report",
+  "ViewFile": "View File",
+  "PreprintPublication": "Preprint Publication",
   "TermsOfUse": "Terms of Use",
   "CookiePolicy": "Cookie Policy",
   "CookiePolicyBody": "We use cookies to help us deliver a better user experience, but we do NOT track anything personal about you. Our cookies track location data along with if it's your first time visiting the site! To understand more, please visit our",
