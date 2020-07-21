@@ -74,6 +74,8 @@ export type State = {
     data_page_state: DataPageState,
     language: LanguageType,
     country_prevalences: AggregatedRecord[]
+    acceptedCookies: boolean,
+    showCookieBanner: boolean
 };
 
 export enum AggregationFactor {

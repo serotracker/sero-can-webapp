@@ -49,7 +49,7 @@ export default function Map() {
       })
       setMapRecords(initImportGeo);
     }
-  }, [state.country_prevalences, state.language, state.filters])
+  }, [state.country_prevalences])
 
 
   const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined) => {
