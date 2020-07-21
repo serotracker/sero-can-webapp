@@ -5,8 +5,9 @@ import InsightsCard from "./InsightsCard";
 import './styles.scss';
 import Translate from "../../../utils/translate/translateService";
 import July2020Update from '../../../assets/images/IndustryUpdateJune10_2020.png'
-import May2020Update from '../../../assets/images/IndustryUpdateMay19_2020.png'
-import MedRxivLogo from '../../../assets/images/Prepublication.png'
+import May2020Update from '../../../assets/images/IndustryUpdateMay_2020.png'
+import PreprintUpdate from '../../../assets/images/IndustryUpdatePre_2020.png'
+import MedRxiv from '../../../assets/images/Prepublication.png'
 
 export default function Insights() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
@@ -35,14 +36,22 @@ export default function Insights() {
               date={"June 9, 2020"}
               img={May2020Update}
               title="May Report - COVID-19 Screening & Testing in Canada’s Private Sector"
-              url="https://drive.google.com/file/d/1FNJOPHiYz4bcvilb3Lr8AFM0QZ15LMhW/view" />
+              url="https://drive.google.com/file/d/1qGTwpm7sKlcJ09vd2vzmJTBKXguYYrS-/view?usp=sharing" />
+          </div>
+          <div className="col-sm-12 col-lg-6 py-2">
+            <InsightsCard
+              identifier={Translate("Report")}
+              date={"May 19, 2020"}
+              img={PreprintUpdate}
+              title="Preliminary Report - COVID-19 Screening & Testing in Canada’s Private Sector"
+              url="https://drive.google.com/file/d/1I1gY1lZndwp4_eUqoZviU8L2_izmkmQP/view?usp=sharing" />
           </div>
           <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("PreprintPublication")}
-              date={"May 19, 2020"}
-              img={MedRxivLogo}
-              title="Preliminary Report - COVID-19 Screening & Testing in Canada’s Private Sector"
+              date={"May 14, 2020"}
+              img={MedRxiv}
+              title="Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys"
               url="https://www.medrxiv.org/content/10.1101/2020.05.10.20097451v1" />
           </div>
         </div>
