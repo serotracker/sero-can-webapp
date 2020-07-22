@@ -3,6 +3,9 @@
   border-radius: 5px;
   position:relative;
   box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2) inset;
+  object-fit: contain;
+  height: auto;
+  align-items: flex-start;
 }
 
 .insights-card-identifier {
