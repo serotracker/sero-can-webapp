@@ -7,6 +7,7 @@ import Translate from "../../../utils/translate/translateService";
 import July2020Update from '../../../assets/images/IndustryUpdateJune10_2020.png'
 import May2020Update from '../../../assets/images/IndustryUpdateMay_2020.png'
 import PreprintUpdate from '../../../assets/images/IndustryUpdatePre_2020.png'
+import BloodBank from '../../../assets/images/SeroTrackerBloodBank_July_2020.png'
 import MedRxiv from '../../../assets/images/Prepublication.png'
 
 export default function Insights() {
@@ -22,6 +23,14 @@ export default function Insights() {
           {Translate('ReportsAndArticles').toUpperCase()}
         </h3>
         <div className="flex insights-article-container">
+          <div className="col-sm-12 col-lg-6 py-2">
+            <InsightsCard
+              identifier={Translate("Report")}
+              date={"July 22, 2020"}
+              img={BloodBank}
+              title="SeroTracker Blood Bank Seroprevalence Preliminary Report"
+              url="https://drive.google.com/file/d/1It2CzAwEfTcQ1zIC6z2fO7i7XEfmWfom/view?usp=sharing" />
+          </div>
           <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("Report")}
