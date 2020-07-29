@@ -1,7 +1,7 @@
-import { latLngBounds, Layer, LeafletMouseEvent } from "leaflet";
+import { latLngBounds, Layer, LeafletMouseEvent, } from "leaflet";
 import React, { createRef, useContext, useEffect, useState } from "react";
 import ReactDOMServer from 'react-dom/server';
-import { GeoJSON, Map as LeafletMap, TileLayer, Circle } from "react-leaflet";
+import { GeoJSON, Map as LeafletMap, TileLayer, Pane, CircleMarker, Popup, Marker} from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
 import Centroids from "../../assets/centroids.json";
 import { AppContext } from "../../context";
@@ -50,6 +50,7 @@ export default function Map() {
       })
       setMapRecords(initImportGeo);
     }
+
     if(state.caseCountRecords.length> 0 ){
       const caseCountCountryDict: Record<string,CaseCountRecord> = state.caseCountRecords.reduce((a: any, x: CaseCountRecord) => ({...a, [x.country]: x}), {});
       
@@ -58,13 +59,50 @@ export default function Map() {
 
       importCentroids.features = features.map(feature => {
         const country = caseCountCountryDict![feature?.properties?.name];
+        if(country)
+        {
+          const { totalConfirmed, totalDeaths, totalRecovered} = country;
+          return { ...feature, properties: {...feature.properties, totalConfirmed, totalDeaths, totalRecovered} }
+        }
 
-        return {...feature, properties: {...feature.properties, newConfirmed}}
+        return {...feature, properties: {...feature.properties, totalConfirmed: null, totalDeaths: null, totalRecovered: null}}
       })
-
     }
   }, [state.country_prevalences, state.caseCountRecords])
 
+  const MyMarker = (props: any) => {
+    
+    const initMarker = (ref: CircleMarker<any> | null) => {
+    if (ref) {
+      const layer = ref.leafletElement;
+      layer.on({
+        mouseover: (e: LeafletMouseEvent) => {
+          layer.openPopup();
+          highlightFeature(e)
+        },
+        mouseout: (e: LeafletMouseEvent) => {
+          layer.closePopup();
+          resetHighlight(e)
+        }
+      })
+    }
+  }
+
+  return <CircleMarker ref={initMarker} {...props}/>
+}
+  const drawCircles = () => {
+    
+    return Centroids.features.map((o: any) => {
+      if(o.properties?.totalConfirmed != null) 
+      {
+        let r: number = o.properties.totalConfirmed ? Math.log10(o.properties.totalConfirmed) : 0
+        return (           
+        <MyMarker center={[o.geometry.coordinates[1],o.geometry.coordinates[0]]} fillColor={"#953b4a"} stroke={false} zIndex={1000} fillOpacity={1} radius={r}>()
+          <Popup position={[o.geometry.coordinates[1],o.geometry.coordinates[0]]}> </Popup>
+        </MyMarker>)
+      }
+    })
+  };
 
   const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined) => {
     return {
@@ -77,6 +115,7 @@ export default function Map() {
       zIndex: 650
     }
   }
+  
 
   const highlightFeature = (e: LeafletMouseEvent) => {
     const layer = e.target;
@@ -107,6 +146,7 @@ export default function Map() {
       fillOpacity: 0.7
     });
   };
+
   const createPopup = (properties: any) => {
     if (properties.seroprevalence) {
       let error = properties?.error;
@@ -150,13 +190,28 @@ export default function Map() {
     })
   }
 
-  const onEachCentroid = () => {
+    // This method sets all the functionality for each GeoJSON item
+    const onEachCircle = (feature: GeoJSON.Feature, layer: Layer) => {
 
-    <Circle center={[0,0]} fillColor="blue" radius={2000000} />
-
-  }
-
-
+      layer.bindPopup(ReactDOMServer.renderToString(createPopup(feature.properties)), { closeButton: false, autoPan: false });
+  
+      layer.on({
+        mouseover: (e: LeafletMouseEvent) => {
+          layer.openPopup();
+          highlightFeature(e)
+        },
+        mouseout: (e: LeafletMouseEvent) => {
+          layer.closePopup();
+          resetHighlight(e)
+        },
+        mousemove: (e: LeafletMouseEvent) => {
+          layer.getPopup()?.setLatLng(e.latlng);
+        },
+        click: (e: LeafletMouseEvent) => {
+          zoomToFeature(e);
+        }
+      })
+    }
 
   const bounds = latLngBounds([-90, -200], [90, 180]);
   const maxBounds = latLngBounds([-90, -200], [90, 200]);
@@ -182,6 +237,9 @@ export default function Map() {
         id={'mapbox/light-v9'}
         zoomOffset={-1}>
       </TileLayer>
+        <Pane style={{zIndex: 500, opacity:1}}>
+          {drawCircles()}
+        </Pane>
       <GeoJSON
         onEachFeature={onEachFeature}
         ref={geoJsonRef}
