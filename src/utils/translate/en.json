@@ -259,7 +259,10 @@
     "PartTwo": "Executive Director, Canadian COVID-19 Immunity Task Force"
   },
   "Today": "Today",
+  "TotalConfirmed": "Total Confirmed",
+  "TotalDeaths": "Total Deaths",
   "TotalEstimates": "Total Estimates",
+  "TotalRecovered": "Total Recovered",
   "TotalTests": "Total Tests",
   "UniversityOf": "University of NAME"
 }

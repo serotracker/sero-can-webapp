@@ -90,6 +90,7 @@ export default function Map() {
 
   return <CircleMarker ref={initMarker} {...props}/>
 }
+
   const drawCircles = () => {
     
     return Centroids.features.map((o: any) => {
@@ -98,7 +99,14 @@ export default function Map() {
         let r: number = o.properties.totalConfirmed ? Math.log10(o.properties.totalConfirmed) : 0
         return (           
         <MyMarker center={[o.geometry.coordinates[1],o.geometry.coordinates[0]]} fillColor={"#953b4a"} stroke={false} zIndex={1000} fillOpacity={1} radius={r}>()
-          <Popup position={[o.geometry.coordinates[1],o.geometry.coordinates[0]]}> </Popup>
+          <Popup position={[o.geometry.coordinates[1],o.geometry.coordinates[0]]} closeButton={false}> 
+          <div className="col-12 p-0 flex">
+          <div className="col-12 p-0 popup-header">{getCountryName(o.properties.name, state.language, "CountryOptions")}</div>
+          <div className="col-12 p-0 popup-content">{Translate("TotalConfirmed")}: {o.properties?.totalConfirmed}</div>
+          <div className="col-12 p-0 popup-content">{Translate("TotalRecovered")}: {o.properties?.totalRecovered}</div>
+          <div className="col-12 p-0 popup-content">{Translate("TotalDeaths")}: {o.properties?.totalDeaths}</div>
+          </div>
+          </Popup>
         </MyMarker>)
       }
     })
@@ -166,7 +174,6 @@ export default function Map() {
       </div>)
   }
 
-
   // This method sets all the functionality for each GeoJSON item
   const onEachFeature = (feature: GeoJSON.Feature, layer: Layer) => {
 
@@ -189,29 +196,6 @@ export default function Map() {
       }
     })
   }
-
-    // This method sets all the functionality for each GeoJSON item
-    const onEachCircle = (feature: GeoJSON.Feature, layer: Layer) => {
-
-      layer.bindPopup(ReactDOMServer.renderToString(createPopup(feature.properties)), { closeButton: false, autoPan: false });
-  
-      layer.on({
-        mouseover: (e: LeafletMouseEvent) => {
-          layer.openPopup();
-          highlightFeature(e)
-        },
-        mouseout: (e: LeafletMouseEvent) => {
-          layer.closePopup();
-          resetHighlight(e)
-        },
-        mousemove: (e: LeafletMouseEvent) => {
-          layer.getPopup()?.setLatLng(e.latlng);
-        },
-        click: (e: LeafletMouseEvent) => {
-          zoomToFeature(e);
-        }
-      })
-    }
 
   const bounds = latLngBounds([-90, -200], [90, 180]);
   const maxBounds = latLngBounds([-90, -200], [90, 200]);
