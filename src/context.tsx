@@ -1,5 +1,5 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import { AirtableRecord, Filters, LanguageType, State } from "./types";
+import { AirtableRecord, Filters, FilterType, LanguageType, State } from "./types";
 import Translate from "./utils/translate/translateService";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
@@ -33,6 +33,7 @@ const initialState: State = {
   filtered_records: [],
   filters: initial_filters,
   filter_options: getEmptyFilters(),
+  all_filter_options: getEmptyFilters(),
   data_page_state: {
     mapOpen: true
   },
@@ -104,6 +105,21 @@ export function filterRecords(filters: Filters, records: AirtableRecord[]) {
   }
   return [];
 
+}
+
+function recomputeFilterOptions(records: AirtableRecord[], all_filter_options: Filters, filters: Filters){
+  const options = getFilterOptions(records);
+  for(const filter in filters){
+    // If the filter is already in use, show all filter options
+    // Since options within the same filter work on an "or basis"
+    // (e.g. risk_of_bias: ["Low", "Medium"] means include records with Low or Medium bias)
+    // the user will never get 0 records back if they choose more filter options for a filter
+    // that they've already selected an option for
+    if(filters[filter as FilterType].size > 0){
+      options[filter as FilterType] = all_filter_options[filter as FilterType];
+    }
+  }
+  return options;
 }
 
 function getFilterOptions(records: AirtableRecord[]) {
@@ -192,13 +208,16 @@ const reducer = (state: State, action: Record<string, any>): State => {
         language: action.payload
       }
     case "GET_AIRTABLE_RECORDS":
+      const all_filter_options = getFilterOptions(action.payload.airtable_records);
       filtered_records = filterRecords(new_filters, action.payload.airtable_records);
+      const filter_options = getFilterOptions(filtered_records);
       return {
         ...state,
         airtable_records: action.payload.airtable_records,
         filtered_records,
         updated_at: action.payload.updated_at,
-        filter_options: getFilterOptions(filtered_records)
+        filter_options,
+        all_filter_options
       }
     case "UPDATE_FILTER":
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
@@ -207,7 +226,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         filters: new_filters,
         filtered_records,
-        filter_options: getFilterOptions(filtered_records)
+        filter_options: recomputeFilterOptions(filtered_records, state.all_filter_options, new_filters)
       }
     case "UPDATE_COUNTRY_PREVALENCES":
       return {
