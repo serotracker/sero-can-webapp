@@ -1,9 +1,7 @@
-import React from "react";
-import { useMediaQuery } from "react-responsive";
-import { mobileDeviceOrTabletWidth } from "../../../constants";
-import Translate from "../../../utils/translate/translateService";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import Translate from "../../../utils/translate/translateService";
 
 interface InsightsCardProps {
   identifier: string,

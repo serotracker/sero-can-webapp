@@ -1,8 +1,7 @@
 import { Location, LocationListener, UnregisterCallback } from 'history'
-import { useEffect, useContext } from 'react'
+import { useEffect } from 'react'
 import ReactGA from 'react-ga'
 import { useHistory } from 'react-router'
-import { AppContext } from '../context'
 
 const sendPageView: LocationListener = (location: Location): void => {
   ReactGA.set({ page: location.pathname })
@@ -28,7 +27,6 @@ interface Props {
 const GAListener = ({ children, trackingId }: Props): JSX.Element => {
   const isDev = process.env.NODE_ENV === "development";
   const history = useHistory()
-  const [state] = useContext(AppContext);
   useEffect((): UnregisterCallback | void => {
     ReactGA.initialize(trackingId,
       {
@@ -40,7 +38,7 @@ const GAListener = ({ children, trackingId }: Props): JSX.Element => {
       })
     sendPageView(history.location, 'REPLACE')
     return history.listen(sendPageView)
-  }, [history, isDev, state.acceptedCookies, trackingId])
+  }, [history, isDev, trackingId])
 
   return children
 }
