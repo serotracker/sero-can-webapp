@@ -11,6 +11,8 @@ import httpClient from "./httpClient";
 import { setLanguageType } from "./utils/translate/translateService";
 import CookiePolicy from "./components/pages/CookiePolicy";
 import TermsOfUse from "./components/pages/TermsOfUse";
+import Insights from "./components/pages/insights/Insights";
+import { CookieBanner } from "./components/shared/CookieBanner";
 
 function App() {
 
@@ -18,6 +20,12 @@ function App() {
   // DATA
   useEffect(() => {
     const api = new httpClient()
+    const alreadyAcceptedCookes = localStorage.getItem('acceptedCookies');
+    if (alreadyAcceptedCookes) {
+      dispatch({
+        type: 'ACCEPT_COOKIES'
+      });
+    }
     const getAirtableRecords = async () => {
       const response = await api.getAirtableRecords()
       dispatch({
@@ -51,6 +59,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      <CookieBanner />
       <Switch>
         <Route path="/About">
           <About />
@@ -69,6 +78,9 @@ function App() {
         </Route>
         <Route path="/TermsOfUse">
           <TermsOfUse />
+        </Route>
+        <Route path="/Insights">
+          <Insights />
         </Route>
         <Redirect exact from="/" to="/Dashboard" />
       </Switch>

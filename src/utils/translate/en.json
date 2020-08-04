@@ -2,6 +2,8 @@
   "95%ConfidenceInterval": "95% Confidence Interval",
   "95%ConfidenceIntervalTooltip": "Wider error bars indicate greater uncertainty in the pooled seroprevalence estimate.",
   "About": "About",
+  "Accept": "Accept",
+  "AcceptCookies": "Accept Cookies",
   "AboutPage": {
     "AboutSection": {
       "PartEight": "Global Serological Knowledge Hub",
@@ -125,6 +127,17 @@
   "Population": "Population",
   "PopulationGroup": "Population Group",
   "PrivacyPolicy": "Privacy Policy",
+  "GeneralTerms": "General Terms",
+  "Legalese": "Legalese",
+  "DisclaimerBody": "The names of locations included on the Website correspond with the official designations used by the simplemaps.com . The presentation of material therein does not imply the expression of any opinion whatsoever on the part of the SeroTracker team, the SeroTracker team members or their affiliated institutions, or The COVID-19 Immunity Task Force concerning the legal status of any country, area or territory or of its authorities. The depiction and use of boundaries, geographic names and related data shown on maps and included in lists, tables, documents, and databases on this website are not warranted to be error free nor do they necessarily imply official endorsement or acceptance by the SeroTracker team, the SeroTracker team members or their affiliated institutions, or The COVID-19 Immunity Task Force.",
+  "DisclaimerListHeader": "Terms and Conditions of Website Use:",
+  "DisclaimerList1": "This website and its contents herein, including all data, mapping, and analysis (“Website”), copyright 2020 SeroTracker, all rights reserved, is provided solely for non-profit public health, educational, and academic research purposes. You should not rely on this Website for medical advice or guidance. ",
+  "DisclaimerList2": "Use of the Website by commercial parties and/or in commerce without explicit written permission by a representative* of SeroTracker is strictly prohibited. Redistribution of the Website or the aggregated data set underlying the Website without explicit written permission by a representative* of SeroTracker is also strictly prohibited.",
+  "DisclaimerList3": "When using information from the website or linking to the website, attribute the Website as SeroTracker by the SeroTracker Collaboration.",
+  "DisclaimerList4": "The Website relies upon publicly available data from multiple sources that do not always agree. The SeroTracker team and The COVID-19 Immunity Task Force hereby disclaims any and all representations and warranties with respect to the Website, including accuracy, fitness for use, reliability, completeness, and non-infringement of third party rights. ",
+  "DisclaimerList5": "Any use of the SeroTracker or The COVID-19 Immunity Task Force names, logos, trademarks, and/or trade dress in a factually inaccurate manner or for marketing, promotional or commercial purposes without explicit written permission by a representative* of SeroTracker is strictly prohibited. ",
+  "DisclaimerList6": "These terms and conditions are subject to change. Your use of the Website constitutes your acceptance of these terms and conditions and any future modifications thereof.",
+  "DisclaimerFooter": " *The representatives of SeroTracker are listed on the SeroTracker website. ",
   "PopulationGroupOptions": {
     "All": "All",
     "BloodDonors": "Blood donors",
@@ -185,9 +198,14 @@
     "Male": "Male",
     "Unspecified": "Unspecified"
   },
+  "Insights": "Insights",
+  "ReportsAndArticles": "Reports & Articles",
+  "Report": "Report",
+  "ViewFile": "View File",
+  "PreprintPublication": "Preprint Publication",
   "TermsOfUse": "Terms of Use",
   "CookiePolicy": "Cookie Policy",
-  "CookiePolicyBody": "We use cookies to help us deliver a better user experience.",
+  "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
   "Source": "Source",
   "SourceType": "Source Type",
   "SourceTypeOptions": {

@@ -13,7 +13,36 @@ export default function TermsOfUse() {
         <h1 className="col-12 p-0 fit">
           {Translate('TermsOfUse')}
         </h1>
-          <iframe className="fill policy-iframe" src="https://app.termly.io/embed/terms-of-use/db4ccd70-751b-4003-a1a3-cb6eac7b76e1" title="TermsAndConditions"></iframe>
+        <div className="col-12 p-0 fit">
+          {Translate('DisclaimerBody')}
+        </div>
+
+        <h3 className="col-12 p-0 fit">
+          {Translate('DisclaimerListHeader')}
+        </h3>
+        <ol>
+          <li>
+            {Translate('DisclaimerList1')}
+          </li>
+          <li>
+            {Translate('DisclaimerList2')}
+          </li>
+          <li>
+            {Translate('DisclaimerList3')}
+          </li>
+          <li>
+            {Translate('DisclaimerList4')}
+          </li>
+          <li>
+            {Translate('DisclaimerList5')}
+          </li>
+          <li>
+            {Translate('DisclaimerList6')}
+          </li>
+        </ol>
+        <div>
+          {Translate('DisclaimerFooter')}
+        </div>
       </div>
     </div>
   )

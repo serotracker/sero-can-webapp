@@ -2,7 +2,7 @@ import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Popup } from "semantic-ui-react";
-import ReactGA from 'react-ga';
+import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 
 interface InformationIconProps {
   color: string;
@@ -24,13 +24,13 @@ export default function InformationIcon(props: InformationIconProps) {
         position={position}
         size={popupSize}
         onOpen={() => {
-          ReactGA.event({
+          sendAnalyticsEvent({
             /** Typically the object that was interacted with (e.g. 'Video') */
             category: 'Tooltip',
             /** The type of interaction (e.g. 'play') */
             action: 'opening',
             /** Useful for categorizing events (e.g. 'Fall Campaign') */
-            label: tooltipHeader
+            label: tooltipHeader || "Unknown tooltip"
             /** A numeric value associated with the event (e.g. 42) */
           })
         }}

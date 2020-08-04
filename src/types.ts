@@ -83,10 +83,13 @@ export type State = {
     filtered_records: AirtableRecord[],
     filters: Filters,
     filter_options: Filters,
+    all_filter_options: Filters,
     updated_at: string,
     data_page_state: DataPageState,
     language: LanguageType,
     country_prevalences: AggregatedRecord[]
+    acceptedCookies: boolean,
+    showCookieBanner: boolean
 };
 
 export enum AggregationFactor {

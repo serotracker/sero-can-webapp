@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../../context";
-import Charts from "../../charts/Charts";
-import './Component.css';
-import Map from '../../map/Map';
+import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import Translate from "../../../utils/translate/translateService";
-import ReactGA from 'react-ga';
+import Charts from "../../charts/Charts";
+import Map from '../../map/Map';
+import './Component.css';
 
 export default function CentralPiece() {
   const [state, dispatch] = useContext(AppContext);
 
   const clickButton = (text: string) => {
 
-    ReactGA.event({
+    sendAnalyticsEvent({
       category: 'Center Button',
       action: 'click',
       label: text || "Unknown"
