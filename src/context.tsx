@@ -31,6 +31,7 @@ const initialState: State = {
   healthcheck: '',
   airtable_records: [],
   filtered_records: [],
+  caseCountRecords: [],
   filters: initial_filters,
   filter_options: getEmptyFilters(),
   all_filter_options: getEmptyFilters(),
@@ -219,6 +220,11 @@ const reducer = (state: State, action: Record<string, any>): State => {
         filter_options,
         all_filter_options
       }
+    case "GET_CASE_COUNT_RECORDS":
+    return {
+      ...state,
+      caseCountRecords: action.payload,
+    }
     case "UPDATE_FILTER":
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
       filtered_records = filterRecords(new_filters, state.airtable_records);

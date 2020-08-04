@@ -33,6 +33,18 @@ export type AirtableRecord = {
     include_in_n: boolean
 };
 
+export type CaseCountRecord = {
+    country: string,
+    countryCode?: string | null,
+    date?: string | null,
+    newConfirmed?: number | null,
+    newDeaths?: number | null,
+    newRecovered?: number | null,
+    totalConfirmed?: number | null,
+    totalDeaths?: number | null,
+    totalRecovered?: number | null,
+}
+
 export type AggregatedRecord = {
     error: number[];
     n: number;
@@ -67,6 +79,7 @@ export enum LanguageType  {
 export type State = {
     healthcheck: string,
     airtable_records: AirtableRecord[],
+    caseCountRecords: CaseCountRecord[],
     filtered_records: AirtableRecord[],
     filters: Filters,
     filter_options: Filters,

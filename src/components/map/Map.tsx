@@ -1,10 +1,11 @@
-import { latLngBounds, Layer, LeafletMouseEvent } from "leaflet";
+import { latLngBounds, Layer, LeafletMouseEvent, } from "leaflet";
 import React, { createRef, useContext, useEffect, useState } from "react";
 import ReactDOMServer from 'react-dom/server';
-import { GeoJSON, Map as LeafletMap, TileLayer } from "react-leaflet";
+import { GeoJSON, Map as LeafletMap, TileLayer, Pane, CircleMarker, Popup, Marker} from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
+import Centroids from "../../assets/centroids.json";
 import { AppContext } from "../../context";
-import { AggregatedRecord } from "../../types";
+import { AggregatedRecord, CaseCountRecord } from "../../types";
 import { getBuckets, getColor, getCountryName, getMapUrl } from "../../utils/mapUtils";
 import Translate from "../../utils/translate/translateService";
 import Legend from "./Legend";
@@ -49,8 +50,67 @@ export default function Map() {
       })
       setMapRecords(initImportGeo);
     }
-  }, [state.country_prevalences])
 
+    if(state.caseCountRecords.length> 0 ){
+      const caseCountCountryDict: Record<string,CaseCountRecord> = state.caseCountRecords.reduce((a: any, x: CaseCountRecord) => ({...a, [x.country]: x}), {});
+      
+      const importCentroids = Centroids as any;
+      const features = importCentroids.features as GeoJSON.Feature[]
+
+      importCentroids.features = features.map(feature => {
+        const country = caseCountCountryDict![feature?.properties?.name];
+        if(country)
+        {
+          const { totalConfirmed, totalDeaths, totalRecovered} = country;
+          return { ...feature, properties: {...feature.properties, totalConfirmed, totalDeaths, totalRecovered} }
+        }
+
+        return {...feature, properties: {...feature.properties, totalConfirmed: null, totalDeaths: null, totalRecovered: null}}
+      })
+    }
+  }, [state.country_prevalences, state.caseCountRecords])
+
+  const MyMarker = (props: any) => {
+    
+    const initMarker = (ref: CircleMarker<any> | null) => {
+    if (ref) {
+      const layer = ref.leafletElement;
+      layer.on({
+        mouseover: (e: LeafletMouseEvent) => {
+          layer.openPopup();
+          highlightFeature(e)
+        },
+        mouseout: (e: LeafletMouseEvent) => {
+          layer.closePopup();
+          resetHighlight(e)
+        }
+      })
+    }
+  }
+
+  return <CircleMarker ref={initMarker} {...props}/>
+}
+
+  const drawCircles = () => {
+    
+    return Centroids.features.map((o: any) => {
+      if(o.properties?.totalConfirmed != null) 
+      {
+        let r: number = o.properties.totalConfirmed ? Math.log10(o.properties.totalConfirmed) : 0
+        return (           
+        <MyMarker center={[o.geometry.coordinates[1],o.geometry.coordinates[0]]} fillColor={"#953b4a"} stroke={false} zIndex={1000} fillOpacity={1} radius={r}>()
+          <Popup position={[o.geometry.coordinates[1],o.geometry.coordinates[0]]} closeButton={false}> 
+          <div className="col-12 p-0 flex">
+          <div className="col-12 p-0 popup-header">{getCountryName(o.properties.name, state.language, "CountryOptions")}</div>
+          <div className="col-12 p-0 popup-content">{Translate("TotalConfirmed")}: {o.properties?.totalConfirmed}</div>
+          <div className="col-12 p-0 popup-content">{Translate("TotalRecovered")}: {o.properties?.totalRecovered}</div>
+          <div className="col-12 p-0 popup-content">{Translate("TotalDeaths")}: {o.properties?.totalDeaths}</div>
+          </div>
+          </Popup>
+        </MyMarker>)
+      }
+    })
+  };
 
   const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined) => {
     return {
@@ -63,6 +123,7 @@ export default function Map() {
       zIndex: 650
     }
   }
+  
 
   const highlightFeature = (e: LeafletMouseEvent) => {
     const layer = e.target;
@@ -93,6 +154,7 @@ export default function Map() {
       fillOpacity: 0.7
     });
   };
+
   const createPopup = (properties: any) => {
     if (properties.seroprevalence) {
       let error = properties?.error;
@@ -111,7 +173,6 @@ export default function Map() {
         <div className="col-12 p-0 flex popup-content">{Translate('NoData')}</div>
       </div>)
   }
-
 
   // This method sets all the functionality for each GeoJSON item
   const onEachFeature = (feature: GeoJSON.Feature, layer: Layer) => {
@@ -160,6 +221,9 @@ export default function Map() {
         id={'mapbox/light-v9'}
         zoomOffset={-1}>
       </TileLayer>
+        <Pane style={{zIndex: 500, opacity:1}}>
+          {drawCircles()}
+        </Pane>
       <GeoJSON
         onEachFeature={onEachFeature}
         ref={geoJsonRef}
