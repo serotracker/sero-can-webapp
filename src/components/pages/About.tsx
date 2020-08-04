@@ -71,7 +71,7 @@ export default function About() {
                         <img src={HealthAgencyLogo} alt="Public Health Agency Logo" height="45"></img>
                     </a>
                     <a href="https://cumming.ucalgary.ca/centres/centre-health-informatics" className="px-2" target="__blank" rel="noopener noreferrer">
-                        <img src={UcalgaryLogo} alt="Centre for Health Informatics" height="45"></img>
+                        <img src={UcalgaryLogo} alt="Centre for Health Informatics" height="40"></img>
                     </a>
                 </p>
                 <p> 
