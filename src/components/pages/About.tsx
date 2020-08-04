@@ -8,7 +8,7 @@ import Translate from "../../utils/translate/translateService";
 import './static.css';
 import { sendAnalyticsEvent } from '../../utils/analyticsUtils';
 import HealthAgencyLogo from '../../assets/images/public-health-agency.png';
-import Innovations from '../../assets/images/innovation.png';
+import UcalgaryLogo from '../../assets/images/University-Of-Calgary-Logo.png';
 
 export default function About() {
     const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
@@ -69,6 +69,9 @@ export default function About() {
                     </a>
                     <a href="https://www.canada.ca/en/public-health.html/" className="px-2" target="__blank" rel="noopener noreferrer">
                         <img src={HealthAgencyLogo} alt="Public Health Agency Logo" height="45"></img>
+                    </a>
+                    <a href="https://cumming.ucalgary.ca/centres/centre-health-informatics" className="px-2" target="__blank" rel="noopener noreferrer">
+                        <img src={UcalgaryLogo} alt="Centre for Health Informatics" height="45"></img>
                     </a>
                 </p>
                 <p> 
