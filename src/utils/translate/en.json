@@ -6,14 +6,16 @@
   "AcceptCookies": "Accept Cookies",
   "AboutPage": {
     "AboutSection": {
-      "PartEight": "Global Serological Knowledge Hub",
-      "PartFive": "which brings together university, hospital and public health expertise to map the scope of coronavirus infection in Canada. The Task Force is funded by the Government of Canada and its secretariat is housed at",
-      "PartFour": "Canada's COVID-19 Immunity Task Force",
+      "SupportedBy": "SeroTracker is supported by the",
+      "PublicHealthAgency": "Public Health Agency of Canada",
+      "HostedAt": "and hosted at the",      
       "PartOne": "As the acute phase of the COVID-19 pandemic passes its peak, many countries are accelerating their investments in serological (antibody) testing. Understanding population antibody patterns and potential immunity is of great interest to clinicians, public health officials, and policymakers alike.",
-      "PartSeven": "SeroTracker also provides content for the Task Force's",
-      "PartSix": "McGill University’s School of Population and Global Health",
-      "PartThree": "SeroTracker is supported by",
-      "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide."
+      "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide.",
+      "HealthInformatics": "University of Calgary's Centre for Health Informatics.",      
+      "OurWorkIs": "Our work is in partnership with",
+      "Covid19ImmunityTaskForce": "Canada's COVID-19 Immunity Task Force",
+      "WhichIsMapping": "which is mapping the scope of coronavirus infection in Canada. SeroTracker also provides content for the Task Force's",
+      "GlobalSerologicalKnowledgeHub": "Global Serological Knowledge Hub"
     },
     "ContactSection": {
       "BulletPointFive": {
@@ -21,23 +23,9 @@
         "PartThree": "or studies that we have not yet captured, please fill out",
         "PartTwo": "new SARS-CoV-2 seroprevalence studies"
       },
-      "BulletPointFour": {
-        "PartOne": "dashboard-related inquiries",
-        "PartTwo": "please contact Jordan Van Wyk at"
-      },
       "BulletPointOne": {
-        "PartFour": "and Tingting Yan at",
-        "PartOne": "If you would like to",
-        "PartThree": "please contact Rahul Arora at",
-        "PartTwo": "support our efforts or collaborate with us"
-      },
-      "BulletPointThree": {
-        "PartOne": "data and AirTable-related inquiries",
-        "PartTwo": "please contact Nathan Duarte at"
-      },
-      "BulletPointTwo": {
-        "PartOne": "research methods-related inquiries, or if you are a journalist interested in reporting on our findings,",
-        "PartTwo": "please contact Nik Bobrovitz at"
+        "PartOne": "For all SeroTracker inquiries (including to support our efforts, collaborate with us, or if you are a journalist interested in reporting on our findings), please contact Rahul Arora at ",
+        "PartTwo": "and Tingting Yan at "
       },
       "SectionOne": "We are an interdisciplinary team of researchers and engineers at the University of Oxford, University of Toronto, University of Waterloo, University of Calgary, and Harvard University."
     },
@@ -173,7 +161,8 @@
   "Sampling": "Sampling",
   "SamplingMethod": "Sampling Method",
   "SchoolName": {
-    "Schulich": "Schulich School of Engineering"
+    "Schulich": "Schulich School of Engineering",
+    "Cumming": "Cumming School of Medicine"
   },
   "ScientificLead": "Scientific Lead",
   "Sensitivity": "Sensitivity",
@@ -199,10 +188,12 @@
     "Unspecified": "Unspecified"
   },
   "Insights": "Insights",
+  "ScientificAdvisorsAndCollaborators": "Scientific Advisors and Collaborators",
   "ReportsAndArticles": "Reports & Articles",
   "Report": "Report",
   "ViewFile": "View File",
   "PreprintPublication": "Preprint Publication",
+  "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
   "TermsOfUse": "Terms of Use",
   "CookiePolicy": "Cookie Policy",
   "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
@@ -272,9 +263,35 @@
   },
   "TestUsed": "Test Used",
   "ThisForm": "This form",
-  "TimBiography": {
-    "PartOne": "Director, School of Population and Global Health, McGill University",
-    "PartTwo": "Executive Director, Canadian COVID-19 Immunity Task Force"
+  "Biographies": {
+    "Tim": {
+      "PartOne": "Director, School of Population and Global Health, McGill University",
+      "PartTwo": "Executive Director, Canadian COVID-19 Immunity Task Force"
+    },
+    "Tyler": {
+      "PartOne": "Associate Director, Centre for Health Informatics",
+      "PartTwo": "Associate Professor, University of Calgary"
+    },
+    "Matthew": {
+      "PartOne": "Scientific Program Manager, Diagnostics/Testing, COVID-19 Immunity Task Force",
+      "PartTwo": "Assistant Professor, McGill University"
+    },
+    "DavidN": {
+      "PartOne": "Co-Chair, COVID-19 Immunity Task Force",
+      "PartTwo": "President Emeritus, University of Toronto"
+    },
+    "DavidB": {
+      "PartOne": "Scientific Program Manager, Data Management/Analytics, COVID-19 Immunity Task Force",
+      "PartTwo": "Professor, McGill University"
+    },
+    "Jesse": {
+      "PartOne": "Scientist, COVID-19 Immunity Task Force",
+      "PartTwo": "Assistant Professor, McGill University"
+    },
+    "Jonathan": {
+      "PartOne": "Scientific Program Manager, Epidemiology/Methods, COVID-19 Immunity Task Force",
+      "PartTwo": "Associate Professor, McGill University"
+    }
   },
   "Today": "Today",
   "TotalEstimates": "Total Estimates",
