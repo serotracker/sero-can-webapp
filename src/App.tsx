@@ -13,15 +13,12 @@ import CookiePolicy from "./components/pages/CookiePolicy";
 import TermsOfUse from "./components/pages/TermsOfUse";
 import Insights from "./components/pages/insights/Insights";
 import { CookieBanner } from "./components/shared/CookieBanner";
-import { Modal, Image } from "semantic-ui-react";
-import { useMediaQuery } from "react-responsive";
-import { mobileDeviceOrTabletWidth } from "./constants";
+import { Modal } from "semantic-ui-react";
 
 function App() {
 
   const [{ language }, dispatch] = useContext(AppContext);
   const [showModal, toggleModal] = useState(true);
-  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   // DATA
   useEffect(() => {
     const api = new httpClient()
@@ -54,7 +51,7 @@ function App() {
   const closeModal = () => toggleModal(false);
 
   const MobileInfoModal = () => (
-    <Modal className="modal" open={showModal} onClose={closeModal} closeIcon>
+    <Modal className="modal" open={showModal} onClose={closeModal} closeIcon={{ style: { top: '1.0535rem', right: '1rem' }, color: 'black', name: 'close' }}>
       <Modal.Content className="modal-content">
           <p>"Welcome to SeroTracker... this is what we do... here are some caveats to keep in mind"</p>
       </Modal.Content>
@@ -66,9 +63,7 @@ function App() {
     <div className="App">
       <NavBar />
       <CookieBanner />
-      {isMobileDeviceOrTablet && (
-        <MobileInfoModal/>
-      )}
+      <MobileInfoModal/>
       <Switch>
         <Route path="/About">
           <About />
