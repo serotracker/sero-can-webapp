@@ -1,8 +1,7 @@
 import React from "react";
+import { MIN_DENOMINATOR } from "../../../metaAnalysis";
 import InformationText from "../../shared/InformationText";
-import { MIN_DENOMINATOR } from "../../../metaAnalysis"
 import './AnalysisMethods.css';
-import Translate from "../../../utils/translate/translateService";
 
 
 export default function AnalysisMethods() {
@@ -11,7 +10,7 @@ export default function AnalysisMethods() {
         <div className="section-title py-2 center">
             ANALYSIS METHODS
         </div>
-        <div>
+        <p>
             <div>
                 {'The seroprevalence shown for each country or factor is calculated by '}
                     <InformationText 
@@ -27,7 +26,7 @@ export default function AnalysisMethods() {
                     /> 
                 {' all seroprevalence estimates that match the filters you specify.'}
             </div>
-        </div>
+        </p>
         <p>
             Default filters: national and regional estimates, in the general population and blood donors. 
         </p>

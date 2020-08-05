@@ -256,10 +256,12 @@
   "Summary": "Summary",
   "SummaryStatistics": "Summary Statistics",
   "TeamLead": "Team Leads",
+  "CountriesIncluded": "Countries Included",
   "TestDetails": "Test Details",
   "TestInformation": "Test Information",
   "TestInformationTooltip": "Filter on test details, including assay type and antibody isotype.",
-  "TestsAdministered": "Tests Administered",
+  "StudiesIncluded": "Studies Included",
+  "TestsAdministered": "Antibody Tests Administered",
   "TestType": "Test Type",
   "TestTypeOptions": {
     "ChemiluminescenceImmunoassay": "Chemiluminescence Immunoassay",

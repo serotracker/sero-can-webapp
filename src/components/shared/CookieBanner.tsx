@@ -1,5 +1,3 @@
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
