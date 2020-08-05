@@ -1,4 +1,4 @@
-#### [serotracker.com](https://serotracker.com/)
+## [serotracker.com](https://serotracker.com/)
 
 ### Github Pages Deployment
 Deployment of static assets for the application occurs on each push to master. The full configuration can be viewed [here](.github/workflows/deploy-gh-pages.yml). 
