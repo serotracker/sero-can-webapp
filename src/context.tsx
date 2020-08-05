@@ -223,7 +223,6 @@ const reducer = (state: State, action: Record<string, any>): State => {
     case "GET_AIRTABLE_RECORDS":
       const all_filter_options = getFilterOptions(action.payload.airtable_records);
       filtered_records = filterRecords(new_filters, action.payload.airtable_records);
-      console.table(filtered_records.map(o => o.estimate_grade));
       const filter_options = getFilterOptions(filtered_records);
       return {
         ...state,
@@ -236,7 +235,6 @@ const reducer = (state: State, action: Record<string, any>): State => {
     case "UPDATE_FILTER":
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
       filtered_records = filterRecords(new_filters, state.airtable_records);
-      console.table(filtered_records.map(o => o.estimate_grade));
       return {
         ...state,
         filters: new_filters,
