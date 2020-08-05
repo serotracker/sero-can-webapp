@@ -46,78 +46,86 @@ const initialState: State = {
   showCookieBanner: true
 };
 
-function buildFilterFunction(filters: Record<string, any>) {
-  // Returns a function that can be used to filter an array of airtable records
-  return (record: Record<string, any>) => {
-    for (const filter_key in filters) {
-      if ((filters[filter_key] instanceof Set) && (filters[filter_key].size > 0)) {
-        if (record[filter_key] === null) {
+export function filterRecords(filters: Filters, records: AirtableRecord[]) {
+  const return_records: AirtableRecord[] = []
+  if (records) {
+    records.forEach((record: AirtableRecord) => {
+      if(filter_function(record, filters)){
+        return_records.push(record);
+      }
+    })
+  }
+  return return_records;
+}
+
+function filter_function(record: Record<string, any>, filters: Filters){
+  const array = Object.keys(filters).map((filter_key) => {  
+    if ((filters[filter_key as FilterType] instanceof Set) && (filters[filter_key as FilterType].size > 0)) {
+      if (record[filter_key] === null) {
+        return false;
+      }
+      // Handle case where field to be filtered is an array
+      if (Array.isArray(record[filter_key])) {
+        // Note: isotypes filter works on an 'and' basis
+        // Unlike other filters, which work on an 'or' basis
+        // TODO: make logic flow here more generalized in case we need other filters in the future with similar behaviour
+        if (filter_key === 'isotypes_reported') {
+          let match = true;
+          filters[filter_key].forEach((item: string) => {
+            if (!(record[filter_key].includes(item))) {
+              match = false;
+            }
+          });
+          return match;
+        }
+
+        if (filter_key === 'publish_date') {
+          const publishDate = record[filter_key];
+          const dateInMillis = publishDate instanceof Array ? Date.parse(publishDate[0] as string) : Date.parse(publishDate as string)
+          const dates: number[] = Array.from(filters[filter_key].values())
+          return dateInMillis >= dates[0] && dateInMillis <= dates[1]
+        }
+        // Iterate through the record's values and check if any of them
+        // match the values accepted by the filter
+        let in_filter = false;
+        for (let i = 0; i < record[filter_key].length; i++) {
+          if (filters[filter_key as FilterType].has(record[filter_key][i])) {
+            in_filter = true;
+            break;
+          }
+        }
+        if (!in_filter) {
           return false;
         }
-        // Handle case where field to be filtered is an array
-        if (Array.isArray(record[filter_key])) {
-          // Note: isotypes filter works on an 'and' basis
-          // Unlike other filters, which work on an 'or' basis
-          // TODO: make logic flow here more generalized in case we need other filters in the future with similar behaviour
-          if (filter_key === 'isotypes_reported') {
-            let match = true;
-            filters[filter_key].forEach((item: string) => {
-              if (!(record[filter_key].includes(item))) {
-                match = false;
-              }
-            });
-            return match;
-          }
-
-          if (filter_key === 'publish_date') {
-            const publishDate = record[filter_key];
-            const dateInMillis = publishDate instanceof Array ? Date.parse(publishDate[0] as string) : Date.parse(publishDate as string)
-            const dates: number[] = Array.from(filters[filter_key].values())
-            return dateInMillis >= dates[0] && dateInMillis <= dates[1]
-          }
-          // Iterate through the record's values and check if any of them
-          // match the values accepted by the filter
-          let in_filter = false;
-          for (let i = 0; i < record[filter_key].length; i++) {
-            if (filters[filter_key].has(record[filter_key][i])) {
-              in_filter = true;
-              break;
-            }
-          }
-          if (!in_filter) {
-            return false;
-          }
-        }
-        else {
-          if (!(filters[filter_key].has(record[filter_key]))) {
-            return false;
-          }
+      }
+      else {
+        if (!(filters[filter_key as FilterType].has(record[filter_key]))) {
+          return false;
         }
       }
     }
-    return true;
-  }
+  }) 
+  return !array.some(o => o === false);
 }
 
-export function filterRecords(filters: Filters, records: AirtableRecord[]) {
-  const filter_function = buildFilterFunction(filters);
-  if (records) {
-    const filtered_records = records.filter(filter_function);
-    return filtered_records
-  }
-  return [];
+// export function filterRecords(filters: Filters, records: AirtableRecord[]) {
+//   const filter_function = buildFilterFunction(filters);
+//   if (records) {
+//     const filtered_records = records.filter(filter_function);
+//     return filtered_records
+//   }
+//   return [];
+// }
 
-}
-
-function recomputeFilterOptions(records: AirtableRecord[], all_filter_options: Filters, filters: Filters){
+function recomputeFilterOptions(records: AirtableRecord[], all_filter_options: Filters, filters: Filters) {
   const options = getFilterOptions(records);
-  for(const filter in filters){
+  for (const filter in filters) {
     // If the filter is already in use, show all filter options
     // Since options within the same filter work on an "or basis"
     // (e.g. risk_of_bias: ["Low", "Medium"] means include records with Low or Medium bias)
     // the user will never get 0 records back if they choose more filter options for a filter
     // that they've already selected an option for
-    if(filters[filter as FilterType].size > 0){
+    if (filters[filter as FilterType].size > 0) {
       options[filter as FilterType] = all_filter_options[filter as FilterType];
     }
   }
@@ -215,6 +223,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
     case "GET_AIRTABLE_RECORDS":
       const all_filter_options = getFilterOptions(action.payload.airtable_records);
       filtered_records = filterRecords(new_filters, action.payload.airtable_records);
+      console.table(filtered_records.map(o => o.estimate_grade));
       const filter_options = getFilterOptions(filtered_records);
       return {
         ...state,
@@ -227,6 +236,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
     case "UPDATE_FILTER":
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
       filtered_records = filterRecords(new_filters, state.airtable_records);
+      console.table(filtered_records.map(o => o.estimate_grade));
       return {
         ...state,
         filters: new_filters,
