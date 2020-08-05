@@ -61,7 +61,7 @@ export default function MobileComponents() {
         >
           <TotalStats />
           <AnalysisMethods />
-          <div className="min-height">
+          <div>
             <CountryList />
           </div>
           <LancetArticleLink />
