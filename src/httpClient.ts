@@ -47,9 +47,7 @@ export default class httpClient {
     }
 
     async getAirtableRecords() {
-        const response = await this.httpGet('/airtable_scraper/records');
-        const response2 = await this.httpGet('/cases_count_scraper/records');
-        console.log(response2);
+        const response = await this.httpGet('/airtable_scraper/records')
         if(!response || !("records" in response) || !("updated_at" in response)) {
             return [];
         }
