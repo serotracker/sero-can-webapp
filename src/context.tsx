@@ -26,9 +26,9 @@ export function getEmptyFilters(): Filters {
 const initial_filters: Filters = getEmptyFilters();
 // Note: 
 initial_filters.population_group.add(Translate('PopulationGroupOptions', ['GeneralPopulation']));
-initial_filters.risk_of_bias.add(Translate('RiskOfBiasOptions', ['Moderate']));
-initial_filters.risk_of_bias.add(Translate('RiskOfBiasOptions', ['Low']));
+initial_filters.population_group.add(Translate('PopulationGroupOptions', ['GeneralPopulation']));
 initial_filters.estimate_grade.add(Translate('EstimateGradeOptions', ['National']));
+
 const initialState: State = {
   healthcheck: '',
   airtable_records: [],
