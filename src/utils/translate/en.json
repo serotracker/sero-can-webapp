@@ -96,14 +96,14 @@
     "IgM": "IgM",
     "IgMIgG": "IgM IgG"
   },
-  "LastUpdated": "Last Updated",
+  "ServerLastRefreshed": "Server Last Refreshed",
   "LancetArticle": "Lancet ID",
   "LastUpdatedTooltip": "SeroTracker is continuously updated with findings from newly-released serological studies. We include new studies from our search within 48 hours of publication.",
   "Location": "Location",
   "Manufacturer": "Manufacturer",
   "Methods": "Methods",
   "MethodsText": {
-    "FirstParagraph": "SeroTracker provides an up-to-date systematic synthesis of SARS-CoV-2 serosurveillance projects globally. We screened peer-reviewed articles, preprints, government reports, and media articles to identify the prevalence estimates reported below. Our data is updated daily with all new reports of seroprevalence findings that were captured in our search",
+    "FirstParagraph": "SeroTracker provides a systematic synthesis of SARS-CoV-2 serosurveillance projects globally. We screened peer-reviewed articles, preprints, government reports, and media articles to identify the prevalence estimates reported below. Our data is updated daily with all new reports of seroprevalence findings that were captured in our search",
     "SecondParagraphPartOne": "You can view our full methods",
     "SecondParagraphPartTwo": "To submit a SARS-CoV-2 seroprevalence study that we have not yet captured below, use"
   },
