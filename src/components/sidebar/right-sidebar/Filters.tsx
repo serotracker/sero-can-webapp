@@ -28,6 +28,7 @@ export default function Filters() {
       default:
         options.forEach((o: string) => {
           const translatedString = Translate(jsonObjectString, [toPascalCase(o)]);
+          console.log(toPascalCase(o));
           const alternativeString = Translate(jsonObjectString, [o.replace(/ /g, '')]);
           let text = !alternativeString && !translatedString ? o + "*" : (translatedString ? translatedString : alternativeString);
           formatted_options.push({

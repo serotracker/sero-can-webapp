@@ -24,13 +24,16 @@ export function getEmptyFilters(): Filters {
 // Note: filters = elements that user has chosen to filter by
 // filter_options = all the elements that users could filter by
 const initial_filters: Filters = getEmptyFilters();
-// Note: 
-initial_filters.population_group.add(Translate('PopulationGroupOptions', ['GeneralPopulation']));
-initial_filters.population_group.add(Translate('PopulationGroupOptions', ['BloodDonors']));
+initial_filters.population_group = new Set([
+  Translate('PopulationGroupOptions', ['GeneralPopulation']),
+  Translate('PopulationGroupOptions', ['BloodDonors'])
+])
 initial_filters.estimate_grade.add(Translate('EstimateGradeOptions', ['National']));
-initial_filters.estimate_grade.add(Translate('EstimateGradeOptions', ['Regional']));
-initial_filters.source_type.add(Translate('SourceTypeOptions', ['Preprint']));
-initial_filters.source_type.add(Translate('SourceTypeOptions', ['PublishedAcademicStudy']));
+initial_filters.source_type = new Set([
+  Translate('SourceTypeOptions', ['Preprint']),
+  Translate('SourceTypeOptions', ['PublishedAcademicStudy']),
+  Translate('SourceTypeOptions', ['GovNgoHealthSystemViaGoogleNews'])
+])
 
 const initialState: State = {
   healthcheck: '',
@@ -109,15 +112,6 @@ function filter_function(record: Record<string, any>, filters: Filters){
   }) 
   return !array.some(o => o === false);
 }
-
-// export function filterRecords(filters: Filters, records: AirtableRecord[]) {
-//   const filter_function = buildFilterFunction(filters);
-//   if (records) {
-//     const filtered_records = records.filter(filter_function);
-//     return filtered_records
-//   }
-//   return [];
-// }
 
 function recomputeFilterOptions(records: AirtableRecord[], all_filter_options: Filters, filters: Filters) {
   const options = getFilterOptions(records);

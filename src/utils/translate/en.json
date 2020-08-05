@@ -214,11 +214,12 @@
   "Source": "Source",
   "SourceType": "Source Type",
   "SourceTypeOptions": {
-    "Government/NGO/HealthSystemReport": "Government / NGO / Health System Report",
+    "GovNgoHealthSystemViaGoogleNews": "Gov/NGO/Health system via google news",
     "MediaReport&NewsRelease": "Media Report & News Release",
     "Preprint": "Preprint",
     "PreprintNowPublished": "Preprint (now published)",
-    "PublishedAcademicStudy": "Published Academic Study"
+    "PublishedAcademicStudy": "Published Academic Study",
+    "CdcReport": "CDC report"
   },
   "Specificity": "Specificity",
   "SpecimenType": "Specimen Type",
