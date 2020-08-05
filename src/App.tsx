@@ -14,6 +14,7 @@ import TermsOfUse from "./components/pages/TermsOfUse";
 import Insights from "./components/pages/insights/Insights";
 import { CookieBanner } from "./components/shared/CookieBanner";
 import { Modal } from "semantic-ui-react";
+import Translate from "./utils/translate/translateService";
 
 function App() {
 
@@ -53,7 +54,11 @@ function App() {
   const MobileInfoModal = () => (
     <Modal className="modal" open={showModal} onClose={closeModal} closeIcon={{ style: { top: '1.0535rem', right: '1rem' }, color: 'black', name: 'close' }}>
       <Modal.Content className="modal-content">
-          <p>"Welcome to SeroTracker... this is what we do... here are some caveats to keep in mind"</p>
+        <div className="modal-text">
+          <p>{Translate('InitInfoModalText', ['PartOne'])}</p>
+          <p>{Translate('InitInfoModalText', ['PartTwo'])}</p>
+          <p>{Translate('InitInfoModalText', ['PartThree'])}</p>
+        </div>
       </Modal.Content>
     </Modal>
   )

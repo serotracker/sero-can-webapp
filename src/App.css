@@ -186,3 +186,12 @@
     bottom: auto;
     right: auto;
 }
+
+.modal-text {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.modal-content {
+    border: none
+}
