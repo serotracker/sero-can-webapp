@@ -15,10 +15,6 @@ export const CookieBanner = () => {
     dispatch({ type: 'CLOSE_COOKIE_BANNER' })
   }
 
-  if (!localStorage.getItem('acceptedCookies')) {
-    dispatch({ type: 'OPEN_COOKIE_BANNER' })
-  }
-
   return (
     state.showCookieBanner ?
       <div className="cookie-banner flex">
