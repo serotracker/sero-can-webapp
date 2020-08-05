@@ -29,6 +29,8 @@ initial_filters.population_group.add(Translate('PopulationGroupOptions', ['Gener
 initial_filters.population_group.add(Translate('PopulationGroupOptions', ['BloodDonors']));
 initial_filters.estimate_grade.add(Translate('EstimateGradeOptions', ['National']));
 initial_filters.estimate_grade.add(Translate('EstimateGradeOptions', ['Regional']));
+initial_filters.source_type.add(Translate('SourceTypeOptions', ['Preprint']));
+initial_filters.source_type.add(Translate('SourceTypeOptions', ['PublishedAcademicStudy']));
 
 const initialState: State = {
   healthcheck: '',
