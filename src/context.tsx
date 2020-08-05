@@ -43,8 +43,7 @@ const initialState: State = {
   language: LanguageType.english,
   updated_at: '',
   country_prevalences: [],
-  acceptedCookies: false,
-  showCookieBanner: true
+  showCookieBanner: false
 };
 
 export function filterRecords(filters: Filters, records: AirtableRecord[]) {
@@ -200,16 +199,16 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         healthcheck: action.payload
       };
-    case "ACCEPT_COOKIES":
-      return {
-        ...state,
-        acceptedCookies: true,
-        showCookieBanner: false
-      }
     case "CLOSE_COOKIE_BANNER":
       return {
         ...state,
         showCookieBanner: false
+      };
+
+    case "OPEN_COOKIE_BANNER":
+      return {
+        ...state,
+        showCookieBanner: true
       }
     case "SELECT_DATA_TAB":
       return {

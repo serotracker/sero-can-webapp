@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
-import ReactGA from 'react-ga';
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType } from '../../../types';
+import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import { getCountryName } from "../../../utils/mapUtils";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
 import Translate from "../../../utils/translate/translateService";
 import InformationIcon from "../../shared/InformationIcon";
-import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 
 export default function Filters() {
   const [state, dispatch] = useContext(AppContext);

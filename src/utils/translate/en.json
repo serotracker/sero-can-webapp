@@ -3,7 +3,9 @@
   "95%ConfidenceIntervalTooltip": "Wider error bars indicate greater uncertainty in the pooled seroprevalence estimate.",
   "About": "About",
   "Accept": "Accept",
+  "Article": "Article",
   "AcceptCookies": "Accept Cookies",
+  "Publication": "Publication",
   "AboutPage": {
     "AboutSection": {
       "SupportedBy": "SeroTracker is supported by the",
@@ -95,6 +97,7 @@
     "IgMIgG": "IgM IgG"
   },
   "LastUpdated": "Last Updated",
+  "LancetArticle": "Lancet ID",
   "LastUpdatedTooltip": "SeroTracker is continuously updated with findings from newly-released serological studies. We include new studies from our search within 48 hours of publication.",
   "Location": "Location",
   "Manufacturer": "Manufacturer",
@@ -198,7 +201,11 @@
   "ScientificAdvisorsAndCollaborators": "Scientific Advisors and Collaborators",
   "ReportsAndArticles": "Reports & Articles",
   "Report": "Report",
+  "ManuscriptAndPreprint": "Manuscript and Preprint",
+  "PaperTextTwo": "More information about our dashboard can be found in",
+  "LancetID": "The Lancet Infectious Diseases",
   "ViewFile": "View File",
+  "ViewHere": "View Here",
   "PreprintPublication": "Preprint Publication",
   "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
   "TermsOfUse": "Terms of Use",

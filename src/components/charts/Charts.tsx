@@ -5,14 +5,13 @@ import { Bar, BarChart, CartesianGrid, ErrorBar, LabelList, Legend, ResponsiveCo
 import { Dropdown, DropdownProps } from "semantic-ui-react";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import { AppContext } from "../../context";
-import { AggregationFactor, AggregatedRecord } from "../../types";
+import httpClient from "../../httpClient";
+import { AggregatedRecord, AggregationFactor } from "../../types";
+import { sendAnalyticsEvent } from '../../utils/analyticsUtils';
+import Translate from "../../utils/translate/translateService";
 import InformationIcon from "../shared/InformationIcon";
 import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
-import Translate from "../../utils/translate/translateService";
-import ReactGA from 'react-ga';
-import httpClient from "../../httpClient";
-import { sendAnalyticsEvent } from '../../utils/analyticsUtils';
 
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);

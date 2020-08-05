@@ -1,6 +1,5 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
-import { Tab } from "semantic-ui-react";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 import Translate from "../../utils/translate/translateService";
@@ -37,16 +36,19 @@ export default function Data() {
                     {Translate('MethodsText', ['FirstParagraph'])}
                 </p>
                 <p>
-                    {Translate('MethodsText', ['SecondParagraphPartOne'])} 
+                    {Translate('MethodsText', ['SecondParagraphPartOne'])}
                     <a target="_blank" onClick={() => clickLink('Methods')} rel="noopener noreferrer" href="https://docs.google.com/document/d/1NYpszkr-u__aZspFDFa_fa4VBzjAAAAxNxM1rZ1txWU/edit?usp=sharing">{Translate('Here', null, null, [true, false]).toLocaleLowerCase()}.</a>
-                    {Translate('MethodsText', ['SecondParagraphPartTwo'], null, [true, false])} 
+                    {Translate('MethodsText', ['SecondParagraphPartTwo'], null, [true, false])}
                     <a rel="noopener noreferrer" onClick={() => clickLink('Study Submission')} target="_blank" href="https://forms.gle/XWHQ7QPjQnzQMXSz8">{Translate('ThisForm', null, null, [true, false]).toLowerCase()}</a>.
                 </p>
                 <h1>
-                    {Translate('Paper')}
+                    {Translate('ManuscriptAndPreprint')}
                 </h1>
                 <p>
                     {Translate('PaperText', null, null, [false, true])}<a target="_blank" onClick={() => clickLink('MedRXIV')} rel="noopener noreferrer" href="https://www.medrxiv.org/content/10.1101/2020.05.10.20097451v1">medRxiv</a>.
+                </p>
+                <p>
+                    {Translate('PaperTextTwo', null, null, [false, true])}<a target="_blank" onClick={() => clickLink('LancetID')} rel="noopener noreferrer" href="https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30631-9/fulltext#%20"><i>{Translate('LancetID')}</i></a>.
                 </p>
                 <h1>
                     {Translate('OurData')}
