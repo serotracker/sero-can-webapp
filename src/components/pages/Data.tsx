@@ -1,6 +1,5 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
-import { Tab } from "semantic-ui-react";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 import Translate from "../../utils/translate/translateService";
