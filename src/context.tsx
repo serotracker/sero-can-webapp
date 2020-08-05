@@ -16,7 +16,8 @@ export function getEmptyFilters(): Filters {
     risk_of_bias: new Set(),
     isotypes_reported: new Set(),
     specimen_type: new Set(),
-    publish_date: new Set()
+    publish_date: new Set(),
+    estimate_grade: new Set()
   }
 }
 
@@ -27,6 +28,7 @@ const initial_filters: Filters = getEmptyFilters();
 initial_filters.population_group.add(Translate('PopulationGroupOptions', ['GeneralPopulation']));
 initial_filters.risk_of_bias.add(Translate('RiskOfBiasOptions', ['Moderate']));
 initial_filters.risk_of_bias.add(Translate('RiskOfBiasOptions', ['Low']));
+initial_filters.estimate_grade.add(Translate('EstimateGradeOptions', ['National']));
 const initialState: State = {
   healthcheck: '',
   airtable_records: [],
@@ -145,6 +147,9 @@ function getFilterOptions(records: AirtableRecord[]) {
       }
       if (record.risk_of_bias) {
         filter_options.risk_of_bias.add(record.risk_of_bias);
+      }
+      if (record.estimate_grade) {
+        filter_options.estimate_grade.add(record.estimate_grade);
       }
       if (record.test_type) {
         record.test_type.forEach((test_type) => {

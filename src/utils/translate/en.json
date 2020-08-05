@@ -69,6 +69,13 @@
   "EndDate": "End Date",
   "English": "English",
   "Estimate": "Estimate",
+  "EstimateGrade": "Estimate Grade",
+  "EstimateGradeOptions": {
+    "National": "National",
+    "Regional": "Regional",
+    "Local": "Local",
+    "Hyperlocal": "Hyperlocal"
+  },
   "ExecutiveDirector": "Executive Director",
   "Explore": "Explore",
   "Filter": "Filter",
