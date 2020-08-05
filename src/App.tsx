@@ -15,9 +15,11 @@ import Insights from "./components/pages/insights/Insights";
 import { CookieBanner } from "./components/shared/CookieBanner";
 import { Modal } from "semantic-ui-react";
 import Translate from "./utils/translate/translateService";
+import { useMediaQuery } from "react-responsive";
+import { mobileDeviceOrTabletWidth } from "./constants";
 
 function App() {
-
+  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   const [{ language }, dispatch] = useContext(AppContext);
   const [showModal, toggleModal] = useState(true);
   // DATA
@@ -54,7 +56,7 @@ function App() {
   const MobileInfoModal = () => (
     <Modal className="modal" open={showModal} onClose={closeModal} closeIcon={{ style: { top: '1.0535rem', right: '1rem' }, color: 'black', name: 'close' }}>
       <Modal.Content className="modal-content">
-        <div className="modal-text">
+        <div className={isMobileDeviceOrTablet ? "modal-text-mobile" : "modal-text"}>
           <p>{Translate('InitInfoModalText', ['PartOne'])}</p>
           <p>{Translate('InitInfoModalText', ['PartTwo'])}</p>
           <p>{Translate('InitInfoModalText', ['PartThree'])}</p>
