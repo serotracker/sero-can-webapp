@@ -1,14 +1,16 @@
 import React from "react";
 import CountryList from "./CountryList";
 import TotalStats from "./TotalStats";
+import AnalysisMethods from "./AnalysisMethods";
 import "../sidebar.css"
 import Translate from "../../../utils/translate/translateService";
 
 export default function LeftSidebar() {
   return (
     <div className="sidebar-container flex">
-      <TotalStats />
-      <CountryList />
+      <TotalStats/>
+      <AnalysisMethods/>
+      <CountryList/>
       <div className="col-12 pb-1 fit">
         <div className='col-12 p-0 center-item flex'>
           <div className="section-title">
@@ -22,7 +24,6 @@ export default function LeftSidebar() {
           href="https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30631-9/fulltext#%20">{Translate('ViewHere')}</a>
         </div>
       </div>
-
     </div>
   )
 }

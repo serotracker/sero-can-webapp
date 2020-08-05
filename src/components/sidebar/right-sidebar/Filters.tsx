@@ -125,6 +125,9 @@ export default function Filters() {
             <div>
               {buildFilterDropdown('country', Translate('Country'))}
             </div>
+            <div>
+              {buildFilterDropdown('estimate_grade', Translate('EstimateGrade'))}
+            </div>
           </div>
           <div className="pb-1">
             <div>

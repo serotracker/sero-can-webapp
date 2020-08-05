@@ -30,7 +30,8 @@ export type AirtableRecord = {
     sampling_end_date?: string | null,
     summary?: string | null,
     url?: string | null,
-    include_in_n: boolean
+    include_in_n: boolean,
+    estimate_grade: string | null
 };
 
 export type AggregatedRecord = {
@@ -54,10 +55,11 @@ export type Filters = {
     risk_of_bias: any,
     isotypes_reported: any,
     specimen_type: any
-    publish_date: any
+    publish_date: any,
+    estimate_grade: any,
 };
 
-export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported' | 'specimen_type';
+export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported' | 'specimen_type' | 'estimate_grade';
 
 export enum LanguageType  {
   french = 'fr',

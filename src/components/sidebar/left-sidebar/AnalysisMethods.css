@@ -1,0 +1,11 @@
+.analysis-methods {
+    border-top: 2px solid #C4C4C4;
+    flex: 0 1;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+}
+
+.inline {
+    display: inline;
+}
