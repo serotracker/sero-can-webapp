@@ -15,6 +15,10 @@ export const CookieBanner = () => {
     dispatch({ type: 'CLOSE_COOKIE_BANNER' })
   }
 
+  if (!localStorage.getItem('acceptedCookies') && !state.showCookieBanner) {
+    dispatch({ type: 'OPEN_COOKIE_BANNER' })
+  }
+
   return (
     state.showCookieBanner ?
       <div className="cookie-banner flex">
@@ -28,13 +32,6 @@ export const CookieBanner = () => {
               <Button color="blue" onClick={acceptCookes}>{Translate('Accept')}</Button>
             </div>
           </div>
-          <FontAwesomeIcon
-            icon={faTimes}
-            className={'icon'}
-            color={'#455a64'}
-            onClick={() => dispatch({ type: 'CLOSE_COOKIE_BANNER' })}
-            style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
-            size={"lg"} />
         </div>
       </div>
       : null
