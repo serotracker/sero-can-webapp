@@ -26,8 +26,9 @@ export function getEmptyFilters(): Filters {
 const initial_filters: Filters = getEmptyFilters();
 // Note: 
 initial_filters.population_group.add(Translate('PopulationGroupOptions', ['GeneralPopulation']));
-initial_filters.population_group.add(Translate('PopulationGroupOptions', ['GeneralPopulation']));
+initial_filters.population_group.add(Translate('PopulationGroupOptions', ['BloodDonors']));
 initial_filters.estimate_grade.add(Translate('EstimateGradeOptions', ['National']));
+initial_filters.estimate_grade.add(Translate('EstimateGradeOptions', ['Regional']));
 
 const initialState: State = {
   healthcheck: '',
