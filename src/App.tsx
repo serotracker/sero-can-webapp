@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
@@ -13,10 +13,15 @@ import CookiePolicy from "./components/pages/CookiePolicy";
 import TermsOfUse from "./components/pages/TermsOfUse";
 import Insights from "./components/pages/insights/Insights";
 import { CookieBanner } from "./components/shared/CookieBanner";
+import { Modal, Image } from "semantic-ui-react";
+import { useMediaQuery } from "react-responsive";
+import { mobileDeviceOrTabletWidth } from "./constants";
 
 function App() {
 
   const [{ language }, dispatch] = useContext(AppContext);
+  const [showModal, toggleModal] = useState(true);
+  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   // DATA
   useEffect(() => {
     const api = new httpClient()
@@ -46,11 +51,24 @@ function App() {
     setLanguageType(language);
   }, [dispatch, language])
 
+  const closeModal = () => toggleModal(false);
+
+  const MobileInfoModal = () => (
+    <Modal className="modal" open={showModal} onClose={closeModal} closeIcon>
+      <Modal.Content className="modal-content">
+          <p>"Welcome to SeroTracker... this is what we do... here are some caveats to keep in mind"</p>
+      </Modal.Content>
+    </Modal>
+  )
+
   // ROUTING TABS
   return (
     <div className="App">
       <NavBar />
       <CookieBanner />
+      {isMobileDeviceOrTablet && (
+        <MobileInfoModal/>
+      )}
       <Switch>
         <Route path="/About">
           <About />
