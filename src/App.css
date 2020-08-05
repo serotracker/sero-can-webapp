@@ -178,3 +178,29 @@
 .cursor {
     cursor: pointer;
 }
+
+.modal {
+    height: auto;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+}
+
+.modal-text {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.modal-text p {
+    font-size: 20px;
+}
+
+.modal-text-mobile {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.modal-content {
+    border: none
+}
