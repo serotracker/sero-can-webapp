@@ -10,7 +10,6 @@ import CentralPiece from "../pages/Dashboard/CenterComponent";
 import DateRangeSlider from "../sidebar/right-sidebar/date-slider/Slider";
 import LastUpdated from "../sidebar/right-sidebar/LastUpdated";
 import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
-import LancetArticleLink from "../sidebar/left-sidebar/LancetArticleLink";
 
 
 export default function MobileComponents() {
@@ -61,7 +60,6 @@ export default function MobileComponents() {
         >
           <TotalStats />
           <AnalysisMethods />
-          <LancetArticleLink />
           <FontAwesomeIcon
             icon={faTimes}
             onClick={() => handleFilterToggle(false, false)}

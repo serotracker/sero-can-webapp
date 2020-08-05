@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../context";
-import InformationIcon from "../../shared/InformationIcon";
-import { MIN_DENOMINATOR } from "../../../metaAnalysis"
-import './TotalStats.css';
-import Translate from "../../../utils/translate/translateService";
 import httpClient from "../../../httpClient";
+import Translate from "../../../utils/translate/translateService";
+import './TotalStats.css';
 
 
 export default function TotalStats() {

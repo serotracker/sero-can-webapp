@@ -1,8 +1,7 @@
 import React from "react";
+import { MIN_DENOMINATOR } from "../../../metaAnalysis";
 import InformationText from "../../shared/InformationText";
-import { MIN_DENOMINATOR } from "../../../metaAnalysis"
 import './AnalysisMethods.css';
-import Translate from "../../../utils/translate/translateService";
 
 
 export default function AnalysisMethods() {
