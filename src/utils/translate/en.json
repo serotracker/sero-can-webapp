@@ -179,7 +179,7 @@
   "Prevalence": "Prevalence",
   "Seroprevalence": "Seroprevalence",
   "SeroprevalenceBy": "Seroprevalence by",
-  "SeroPrevalenceByCountry": "Seroprevalence by Country",
+  "SeroPrevalenceByCountry": "Aggregated Seroprevalence Estimates in Different Countries",
   "SeroprevalenceScale": "Seroprevalence Scale",
   "SeroprevalenceScaleTooltip": "Made from the logit transform of the maximum value to determine the 'bins'",
   "SeroprevalenceTooltip": {
