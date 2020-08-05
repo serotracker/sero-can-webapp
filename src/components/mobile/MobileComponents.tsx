@@ -61,9 +61,6 @@ export default function MobileComponents() {
         >
           <TotalStats />
           <AnalysisMethods />
-          <div>
-            <CountryList />
-          </div>
           <LancetArticleLink />
           <FontAwesomeIcon
             icon={faTimes}
