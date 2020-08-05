@@ -10,6 +10,7 @@ import httpClient from "../../../httpClient";
 export default function TotalStats() {
   const [state] = useContext(AppContext);
   const [countries, setNumCountries] = useState(0);
+  const [numStudies, setNumStudies] = useState(0);
   const [seroprevalence, setSeroprevalence] = useState<any>(null);
   const [n, setN] = useState(0);
 
@@ -22,19 +23,15 @@ export default function TotalStats() {
         setSeroprevalence(results.seroprevalence);
         setN(results.n);
       } 
+      setNumStudies(state.filtered_records.length);
       updateCountryPrevalence();
     }
   }, [state.filtered_records])
 
-  //TODO: Extract to utils
-  const countriesOrCountry = () => {
-    return Translate(countries > 1 && countries !== 0 ? "Countries" : "Country")
-  }
-
   return (
     <div className="col-12 p-0 stats-container">
       <div className="col-12 py-3 section-title center">{Translate('SummaryStatistics').toUpperCase()}</div>
-      <div className="col-12 p-0 flex">
+      {/* <div className="col-12 p-0 flex">
         <div className="main-statistic-title col-12 p-0 center-item flex">
           {Translate('Seroprevalence')}
           <InformationIcon
@@ -56,14 +53,18 @@ export default function TotalStats() {
             size="xs"
             tooltipHeader={Translate("AggregatedPrevalence")} /></div>
         <div className="main-statistic col-12 p-0 center">{seroprevalence ? `${seroprevalence!.toFixed(2)}%` : Translate("NoData")}</div>
-      </div>
+      </div> */}
       <div className="col-12 flex middle py-2">
         <div className="secondary-statistic-title center p-0 col-12">{Translate("TestsAdministered")}</div>
         <div className="secondary-statistic col-12 p-0 center">{n}</div>
       </div>
       <div className="col-12 flex middle py-2">
+        <div className="secondary-statistic-title center px-1">{Translate("StudiesIncluded")}</div>
+        <div className="secondary-statistic px-1 center">{numStudies}</div>
+      </div>
+      <div className="col-12 flex middle py-2">
+        <div className="secondary-statistic-title px-1 center">{Translate("CountriesIncluded")}</div>
         <div className="secondary-statistic px-1 center">{countries}</div>
-        <div className="secondary-statistic-title px-1 center">{countriesOrCountry()}</div>
       </div>
     </div>
   )

@@ -40,7 +40,7 @@ export default function Translate(
     let translatedString = translationDictionary[text];
 
     if (!translatedString) {
-      return (specifier ? specifier[specifier.length - 1] : text) + "*";
+      return (specifier ? specifier[specifier.length - 1] : text);
     }
 
     if (specifier) {
