@@ -117,15 +117,13 @@ export default class httpClient {
         if (!response) {
             return [];
         }
-        const airtable_records = response.map((item: Record<string, any>) => {
-            // Convert response to AlternateAggregatedRecord type            
-            const itemName = Object.keys(item)[0];
-            const record = item[itemName]
+        const formattedResponse = response.map((record: Record<string, any>) => {
+            // Convert response to AlternateAggregatedRecord type         
             const estimateSummary = record.seroprevalence_estimate_summary;
             return {
                 numberOfStudies: record.n_estimates,
                 testsAdministered: record.n_tests_administered,
-                geographicalName: itemName,
+                geographicalName: record.name,
                 localEstimate: {
                     maxEstimate: estimateSummary.Local.max_estimate,
                     minEstimate: estimateSummary.Local.min_estimate,
@@ -149,7 +147,7 @@ export default class httpClient {
             }
         });
 
-        return airtable_records;
+        return formattedResponse;
     }
 
     async postMetaAnalysis(records: AirtableRecord[], aggregation_variable: AggregationFactor, meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise') {

@@ -70,7 +70,7 @@ export default function Map() {
         data={mapRecords as GeoJSON.GeoJsonObject}
         style={(data) => altStyle(data, buckets)}>
       </GeoJSON>
-      {/* <Legend buckets={buckets} /> */}
+      <Legend buckets={buckets} />
     </LeafletMap>
   );
 }

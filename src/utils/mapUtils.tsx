@@ -69,7 +69,7 @@ export const getCountryName = (country: string, language: LanguageType, optionSt
   return displayText;
 }
 
-
+// This refers to the old map that displayed seroprevalences directly
 export const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined, buckets: number[] ) => {
   return {
     fillColor: getColor(feature?.properties?.seroprevalence, buckets),
@@ -107,7 +107,6 @@ export const highlightFeature = (e: LeafletMouseEvent) => {
 
 }
 
-
 export const resetHighlight = (e: LeafletMouseEvent) => {
   const layer = e.target;
 
@@ -119,6 +118,8 @@ export const resetHighlight = (e: LeafletMouseEvent) => {
     fillOpacity: 0.7
   });
 };
+
+// This refers to the old map that displayed seroprevalences directly
 export const createPopup = (properties: any, language: LanguageType) => {
   if (properties.seroprevalence) {
     let error = properties?.error;
@@ -229,9 +230,9 @@ export const mapDataToFeatures = (features: GeoJSON.Feature[], prevalences: Aggr
     return { ...feature, properties: { ...feature.properties, seroprevalence: null, error: null, n: null, num_studies: null } }
   })
 }
+
 export const mapAltDataToFeatures = (features: GeoJSON.Feature[], prevalences: AlternateAggregatedRecord[]) => {
   const prevalenceCountryDict: Record<string, AlternateAggregatedRecord> = prevalences.reduce((a: any, x: AlternateAggregatedRecord) => ({ ...a, [x.geographicalName]: x }), {});
-  console.log(prevalenceCountryDict);
   return features.map(feature => {
     const country: AlternateAggregatedRecord = prevalenceCountryDict![feature?.properties?.name];
     if (country && country.testsAdministered) {

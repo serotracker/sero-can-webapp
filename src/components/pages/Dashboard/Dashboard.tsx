@@ -17,7 +17,6 @@ export default function Dashboard() {
       const updateCountryPrevalence = async () => {
         const api = new httpClient();
         const estimateGradePrevalences = await api.getEstimateGrades(state.filtered_records);
-        console.log(estimateGradePrevalences);
         dispatch({
           type: 'UPDATE_ESTIMATE_PREVALENCES',
           payload: estimateGradePrevalences
