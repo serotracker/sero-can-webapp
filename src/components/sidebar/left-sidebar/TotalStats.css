@@ -16,6 +16,7 @@
   font-weight: 200;
   font-size: 1.25em;
   line-height: 21px;
+  display: block;
 }
 
 .secondary-statistic {
@@ -24,7 +25,6 @@
   line-height: 23px;
   text-align: center;  
   color: #455A64;
-  
 }
 
 .stats-container {

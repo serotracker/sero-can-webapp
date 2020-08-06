@@ -21,16 +21,36 @@ export function getEmptyFilters(): Filters {
   }
 }
 
+export function getDefaultFilters(): Filters {
+  return {
+    source_type: new Set([
+      Translate('SourceTypeOptions', ['Preprint']),
+      Translate('SourceTypeOptions', ['Publication']),
+      Translate('SourceTypeOptions', ['InstitutionalReport'])
+    ]),
+    study_status: new Set(),
+    test_type: new Set(),
+    country: new Set(),
+    population_group: new Set([
+      Translate('PopulationGroupOptions', ['GeneralPopulation']),
+      Translate('PopulationGroupOptions', ['BloodDonors']),
+    ]),
+    sex: new Set(),
+    age: new Set(),
+    risk_of_bias: new Set(),
+    isotypes_reported: new Set(),
+    specimen_type: new Set(),
+    publish_date: new Set(),
+    estimate_grade: new Set([
+      Translate('EstimateGradeOptions', ['National']),
+      Translate('EstimateGradeOptions', ['Regional']),
+    ])
+  }
+}
+
 // Note: filters = elements that user has chosen to filter by
 // filter_options = all the elements that users could filter by
-const initial_filters: Filters = getEmptyFilters();
-// Note: 
-initial_filters.population_group.add(Translate('PopulationGroupOptions', ['GeneralPopulation']));
-initial_filters.population_group.add(Translate('PopulationGroupOptions', ['BloodDonors']));
-initial_filters.estimate_grade.add(Translate('EstimateGradeOptions', ['National']));
-initial_filters.estimate_grade.add(Translate('EstimateGradeOptions', ['Regional']));
-initial_filters.source_type.add(Translate('SourceTypeOptions', ['Preprint']));
-initial_filters.source_type.add(Translate('SourceTypeOptions', ['PublishedAcademicStudy']));
+const initial_filters: Filters = getDefaultFilters();
 
 const initialState: State = {
   healthcheck: '',

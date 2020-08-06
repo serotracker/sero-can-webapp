@@ -57,7 +57,7 @@ export default function TotalStats() {
         <div className="secondary-statistic col-12 p-0 center">{n}</div>
       </div>
       <div className="col-12 flex middle py-2">
-        <div className="secondary-statistic-title center px-1">{Translate("StudiesIncluded")}</div>
+        <div className="secondary-statistic-title center p-0">{Translate("NumSeroprevalenceEstimates")}</div>
         <div className="secondary-statistic px-1 center">{numStudies}</div>
       </div>
       <div className="col-12 flex middle py-2">
