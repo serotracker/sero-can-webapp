@@ -214,11 +214,10 @@
   "Source": "Source",
   "SourceType": "Source Type",
   "SourceTypeOptions": {
-    "Government/NGO/HealthSystemReport": "Government / NGO / Health System Report",
-    "MediaReport&NewsRelease": "Media Report & News Release",
     "Preprint": "Preprint",
-    "PreprintNowPublished": "Preprint (now published)",
-    "PublishedAcademicStudy": "Published Academic Study"
+    "Publication": "Publication",
+    "InstitutionalReport": "Institutional Report",
+    "NewsAndMedia": "News and Media"
   },
   "Specificity": "Specificity",
   "SpecimenType": "Specimen Type",
@@ -268,7 +267,7 @@
   "TestDetails": "Test Details",
   "TestInformation": "Test Information",
   "TestInformationTooltip": "Filter on test details, including assay type and antibody isotype.",
-  "StudiesIncluded": "Studies Included",
+  "NumSeroprevalenceEstimates": "Number of Seroprevalence Estimates",
   "TestsAdministered": "Antibody Tests Administered",
   "TestType": "Test Type",
   "TestTypeOptions": {
