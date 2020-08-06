@@ -55,11 +55,11 @@ export type Filters = {
     risk_of_bias: any,
     isotypes_reported: any,
     specimen_type: any
-    publish_date: any,
+    sampling_end_date: any,
     estimate_grade: any,
 };
 
-export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported' | 'specimen_type' | 'estimate_grade';
+export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported' | 'specimen_type' | 'estimate_grade' | 'sampling_end_date';
 
 export enum LanguageType  {
   french = 'fr',

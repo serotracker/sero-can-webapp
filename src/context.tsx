@@ -16,7 +16,7 @@ export function getEmptyFilters(): Filters {
     risk_of_bias: new Set(),
     isotypes_reported: new Set(),
     specimen_type: new Set(),
-    publish_date: new Set(),
+    sampling_end_date: new Set(),
     estimate_grade: new Set()
   }
 }
@@ -40,7 +40,7 @@ export function getDefaultFilters(): Filters {
     risk_of_bias: new Set(),
     isotypes_reported: new Set(),
     specimen_type: new Set(),
-    publish_date: new Set(),
+    sampling_end_date: new Set(),
     estimate_grade: new Set([
       Translate('EstimateGradeOptions', ['National']),
       Translate('EstimateGradeOptions', ['Regional']),
@@ -100,13 +100,6 @@ function filter_function(record: Record<string, any>, filters: Filters){
           });
           return match;
         }
-
-        if (filter_key === 'publish_date') {
-          const publishDate = record[filter_key];
-          const dateInMillis = publishDate instanceof Array ? Date.parse(publishDate[0] as string) : Date.parse(publishDate as string)
-          const dates: number[] = Array.from(filters[filter_key].values())
-          return dateInMillis >= dates[0] && dateInMillis <= dates[1]
-        }
         // Iterate through the record's values and check if any of them
         // match the values accepted by the filter
         let in_filter = false;
@@ -121,6 +114,12 @@ function filter_function(record: Record<string, any>, filters: Filters){
         }
       }
       else {
+        if (filter_key === 'sampling_end_date') {
+          const endDate = record[filter_key];
+          const dateInMillis = Date.parse(endDate as string);
+          const dates: number[] = Array.from(filters[filter_key].values());
+          return dateInMillis >= dates[0] && dateInMillis <= dates[1]
+        }
         if (!(filters[filter_key as FilterType].has(record[filter_key]))) {
           return false;
         }

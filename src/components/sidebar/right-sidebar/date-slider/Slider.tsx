@@ -30,8 +30,8 @@ export default function DateRangeSlider() {
 
     if(state.airtable_records) {
     const orderedDates = state.airtable_records
-      .filter(o => o.publish_date !== null && o.publish_date !== undefined)
-      .map(o => o.publish_date instanceof Array ? Date.parse(o.publish_date[0] as string) : Date.parse(o.publish_date as string))
+      .filter(o => o.sampling_end_date !== null && o.sampling_end_date !== undefined)
+      .map(o => Date.parse(o.sampling_end_date as string))
       .sort((a, b) => a - b);
 
     const startDate = orderedDates[0];
@@ -99,7 +99,7 @@ export default function DateRangeSlider() {
     dispatch({
       type: 'UPDATE_FILTER',
       payload: {
-        filter_type: 'publish_date',
+        filter_type: 'sampling_end_date',
         filter_value: values
       }
     })
