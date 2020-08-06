@@ -3,6 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import { colors } from "../../utils/mapUtils";
 import "./Legend.css";
+import Translate from "../../utils/translate/translateService";
 
 interface LegendProps {
   buckets: number[]
@@ -32,7 +33,7 @@ export default function Legend(props: LegendProps) {
     <div className={isMobileDeviceOrTablet ? "info flex legend-mobile center-item" : "info flex legend center-item"}>
       <div className="flex" key={Math.random()}>
         <i className="block" style={{ background: colors[6] }}></i>
-        <div className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>Country Estimates Exist</div>
+        <div className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("CountryEstimatesExist")}</div>
       </div>
       {/* {labels} */}
       {/* <h4 className="legend-title p-0 middle">{Translate('Seroprevalence')}

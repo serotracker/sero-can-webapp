@@ -197,6 +197,7 @@ export const onEachFeature = (feature: GeoJSON.Feature, layer: Layer, mapRef: Re
   })
 }
 
+// This refers to the old map that displayed seroprevalences directly
 export const onAltEachFeature = (feature: GeoJSON.Feature, layer: Layer, mapRef: React.RefObject<Map<MapProps>>, language: LanguageType) => {
 
   layer.bindPopup(ReactDOMServer.renderToString(createAltPopup(feature.properties, language)), { closeButton: false, autoPan: false });
