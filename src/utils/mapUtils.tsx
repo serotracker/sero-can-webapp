@@ -148,7 +148,7 @@ export const createAltPopup = (properties: any, language: LanguageType) => {
       <div className="col-12 p-0 flex">
         <div className="col-12 p-0 popup-header">{getCountryName(properties.geographicalName, language, "CountryOptions")}</div>
         <div className="col-12 p-0 popup-content">{Translate("TestsAdministered")}: {properties?.testsAdministered}</div>
-        <div className="col-12 p-0 popup-content">{Translate('StudiesIncluded')}: {properties?.numberOfStudies}</div>
+        <div className="col-12 p-0 popup-content">{Translate('NumSeroprevalenceEstimates')}: {properties?.numberOfStudies}</div>
         { nationalEstimate.numEstimates ? <div className="col-12 p-0 popup-content">{Translate('NationalEstimateRange')}: {(nationalEstimate.minEstimate * 100).toFixed(2)}%-{(nationalEstimate.maxEstimate * 100).toFixed(2)}%</div> : null}
         { nationalEstimate.numEstimates ? <div className="col-12 p-0 popup-content">{Translate('NationalEstimates')}: {nationalEstimate.numEstimates}</div> : null}
         { regionalEstimate.numEstimates ? <div className="col-12 p-0 popup-content">{Translate('RegionalEstimateRange')}: {(regionalEstimate.minEstimate * 100).toFixed(2)}%-{(regionalEstimate.maxEstimate * 100).toFixed(2)}%</div> : null}
