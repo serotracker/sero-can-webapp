@@ -8,11 +8,12 @@
 
 .charts {
   margin-top: 6vh;
+  max-height: 70vh;
 }
 
 .mobile-charts {
   margin-top: 60px;
-  max-height: 100vh;
+  max-height: 70vh;
 }
 
 .charts-page {

@@ -1,13 +1,13 @@
 import React from "react";
-import CountryList from "./CountryList";
+import "../sidebar.css";
+import AnalysisMethods from "./AnalysisMethods";
 import TotalStats from "./TotalStats";
-import "../sidebar.css"
 
 export default function LeftSidebar() {
   return (
     <div className="sidebar-container flex">
       <TotalStats/>
-      <CountryList/>
+      <AnalysisMethods/>
     </div>
   )
 }

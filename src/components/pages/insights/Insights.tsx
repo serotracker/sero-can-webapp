@@ -9,6 +9,7 @@ import May2020Update from '../../../assets/images/IndustryUpdateMay_2020.png'
 import PreprintUpdate from '../../../assets/images/IndustryUpdatePre_2020.png'
 import BloodBank from '../../../assets/images/SeroTrackerBloodBank_July_2020.png'
 import MedRxiv from '../../../assets/images/Prepublication.png'
+import LancetId from '../../../assets/images/LancetIDArticle.png'
 
 export default function Insights() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
@@ -23,6 +24,15 @@ export default function Insights() {
           {Translate('ReportsAndArticles').toUpperCase()}
         </h3>
         <div className="flex insights-article-container">
+          <div className="col-sm-12 col-lg-6 py-2">
+            <InsightsCard
+              identifier={Translate("Publication")}
+              date={"August 4th, 2020"}
+              img={LancetId}
+              italicize="Lancet ID"
+              title="Article (SeroTracker: a global SARS-CoV-2 seroprevalence dashboard)"
+              url="https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30631-9/fulltext#%20" />
+          </div>
           <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("Report")}

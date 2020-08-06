@@ -28,6 +28,7 @@ export default function DateRangeSlider() {
 
   useEffect(() => {
 
+    if(state.airtable_records) {
     const orderedDates = state.airtable_records
       .filter(o => o.publish_date !== null && o.publish_date !== undefined)
       .map(o => o.publish_date instanceof Array ? Date.parse(o.publish_date[0] as string) : Date.parse(o.publish_date as string))
@@ -36,6 +37,7 @@ export default function DateRangeSlider() {
     const startDate = orderedDates[0];
     setStartBound(startDate);
     setStartDate(startDate);
+  }
 
   }, [state.airtable_records])
 

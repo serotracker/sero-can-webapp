@@ -1,4 +1,5 @@
 .item-container {
+  min-height: 35px;
   justify-content: space-between;
   border-top: 2px solid #C4C4C4;
 }
@@ -8,7 +9,8 @@
   display: flex;
   flex-direction: column;    
   border-top: 2px solid #C4C4C4;
-  max-height: calc(100% - 226px);
+  min-height: 200px;
+  max-height: calc(100% - 578px);
 }
 
 .list {
@@ -26,12 +28,14 @@
 }
 
 .item-container:last-of-type {
+  min-height: 35px;
   justify-content: space-between;
   border-top: 2px solid #C4C4C4;
   border-bottom: 2px solid #C4C4C4;
 }
 
 .item-container:first-of-type {
+  min-height: 35px;
   justify-content: space-between;
   border-top: 2px solid #C4C4C4;
 }

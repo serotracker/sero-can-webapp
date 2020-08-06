@@ -30,20 +30,9 @@ export type AirtableRecord = {
     sampling_end_date?: string | null,
     summary?: string | null,
     url?: string | null,
-    include_in_n: boolean
+    include_in_n: boolean,
+    estimate_grade: string | null
 };
-
-export type CaseCountRecord = {
-    country: string,
-    countryCode?: string | null,
-    date?: string | null,
-    newConfirmed?: number | null,
-    newDeaths?: number | null,
-    newRecovered?: number | null,
-    totalConfirmed?: number | null,
-    totalDeaths?: number | null,
-    totalRecovered?: number | null,
-}
 
 export type AggregatedRecord = {
     error: number[];
@@ -66,10 +55,11 @@ export type Filters = {
     risk_of_bias: any,
     isotypes_reported: any,
     specimen_type: any
-    publish_date: any
+    publish_date: any,
+    estimate_grade: any,
 };
 
-export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported' | 'specimen_type';
+export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported' | 'specimen_type' | 'estimate_grade';
 
 export enum LanguageType  {
   french = 'fr',
@@ -79,7 +69,6 @@ export enum LanguageType  {
 export type State = {
     healthcheck: string,
     airtable_records: AirtableRecord[],
-    caseCountRecords: CaseCountRecord[],
     filtered_records: AirtableRecord[],
     filters: Filters,
     filter_options: Filters,
@@ -88,7 +77,6 @@ export type State = {
     data_page_state: DataPageState,
     language: LanguageType,
     country_prevalences: AggregatedRecord[]
-    acceptedCookies: boolean,
     showCookieBanner: boolean
 };
 

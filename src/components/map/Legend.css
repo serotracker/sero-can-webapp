@@ -6,7 +6,7 @@
   position: absolute;
   bottom: 10px;
   left: calc(50% - 25vw);
-  z-index: 2000;
+  z-index: 500;
 }
 
 .legend-mobile {
@@ -17,7 +17,7 @@
   position: absolute;
   bottom: 10px;
   left: 2%;
-  z-index: 2000;
+  z-index: 500;
 }
 
 .mobile-text {

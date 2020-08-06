@@ -1,16 +1,15 @@
-import React from "react";
-import { useMediaQuery } from "react-responsive";
-import { mobileDeviceOrTabletWidth } from "../../../constants";
-import Translate from "../../../utils/translate/translateService";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import Translate from "../../../utils/translate/translateService";
 
 interface InsightsCardProps {
   identifier: string,
   date: string,
   title: string,
   img: string,
-  url: string
+  url: string,
+  italicize?: string
 }
 
 
@@ -32,7 +31,7 @@ export default function InsightsCard(props: InsightsCardProps) {
           rel="noopener noreferrer"
           className="overlay flex">
           <div className="insights-card-image-overlay flex fill center-item column">
-              <div>{Translate('ViewFile')}</div>
+            <div>{Translate('ViewFile')}</div>
             <div className="flex center-item">
               <FontAwesomeIcon
                 icon={faFile}
@@ -46,7 +45,7 @@ export default function InsightsCard(props: InsightsCardProps) {
       </div>
       <div className="fit insights-card-title">
         <a href={props.url} target="_blank" rel="noopener noreferrer" className="">
-          {props.title}
+          {props.italicize ? <i>{props.italicize}&nbsp;</i> : null}{props.title}
         </a>
       </div>
     </div>

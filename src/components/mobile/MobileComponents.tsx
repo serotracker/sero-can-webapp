@@ -9,6 +9,7 @@ import CountryList from "../sidebar/left-sidebar/CountryList";
 import CentralPiece from "../pages/Dashboard/CenterComponent";
 import DateRangeSlider from "../sidebar/right-sidebar/date-slider/Slider";
 import LastUpdated from "../sidebar/right-sidebar/LastUpdated";
+import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
 
 
 export default function MobileComponents() {
@@ -21,75 +22,75 @@ export default function MobileComponents() {
   }
 
   return (
-    <div className="fill flex"> 
-    <Sidebar.Pushable as={Segment} className="fill flex">
-      {/* Filters */}
-      <Sidebar
-        as={Menu}
-        animation='overlay'
-        icon='labeled'
-        className="col-10 p-0"
-        vertical
-        direction="left"
-        visible={showMobileFilters}
-        width='wide'
-      >
+    <div className="fill flex">
+      <Sidebar.Pushable as={Segment} className="fill flex">
+        {/* Filters */}
+        <Sidebar
+          as={Menu}
+          animation='overlay'
+          icon='labeled'
+          className="col-10 p-0"
+          vertical
+          direction="left"
+          visible={showMobileFilters}
+          width='wide'
+        >
 
-        <Filters />
-        <DateRangeSlider/>
-        <LastUpdated/>
-        <FontAwesomeIcon
-          icon={faTimes}
-          onClick={() => handleFilterToggle(false, false)}
-          className={'icon'}
-          color={'#455a64'}
-          style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
-          size={"lg"} />
-      </Sidebar>
-      {/* Left Sidebar */}
-      <Sidebar
-        as={Menu}
-        animation='overlay'
-        icon='labeled'
-        className="col-10 p-0"
-        vertical
-        direction="left"
-        visible={showSummary}
-        width='wide'
-      >
-        <TotalStats />
-        <CountryList />
-        <FontAwesomeIcon
-          icon={faTimes}
-          onClick={() => handleFilterToggle(false, false)}
-          className={'icon'}
-          color={'#455a64'}
-          style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
-          size={"lg"} />
-      </Sidebar>
-      <Sidebar.Pusher className="fill flex">
-        <CentralPiece />
-        {/* Icons */}
-        <div className="icon-container"
-          style={{ top: 10, right: 15 }}>
+          <Filters />
+          <DateRangeSlider />
+          <LastUpdated />
           <FontAwesomeIcon
-            icon={faFilter}
-            onClick={() => handleFilterToggle(!showMobileFilters, false)}
+            icon={faTimes}
+            onClick={() => handleFilterToggle(false, false)}
             className={'icon'}
             color={'#455a64'}
-            size={"2x"} />
-        </div>
-        <div className="icon-container"
-          style={{ top: 10, right: 58 }}>
+            style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
+            size={"lg"} />
+        </Sidebar>
+        {/* Left Sidebar */}
+        <Sidebar
+          as={Menu}
+          animation='overlay'
+          icon='labeled'
+          className="col-10 p-0"
+          vertical
+          direction="left"
+          visible={showSummary}
+          width='wide'
+        >
+          <TotalStats />
+          <AnalysisMethods />
           <FontAwesomeIcon
-            icon={faBars}
-            onClick={() => handleFilterToggle(false, !showSummary)}
+            icon={faTimes}
+            onClick={() => handleFilterToggle(false, false)}
             className={'icon'}
             color={'#455a64'}
-            size={"2x"} />
-        </div>
-      </Sidebar.Pusher>
-    </Sidebar.Pushable>
+            style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
+            size={"lg"} />
+        </Sidebar>
+        <Sidebar.Pusher className="fill flex">
+          <CentralPiece />
+          {/* Icons */}
+          <div className="icon-container"
+            style={{ top: 10, right: 15 }}>
+            <FontAwesomeIcon
+              icon={faFilter}
+              onClick={() => handleFilterToggle(!showMobileFilters, false)}
+              className={'icon'}
+              color={'#455a64'}
+              size={"2x"} />
+          </div>
+          <div className="icon-container"
+            style={{ top: 10, right: 58 }}>
+            <FontAwesomeIcon
+              icon={faBars}
+              onClick={() => handleFilterToggle(false, !showSummary)}
+              className={'icon'}
+              color={'#455a64'}
+              size={"2x"} />
+          </div>
+        </Sidebar.Pusher>
+      </Sidebar.Pushable>
     </div>
   )
 }

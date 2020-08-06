@@ -15,7 +15,8 @@ export const testRecords: AirtableRecord[] = [
         seroprevalence: 0.15,
         risk_of_bias: "Low",
         isotypes_reported: ['IgM'],
-        include_in_n: true
+        include_in_n: true,
+        estimate_grade: "National"
     },
     {
         source_name: 'article2',
@@ -31,7 +32,8 @@ export const testRecords: AirtableRecord[] = [
         seroprevalence: 0.2,
         risk_of_bias: "Low",
         isotypes_reported: ['IgM'],
-        include_in_n: true
+        include_in_n: true,
+        estimate_grade: "National"
     },
     {
         source_name: 'article3',
@@ -47,7 +49,8 @@ export const testRecords: AirtableRecord[] = [
         seroprevalence: 0.12,
         risk_of_bias: "Low",
         isotypes_reported: ['IgM'],
-        include_in_n: true
+        include_in_n: true,
+        estimate_grade: "National"
     },
     {
         source_name: 'article4',
@@ -63,7 +66,8 @@ export const testRecords: AirtableRecord[] = [
         seroprevalence: 0.15,
         risk_of_bias: "Low",
         isotypes_reported: ['IgM'],
-        include_in_n: false
+        include_in_n: false,
+        estimate_grade: "National"
     },
     {
         source_name: 'article1',
@@ -79,7 +83,8 @@ export const testRecords: AirtableRecord[] = [
         seroprevalence: 0.23,
         risk_of_bias: "Low",
         isotypes_reported: ['IgM'],
-        include_in_n: true
+        include_in_n: true,
+        estimate_grade: "National"
     },
     {
         source_name: 'article2',
@@ -95,7 +100,8 @@ export const testRecords: AirtableRecord[] = [
         seroprevalence: 0.25,
         risk_of_bias: "Low",
         isotypes_reported: ['IgM'],
-        include_in_n: true
+        include_in_n: true,
+        estimate_grade: "National"
     },
     {
         source_name: 'article3',
@@ -111,7 +117,8 @@ export const testRecords: AirtableRecord[] = [
         seroprevalence: 0.32,
         risk_of_bias: "Low",
         isotypes_reported: ['IgM'],
-        include_in_n: true
+        include_in_n: true,
+        estimate_grade: "National"
     },
     {
         source_name: 'article4',
@@ -127,6 +134,7 @@ export const testRecords: AirtableRecord[] = [
         seroprevalence: 0.2,
         risk_of_bias: "High",
         isotypes_reported: ['IgM', 'IgA'],
-        include_in_n: false
+        include_in_n: false,
+        estimate_grade: "National"
     }
 ];

@@ -3,17 +3,21 @@
   "95%ConfidenceIntervalTooltip": "Wider error bars indicate greater uncertainty in the pooled seroprevalence estimate.",
   "About": "About",
   "Accept": "Accept",
+  "Article": "Article",
   "AcceptCookies": "Accept Cookies",
+  "Publication": "Publication",
   "AboutPage": {
     "AboutSection": {
-      "PartEight": "Global Serological Knowledge Hub",
-      "PartFive": "which brings together university, hospital and public health expertise to map the scope of coronavirus infection in Canada. The Task Force is funded by the Government of Canada and its secretariat is housed at",
-      "PartFour": "Canada's COVID-19 Immunity Task Force",
+      "SupportedBy": "SeroTracker is supported by the",
+      "PublicHealthAgency": "Public Health Agency of Canada",
+      "HostedAt": "and hosted at the",      
       "PartOne": "As the acute phase of the COVID-19 pandemic passes its peak, many countries are accelerating their investments in serological (antibody) testing. Understanding population antibody patterns and potential immunity is of great interest to clinicians, public health officials, and policymakers alike.",
-      "PartSeven": "SeroTracker also provides content for the Task Force's",
-      "PartSix": "McGill University’s School of Population and Global Health",
-      "PartThree": "SeroTracker is supported by",
-      "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide."
+      "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide.",
+      "HealthInformatics": "University of Calgary's Centre for Health Informatics.",      
+      "OurWorkIs": "Our work is in partnership with",
+      "Covid19ImmunityTaskForce": "Canada's COVID-19 Immunity Task Force",
+      "WhichIsMapping": "which is mapping the scope of coronavirus infection in Canada. SeroTracker also provides content for the Task Force's",
+      "GlobalSerologicalKnowledgeHub": "Global Serological Knowledge Hub"
     },
     "ContactSection": {
       "BulletPointFive": {
@@ -21,23 +25,9 @@
         "PartThree": "or studies that we have not yet captured, please fill out",
         "PartTwo": "new SARS-CoV-2 seroprevalence studies"
       },
-      "BulletPointFour": {
-        "PartOne": "dashboard-related inquiries",
-        "PartTwo": "please contact Jordan Van Wyk at"
-      },
       "BulletPointOne": {
-        "PartFour": "and Tingting Yan at",
-        "PartOne": "If you would like to",
-        "PartThree": "please contact Rahul Arora at",
-        "PartTwo": "support our efforts or collaborate with us"
-      },
-      "BulletPointThree": {
-        "PartOne": "data and AirTable-related inquiries",
-        "PartTwo": "please contact Nathan Duarte at"
-      },
-      "BulletPointTwo": {
-        "PartOne": "research methods-related inquiries, or if you are a journalist interested in reporting on our findings,",
-        "PartTwo": "please contact Nik Bobrovitz at"
+        "PartOne": "For all SeroTracker inquiries (including to support our efforts, collaborate with us, or if you are a journalist interested in reporting on our findings), please contact Rahul Arora at ",
+        "PartTwo": "and Tingting Yan at "
       },
       "SectionOne": "We are an interdisciplinary team of researchers and engineers at the University of Oxford, University of Toronto, University of Waterloo, University of Calgary, and Harvard University."
     },
@@ -81,6 +71,13 @@
   "EndDate": "End Date",
   "English": "English",
   "Estimate": "Estimate",
+  "EstimateGrade": "Estimate Grade",
+  "EstimateGradeOptions": {
+    "National": "National",
+    "Regional": "Regional",
+    "Local": "Local",
+    "Hyperlocal": "Hyperlocal"
+  },
   "ExecutiveDirector": "Executive Director",
   "Explore": "Explore",
   "Filter": "Filter",
@@ -99,13 +96,14 @@
     "IgM": "IgM",
     "IgMIgG": "IgM IgG"
   },
-  "LastUpdated": "Last Updated",
+  "ServerLastRefreshed": "Server Last Refreshed",
+  "LancetArticle": "Lancet ID",
   "LastUpdatedTooltip": "SeroTracker is continuously updated with findings from newly-released serological studies. We include new studies from our search within 48 hours of publication.",
   "Location": "Location",
   "Manufacturer": "Manufacturer",
   "Methods": "Methods",
   "MethodsText": {
-    "FirstParagraph": "SeroTracker provides an up-to-date systematic synthesis of SARS-CoV-2 serosurveillance projects globally. We screened peer-reviewed articles, preprints, government reports, and media articles to identify the prevalence estimates reported below. Our data is updated daily with all new reports of seroprevalence findings that were captured in our search",
+    "FirstParagraph": "SeroTracker provides a systematic synthesis of SARS-CoV-2 serosurveillance projects globally. We screened peer-reviewed articles, preprints, government reports, and media articles to identify the prevalence estimates reported below. Our data is updated with all new reports of seroprevalence findings that were captured in our search.",
     "SecondParagraphPartOne": "You can view our full methods",
     "SecondParagraphPartTwo": "To submit a SARS-CoV-2 seroprevalence study that we have not yet captured below, use"
   },
@@ -117,7 +115,7 @@
   "OurDataText": {
     "PointOne": "captures all studies reporting prevalence estimates",
     "PointTwo": "describes studies that have not yet reported seroprevalence estimates",
-    "Text": "The tables below describe our findings, including detailed information about each study, each prevalence estimate, and the associated risk of bias."
+    "Text": "The table below describes our findings, including detailed information about each study, each prevalence estimate, and the associated risk of bias."
   },
   "OurTeam": "Our Team",
   "OverallRiskOfBias": "Overall Risk Of Bias",
@@ -173,14 +171,15 @@
   "Sampling": "Sampling",
   "SamplingMethod": "Sampling Method",
   "SchoolName": {
-    "Schulich": "Schulich School of Engineering"
+    "Schulich": "Schulich School of Engineering",
+    "Cumming": "Cumming School of Medicine"
   },
   "ScientificLead": "Scientific Lead",
   "Sensitivity": "Sensitivity",
   "Prevalence": "Prevalence",
   "Seroprevalence": "Seroprevalence",
   "SeroprevalenceBy": "Seroprevalence by",
-  "SeroPrevalenceByCountry": "Seroprevalence by Country",
+  "SeroPrevalenceByCountry": "Aggregated Seroprevalence Estimates in Different Countries",
   "SeroprevalenceScale": "Seroprevalence Scale",
   "SeroprevalenceScaleTooltip": "Made from the logit transform of the maximum value to determine the 'bins'",
   "SeroprevalenceTooltip": {
@@ -199,21 +198,26 @@
     "Unspecified": "Unspecified"
   },
   "Insights": "Insights",
+  "ScientificAdvisorsAndCollaborators": "Scientific Advisors and Collaborators",
   "ReportsAndArticles": "Reports & Articles",
   "Report": "Report",
+  "ManuscriptAndPreprint": "Manuscript and Preprint",
+  "PaperTextTwo": "More information about our dashboard can be found in",
+  "LancetID": "The Lancet Infectious Diseases",
   "ViewFile": "View File",
+  "ViewHere": "View Here",
   "PreprintPublication": "Preprint Publication",
+  "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
   "TermsOfUse": "Terms of Use",
   "CookiePolicy": "Cookie Policy",
   "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
   "Source": "Source",
   "SourceType": "Source Type",
   "SourceTypeOptions": {
-    "Government/NGO/HealthSystemReport": "Government / NGO / Health System Report",
-    "MediaReport&NewsRelease": "Media Report & News Release",
     "Preprint": "Preprint",
-    "PreprintNowPublished": "Preprint (now published)",
-    "PublishedAcademicStudy": "Published Academic Study"
+    "Publication": "Publication",
+    "InstitutionalReport": "Institutional Report",
+    "NewsAndMedia": "News and Media"
   },
   "Specificity": "Specificity",
   "SpecimenType": "Specimen Type",
@@ -251,10 +255,12 @@
   "Summary": "Summary",
   "SummaryStatistics": "Summary Statistics",
   "TeamLead": "Team Leads",
+  "CountriesIncluded": "Countries Included",
   "TestDetails": "Test Details",
   "TestInformation": "Test Information",
   "TestInformationTooltip": "Filter on test details, including assay type and antibody isotype.",
-  "TestsAdministered": "Tests Administered",
+  "NumSeroprevalenceEstimates": "Number of Seroprevalence Estimates",
+  "TestsAdministered": "Antibody Tests Administered",
   "TestType": "Test Type",
   "TestTypeOptions": {
     "ChemiluminescenceImmunoassay": "Chemiluminescence Immunoassay",
@@ -272,15 +278,43 @@
   },
   "TestUsed": "Test Used",
   "ThisForm": "This form",
-  "TimBiography": {
-    "PartOne": "Director, School of Population and Global Health, McGill University",
-    "PartTwo": "Executive Director, Canadian COVID-19 Immunity Task Force"
+  "Biographies": {
+    "Tim": {
+      "PartOne": "Director, School of Population and Global Health, McGill University",
+      "PartTwo": "Executive Director, Canadian COVID-19 Immunity Task Force"
+    },
+    "Tyler": {
+      "PartOne": "Associate Director, Centre for Health Informatics",
+      "PartTwo": "Associate Professor, University of Calgary"
+    },
+    "Matthew": {
+      "PartOne": "Scientific Program Manager, Diagnostics/Testing, COVID-19 Immunity Task Force",
+      "PartTwo": "Assistant Professor, McGill University"
+    },
+    "DavidN": {
+      "PartOne": "Co-Chair, COVID-19 Immunity Task Force",
+      "PartTwo": "President Emeritus, University of Toronto"
+    },
+    "DavidB": {
+      "PartOne": "Scientific Program Manager, Data Management/Analytics, COVID-19 Immunity Task Force",
+      "PartTwo": "Professor, McGill University"
+    },
+    "Jesse": {
+      "PartOne": "Scientist, COVID-19 Immunity Task Force",
+      "PartTwo": "Assistant Professor, McGill University"
+    },
+    "Jonathan": {
+      "PartOne": "Scientific Program Manager, Epidemiology/Methods, COVID-19 Immunity Task Force",
+      "PartTwo": "Associate Professor, McGill University"
+    }
   },
   "Today": "Today",
-  "TotalConfirmed": "Total Confirmed",
-  "TotalDeaths": "Total Deaths",
   "TotalEstimates": "Total Estimates",
-  "TotalRecovered": "Total Recovered",
   "TotalTests": "Total Tests",
-  "UniversityOf": "University of NAME"
+  "UniversityOf": "University of NAME",
+  "InitInfoModalText": {
+    "PartOne": "Welcome to SeroTracker! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
+    "PartTwo": "Our dashboard aggregates seroprevalence estimates in each country. By default, these aggregated estimates include national and regional seroprevalence estimates of the general population or blood donors, and excludes estimates presented only in the news.",
+    "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias. You can explore the source literature in depth under the ‘References’ tab."
+  }
 }
