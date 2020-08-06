@@ -60,6 +60,7 @@ export default function MobileComponents() {
         >
           <TotalStats />
           <AnalysisMethods />
+          <CountryList/>
           <FontAwesomeIcon
             icon={faTimes}
             onClick={() => handleFilterToggle(false, false)}

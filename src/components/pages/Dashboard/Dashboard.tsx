@@ -1,13 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../../constants";
+import { AppContext } from "../../../context";
+import httpClient from "../../../httpClient";
 import MobileComponents from '../../mobile/MobileComponents';
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
 import CentralPiece from "./CenterComponent";
-import { AppContext } from "../../../context";
-import httpClient from "../../../httpClient";
-import { AggregationFactor } from "../../../types";
 
 export default function Dashboard() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
@@ -17,10 +16,11 @@ export default function Dashboard() {
     if(state.filtered_records.length > 0){
       const updateCountryPrevalence = async () => {
         const api = new httpClient();
-        const countryPrevalences = await api.postMetaAnalysis(state.filtered_records, AggregationFactor.country);
+        const estimateGradePrevalences = await api.getEstimateGrades(state.filtered_records);
+        console.log(estimateGradePrevalences);
         dispatch({
-          type: 'UPDATE_COUNTRY_PREVALENCES',
-          payload: countryPrevalences
+          type: 'UPDATE_ESTIMATE_PREVALENCES',
+          payload: estimateGradePrevalences
         });
       } 
       updateCountryPrevalence();

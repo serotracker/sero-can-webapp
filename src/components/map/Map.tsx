@@ -1,12 +1,9 @@
-import { latLngBounds, Layer, LeafletMouseEvent } from "leaflet";
+import { latLngBounds } from "leaflet";
 import React, { createRef, useContext, useEffect, useState } from "react";
-import ReactDOMServer from 'react-dom/server';
 import { GeoJSON, Map as LeafletMap, TileLayer } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
-import { AggregatedRecord } from "../../types";
-import { getBuckets, getColor, getCountryName, getMapUrl } from "../../utils/mapUtils";
-import Translate from "../../utils/translate/translateService";
+import { altStyle, getBuckets, getMapUrl, mapAltDataToFeatures, onAltEachFeature } from "../../utils/mapUtils";
 import Legend from "./Legend";
 import './Map.css';
 
@@ -19,22 +16,13 @@ export default function Map() {
   const buckets = getBuckets(mapRecords.features);
 
   useEffect(() => {
-    if(state.country_prevalences.length > 0){
-      const prevalenceCountryDict: Record<string, AggregatedRecord> = state.country_prevalences.reduce((a: any, x: AggregatedRecord) => ({ ...a, [x.name]: x }), {});
+    if(state.estimate_grade_prevalences.length > 0){
 
       const importGeo = Countries as any;
       const features = importGeo.features as GeoJSON.Feature[]
-
       // We will iterate through all the features in the geoJson
       // if they are in the country dict we will attach their aggregated data to the feature for displaying
-      importGeo.features = features.map(feature => {
-        const country = prevalenceCountryDict![feature?.properties?.name];
-        if (country && country.seroprevalence) {
-          const { seroprevalence, error, n, num_studies } = country;
-          return { ...feature, properties: { ...feature.properties, seroprevalence, error, n, num_studies } }
-        }
-        return { ...feature, properties: { ...feature.properties, seroprevalence: null, error: null, n: null, num_studies: null } }
-      })
+      importGeo.features = mapAltDataToFeatures(features, state.estimate_grade_prevalences);
       setMapRecords(importGeo)
 
       // we need to update the key on the GEOJSON to let react know it's time to rerender
@@ -49,92 +37,7 @@ export default function Map() {
       })
       setMapRecords(initImportGeo);
     }
-  }, [state.country_prevalences])
-
-
-  const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined) => {
-    return {
-      fillColor: getColor(feature?.properties?.seroprevalence, buckets),
-      weight: 1,
-      opacity: 1,
-      color: 'white',
-      dashArray: '0',
-      fillOpacity: 0.7,
-      zIndex: 650
-    }
-  }
-
-  const highlightFeature = (e: LeafletMouseEvent) => {
-    const layer = e.target;
-    layer.setStyle({
-      weight: 5,
-      color: '#666',
-      dashArray: '',
-      fillOpacity: 0.7,
-      zIndex: 200
-    });
-    layer.bringToFront();
-
-  }
-
-  const zoomToFeature = (e: LeafletMouseEvent) => {
-    const map = mapRef?.current?.leafletElement
-    map?.fitBounds(e.target.getBounds());
-  };
-
-  const resetHighlight = (e: LeafletMouseEvent) => {
-    const layer = e.target;
-
-    layer.setStyle({
-      weight: 2,
-      opacity: 1,
-      color: 'white',
-      dashArray: '',
-      fillOpacity: 0.7
-    });
-  };
-  const createPopup = (properties: any) => {
-    if (properties.seroprevalence) {
-      let error = properties?.error;
-      return (
-        <div className="col-12 p-0 flex">
-          <div className="col-12 p-0 popup-header">{getCountryName(properties.name, state.language, "CountryOptions")}</div>
-          <div className="col-12 p-0 popup-content">{Translate("Seroprevalence")}: {properties?.seroprevalence.toFixed(2)}%</div>
-          <div className="col-12 p-0 popup-content">{Translate("95%ConfidenceInterval")}: {(properties?.seroprevalence - error[0]).toFixed(2)}%-{(properties?.seroprevalence + error[1]).toFixed(2)}%</div>
-          <div className="col-12 p-0 popup-content">{Translate("TotalTests")}: {properties?.n}</div>
-          <div className="col-12 p-0 popup-content">{Translate('TotalEstimates')}: {properties?.num_studies}</div>
-        </div>)
-    };
-    return (
-      <div className="col-12 p-0 flex">
-        <div className="col-12 p-0 popup-header">{getCountryName(properties.name, state.language, "CountryOptions")}</div>
-        <div className="col-12 p-0 flex popup-content">{Translate('NoData')}</div>
-      </div>)
-  }
-
-
-  // This method sets all the functionality for each GeoJSON item
-  const onEachFeature = (feature: GeoJSON.Feature, layer: Layer) => {
-
-    layer.bindPopup(ReactDOMServer.renderToString(createPopup(feature.properties)), { closeButton: false, autoPan: false });
-
-    layer.on({
-      mouseover: (e: LeafletMouseEvent) => {
-        layer.openPopup();
-        highlightFeature(e)
-      },
-      mouseout: (e: LeafletMouseEvent) => {
-        layer.closePopup();
-        resetHighlight(e)
-      },
-      mousemove: (e: LeafletMouseEvent) => {
-        layer.getPopup()?.setLatLng(e.latlng);
-      },
-      click: (e: LeafletMouseEvent) => {
-        zoomToFeature(e);
-      }
-    })
-  }
+  }, [state.country_prevalences, state.estimate_grade_prevalences])
 
   const bounds = latLngBounds([-90, -200], [90, 180]);
   const maxBounds = latLngBounds([-90, -200], [90, 200]);
@@ -161,13 +64,13 @@ export default function Map() {
         zoomOffset={-1}>
       </TileLayer>
       <GeoJSON
-        onEachFeature={onEachFeature}
+        onEachFeature={(feature, layer) => onAltEachFeature(feature, layer, mapRef, state.language)}
         ref={geoJsonRef}
         key={forceUpdate}
         data={mapRecords as GeoJSON.GeoJsonObject}
-        style={(data) => style(data)}>
+        style={(data) => altStyle(data, buckets)}>
       </GeoJSON>
-      <Legend buckets={buckets} />
+      {/* <Legend buckets={buckets} /> */}
     </LeafletMap>
   );
 }

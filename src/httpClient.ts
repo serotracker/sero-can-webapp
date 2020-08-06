@@ -1,13 +1,13 @@
-import { AirtableRecord, AggregatedRecord, AggregationFactor } from "./types"
+import { AirtableRecord, AggregatedRecord, AggregationFactor, AlternateAggregatedRecord } from "./types"
 
 export default class httpClient {
-    async httpGet(url: string){
+    async httpGet(url: string) {
         let url_full = url;
-        if(process.env.REACT_APP_ROUTE){
+        if (process.env.REACT_APP_ROUTE) {
             url_full = process.env.REACT_APP_ROUTE + url_full;
         }
         const res = await fetch(url_full);
-        if(res.status !== 200) {
+        if (res.status !== 200) {
             const error_msg = res.json();
             console.error(error_msg);
             return;
@@ -18,9 +18,9 @@ export default class httpClient {
         }
     }
 
-    async httpPost(url: string, data: Record<string, any>){
+    async httpPost(url: string, data: Record<string, any>) {
         let url_full = url;
-        if(process.env.REACT_APP_ROUTE){
+        if (process.env.REACT_APP_ROUTE) {
             url_full = process.env.REACT_APP_ROUTE + url_full;
         }
         const res = await fetch(url_full, {
@@ -30,7 +30,7 @@ export default class httpClient {
             },
             body: JSON.stringify(data) // body data type must match "Content-Type" header
         });
-        if(res.status !== 200) {
+        if (res.status !== 200) {
             const error_msg = res.json();
             console.error(error_msg);
             return;
@@ -48,17 +48,17 @@ export default class httpClient {
 
     async getAirtableRecords() {
         const response = await this.httpGet('/airtable_scraper/records')
-        if(!response || !("records" in response) || !("updated_at" in response)) {
+        if (!response || !("records" in response) || !("updated_at" in response)) {
             return [];
         }
-        const airtable_records = response.records!.map((item: Record<string, any>)=>{ 
+        const airtable_records = response.records!.map((item: Record<string, any>) => {
             // Convert response to AirtableRecord type
-            const record: AirtableRecord = { 
+            const record: AirtableRecord = {
                 source_name: item.SOURCE_NAME ? item.SOURCE_NAME[0] : null,
                 lead_org: item.LEAD_ORG ? item.LEAD_ORG[0] : null,
-                first_author: item.FIRST_AUTHOR ? item.FIRST_AUTHOR[0]: null,
-                source_type: item.SOURCE_TYPE ? item.SOURCE_TYPE[0]: null,
-                study_status: item.STUDY_STATUS ? item.STUDY_STATUS[0]: null,
+                first_author: item.FIRST_AUTHOR ? item.FIRST_AUTHOR[0] : null,
+                source_type: item.SOURCE_TYPE ? item.SOURCE_TYPE[0] : null,
+                study_status: item.STUDY_STATUS ? item.STUDY_STATUS[0] : null,
                 study_type: item.STUDY_TYPE,
                 test_type: item.TEST_TYPE,
                 specimen_type: item.SPECIMEN_TYPE ? item.SPECIMEN_TYPE[0] : null,
@@ -88,9 +88,9 @@ export default class httpClient {
                 estimate_grade: item.ESTIMATE_GRADE
             };
 
-            return record; 
+            return record;
         });
-        
+
         // Remove timestamp from updated at string
         const updated_at_words = response.updated_at!.split(" ", 4);
         const updated_at_string = updated_at_words.join(" ");
@@ -101,21 +101,72 @@ export default class httpClient {
         };
     }
 
-    async postMetaAnalysis(records: AirtableRecord[], aggregation_variable: AggregationFactor, meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise'){
+    async getEstimateGrades(records: AirtableRecord[]) {
+        const formattedRecords = records.map(o => {
+            return {
+                country: o.country,
+                estimate_grade: o.estimate_grade,
+                serum_pos_prevalence: o.seroprevalence,
+                denominator: o.denominator
+            }
+        })
+        const req_body = {
+            records: formattedRecords
+        }
+        const response = await this.httpPost('/airtable_scraper/country_seroprev_summary', req_body);
+        if (!response) {
+            return [];
+        }
+        const airtable_records = response.map((item: Record<string, any>) => {
+            // Convert response to AlternateAggregatedRecord type            
+            const itemName = Object.keys(item)[0];
+            const record = item[itemName]
+            const estimateSummary = record.seroprevalence_estimate_summary;
+            return {
+                numberOfStudies: record.n_estimates,
+                testsAdministered: record.n_tests_administered,
+                geographicalName: itemName,
+                localEstimate: {
+                    maxEstimate: estimateSummary.Local.max_estimate,
+                    minEstimate: estimateSummary.Local.min_estimate,
+                    numEstimates: estimateSummary.Local.n_estimates,
+                },                
+                nationalEstimate: {
+                    maxEstimate: estimateSummary.National.max_estimate,
+                    minEstimate: estimateSummary.National.min_estimate,
+                    numEstimates: estimateSummary.National.n_estimates,
+                },                
+                regionalEstimate: {
+                    maxEstimate: estimateSummary.Regional.max_estimate,
+                    minEstimate: estimateSummary.Regional.min_estimate,
+                    numEstimates: estimateSummary.Regional.n_estimates,
+                },                
+                sublocalEstimate: {
+                    maxEstimate: estimateSummary.Sublocal.max_estimate,
+                    minEstimate: estimateSummary.Sublocal.min_estimate,
+                    numEstimates: estimateSummary.Sublocal.n_estimates,
+                }
+            }
+        });
+
+        return airtable_records;
+    }
+
+    async postMetaAnalysis(records: AirtableRecord[], aggregation_variable: AggregationFactor, meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise') {
         // Note: while the rest of the aggregation variables can stay consistent with frontend nomenclature
         // the aggregation variable "country" must be changed to "COUNTRY"
         const formatted_agg_var = aggregation_variable === AggregationFactor.country ? "COUNTRY" : aggregation_variable;
-        const formatted_records = records!.filter(item => item[aggregation_variable] != null).map((item: AirtableRecord)=>{ 
+        const formatted_records = records!.filter(item => item[aggregation_variable] != null).map((item: AirtableRecord) => {
             // Note, all aggregation variable fields must be string arrays
-            const record: Record<string, any> = { 
+            const record: Record<string, any> = {
                 SERUM_POS_PREVALENCE: item.seroprevalence,
                 DENOMINATOR: item.denominator,
                 COUNTRY: [item.country]
             };
-            if(aggregation_variable !== AggregationFactor.country){
+            if (aggregation_variable !== AggregationFactor.country) {
                 record[aggregation_variable] = Array.isArray(item[aggregation_variable]) ? item[aggregation_variable] : [item[aggregation_variable]];
             }
-            return record; 
+            return record;
         });
 
         const req_body = {
@@ -126,7 +177,7 @@ export default class httpClient {
         };
 
         const response = await this.httpPost('/meta_analysis/records', req_body);
-        if(response){
+        if (response) {
             // Convert response to aggregatedRecord object
             const formatted_response: AggregatedRecord[] = Object.keys(response).filter((key: string) => response[key] !== null).map((key: string) => {
                 return {
@@ -144,14 +195,14 @@ export default class httpClient {
 
     // Aggregation of all records, to support TotalStats view
     // TODO: Consolidate this function with postMetaAnalysis
-    async postMetaAnalysisAll(records: AirtableRecord[], meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise'){
-        const formatted_records = records!.map((item: AirtableRecord)=>{ 
-            const record = { 
+    async postMetaAnalysisAll(records: AirtableRecord[], meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise') {
+        const formatted_records = records!.map((item: AirtableRecord) => {
+            const record = {
                 SERUM_POS_PREVALENCE: item.seroprevalence,
                 DENOMINATOR: item.denominator,
                 COUNTRY: [item.country]
             };
-            return record; 
+            return record;
         });
 
         const req_body = {
