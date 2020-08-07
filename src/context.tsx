@@ -56,6 +56,7 @@ const initialState: State = {
   healthcheck: '',
   airtable_records: [],
   filtered_records: [],
+  estimate_grade_prevalences: [],
   filters: initial_filters,
   filter_options: getEmptyFilters(),
   all_filter_options: getEmptyFilters(),
@@ -231,6 +232,11 @@ const reducer = (state: State, action: Record<string, any>): State => {
       return {
         ...state,
         showCookieBanner: true
+      };
+    case "UPDATE_ESTIMATE_PREVALENCES":
+      return {
+        ...state,
+        estimate_grade_prevalences: action.payload
       }
     case "SELECT_DATA_TAB":
       return {

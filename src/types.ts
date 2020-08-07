@@ -59,11 +59,11 @@ export type Filters = {
     estimate_grade: any,
 };
 
-export type FilterType =  'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported' | 'specimen_type' | 'estimate_grade';
+export type FilterType = 'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported' | 'specimen_type' | 'estimate_grade';
 
-export enum LanguageType  {
-  french = 'fr',
-  english ='en' 
+export enum LanguageType {
+    french = 'fr',
+    english = 'en'
 }
 
 export type State = {
@@ -76,9 +76,26 @@ export type State = {
     updated_at: string,
     data_page_state: DataPageState,
     language: LanguageType,
-    country_prevalences: AggregatedRecord[]
+    country_prevalences: AggregatedRecord[],
+    estimate_grade_prevalences: AlternateAggregatedRecord[],
     showCookieBanner: boolean
 };
+
+export type AlternateAggregatedRecord = {
+    testsAdministered: number;
+    geographicalName: string;
+    numberOfStudies: number;
+    localEstimate?: RegionalPrevalenceEstimate,
+    nationalEstimate?: RegionalPrevalenceEstimate,
+    regionalEstimate?: RegionalPrevalenceEstimate,
+    sublocalEstimate?: RegionalPrevalenceEstimate
+}
+
+export type RegionalPrevalenceEstimate = {
+    maxEstimate: number;
+    minEstimate: number;
+    numEstimates: number;
+}
 
 export enum AggregationFactor {
     country = 'country',
@@ -98,5 +115,5 @@ export type DataPageState = {
 
 export type CustomMatcherResult = {
     pass: boolean
-    message: string 
+    message: string
 }
