@@ -47,7 +47,7 @@ export default function Map() {
     <LeafletMap
       ref={mapRef}
       center={[0, 0]}
-      zoom={2}
+      zoom={1}
       className="map w-100"
       bounceAtZoomLimits={true}
       bounds={bounds}

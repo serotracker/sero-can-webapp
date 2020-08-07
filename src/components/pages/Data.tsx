@@ -14,7 +14,7 @@ export default function Data() {
                 className="airtable-embed col-12 p-0"
                 src={src}
                 width="85%"
-                height="650"
+                height="100%"
             /></div>
     }
 
