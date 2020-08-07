@@ -6,7 +6,7 @@ import { Layer, LeafletMouseEvent } from 'leaflet';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Map, MapProps } from 'react-leaflet';
-import { LanguageType, AggregatedRecord, AlternateAggregatedRecord } from "../types";
+import { LanguageType, AggregatedRecord, AlternateAggregatedRecord, RegionalPrevalenceEstimate } from "../types";
 import { toPascalCase } from './translate/caseChanger';
 import Translate from './translate/translateService';
 
@@ -49,7 +49,7 @@ export const colors = ['#76E57F', '#62CA7C', '#4FB079', '#3B9577', '#277A74', '#
 
 export const getColor = (d: number | null, buckets: number[]) => {
   if (d === null) return colors[7];
-  
+
   return d < buckets[1] ? colors[0] :
     d < buckets[2] ? colors[1] :
       d < buckets[3] ? colors[2] :
@@ -70,7 +70,7 @@ export const getCountryName = (country: string, language: LanguageType, optionSt
 }
 
 // This refers to the old map that displayed seroprevalences directly
-export const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined, buckets: number[] ) => {
+export const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined, buckets: number[]) => {
   return {
     fillColor: getColor(feature?.properties?.seroprevalence, buckets),
     weight: 1,
@@ -82,7 +82,7 @@ export const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefine
   }
 }
 
-export const altStyle = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined, buckets: number[] ) => {
+export const altStyle = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined, buckets: number[]) => {
   return {
     fillColor: feature?.properties?.geographicalName ? colors[6] : colors[7],
     weight: 1,
@@ -139,6 +139,21 @@ export const createPopup = (properties: any, language: LanguageType) => {
     </div>)
 }
 
+const createPopupRegionSection = (regionalEstimate: RegionalPrevalenceEstimate, title: string) => {
+
+  const minString = `${(regionalEstimate.minEstimate * 100).toFixed(2)}%`
+  const maxString = `${(regionalEstimate.maxEstimate * 100).toFixed(2)}%`
+  const regionString = minString === maxString ? minString : `${minString} - ${maxString}`;
+  return (
+    regionalEstimate.numEstimates ?
+      <div className="flex fit column popup-section">
+        <div className="section-title pt-1">{title.toUpperCase()}</div>
+        <div className="col-12 p-0 popup-content">{Translate('EstimateRange')}: <b>{regionString}</b></div>
+        <div className="col-12 p-0 popup-content">{Translate('NumberEstimates')}: <b>{regionalEstimate.numEstimates}</b></div>
+      </div> : null
+  )
+}
+
 export const createAltPopup = (properties: any, language: LanguageType) => {
   if (properties.testsAdministered) {
     const regionalEstimate = properties?.regionalEstimate;
@@ -146,18 +161,16 @@ export const createAltPopup = (properties: any, language: LanguageType) => {
     const localEstimate = properties?.localEstimate;
     const sublocalEstimate = properties?.sublocalEstimate;
     return (
-      <div className="col-12 p-0 flex">
-        <div className="col-12 p-0 popup-header">{getCountryName(properties.geographicalName, language, "CountryOptions")}</div>
-        <div className="col-12 p-0 popup-content">{Translate("TestsAdministered")}: {properties?.testsAdministered}</div>
-        <div className="col-12 p-0 popup-content">{Translate('NumSeroprevalenceEstimates')}: {properties?.numberOfStudies}</div>
-        { nationalEstimate.numEstimates ? <div className="col-12 p-0 popup-content">{Translate('NationalEstimateRange')}: {(nationalEstimate.minEstimate * 100).toFixed(2)}%-{(nationalEstimate.maxEstimate * 100).toFixed(2)}%</div> : null}
-        { nationalEstimate.numEstimates ? <div className="col-12 p-0 popup-content">{Translate('NationalEstimates')}: {nationalEstimate.numEstimates}</div> : null}
-        { regionalEstimate.numEstimates ? <div className="col-12 p-0 popup-content">{Translate('RegionalEstimateRange')}: {(regionalEstimate.minEstimate * 100).toFixed(2)}%-{(regionalEstimate.maxEstimate * 100).toFixed(2)}%</div> : null}
-        { regionalEstimate.numEstimates ? <div className="col-12 p-0 popup-content">{Translate('RegionalEstimates')}: {regionalEstimate.numEstimates}</div> : null}
-        { localEstimate.numEstimates ? <div className="col-12 p-0 popup-content">{Translate('LocalEstimateRange')}: {(localEstimate.minEstimate * 100).toFixed(2)}%-{(localEstimate.maxEstimate * 100).toFixed(2)}%</div> : null}
-        { localEstimate.numEstimates ? <div className="col-12 p-0 popup-content">{Translate('LocalEstimates')}: {localEstimate.numEstimates}</div> : null}
-        { sublocalEstimate.numEstimates ? <div className="col-12 p-0 popup-content">{Translate('SublocalEstimateRange')}: {(sublocalEstimate.minEstimate * 100).toFixed(2)}%-{(sublocalEstimate.maxEstimate * 100).toFixed(2)}%</div>: null}
-        { sublocalEstimate.numEstimates ? <div className="col-12 p-0 popup-content">{Translate('SublocalEstimates')}: {sublocalEstimate.numEstimates}</div> : null}
+      <div className="col-12 p-0 flex column">
+        <div className="fit popup-header popup-section">{getCountryName(properties.geographicalName, language, "CountryOptions")}</div>
+        <div className="flex column fit popup-section">
+          <div className="fit popup-content">{Translate("TestsAdministered")}: <b>{properties?.testsAdministered}</b></div>
+          <div className="fit popup-content">{Translate('NumSeroprevalenceEstimates')}: <b>{properties?.numberOfStudies}</b></div>
+        </div>
+        {createPopupRegionSection(nationalEstimate, Translate('NationalEstimates'))}
+        {createPopupRegionSection(regionalEstimate, Translate('RegionalEstimates'))}
+        {createPopupRegionSection(localEstimate, Translate('LocalEstimates'))}
+        {createPopupRegionSection(sublocalEstimate, Translate('SublocalEstimates'))}
       </div>)
   };
   return (
@@ -169,7 +182,7 @@ export const createAltPopup = (properties: any, language: LanguageType) => {
 
 
 export const zoomToFeature = (e: LeafletMouseEvent, mapRef: React.RefObject<Map<MapProps>>
-  ) => {
+) => {
   const map = mapRef?.current?.leafletElement
   map?.fitBounds(e.target.getBounds());
 };
@@ -220,7 +233,7 @@ export const onAltEachFeature = (feature: GeoJSON.Feature, layer: Layer, mapRef:
   })
 }
 
-export const mapDataToFeatures = (features: GeoJSON.Feature[], prevalences: AggregatedRecord[]) => {  
+export const mapDataToFeatures = (features: GeoJSON.Feature[], prevalences: AggregatedRecord[]) => {
   const prevalenceCountryDict: Record<string, AggregatedRecord> = prevalences.reduce((a: any, x: AggregatedRecord) => ({ ...a, [x.name]: x }), {});
   return features.map(feature => {
     const country = prevalenceCountryDict![feature?.properties?.name];
