@@ -31,9 +31,9 @@ export default function Legend(props: LegendProps) {
 
   return (
     <div className={isMobileDeviceOrTablet ? "info flex legend-mobile center-item" : "info flex legend center-item"}>
-      <div className="flex" key={Math.random()}>
+      <div className="flex center-item" key={Math.random()}>
         <i className="block" style={{ background: colors[6] }}></i>
-        <div className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("CountryEstimatesExist")}</div>
+        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("CountryEstimatesExist")}</p>
       </div>
       {/* {labels} */}
       {/* <h4 className="legend-title p-0 middle">{Translate('Seroprevalence')}
