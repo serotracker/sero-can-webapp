@@ -130,12 +130,17 @@
 
 .popup-header {
     font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
-    font-size: 1.25em;
+    font-size: 1.40em;
     line-height: 1.2;
     margin-bottom: 0.25em;
+    color: #455a64;
     display:flex;
     justify-content: flex-start;
     font-weight: 600;
+}
+
+.popup-section {
+    border-bottom: 1px solid grey;
 }
 
 .popup-content {

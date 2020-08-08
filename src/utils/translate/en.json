@@ -187,6 +187,8 @@
     "SecondParagraph": "NB: This should not be interpreted as a representative estimate of seroprevalence in the region of interest, especially if the aggregated studies have biased samples.",
     "ThirdParagraph": "Pooling technique: fixed effects inverse-variance weighted aggregation of records with sample size over MIN_DENOMINATOR."
   },
+  "NumberEstimates": "Number of Estimates",
+  "EstimateRange": "Estimate Range",
   "Serosurveys": "Serosurveys",
   "SerosurveysReportingPrevalence": "Serosurveys Reporting Prevalence",
   "Settings": "Settings",
@@ -252,6 +254,15 @@
     "Ongoing": "Ongoing"
   },
   "StudyType": "Study Type",
+  "NationalEstimateRange": "National Estimate Range",
+  "NationalEstimates": "National Estimates",
+  "RegionalEstimateRange": "Regional Estimate Range",
+  "RegionalEstimates": "Regional Estimates",
+  "LocalEstimateRange": "Local Estimate Range",
+  "LocalEstimates": "Local Estimates",
+  "SublocalEstimateRange": "Sublocal Estimate Range",
+  "SublocalEstimates": "Sublocal Estimates",
+  "CountryEstimatesExist": "Countries With Seroprevalence Estimates",
   "Summary": "Summary",
   "SummaryStatistics": "Summary Statistics",
   "TeamLead": "Team Leads",
@@ -313,8 +324,8 @@
   "TotalTests": "Total Tests",
   "UniversityOf": "University of NAME",
   "InitInfoModalText": {
-    "PartOne": "Welcome to SeroTracker! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
+    "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
     "PartTwo": "Our dashboard aggregates seroprevalence estimates in each country. By default, these aggregated estimates include national and regional seroprevalence estimates of the general population or blood donors, and excludes estimates presented only in the news.",
-    "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias. You can explore the source literature in depth under the ‘References’ tab."
+    "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias. You can explore the source literature in depth on the references card at the bottom of this page."
   }
 }

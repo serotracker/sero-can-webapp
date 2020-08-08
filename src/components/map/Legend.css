@@ -4,9 +4,14 @@
   line-height: 18px;
   max-width: 50vw;
   position: absolute;
-  bottom: 10px;
-  left: calc(50% - 25vw);
+  bottom: 2vh;
+  /* left: calc(50% - 25vw); */
+  right: 1vw;
   z-index: 500;
+}
+
+.legend p {
+  font-size: 20px;
 }
 
 .legend-mobile {
@@ -23,13 +28,14 @@
 .mobile-text {
   text-align: start;
   margin-left: -5px;
-  font-size: 11px;
+  font-size: 20px;
 }
 
 .legend i,
 .legend-mobile i {
-  width: 6vw;
-  height: 18px;
+  /* width: 6vw; */
+  width: 20px;
+  height: 20px;
   float: left;
   opacity: 0.7;
 }
