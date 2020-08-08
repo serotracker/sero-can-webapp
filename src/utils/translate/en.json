@@ -324,8 +324,8 @@
   "TotalTests": "Total Tests",
   "UniversityOf": "University of NAME",
   "InitInfoModalText": {
-    "PartOne": "Welcome to SeroTracker! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
+    "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
     "PartTwo": "Our dashboard aggregates seroprevalence estimates in each country. By default, these aggregated estimates include national and regional seroprevalence estimates of the general population or blood donors, and excludes estimates presented only in the news.",
-    "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias. You can explore the source literature in depth under the ‘References’ tab."
+    "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias. You can explore the source literature in depth on the references card at the bottom of this page."
   }
 }

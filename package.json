@@ -17,7 +17,7 @@
     "@types/react-leaflet": "^2.5.1",
     "@types/react-responsive": "^8.0.2",
     "@types/react-router-dom": "^5.1.5",
-    "@types/recharts": "^1.8.10",
+    "@types/recharts": "^1.8.14",
     "crypto-js": "^4.0.0",
     "gh-pages": "^2.2.0",
     "i18n-iso-countries": "^6.0.0",
