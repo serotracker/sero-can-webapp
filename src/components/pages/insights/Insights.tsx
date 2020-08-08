@@ -41,7 +41,7 @@ export default function Insights() {
               title="SeroTracker Blood Bank Seroprevalence Preliminary Report"
               url="https://drive.google.com/file/d/1It2CzAwEfTcQ1zIC6z2fO7i7XEfmWfom/view?usp=sharing" />
           </div>
-          <div className="col-sm-12 col-lg-6 py-2">
+          {/*<div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("Report")}
               date={"July 10, 2020"}
@@ -56,7 +56,7 @@ export default function Insights() {
               img={May2020Update}
               title="May Report - COVID-19 Screening & Testing in Canada’s Private Sector"
               url="https://drive.google.com/file/d/1qGTwpm7sKlcJ09vd2vzmJTBKXguYYrS-/view?usp=sharing" />
-          </div>
+          </div>*/}
           <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("Report")}
