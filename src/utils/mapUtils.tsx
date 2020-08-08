@@ -139,8 +139,7 @@ export const createPopup = (properties: any, language: LanguageType) => {
     </div>)
 }
 
-const createPopupRegionSection = (regionalEstimate: RegionalPrevalenceEstimate, title: string) => {
-
+const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimate, title: string) => {
   const minString = `${(regionalEstimate.minEstimate * 100).toFixed(2)}%`
   const maxString = `${(regionalEstimate.maxEstimate * 100).toFixed(2)}%`
   const regionString = minString === maxString ? minString : `${minString} - ${maxString}`;
@@ -167,10 +166,10 @@ export const createAltPopup = (properties: any, language: LanguageType) => {
           <div className="fit popup-content">{Translate("TestsAdministered")}: <b>{properties?.testsAdministered}</b></div>
           <div className="fit popup-content">{Translate('NumSeroprevalenceEstimates')}: <b>{properties?.numberOfStudies}</b></div>
         </div>
-        {createPopupRegionSection(nationalEstimate, Translate('NationalEstimates'))}
-        {createPopupRegionSection(regionalEstimate, Translate('RegionalEstimates'))}
-        {createPopupRegionSection(localEstimate, Translate('LocalEstimates'))}
-        {createPopupRegionSection(sublocalEstimate, Translate('SublocalEstimates'))}
+        {createPopupGeographySection(nationalEstimate, Translate('NationalEstimates'))}
+        {createPopupGeographySection(regionalEstimate, Translate('RegionalEstimates'))}
+        {createPopupGeographySection(localEstimate, Translate('LocalEstimates'))}
+        {createPopupGeographySection(sublocalEstimate, Translate('SublocalEstimates'))}
       </div>)
   };
   return (
