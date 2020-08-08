@@ -2,7 +2,7 @@ import _ from "lodash";
 import React, { SyntheticEvent, useContext, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Bar, BarChart, CartesianGrid, ErrorBar, LabelList, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { Dropdown, DropdownProps } from "semantic-ui-react";
+import { Dropdown, DropdownProps, Modal } from "semantic-ui-react";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import { AppContext } from "../../context";
 import httpClient from "../../httpClient";
@@ -15,9 +15,11 @@ import ReferencesTable from "./ReferencesTable";
 
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
+  const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
   const [state] = useContext(AppContext);
   const { filtered_records, filters } = state;
   const initState = [] as AggregatedRecord[];
+  const [showModal, toggleModal] = useState(true);
   const [records, setRecords] = useState(initState);
 
   const yAxisOptions = [
@@ -33,13 +35,13 @@ export default function Charts() {
   ]
 
   useEffect(() => {
-    if(filtered_records.length > 0){
+    if (filtered_records.length > 0) {
       const updateCharts = async () => {
         const api = new httpClient();
         const reAggregatedRecords = await api.postMetaAnalysis(state.filtered_records, yAxisSelection);
         const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
         setRecords(chartData);
-      } 
+      }
       updateCharts();
     }
   }, [yAxisSelection, state, filtered_records, filters])
@@ -71,7 +73,6 @@ export default function Charts() {
     return null;
   };
 
-
   const renderCustomizedLabel = (props: any) => {
     const { x, y, width, height, value, index } = props;
     let recordError = records[index].error;
@@ -96,11 +97,22 @@ export default function Charts() {
       })
     return longestWord;
   }
-
-  const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
-
+  const closeModal = () => toggleModal(false);
+  const MobileInfoModal = () => (
+    <Modal className="modal" open={showModal} onClose={closeModal} closeIcon={{ style: { top: '1.0535rem', right: '1rem' }, color: 'black', name: 'close' }}>
+      <Modal.Content className="modal-content">
+        <div className={isMobileDeviceOrTablet ? "modal-text-mobile" : "modal-text"}>
+          <p>{Translate('InitInfoModalText', ['PartOne'])}</p>
+          <p>{Translate('InitInfoModalText', ['PartTwo'])}</p>
+          <p>{Translate('InitInfoModalText', ['PartThree'])}</p>
+        </div>
+      </Modal.Content>
+    </Modal>
+  )
+  
   return (
     <div className="charts-page">
+      <MobileInfoModal />
       <div className={isMobileDeviceOrTablet ? "mobile-charts container col-11 center-item flex" : "charts container col-11 center-item flex"}>
         <div className="col-12 p-0 flex">
           <div className="col-sm-1 col-lg-3">
@@ -137,6 +149,10 @@ export default function Charts() {
             <Tooltip content={<CustomTooltip />} />
             <Legend />
             <Bar dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60} barSize={20}>
+              <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
+              <ErrorBar dataKey="error" width={4} strokeWidth={2} />
+            </Bar>
+            <Bar isAnimationActive={false} dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60} barSize={20}>
               <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
               <ErrorBar dataKey="error" width={4} strokeWidth={2} />
             </Bar>
