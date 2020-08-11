@@ -17,7 +17,7 @@ export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
   const [state] = useContext(AppContext);
-  const { filtered_records, filters } = state;
+  const { filtered_records, explore_filters: filters } = state;
   const initState = [] as AggregatedRecord[];
   const [showModal, toggleModal] = useState(true);
   const [records, setRecords] = useState(initState);

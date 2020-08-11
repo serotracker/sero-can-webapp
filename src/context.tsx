@@ -57,7 +57,8 @@ const initialState: State = {
   airtable_records: [],
   filtered_records: [],
   estimate_grade_prevalences: [],
-  filters: initial_filters,
+  explore_filters: {...initial_filters, estimate_grade: new Set(), source_type: new Set()},
+  analyze_filters: initial_filters,
   filter_options: getEmptyFilters(),
   all_filter_options: getEmptyFilters(),
   data_page_state: {
@@ -214,7 +215,7 @@ function getFilterOptions(records: AirtableRecord[]) {
 }
 
 const reducer = (state: State, action: Record<string, any>): State => {
-  const new_filters: any = state.filters;
+  const new_filters: any = state.data_page_state.mapOpen ? state.explore_filters : state.analyze_filters;
   let filtered_records: AirtableRecord[] = state.filtered_records;
   switch (action.type) {
     case "HEALTHCHECK":
@@ -239,8 +240,11 @@ const reducer = (state: State, action: Record<string, any>): State => {
         estimate_grade_prevalences: action.payload
       }
     case "SELECT_DATA_TAB":
+      const filters: any = action.payload ? state.explore_filters : state.analyze_filters
+      filtered_records = filterRecords(filters, state.airtable_records);
       return {
         ...state,
+        filtered_records,
         data_page_state: { ...state.data_page_state, mapOpen: action.payload }
       }
     case "SELECT_LANGUAGE":
@@ -265,7 +269,8 @@ const reducer = (state: State, action: Record<string, any>): State => {
       filtered_records = filterRecords(new_filters, state.airtable_records);
       return {
         ...state,
-        filters: new_filters,
+        explore_filters: state.data_page_state.mapOpen ? new_filters : state.explore_filters,
+        analyze_filters: state.data_page_state.mapOpen ? state.analyze_filters : new_filters,
         filtered_records,
         filter_options: recomputeFilterOptions(filtered_records, state.all_filter_options, new_filters)
       }

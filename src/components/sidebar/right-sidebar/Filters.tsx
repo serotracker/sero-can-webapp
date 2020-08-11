@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType } from '../../../types';
@@ -10,6 +10,12 @@ import InformationIcon from "../../shared/InformationIcon";
 
 export default function Filters() {
   const [state, dispatch] = useContext(AppContext);
+  const [filters, changeFilters] = useState(state.explore_filters)
+  
+  useEffect(() => {
+    const newFilters = state.data_page_state.mapOpen ? state.explore_filters : state.analyze_filters
+    changeFilters(newFilters)
+  }, [state.data_page_state.mapOpen])
 
   const formatOptions = (options: any, filter_type: FilterType) => {
     const formatted_options: Record<string, string>[] = [];
@@ -93,7 +99,8 @@ export default function Filters() {
               /** A numeric value associated with the event (e.g. 42) */
             })
           }}
-          defaultValue={Array.from(state.filters[filter_type])}
+          value={Array.from(filters[filter_type])}
+          defaultValue={Array.from(filters[filter_type])}
         />
       </div>
     )
