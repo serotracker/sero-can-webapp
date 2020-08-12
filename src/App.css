@@ -76,9 +76,13 @@
     text-align: end;
     justify-content: flex-end;
 }
-
+#popup {
+    width: 80vw;
+    max-width: 300px;
+}
 .center {
     text-align: center;
+    align-content: center;
     justify-content: center;
 }
 

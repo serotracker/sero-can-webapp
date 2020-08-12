@@ -1,15 +1,14 @@
+import { faBars, faFilter, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 // import { AppContext } from "../../../context";
-import { Sidebar, Segment, Menu } from "semantic-ui-react";
-import Filters from "../sidebar/right-sidebar/Filters";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faFilter, faBars } from "@fortawesome/free-solid-svg-icons";
-import TotalStats from "../sidebar/left-sidebar/TotalStats";
-import CountryList from "../sidebar/left-sidebar/CountryList";
+import { Menu, Segment, Sidebar } from "semantic-ui-react";
 import CentralPiece from "../pages/Dashboard/CenterComponent";
-import DateRangeSlider from "../sidebar/right-sidebar/date-slider/Slider";
-import LastUpdated from "../sidebar/right-sidebar/LastUpdated";
 import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
+import TotalStats from "../sidebar/left-sidebar/TotalStats";
+import DateRangeSlider from "../sidebar/right-sidebar/date-slider/Slider";
+import Filters from "../sidebar/right-sidebar/Filters";
+import LastUpdated from "../sidebar/right-sidebar/LastUpdated";
 
 
 export default function MobileComponents() {
