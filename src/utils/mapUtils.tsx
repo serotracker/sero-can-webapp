@@ -180,7 +180,7 @@ export const createAltPopup = (properties: any,
         {createPopupGeographySection(regionalEstimate, Translate('RegionalEstimates'))}
         {createPopupGeographySection(localEstimate, Translate('LocalEstimates'))}
         {createPopupGeographySection(sublocalEstimate, Translate('SublocalEstimates'))}
-        <div className="popup-section fit flex" id="popup-button">
+        <div className="fit flex" id="popup-button">
 
         </div>
       </div>)

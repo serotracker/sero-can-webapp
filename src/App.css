@@ -146,7 +146,7 @@
 .popup-section {
     border-bottom: 1px solid grey;
 }
-.popup-section:last-child {
+.popup-section:nth-last-child(2) {
     border-bottom: none;
 }
 
