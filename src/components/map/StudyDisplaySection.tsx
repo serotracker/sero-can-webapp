@@ -24,6 +24,6 @@ export const StudyDisplaySection = ({title, studies}: StudyDisplaySectionProps) 
                     color={'#455a64'}
                     size={"lg"} />
             </div>
-            {showOpen ? <StudiesTable dataRecords={studies} showAllStudies={false}></StudiesTable> : null}
+            {showOpen ? <StudiesTable smallView={true} dataRecords={studies} showAllStudies={false}></StudiesTable> : null}
         </div>)
 }

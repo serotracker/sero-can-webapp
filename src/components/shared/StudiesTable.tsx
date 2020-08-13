@@ -12,7 +12,8 @@ import { AirtableRecord } from "../../types";
 
 interface StudiesTableProps {
     showAllStudies: boolean,
-    dataRecords: AirtableRecord[]
+    dataRecords: AirtableRecord[],
+    smallView?: boolean
 }
 
 export default function StudiesTable(props: StudiesTableProps) {
@@ -108,13 +109,13 @@ export default function StudiesTable(props: StudiesTableProps) {
             <Table celled sortable fixed striped className="table mb-3 mt-0">
                 <Table.Header className="flex col-12 p-0">
                     <Table.Row className="flex col-12 p-0">
-                        {buildHeaderCell('title', Translate('Name'), 'col-sm-12 col-lg-3 p-1')}
-                        {buildHeaderCell('country', Translate('Geography'), 'col-sm-12 col-lg-2 p-1')}
-                        {buildHeaderCell('populations', Translate('Populations'), 'col-sm-12 col-lg-2 p-1')}
-                        {buildHeaderCell('denominator', Translate('N'), 'col-sm-12 col-lg-1 p-1')}
-                        {buildHeaderCell('seroprevalence', Translate('Prevalence'), 'col-sm-12 col-lg-1 p-1')}
-                        {buildHeaderCell('risk_of_bias', Translate('RiskOfBias'), 'col-sm-12 col-lg-2 p-1')}
-                        {buildHeaderCell('', Translate('Details'), 'col-sm-12 col-lg-1 p-1')}
+                        {buildHeaderCell('title', Translate('Name'), props.smallView ? 'flex col-12 p-1' : 'col-sm-12 col-lg-3 p-1')}
+                        {buildHeaderCell('country', Translate('Geography'), props.smallView ? 'flex col-6 p-1' : 'col-sm-12 col-lg-2 p-1')}
+                        {buildHeaderCell('populations', Translate('Populations'), props.smallView ? 'flex col-6 p-1' : 'col-sm-12 col-lg-2 p-1')}
+                        {buildHeaderCell('denominator', Translate('N'), props.smallView ? 'flex col-6 p-1' : 'col-sm-12 col-lg-1 p-1')}
+                        {buildHeaderCell('seroprevalence', Translate('Prevalence'), props.smallView ? 'flex col-6 p-1' : 'col-sm-12 col-lg-1 p-1')}
+                        {buildHeaderCell('risk_of_bias', Translate('RiskOfBias'), props.smallView ? 'flex col-6 p-1' : 'col-sm-12 col-lg-2 p-1')}
+                        {buildHeaderCell('', Translate('Details'), props.smallView ? 'flex col-6 p-1' : 'col-sm-12 col-lg-1 p-1')}
                     </Table.Row>
                 </Table.Header>
                 <Table.Body className="col-12 p-0">
@@ -130,16 +131,16 @@ export default function StudiesTable(props: StudiesTableProps) {
                             } = record
                             return (
                                 <Table.Row className="flex col-12 p-0" key={Math.random()}>
-                                    <Table.Cell className=" col-sm-12 col-lg-3 p-1">
+                                    <Table.Cell className={props.smallView ? "flex col-12 p-1" :"col-sm-12 col-lg-3 p-1"}>
                                         <a href={url ? url : '#'} target="_blank" rel="noopener noreferrer">{source_name}</a>
                                         <i className="px-1">({source_type})</i>
                                     </Table.Cell>
-                                    <Table.Cell className="flex col-sm-12 col-lg-2 p-1">{getGeography(city, state, country)}</Table.Cell>
-                                    <Table.Cell className="flex col-sm-12 col-lg-2 p-1">{getPopulation(sex, age, population_group)}</Table.Cell>
-                                    <Table.Cell className="flex col-sm-12 col-lg-1 p-1">{denominator ? denominator : "Not Reported"}</Table.Cell>
-                                    <Table.Cell className="flex col-sm-12 col-lg-1 p-1">{seroprevalence ? `${(seroprevalence * 100).toFixed(2)}%` : "Not Reported"}</Table.Cell>
-                                    <Table.Cell className="flex col-sm-12 col-lg-2 p-1">{risk_of_bias ? risk_of_bias : "Not Reported"}</Table.Cell>
-                                    <Table.Cell className="flex col-sm-12 col-lg-1 p-0 center-item"><StudyDetailsModal record={record} /></Table.Cell>
+                                    <Table.Cell className={props.smallView ? "flex col-6 p-1" :"flex col-sm-12 col-lg-2 p-1"}>{getGeography(city, state, country)}</Table.Cell>
+                                    <Table.Cell className={props.smallView ? "flex col-6 p-1" :"flex col-sm-12 col-lg-2 p-1"}>{getPopulation(sex, age, population_group)}</Table.Cell>
+                                    <Table.Cell className={props.smallView ? "flex col-6 p-1" :"flex col-sm-12 col-lg-1 p-1"}>{denominator ? denominator : "Not Reported"}</Table.Cell>
+                                    <Table.Cell className={props.smallView ? "flex col-6 p-1" :"flex col-sm-12 col-lg-1 p-1"}>{seroprevalence ? `${(seroprevalence * 100).toFixed(2)}%` : "Not Reported"}</Table.Cell>
+                                    <Table.Cell className={props.smallView ? "flex col-6 p-1" :"flex col-sm-12 col-lg-2 p-1"}>{risk_of_bias ? risk_of_bias : "Not Reported"}</Table.Cell>
+                                    <Table.Cell className={props.smallView ? "flex col-6 p-1" :"flex col-sm-12 col-lg-1 p-0 center-item"}><StudyDetailsModal record={record} /></Table.Cell>
                                 </Table.Row>
                             )
                         })}
