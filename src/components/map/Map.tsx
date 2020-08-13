@@ -5,15 +5,19 @@ import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
 import { altStyle, getBuckets, getMapUrl, mapAltDataToFeatures, onAltEachFeature } from "../../utils/mapUtils";
 import Legend from "./Legend";
+import StudyDisplay from './StudyDisplay';
 import './Map.css';
+import { useMediaQuery } from "react-responsive";
+import { mobileDeviceOrTabletWidth } from "../../constants";
 
 export default function Map() {
   const mapRef = createRef<LeafletMap>();
   const geoJsonRef = createRef<GeoJSON>();
-  const [state] = useContext(AppContext);
+  const [state, dispatch] = useContext(AppContext);
   const [mapRecords, setMapRecords] = useState(Countries as any);
   const [forceUpdate, setForceUpdate] = useState(Math.random());
   const buckets = getBuckets(mapRecords.features);
+  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
 
   useEffect(() => {
     if(state.estimate_grade_prevalences.length > 0){
@@ -37,7 +41,7 @@ export default function Map() {
       })
       setMapRecords(initImportGeo);
     }
-  }, [state.country_prevalences, state.estimate_grade_prevalences])
+  }, [state.countryPrevalences, state.estimate_grade_prevalences])
 
   const bounds = latLngBounds([-90, -200], [90, 180]);
   const maxBounds = latLngBounds([-90, -200], [90, 200]);
@@ -64,13 +68,14 @@ export default function Map() {
         zoomOffset={-1}>
       </TileLayer>
       <GeoJSON
-        onEachFeature={(feature, layer) => onAltEachFeature(feature, layer, mapRef, state.language)}
+        onEachFeature={(feature, layer) => onAltEachFeature(feature, layer, mapRef, state.language, dispatch, isMobileDeviceOrTablet)}
         ref={geoJsonRef}
         key={forceUpdate}
         data={mapRecords as GeoJSON.GeoJsonObject}
         style={(data) => altStyle(data, buckets)}>
       </GeoJSON>
       <Legend buckets={buckets} />
+      <StudyDisplay />
     </LeafletMap>
   );
 }

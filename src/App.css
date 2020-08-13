@@ -76,9 +76,13 @@
     text-align: end;
     justify-content: flex-end;
 }
-
+#popup {
+    width: 80vw;
+    max-width: 300px;
+}
 .center {
     text-align: center;
+    align-content: center;
     justify-content: center;
 }
 
@@ -105,7 +109,7 @@
 
 .section-title {
     font-weight: bold;
-    font-size: 1em;
+    font-size: 1.10em;
     line-height: 19px;
     color: #455a64;
 }
@@ -130,7 +134,7 @@
 
 .popup-header {
     font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
-    font-size: 1.40em;
+    font-size: 1.45em;
     line-height: 1.2;
     margin-bottom: 0.25em;
     color: #455a64;
@@ -141,6 +145,9 @@
 
 .popup-section {
     border-bottom: 1px solid grey;
+}
+.popup-section:last-child {
+    border-bottom: none;
 }
 
 .popup-content {

@@ -17,7 +17,7 @@ export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
   const [state] = useContext(AppContext);
-  const { filtered_records, filters } = state;
+  const { filteredRecords: filtered_records, exploreFilters: filters } = state;
   const initState = [] as AggregatedRecord[];
   const [showModal, toggleModal] = useState(true);
   const [records, setRecords] = useState(initState);
@@ -38,7 +38,7 @@ export default function Charts() {
     if (filtered_records.length > 0) {
       const updateCharts = async () => {
         const api = new httpClient();
-        const reAggregatedRecords = await api.postMetaAnalysis(state.filtered_records, yAxisSelection);
+        const reAggregatedRecords = await api.postMetaAnalysis(state.filteredRecords, yAxisSelection);
         const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
         setRecords(chartData);
       }

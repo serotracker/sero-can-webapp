@@ -15,7 +15,7 @@ export default function LastUpdated() {
         </div>
       </div>
       <div className="py-2 center">
-        {state.updated_at}
+        {state.updatedAt}
       </div>
     </div>
   )
