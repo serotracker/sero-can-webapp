@@ -163,8 +163,7 @@ const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimat
 
 export const createAltPopup = (properties: any,
   language: LanguageType,
-  dispatch: React.Dispatch<Record<string, any>>,
-  isMobileDeviceOrTablet: boolean) => {
+  dispatch: React.Dispatch<Record<string, any>>) => {
   if (properties.testsAdministered) {
     const regionalEstimate = properties?.regionalEstimate;
     const nationalEstimate = properties?.nationalEstimate;
@@ -181,14 +180,9 @@ export const createAltPopup = (properties: any,
         {createPopupGeographySection(regionalEstimate, Translate('RegionalEstimates'))}
         {createPopupGeographySection(localEstimate, Translate('LocalEstimates'))}
         {createPopupGeographySection(sublocalEstimate, Translate('SublocalEstimates'))}
-        {isMobileDeviceOrTablet ?
-          <Button id="onClickButton" primary onClick={(e) => {
-            console.log("Hello");
-            dispatch({
-              type: "SELECT_REGION",
-              payload: properties?.geographicalName
-            })
-          }}>{Translate('ViewStudies')}</Button> : null}
+        <div className="popup-section fit flex" id="popup-button">
+
+        </div>
       </div>)
   };
   return (
@@ -240,20 +234,23 @@ export const onAltEachFeature = (
   // We have to turn our JSX element into a string so that they can render it 
   // inside the popup. But that removes our onClick method on the button so we have to 
   // render the component again using ReactDOM.render().
-  const newPopup = createAltPopup(feature.properties, language, dispatch, isMobileDeviceOrTablet)
-
-  // We're gonna render it normally if it's not a mobile devie
-  layer.bindPopup(ReactDOMServer.renderToString(isMobileDeviceOrTablet ? <div id="popup"></div> : newPopup),
+  const newPopup = createAltPopup(feature.properties, language, dispatch)
+  layer.bindPopup(ReactDOMServer.renderToString(newPopup),
     { closeButton: false, autoPan: false, keepInView: true });
 
+  const popupButton = () => {
+    return (
+    <Button id="onClickButton" className="fill my-2" primary onClick={(e) => {
+      dispatch({
+        type: "SELECT_REGION",
+        payload: feature?.properties?.geographicalName
+      })
+    }}>{Translate('ViewStudies')}</Button>)
+  }
 
   layer.on({
     mouseover: (e: LeafletMouseEvent) => {
       layer.openPopup();
-      ReactDOM.render(
-        newPopup,
-        document.getElementById('popup')
-      );
       highlightFeature(e)
     },
     mouseout: (e: LeafletMouseEvent) => {
@@ -264,18 +261,28 @@ export const onAltEachFeature = (
       layer.getPopup()?.setLatLng(e.latlng);
     },
     click: (e: LeafletMouseEvent) => {
-      zoomToFeature(e, mapRef);
-      if (feature?.properties?.name && !isMobileDeviceOrTablet) {
-        dispatch({
-          type: "SELECT_REGION",
-          payload: feature?.properties?.name
-        })
+      if (!isMobileDeviceOrTablet) {        
+        zoomToFeature(e, mapRef);
+        if(feature?.properties?.name) {        
+          dispatch({
+              type: "SELECT_REGION",
+              payload: feature?.properties?.name
+            })
+          }
       }
-      else if (isMobileDeviceOrTablet) {
-        ReactDOM.render(
-          newPopup,
-          document.getElementById('popup')
-        );
+      // We need to check if the popup is open otherwise we will try and render in the button
+      // onto a node that doesn't exist.
+      else {
+        console.log(layer.getPopup()?.isPopupOpen())
+        console.log(layer.getPopup()?.isOpen())
+        console.log(layer.getPopup())
+        try {
+            ReactDOM.render(
+            popupButton(),
+            document.getElementById('popup-button')
+          );
+        }
+        catch(e) {}
       }
     }
   })
