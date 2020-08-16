@@ -139,13 +139,15 @@ export const createPopup = (properties: any, language: LanguageType) => {
     </div>)
 }
 
-const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimate, title: string) => {
+const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimate, title: string, isLastSection?: boolean) => {
   const minString = `${(regionalEstimate.minEstimate * 100).toFixed(2)}%`
   const maxString = `${(regionalEstimate.maxEstimate * 100).toFixed(2)}%`
   const regionString = minString === maxString ? minString : `${minString} - ${maxString}`;
+
+  //${active ? "active" : ""}
   return (
     regionalEstimate.numEstimates ?
-      <div className="flex fit column popup-section">
+      <div className={"flex fit column " + (!isLastSection ? 'popup-section' : '')}>
         <div className="section-title pt-1">{title.toUpperCase()}</div>
         <div className="col-12 p-0 popup-content">{Translate('EstimateRange')}: <b>{regionString}</b></div>
         <div className="col-12 p-0 popup-content">{Translate('NumberEstimates')}: <b>{regionalEstimate.numEstimates}</b></div>
@@ -166,10 +168,10 @@ export const createAltPopup = (properties: any, language: LanguageType) => {
           <div className="fit popup-content">{Translate("TestsAdministered")}: <b>{properties?.testsAdministered}</b></div>
           <div className="fit popup-content">{Translate('NumSeroprevalenceEstimates')}: <b>{properties?.numberOfStudies}</b></div>
         </div>
-        {createPopupGeographySection(nationalEstimate, Translate('NationalEstimates'))}
-        {createPopupGeographySection(regionalEstimate, Translate('RegionalEstimates'))}
-        {createPopupGeographySection(localEstimate, Translate('LocalEstimates'))}
-        {createPopupGeographySection(sublocalEstimate, Translate('SublocalEstimates'))}
+        {createPopupGeographySection(nationalEstimate, Translate('NationalEstimates'), regionalEstimate ? false : true)}
+        {createPopupGeographySection(regionalEstimate, Translate('RegionalEstimates'), localEstimate ? false : true)}
+        {createPopupGeographySection(localEstimate, Translate('LocalEstimates'), sublocalEstimate ? false : true)}
+        {createPopupGeographySection(sublocalEstimate, Translate('SublocalEstimates'), true)}
       </div>)
   };
   return (
