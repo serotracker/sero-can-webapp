@@ -144,23 +144,26 @@ const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimat
   const maxString = `${(regionalEstimate.maxEstimate * 100).toFixed(2)}%`
   const regionString = minString === maxString ? minString : `${minString} - ${maxString}`;
 
-  //${active ? "active" : ""}
   return (
-    regionalEstimate.numEstimates ?
       <div className={"flex fit column " + (!isLastSection ? 'popup-section' : '')}>
         <div className="section-title pt-1">{title.toUpperCase()}</div>
         <div className="col-12 p-0 popup-content">{Translate('EstimateRange')}: <b>{regionString}</b></div>
         <div className="col-12 p-0 popup-content">{Translate('NumberEstimates')}: <b>{regionalEstimate.numEstimates}</b></div>
-      </div> : null
+      </div>
   )
 }
 
 export const createAltPopup = (properties: any, language: LanguageType) => {
+
   if (properties.testsAdministered) {
-    const regionalEstimate = properties?.regionalEstimate;
-    const nationalEstimate = properties?.nationalEstimate;
-    const localEstimate = properties?.localEstimate;
-    const sublocalEstimate = properties?.sublocalEstimate;
+    var regions: Array<any> = []
+    let addRegion = (r: RegionalPrevalenceEstimate, name: string) => {return (r !== undefined && r.numEstimates !== 0 ? regions.push([r,name]) : null)}
+    addRegion(properties.nationalEstimate,Translate('NationalEstimates'));
+    addRegion(properties.regionalEstimate,Translate('RegionalEstimates'));
+    addRegion(properties.localEstimate,Translate('LocalEstimates'));
+    addRegion(properties.sublocalEstimate,Translate('SublocalEstimates'));
+    var lastIndex = regions.length -1;
+
     return (
       <div className="col-12 p-0 flex column">
         <div className="fit popup-header popup-section">{getCountryName(properties.geographicalName, language, "CountryOptions")}</div>
@@ -168,12 +171,10 @@ export const createAltPopup = (properties: any, language: LanguageType) => {
           <div className="fit popup-content">{Translate("TestsAdministered")}: <b>{properties?.testsAdministered}</b></div>
           <div className="fit popup-content">{Translate('NumSeroprevalenceEstimates')}: <b>{properties?.numberOfStudies}</b></div>
         </div>
-        {createPopupGeographySection(nationalEstimate, Translate('NationalEstimates'), regionalEstimate ? false : true)}
-        {createPopupGeographySection(regionalEstimate, Translate('RegionalEstimates'), localEstimate ? false : true)}
-        {createPopupGeographySection(localEstimate, Translate('LocalEstimates'), sublocalEstimate ? false : true)}
-        {createPopupGeographySection(sublocalEstimate, Translate('SublocalEstimates'), true)}
+        {regions.map((o,i) => createPopupGeographySection(o[0],o[1],i==lastIndex))}
       </div>)
   };
+
   return (
     <div className="col-12 p-0 flex">
       <div className="col-12 p-0 popup-header">{getCountryName(properties.name, language, "CountryOptions")}</div>
