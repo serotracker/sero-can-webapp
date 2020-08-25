@@ -4,7 +4,8 @@ import { mobileDeviceOrTabletWidth } from "../../../constants";
 import InsightsCard from "./InsightsCard";
 import './styles.scss';
 import Translate from "../../../utils/translate/translateService";
-import July2020Update from '../../../assets/images/IndustryUpdateJune10_2020.png'
+import July2020Update from '../../../assets/images/IndustryUpdateJuly_2020.png'
+import June2020Update from '../../../assets/images/IndustryUpdateJune_2020.png'
 import May2020Update from '../../../assets/images/IndustryUpdateMay_2020.png'
 import PreprintUpdate from '../../../assets/images/IndustryUpdatePre_2020.png'
 import BloodBank from '../../../assets/images/SeroTrackerBloodBank_July_2020.png'
@@ -24,10 +25,18 @@ export default function Insights() {
           {Translate('ReportsAndArticles').toUpperCase()}
         </h3>
         <div className="flex insights-article-container">
+        <div className="col-sm-12 col-lg-6 py-2">
+            <InsightsCard
+              identifier={Translate("Report")}
+              date={"August 7, 2020"}
+              img={July2020Update}
+              title="July Report - COVID-19 Screening & Testing in Canada’s Private Sector"
+              url="https://drive.google.com/file/d/1Rx3i_Sy01suu-ZZYV7LRpo2KEclbXCNN/view?usp=sharing"/>
+          </div>
           <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("Publication")}
-              date={"August 4th, 2020"}
+              date={"August 4, 2020"}
               img={LancetId}
               italicize="Lancet ID"
               title="Article (SeroTracker: a global SARS-CoV-2 seroprevalence dashboard)"
@@ -41,22 +50,22 @@ export default function Insights() {
               title="SeroTracker Blood Bank Seroprevalence Preliminary Report"
               url="https://drive.google.com/file/d/1It2CzAwEfTcQ1zIC6z2fO7i7XEfmWfom/view?usp=sharing" />
           </div>
-          {/*<div className="col-sm-12 col-lg-6 py-2">
+          <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("Report")}
-              date={"July 10, 2020"}
-              img={July2020Update}
+              date={"July 12, 2020"}
+              img={June2020Update}
               title="June Report - COVID-19 Screening & Testing in Canada’s Private Sector"
               url="https://drive.google.com/file/d/1h8QSrnyA3LfBbwWpqMHNgXsoMyngAw13/view" />
           </div>
           <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("Report")}
-              date={"June 9, 2020"}
+              date={"June 10, 2020"}
               img={May2020Update}
               title="May Report - COVID-19 Screening & Testing in Canada’s Private Sector"
-              url="https://drive.google.com/file/d/1qGTwpm7sKlcJ09vd2vzmJTBKXguYYrS-/view?usp=sharing" />
-          </div>*/}
+              url="https://drive.google.com/file/d/16pCR-zh1UiWjQFhTDxW_2adSGuq0pCgz/view?usp=sharing" />
+          </div>
           <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("Report")}
