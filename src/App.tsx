@@ -4,7 +4,8 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
 import CookiePolicy from "./components/pages/CookiePolicy";
-import Dashboard from "./components/pages/Dashboard/Dashboard";
+import Explore from "./components/pages/Dashboard/Explore";
+import Analyze from "./components/pages/Dashboard/Analyze";
 import Data from './components/pages/Data';
 import Insights from "./components/pages/insights/Insights";
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
@@ -57,8 +58,11 @@ function App() {
         <Route path="/About">
           <About />
         </Route>
-        <Route path="/Dashboard">
-          <Dashboard />
+        <Route path="/Explore">
+          <Explore />
+        </Route>
+        <Route path="/Analyze">
+          <Analyze />
         </Route>
         <Route path="/Data">
           <Data />
@@ -75,7 +79,7 @@ function App() {
         <Route path="/Insights">
           <Insights />
         </Route>
-        <Redirect exact from="/" to="/Dashboard" />
+        <Redirect exact from="/" to="/Explore" />
       </Switch>
     </div>
   );

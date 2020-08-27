@@ -3,6 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 import Translate from "../../utils/translate/translateService";
+import ReferencesTable from "../charts/ReferencesTable";
 import './static.css';
 
 export default function Data() {
@@ -56,8 +57,8 @@ export default function Data() {
                 <p>
                     {Translate('OurDataText', ['Text'])}
                 </p>
+                <ReferencesTable />
             </div>
-            {renderAirtable('https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=blue&viewControls=on')}
         </div>
     )
 }
