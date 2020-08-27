@@ -28,7 +28,7 @@ export default function TotalStats() {
 
   return (
     <div className="col-12 p-0 stats-container">
-      <div className="col-12 py-3 section-title center">{Translate('SummaryStatistics').toUpperCase()}</div>
+      <div className="col-12 pb-2 pt-4 section-title center">{Translate('SummaryStatistics').toUpperCase()}</div>
       {/* <div className="col-12 p-0 flex">
         <div className="main-statistic-title col-12 p-0 center-item flex">
           {Translate('Seroprevalence')}
@@ -52,7 +52,7 @@ export default function TotalStats() {
             tooltipHeader={Translate("AggregatedPrevalence")} /></div>
         <div className="main-statistic col-12 p-0 center">{seroprevalence ? `${seroprevalence!.toFixed(2)}%` : Translate("NoData")}</div>
       </div> */}
-      <div className="col-12 flex middle py-2">
+      <div className="col-12 flex middle pb-2">
         <div className="secondary-statistic-title center p-0 col-12">{Translate("TestsAdministered")}</div>
         <div className="secondary-statistic col-12 p-0 center">{n}</div>
       </div>
