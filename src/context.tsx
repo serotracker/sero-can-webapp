@@ -34,6 +34,7 @@ export function getDefaultFilters(): Filters {
     population_group: new Set([
       Translate('PopulationGroupOptions', ['GeneralPopulation']),
       Translate('PopulationGroupOptions', ['BloodDonors']),
+      Translate('PopulationGroupOptions', ['ResidualSera']),
     ]),
     sex: new Set(),
     age: new Set(),
