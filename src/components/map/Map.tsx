@@ -1,6 +1,6 @@
-import { latLngBounds } from "leaflet";
+import { latLngBounds, LatLng} from "leaflet";
 import React, { createRef, useContext, useEffect, useState } from "react";
-import { GeoJSON, Map as LeafletMap, TileLayer } from "react-leaflet";
+import { GeoJSON, Map as LeafletMap, Marker, Popup, Rectangle, TileLayer } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
 import { altStyle, getBuckets, getMapUrl, mapAltDataToFeatures, onAltEachFeature } from "../../utils/mapUtils";
@@ -42,6 +42,11 @@ export default function Map() {
   const maxBounds = latLngBounds([-90, -200], [90, 200]);
 
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_API_KEY;
+
+  function getRandomArbitrary(min: number, max: number) {
+    return Math.random() * (max - min) + min;
+  }
+
   return (
     <LeafletMap
       ref={mapRef}
@@ -62,6 +67,9 @@ export default function Map() {
         id={'mapbox/light-v9'}
         zoomOffset={-1}>
       </TileLayer>
+      <Rectangle
+        bounds={latLngBounds([-90, -200], [-85, 100])}>
+      </Rectangle>
       <GeoJSON
         onEachFeature={(feature, layer) => onAltEachFeature(feature, layer, mapRef, state.language)}
         ref={geoJsonRef}
