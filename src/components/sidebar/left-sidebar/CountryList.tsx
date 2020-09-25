@@ -6,7 +6,7 @@ import Translate from "../../../utils/translate/translateService";
 
 export default function CountryList() {
   const [state] = useContext(AppContext);
-  const aggregatedData = _.sortBy(state.country_prevalences, ['seroprevalence']).reverse();
+  const aggregatedData = _.sortBy(state.countryPrevalences, ['seroprevalence']).reverse();
 
   return (
     <div className="country-list">

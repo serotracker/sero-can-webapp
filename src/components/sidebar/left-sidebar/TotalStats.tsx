@@ -13,18 +13,18 @@ export default function TotalStats() {
   const [n, setN] = useState(0);
 
   useEffect(() => {
-    if(state.filtered_records.length > 0){
+    if(state.filteredRecords.length > 0){
       const updateCountryPrevalence = async () => {
         const api = new httpClient();
-        const results = await api.postMetaAnalysisAll(state.filtered_records);
+        const results = await api.postMetaAnalysisAll(state.filteredRecords);
         setNumCountries(results.countries);
         setSeroprevalence(results.seroprevalence);
         setN(results.n);
       } 
-      setNumStudies(state.filtered_records.length);
+      setNumStudies(state.filteredRecords.length);
       updateCountryPrevalence();
     }
-  }, [state.filtered_records])
+  }, [state.filteredRecords])
 
   return (
     <div className="col-12 p-0 stats-container">

@@ -18,10 +18,9 @@
   color: #555;
   text-align: center;
   line-height: 18px;
-  width: 96%;
   position: absolute;
   bottom: 10px;
-  left: 2%;
+  right: 2%;
   z-index: 500;
 }
 
