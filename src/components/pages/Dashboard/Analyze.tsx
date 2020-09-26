@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../../constants";
 import { AppContext } from "../../../context";
 import httpClient from "../../../httpClient";
-import MobileComponents from '../../mobile/MobileComponents';
+import AnalyzeMobile from '../../mobile/AnalyzeMobile';
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
 import Charts from "../../charts/Charts";
@@ -42,7 +42,7 @@ export default function Analyze() {
         </div>) :
         (
           <div className="fill flex">
-            <MobileComponents />
+            <AnalyzeMobile />
           </div>
         )}
     </div >

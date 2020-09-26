@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../../constants";
 import { AppContext } from "../../../context";
 import httpClient from "../../../httpClient";
-import MobileComponents from '../../mobile/MobileComponents';
+import MobileComponents from '../../mobile/ExploreMobile';
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
 import Map from '../../map/Map';
