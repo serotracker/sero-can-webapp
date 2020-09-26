@@ -13,10 +13,10 @@ export default function Analyze() {
   const [state, dispatch] = useContext(AppContext);
   
   useEffect(() => {
-    if(state.filteredRecords.length > 0){
+    if(state.filtered_records.length > 0){
       const updateCountryPrevalence = async () => {
         const api = new httpClient();
-        const estimateGradePrevalences = await api.getEstimateGrades(state.filteredRecords);
+        const estimateGradePrevalences = await api.getEstimateGrades(state.filtered_records);
         dispatch({
           type: 'UPDATE_ESTIMATE_PREVALENCES',
           payload: estimateGradePrevalences
@@ -24,7 +24,7 @@ export default function Analyze() {
       } 
       updateCountryPrevalence();
     }
-  }, [state.filteredRecords, dispatch])
+  }, [state.filtered_records, dispatch])
 
   return (
     <div className="fill flex dashboard">

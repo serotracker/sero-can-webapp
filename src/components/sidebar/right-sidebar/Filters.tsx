@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType } from '../../../types';
@@ -10,12 +10,6 @@ import InformationIcon from "../../shared/InformationIcon";
 
 export default function Filters() {
   const [state, dispatch] = useContext(AppContext);
-  const [filters, changeFilters] = useState(state.exploreFilters)
-
-  useEffect(() => {
-    const newFilters = state.dataPageState.mapOpen ? state.exploreFilters : state.analyzeFilters
-    changeFilters(newFilters)
-  }, [state.dataPageState.mapOpen])
 
   const formatOptions = (options: any, filter_type: FilterType) => {
     const formatted_options: Record<string, string>[] = [];
@@ -86,7 +80,7 @@ export default function Filters() {
           search
           clearable
           selection
-          options={formatOptions(state.filterOptions[filter_type], filter_type)}
+          options={formatOptions(state.filter_options[filter_type], filter_type)}
           onChange={(e: any, data: any) => {
             addFilter(data, filter_type)
             sendAnalyticsEvent({
@@ -99,7 +93,7 @@ export default function Filters() {
               /** A numeric value associated with the event (e.g. 42) */
             })
           }}
-          value={Array.from(filters[filter_type])}
+          defaultValue={Array.from(state.filters[filter_type])}
         />
       </div>
     )

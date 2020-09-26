@@ -68,17 +68,15 @@ export enum LanguageType {
 
 export type State = {
     healthcheck: string,
-    airtableRecords: AirtableRecord[],
-    filteredRecords: AirtableRecord[],
-    analyzeFilters: Filters,
-    exploreFilters: Filters,
-    filterOptions: Filters,
-    allFilterOptions: Filters,
-    selectedCountry: string,
-    updatedAt: string,
-    dataPageState: DataPageState,
+    airtable_records: AirtableRecord[],
+    filtered_records: AirtableRecord[],
+    filters: Filters,
+    filter_options: Filters,
+    all_filter_options: Filters,
+    updated_at: string,
+    data_page_state: DataPageState,
     language: LanguageType,
-    countryPrevalences: AggregatedRecord[],
+    country_prevalences: AggregatedRecord[],
     estimate_grade_prevalences: AlternateAggregatedRecord[],
     showCookieBanner: boolean
 };
@@ -112,8 +110,7 @@ export enum AggregationFactor {
 }
 
 export type DataPageState = {
-    mapOpen: boolean,
-    showStudiesModal: boolean
+    mapOpen: boolean
 }
 
 export type CustomMatcherResult = {

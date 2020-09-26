@@ -54,21 +54,18 @@ const initial_filters: Filters = getDefaultFilters();
 
 const initialState: State = {
   healthcheck: '',
-  selectedCountry: '',
-  airtableRecords: [],
-  filteredRecords: [],
+  airtable_records: [],
+  filtered_records: [],
   estimate_grade_prevalences: [],
-  exploreFilters: {...initial_filters, estimate_grade: new Set(), source_type: new Set()},
-  analyzeFilters: initial_filters,
-  filterOptions: getEmptyFilters(),
-  allFilterOptions: getEmptyFilters(),
-  dataPageState: {
-    mapOpen: true,
-    showStudiesModal: false
+  filters: initial_filters,
+  filter_options: getEmptyFilters(),
+  all_filter_options: getEmptyFilters(),
+  data_page_state: {
+    mapOpen: true
   },
   language: LanguageType.english,
-  updatedAt: '',
-  countryPrevalences: [],
+  updated_at: '',
+  country_prevalences: [],
   showCookieBanner: false
 };
 
@@ -217,8 +214,8 @@ function getFilterOptions(records: AirtableRecord[]) {
 }
 
 const reducer = (state: State, action: Record<string, any>): State => {
-  const new_filters: any = state.dataPageState.mapOpen ? state.exploreFilters : state.analyzeFilters;
-  let filtered_records: AirtableRecord[] = state.filteredRecords;
+  const new_filters: any = state.filters;
+  let filtered_records: AirtableRecord[] = state.filtered_records;
   switch (action.type) {
     case "HEALTHCHECK":
       return {
@@ -242,29 +239,14 @@ const reducer = (state: State, action: Record<string, any>): State => {
         estimate_grade_prevalences: action.payload
       }
     case "SELECT_DATA_TAB":
-      const filters: any = action.payload ? state.exploreFilters : state.analyzeFilters
-      filtered_records = filterRecords(filters, state.airtableRecords);
       return {
         ...state,
-        filteredRecords: filtered_records,
-        dataPageState: { ...state.dataPageState, mapOpen: action.payload }
+        data_page_state: { ...state.data_page_state, mapOpen: action.payload }
       }
     case "SELECT_LANGUAGE":
       return {
         ...state,
         language: action.payload
-      }
-    case "SELECT_REGION":
-      return {
-        ...state,
-        selectedCountry: action.payload,
-        dataPageState: { ...state.dataPageState, showStudiesModal: true }
-      }
-    case "CLOSE_MODAL":
-      return {
-        ...state,
-        selectedCountry: '',
-        dataPageState: { ...state.dataPageState, showStudiesModal: false }
       }
     case "GET_AIRTABLE_RECORDS":
       const all_filter_options = getFilterOptions(action.payload.airtable_records);
@@ -272,26 +254,25 @@ const reducer = (state: State, action: Record<string, any>): State => {
       const filter_options = getFilterOptions(filtered_records);
       return {
         ...state,
-        airtableRecords: action.payload.airtable_records,
-        filteredRecords: filtered_records,
-        updatedAt: action.payload.updated_at,
-        filterOptions: filter_options,
-        allFilterOptions: all_filter_options
+        airtable_records: action.payload.airtable_records,
+        filtered_records,
+        updated_at: action.payload.updated_at,
+        filter_options,
+        all_filter_options
       }
     case "UPDATE_FILTER":
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
-      filtered_records = filterRecords(new_filters, state.airtableRecords);
+      filtered_records = filterRecords(new_filters, state.airtable_records);
       return {
         ...state,
-        exploreFilters: state.dataPageState.mapOpen ? new_filters : state.exploreFilters,
-        analyzeFilters: state.dataPageState.mapOpen ? state.analyzeFilters : new_filters,
-        filteredRecords: filtered_records,
-        filterOptions: recomputeFilterOptions(filtered_records, state.allFilterOptions, new_filters)
+        filters: new_filters,
+        filtered_records,
+        filter_options: recomputeFilterOptions(filtered_records, state.all_filter_options, new_filters)
       }
     case "UPDATE_COUNTRY_PREVALENCES":
       return {
         ...state,
-        countryPrevalences: action.payload
+        country_prevalences: action.payload
       }
     default:
       return state
