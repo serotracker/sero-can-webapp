@@ -28,8 +28,8 @@ export default function DateRangeSlider() {
 
   useEffect(() => {
 
-    if(state.airtableRecords) {
-    const orderedDates = state.airtableRecords
+    if(state.airtable_records) {
+    const orderedDates = state.airtable_records
       .filter(o => o.publish_date !== null && o.publish_date !== undefined)
       .map(o => o.publish_date instanceof Array ? Date.parse(o.publish_date[0] as string) : Date.parse(o.publish_date as string))
       .sort((a, b) => a - b);
@@ -39,7 +39,7 @@ export default function DateRangeSlider() {
     setStartDate(startDate);
   }
 
-  }, [state.airtableRecords])
+  }, [state.airtable_records])
 
   const getTimeRange = (start: Date, end: number) => {
     const startTime = start.getTime();

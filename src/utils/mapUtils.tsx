@@ -9,8 +9,6 @@ import { Map, MapProps } from 'react-leaflet';
 import { LanguageType, AggregatedRecord, AlternateAggregatedRecord, RegionalPrevalenceEstimate } from "../types";
 import { toPascalCase } from './translate/caseChanger';
 import Translate from './translate/translateService';
-import { Button } from 'semantic-ui-react';
-import ReactDOM from 'react-dom';
 
 export const getBuckets = (features: GeoJSON.Feature[]) => {
   // This is some javascript voodoo to get maxSeroprevalence
@@ -41,6 +39,7 @@ const getDecimalFromLogit = (logit: number) => {
   return Math.exp(logit) / (Math.exp(logit) + 1) * 100
 }
 
+
 export const getMapUrl = (language: LanguageType) => {
   return language === LanguageType.english ? 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token='
     : 'https://api.mapbox.com/styles/v1/serotracker/ckb5pp5aj33xn1it8hivdofiv/tiles/512/{z}/{x}/{y}?access_token='
@@ -62,14 +61,10 @@ export const getColor = (d: number | null, buckets: number[]) => {
 
 Countries.registerLocale(English);
 Countries.registerLocale(French);
-const unmatchedCountryNames: Record<string, string> = {}
 
 export const getCountryName = (country: string, language: LanguageType, optionString: string) => {
   const code = Countries.getAlpha2Code(country, 'en');
   const translatedCountryName = Countries.getName(code, language);
-  if (!code && !translatedCountryName) {
-    unmatchedCountryNames[toPascalCase(country)] = country;
-  }
   const displayText = translatedCountryName ? translatedCountryName : Translate(optionString, [toPascalCase(country)]);
   return displayText;
 }
@@ -158,9 +153,7 @@ const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimat
   )
 }
 
-export const createAltPopup = (properties: any,
-  language: LanguageType,
-  dispatch: React.Dispatch<Record<string, any>>) => {
+export const createAltPopup = (properties: any, language: LanguageType) => {
 
   if (properties.testsAdministered) {
     var regions: Array<any> = []
@@ -179,9 +172,6 @@ export const createAltPopup = (properties: any,
           <div className="fit popup-content">{Translate('NumSeroprevalenceEstimates')}: <b>{properties?.numberOfStudies}</b></div>
         </div>
         {regions.map((o,i) => createPopupGeographySection(o[0],o[1],i==lastIndex))}
-        <div className="fit flex" id="popup-button">
-
-        </div>
       </div>)
   };
 
@@ -192,6 +182,7 @@ export const createAltPopup = (properties: any,
     </div>)
 }
 
+
 export const zoomToFeature = (e: LeafletMouseEvent, mapRef: React.RefObject<Map<MapProps>>
 ) => {
   const map = mapRef?.current?.leafletElement
@@ -200,8 +191,8 @@ export const zoomToFeature = (e: LeafletMouseEvent, mapRef: React.RefObject<Map<
 
 // This method sets all the functionality for each GeoJSON item
 export const onEachFeature = (feature: GeoJSON.Feature, layer: Layer, mapRef: React.RefObject<Map<MapProps>>, language: LanguageType) => {
-  const popup = ReactDOMServer.renderToString(<div id="1234">{createPopup(feature.properties, language)}</div>)
-  layer.bindPopup(popup, { closeButton: false, autoPan: false });
+
+  layer.bindPopup(ReactDOMServer.renderToString(createPopup(feature.properties, language)), { closeButton: false, autoPan: false });
 
   layer.on({
     mouseover: (e: LeafletMouseEvent) => {
@@ -222,31 +213,9 @@ export const onEachFeature = (feature: GeoJSON.Feature, layer: Layer, mapRef: Re
 }
 
 // This refers to the old map that displayed seroprevalences directly
-export const onAltEachFeature = (
-  feature: GeoJSON.Feature,
-  layer: Layer,
-  mapRef: React.RefObject<Map<MapProps>>,
-  language: LanguageType,
-  dispatch: React.Dispatch<Record<string, any>>,
-  isMobileDeviceOrTablet: boolean) => {
+export const onAltEachFeature = (feature: GeoJSON.Feature, layer: Layer, mapRef: React.RefObject<Map<MapProps>>, language: LanguageType) => {
 
-  // Basically leaflet is really damn weird
-  // We have to turn our JSX element into a string so that they can render it 
-  // inside the popup. But that removes our onClick method on the button so we have to 
-  // render the component again using ReactDOM.render().
-  const newPopup = createAltPopup(feature.properties, language, dispatch)
-  layer.bindPopup(ReactDOMServer.renderToString(newPopup),
-    { closeButton: false, autoPan: false, keepInView: true });
-
-  const popupButton = () => {
-    return (
-    <Button id="onClickButton" className="fill my-2" primary onClick={(e) => {
-      dispatch({
-        type: "SELECT_REGION",
-        payload: feature?.properties?.geographicalName
-      })
-    }}>{Translate('ViewStudies')}</Button>)
-  }
+  layer.bindPopup(ReactDOMServer.renderToString(createAltPopup(feature.properties, language)), { closeButton: false, autoPan: false });
 
   layer.on({
     mouseover: (e: LeafletMouseEvent) => {
@@ -261,29 +230,7 @@ export const onAltEachFeature = (
       layer.getPopup()?.setLatLng(e.latlng);
     },
     click: (e: LeafletMouseEvent) => {
-      if (!isMobileDeviceOrTablet) {        
-        zoomToFeature(e, mapRef);
-        if(feature?.properties?.name) {        
-          dispatch({
-              type: "SELECT_REGION",
-              payload: feature?.properties?.name
-            })
-          }
-      }
-      // We need to check if the popup is open otherwise we will try and render in the button
-      // onto a node that doesn't exist.
-      else {
-        console.log(layer.getPopup()?.isPopupOpen())
-        console.log(layer.getPopup()?.isOpen())
-        console.log(layer.getPopup())
-        try {
-            ReactDOM.render(
-            popupButton(),
-            document.getElementById('popup-button')
-          );
-        }
-        catch(e) {}
-      }
+      zoomToFeature(e, mapRef);
     }
   })
 }
