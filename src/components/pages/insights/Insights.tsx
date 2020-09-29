@@ -6,6 +6,7 @@ import './styles.scss';
 import Translate from "../../../utils/translate/translateService";
 import July2020Update from '../../../assets/images/IndustryUpdateJuly_2020.png'
 import June2020Update from '../../../assets/images/IndustryUpdateJune_2020.png'
+import August2020Update from '../../../assets/images/August2020Update.png'
 import May2020Update from '../../../assets/images/IndustryUpdateMay_2020.png'
 import PreprintUpdate from '../../../assets/images/IndustryUpdatePre_2020.png'
 import BloodBank from '../../../assets/images/SeroTrackerBloodBank_July_2020.png'
@@ -25,6 +26,14 @@ export default function Insights() {
           {Translate('ReportsAndArticles').toUpperCase()}
         </h3>
         <div className="flex insights-article-container">
+        <div className="col-sm-12 col-lg-6 py-2">
+            <InsightsCard
+              identifier={Translate("Report")}
+              date={"September 9, 2020"}
+              img={August2020Update}
+              title="August Report - COVID-19 Screening & Testing in Canada’s Private Sector"
+              url="https://drive.google.com/file/d/1m7BlfUKCYs32_D1jnFUEQHPr3Qjg5Eyt/view?usp=sharing"/>
+          </div>
         <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("Report")}

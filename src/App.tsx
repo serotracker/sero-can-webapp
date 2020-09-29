@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import { useMediaQuery } from "react-responsive";
 import { Redirect, Route, Switch } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
@@ -11,13 +10,11 @@ import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import TermsOfUse from "./components/pages/TermsOfUse";
 import { CookieBanner } from "./components/shared/CookieBanner";
 import { NavBar } from "./components/shared/NavBar";
-import { mobileDeviceOrTabletWidth } from "./constants";
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
 import { setLanguageType } from "./utils/translate/translateService";
 
 function App() {
-  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   const [{ language }, dispatch] = useContext(AppContext);
   // DATA
   useEffect(() => {
