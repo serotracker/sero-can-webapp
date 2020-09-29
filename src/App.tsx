@@ -29,6 +29,15 @@ function App() {
         type: 'ACCEPT_COOKIES'
       });
     }
+    
+    const allFilterOptions = async () => {
+      const response = await api.getAllRecords()
+      dispatch({
+        type: 'GET_ALL_RECORDS',
+        payload: response
+      })
+    }
+
     const getAirtableRecords = async () => {
       const filters = dataPageState.exploreIsOpen ? exploreFilters : analyzeFilters;
       const response = await api.getAirtableRecords(filters)
@@ -45,6 +54,7 @@ function App() {
 
     window.addEventListener('resize', handleResize)
     getAirtableRecords();
+    allFilterOptions()
     handleResize();
 
     setLanguageType(language);

@@ -41,10 +41,50 @@ export default class httpClient {
         }
     }
 
+    async getAllRecords() {
+        const response = await this.httpGet('/data_provider/records')
+        if (!response) {
+            return [];
+        }
+        const records = response.map((item: Record<string, any>) => {
+            // Convert response to AirtableRecord type
+            const record: AirtableRecord = {
+                include_in_n: true,
+                source_name: item.source_name,
+                lead_org: item.lead_org,
+                first_author: item.first_author,
+                source_type: item.source_type,
+                study_status: item.study_status,
+                study_type: item.study_type,
+                test_type: item.study_type,
+                specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],
+                isotypes_reported: item.isotypes_reported,
+                sex: item.sex,
+                approving_regulator: item.approving_regulator,
+                country: item.country,
+                state: item.state,
+                city: item.city,
+                population_group: item.population_group,
+                age: item.age,
+                denominator: item.denominator_value,
+                seroprevalence: item.serum_pos_prevalence,
+                sample_size: null,
+                sampling_start_date: null,
+                sampling_end_date: item.sampling_end_date,
+                overall_risk_of_bias: item.overall_risk_of_bias,
+                estimate_grade: item.estimate_grade
+            };
+
+            return record;
+        });
+        return records
+    }
+
     async getAirtableRecords(filters: Filters, 
                             sorting_key = "denominator_value", 
                             reverse = false) {
         const reqBodyFilters: Record<string, string[]> = {}
+        
         Object.keys(filters).forEach((o: string) => {
             const filter = Array.from(filters[o as FilterType]);
             if(filter.length > 0) {
@@ -103,15 +143,15 @@ export default class httpClient {
     }
 
     async getEstimateGrades(filters: Filters) {
-
         const reqBodyFilters: Record<string, string[]> = {}
         Object.keys(filters).forEach((o: string) => {
             const filter = Array.from(filters[o as FilterType]);
-            if(filter.length > 0) {
+            if(filter.length > 0 && (o === "country")) {
                 reqBodyFilters[o] = filter as string[]
             }
         })
-        delete reqBodyFilters['publish_date']
+        delete reqBodyFilters['publish_date']        
+        delete reqBodyFilters['population_group']
         const date = filters['publish_date']
         const reqBody = {
             start_date: date[0] ? (date[0] as Date)?.valueOf() / 1000 : ( Date.now() - new Date(2019, 7, 7).valueOf() ) / 1000,

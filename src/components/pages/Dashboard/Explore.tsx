@@ -24,7 +24,7 @@ export default function Explore() {
       } 
       updateCountryPrevalence();
     }
-  }, [state.filteredRecords, dispatch])
+  }, [state.filteredRecords, state.dataPageState.exploreIsOpen, state.analyzeFilters, state.exploreFilters, dispatch])
 
   return (
     <div className="fill flex dashboard">

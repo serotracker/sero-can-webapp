@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
+import httpClient from "../../../httpClient";
 import { FilterType } from '../../../types';
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import { getCountryName } from "../../../utils/mapUtils";
@@ -9,7 +10,18 @@ import Translate from "../../../utils/translate/translateService";
 import InformationIcon from "../../shared/InformationIcon";
 
 export default function Filters() {
-  const [state, dispatch] = useContext(AppContext);
+  const [state, dispatch] = useContext(AppContext);  
+  const api = new httpClient()
+  const { exploreFilters, analyzeFilters, dataPageState } = state;
+
+  const getAirtableRecords = async () => {
+    const filters = dataPageState.exploreIsOpen ? exploreFilters : analyzeFilters;
+    const response = await api.getAirtableRecords(filters)
+    dispatch({
+      type: 'GET_AIRTABLE_RECORDS',
+      payload: response
+    });
+  }
 
   const formatOptions = (options: any, filter_type: FilterType) => {
     const formatted_options: Record<string, string>[] = [];
@@ -41,6 +53,7 @@ export default function Filters() {
   }
 
   const addFilter = (data: any, filter_type: string) => {
+    console.log("Adding filter");
     dispatch({
       type: 'UPDATE_FILTER',
       payload: {
@@ -48,6 +61,7 @@ export default function Filters() {
         filter_value: data.value
       }
     });
+    getAirtableRecords();
   }
 
   const buildSectionHeader = (header_text: string, tooltip_text?: string | React.ReactNode, tooltip_header?: string) => {
