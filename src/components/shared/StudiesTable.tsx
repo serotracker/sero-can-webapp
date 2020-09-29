@@ -1,14 +1,12 @@
-
-
-import React, { useContext, useState, useEffect } from "react";
-import { useMediaQuery } from "react-responsive";
-import { mobileDeviceOrTabletWidth, mobileDeviceWidth } from "../../constants";
-import Translate from "../../utils/translate/translateService";
-import { Table, Pagination, Dropdown, DropdownProps } from "semantic-ui-react";
 import _ from "lodash";
-import StudyDetailsModal from "../charts/StudyDetailsModal";
+import React, { useContext, useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import { Dropdown, DropdownProps, Pagination, Table } from "semantic-ui-react";
+import { mobileDeviceWidth } from "../../constants";
 import { AppContext } from "../../context";
 import { AirtableRecord } from "../../types";
+import Translate from "../../utils/translate/translateService";
+import StudyDetailsModal from "../charts/StudyDetailsModal";
 
 interface StudiesTableProps {
     showAllStudies: boolean,

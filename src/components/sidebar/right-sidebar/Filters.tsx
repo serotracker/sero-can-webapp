@@ -71,6 +71,7 @@ export default function Filters() {
   }
 
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
+    const filters = state.dataPageState.exploreIsOpen ? state.exploreFilters : state.analyzeFilters
     return (
       <div className="pb-3">
         <Dropdown
@@ -93,7 +94,7 @@ export default function Filters() {
               /** A numeric value associated with the event (e.g. 42) */
             })
           }}
-          defaultValue={Array.from(state.filters[filter_type])}
+          defaultValue={Array.from(filters[filter_type])}
         />
       </div>
     )

@@ -19,14 +19,14 @@ export default function CentralPiece() {
   }
 
   const getClass = (shouldHighlight: boolean) => {
-    if (shouldHighlight === state.data_page_state.mapOpen) {
+    if (shouldHighlight === state.dataPageState.exploreIsOpen) {
       return 'center-highlighted'
     }
     return 'center-regular'
   }
 
   const displayCenter = () => {
-    return state.data_page_state.mapOpen ? <Map /> : <Charts />
+    return state.dataPageState.exploreIsOpen ? <Map /> : <Charts />
   }
   return (
     <div className="flex fill">
