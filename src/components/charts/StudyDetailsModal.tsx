@@ -68,7 +68,7 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
     source_name, first_author, lead_org, publish_date, publisher, url,
     summary, study_status, study_type,
     population_group, age, city, state, country, sex,
-    seroprevalence, risk_of_bias, denominator,
+    seroprevalence, overall_risk_of_bias: risk_of_bias, denominator,
     sampling_method, sampling_end_date, sampling_start_date,
     test_type, sensitivity, specificity, isotypes_reported, manufacturer, approving_regulator
   } = props.record

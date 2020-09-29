@@ -1,4 +1,5 @@
-import { AirtableRecord, AggregatedRecord, AggregationFactor, AlternateAggregatedRecord } from "./types"
+import { includes } from "lodash";
+import { AirtableRecord, AggregatedRecord, AggregationFactor, AlternateAggregatedRecord, Filters, FilterType } from "./types"
 
 export default class httpClient {
     async httpGet(url: string) {
@@ -41,79 +42,84 @@ export default class httpClient {
         }
     }
 
-    async getHealthcheck() {
-        const healthcheck: string = await this.httpGet('/healthcheck');
-        return healthcheck;
-    }
+    async getAirtableRecords(filters: Filters, 
+                            sorting_key = "denominator_value", 
+                            reverse = false) {
+        const reqBodyFilters: Record<string, string[]> = {}
+        Object.keys(filters).forEach((o: string) => {
+            const filter = Array.from(filters[o as FilterType]);
+            if(filter.length > 0) {
+                reqBodyFilters[o] = filter as string[]
+            }
+        })
+        delete reqBodyFilters['publish_date']
 
-    async getAirtableRecords() {
-        const response = await this.httpGet('/airtable_scraper/records')
-        if (!response || !("records" in response) || !("updated_at" in response)) {
+        const date = filters['publish_date']
+        const reqBody = {
+            start_date: date[0] ? (date[0] as Date)?.valueOf() / 1000 : ( Date.now() - new Date(2019, 7, 7).valueOf() ) / 1000,
+            end_date: date[1] ? (date[1] as Date)?.valueOf() / 1000: ( Date.now() ) / 1000,
+            reverse,
+            sorting_key,
+            filters: reqBodyFilters
+        }
+
+        const response = await this.httpPost('/data_provider/records', reqBody)
+        if (!response) {
             return [];
         }
-        const airtable_records = response.records!.map((item: Record<string, any>) => {
+        const filtered_records = response.map((item: Record<string, any>) => {
             // Convert response to AirtableRecord type
             const record: AirtableRecord = {
-                source_name: item.SOURCE_NAME ? item.SOURCE_NAME[0] : null,
-                lead_org: item.LEAD_ORG ? item.LEAD_ORG[0] : null,
-                first_author: item.FIRST_AUTHOR ? item.FIRST_AUTHOR[0] : null,
-                source_type: item.SOURCE_TYPE ? item.SOURCE_TYPE[0] : null,
-                study_status: item.STUDY_STATUS ? item.STUDY_STATUS[0] : null,
-                study_type: item.STUDY_TYPE,
-                test_type: item.TEST_TYPE,
-                specimen_type: item.SPECIMEN_TYPE ? item.SPECIMEN_TYPE[0] : null,
-                isotypes_reported: item.ISOTYPES,
-                manufacturer: item.MANUFACTURER,
-                approving_regulator: item.APPROVAL,
-                sensitivity: item.SENSITIVITY,
-                specificity: item.SPECIFICITY,
-                publish_date: item.PUB_DATE,
-                publisher: item.PUBLISHER,
-                country: item.COUNTRY ? item.COUNTRY[0] : null,
-                state: item.STATE,
-                city: item.CITY,
-                population_group: item.POPULATION_GROUP,
-                sex: item.SEX,
-                age: item.AGE,
-                denominator: item.DENOMINATOR,
-                summary: item.SUMMARY,
-                seroprevalence: item.SERUM_POS_PREVALENCE,
-                sample_size: item.SAMPLE_SIZE,
-                sampling_method: item.SAMPLING,
-                sampling_start_date: item.SAMPLING_START,
-                sampling_end_date: item.SAMPLING_END,
-                risk_of_bias: item.OVERALL_RISK_OF_BIAS ? item.OVERALL_RISK_OF_BIAS[0] : null,
-                url: item.URL ? item.URL[0] : null,
-                include_in_n: item.INCLUDE_IN_N ? true : false,
-                estimate_grade: item.ESTIMATE_GRADE
+                include_in_n: true,
+                source_name: item.source_name,
+                lead_org: item.lead_org,
+                first_author: item.first_author,
+                source_type: item.source_type,
+                study_status: item.study_status,
+                study_type: item.study_type,
+                test_type: item.study_type,
+                specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],
+                isotypes_reported: item.isotypes_reported,
+                sex: item.sex,
+                approving_regulator: item.approving_regulator,
+                country: item.country,
+                state: item.state,
+                city: item.city,
+                population_group: item.population_group,
+                age: item.age,
+                denominator: item.denominator_value,
+                seroprevalence: item.serum_pos_prevalence,
+                sample_size: null,
+                sampling_start_date: null,
+                sampling_end_date: item.sampling_end_date,
+                overall_risk_of_bias: item.overall_risk_of_bias,
+                estimate_grade: item.estimate_grade
             };
 
             return record;
         });
-
         // Remove timestamp from updated at string
-        const updated_at_words = response.updated_at!.split(" ", 4);
-        const updated_at_string = updated_at_words.join(" ");
 
-        return {
-            airtable_records,
-            updated_at: updated_at_string
-        };
+        return filtered_records;
     }
 
-    async getEstimateGrades(records: AirtableRecord[]) {
-        const formattedRecords = records.map(o => {
-            return {
-                country: o.country,
-                estimate_grade: o.estimate_grade,
-                serum_pos_prevalence: o.seroprevalence,
-                denominator: o.denominator
+    async getEstimateGrades(filters: Filters) {
+
+        const reqBodyFilters: Record<string, string[]> = {}
+        Object.keys(filters).forEach((o: string) => {
+            const filter = Array.from(filters[o as FilterType]);
+            if(filter.length > 0) {
+                reqBodyFilters[o] = filter as string[]
             }
         })
-        const req_body = {
-            records: formattedRecords
+        delete reqBodyFilters['publish_date']
+        const date = filters['publish_date']
+        const reqBody = {
+            start_date: date[0] ? (date[0] as Date)?.valueOf() / 1000 : ( Date.now() - new Date(2019, 7, 7).valueOf() ) / 1000,
+            end_date: date[1] ? (date[1] as Date)?.valueOf() / 1000: ( Date.now() ) / 1000,
+            filters: reqBodyFilters
         }
-        const response = await this.httpPost('/airtable_scraper/country_seroprev_summary', req_body);
+        const response = await this.httpPost('/data_provider/country_seroprev_summary', reqBody);
         if (!response) {
             return [];
         }
@@ -194,17 +200,7 @@ export default class httpClient {
     // Aggregation of all records, to support TotalStats view
     // TODO: Consolidate this function with postMetaAnalysis
     async postMetaAnalysisAll(records: AirtableRecord[], meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise') {
-        const formatted_records = records!.map((item: AirtableRecord) => {
-            const record = {
-                SERUM_POS_PREVALENCE: item.seroprevalence,
-                DENOMINATOR: item.denominator,
-                COUNTRY: [item.country]
-            };
-            return record;
-        });
-
         const req_body = {
-            records: formatted_records,
             meta_analysis_technique,
             meta_analysis_transformation
         };

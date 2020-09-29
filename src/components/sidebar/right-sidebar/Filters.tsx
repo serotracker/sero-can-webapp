@@ -80,7 +80,7 @@ export default function Filters() {
           search
           clearable
           selection
-          options={formatOptions(state.filter_options[filter_type], filter_type)}
+          options={formatOptions(state.allFilterOptions[filter_type], filter_type)}
           onChange={(e: any, data: any) => {
             addFilter(data, filter_type)
             sendAnalyticsEvent({
@@ -151,7 +151,7 @@ export default function Filters() {
               {buildFilterDropdown('study_status', Translate('StudyStatus'))}
             </div>
             <div>
-              {buildFilterDropdown('risk_of_bias', Translate('OverallRiskOfBias'))}
+              {buildFilterDropdown('overall_risk_of_bias', Translate('OverallRiskOfBias'))}
             </div>
           </div>
           <div className="pb-1">
