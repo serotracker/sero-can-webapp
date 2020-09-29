@@ -197,18 +197,21 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         language: action.payload
       }
-    case "GET_AIRTABLE_RECORDS":
+    case "GET_ALL_RECORDS":
       const allFilterOptions = getFilterOptions(action.payload);
+      return {
+        ...state,        
+        allFilterOptions
+      }
+    case "GET_AIRTABLE_RECORDS":
       return {
         ...state,
         filteredRecords: action.payload,
         updatedAt: action.payload.updated_at,
-        allFilterOptions
       }
     case "UPDATE_FILTER":      
       const new_filters: any = state.dataPageState.exploreIsOpen ? state.analyzeFilters : state.exploreFilters;
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
-      console.log(new_filters)
       return {
         ...state,
         exploreFilters: state.dataPageState.exploreIsOpen ? new_filters : state.exploreFilters,
