@@ -56,18 +56,18 @@ const initial_filters: Filters = getDefaultFilters();
 const initialState: State = {
   healthcheck: '',
   airtable_records: [],
-  filtered_records: [],
+  filteredRecords: [],
   estimate_grade_prevalences: [],
   exploreFilters: { ...initial_filters, estimate_grade: new Set(), source_type: new Set() },
   analyzeFilters: initial_filters,
   filterOptions: getEmptyFilters(),
   allFilterOptions: getEmptyFilters(),
   dataPageState: {
-    mapOpen: true,
+    exploreIsOpen: true,
     showStudiesModal: false
   },
   language: LanguageType.english,
-  updated_at: '',
+  updatedAt: '',
   country_prevalences: [],
   showCookieBanner: false
 };
@@ -150,8 +150,7 @@ function getFilterOptions(records: AirtableRecord[]) {
 }
 
 const reducer = (state: State, action: Record<string, any>): State => {
-  const new_filters: any = state.filters;
-  let filtered_records: AirtableRecord[] = state.filtered_records;
+  let filtered_records: AirtableRecord[] = state.filteredRecords;
   switch (action.type) {
     case "HEALTHCHECK":
       return {
@@ -177,7 +176,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
     case "SELECT_DATA_TAB":
       return {
         ...state,
-        data_page_state: { ...state.data_page_state, mapOpen: action.payload }
+        dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload }
       }
     case "SELECT_LANGUAGE":
       return {
@@ -192,13 +191,14 @@ const reducer = (state: State, action: Record<string, any>): State => {
         updatedAt: action.payload.updated_at,
         allFilterOptions
       }
-    case "UPDATE_FILTER":
+    case "UPDATE_FILTER":      
+      const new_filters: any = state.dataPageState.exploreIsOpen ? state.analyzeFilters : state.exploreFilters;
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
       console.log(new_filters)
       return {
         ...state,
-        exploreFilters: state.dataPageState.mapOpen ? new_filters : state.exploreFilters,
-        analyzeFilters: state.dataPageState.mapOpen ? state.analyzeFilters : new_filters,
+        exploreFilters: state.dataPageState.exploreIsOpen ? new_filters : state.exploreFilters,
+        analyzeFilters: state.dataPageState.exploreIsOpen ? state.analyzeFilters : new_filters,
         filterOptions: recomputeFilterOptions(filtered_records, state.allFilterOptions, new_filters)
       }
     case "UPDATE_COUNTRY_PREVALENCES":

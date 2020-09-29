@@ -1,5 +1,4 @@
-import { includes } from "lodash";
-import { AirtableRecord, AggregatedRecord, AggregationFactor, AlternateAggregatedRecord, Filters, FilterType } from "./types"
+import { AggregatedRecord, AggregationFactor, AirtableRecord, Filters, FilterType } from "./types";
 
 export default class httpClient {
     async httpGet(url: string) {

@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../../context";
-import InformationIcon from "../../shared/InformationIcon";
-import './RightSidebar.css';
 import Translate from "../../../utils/translate/translateService";
+import './RightSidebar.css';
 
 export default function LastUpdated() {
   const [state] = useContext(AppContext);
@@ -15,7 +14,7 @@ export default function LastUpdated() {
         </div>
       </div>
       <div className="py-2 center">
-        {state.updated_at}
+        {state.updatedAt}
       </div>
     </div>
   )

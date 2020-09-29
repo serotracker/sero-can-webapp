@@ -3,12 +3,12 @@ import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../../constants";
 import { AppContext } from "../../../context";
 import httpClient from "../../../httpClient";
-import AnalyzeMobile from '../../mobile/AnalyzeMobile';
+import MobileComponents from '../../mobile/ExploreMobile';
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
-import Charts from "../../charts/Charts";
+import Map from '../../map/Map';
 
-export default function Analyze() {
+export default function Explore() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   const [state, dispatch] = useContext(AppContext);
   
@@ -24,7 +24,7 @@ export default function Analyze() {
       } 
       updateCountryPrevalence();
     }
-  }, [state.filteredRecords, state.dataPageState, state.exploreFilters, state.analyzeFilters, dispatch])
+  }, [state.filteredRecords, dispatch])
 
   return (
     <div className="fill flex dashboard">
@@ -34,7 +34,7 @@ export default function Analyze() {
             <LeftSidebar />
           </div>
           <div className="col-8 p-0 flex">
-            <Charts />
+            <Map />
           </div>
           <div className="col-2 p-0 flex">
             <RightSidebar />
@@ -42,7 +42,7 @@ export default function Analyze() {
         </div>) :
         (
           <div className="fill flex">
-            <AnalyzeMobile />
+            <MobileComponents />
           </div>
         )}
     </div >

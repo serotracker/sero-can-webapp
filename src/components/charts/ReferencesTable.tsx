@@ -1,13 +1,13 @@
 import _ from 'lodash';
 import React, { useContext, useEffect, useState } from "react";
-import { Dropdown, DropdownProps, Pagination, Table } from "semantic-ui-react";
-import { AppContext } from "../../context";
-import './Charts.css';
-import StudyDetailsModal from './StudyDetailsModal';
-import { mobileDeviceWidth } from '../../constants';
 import { useMediaQuery } from 'react-responsive';
+import { DropdownProps, Table } from "semantic-ui-react";
+import { mobileDeviceWidth } from '../../constants';
+import { AppContext } from "../../context";
 import { AirtableRecord } from '../../types';
 import Translate from '../../utils/translate/translateService';
+import StudiesTable from '../shared/StudiesTable';
+import './Charts.css';
 
 export default function ReferencesTable() {
   const [state] = useContext(AppContext);
@@ -54,22 +54,22 @@ export default function ReferencesTable() {
     let newData = [];
 
     if (direction === 'descending') {
-      newData = _.orderBy(state.filtered_records, [(o: any) => { return o[column] || '' }], ['desc']);
+      newData = _.orderBy(state.filteredRecords, [(o: any) => { return o[column] || '' }], ['desc']);
     }
     else {
-      newData =  _.orderBy(state.filtered_records, [column], ['asc']);
+      newData =  _.orderBy(state.filteredRecords, [column], ['asc']);
     }
 
     const splicedData = newData.splice((activePage - 1) * pageLength, pageLength);
     setData(splicedData);
 
     if (isMobileDevice) {
-      setPageLength(Math.ceil(state.filtered_records.length))
+      setPageLength(Math.ceil(state.filteredRecords.length))
     }
     else {
-      setTotalPages(Math.ceil(state.filtered_records.length / pageLength));
+      setTotalPages(Math.ceil(state.filteredRecords.length / pageLength));
     }
-  }, [activePage, column, direction, isMobileDevice, pageLength, state.filtered_records])
+  }, [activePage, column, direction, isMobileDevice, pageLength, state.filteredRecords])
 
   const buildHeaderCell = (sortColumn: string, displayName: string, className: string) => {
     return (

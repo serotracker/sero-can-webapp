@@ -30,7 +30,7 @@ function App() {
       });
     }
     const getAirtableRecords = async () => {
-      const filters = dataPageState.mapOpen ? exploreFilters : analyzeFilters;
+      const filters = dataPageState.exploreIsOpen ? exploreFilters : analyzeFilters;
       const response = await api.getAirtableRecords(filters)
       dispatch({
         type: 'GET_AIRTABLE_RECORDS',
