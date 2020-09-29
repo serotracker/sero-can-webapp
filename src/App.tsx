@@ -19,7 +19,7 @@ import { setLanguageType } from "./utils/translate/translateService";
 
 function App() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
-  const [{ language }, dispatch] = useContext(AppContext);
+  const [{ language, exploreFilters, analyzeFilters, dataPageState }, dispatch] = useContext(AppContext);
   // DATA
   useEffect(() => {
     const api = new httpClient()
@@ -30,7 +30,8 @@ function App() {
       });
     }
     const getAirtableRecords = async () => {
-      const response = await api.getAirtableRecords()
+      const filters = dataPageState.mapOpen ? exploreFilters : analyzeFilters;
+      const response = await api.getAirtableRecords(filters)
       dispatch({
         type: 'GET_AIRTABLE_RECORDS',
         payload: response
@@ -47,7 +48,7 @@ function App() {
     handleResize();
 
     setLanguageType(language);
-  }, [dispatch, language])
+  }, [dispatch, language, dataPageState, exploreFilters, analyzeFilters])
 
   // ROUTING TABS
   return (

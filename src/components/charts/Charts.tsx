@@ -30,7 +30,7 @@ export default function Charts() {
     { key: 'Study Status', text: Translate('StudyStatus'), value: AggregationFactor.study_status },
     { key: 'Test Type', text: Translate('TestType'), value: AggregationFactor.test_type },
     { key: 'Source Type', text: Translate('SourceType'), value: AggregationFactor.source_type },
-    { key: 'Risk Of Bias', text: Translate('RiskOfBias'), value: AggregationFactor.risk_of_bias },
+    { key: 'Overall Risk Of Bias', text: Translate('RiskOfBias'), value: AggregationFactor.overall_risk_of_bias },
     { key: 'Isotypes Reported', text: Translate('IsotypesReported'), value: AggregationFactor.isotypes_reported },
   ]
 

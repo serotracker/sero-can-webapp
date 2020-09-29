@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../../context";
+import httpClient from "../../../httpClient";
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import Translate from "../../../utils/translate/translateService";
 import Charts from "../../charts/Charts";
@@ -8,7 +9,6 @@ import './Component.css';
 
 export default function CentralPiece() {
   const [state, dispatch] = useContext(AppContext);
-
   const clickButton = (text: string) => {
 
     sendAnalyticsEvent({
@@ -31,7 +31,7 @@ export default function CentralPiece() {
   return (
     <div className="flex fill">
       <div className="center-button flex">
-        <div className={`center-item left-button ${getClass(true)}`} onClick={() => {
+        <div className={`center-item left-button ${getClass(true)}`} onClick={async () => {
           clickButton('Explore');
           dispatch({
             type: 'SELECT_DATA_TAB',

@@ -105,69 +105,7 @@ export default function ReferencesTable() {
       <div className="col-12 px-0 py-3 section-title">
         {Translate('References').toUpperCase()}
       </div>
-      <Table celled sortable fixed striped className="table mb-3 mt-0">
-        <Table.Header className="flex col-12 p-0">
-          <Table.Row className="flex col-12 p-0">
-            {buildHeaderCell('title', Translate('Name'), 'col-sm-12 col-lg-3 p-1')}
-            {buildHeaderCell('country', Translate('Geography'), 'col-sm-12 col-lg-2 p-1')}
-            {buildHeaderCell('populations', Translate('Populations'), 'col-sm-12 col-lg-2 p-1')}
-            {buildHeaderCell('denominator', Translate('N'), 'col-sm-12 col-lg-1 p-1')}
-            {buildHeaderCell('seroprevalence', Translate('Prevalence'), 'col-sm-12 col-lg-1 p-1')}
-            {buildHeaderCell('risk_of_bias', Translate('RiskOfBias'), 'col-sm-12 col-lg-2 p-1')}
-            {buildHeaderCell('', Translate('Details'), 'col-sm-12 col-lg-1 p-1')}
-          </Table.Row>
-        </Table.Header>
-        <Table.Body className="col-12 p-0">
-          {_.map(data,
-            (record) => {
-              const {
-                source_name, source_type, url,
-                country, state, city,
-                denominator,
-                sex, age, population_group,
-                seroprevalence,
-                risk_of_bias,
-              } = record
-              return (
-                <Table.Row className="flex col-12 p-0" key={Math.random()}>
-                  <Table.Cell className=" col-sm-12 col-lg-3 p-1">
-                    <a href={url ? url : '#'} target="_blank" rel="noopener noreferrer">{source_name}</a>
-                    <i className="px-1">({source_type})</i>
-                  </Table.Cell>
-                  <Table.Cell className="flex col-sm-12 col-lg-2 p-1">{getGeography(city, state, country)}</Table.Cell>
-                  <Table.Cell className="flex col-sm-12 col-lg-2 p-1">{getPopulation(sex, age, population_group)}</Table.Cell>
-                  <Table.Cell className="flex col-sm-12 col-lg-1 p-1">{denominator ? denominator : "Not Reported"}</Table.Cell>
-                  <Table.Cell className="flex col-sm-12 col-lg-1 p-1">{seroprevalence ? `${(seroprevalence * 100).toFixed(2)}%` : "Not Reported"}</Table.Cell>
-                  <Table.Cell className="flex col-sm-12 col-lg-2 p-1">{risk_of_bias ? risk_of_bias : "Not Reported"}</Table.Cell>
-                  <Table.Cell className="flex col-sm-12 col-lg-1 p-0 center-item"><StudyDetailsModal record={record} /></Table.Cell>
-                </Table.Row>
-              )
-            })}
-        </Table.Body>
-        {
-          !isMobileDevice ?
-            <Table.Footer className="flex space-between">
-              <Pagination
-                activePage={activePage}
-                boundaryRange={boundaryRange}
-                onPageChange={handlePaginationChange}
-                size='mini'
-                siblingRange={siblingRange}
-                totalPages={totalPages}
-              />
-              <div className="p-2 flex">
-                <Dropdown inline
-                  options={pageLengthOptions}
-                  defaultValue={pageLengthOptions[0].value}
-                  onChange={handlePageLengthChange} />
-                <div className="px-2">
-                  {Translate('StudiesPerPage')}
-              </div>
-              </div>
-            </Table.Footer> :
-            null
-        }
-      </Table>
+       <StudiesTable dataRecords={state.filteredRecords} showAllStudies={false}></StudiesTable>
     </div>
   );
 }

@@ -6,7 +6,7 @@ export type AirtableRecord = {
     source_type: string | null,
     study_status: string | null,
     test_type: string[] | null,
-    specimen_type: string | null,
+    specimen_type: string[] | null,
     isotypes_reported: string[] | null,
     manufacturer?: string | null,
     approving_regulator?: string | null,
@@ -22,7 +22,7 @@ export type AirtableRecord = {
     seroprevalence: number | null,
     publish_date?: string[] | string | null,
     publisher?: string | null,
-    risk_of_bias: string | null,
+    overall_risk_of_bias: string | null,
     study_type?: string | null,
     sample_size?: string | null,
     sampling_method?: string | null,
@@ -52,14 +52,14 @@ export type Filters = {
     population_group: any,
     sex: any,
     age: any,
-    risk_of_bias: any,
+    overall_risk_of_bias: any,
     isotypes_reported: any,
     specimen_type: any
     publish_date: any,
     estimate_grade: any,
 };
 
-export type FilterType = 'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported' | 'specimen_type' | 'estimate_grade';
+export type FilterType = 'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'overall_risk_of_bias' | 'isotypes_reported' | 'specimen_type' | 'estimate_grade';
 
 export enum LanguageType {
     french = 'fr',
@@ -105,7 +105,7 @@ export enum AggregationFactor {
     study_status = 'study_status',
     test_type = 'test_type',
     source_type = 'source_type',
-    risk_of_bias = 'risk_of_bias',
+    overall_risk_of_bias = 'overall_risk_of_bias',
     isotypes_reported = 'isotypes_reported',
 }
 
@@ -116,4 +116,28 @@ export type DataPageState = {
 export type CustomMatcherResult = {
     pass: boolean
     message: string
+}
+
+export type PostRecordsBody = {
+    filters: {
+        country: String[],
+        source_type: String[],
+        source_name: String[],
+        study_status: String[],
+        overall_risk_of_bias: String[],
+        population_group: String[],
+        age: String[],
+        sex: String[],
+        test_type: String[],
+        isotypes_reported: String[],
+        specimen_type: String[],
+        estimate_grade: String[]
+    },
+    start_date: Date | null,
+    end_date: Date | null,
+    sorting_key: String,
+    reverse: Boolean,
+    per_page: Number,
+    page_index: Number,
+    columns: String[]
 }

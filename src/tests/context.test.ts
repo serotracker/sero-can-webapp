@@ -76,7 +76,7 @@ test('test age filter', () => {
 
 test('test risk of bias filter', () => {
   const filters = getEmptyFilters()
-  filters.risk_of_bias.add('Low')
+  filters.overall_risk_of_bias.add('Low')
   let filteredRecords = filterRecords(filters, testRecords)
   expect(filteredRecords.length).toBe(7)
 });
