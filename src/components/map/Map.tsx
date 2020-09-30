@@ -120,7 +120,6 @@ export default function Map() {
             icon={nationalMarker}
             key={`marker-${record.source_name}`} 
             position={[51.505, -0.09]}
-            ref={initMarker}
           >
           <Popup autoClose={false} className="pin-popup">
             <div className="popup-title">
@@ -136,7 +135,7 @@ export default function Map() {
               Location
             </div>
             <div className="popup-text">
-              {record.city && `${record.city}`}, {record.state && `${record.state}`}, {record.country && `${record.country}`}
+              {record.city && `${record.city}`}{record.city && record.state && ","} {record.state && `${record.state}`}{record.state && record.country && ","} {record.country && `${record.country}`}
             </div>
             <div className="popup-heading">
               Best seroprevalence (SP) estimate
@@ -169,7 +168,6 @@ export default function Map() {
           icon={regionalMarker}
           key={`marker`} 
           position={[51.505, 1.05]}
-          ref={initMarker}
         >
         <Popup>
           <span>A pretty CSS3 popup. <br/> Easily customizable.</span>
