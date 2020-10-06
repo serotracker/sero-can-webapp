@@ -16,10 +16,10 @@ export default function TotalStats() {
     if(state.filteredRecords.length > 0){
       const updateCountryPrevalence = async () => {
         const api = new httpClient();
-        const results = await api.postMetaAnalysisAll(state.filteredRecords);
-        setNumCountries(results.countries);
-        setSeroprevalence(results.seroprevalence);
-        setN(results.n);
+        // const results = await api.postMetaAnalysisAll(state.filteredRecords);
+        // setNumCountries(results.countries);
+        // setSeroprevalence(results.seroprevalence);
+        // setN(results.n);
       } 
       setNumStudies(state.filteredRecords.length);
       updateCountryPrevalence();
