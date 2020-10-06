@@ -80,14 +80,14 @@ export default class httpClient {
         return records
     }
 
-    async getAirtableRecords(filters: Filters, 
-                            sorting_key = "denominator_value", 
-                            reverse = false) {
+    async getAirtableRecords(filters: Filters,
+        sorting_key = "denominator_value",
+        reverse = false) {
         const reqBodyFilters: Record<string, string[]> = {}
-        
+
         Object.keys(filters).forEach((o: string) => {
             const filter = Array.from(filters[o as FilterType]);
-            if(filter.length > 0) {
+            if (filter.length > 0) {
                 reqBodyFilters[o] = filter as string[]
             }
         })
@@ -95,8 +95,8 @@ export default class httpClient {
 
         const date = filters['publish_date']
         const reqBody = {
-            start_date: date[0] ? (date[0] as Date)?.valueOf() / 1000 : ( Date.now() - new Date(2019, 7, 7).valueOf() ) / 1000,
-            end_date: date[1] ? (date[1] as Date)?.valueOf() / 1000: ( Date.now() ) / 1000,
+            start_date: date[0] ? (date[0] as Date)?.valueOf() / 1000 : (Date.now() - new Date(2019, 7, 7).valueOf()) / 1000,
+            end_date: date[1] ? (date[1] as Date)?.valueOf() / 1000 : (Date.now()) / 1000,
             reverse,
             sorting_key,
             filters: reqBodyFilters
@@ -146,16 +146,16 @@ export default class httpClient {
         const reqBodyFilters: Record<string, string[]> = {}
         Object.keys(filters).forEach((o: string) => {
             const filter = Array.from(filters[o as FilterType]);
-            if(filter.length > 0 && (o === "country")) {
+            if (filter.length > 0 && (o === "country")) {
                 reqBodyFilters[o] = filter as string[]
             }
         })
-        delete reqBodyFilters['publish_date']        
+        delete reqBodyFilters['publish_date']
         delete reqBodyFilters['population_group']
         const date = filters['publish_date']
         const reqBody = {
-            start_date: date[0] ? (date[0] as Date)?.valueOf() / 1000 : ( Date.now() - new Date(2019, 7, 7).valueOf() ) / 1000,
-            end_date: date[1] ? (date[1] as Date)?.valueOf() / 1000: ( Date.now() ) / 1000,
+            start_date: date[0] ? (date[0] as Date)?.valueOf() / 1000 : (Date.now() - new Date(2019, 7, 7).valueOf()) / 1000,
+            end_date: date[1] ? (date[1] as Date)?.valueOf() / 1000 : (Date.now()) / 1000,
             filters: reqBodyFilters
         }
         const response = await this.httpPost('/data_provider/country_seroprev_summary', reqBody);
@@ -173,17 +173,17 @@ export default class httpClient {
                     maxEstimate: estimateSummary.Local.max_estimate,
                     minEstimate: estimateSummary.Local.min_estimate,
                     numEstimates: estimateSummary.Local.n_estimates,
-                },                
+                },
                 nationalEstimate: {
                     maxEstimate: estimateSummary.National.max_estimate,
                     minEstimate: estimateSummary.National.min_estimate,
                     numEstimates: estimateSummary.National.n_estimates,
-                },                
+                },
                 regionalEstimate: {
                     maxEstimate: estimateSummary.Regional.max_estimate,
                     minEstimate: estimateSummary.Regional.min_estimate,
                     numEstimates: estimateSummary.Regional.n_estimates,
-                },                
+                },
                 sublocalEstimate: {
                     maxEstimate: estimateSummary.Sublocal.max_estimate,
                     minEstimate: estimateSummary.Sublocal.min_estimate,
@@ -245,12 +245,21 @@ export default class httpClient {
         };
 
         const response = await this.httpPost('/meta_analysis/records', req_body);
-        const formatted_response = {
-            error: response.error_percent,
-            n: response.total_N,
-            countries: response.countries,
-            num_studies: response.n_studies,
-            seroprevalence: response.seroprevalence_percent
+        let formatted_response = {
+            error: null,
+            n: null,
+            countries: null,
+            num_studies: null,
+            seroprevalence: null}
+            
+        if (response) {
+            formatted_response = {
+                error: response.error_percent,
+                n: response.total_N,
+                countries: response.countries,
+                num_studies: response.n_studies,
+                seroprevalence: response.seroprevalence_percent
+            }
         }
         return formatted_response;
     }
