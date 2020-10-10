@@ -78,7 +78,8 @@ export type State = {
     language: LanguageType,
     country_prevalences: AggregatedRecord[],
     estimate_grade_prevalences: AlternateAggregatedRecord[],
-    showCookieBanner: boolean
+    showCookieBanner: boolean,
+    showAnalyzePopup: boolean
 };
 
 export type AlternateAggregatedRecord = {
