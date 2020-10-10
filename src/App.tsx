@@ -61,6 +61,9 @@ function App() {
         <Route path="/Explore">
           <Explore />
         </Route>
+        <Route path="/Dashboard">
+          <Redirect to="/Explore" />
+        </Route>
         <Route path="/Analyze">
           <Analyze />
         </Route>
