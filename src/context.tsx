@@ -67,7 +67,8 @@ const initialState: State = {
   language: LanguageType.english,
   updated_at: '',
   country_prevalences: [],
-  showCookieBanner: false
+  showCookieBanner: false,
+  showAnalyzePopup: true
 };
 
 export function filterRecords(filters: Filters, records: AirtableRecord[]) {
@@ -234,6 +235,19 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         showCookieBanner: true
       };
+
+      case "OPEN_ANALYZE_POPUP":
+        return {
+          ...state,
+          showAnalyzePopup: true
+        };
+
+    case "CLOSE_ANALYZE_POPUP":
+      return {
+        ...state,
+        showAnalyzePopup: false
+      };
+
     case "UPDATE_ESTIMATE_PREVALENCES":
       return {
         ...state,

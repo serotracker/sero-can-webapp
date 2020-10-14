@@ -16,8 +16,8 @@ import ReferencesTable from "./ReferencesTable";
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
-  const [state] = useContext(AppContext);
-  const { filtered_records, filters } = state;
+  const [state, dispatch] = useContext(AppContext);
+  const { filtered_records, filters, showAnalyzePopup } = state;
   const initState = [] as AggregatedRecord[];
   const [showModal, toggleModal] = useState(true);
   const [records, setRecords] = useState(initState);
@@ -97,7 +97,11 @@ export default function Charts() {
       })
     return longestWord;
   }
-  const closeModal = () => toggleModal(false);
+  const closeModal = () => {
+    toggleModal(false);
+    dispatch({ type: 'CLOSE_ANALYZE_POPUP' })
+  } 
+
   const MobileInfoModal = () => (
     <Modal className="modal" open={showModal} onClose={closeModal} closeIcon={{ style: { top: '1.0535rem', right: '1rem' }, color: 'black', name: 'close' }}>
       <Modal.Content className="modal-content">
@@ -112,7 +116,7 @@ export default function Charts() {
   
   return (
     <div className="charts-page">
-      <MobileInfoModal />
+      {showAnalyzePopup ? <MobileInfoModal /> : null}
       <div className={isMobileDeviceOrTablet ? "mobile-charts container col-11 center-item flex" : "charts container col-11 center-item flex"}>
         <div className="col-12 p-0 flex">
           <div className="col-sm-1 col-lg-3">
