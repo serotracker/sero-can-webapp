@@ -98,6 +98,10 @@ export default function About() {
                         <a href="mailto:rahul.arora@balliol.ox.ac.uk">rahul.arora@balliol.ox.ac.uk</a>
                         {Translate('AboutPage', ['ContactSection', 'BulletPointOne', 'PartTwo'], null, [true, true])}
                         <a href="mailto:tingting.yan@mail.utoronto.ca">tingting.yan@mail.utoronto.ca</a>.
+                        {Translate('AboutPage', ['ContactSection', 'BulletPointOne', 'PartThree'], null, [true, true])}
+                        <a href="mailto:media@covid19immunitytaskforce.ca">media@covid19immunitytaskforce.ca</a>
+                        {Translate('AboutPage', ['ContactSection', 'BulletPointOne', 'PartFour'], null, [true, true])}
+                        <a href="mailto:kelly.johnston2@ucalgary.ca">kelly.johnston2@ucalgary.ca</a>.
                     </p>
                     <p>
                         {Translate('AboutPage', ['ContactSection', 'BulletPointFive', 'PartOne'])}
@@ -163,6 +167,9 @@ export default function About() {
                     {renderBioBlock('David Buckeridge', [Translate('Biographies', ['DavidB', 'PartOne']), Translate('Biographies', ['DavidB', 'PartTwo'])])}
                     {renderBioBlock('Jesse Papenburg', [Translate('Biographies', ['Jesse', 'PartOne']), Translate('Biographies', ['Jesse', 'PartTwo'])])}
                     {renderBioBlock('Jonathan Chevrier', [Translate('Biographies', ['Jonathan', 'PartOne']), Translate('Biographies', ['Jonathan', 'PartTwo'])])}
+                    {renderBioBlock('Catherine Hankins', [Translate('Biographies', ['CatherineH', 'PartOne']), Translate('Biographies', ['CatherineH', 'PartTwo'])])}
+                    {renderBioBlock('Erin O\'Connor', [Translate('Biographies', ['ErinO', 'PartOne']), Translate('Biographies', ['ErinO', 'PartTwo'])])}
+                    {renderBioBlock('Catherine Eastwood', [Translate('Biographies', ['CatherineE', 'PartOne']), Translate('Biographies', ['CatherineE', 'PartTwo'])])}
                 </div>
             </div>
         </div>
