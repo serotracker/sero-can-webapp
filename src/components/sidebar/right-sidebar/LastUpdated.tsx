@@ -11,7 +11,7 @@ export default function LastUpdated() {
     <div className="col-12 pb-2">
       <div className='col-12 p-0 center-item flex'>
         <div className="section-title center last-refreshed-title">
-        {Translate("ServerLastRefreshed").toUpperCase()}
+        {Translate("DatabaseUptoDateTo").toUpperCase()}
         </div>
       </div>
       <div className="py-2 center">
