@@ -317,6 +317,10 @@
       "PartOne": "Scientist, COVID-19 Immunity Task Force",
       "PartTwo": "Assistant Professor, McGill University"
     },
+    "Jonathan": {
+      "PartOne": "Scientific Program Manager, Epidemiology/Methods, COVID-19 Immunity Task Force",
+      "PartTwo": "Associate Professor, McGill University"
+    },
     "CatherineH": {
       "PartOne": "Co-Chair, COVID-19 Immunity Task Force",
       "PartTwo": "Professor, McGill University"
@@ -328,6 +332,10 @@
     "CatherineE": {
       "PartOne": "Operations Manager, Centre for Health Informatics",
       "PartTwo": "Adjunct Assistant Professor, University of Calgary"
+    },
+    "BruceM": {
+      "PartOne": "Associate Scientific Director (Strategy), COVID-19 Immunity Task Force",
+      "PartTwo": "Professor, McGill University"
     }
   },
   "Today": "Today",

@@ -165,6 +165,7 @@ export default function About() {
                     {renderBioBlock('Matthew Cheng', [Translate('Biographies', ['Matthew', 'PartOne']), Translate('Biographies', ['Matthew', 'PartTwo'])])}
                     {renderBioBlock('David Naylor', [Translate('Biographies', ['DavidN', 'PartOne']), Translate('Biographies', ['DavidN', 'PartTwo'])])}
                     {renderBioBlock('David Buckeridge', [Translate('Biographies', ['DavidB', 'PartOne']), Translate('Biographies', ['DavidB', 'PartTwo'])])}
+                    {renderBioBlock('Bruce Mazer', [Translate('Biographies', ['BruceM', 'PartOne']), Translate('Biographies', ['BruceM', 'PartTwo'])])}
                     {renderBioBlock('Jesse Papenburg', [Translate('Biographies', ['Jesse', 'PartOne']), Translate('Biographies', ['Jesse', 'PartTwo'])])}
                     {renderBioBlock('Jonathan Chevrier', [Translate('Biographies', ['Jonathan', 'PartOne']), Translate('Biographies', ['Jonathan', 'PartTwo'])])}
                     {renderBioBlock('Catherine Hankins', [Translate('Biographies', ['CatherineH', 'PartOne']), Translate('Biographies', ['CatherineH', 'PartTwo'])])}
