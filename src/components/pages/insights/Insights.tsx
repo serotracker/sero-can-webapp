@@ -4,6 +4,7 @@ import { mobileDeviceOrTabletWidth } from "../../../constants";
 import InsightsCard from "./InsightsCard";
 import './styles.scss';
 import Translate from "../../../utils/translate/translateService";
+import September2020Update from '../../../assets/images/September2020Update.png'
 import July2020Update from '../../../assets/images/IndustryUpdateJuly_2020.png'
 import June2020Update from '../../../assets/images/IndustryUpdateJune_2020.png'
 import August2020Update from '../../../assets/images/August2020Update.png'
@@ -29,12 +30,20 @@ export default function Insights() {
         <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("Report")}
+              date={"October 12, 2020"}
+              img={September2020Update}
+              title="September Report - COVID-19 Screening & Testing in Canada’s Private Sector"
+              url="https://drive.google.com/file/d/1CjMcs7UZzu4_E_QFJVYZdv0QhyfoNMAe/view?usp=sharing"/>
+          </div>
+          <div className="col-sm-12 col-lg-6 py-2">
+            <InsightsCard
+              identifier={Translate("Report")}
               date={"September 9, 2020"}
               img={August2020Update}
               title="August Report - COVID-19 Screening & Testing in Canada’s Private Sector"
               url="https://drive.google.com/file/d/1m7BlfUKCYs32_D1jnFUEQHPr3Qjg5Eyt/view?usp=sharing"/>
           </div>
-        <div className="col-sm-12 col-lg-6 py-2">
+          <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("Report")}
               date={"August 7, 2020"}
