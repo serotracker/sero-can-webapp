@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { useContext, useEffect, useState } from "react";
-import { Dropdown, DropdownProps, Pagination, Table } from "semantic-ui-react";
+import { Dropdown, DropdownProps, Pagination, Table, Search } from "semantic-ui-react";
 import { AppContext } from "../../context";
 import './Charts.css';
 import StudyDetailsModal from './StudyDetailsModal';
@@ -8,6 +8,7 @@ import { mobileDeviceWidth } from '../../constants';
 import { useMediaQuery } from 'react-responsive';
 import { AirtableRecord } from '../../types';
 import Translate from '../../utils/translate/translateService';
+import ReferenceSearch from '../charts/ReferencesSearch';
 
 export default function ReferencesTable() {
   const [state] = useContext(AppContext);
@@ -105,6 +106,7 @@ export default function ReferencesTable() {
       <div className="col-12 px-0 py-3 section-title">
         {Translate('References').toUpperCase()}
       </div>
+      <ReferenceSearch source={state.airtable_records}/>
       <Table celled sortable fixed striped className="table mb-3 mt-0">
         <Table.Header className="flex col-12 p-0">
           <Table.Row className="flex col-12 p-0">

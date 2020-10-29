@@ -4,6 +4,7 @@ import { mobileDeviceOrTabletWidth } from "../../constants";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 import Translate from "../../utils/translate/translateService";
 import { Link } from "react-router-dom";
+import ReferencesTable from "../../components/charts/ReferencesTable";
 import './static.css';
 
 export default function Data() {
@@ -58,7 +59,7 @@ export default function Data() {
                     {Translate('OurDataText', ['Text'])}
                 </p>
             </div>
-            {renderAirtable('https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=blue&viewControls=on')}
+            <ReferencesTable />
             <p>
             {Translate('UseOfData')}
             <Link className="p-1" to="/TermsOfUse">{Translate('TermsOfUse')}</Link>
