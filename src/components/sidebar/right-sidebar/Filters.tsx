@@ -1,26 +1,33 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import httpClient from "../../../httpClient";
-import { FilterType } from '../../../types';
+import { Filters as FilterT, FilterType } from '../../../types';
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import { getCountryName } from "../../../utils/mapUtils";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
 import Translate from "../../../utils/translate/translateService";
 import InformationIcon from "../../shared/InformationIcon";
 
-export default function Filters() {
+interface FilterProps {
+  filters: FilterT
+}
+
+export default function Filters({filters}: FilterProps) {
   const [state, dispatch] = useContext(AppContext);  
   const api = new httpClient()
-  const { exploreFilters, analyzeFilters, dataPageState } = state;
+
 
   const getAirtableRecords = async () => {
-    const filters = dataPageState.exploreIsOpen ? exploreFilters : analyzeFilters;
     const response = await api.getAirtableRecords(filters)
     dispatch({
       type: 'GET_AIRTABLE_RECORDS',
       payload: response
     });
+  }
+
+  const getFilters = (filter_type: FilterType): string[] => {
+    return Array.from(filters[filter_type]) as string[]
   }
 
   const formatOptions = (options: any, filter_type: FilterType) => {
@@ -53,7 +60,6 @@ export default function Filters() {
   }
 
   const addFilter = (data: any, filter_type: string) => {
-    console.log("Adding filter");
     dispatch({
       type: 'UPDATE_FILTER',
       payload: {
@@ -85,7 +91,9 @@ export default function Filters() {
   }
 
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
-    const filters = state.dataPageState.exploreIsOpen ? state.exploreFilters : state.analyzeFilters
+    if(!state.dataPageState.routingOccurred) {
+      return null;
+    }
     return (
       <div className="pb-3">
         <Dropdown
@@ -108,7 +116,7 @@ export default function Filters() {
               /** A numeric value associated with the event (e.g. 42) */
             })
           }}
-          defaultValue={Array.from(filters[filter_type])}
+          defaultValue={getFilters(filter_type)}
         />
       </div>
     )

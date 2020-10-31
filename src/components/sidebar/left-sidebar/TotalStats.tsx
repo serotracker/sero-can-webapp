@@ -1,30 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../context";
 import httpClient from "../../../httpClient";
+import { AggregationFactor } from "../../../types";
 import Translate from "../../../utils/translate/translateService";
 import './TotalStats.css';
-
-
 export default function TotalStats() {
   const [state] = useContext(AppContext);
   const [countries, setNumCountries] = useState(0);
   const [numStudies, setNumStudies] = useState(0);
-  const [seroprevalence, setSeroprevalence] = useState<any>(null);
   const [n, setN] = useState(0);
 
   useEffect(() => {
-    if(state.filteredRecords.length > 0){
-      const updateCountryPrevalence = async () => {
-        const api = new httpClient();
-        // const results = await api.postMetaAnalysisAll(state.filteredRecords);
-        // setNumCountries(results.countries);
-        // setSeroprevalence(results.seroprevalence);
-        // setN(results.n);
-      } 
-      setNumStudies(state.filteredRecords.length);
-      updateCountryPrevalence();
+    const updateCountryPrevalence = async () => {
+      const api = new httpClient();
+      const filters = state.dataPageState.exploreIsOpen ? state.exploreFilters : state.analyzeFilters
+      const results = await api.postMetaAnalysis(filters, AggregationFactor.country);
+      setNumCountries(results.length);
+      setN(results.map((o: Record<string, any>) => o.n).reduce((a: number, b: number) => a + b, 0));
+      setNumStudies(results.map((o: Record<string, any>) => o.numStudies).reduce((a: number, b: number) => a + b, 0));
     }
-  }, [state.filteredRecords])
+    updateCountryPrevalence();
+  }, [state.analyzeFilters, state.dataPageState.exploreIsOpen, state.exploreFilters])
 
   return (
     <div className="col-12 p-0 stats-container">

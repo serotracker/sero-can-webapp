@@ -171,7 +171,7 @@ export const createAltPopup = (properties: any, language: LanguageType) => {
           <div className="fit popup-content">{Translate("TestsAdministered")}: <b>{properties?.testsAdministered}</b></div>
           <div className="fit popup-content">{Translate('NumSeroprevalenceEstimates')}: <b>{properties?.numberOfStudies}</b></div>
         </div>
-        {regions.map((o,i) => createPopupGeographySection(o[0],o[1],i==lastIndex))}
+        {regions.map((o,i) => createPopupGeographySection(o[0],o[1],i===lastIndex))}
       </div>)
   };
 
@@ -240,7 +240,7 @@ export const mapDataToFeatures = (features: GeoJSON.Feature[], prevalences: Aggr
   return features.map(feature => {
     const country = prevalenceCountryDict![feature?.properties?.name];
     if (country && country.seroprevalence) {
-      const { seroprevalence, error, n, num_studies } = country;
+      const { seroprevalence, error, n, numStudies: num_studies } = country;
       return { ...feature, properties: { ...feature.properties, seroprevalence, error, n, num_studies } }
     }
     return { ...feature, properties: { ...feature.properties, seroprevalence: null, error: null, n: null, num_studies: null } }

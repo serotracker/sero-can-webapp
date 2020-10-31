@@ -62,30 +62,17 @@ const initialState: State = {
   analyzeFilters: initial_filters,
   filterOptions: getEmptyFilters(),
   allFilterOptions: getEmptyFilters(),
+  filters: getEmptyFilters(),
   dataPageState: {
     exploreIsOpen: true,
-    showStudiesModal: false
+    showStudiesModal: false,
+    routingOccurred: false
   },
   language: LanguageType.english,
   updatedAt: '',
   country_prevalences: [],
   showCookieBanner: false
 };
-
-function recomputeFilterOptions(records: AirtableRecord[], all_filter_options: Filters, filters: Filters) {
-  const options = getFilterOptions(records);
-  for (const filter in filters) {
-    // If the filter is already in use, show all filter options
-    // Since options within the same filter work on an "or basis"
-    // (e.g. risk_of_bias: ["Low", "Medium"] means include records with Low or Medium bias)
-    // the user will never get 0 records back if they choose more filter options for a filter
-    // that they've already selected an option for
-    if (filters[filter as FilterType].size > 0) {
-      options[filter as FilterType] = all_filter_options[filter as FilterType];
-    }
-  }
-  return options;
-}
 
 function getFilterOptions(records: AirtableRecord[]) {
   const filter_options: Filters = getEmptyFilters();
@@ -150,7 +137,6 @@ function getFilterOptions(records: AirtableRecord[]) {
 }
 
 const reducer = (state: State, action: Record<string, any>): State => {
-  let filtered_records: AirtableRecord[] = state.filteredRecords;
   switch (action.type) {
     case "HEALTHCHECK":
       return {
@@ -162,7 +148,6 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         showCookieBanner: false
       };
-
     case "OPEN_COOKIE_BANNER":
       return {
         ...state,
@@ -172,46 +157,47 @@ const reducer = (state: State, action: Record<string, any>): State => {
       return {
         ...state,
         estimate_grade_prevalences: action.payload
-      }
-    case "SELECT_DATA_TAB":
+      };
+    case "SELECT_EXPLORE_OR_ANALYZE":
       return {
         ...state,
-        dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload }
-      }
+        filters: action.payload ? Object.assign({}, state.exploreFilters) : Object.assign({}, state.analyzeFilters),
+        dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload, routingOccurred: true}
+      };
     case "SELECT_LANGUAGE":
       return {
         ...state,
         language: action.payload
-      }
-    case "GET_ALL_RECORDS":
+      };
+    case "GET_ALL_FILTER_OPTIONS":
       const allFilterOptions = getFilterOptions(action.payload);
       return {
-        ...state,        
+        ...state,
         allFilterOptions
-      }
+      };
     case "GET_AIRTABLE_RECORDS":
       return {
         ...state,
         filteredRecords: action.payload,
         updatedAt: action.payload.updated_at,
-      }
+      };
     case "UPDATE_FILTER":      
-      const new_filters: any = state.dataPageState.exploreIsOpen ? state.analyzeFilters : state.exploreFilters;
+      const new_filters: any = state.dataPageState.exploreIsOpen ? Object.assign({}, state.analyzeFilters) : Object.assign({}, state.exploreFilters);
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
       return {
         ...state,
         exploreFilters: state.dataPageState.exploreIsOpen ? new_filters : state.exploreFilters,
         analyzeFilters: state.dataPageState.exploreIsOpen ? state.analyzeFilters : new_filters,
-        filterOptions: recomputeFilterOptions(filtered_records, state.allFilterOptions, new_filters)
-      }
+        filters: new_filters
+      };
     case "UPDATE_COUNTRY_PREVALENCES":
       return {
         ...state,
         country_prevalences: action.payload
-      }
+      };
     default:
       return state
-  }
+  };
 };
 
 export const AppContextProvider = (props: Record<string, any>) => {
