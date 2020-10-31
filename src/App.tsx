@@ -37,8 +37,18 @@ function App() {
       }
     }
 
+    const api = new httpClient()
+    const allFilterOptions = async () => {
+      const response = await api.getAllRecords()
+      dispatch({
+        type: 'GET_ALL_FILTER_OPTIONS',
+        payload: response
+      })
+    }
+
     history.listen(toggleFilters);
-    toggleFilters(history.location, 'REPLACE')
+    toggleFilters(history.location, 'REPLACE')    
+    allFilterOptions();
   }, [dispatch, history])
 
 
@@ -49,14 +59,6 @@ function App() {
       dispatch({
         type: 'ACCEPT_COOKIES'
       });
-    }
-
-    const allFilterOptions = async () => {
-      const response = await api.getAllRecords()
-      dispatch({
-        type: 'GET_ALL_FILTER_OPTIONS',
-        payload: response
-      })
     }
 
     const getAirtableRecords = async () => {
@@ -74,8 +76,9 @@ function App() {
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
     window.addEventListener('resize', handleResize)
-    getAirtableRecords();
-    allFilterOptions()
+    if (dataPageState.routingOccurred) {
+      getAirtableRecords();
+    }
     handleResize();
   }, [dispatch, language, dataPageState, history, filters])
 

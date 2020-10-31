@@ -16,8 +16,8 @@ import ReferencesTable from "./ReferencesTable";
 export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
-  const [state] = useContext(AppContext);
-  const { filters } = state;
+  const [state, dispatch] = useContext(AppContext);
+  const { filters, showAnalyzePopup } = state;
   const initState = [] as AggregatedRecord[];
   const [showModal, toggleModal] = useState(true);
   const [records, setRecords] = useState(initState);
@@ -35,14 +35,16 @@ export default function Charts() {
   ]
 
   useEffect(() => {
-      const updateCharts = async () => {
-        const api = new httpClient();
-        const reAggregatedRecords = await api.postMetaAnalysis(filters, yAxisSelection);
-        const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
-        setRecords(chartData);
-      }
+    const updateCharts = async () => {
+      const api = new httpClient();
+      const reAggregatedRecords = await api.postMetaAnalysis(filters, yAxisSelection);
+      const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
+      setRecords(chartData);
+    }
+    if (state.dataPageState.routingOccurred) {
       updateCharts();
-  }, [filters, yAxisSelection])
+    }
+  }, [filters, state.dataPageState.routingOccurred, yAxisSelection])
 
   const handleChange = (event: SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
     setYAxis(data.value as AggregationFactor);
@@ -98,7 +100,7 @@ export default function Charts() {
   const closeModal = () => {
     toggleModal(false);
     dispatch({ type: 'CLOSE_ANALYZE_POPUP' })
-  } 
+  }
 
   const MobileInfoModal = () => (
     <Modal className="modal" open={showModal} onClose={closeModal} closeIcon={{ style: { top: '1.0535rem', right: '1rem' }, color: 'black', name: 'close' }}>
@@ -111,7 +113,7 @@ export default function Charts() {
       </Modal.Content>
     </Modal>
   )
-  
+
   return (
     <div className="charts-page">
       {showAnalyzePopup ? <MobileInfoModal /> : null}

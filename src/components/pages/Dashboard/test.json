@@ -1,0 +1,1082 @@
+[
+  {
+    "country": "Russian Federation",
+    "n_estimates": 5,
+    "n_tests_administered": 740000,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.19899999999999998,
+        "min_estimate": 0.19899999999999998,
+        "n_estimates": 1
+      },
+      "National": {
+        "max_estimate": 0.2,
+        "min_estimate": 0.11,
+        "n_estimates": 4
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "United States of America",
+    "n_estimates": 633,
+    "n_tests_administered": 2580788,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.8181818182000001,
+        "min_estimate": 0.0,
+        "n_estimates": 288
+      },
+      "National": {
+        "max_estimate": 0.03,
+        "min_estimate": 0.015500000000000002,
+        "n_estimates": 2
+      },
+      "Regional": {
+        "max_estimate": 0.292,
+        "min_estimate": 0.0,
+        "n_estimates": 300
+      },
+      "Sublocal": {
+        "max_estimate": 0.133,
+        "min_estimate": 0.0,
+        "n_estimates": 20
+      }
+    }
+  },
+  {
+    "country": "France",
+    "n_estimates": 55,
+    "n_tests_administered": 17099,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 1.0,
+        "min_estimate": 0.0,
+        "n_estimates": 42
+      },
+      "National": {
+        "max_estimate": 0.0412,
+        "min_estimate": 0.013200000000000002,
+        "n_estimates": 12
+      },
+      "Regional": {
+        "max_estimate": 0.03,
+        "min_estimate": 0.03,
+        "n_estimates": 1
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Brazil",
+    "n_estimates": 68,
+    "n_tests_administered": 239399,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.086,
+        "min_estimate": 0.0019,
+        "n_estimates": 24
+      },
+      "National": {
+        "max_estimate": 0.043,
+        "min_estimate": 0.006,
+        "n_estimates": 20
+      },
+      "Regional": {
+        "max_estimate": 0.35700000000000004,
+        "min_estimate": 0.0,
+        "n_estimates": 23
+      },
+      "Sublocal": {
+        "max_estimate": 0.0519,
+        "min_estimate": 0.0519,
+        "n_estimates": 1
+      }
+    }
+  },
+  {
+    "country": "United Kingdom",
+    "n_estimates": 175,
+    "n_tests_administered": 408808,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.11599999999999999,
+        "min_estimate": 0.0036,
+        "n_estimates": 11
+      },
+      "National": {
+        "max_estimate": 0.154,
+        "min_estimate": 0.005,
+        "n_estimates": 89
+      },
+      "Regional": {
+        "max_estimate": 0.157,
+        "min_estimate": 0.003,
+        "n_estimates": 72
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Switzerland",
+    "n_estimates": 44,
+    "n_tests_administered": 23433,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.09699999999999999,
+        "min_estimate": 0.031000000000000003,
+        "n_estimates": 14
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": 0.36200000000000004,
+        "min_estimate": 0.008,
+        "n_estimates": 30
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "China",
+    "n_estimates": 91,
+    "n_tests_administered": 501929,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.075,
+        "min_estimate": 7.400000000000001e-05,
+        "n_estimates": 59
+      },
+      "National": {
+        "max_estimate": 0.008,
+        "min_estimate": 0.008,
+        "n_estimates": 1
+      },
+      "Regional": {
+        "max_estimate": 0.0396,
+        "min_estimate": 0.0,
+        "n_estimates": 12
+      },
+      "Sublocal": {
+        "max_estimate": 0.00538,
+        "min_estimate": 0.00538,
+        "n_estimates": 1
+      }
+    }
+  },
+  {
+    "country": "India",
+    "n_estimates": 100,
+    "n_tests_administered": 232374,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.59,
+        "min_estimate": 0.019,
+        "n_estimates": 90
+      },
+      "National": {
+        "max_estimate": 0.15,
+        "min_estimate": 0.0073,
+        "n_estimates": 2
+      },
+      "Regional": {
+        "max_estimate": 0.28300000000000003,
+        "min_estimate": 0.038,
+        "n_estimates": 7
+      },
+      "Sublocal": {
+        "max_estimate": 0.2,
+        "min_estimate": 0.2,
+        "n_estimates": 1
+      }
+    }
+  },
+  {
+    "country": "Hungary",
+    "n_estimates": 40,
+    "n_tests_administered": 126444,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "National": {
+        "max_estimate": 0.02127659574,
+        "min_estimate": 0.0,
+        "n_estimates": 40
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Portugal",
+    "n_estimates": 63,
+    "n_tests_administered": 38595,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "National": {
+        "max_estimate": 0.064,
+        "min_estimate": 0.006,
+        "n_estimates": 42
+      },
+      "Regional": {
+        "max_estimate": 0.035,
+        "min_estimate": 0.001,
+        "n_estimates": 21
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Denmark",
+    "n_estimates": 35,
+    "n_tests_administered": 102331,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.013500000000000002,
+        "min_estimate": 0.0,
+        "n_estimates": 5
+      },
+      "National": {
+        "max_estimate": 0.032,
+        "min_estimate": 0.01,
+        "n_estimates": 11
+      },
+      "Regional": {
+        "max_estimate": 0.0304,
+        "min_estimate": 0.0,
+        "n_estimates": 19
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Canada",
+    "n_estimates": 91,
+    "n_tests_administered": 226706,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.015,
+        "min_estimate": 0.003,
+        "n_estimates": 6
+      },
+      "National": {
+        "max_estimate": 0.008100000000000001,
+        "min_estimate": 0.0058,
+        "n_estimates": 7
+      },
+      "Regional": {
+        "max_estimate": 0.031000000000000003,
+        "min_estimate": 0.0,
+        "n_estimates": 78
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Belgium",
+    "n_estimates": 70,
+    "n_tests_administered": 66128,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "National": {
+        "max_estimate": 0.15050000000000002,
+        "min_estimate": 0.013999999999999999,
+        "n_estimates": 70
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Spain",
+    "n_estimates": 77,
+    "n_tests_administered": 1123458,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.23070000000000002,
+        "min_estimate": 0.138,
+        "n_estimates": 3
+      },
+      "National": {
+        "max_estimate": 0.374,
+        "min_estimate": 0.027000000000000003,
+        "n_estimates": 74
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Netherlands",
+    "n_estimates": 10,
+    "n_tests_administered": 36791,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "National": {
+        "max_estimate": 0.042,
+        "min_estimate": 0.023,
+        "n_estimates": 10
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Israel",
+    "n_estimates": 4,
+    "n_tests_administered": 1700,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "National": {
+        "max_estimate": 0.026000000000000002,
+        "min_estimate": 0.008,
+        "n_estimates": 4
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Iran",
+    "n_estimates": 21,
+    "n_tests_administered": 6428,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.3,
+        "min_estimate": 0.15,
+        "n_estimates": 5
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": 0.33,
+        "min_estimate": 0.16,
+        "n_estimates": 16
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Japan",
+    "n_estimates": 31,
+    "n_tests_administered": 10545,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.44439999999999996,
+        "min_estimate": 0.0,
+        "n_estimates": 31
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Kenya",
+    "n_estimates": 34,
+    "n_tests_administered": 27882,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.092,
+        "min_estimate": 0.076,
+        "n_estimates": 4
+      },
+      "National": {
+        "max_estimate": 0.062000000000000006,
+        "min_estimate": 0.034,
+        "n_estimates": 18
+      },
+      "Regional": {
+        "max_estimate": 0.077,
+        "min_estimate": 0.019,
+        "n_estimates": 12
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Sweden",
+    "n_estimates": 31,
+    "n_tests_administered": 329056,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.17600000000000002,
+        "min_estimate": 0.013000000000000001,
+        "n_estimates": 15
+      },
+      "National": {
+        "max_estimate": 0.07,
+        "min_estimate": 0.040999999999999995,
+        "n_estimates": 8
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Malaysia",
+    "n_estimates": 1,
+    "n_tests_administered": 588,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": 0.004,
+        "min_estimate": 0.004,
+        "n_estimates": 1
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Pakistan",
+    "n_estimates": 16,
+    "n_tests_administered": 3792,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.632,
+        "min_estimate": 0.0,
+        "n_estimates": 12
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Czechia",
+    "n_estimates": 18,
+    "n_tests_administered": 48226,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate":NaN,
+        "min_estimate":NaN,
+        "n_estimates": 18
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Germany",
+    "n_estimates": 37,
+    "n_tests_administered": 18229,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.15,
+        "min_estimate": 0.0172,
+        "n_estimates": 24
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": 0.0122,
+        "min_estimate": 0.0054,
+        "n_estimates": 6
+      },
+      "Sublocal": {
+        "max_estimate": 0.12,
+        "min_estimate": 0.0025,
+        "n_estimates": 7
+      }
+    }
+  },
+  {
+    "country": "Libya",
+    "n_estimates": 7,
+    "n_tests_administered": 568,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.078,
+        "min_estimate": 0.0,
+        "n_estimates": 7
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Ireland",
+    "n_estimates": 3,
+    "n_tests_administered": 3466,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.031000000000000003,
+        "min_estimate": 0.0061,
+        "n_estimates": 2
+      },
+      "National": {
+        "max_estimate": 0.017,
+        "min_estimate": 0.017,
+        "n_estimates": 1
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Ecuador",
+    "n_estimates": 13,
+    "n_tests_administered": 2785,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.45,
+        "min_estimate": 0.45,
+        "n_estimates": 1
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": 0.6,
+        "min_estimate": 0.0219,
+        "n_estimates": 12
+      }
+    }
+  },
+  {
+    "country": "Italy",
+    "n_estimates": 40,
+    "n_tests_administered": 88862,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 1.0,
+        "min_estimate": 0.0,
+        "n_estimates": 37
+      },
+      "National": {
+        "max_estimate": 0.025,
+        "min_estimate": 0.025,
+        "n_estimates": 1
+      },
+      "Regional": {
+        "max_estimate": 0.5700000000000001,
+        "min_estimate": 0.0099,
+        "n_estimates": 2
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Peru",
+    "n_estimates": 1,
+    "n_tests_administered": 3118,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.21600000000000003,
+        "min_estimate": 0.21600000000000003,
+        "n_estimates": 1
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Republic of Korea",
+    "n_estimates": 2,
+    "n_tests_administered": 4555,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.0007000000000000001,
+        "min_estimate": 0.0007000000000000001,
+        "n_estimates": 1
+      },
+      "National": {
+        "max_estimate": 0.0003,
+        "min_estimate": 0.0003,
+        "n_estimates": 1
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Singapore",
+    "n_estimates": 1,
+    "n_tests_administered": 774,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.0,
+        "min_estimate": 0.0,
+        "n_estimates": 1
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Austria",
+    "n_estimates": 12,
+    "n_tests_administered": 7577,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.5,
+        "min_estimate": 0.25,
+        "n_estimates": 12
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Greece",
+    "n_estimates": 11,
+    "n_tests_administered": 32966,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "National": {
+        "max_estimate": 0.0077,
+        "min_estimate": 0.0002,
+        "n_estimates": 11
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Jordan",
+    "n_estimates": 1,
+    "n_tests_administered": 734,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": 0.0,
+        "min_estimate": 0.0,
+        "n_estimates": 1
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Luxembourg",
+    "n_estimates": 2,
+    "n_tests_administered": 3640,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "National": {
+        "max_estimate": 0.1107,
+        "min_estimate": 0.0209,
+        "n_estimates": 2
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Ethiopia",
+    "n_estimates": 1,
+    "n_tests_administered": 99,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": 0.030299999999999997,
+        "min_estimate": 0.030299999999999997,
+        "n_estimates": 1
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Norway",
+    "n_estimates": 1,
+    "n_tests_administered": 900,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "National": {
+        "max_estimate": 0.01,
+        "min_estimate": 0.01,
+        "n_estimates": 1
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "Nigeria",
+    "n_estimates": 1,
+    "n_tests_administered": 185,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": 0.2541,
+        "min_estimate": 0.2541,
+        "n_estimates": 1
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": "State of Palestine",
+    "n_estimates": 1,
+    "n_tests_administered": 1355,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  },
+  {
+    "country": null,
+    "n_estimates": 0,
+    "n_tests_administered": 0,
+    "seroprevalence_estimate_summary": {
+      "Local": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "National": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Regional": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      },
+      "Sublocal": {
+        "max_estimate": null,
+        "min_estimate": null,
+        "n_estimates": 0
+      }
+    }
+  }
+]

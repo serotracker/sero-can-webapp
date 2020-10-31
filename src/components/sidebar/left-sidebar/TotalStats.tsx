@@ -19,8 +19,10 @@ export default function TotalStats() {
       setN(results.map((o: Record<string, any>) => o.n).reduce((a: number, b: number) => a + b, 0));
       setNumStudies(results.map((o: Record<string, any>) => o.numStudies).reduce((a: number, b: number) => a + b, 0));
     }
-    updateCountryPrevalence();
-  }, [state.analyzeFilters, state.dataPageState.exploreIsOpen, state.exploreFilters])
+    if (state.dataPageState.routingOccurred) {
+      updateCountryPrevalence();
+    }
+  }, [state.analyzeFilters, state.dataPageState.exploreIsOpen, state.dataPageState.routingOccurred, state.exploreFilters])
 
   return (
     <div className="col-12 p-0 stats-container">
