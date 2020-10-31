@@ -1,6 +1,17 @@
 import { AggregatedRecord, AggregationFactor, AirtableRecord, Filters, FilterType } from "./types";
+import { formatISO, add } from 'date-fns'
 
 export default class httpClient {
+    formatDates(dates: Array<Date> | null) {
+        let endDate = formatISO(new Date());
+        let startDate = formatISO(add(new Date(endDate), { years: -2 }));
+        if (dates) {
+            endDate = dates[1] ? formatISO(dates[1] as Date) : endDate;
+            startDate = dates[0] ? formatISO(dates[0] as Date) : startDate;
+        }
+        return [startDate, endDate]
+    }
+
     async httpGet(url: string) {
         let url_full = url;
         if (process.env.REACT_APP_ROUTE) {
@@ -80,6 +91,10 @@ export default class httpClient {
         return records
     }
 
+    async getAllFilterOptions() {
+       // Fill this with Austin's new endpoint
+    }
+    
     async getAirtableRecords(filters: Filters,
         sorting_key = "denominator_value",
         reverse = false) {
@@ -87,21 +102,23 @@ export default class httpClient {
 
         Object.keys(filters).forEach((o: string) => {
             const filter = Array.from(filters[o as FilterType]);
-            if (filter.length > 0) {
+            if (o !== 'publish_date') {
                 reqBodyFilters[o] = filter as string[]
             }
-        })
-        delete reqBodyFilters['publish_date']
+        });
 
-        const date = filters['publish_date']
+        const date = filters['publish_date'] as Array<Date>
+        const [startDate, endDate] = this.formatDates(date)
         const reqBody = {
-            start_date: date[0] ? (date[0] as Date)?.valueOf() / 1000 : (Date.now() - new Date(2019, 7, 7).valueOf()) / 1000,
-            end_date: date[1] ? (date[1] as Date)?.valueOf() / 1000 : (Date.now()) / 1000,
-            reverse,
-            sorting_key,
-            filters: reqBodyFilters
+            filters: reqBodyFilters,
+            start_date: startDate,
+            end_date: endDate,
+            sorting_key: sorting_key,
+            reverse: reverse,
+            per_page: null,
+            page_index: null,
+            columns: [],
         }
-
         const response = await this.httpPost('/data_provider/records', reqBody)
         if (!response) {
             return [];
@@ -146,18 +163,18 @@ export default class httpClient {
         const reqBodyFilters: Record<string, string[]> = {}
         Object.keys(filters).forEach((o: string) => {
             const filter = Array.from(filters[o as FilterType]);
-            if (filter.length > 0 && (o === "country")) {
-                reqBodyFilters[o] = filter as string[]
-            }
+            reqBodyFilters[o] = filter as string[]
         })
         delete reqBodyFilters['publish_date']
-        delete reqBodyFilters['population_group']
         const date = filters['publish_date']
+        const endDate = date[1] ? formatISO(date[1] as Date) : formatISO(new Date());
+        const startDate = date[0] ? formatISO(date[0] as Date) : formatISO(add(new Date(endDate), { years: -2 }));
         const reqBody = {
-            start_date: date[0] ? (date[0] as Date)?.valueOf() / 1000 : (Date.now() - new Date(2019, 7, 7).valueOf()) / 1000,
-            end_date: date[1] ? (date[1] as Date)?.valueOf() / 1000 : (Date.now()) / 1000,
+            start_date: startDate,
+            end_date: endDate,
             filters: reqBodyFilters
         }
+
         const response = await this.httpPost('/data_provider/country_seroprev_summary', reqBody);
         if (!response) {
             return [];
@@ -195,31 +212,30 @@ export default class httpClient {
         return formattedResponse;
     }
 
-    async postMetaAnalysis(records: AirtableRecord[], aggregation_variable: AggregationFactor, meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise') {
+    async postMetaAnalysis(filters: Filters,
+        aggregation_variable: AggregationFactor,
+        meta_analysis_technique: string = 'fixed',
+        meta_analysis_transformation: string = 'double_arcsin_precise') {
         // Note: while the rest of the aggregation variables can stay consistent with frontend nomenclature
-        // the aggregation variable "country" must be changed to "COUNTRY"
-        const formatted_agg_var = aggregation_variable === AggregationFactor.country ? "COUNTRY" : aggregation_variable;
-        const formatted_records = records!.filter(item => item[aggregation_variable] != null).map((item: AirtableRecord) => {
-            // Note, all aggregation variable fields must be string arrays
-            const record: Record<string, any> = {
-                SERUM_POS_PREVALENCE: item.seroprevalence,
-                DENOMINATOR: item.denominator,
-                COUNTRY: [item.country]
-            };
-            if (aggregation_variable !== AggregationFactor.country) {
-                record[aggregation_variable] = Array.isArray(item[aggregation_variable]) ? item[aggregation_variable] : [item[aggregation_variable]];
-            }
-            return record;
-        });
+        const reqBodyFilters: Record<string, string[]> = {}
 
-        const req_body = {
-            records: formatted_records,
-            aggregation_variable: formatted_agg_var,
+        const date = filters['publish_date'];
+        Object.keys(filters).forEach((o: string) => {
+            const filter = Array.from(filters[o as FilterType]);
+            reqBodyFilters[o] = filter as string[]
+        });
+        delete reqBodyFilters['publish_date'];
+        const [startDate, endDate] = this.formatDates(date)
+        const reqBody = {
+            start_date: startDate,
+            end_date: endDate,
+            filters: reqBodyFilters,
+            aggregation_variable,
             meta_analysis_technique,
             meta_analysis_transformation
         };
 
-        const response = await this.httpPost('/meta_analysis/records', req_body);
+        const response = await this.httpPost('/meta_analysis/records', reqBody);
         if (response) {
             // Convert response to aggregatedRecord object
             const formatted_response: AggregatedRecord[] = Object.keys(response).filter((key: string) => response[key] !== null).map((key: string) => {
@@ -227,40 +243,12 @@ export default class httpClient {
                     error: response[key].error_percent,
                     n: response[key].total_N,
                     name: key,
-                    num_studies: response[key].n_studies,
+                    numStudies: response[key].n_studies,
                     seroprevalence: response[key].seroprevalence_percent,
                 }
             });
             return formatted_response;
         }
-        return response;
-    }
-
-    // Aggregation of all records, to support TotalStats view
-    // TODO: Consolidate this function with postMetaAnalysis
-    async postMetaAnalysisAll(records: AirtableRecord[], meta_analysis_technique: string = 'fixed', meta_analysis_transformation: string = 'double_arcsin_precise') {
-        const req_body = {
-            meta_analysis_technique,
-            meta_analysis_transformation
-        };
-
-        const response = await this.httpPost('/meta_analysis/records', req_body);
-        let formatted_response = {
-            error: null,
-            n: null,
-            countries: null,
-            num_studies: null,
-            seroprevalence: null}
-            
-        if (response) {
-            formatted_response = {
-                error: response.error_percent,
-                n: response.total_N,
-                countries: response.countries,
-                num_studies: response.n_studies,
-                seroprevalence: response.seroprevalence_percent
-            }
-        }
-        return formatted_response;
+        return [];
     }
 }

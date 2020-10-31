@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import React, { useContext, useEffect, useState } from "react";
 import { useMediaQuery } from 'react-responsive';
-import { DropdownProps, Table } from "semantic-ui-react";
 import { mobileDeviceWidth } from '../../constants';
 import { AppContext } from "../../context";
 import { AirtableRecord } from '../../types';
@@ -11,43 +10,13 @@ import './Charts.css';
 
 export default function ReferencesTable() {
   const [state] = useContext(AppContext);
-  const [activePage, setActivePage] = useState(1);
-  const [boundaryRange] = useState(1);
-  const [siblingRange] = useState(1);
-  const [totalPages, setTotalPages] = useState(10);
+  const [activePage] = useState(1);
+  const [, setTotalPages] = useState(10);
   const [pageLength, setPageLength] = useState(5);
-  const [column, setColumn] = useState('denominator');
-  const [direction, setDirection] = useState('descending');
+  const [column, ] = useState('denominator');
+  const [direction, ] = useState('descending');
   const initialDataState: AirtableRecord[] = [];
-  const [data, setData] = useState(initialDataState);
-
-  const handlePaginationChange = (e: any, event: any) => {
-    const { activePage } = event;
-    setActivePage(activePage)
-  }
-
-  const handlePageLengthChange = (e: any, event: DropdownProps) => {
-    setPageLength(event.value as number);
-    setActivePage(1);
-  }
-
-  const pageLengthOptions = [
-    { text: 5, value: 5 }, { text: 10, value: 10 }, { text: 25, value: 25 }, { text: 50, value: 50 }, { text: 100, value: 100 }
-  ]
-
-  const handleSort = (clickedColumn: string) => () => {
-    if (column !== clickedColumn) {
-
-      setActivePage(1);
-      setColumn(clickedColumn);
-      setDirection('ascending');
-      return
-    }
-    else {
-      setDirection(direction === 'ascending' ? 'descending' : 'ascending');
-    }
-  }
-  
+  const [, setData] = useState(initialDataState);
   const isMobileDevice = useMediaQuery({ maxWidth: mobileDeviceWidth })
 
   useEffect(() => {
@@ -70,34 +39,6 @@ export default function ReferencesTable() {
       setTotalPages(Math.ceil(state.filteredRecords.length / pageLength));
     }
   }, [activePage, column, direction, isMobileDevice, pageLength, state.filteredRecords])
-
-  const buildHeaderCell = (sortColumn: string, displayName: string, className: string) => {
-    return (
-      <Table.HeaderCell
-        className={className}
-        sorted={column === sortColumn ? direction as any : null}
-        onClick={handleSort(sortColumn)}
-      >
-        {displayName}
-      </Table.HeaderCell>)
-
-  }
-
-  const getPopulation = (sex: string | null, age: string[] | null, population_group: string[] | null) => {
-    if (!population_group) {
-      return "Not Reported";
-    }
-    const displaySex = sex && sex !== "All" && sex !== "Unspecified";
-    const displayAge = age && age[0] !== "All" && age[0] !== "Unspecified";
-    return `${displaySex ? `${sex}, ` : ""}${displayAge ? `${(age as string[]).join(", ")}, ` : ""}${population_group.join(", ")}`;
-  }
-
-  const getGeography = (city: string[] | null | undefined, state: string[] | null | undefined, country: string | null) => {
-    if (!country) {
-      return "Not Reported";
-    }
-    return `${city ? `${city.join(", ")}, ` : ""}${state ? `${state.join(", ")}, ` : ""}${country}`;
-  }
 
 
   return (

@@ -34,7 +34,7 @@ export default function CentralPiece() {
         <div className={`center-item left-button ${getClass(true)}`} onClick={async () => {
           clickButton('Explore');
           dispatch({
-            type: 'SELECT_DATA_TAB',
+            type: 'SELECT_EXPLORE_OR_ANALYZE',
             payload: true
           })
         }}>
@@ -43,7 +43,7 @@ export default function CentralPiece() {
         <div className={`right-button ${getClass(false)}`} onClick={() => {
           clickButton('Analyze');
           dispatch({
-            type: 'SELECT_DATA_TAB',
+            type: 'SELECT_EXPLORE_OR_ANALYZE',
             payload: false
           })
         }}>

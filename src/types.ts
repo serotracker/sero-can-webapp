@@ -38,7 +38,7 @@ export type AggregatedRecord = {
     error: number[];
     n: number;
     name: string;
-    num_studies: number;
+    numStudies: number;
     seroprevalence: number;
 }
 
@@ -72,6 +72,7 @@ export type State = {
     filteredRecords: AirtableRecord[],
     analyzeFilters: Filters,
     exploreFilters: Filters,
+    filters: Filters,
     filterOptions: Filters,
     allFilterOptions: Filters,
     updatedAt: string,
@@ -113,7 +114,8 @@ export enum AggregationFactor {
 
 export type DataPageState = {
     exploreIsOpen: boolean,
-    showStudiesModal: false
+    showStudiesModal: false,
+    routingOccurred: boolean
 }
 
 export type CustomMatcherResult = {

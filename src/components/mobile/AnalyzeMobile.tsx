@@ -1,17 +1,19 @@
-import React, { useState, useContext } from "react";
-import { Sidebar, Segment, Menu } from "semantic-ui-react";
-import Filters from "../sidebar/right-sidebar/Filters";
+import { faBars, faFilter, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faFilter, faBars } from "@fortawesome/free-solid-svg-icons";
+import React, { useContext, useState } from "react";
+import { Menu, Segment, Sidebar } from "semantic-ui-react";
+import { AppContext } from "../../context";
+import Charts from "../charts/Charts";
+import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
 import TotalStats from "../sidebar/left-sidebar/TotalStats";
 import DateRangeSlider from "../sidebar/right-sidebar/date-slider/Slider";
+import Filters from "../sidebar/right-sidebar/Filters";
 import LastUpdated from "../sidebar/right-sidebar/LastUpdated";
-import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
-import Charts from "../charts/Charts";
 
 export default function AnalyzeMobile() {
   const [showMobileFilters, setShowFilters] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
+  const [state, ] = useContext(AppContext)
 
   const handleFilterToggle = (showMobile: boolean, showSummary: boolean) => {
     setShowFilters(showMobile);
@@ -33,7 +35,7 @@ export default function AnalyzeMobile() {
           width='wide'
         >
 
-          <Filters />
+          <Filters filters={state.analyzeFilters}/>
           <DateRangeSlider />
           <LastUpdated />
           <FontAwesomeIcon

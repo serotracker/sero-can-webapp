@@ -1,7 +1,8 @@
 import { faBars, faFilter, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Menu, Segment, Sidebar } from "semantic-ui-react";
+import { AppContext } from "../../context";
 import Map from '../map/Map';
 import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
 import TotalStats from "../sidebar/left-sidebar/TotalStats";
@@ -13,6 +14,7 @@ import LastUpdated from "../sidebar/right-sidebar/LastUpdated";
 export default function ExploreMobile() {
   const [showMobileFilters, setShowFilters] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
+  const [state, ] = useContext(AppContext)
 
   const handleFilterToggle = (showMobile: boolean, showSummary: boolean) => {
     setShowFilters(showMobile);
@@ -34,7 +36,7 @@ export default function ExploreMobile() {
           width='wide'
         >
 
-          <Filters />
+          <Filters filters={state.exploreFilters} />
           <DateRangeSlider />
           <LastUpdated />
           <FontAwesomeIcon
