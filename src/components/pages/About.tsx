@@ -117,7 +117,7 @@ export default function About() {
                     {Translate('TeamLead')}
                 </h2>
                 <div className="bio-grid-container">
-                    {renderBioBlock('Rahul Arora', [Translate('UniversityOf', null, { "NAME": "Oxford" }), Translate('UniversityOf', null, { "NAME": "Calgary" })], 'https://www.linkedin.com/in/rahularorayyc/', 'rahularoradfs@gmail.com', 'https://mobile.twitter.com/RahulAroraAB')}
+                    {renderBioBlock('Rahul Arora', [Translate('UniversityOf', null, { "NAME": "Oxford" }), Translate('UniversityOf', null, { "NAME": "Calgary" })], 'https://www.linkedin.com/in/rahularorayyc/', 'rahularoradfs@gmail.com')}
                     {renderBioBlock('Tingting Yan', [Translate('UniversityOf', null, { "NAME": "Toronto" })], 'https://www.linkedin.com/in/tingting-yan/', '', 'https://twitter.com/TingtingYan_')}
                 </div>
                 <h2 className="team-name-text">
