@@ -3,6 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 import Translate from "../../utils/translate/translateService";
+import { Link } from "react-router-dom";
 import './static.css';
 
 export default function Data() {
@@ -58,6 +59,10 @@ export default function Data() {
                 </p>
             </div>
             {renderAirtable('https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=blue&viewControls=on')}
+            <p>
+            {Translate('UseOfData')}
+            <Link className="p-1" to="/TermsOfUse">{Translate('TermsOfUse')}</Link>
+            </p>
         </div>
     )
 }
