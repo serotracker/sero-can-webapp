@@ -16,3 +16,23 @@
 .last-refreshed-title {
     font-size: 0.9em;
 }
+
+.date-range-container { 
+  margin-left: 15px;
+}
+
+.DateRangePicker { 
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.DayPicker { 
+  transform: translateX(16px) translateY(32px) scale(0.8);
+}
+
+.CalendarDay__selected_span {
+  background: #44728f !important;
+  border: 1px double #455a64 !important;
+}
+
+

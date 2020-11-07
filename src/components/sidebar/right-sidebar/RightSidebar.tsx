@@ -96,19 +96,25 @@ export default function RightSidebar() {
     <div className="justify-content-between sidebar-container">
       <div className="filters-container mb-3">
         <Filters />
-        <DateRangePicker
-            endDate={endDate}
-            endDateId="endDateId"
-            focusedInput={ focusedInput }
-            onDatesChange={onDatesChange}
-            onFocusChange={onFocusChange}
-            startDate={startDate}
-            startDateId="startDateId"
-            isOutsideRange={day => isAfterDay(day, moment())}
-            numberOfMonths={1}
-            openDirection="up"
-            small={true}
-        />
+        <div className="date-range-container">
+          <div className="section-title space-between flex">
+            {Translate('DateRange')}
+          </div>
+          <DateRangePicker
+              endDate={endDate}
+              endDateId="endDateId"
+              focusedInput={ focusedInput }
+              onDatesChange={onDatesChange}
+              onFocusChange={onFocusChange}
+              startDate={startDate}
+              startDateId="startDateId"
+              isOutsideRange={day => isAfterDay(day, moment())}
+              numberOfMonths={1}
+              openDirection="up"
+              hideKeyboardShortcutsPanel={true}
+              small={true}
+          />
+        </div>
       </div>
       <div className="fill">
         <LastUpdated />
