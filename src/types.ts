@@ -68,17 +68,14 @@ export enum LanguageType {
 
 export type State = {
     healthcheck: string,
-    airtable_records: AirtableRecord[],
     filteredRecords: AirtableRecord[],
     analyzeFilters: Filters,
     exploreFilters: Filters,
     filters: Filters,
-    filterOptions: Filters,
     allFilterOptions: Filters,
     updatedAt: string,
     dataPageState: DataPageState,
     language: LanguageType,
-    country_prevalences: AggregatedRecord[],
     estimate_grade_prevalences: AlternateAggregatedRecord[],
     showCookieBanner: boolean,
     showAnalyzePopup: boolean

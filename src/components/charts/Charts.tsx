@@ -37,6 +37,7 @@ export default function Charts() {
   useEffect(() => {
     const updateCharts = async () => {
       const api = new httpClient();
+      // TODO: Cache these results so we're not making this call every time we switch pages
       const reAggregatedRecords = await api.postMetaAnalysis(filters, yAxisSelection);
       const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
       setRecords(chartData);

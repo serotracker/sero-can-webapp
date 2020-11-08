@@ -38,6 +38,7 @@ function App() {
     }
 
     const api = new httpClient()
+    // TODO: Update this to use Austin's new endpoint
     const allFilterOptions = async () => {
       const response = await api.getAllRecords()
       dispatch({
@@ -62,6 +63,7 @@ function App() {
     }
 
     const getAirtableRecords = async () => {
+      // TODO: Work through the weirdness of initializing filters so that we don't need to check if routing occurred
       if (dataPageState.routingOccurred) {
         const response = await api.getAirtableRecords(filters)
         dispatch({

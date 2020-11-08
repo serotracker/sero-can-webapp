@@ -13,8 +13,7 @@ export default function TotalStats() {
   useEffect(() => {
     const updateCountryPrevalence = async () => {
       const api = new httpClient();
-      const filters = state.dataPageState.exploreIsOpen ? state.exploreFilters : state.analyzeFilters
-      const results = await api.postMetaAnalysis(filters, AggregationFactor.country);
+      const results = await api.postMetaAnalysis(state.filters, AggregationFactor.country);
       setNumCountries(results.length);
       setN(results.map((o: Record<string, any>) => o.n).reduce((a: number, b: number) => a + b, 0));
       setNumStudies(results.map((o: Record<string, any>) => o.numStudies).reduce((a: number, b: number) => a + b, 0));
@@ -22,7 +21,7 @@ export default function TotalStats() {
     if (state.dataPageState.routingOccurred) {
       updateCountryPrevalence();
     }
-  }, [state.analyzeFilters, state.dataPageState.exploreIsOpen, state.dataPageState.routingOccurred, state.exploreFilters])
+  }, [state.dataPageState.routingOccurred, state.filters])
 
   return (
     <div className="col-12 p-0 stats-container">

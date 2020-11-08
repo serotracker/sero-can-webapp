@@ -37,7 +37,7 @@ export default function Map() {
       })
       setMapRecords(initImportGeo);
     }
-  }, [state.country_prevalences, state.estimate_grade_prevalences])
+  }, [state.estimate_grade_prevalences])
 
   const bounds = latLngBounds([-90, -200], [90, 180]);
   const maxBounds = latLngBounds([-90, -200], [90, 200]);

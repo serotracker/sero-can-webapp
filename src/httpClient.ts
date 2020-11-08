@@ -1,16 +1,8 @@
 import { AggregatedRecord, AggregationFactor, AirtableRecord, Filters, FilterType } from "./types";
 import { formatISO, add } from 'date-fns'
+import { formatDates } from "./utils/utils";
 
 export default class httpClient {
-    formatDates(dates: Array<Date> | null) {
-        let endDate = formatISO(new Date());
-        let startDate = formatISO(add(new Date(endDate), { years: -2 }));
-        if (dates) {
-            endDate = dates[1] ? formatISO(dates[1] as Date) : endDate;
-            startDate = dates[0] ? formatISO(dates[0] as Date) : startDate;
-        }
-        return [startDate, endDate]
-    }
 
     async httpGet(url: string) {
         let url_full = url;
@@ -108,7 +100,7 @@ export default class httpClient {
         });
 
         const date = filters['publish_date'] as Array<Date>
-        const [startDate, endDate] = this.formatDates(date)
+        const [startDate, endDate] = formatDates(date)
         const reqBody = {
             filters: reqBodyFilters,
             start_date: startDate,
@@ -166,9 +158,8 @@ export default class httpClient {
             reqBodyFilters[o] = filter as string[]
         })
         delete reqBodyFilters['publish_date']
-        const date = filters['publish_date']
-        const endDate = date[1] ? formatISO(date[1] as Date) : formatISO(new Date());
-        const startDate = date[0] ? formatISO(date[0] as Date) : formatISO(add(new Date(endDate), { years: -2 }));
+        const date = filters['publish_date']        
+        const [startDate, endDate] = formatDates(date)
         const reqBody = {
             start_date: startDate,
             end_date: endDate,
@@ -216,7 +207,6 @@ export default class httpClient {
         aggregation_variable: AggregationFactor,
         meta_analysis_technique: string = 'fixed',
         meta_analysis_transformation: string = 'double_arcsin_precise') {
-        // Note: while the rest of the aggregation variables can stay consistent with frontend nomenclature
         const reqBodyFilters: Record<string, string[]> = {}
 
         const date = filters['publish_date'];
@@ -224,8 +214,10 @@ export default class httpClient {
             const filter = Array.from(filters[o as FilterType]);
             reqBodyFilters[o] = filter as string[]
         });
+
+        // TODO: Rename publish_date to sampling_end_date
         delete reqBodyFilters['publish_date'];
-        const [startDate, endDate] = this.formatDates(date)
+        const [startDate, endDate] = formatDates(date)
         const reqBody = {
             start_date: startDate,
             end_date: endDate,

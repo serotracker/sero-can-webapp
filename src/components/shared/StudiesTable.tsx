@@ -47,6 +47,7 @@ export default function StudiesTable(props: StudiesTableProps) {
     }, [activePage, column, direction, isMobileDevice, pageLength, props.dataRecords])
 
     const getPopulation = (sex: string | null, age: string[] | null, population_group: string[] | null) => {
+        // TODO: Check if we still need to accommodate for these edge cases.
         if (!population_group) {
             return "Not Reported";
         }

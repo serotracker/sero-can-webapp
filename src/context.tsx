@@ -1,5 +1,5 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import { AirtableRecord, Filters, FilterType, LanguageType, State } from "./types";
+import { AirtableRecord, Filters, LanguageType, State } from "./types";
 import Translate from "./utils/translate/translateService";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
@@ -55,12 +55,10 @@ const initial_filters: Filters = getDefaultFilters();
 
 const initialState: State = {
   healthcheck: '',
-  airtable_records: [],
   filteredRecords: [],
   estimate_grade_prevalences: [],
   exploreFilters: { ...initial_filters, estimate_grade: new Set(), source_type: new Set() },
   analyzeFilters: initial_filters,
-  filterOptions: getEmptyFilters(),
   allFilterOptions: getEmptyFilters(),
   filters: getEmptyFilters(),
   dataPageState: {
@@ -70,11 +68,11 @@ const initialState: State = {
   },
   language: LanguageType.english,
   updatedAt: '',
-  country_prevalences: [],
   showCookieBanner: false,
   showAnalyzePopup: true
 };
 
+// TODO: Make this use the new filter options endpoint
 function getFilterOptions(records: AirtableRecord[]) {
   const filter_options: Filters = getEmptyFilters();
 
@@ -203,11 +201,6 @@ const reducer = (state: State, action: Record<string, any>): State => {
         exploreFilters: state.dataPageState.exploreIsOpen ? new_filters : state.exploreFilters,
         analyzeFilters: state.dataPageState.exploreIsOpen ? state.analyzeFilters : new_filters,
         filters: new_filters
-      };
-    case "UPDATE_COUNTRY_PREVALENCES":
-      return {
-        ...state,
-        country_prevalences: action.payload
       };
     default:
       return state

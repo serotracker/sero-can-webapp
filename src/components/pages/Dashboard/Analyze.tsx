@@ -15,6 +15,7 @@ export default function Analyze() {
   useEffect(() => {
     const updateCountryPrevalence = async () => {
       const api = new httpClient();
+      // TODO: Figure out a better place to put this so we don't keep updating this either 
       const estimateGradePrevalences = await api.getEstimateGrades(state.analyzeFilters);
       dispatch({
         type: 'UPDATE_ESTIMATE_PREVALENCES',
