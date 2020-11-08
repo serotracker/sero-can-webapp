@@ -6,7 +6,6 @@ import { AppContext } from "../../context";
 import Charts from "../charts/Charts";
 import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
 import TotalStats from "../sidebar/left-sidebar/TotalStats";
-import DateRangeSlider from "../sidebar/right-sidebar/date-slider/Slider";
 import Filters from "../sidebar/right-sidebar/Filters";
 import LastUpdated from "../sidebar/right-sidebar/LastUpdated";
 
@@ -36,7 +35,6 @@ export default function AnalyzeMobile() {
         >
 
           <Filters filters={state.analyzeFilters}/>
-          <DateRangeSlider />
           <LastUpdated />
           <FontAwesomeIcon
             icon={faTimes}
