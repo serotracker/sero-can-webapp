@@ -10,7 +10,6 @@ interface LegendProps {
 }
 
 export default function Legend(props: LegendProps) {
-  const { buckets } = props;
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
 
   // const labels = buckets.map((value, index) => {

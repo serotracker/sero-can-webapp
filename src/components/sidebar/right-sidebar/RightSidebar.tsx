@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import Filters from "./Filters";
 import LastUpdated from "./LastUpdated";
-import Slider from './date-slider/Slider';
 import "../sidebar.css"
 import "./RightSidebar.css"
 import Translate from "../../../utils/translate/translateService";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../../context";
 
 export default function RightSidebar() {
+  const [{filters}, ] = useContext(AppContext)
+
   return (
     <div className="justify-content-between sidebar-container">
       <div className="filters-container mb-3">
-        <Filters />
-        <Slider />
+        <Filters filters={filters}/>
       </div>
       <div className="fill">
         <LastUpdated />

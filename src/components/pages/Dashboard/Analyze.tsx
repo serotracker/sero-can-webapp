@@ -11,20 +11,19 @@ import Charts from "../../charts/Charts";
 export default function Analyze() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   const [state, dispatch] = useContext(AppContext);
-  
+
   useEffect(() => {
-    if(state.filtered_records.length > 0){
-      const updateCountryPrevalence = async () => {
-        const api = new httpClient();
-        const estimateGradePrevalences = await api.getEstimateGrades(state.filtered_records);
-        dispatch({
-          type: 'UPDATE_ESTIMATE_PREVALENCES',
-          payload: estimateGradePrevalences
-        });
-      } 
-      updateCountryPrevalence();
+    const updateCountryPrevalence = async () => {
+      const api = new httpClient();
+      // TODO: Figure out a better place to put this so we don't keep updating this either 
+      const estimateGradePrevalences = await api.getEstimateGrades(state.analyzeFilters);
+      dispatch({
+        type: 'UPDATE_ESTIMATE_PREVALENCES',
+        payload: estimateGradePrevalences
+      });
     }
-  }, [state.filtered_records, dispatch])
+    updateCountryPrevalence();
+  }, [state.analyzeFilters, dispatch])
 
   return (
     <div className="fill flex dashboard">

@@ -11,20 +11,17 @@ import Map from '../../map/Map';
 export default function Explore() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   const [state, dispatch] = useContext(AppContext);
-  
   useEffect(() => {
-    if(state.filtered_records.length > 0){
       const updateCountryPrevalence = async () => {
         const api = new httpClient();
-        const estimateGradePrevalences = await api.getEstimateGrades(state.filtered_records);
+        const estimateGradePrevalences = await api.getEstimateGrades(state.exploreFilters);
         dispatch({
           type: 'UPDATE_ESTIMATE_PREVALENCES',
           payload: estimateGradePrevalences
         });
-      } 
+      }
       updateCountryPrevalence();
-    }
-  }, [state.filtered_records, dispatch])
+  }, [dispatch, state.exploreFilters])
 
   return (
     <div className="fill flex dashboard">

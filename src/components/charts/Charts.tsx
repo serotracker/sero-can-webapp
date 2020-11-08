@@ -17,34 +17,35 @@ export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
   const [state, dispatch] = useContext(AppContext);
-  const { filtered_records, filters, showAnalyzePopup } = state;
+  const { filters, showAnalyzePopup } = state;
   const initState = [] as AggregatedRecord[];
   const [showModal, toggleModal] = useState(true);
   const [records, setRecords] = useState(initState);
 
   const yAxisOptions = [
     { key: 'Geographies', text: Translate('Geographies'), value: AggregationFactor.country },
-    { key: 'Population', text: Translate('Population'), value: AggregationFactor.population_group },
+    // { key: 'Population', text: Translate('Population'), value: AggregationFactor.population_group },
     { key: 'Sex', text: Translate('Sex'), value: AggregationFactor.sex },
-    { key: 'Age', text: Translate('Age'), value: AggregationFactor.age },
+    // { key: 'Age', text: Translate('Age'), value: AggregationFactor.age },
     { key: 'Study Status', text: Translate('StudyStatus'), value: AggregationFactor.study_status },
-    { key: 'Test Type', text: Translate('TestType'), value: AggregationFactor.test_type },
+    // { key: 'Test Type', text: Translate('TestType'), value: AggregationFactor.test_type },
     { key: 'Source Type', text: Translate('SourceType'), value: AggregationFactor.source_type },
-    { key: 'Risk Of Bias', text: Translate('RiskOfBias'), value: AggregationFactor.risk_of_bias },
+    { key: 'Overall Risk Of Bias', text: Translate('RiskOfBias'), value: AggregationFactor.overall_risk_of_bias },
     { key: 'Isotypes Reported', text: Translate('IsotypesReported'), value: AggregationFactor.isotypes_reported },
   ]
 
   useEffect(() => {
-    if (filtered_records.length > 0) {
-      const updateCharts = async () => {
-        const api = new httpClient();
-        const reAggregatedRecords = await api.postMetaAnalysis(state.filtered_records, yAxisSelection);
-        const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
-        setRecords(chartData);
-      }
+    const updateCharts = async () => {
+      const api = new httpClient();
+      // TODO: Cache these results so we're not making this call every time we switch pages
+      const reAggregatedRecords = await api.postMetaAnalysis(filters, yAxisSelection);
+      const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
+      setRecords(chartData);
+    }
+    if (state.dataPageState.routingOccurred) {
       updateCharts();
     }
-  }, [yAxisSelection, state, filtered_records, filters])
+  }, [filters, state.dataPageState.routingOccurred, yAxisSelection])
 
   const handleChange = (event: SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
     setYAxis(data.value as AggregationFactor);
@@ -100,7 +101,7 @@ export default function Charts() {
   const closeModal = () => {
     toggleModal(false);
     dispatch({ type: 'CLOSE_ANALYZE_POPUP' })
-  } 
+  }
 
   const MobileInfoModal = () => (
     <Modal className="modal" open={showModal} onClose={closeModal} closeIcon={{ style: { top: '1.0535rem', right: '1rem' }, color: 'black', name: 'close' }}>
@@ -113,7 +114,7 @@ export default function Charts() {
       </Modal.Content>
     </Modal>
   )
-  
+
   return (
     <div className="charts-page">
       {showAnalyzePopup ? <MobileInfoModal /> : null}

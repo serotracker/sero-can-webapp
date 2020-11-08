@@ -1,15 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
-import { FilterType } from '../../../types';
+import httpClient from "../../../httpClient";
+import { Filters as FilterT, FilterType } from '../../../types';
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import { getCountryName } from "../../../utils/mapUtils";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
 import Translate from "../../../utils/translate/translateService";
 import InformationIcon from "../../shared/InformationIcon";
 
-export default function Filters() {
-  const [state, dispatch] = useContext(AppContext);
+interface FilterProps {
+  filters: FilterT
+}
+
+export default function Filters({filters}: FilterProps) {
+  const [state, dispatch] = useContext(AppContext);  
+  const api = new httpClient()
+
+
+  const getAirtableRecords = async () => {
+    const response = await api.getAirtableRecords(filters)
+    dispatch({
+      type: 'GET_AIRTABLE_RECORDS',
+      payload: response
+    });
+  }
+
+  const getFilters = (filter_type: FilterType): string[] => {
+    return Array.from(filters[filter_type]) as string[]
+  }
 
   const formatOptions = (options: any, filter_type: FilterType) => {
     const formatted_options: Record<string, string>[] = [];
@@ -48,6 +67,7 @@ export default function Filters() {
         filter_value: data.value
       }
     });
+    getAirtableRecords();
   }
 
   const buildSectionHeader = (header_text: string, tooltip_text?: string | React.ReactNode, tooltip_header?: string) => {
@@ -71,6 +91,9 @@ export default function Filters() {
   }
 
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
+    if(!state.dataPageState.routingOccurred) {
+      return null;
+    }
     return (
       <div className="pb-3">
         <Dropdown
@@ -80,7 +103,7 @@ export default function Filters() {
           search
           clearable
           selection
-          options={formatOptions(state.filter_options[filter_type], filter_type)}
+          options={formatOptions(state.allFilterOptions[filter_type], filter_type)}
           onChange={(e: any, data: any) => {
             addFilter(data, filter_type)
             sendAnalyticsEvent({
@@ -93,7 +116,7 @@ export default function Filters() {
               /** A numeric value associated with the event (e.g. 42) */
             })
           }}
-          defaultValue={Array.from(state.filters[filter_type])}
+          defaultValue={getFilters(filter_type)}
         />
       </div>
     )
@@ -151,7 +174,7 @@ export default function Filters() {
               {buildFilterDropdown('study_status', Translate('StudyStatus'))}
             </div>
             <div>
-              {buildFilterDropdown('risk_of_bias', Translate('OverallRiskOfBias'))}
+              {buildFilterDropdown('overall_risk_of_bias', Translate('OverallRiskOfBias'))}
             </div>
           </div>
           <div className="pb-1">

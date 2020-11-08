@@ -1,9 +1,8 @@
 import React from "react";
-import { MIN_DENOMINATOR } from "../../../metaAnalysis";
 import InformationText from "../../shared/InformationText";
 import './AnalysisMethods.css';
 
-
+const MIN_DENOMINATOR = 100
 export default function AnalysisMethods() {
   return (
     <div className="analysis-methods">
