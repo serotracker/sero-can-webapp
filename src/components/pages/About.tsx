@@ -75,15 +75,18 @@ export default function About() {
                     </a>
                 </p>
                 <p> 
+                    {/* 
+                    SeroTracker is supported by the Public Health Agency of Canada through the COVID-19 Immunity Task Force. SeroTracker is also hosted at the University of Calgary's Centre for Health Informatics. The COVID-19 Immunity Task Force is mapping the extent of SARS-CoV-2 infection in Canada, and SeroTracker also provides content for their Global Serological Knowledge Hub.
+                    */}
                     {Translate('AboutPage', ['AboutSection', 'SupportedBy'])}
                     <a onClick={() => selectLink('Public Health Agency')} href="https://www.canada.ca/en/public-health.html">{Translate('AboutPage', ['AboutSection', 'PublicHealthAgency'], null, [true, true])}</a>
+                    {Translate('AboutPage', ['AboutSection', 'ThroughThe'])}
+                    <a onClick={() => selectLink('ITF Website')} href="https://www.covid19immunitytaskforce.ca/">{Translate('AboutPage', ['AboutSection', 'Covid19ImmunityTaskForce'], null, [true, true])}</a>
                     {Translate('AboutPage', ['AboutSection', 'HostedAt'])}                    
                     <a onClick={() => selectLink('Centre for Health Informatics')} href="https://cumming.ucalgary.ca/centres/centre-health-informatics">{Translate('AboutPage', ['AboutSection', 'HealthInformatics'], null, [true, true])}</a>
                 </p>
                 <p>
-                    {Translate('AboutPage', ['AboutSection', 'OurWorkIs'])}
-                    <a onClick={() => selectLink('ITF Website')} href="https://www.covid19immunitytaskforce.ca/">{Translate('AboutPage', ['AboutSection', 'Covid19ImmunityTaskForce'], null, [true, true])}</a>
-                     {Translate('AboutPage', ['AboutSection', 'WhichIsMapping'], null, [true, false])}
+                    {Translate('AboutPage', ['AboutSection', 'MappingTheExtent'], null, [true, false])}
                     <a onClick={() => selectLink('Serological Hub')} href="https://www.covid19immunitytaskforce.ca/research/global-serological-knowledge-hub/">{Translate('AboutPage', ['AboutSection', 'GlobalSerologicalKnowledgeHub'], null, [true, false])}</a>.
                 </p>
                 <p>
@@ -133,6 +136,7 @@ export default function About() {
                     {renderBioBlock('Michael Liu', [Translate('UniversityOf', null, { "NAME": "Oxford" }), Translate('BlankUniversity', null, { "NAME": "Harvard" })], 'https://www.linkedin.com/in/michael-liu-8728249a/', 'liu.michael222@gmail.com', 'https://twitter.com/mliu_canada')}
                     {renderBioBlock('Mitchell Segal', [Translate('UniversityOf', null, { "NAME": "Toronto" })], null, 'mitchell.segal@mail.utoronto.ca')}
                     {renderBioBlock('Lucas Penny', [Translate('UniversityOf', null, { "NAME": "Toronto" })], 'https://www.linkedin.com/in/lucaspenny/', 'lucas.penny@mail.utoronto.ca', 'https://twitter.com/lucasjpenny')}
+                    {renderBioBlock('Mairead Whelan', [Translate('UniversityOf', null, { "NAME": "Oxford" })], 'https://www.linkedin.com/in/mairead-whelan', 'mairead.whelan@ucalgary.ca', 'https://twitter.com/Mairead_GWhelan')}
                 </div>
                 <h2 className="team-name-text">
                     Development Team
@@ -153,8 +157,6 @@ export default function About() {
                     {renderBioBlock('Nathan Duarte', [Translate('UniversityOf', null, { "NAME": "Waterloo" })], 'https://www.linkedin.com/in/duartenathan/', 'nathanduarte1@gmail.com', 'https://twitter.com/_nathan_duarte_')}
                     {renderBioBlock('Abhinav Pillai	', [Translate('UniversityOf', null, { "NAME": "Calgary" })], null, 'abhinav.arunpillai@ucalgary.ca')}
                     {renderBioBlock('Natalie Duarte', [], null, 'natalieaduarte@gmail.com')}
-                    {renderBioBlock('Madeleine Rocco', [Translate('BlankUniversity', null, { "NAME": "Western" })], 'https://www.linkedin.com/in/madeleine-rocco/', 'madeleinerocco@gmail.com')}
-                    {renderBioBlock('Jamie Chen', [Translate('BlankUniversity', null, { "NAME": "Johns Hopkins" })], 'https://www.linkedin.com/in/jamieechen/', 'jamieevelynchen@gmail.com')}
                 </div>
                 <h2 className="team-name-text">
                     {Translate('ScientificAdvisorsAndCollaborators')}
