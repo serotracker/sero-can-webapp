@@ -182,10 +182,9 @@ const reducer = (state: State, action: Record<string, any>): State => {
         language: action.payload
       };
     case "GET_ALL_FILTER_OPTIONS":
-      const allFilterOptions = getFilterOptions(action.payload);
       return {
         ...state,
-        allFilterOptions
+        allFilterOptions: action.payload
       };
     case "GET_AIRTABLE_RECORDS":
       return {
