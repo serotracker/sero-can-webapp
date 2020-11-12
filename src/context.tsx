@@ -194,7 +194,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
         updatedAt: action.payload.updated_at,
       };
     case "UPDATE_FILTER":      
-      const new_filters: any = state.dataPageState.exploreIsOpen ? Object.assign({}, state.analyzeFilters) : Object.assign({}, state.exploreFilters);
+      const new_filters: any = state.dataPageState.exploreIsOpen ? Object.assign({}, state.exploreFilters): Object.assign({}, state.analyzeFilters);
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
       return {
         ...state,
