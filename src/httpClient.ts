@@ -84,7 +84,20 @@ export default class httpClient {
     }
 
     async getAllFilterOptions() {
-       // Fill this with Austin's new endpoint
+        const response = await this.httpGet('/data_provider/filter_options');
+        const options: Record<string, any> = {}
+        for(let k in response){
+            // Currently no need for max and min date options
+            if(k != "max_date" && k != "min_date"){
+                // For all the other options, use a Set instead of list
+                // Because that's the data model our filters are used to
+                // TODO: refactor so we can keep filter options in a list
+                options[k] = new Set(response[k]);
+            }
+        }
+        // We know that only these 3 isotypes will ever be reported, thus we can hardcode
+        options.isotypes_reported = new Set(["IgG", "IgA", "IgM"]);
+        return options;
     }
     
     async getAirtableRecords(filters: Filters,

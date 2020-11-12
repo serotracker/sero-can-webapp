@@ -72,68 +72,6 @@ const initialState: State = {
   showAnalyzePopup: true
 };
 
-// TODO: Make this use the new filter options endpoint
-function getFilterOptions(records: AirtableRecord[]) {
-  const filter_options: Filters = getEmptyFilters();
-
-  if (!records) {
-    return filter_options;
-  }
-  records.forEach((record: AirtableRecord) => {
-    // TODO: Refactor to be more DRY
-    if ((record.seroprevalence !== null) && (record.denominator !== null)) {
-      if (record.country) {
-        filter_options.country.add(record.country);
-      }
-      if (record.study_status) {
-        filter_options.study_status.add(record.study_status);
-      }
-      if (record.source_type) {
-        filter_options.source_type.add(record.source_type);
-      }
-      if (record.sex) {
-        filter_options.sex.add(record.sex);
-      }
-      if (record.overall_risk_of_bias) {
-        filter_options.overall_risk_of_bias.add(record.overall_risk_of_bias);
-      }
-      if (record.estimate_grade) {
-        filter_options.estimate_grade.add(record.estimate_grade);
-      }
-      if (record.test_type) {
-        record.test_type.forEach((test_type) => {
-          filter_options.test_type.add(test_type);
-        })
-      }
-      if (record.population_group) {
-        record.population_group.forEach((population_group) => {
-          filter_options.population_group.add(population_group);
-        });
-      }
-      if (record.age) {
-        record.age.forEach((age) => {
-          filter_options.age.add(age);
-        });
-      }
-      if (record.isotypes_reported) {
-        record.isotypes_reported.forEach((isotype_reported) => {
-          if (isotype_reported !== 'Not reported') {
-            filter_options.isotypes_reported.add(isotype_reported);
-          }
-        });
-      }
-      if (record.specimen_type) {
-        record.specimen_type.forEach((specimen_type) => {
-          if (specimen_type !== 'Not reported') {
-            filter_options.specimen_type.add(specimen_type);
-          }
-        })
-      }
-    }
-  });
-
-  return filter_options;
-}
 
 const reducer = (state: State, action: Record<string, any>): State => {
   switch (action.type) {
@@ -182,10 +120,9 @@ const reducer = (state: State, action: Record<string, any>): State => {
         language: action.payload
       };
     case "GET_ALL_FILTER_OPTIONS":
-      const allFilterOptions = getFilterOptions(action.payload);
       return {
         ...state,
-        allFilterOptions
+        allFilterOptions: action.payload
       };
     case "GET_AIRTABLE_RECORDS":
       return {

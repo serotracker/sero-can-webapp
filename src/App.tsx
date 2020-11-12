@@ -38,9 +38,8 @@ function App() {
     }
 
     const api = new httpClient()
-    // TODO: Update this to use Austin's new endpoint
     const allFilterOptions = async () => {
-      const response = await api.getAllRecords()
+      const response = await api.getAllFilterOptions();
       dispatch({
         type: 'GET_ALL_FILTER_OPTIONS',
         payload: response
