@@ -4,7 +4,7 @@ import Filters from "../sidebar/right-sidebar/Filters";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faFilter, faBars } from "@fortawesome/free-solid-svg-icons";
 import TotalStats from "../sidebar/left-sidebar/TotalStats";
-import DateRangeSlider from "../sidebar/right-sidebar/date-slider/Slider";
+import CalendarPicker from "../sidebar/right-sidebar/CalendarPicker";
 import LastUpdated from "../sidebar/right-sidebar/LastUpdated";
 import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
 import Charts from "../charts/Charts";
@@ -34,7 +34,7 @@ export default function AnalyzeMobile() {
         >
 
           <Filters />
-          <DateRangeSlider />
+          <CalendarPicker />
           <LastUpdated />
           <FontAwesomeIcon
             icon={faTimes}
