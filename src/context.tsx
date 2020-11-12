@@ -57,7 +57,7 @@ const initialState: State = {
   healthcheck: '',
   filteredRecords: [],
   estimate_grade_prevalences: [],
-  exploreFilters: { ...initial_filters, estimate_grade: new Set(), source_type: new Set() },
+  exploreFilters: getEmptyFilters(),
   analyzeFilters: initial_filters,
   allFilterOptions: getEmptyFilters(),
   filters: getEmptyFilters(),
