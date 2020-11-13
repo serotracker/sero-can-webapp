@@ -63,9 +63,9 @@ Countries.registerLocale(English);
 Countries.registerLocale(French);
 
 export const getCountryName = (country: string, language: LanguageType, optionString: string) => {
-  const code = Countries.getAlpha2Code(country, 'en'); //TODO: Review our strategy for country name language localization
+  const code = Countries.getAlpha2Code(country, 'en');
   const translatedCountryName = Countries.getName(code, language);
-  const displayText = translatedCountryName ? translatedCountryName : (Translate(optionString, [toPascalCase(country)]) || country);
+  const displayText = translatedCountryName ? translatedCountryName : Translate(optionString, [toPascalCase(country)]);
   return displayText;
 }
 
