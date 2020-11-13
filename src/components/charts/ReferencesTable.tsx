@@ -8,7 +8,10 @@ import { mobileDeviceWidth } from '../../constants';
 import { useMediaQuery } from 'react-responsive';
 import { AirtableRecord } from '../../types';
 import Translate from '../../utils/translate/translateService';
+import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 import ReferenceSearch from '../charts/ReferencesSearch';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
 export default function ReferencesTable() {
   const [state] = useContext(AppContext);
@@ -102,12 +105,12 @@ export default function ReferencesTable() {
 
 
   return (
-    <div className="container col-11 mt-3 top references">
-      <div className="col-12 px-0 py-3 section-title">
+    <div className="container col-11 mx-0 my-1 top references">
+      {/*<ReferenceSearch source={state.airtable_records}/>*/}
+      <div className="col-12 px-0 py-1 section-title">
         {Translate('References').toUpperCase()}
       </div>
-      <ReferenceSearch source={state.airtable_records}/>
-      <Table celled sortable fixed striped className="table mb-3 mt-0">
+      <Table celled sortable fixed striped className="table my-0">
         <Table.Header className="flex col-12 p-0">
           <Table.Row className="flex col-12 p-0">
             {buildHeaderCell('title', Translate('Name'), 'col-sm-12 col-lg-3 p-1')}
@@ -170,6 +173,17 @@ export default function ReferencesTable() {
             null
         }
       </Table>
+      <div className="d-flex justify-content-end">
+        <a target="_blank" onClick={() => sendAnalyticsEvent({category: 'Data Link Click', action: 'click', label: 'DownloadCsv'})} 
+        href="https://airtable.com/shraXWPJ9Yu7ybowM/tbljN2mhRVfSlZv2d?backgroundColor=blue&viewControls=on">
+          <FontAwesomeIcon
+          icon={faDownload}
+          className={'icon'}
+          color={'#455a64'}
+          size={"1x"} />
+          <span>{Translate('DownloadCsv')}</span>
+        </a>
+      </div>
     </div>
   );
 }

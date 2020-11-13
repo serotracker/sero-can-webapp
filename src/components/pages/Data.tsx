@@ -30,7 +30,7 @@ export default function Data() {
 
     return (
         <div className="col-12 page">
-            <div className={isMobileDeviceOrTablet ? "pb-2" : "static-content pb-2"}>
+            <div className={isMobileDeviceOrTablet ? "pb-5" : "static-content pb-5"}>
                 <h1>
                     {Translate('Methods')}
                 </h1>
@@ -58,12 +58,14 @@ export default function Data() {
                 <p>
                     {Translate('OurDataText', ['Text'])}
                 </p>
+
+                <ReferencesTable />
+
+                <div className="d-flex d-flex justify-content-center">
+                    <span>{Translate('UseOfData', null, null, [false, true])}</span>
+                    <Link className="px-1" to="/TermsOfUse">{Translate('TermsOfUse')}</Link>
+                </div>
             </div>
-            <ReferencesTable />
-            <p>
-            {Translate('UseOfData')}
-            <Link className="p-1" to="/TermsOfUse">{Translate('TermsOfUse')}</Link>
-            </p>
         </div>
     )
 }
