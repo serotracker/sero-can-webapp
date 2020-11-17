@@ -17,15 +17,6 @@ export default function Filters({filters}: FilterProps) {
   const [state, dispatch] = useContext(AppContext);  
   const api = new httpClient()
 
-
-  const getAirtableRecords = async () => {
-    const response = await api.getAirtableRecords(filters)
-    dispatch({
-      type: 'GET_AIRTABLE_RECORDS',
-      payload: response
-    });
-  }
-
   const getFilters = (filter_type: FilterType): string[] => {
     return Array.from(filters[filter_type]) as string[]
   }
@@ -67,7 +58,6 @@ export default function Filters({filters}: FilterProps) {
         filter_value: data.value
       }
     });
-    getAirtableRecords();
   }
 
   const buildSectionHeader = (header_text: string, tooltip_text?: string | React.ReactNode, tooltip_header?: string) => {

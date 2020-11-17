@@ -61,27 +61,14 @@ function App() {
       });
     }
 
-    const getAirtableRecords = async () => {
-      // TODO: Work through the weirdness of initializing filters so that we don't need to check if routing occurred
-      if (dataPageState.routingOccurred) {
-        const response = await api.getAirtableRecords(filters)
-        dispatch({
-          type: 'GET_AIRTABLE_RECORDS',
-          payload: response
-        });
-      }
-    }
-
     const handleResize = () => {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
     window.addEventListener('resize', handleResize)
-    if (dataPageState.routingOccurred) {
-      getAirtableRecords();
-    }
+    
     handleResize();
-  }, [dispatch, language, dataPageState, history, filters])
+  }, [dispatch, language, dataPageState, history])
 
   // ROUTING TABS
   return (

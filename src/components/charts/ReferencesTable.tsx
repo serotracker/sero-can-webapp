@@ -7,9 +7,10 @@ import { AirtableRecord } from '../../types';
 import Translate from '../../utils/translate/translateService';
 import StudiesTable from '../shared/StudiesTable';
 import './Charts.css';
+import httpClient from "../../httpClient";
 
 export default function ReferencesTable() {
-  const [state] = useContext(AppContext);
+  const [state, dispatch] = useContext(AppContext);
   const [activePage] = useState(1);
   const [, setTotalPages] = useState(10);
   const [pageLength, setPageLength] = useState(5);
@@ -18,6 +19,19 @@ export default function ReferencesTable() {
   const initialDataState: AirtableRecord[] = [];
   const [, setData] = useState(initialDataState);
   const isMobileDevice = useMediaQuery({ maxWidth: mobileDeviceWidth })
+
+  useEffect(() => {
+    const api = new httpClient()
+    // TODO: leverage pagination
+    const getAirtableRecords = async () => {
+      const response = await api.getAirtableRecords(state.filters)
+      dispatch({
+        type: 'GET_AIRTABLE_RECORDS',
+        payload: response
+      });
+    }
+    getAirtableRecords()
+  }, [state.filters])
 
   useEffect(() => {
     let newData = [];
