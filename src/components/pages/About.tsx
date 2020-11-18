@@ -137,6 +137,7 @@ export default function About() {
                     {renderBioBlock('Mitchell Segal', [Translate('UniversityOf', null, { "NAME": "Toronto" })], null, 'mitchell.segal@mail.utoronto.ca')}
                     {renderBioBlock('Lucas Penny', [Translate('UniversityOf', null, { "NAME": "Toronto" })], 'https://www.linkedin.com/in/lucaspenny/', 'lucas.penny@mail.utoronto.ca', 'https://twitter.com/lucasjpenny')}
                     {renderBioBlock('Mairead Whelan', [Translate('UniversityOf', null, { "NAME": "Oxford" })], 'https://www.linkedin.com/in/mairead-whelan', 'mairead.whelan@ucalgary.ca', 'https://twitter.com/Mairead_GWhelan')}
+                    {renderBioBlock('Judy Chen', [Translate('BlankUniversity', null, { "NAME": "McGill" })], null, null, null)}
                 </div>
                 <h2 className="team-name-text">
                     Development Team
