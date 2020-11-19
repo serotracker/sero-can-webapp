@@ -17,7 +17,6 @@ export default function Map() {
 
   useEffect(() => {
     if(state.estimate_grade_prevalences.length > 0){
-
       const importGeo = Countries as any;
       const features = importGeo.features as GeoJSON.Feature[]
       // We will iterate through all the features in the geoJson
