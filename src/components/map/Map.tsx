@@ -114,7 +114,7 @@ export default function Map() {
         url="https://www.solidbackgrounds.com/images/1920x1080/1920x1080-gray-solid-color-background.jpg"
         bounds={bounds}>
       </ImageOverlay>
-        {state.filtered_records.map((record) => 
+        {state.filteredRecords.map((record) => 
           <Marker 
             onClick={clickMarker}
             icon={nationalMarker}
@@ -159,7 +159,7 @@ export default function Map() {
               Risk of Bias
             </div>
             <div className="popup-text">
-              {`${record.risk_of_bias}`}
+              {`${record.overall_risk_of_bias}`}
             </div>
           </Popup>
         </Marker>
