@@ -17,9 +17,8 @@ import httpClient from "./httpClient";
 import { setLanguageType } from "./utils/translate/translateService";
 
 function App() {
-  const [{ language, dataPageState, analyze, explore }, dispatch] = useContext(AppContext);
+  const [{ language, analyze, explore }, dispatch] = useContext(AppContext);
   const history = useHistory();
-  const api = new httpClient()
   setLanguageType(language);
 
   useEffect(() => {
@@ -38,6 +37,7 @@ function App() {
       }
     }
     const allFilterOptions = async () => {
+      const api = new httpClient();
       const response = await api.getAllFilterOptions();
       dispatch({
         type: 'GET_ALL_FILTER_OPTIONS',
@@ -52,6 +52,7 @@ function App() {
 
   useEffect(() => {
     const getAirtableRecords = async () => {
+      const api = new httpClient()
       const analyzeRecords = await api.getAirtableRecords(analyze.filters)
       const exploreRecords = await api.getAirtableRecords(explore.filters)
       dispatch({
