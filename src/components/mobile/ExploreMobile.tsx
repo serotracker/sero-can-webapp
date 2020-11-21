@@ -34,8 +34,7 @@ export default function ExploreMobile() {
           visible={showMobileFilters}
           width='wide'
         >
-
-          <Filters filters={state.exploreFilters} />
+          <Filters filters={state.filters} />
           <LastUpdated />
           <FontAwesomeIcon
             icon={faTimes}

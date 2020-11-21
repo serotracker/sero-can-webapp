@@ -17,27 +17,26 @@ import httpClient from "./httpClient";
 import { setLanguageType } from "./utils/translate/translateService";
 
 function App() {
-  const [{ language, dataPageState, filters }, dispatch] = useContext(AppContext);
+  const [{ language, dataPageState, analyze, explore }, dispatch] = useContext(AppContext);
   const history = useHistory();
+  const api = new httpClient()
   setLanguageType(language);
 
   useEffect(() => {
     const toggleFilters: LocationListener = ({ pathname }: Location): void => {
       if (pathname === "/Analyze") {
         dispatch({
-          type: 'SELECT_EXPLORE_OR_ANALYZE',
+          type: 'MAKE_INITIAL_ROUTE',
           payload: false
         })
       }
       else if (pathname === "/Explore") {
         dispatch({
-          type: 'SELECT_EXPLORE_OR_ANALYZE',
+          type: 'MAKE_INITIAL_ROUTE',
           payload: true
         })
       }
     }
-
-    const api = new httpClient()
     const allFilterOptions = async () => {
       const response = await api.getAllFilterOptions();
       dispatch({
@@ -47,28 +46,37 @@ function App() {
     }
 
     history.listen(toggleFilters);
-    toggleFilters(history.location, 'REPLACE')    
+    toggleFilters(history.location, 'REPLACE')
     allFilterOptions();
-  }, [dispatch, history])
-
+  })
 
   useEffect(() => {
-    const api = new httpClient()
+    const getAirtableRecords = async () => {
+      const analyzeRecords = await api.getAirtableRecords(analyze.filters)
+      const exploreRecords = await api.getAirtableRecords(explore.filters)
+      dispatch({
+        type: 'GET_AIRTABLE_RECORDS',
+        payload:  { analyzeRecords, exploreRecords }
+      });
+    }
+    getAirtableRecords()
+  })
+
+  useEffect(() => {
     const alreadyAcceptedCookes = localStorage.getItem('acceptedCookies');
     if (alreadyAcceptedCookes) {
       dispatch({
         type: 'ACCEPT_COOKIES'
       });
     }
-
     const handleResize = () => {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
     window.addEventListener('resize', handleResize)
-    
+
     handleResize();
-  }, [dispatch, language, dataPageState, history])
+  }, [dispatch])
 
   // ROUTING TABS
   return (

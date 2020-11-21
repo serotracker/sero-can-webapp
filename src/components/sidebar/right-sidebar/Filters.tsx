@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
-import httpClient from "../../../httpClient";
 import { Filters as FilterT, FilterType } from '../../../types';
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import { getCountryName } from "../../../utils/mapUtils";
@@ -15,7 +14,6 @@ interface FilterProps {
 
 export default function Filters({filters}: FilterProps) {
   const [state, dispatch] = useContext(AppContext);  
-  const api = new httpClient()
 
   const getFilters = (filter_type: FilterType): string[] => {
     return Array.from(filters[filter_type]) as string[]

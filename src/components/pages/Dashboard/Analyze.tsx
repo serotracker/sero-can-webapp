@@ -16,14 +16,14 @@ export default function Analyze() {
     const updateCountryPrevalence = async () => {
       const api = new httpClient();
       // TODO: Figure out a better place to put this so we don't keep updating this either 
-      const estimateGradePrevalences = await api.getEstimateGrades(state.analyzeFilters);
+      const estimateGradePrevalences = await api.getEstimateGrades(state.filters);
       dispatch({
         type: 'UPDATE_ESTIMATE_PREVALENCES',
         payload: estimateGradePrevalences
       });
     }
     updateCountryPrevalence();
-  }, [state.analyzeFilters, dispatch])
+  }, [state.filters, dispatch])
 
   return (
     <div className="fill flex dashboard">

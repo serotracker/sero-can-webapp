@@ -1,5 +1,5 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import { AirtableRecord, Filters, LanguageType, State } from "./types";
+import { Filters, LanguageType, State } from "./types";
 import Translate from "./utils/translate/translateService";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
@@ -51,16 +51,20 @@ export function getDefaultFilters(): Filters {
 
 // Note: filters = elements that user has chosen to filter by
 // filter_options = all the elements that users could filter by
-const initial_filters: Filters = getDefaultFilters();
-
 const initialState: State = {
   healthcheck: '',
-  filteredRecords: [],
-  estimate_grade_prevalences: [],
-  exploreFilters: getEmptyFilters(),
-  analyzeFilters: initial_filters,
-  allFilterOptions: getEmptyFilters(),
+  explore: {
+    filters: getEmptyFilters(),
+    records: [],
+  },
+  analyze: {
+    filters: getDefaultFilters(),
+    records: [],
+  },
   filters: getEmptyFilters(),
+  records: [],
+  estimate_grade_prevalences: [],
+  allFilterOptions: getEmptyFilters(),
   dataPageState: {
     exploreIsOpen: true,
     showStudiesModal: false,
@@ -71,7 +75,6 @@ const initialState: State = {
   showCookieBanner: false,
   showAnalyzePopup: true
 };
-
 
 const reducer = (state: State, action: Record<string, any>): State => {
   switch (action.type) {
@@ -90,30 +93,51 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         showCookieBanner: true
       };
-
-      case "OPEN_ANALYZE_POPUP":
-        return {
-          ...state,
-          showAnalyzePopup: true
-        };
-
+    case "OPEN_ANALYZE_POPUP":
+      return {
+        ...state,
+        showAnalyzePopup: true
+      };
     case "CLOSE_ANALYZE_POPUP":
       return {
         ...state,
         showAnalyzePopup: false
       };
-
     case "UPDATE_ESTIMATE_PREVALENCES":
       return {
         ...state,
         estimate_grade_prevalences: action.payload
       };
     case "SELECT_EXPLORE_OR_ANALYZE":
+      const exploreIsOpen = action.payload;
+      if (exploreIsOpen) {
+        return {
+          ...state,
+          analyze: {
+            filters: Object.assign({}, state.filters),
+            records: Object.assign([], state.records)
+          },
+          filters: Object.assign({}, state.explore.filters),
+          records: Object.assign([], state.explore.records),
+          dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload }
+        };
+      }
       return {
         ...state,
-        filters: action.payload ? Object.assign({}, state.exploreFilters) : Object.assign({}, state.analyzeFilters),
-        dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload, routingOccurred: true}
-      };
+        explore: {
+          filters: Object.assign({}, state.filters),
+          records: Object.assign([], state.records)
+        },
+        filters: Object.assign({}, state.analyze.filters),
+        records: Object.assign([], state.analyze.records),
+        dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload }
+      }
+    case "MAKE_INITIAL_ROUTE":
+      return {
+        ...state,        
+        filters: action.payload ? Object.assign({}, state.explore.filters) :  Object.assign({}, state.analyze.filters),
+        dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload, routingOccurred: true }
+      }
     case "SELECT_LANGUAGE":
       return {
         ...state,
@@ -127,16 +151,20 @@ const reducer = (state: State, action: Record<string, any>): State => {
     case "GET_AIRTABLE_RECORDS":
       return {
         ...state,
-        filteredRecords: action.payload,
+        records: action.payload,
         updatedAt: action.payload.updated_at,
       };
-    case "UPDATE_FILTER":      
-      const new_filters: any = state.dataPageState.exploreIsOpen ? Object.assign({}, state.exploreFilters): Object.assign({}, state.analyzeFilters);
+    case "INITIAL_RECORDS":
+      return {
+        ...state,
+        explore: {...state.explore, records: action.payload.exploreRecords },
+        analyze: {...state.analyze, records: action.payload.analyzeRecords }
+      };
+    case "UPDATE_FILTER":
+      const new_filters: any = Object.assign({}, state.filters);
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
       return {
         ...state,
-        exploreFilters: state.dataPageState.exploreIsOpen ? new_filters : state.exploreFilters,
-        analyzeFilters: state.dataPageState.exploreIsOpen ? state.analyzeFilters : new_filters,
         filters: new_filters
       };
     default:

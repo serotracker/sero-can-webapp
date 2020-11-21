@@ -68,10 +68,10 @@ export enum LanguageType {
 
 export type State = {
     healthcheck: string,
-    filteredRecords: AirtableRecord[],
-    analyzeFilters: Filters,
-    exploreFilters: Filters,
+    explore: PageState,
+    analyze: PageState,
     filters: Filters,
+    records: AirtableRecord[]
     allFilterOptions: Filters,
     updatedAt: string,
     dataPageState: DataPageState,
@@ -80,6 +80,11 @@ export type State = {
     showCookieBanner: boolean,
     showAnalyzePopup: boolean
 };
+
+export type PageState = {
+    filters: Filters,
+    records: AirtableRecord[],
+}
 
 export type AlternateAggregatedRecord = {
     testsAdministered: number;

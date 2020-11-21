@@ -14,14 +14,14 @@ export default function Explore() {
   useEffect(() => {
       const updateCountryPrevalence = async () => {
         const api = new httpClient();
-        const estimateGradePrevalences = await api.getEstimateGrades(state.exploreFilters);
+        const estimateGradePrevalences = await api.getEstimateGrades(state.explore.filters);
         dispatch({
           type: 'UPDATE_ESTIMATE_PREVALENCES',
           payload: estimateGradePrevalences
         });
       }
       updateCountryPrevalence();
-  }, [dispatch, state.exploreFilters])
+  }, [dispatch, state.explore.filters])
 
   return (
     <div className="fill flex dashboard">
