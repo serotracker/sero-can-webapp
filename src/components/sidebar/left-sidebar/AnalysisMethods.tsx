@@ -9,7 +9,7 @@ export default function AnalysisMethods() {
         <div className="section-title py-2 center">
             ANALYSIS METHODS
         </div>
-        <p>
+        <div>
             <div>
                 {'The seroprevalence shown for each country or factor is calculated by '}
                     <InformationText 
@@ -25,7 +25,7 @@ export default function AnalysisMethods() {
                     /> 
                 {' all seroprevalence estimates that match the filters you specify.'}
             </div>
-        </p>
+        </div>
         <p>
             Default filters: national and regional estimates, in the general population and blood donors. 
         </p>

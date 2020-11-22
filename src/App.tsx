@@ -1,5 +1,5 @@
 import { Location, LocationListener } from 'history';
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
@@ -17,51 +17,73 @@ import httpClient from "./httpClient";
 import { setLanguageType } from "./utils/translate/translateService";
 
 function App() {
-  const [{ language, analyze, explore }, dispatch] = useContext(AppContext);
+  const [{ language, analyze, filters, explore }, dispatch] = useContext(AppContext);
   const history = useHistory();
+  const api = new httpClient()
   setLanguageType(language);
 
+  useEffect(() => {    
+    const updateCountryPrevalence = async () => {
+      const api = new httpClient();
+      // TODO: Figure out a better place to put this so we don't keep updating this either 
+      const estimateGradePrevalences = await api.getEstimateGrades(filters);
+      dispatch({
+        type: 'UPDATE_ESTIMATE_PREVALENCES',
+        payload: estimateGradePrevalences
+      });
+    }
+    updateCountryPrevalence();
+  }, [filters, dispatch])
+
   useEffect(() => {
-    const toggleFilters: LocationListener = ({ pathname }: Location): void => {
+    const toggleFilters: LocationListener = async({ pathname }: Location) => {
       if (pathname === "/Analyze") {
         dispatch({
-          type: 'MAKE_INITIAL_ROUTE',
+          type: 'LOAD_PAGE_STATE',
           payload: false
         })
       }
       else if (pathname === "/Explore") {
         dispatch({
-          type: 'MAKE_INITIAL_ROUTE',
+          type: 'LOAD_PAGE_STATE',
           payload: true
         })
-      }
+      };    
     }
+    history.listen(toggleFilters);
+    toggleFilters(history.location, 'REPLACE')
+    // We only want this to run once so we pass no dependencies. Do not remove this
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Call when first run ONLY.
+  useEffect(() => {
+    const getAirtableRecords = async () => {
+      const analyzeRecords = await api.getAirtableRecords(analyze.filters)
+      const exploreRecords = await api.getAirtableRecords(explore.filters)
+      dispatch({
+        type: 'SET_PAGE_STATE',
+        payload:  { records: exploreRecords, isExplorePageState: true }
+      });
+      dispatch({
+        type: 'SET_PAGE_STATE',
+        payload:  { records: analyzeRecords, isExplorePageState: false }
+      });
+    }
+    
     const allFilterOptions = async () => {
-      const api = new httpClient();
       const response = await api.getAllFilterOptions();
       dispatch({
         type: 'GET_ALL_FILTER_OPTIONS',
         payload: response
       })
     }
-
-    history.listen(toggleFilters);
-    toggleFilters(history.location, 'REPLACE')
-    allFilterOptions();
-  })
-
-  useEffect(() => {
-    const getAirtableRecords = async () => {
-      const api = new httpClient()
-      const analyzeRecords = await api.getAirtableRecords(analyze.filters)
-      const exploreRecords = await api.getAirtableRecords(explore.filters)
-      dispatch({
-        type: 'GET_AIRTABLE_RECORDS',
-        payload:  { analyzeRecords, exploreRecords }
-      });
-    }
+    
     getAirtableRecords()
-  })
+    allFilterOptions();
+  // We only want this to run once so we pass no dependencies. Do not remove this
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     const alreadyAcceptedCookes = localStorage.getItem('acceptedCookies');

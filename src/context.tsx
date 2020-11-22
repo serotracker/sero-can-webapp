@@ -78,11 +78,6 @@ const initialState: State = {
 
 const reducer = (state: State, action: Record<string, any>): State => {
   switch (action.type) {
-    case "HEALTHCHECK":
-      return {
-        ...state,
-        healthcheck: action.payload
-      };
     case "CLOSE_COOKIE_BANNER":
       return {
         ...state,
@@ -108,36 +103,61 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         estimate_grade_prevalences: action.payload
       };
-    case "SELECT_EXPLORE_OR_ANALYZE":
+    case "SAVE_PAGE_STATE": {
+      const isExplorePageState = action.payload;
+      if (isExplorePageState) {
+        return {
+          ...state,
+          explore: {
+            filters: Object.assign({}, state.filters),
+            records: Object.assign([], state.records)
+          },
+        }
+      }
+      return {
+        ...state,
+        analyze: {
+          filters: Object.assign({}, state.filters),
+          records: Object.assign([], state.records)
+        },
+      };
+    };
+    case "SET_PAGE_STATE": {
+      const { isExplorePageState, records, filters } = action.payload;
+      if (isExplorePageState) {
+        return {
+          ...state,
+          explore: {
+            filters: filters ? filters : state.explore.filters,
+            records: records ? records : state.explore.records
+          },
+        }
+      }
+      return {
+        ...state,
+        analyze: {
+          filters: filters ? filters : state.analyze.filters,
+          records: records ? records : state.analyze.records
+        },
+      };
+    }
+    case "LOAD_PAGE_STATE": {
       const exploreIsOpen = action.payload;
       if (exploreIsOpen) {
         return {
           ...state,
-          analyze: {
-            filters: Object.assign({}, state.filters),
-            records: Object.assign([], state.records)
-          },
           filters: Object.assign({}, state.explore.filters),
           records: Object.assign([], state.explore.records),
-          dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload }
+          dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload, routingOccurred: true }
         };
-      }
+      };
       return {
         ...state,
-        explore: {
-          filters: Object.assign({}, state.filters),
-          records: Object.assign([], state.records)
-        },
         filters: Object.assign({}, state.analyze.filters),
         records: Object.assign([], state.analyze.records),
-        dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload }
-      }
-    case "MAKE_INITIAL_ROUTE":
-      return {
-        ...state,        
-        filters: action.payload ? Object.assign({}, state.explore.filters) :  Object.assign({}, state.analyze.filters),
         dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload, routingOccurred: true }
-      }
+      };
+    };
     case "SELECT_LANGUAGE":
       return {
         ...state,
@@ -153,12 +173,6 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         records: action.payload,
         updatedAt: action.payload.updated_at,
-      };
-    case "INITIAL_RECORDS":
-      return {
-        ...state,
-        explore: {...state.explore, records: action.payload.exploreRecords },
-        analyze: {...state.analyze, records: action.payload.analyzeRecords }
       };
     case "UPDATE_FILTER":
       const new_filters: any = Object.assign({}, state.filters);

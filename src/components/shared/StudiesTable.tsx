@@ -15,8 +15,8 @@ interface StudiesTableProps {
 
 export default function StudiesTable(props: StudiesTableProps) {
     const [activePage, setActivePage] = useState(1);
-    const [boundaryRange] = useState(1);
-    const [siblingRange] = useState(1);
+    const [boundaryRange] = useState(0);
+    const [siblingRange] = useState(0);
     const [totalPages, setTotalPages] = useState(10);
     const [pageLength, setPageLength] = useState(5);
     const [column, setColumn] = useState('denominator');
@@ -24,12 +24,15 @@ export default function StudiesTable(props: StudiesTableProps) {
     const initialState: AirtableRecord[] = []
     const [data, setData] = useState(initialState)
     const isMobileDevice = useMediaQuery({ maxWidth: mobileDeviceWidth })
-
+    console.log(props.dataRecords);
     useEffect(() => {
         let newData = [];
 
         if (direction === 'descending') {
-            newData = _.orderBy(props.dataRecords, [(o: any) => { return o[column] || ''; }], ['desc']);
+            newData = _.orderBy(props.dataRecords,
+                [(o: any) => {
+                    return o[column] || '';
+                }], ['desc']);
         }
         else {
             newData = _.orderBy(props.dataRecords, [column], ['asc']);
@@ -155,7 +158,7 @@ export default function StudiesTable(props: StudiesTableProps) {
                                     totalPages={totalPages}
                                 />
                                 <>
-                                    <div className="p-2 flex">
+                                    <div className="p-2 flex" >
                                         <Dropdown inline
                                             options={pageLengthOptions}
                                             defaultValue={pageLengthOptions[0].value}
