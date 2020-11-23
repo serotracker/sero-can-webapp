@@ -67,20 +67,11 @@ export default function Filters({filters}: FilterProps) {
     dispatch({
       type: 'GET_AIRTABLE_RECORDS',
       payload:  { records }
-    });
-
-    if(state.dataPageState.exploreIsOpen) {        
-      dispatch({
-        type: 'SAVE_PAGE_STATE',
-        payload: true
-      })
-    }
-    else if(!state.dataPageState.exploreIsOpen) {        
-      dispatch({
-        type: 'SAVE_PAGE_STATE',
-        payload: false
-      })
-    };
+    }); 
+    dispatch({
+      type: 'SAVE_PAGE_STATE',
+      payload: state.dataPageState.exploreIsOpen
+    })
 
     // const estimateGradePrevalences = await api.getEstimateGrades(state.filters);
     // dispatch({

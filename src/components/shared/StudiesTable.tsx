@@ -21,10 +21,9 @@ export default function StudiesTable(props: StudiesTableProps) {
     const [pageLength, setPageLength] = useState(5);
     const [column, setColumn] = useState('denominator');
     const [direction, setDirection] = useState('descending');
-    const initialState: AirtableRecord[] = []
-    const [data, setData] = useState(initialState)
-    const isMobileDevice = useMediaQuery({ maxWidth: mobileDeviceWidth })
-    console.log(props.dataRecords);
+    const initialState: AirtableRecord[] = [];
+    const [data, setData] = useState(initialState);
+    const isMobileDevice = useMediaQuery({ maxWidth: mobileDeviceWidth });
     useEffect(() => {
         let newData = [];
 

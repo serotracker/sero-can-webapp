@@ -1,27 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../../constants";
-import { AppContext } from "../../../context";
-import httpClient from "../../../httpClient";
+import Map from '../../map/Map';
 import MobileComponents from '../../mobile/ExploreMobile';
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
-import Map from '../../map/Map';
 
 export default function Explore() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
-  const [state, dispatch] = useContext(AppContext);
-  useEffect(() => {
-      const updateCountryPrevalence = async () => {
-        const api = new httpClient();
-        const estimateGradePrevalences = await api.getEstimateGrades(state.explore.filters);
-        dispatch({
-          type: 'UPDATE_ESTIMATE_PREVALENCES',
-          payload: estimateGradePrevalences
-        });
-      }
-      updateCountryPrevalence();
-  }, [dispatch, state.explore.filters])
 
   return (
     <div className="fill flex dashboard">
