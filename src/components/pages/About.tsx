@@ -75,9 +75,6 @@ export default function About() {
                     </a>
                 </p>
                 <p> 
-                    {/* 
-                    SeroTracker is supported by the Public Health Agency of Canada through the COVID-19 Immunity Task Force. SeroTracker is also hosted at the University of Calgary's Centre for Health Informatics. The COVID-19 Immunity Task Force is mapping the extent of SARS-CoV-2 infection in Canada, and SeroTracker also provides content for their Global Serological Knowledge Hub.
-                    */}
                     {Translate('AboutPage', ['AboutSection', 'SupportedBy'])}
                     <a onClick={() => selectLink('Public Health Agency')} href="https://www.canada.ca/en/public-health.html">{Translate('AboutPage', ['AboutSection', 'PublicHealthAgency'], null, [true, true])}</a>
                     {Translate('AboutPage', ['AboutSection', 'ThroughThe'])}
