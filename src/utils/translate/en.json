@@ -10,13 +10,13 @@
     "AboutSection": {
       "SupportedBy": "SeroTracker is supported by the",
       "PublicHealthAgency": "Public Health Agency of Canada",
-      "HostedAt": "and hosted at the",      
-      "PartOne": "As the acute phase of the COVID-19 pandemic passes its peak, many countries are accelerating their investments in serological (antibody) testing. Understanding population antibody patterns and potential immunity is of great interest to clinicians, public health officials, and policymakers alike.",
-      "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide.",
+      "ThroughThe": "through the",
+      "Covid19ImmunityTaskForce": "COVID-19 Immunity Task Force.",
+      "HostedAt": "SeroTracker is also hosted at the",      
       "HealthInformatics": "University of Calgary's Centre for Health Informatics.",      
-      "OurWorkIs": "Our work is in partnership with",
-      "Covid19ImmunityTaskForce": "Canada's COVID-19 Immunity Task Force",
-      "WhichIsMapping": "which is mapping the scope of coronavirus infection in Canada. SeroTracker also provides content for the Task Force's",
+      "PartOne": "As the acute phase of the COVID-19 pandemic passes its peak, many countries are accelerating their investments in serological (antibody) testing. Understanding population antibody patterns and potential immunity is of great interest to clinicians, public health officials, and policymakers alike.",
+      "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide.",    
+      "MappingTheExtent": "The COVID-19 Immunity Task Force is mapping the extent of SARS-CoV-2 infection in Canada, and SeroTracker also provides content for their",
       "GlobalSerologicalKnowledgeHub": "Global Serological Knowledge Hub"
     },
     "ContactSection": {
@@ -54,7 +54,7 @@
   "CoDirector": "Co-Director",
   "ContactUs": "Contact Us",
   "Countries": "Countries",
-  "Country": "Country",
+  "Country": "Country/Sovereignty/Region",
   "CountryOptions": {
     "England": "England",
     "Iran": "Iran",
