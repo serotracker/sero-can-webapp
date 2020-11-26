@@ -211,12 +211,12 @@
   "LancetID": "The Lancet Infectious Diseases",
   "ViewFile": "View File",
   "ViewHere": "View Here",
-  "PreprintPublication": "Preprint Publication",
   "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
   "TermsOfUse": "Terms of Use",
   "CookiePolicy": "Cookie Policy",
   "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
-  "Source": "Source",
+  "Source": "Source",  
+  "ResearchArticle": "Research Article",
   "SourceType": "Source Type",
   "SourceTypeOptions": {
     "Preprint": "Preprint",
@@ -349,6 +349,7 @@
     "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias. You can explore the source literature in depth on the references card at the bottom of this page."
   },
   "IndustryReportTitles": {
+    "MedRxivPub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
     "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
     "PreliminaryReport": "Preliminary Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "MayReport": "May Report - COVID-19 Screening & Testing in Canada’s Private Sector",
