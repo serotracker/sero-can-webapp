@@ -5,6 +5,7 @@ import InsightsCard from "./InsightsCard";
 import './styles.scss';
 import Translate from "../../../utils/translate/translateService";
 import September2020Update from '../../../assets/images/September2020Update.png'
+import MedRxivPub from '../../../assets/images/MedRXIV.jpg'
 import July2020Update from '../../../assets/images/IndustryUpdateJuly_2020.png'
 import June2020Update from '../../../assets/images/IndustryUpdateJune_2020.png'
 import August2020Update from '../../../assets/images/August2020Update.png'
@@ -27,6 +28,14 @@ export default function Insights() {
           {Translate('ReportsAndArticles').toUpperCase()}
         </h3>
         <div className="flex insights-article-container">
+        <div className="col-sm-12 col-lg-6 py-2">
+            <InsightsCard
+              identifier={Translate("ResearchArticle")}
+              date={"November 18, 2020"}
+              img={MedRxivPub}
+              title={Translate('IndustryReportTitles', ['MedRxivPub'])}
+              url="https://www.medrxiv.org/content/10.1101/2020.11.17.20233460v2.full"/>
+          </div>
         <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("Report")}
@@ -53,7 +62,7 @@ export default function Insights() {
           </div>
           <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
-              identifier={Translate("Publication")}
+              identifier={Translate("ResearchArticle")}
               date={"August 4, 2020"}
               img={LancetId}
               italicize="Lancet ID"
@@ -94,7 +103,7 @@ export default function Insights() {
           </div>
           <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
-              identifier={Translate("PreprintPublication")}
+              identifier={Translate("ResearchArticle")}
               date={"May 14, 2020"}
               img={MedRxiv}
               title={Translate('IndustryReportTitles', ['PrePrint'])}
