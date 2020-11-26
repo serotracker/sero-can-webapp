@@ -34,7 +34,7 @@ export default function AnalyzeMobile() {
           width='wide'
         >
 
-          <Filters filters={state.analyzeFilters}/>
+          <Filters filters={state.filters}/>
           <LastUpdated />
           <FontAwesomeIcon
             icon={faTimes}

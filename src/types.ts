@@ -46,7 +46,6 @@ export type AggregatedRecord = {
 // TODO: find typing to represent sets
 export type Filters = {
     source_type: any,
-    study_status: any,
     test_type: any,
     country: any,
     population_group: any,
@@ -59,7 +58,7 @@ export type Filters = {
     estimate_grade: any,
 };
 
-export type FilterType = 'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'overall_risk_of_bias' | 'isotypes_reported' | 'specimen_type' | 'estimate_grade';
+export type FilterType = 'country' | 'population_group' | 'sex' | 'age' | 'test_type' | 'source_type' | 'overall_risk_of_bias' | 'isotypes_reported' | 'specimen_type' | 'estimate_grade';
 
 export enum LanguageType {
     french = 'fr',
@@ -68,10 +67,10 @@ export enum LanguageType {
 
 export type State = {
     healthcheck: string,
-    filteredRecords: AirtableRecord[],
-    analyzeFilters: Filters,
-    exploreFilters: Filters,
+    explore: PageState,
+    analyze: PageState,
     filters: Filters,
+    records: AirtableRecord[]
     allFilterOptions: Filters,
     updatedAt: string,
     dataPageState: DataPageState,
@@ -80,6 +79,11 @@ export type State = {
     showCookieBanner: boolean,
     showAnalyzePopup: boolean
 };
+
+export type PageState = {
+    filters: Filters,
+    records: AirtableRecord[],
+}
 
 export type AlternateAggregatedRecord = {
     testsAdministered: number;

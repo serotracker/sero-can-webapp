@@ -1,5 +1,4 @@
 import { AggregatedRecord, AggregationFactor, AirtableRecord, Filters, FilterType } from "./types";
-import { formatISO, add } from 'date-fns'
 import { formatDates } from "./utils/utils";
 
 export default class httpClient {

@@ -145,10 +145,10 @@ const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimat
   const regionString = minString === maxString ? minString : `${minString} - ${maxString}`;
 
   return (
-      <div className={"flex fit column " + (!isLastSection ? 'popup-section' : '')}>
-        <div className="section-title pt-1">{title.toUpperCase()}</div>
-        <div className="col-12 p-0 popup-content">{Translate('EstimateRange')}: <b>{regionString}</b></div>
-        <div className="col-12 p-0 popup-content">{Translate('NumberEstimates')}: <b>{regionalEstimate.numEstimates}</b></div>
+      <div key={Math.random()} className={"flex fit column " + (!isLastSection ? 'popup-section' : '')}>
+        <div key={Math.random()} className="section-title pt-1">{title.toUpperCase()}</div>
+        <div key={Math.random()} className="col-12 p-0 popup-content">{Translate('EstimateRange')}: <b>{regionString}</b></div>
+        <div key={Math.random()} className="col-12 p-0 popup-content">{Translate('NumberEstimates')}: <b>{regionalEstimate.numEstimates}</b></div>
       </div>
   )
 }

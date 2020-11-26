@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../context";
-import httpClient from "../../../httpClient";
-import { AggregationFactor } from "../../../types";
 import Translate from "../../../utils/translate/translateService";
 import './TotalStats.css';
 export default function TotalStats() {

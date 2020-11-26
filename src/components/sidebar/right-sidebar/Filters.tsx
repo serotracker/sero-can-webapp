@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import httpClient from "../../../httpClient";
@@ -15,13 +15,15 @@ interface FilterProps {
 
 export default function Filters({filters}: FilterProps) {
   const [state, dispatch] = useContext(AppContext);  
-  const api = new httpClient()
 
   const getFilters = (filter_type: FilterType): string[] => {
     return Array.from(filters[filter_type]) as string[]
   }
 
   const formatOptions = (options: any, filter_type: FilterType) => {
+    if(!options) {
+      return
+    }
     const formatted_options: Record<string, string>[] = [];
     const optionString = toPascalCase(filter_type.toString());
     const jsonObjectString = `${optionString}Options`;
@@ -50,14 +52,32 @@ export default function Filters({filters}: FilterProps) {
     return formatted_options;
   }
 
-  const addFilter = (data: any, filter_type: string) => {
+  const addFilter = async (data: any, filter_type: string) => {
     dispatch({
       type: 'UPDATE_FILTER',
       payload: {
         filter_type,
         filter_value: data.value
       }
-    });
+    });   
+  
+    const api = new httpClient()
+    // Update current records when called
+    const records = await api.getAirtableRecords(state.filters)
+    dispatch({
+      type: 'GET_AIRTABLE_RECORDS',
+      payload:  { records }
+    }); 
+    dispatch({
+      type: 'SAVE_PAGE_STATE',
+      payload: state.dataPageState.exploreIsOpen
+    })
+
+    // const estimateGradePrevalences = await api.getEstimateGrades(state.filters);
+    // dispatch({
+    //   type: 'UPDATE_ESTIMATE_PREVALENCES',
+    //   payload: estimateGradePrevalences
+    // });
   }
 
   const buildSectionHeader = (header_text: string, tooltip_text?: string | React.ReactNode, tooltip_header?: string) => {
@@ -94,8 +114,8 @@ export default function Filters({filters}: FilterProps) {
           clearable
           selection
           options={formatOptions(state.allFilterOptions[filter_type], filter_type)}
-          onChange={(e: any, data: any) => {
-            addFilter(data, filter_type)
+          onChange={async(e: any, data: any) => {
+            await addFilter(data, filter_type)
             sendAnalyticsEvent({
               /** Typically the object that was interacted with (e.g. 'Video') */
               category: 'Filter',
@@ -159,9 +179,6 @@ export default function Filters({filters}: FilterProps) {
             </div>
             <div>
               {buildFilterDropdown('source_type', Translate('SourceType'))}
-            </div>
-            <div>
-              {buildFilterDropdown('study_status', Translate('StudyStatus'))}
             </div>
             <div>
               {buildFilterDropdown('overall_risk_of_bias', Translate('OverallRiskOfBias'))}
