@@ -19,11 +19,11 @@ import { setLanguageType } from "./utils/translate/translateService";
 function App() {
   const [{ language, analyze, filters, explore }, dispatch] = useContext(AppContext);
   const history = useHistory();
-  const api = new httpClient()
   setLanguageType(language);
 
   useEffect(() => {    
     const updateCountryPrevalence = async () => {
+      const api = new httpClient()
       // TODO: Figure out a better place to put this so we don't keep updating this either 
       const estimateGradePrevalences = await api.getEstimateGrades(filters);
       dispatch({
@@ -32,9 +32,10 @@ function App() {
       });
     }
     updateCountryPrevalence();
-  }, [filters, dispatch, api])
+  }, [filters, dispatch])
 
   useEffect(() => {
+    const api = new httpClient()
     const toggleFilters: LocationListener = async({ pathname }: Location) => {
       if (pathname === "/Analyze") {
         dispatch({
