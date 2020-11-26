@@ -49,14 +49,7 @@ function App() {
         })
       };    
     }
-    history.listen(toggleFilters);
-    toggleFilters(history.location, 'REPLACE')
-    // We only want this to run once so we pass no dependencies. Do not remove this
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
-  // Call when first run ONLY.
-  useEffect(() => {
     const getAirtableRecords = async () => {
       const analyzeRecords = await api.getAirtableRecords(analyze.filters)
       const exploreRecords = await api.getAirtableRecords(explore.filters)
@@ -80,6 +73,14 @@ function App() {
     
     getAirtableRecords()
     allFilterOptions();
+    history.listen(toggleFilters);
+    toggleFilters(history.location, 'REPLACE')
+    // We only want this to run once so we pass no dependencies. Do not remove this
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Call when first run ONLY.
+  useEffect(() => {
   // We only want this to run once so we pass no dependencies. Do not remove this
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

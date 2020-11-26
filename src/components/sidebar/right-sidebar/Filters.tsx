@@ -181,9 +181,6 @@ export default function Filters({filters}: FilterProps) {
               {buildFilterDropdown('source_type', Translate('SourceType'))}
             </div>
             <div>
-              {buildFilterDropdown('study_status', Translate('StudyStatus'))}
-            </div>
-            <div>
               {buildFilterDropdown('overall_risk_of_bias', Translate('OverallRiskOfBias'))}
             </div>
           </div>

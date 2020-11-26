@@ -7,7 +7,6 @@ export const AppContext = createContext({} as [State, Dispatch<Record<string, an
 export function getEmptyFilters(): Filters {
   return {
     source_type: new Set(),
-    study_status: new Set(),
     test_type: new Set(),
     country: new Set(),
     population_group: new Set(),
@@ -28,7 +27,6 @@ export function getDefaultFilters(): Filters {
       Translate('SourceTypeOptions', ['Publication']),
       Translate('SourceTypeOptions', ['InstitutionalReport'])
     ]),
-    study_status: new Set(),
     test_type: new Set(),
     country: new Set(),
     population_group: new Set([
