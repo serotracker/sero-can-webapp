@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import React from 'react'
-import { Search } from 'semantic-ui-react'
+import { Search, Label } from 'semantic-ui-react'
+//import { AirtableRecord } from '../../types';
                                                         
 
 const initialState = {
@@ -9,7 +10,7 @@ const initialState = {
   value: '',
 }
 
-function exampleReducer(state : any, action : any) {
+function searchReducer(state : any, action : any) {
   switch (action.type) {
     case 'CLEAN_QUERY':
       return initialState
@@ -25,11 +26,15 @@ function exampleReducer(state : any, action : any) {
   }
 }
 
+const resultRenderer = ({ source_name } : any) => <Label content={source_name} />
+
 function ReferenceSearch(props : any) {
-  const [state, dispatch] = React.useReducer(exampleReducer, initialState)
+  const { source } = props;
+  const [state, dispatch] = React.useReducer(searchReducer, initialState)
   const { loading, results, value } = state
 
   const timeoutRef : any = React.useRef()
+
   const handleSearchChange = React.useCallback((e, data) => {
     clearTimeout(timeoutRef.current)
     dispatch({ type: 'START_SEARCH', query: data.value })
@@ -43,12 +48,10 @@ function ReferenceSearch(props : any) {
       const re = new RegExp(_.escapeRegExp(data.value), 'i')
       const isMatch = (result : any) => re.test(result.source_name)
 
-      dispatch({
-        type: 'FINISH_SEARCH',
-        results: _.filter(props.source, isMatch),
-      })
-    }, 300)
-  }, [])
+      dispatch({ type: 'FINISH_SEARCH', results: _.filter(source, isMatch) })
+    }, 800)
+  }, [source])
+
   React.useEffect(() => {
     return () => {
       clearTimeout(timeoutRef.current)
@@ -62,6 +65,7 @@ function ReferenceSearch(props : any) {
         dispatch({ type: 'UPDATE_SELECTION', selection: data.result.source_name })
         }
         onSearchChange={handleSearchChange}
+        resultRenderer={resultRenderer}
         results={results}
         value={value}
     />

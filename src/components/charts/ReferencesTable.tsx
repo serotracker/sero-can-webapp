@@ -106,7 +106,7 @@ export default function ReferencesTable() {
 
   return (
     <div className="container col-11 mx-0 my-1 top references">
-      {/*<ReferenceSearch source={state.airtable_records}/>*/}
+      <ReferenceSearch source={state.airtable_records}/> {/*state.airtable_records or data*/}
       <div className="col-12 px-0 py-1 section-title">
         {Translate('References').toUpperCase()}
       </div>
