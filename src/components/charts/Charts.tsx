@@ -117,7 +117,7 @@ export default function Charts() {
   return (
     <div className="charts-page">
       {showAnalyzePopup ? <MobileInfoModal /> : null}
-      <div className={isMobileDeviceOrTablet ? "mobile-charts container col-11 center-item flex" : "charts container col-11 center-item flex"}>
+      <div className={isMobileDeviceOrTablet ? "mobile-charts container col-11 center-item flex my-3" : "charts container col-11 center-item flex my-3"}>
         <div className="col-12 p-0 flex">
           <div className="col-sm-1 col-lg-3">
           </div>
@@ -159,7 +159,9 @@ export default function Charts() {
           </BarChart>
         </ResponsiveContainer>
       </div>
-      <ReferencesTable />
+      <div className="container col-11 my-3 references">
+        <ReferencesTable />
+      </div>
     </div>
   );
 }

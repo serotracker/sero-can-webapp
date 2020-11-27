@@ -1,8 +1,8 @@
 import _ from 'lodash';
+import './Charts.css';
 import React, { useContext, useEffect, useState } from "react";
 import { Dropdown, DropdownProps, Pagination, Table } from "semantic-ui-react";
 import { AppContext } from "../../context";
-import './Charts.css';
 import StudyDetailsModal from './StudyDetailsModal';
 import { mobileDeviceWidth } from '../../constants';
 import { useMediaQuery } from 'react-responsive';
@@ -62,10 +62,6 @@ export default function ReferencesTable() {
 
   useEffect(() => {
 
-    // Filter pages my search HERE newData
-    // newData is equal to the data return from the search handler unioned with the filtered_records
-    // ----- splice 
-
     let newData = searchResults || state?.filtered_records || [];
 
     if (direction === 'descending') {
@@ -95,7 +91,6 @@ export default function ReferencesTable() {
       >
         {displayName}
       </Table.HeaderCell>)
-
   }
 
   const getPopulation = (sex: string | null, age: string[] | null, population_group: string[] | null) => {
@@ -116,7 +111,7 @@ export default function ReferencesTable() {
 
 
   return (
-    <div className="container col-12 mx-0 my-1 top references">
+    <div className="top references">
       <div >
         <div className="row">
           <div className="col">
