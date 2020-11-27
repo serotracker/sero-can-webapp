@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { useContext, useEffect, useState } from "react";
-import { Dropdown, DropdownProps, Pagination, Table, Search } from "semantic-ui-react";
+import { Dropdown, DropdownProps, Pagination, Table } from "semantic-ui-react";
 import { AppContext } from "../../context";
 import './Charts.css';
 import StudyDetailsModal from './StudyDetailsModal';
@@ -22,6 +22,7 @@ export default function ReferencesTable() {
   const [pageLength, setPageLength] = useState(5);
   const [column, setColumn] = useState('denominator');
   const [direction, setDirection] = useState('descending');
+  const [searchResults, setSearchResults] = useState<AirtableRecord[] | undefined>(undefined);
   const initialDataState: AirtableRecord[] = [];
   const [data, setData] = useState(initialDataState);
 
@@ -32,6 +33,11 @@ export default function ReferencesTable() {
 
   const handlePageLengthChange = (e: any, event: DropdownProps) => {
     setPageLength(event.value as number);
+    setActivePage(1);
+  }
+
+  const handleSearchChange = (results: any) => {
+    setSearchResults(results as AirtableRecord[])
     setActivePage(1);
   }
 
@@ -55,25 +61,30 @@ export default function ReferencesTable() {
   const isMobileDevice = useMediaQuery({ maxWidth: mobileDeviceWidth })
 
   useEffect(() => {
-    let newData = [];
+
+    // Filter pages my search HERE newData
+    // newData is equal to the data return from the search handler unioned with the filtered_records
+    // ----- splice 
+
+    let newData = searchResults || state?.filtered_records || [];
 
     if (direction === 'descending') {
-      newData = _.orderBy(state.filtered_records, [(o: any) => { return o[column] || '' }], ['desc']);
+      newData = _.orderBy(newData, [(o: any) => { return o[column] || '' }], ['desc']);
     }
     else {
-      newData =  _.orderBy(state.filtered_records, [column], ['asc']);
+      newData =  _.orderBy(newData, [column], ['asc']);
     }
 
     const splicedData = newData.splice((activePage - 1) * pageLength, pageLength);
     setData(splicedData);
 
     if (isMobileDevice) {
-      setPageLength(Math.ceil(state.filtered_records.length))
+      setPageLength(Math.ceil(newData.length))
     }
     else {
-      setTotalPages(Math.ceil(state.filtered_records.length / pageLength));
+      setTotalPages(Math.ceil(newData.length / pageLength));
     }
-  }, [activePage, column, direction, isMobileDevice, pageLength, state.filtered_records])
+  }, [activePage, column, direction, isMobileDevice, pageLength, searchResults, state.filtered_records])
 
   const buildHeaderCell = (sortColumn: string, displayName: string, className: string) => {
     return (
@@ -105,10 +116,18 @@ export default function ReferencesTable() {
 
 
   return (
-    <div className="container col-11 mx-0 my-1 top references">
-      <ReferenceSearch source={state.airtable_records}/> {/*state.airtable_records or data*/}
-      <div className="col-12 px-0 py-1 section-title">
-        {Translate('References').toUpperCase()}
+    <div className="container col-12 mx-0 my-1 top references">
+      <div >
+        <div className="row">
+          <div className="col">
+            <div className="py-3 w-100 section-title align-middle text-uppercase">
+              {Translate('References')}
+            </div>
+          </div>
+          <div className="col-auto">
+              <ReferenceSearch source={state.airtable_records} onSearchResultChange={handleSearchChange} />
+          </div>
+        </div>
       </div>
       <Table celled sortable fixed striped className="table my-0">
         <Table.Header className="flex col-12 p-0">
