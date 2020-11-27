@@ -10,13 +10,13 @@
     "AboutSection": {
       "SupportedBy": "SeroTracker is supported by the",
       "PublicHealthAgency": "Public Health Agency of Canada",
-      "HostedAt": "and hosted at the",      
-      "PartOne": "As the acute phase of the COVID-19 pandemic passes its peak, many countries are accelerating their investments in serological (antibody) testing. Understanding population antibody patterns and potential immunity is of great interest to clinicians, public health officials, and policymakers alike.",
-      "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide.",
+      "ThroughThe": "through the",
+      "Covid19ImmunityTaskForce": "COVID-19 Immunity Task Force.",
+      "HostedAt": "SeroTracker is also hosted at the",      
       "HealthInformatics": "University of Calgary's Centre for Health Informatics.",      
-      "OurWorkIs": "Our work is in partnership with",
-      "Covid19ImmunityTaskForce": "Canada's COVID-19 Immunity Task Force",
-      "WhichIsMapping": "which is mapping the scope of coronavirus infection in Canada. SeroTracker also provides content for the Task Force's",
+      "PartOne": "As the acute phase of the COVID-19 pandemic passes its peak, many countries are accelerating their investments in serological (antibody) testing. Understanding population antibody patterns and potential immunity is of great interest to clinicians, public health officials, and policymakers alike.",
+      "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide.",    
+      "MappingTheExtent": "The COVID-19 Immunity Task Force is mapping the extent of SARS-CoV-2 infection in Canada, and SeroTracker also provides content for their",
       "GlobalSerologicalKnowledgeHub": "Global Serological Knowledge Hub"
     },
     "ContactSection": {
@@ -54,7 +54,7 @@
   "CoDirector": "Co-Director",
   "ContactUs": "Contact Us",
   "Countries": "Countries",
-  "Country": "Country",
+  "Country": "Country/Sovereignty/Region",
   "CountryOptions": {
     "England": "England",
     "Iran": "Iran",
@@ -212,12 +212,12 @@
   "LancetID": "The Lancet Infectious Diseases",
   "ViewFile": "View File",
   "ViewHere": "View Here",
-  "PreprintPublication": "Preprint Publication",
   "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
   "TermsOfUse": "Terms of Use",
   "CookiePolicy": "Cookie Policy",
   "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
-  "Source": "Source",
+  "Source": "Source",  
+  "ResearchArticle": "Research Article",
   "SourceType": "Source Type",
   "SourceTypeOptions": {
     "Preprint": "Preprint",
@@ -348,5 +348,17 @@
     "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
     "PartTwo": "Our dashboard aggregates seroprevalence estimates in each country. By default, these aggregated estimates include national and regional seroprevalence estimates of the general population or blood donors, and excludes estimates presented only in the news.",
     "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias. You can explore the source literature in depth on the references card at the bottom of this page."
+  },
+  "IndustryReportTitles": {
+    "MedRxivPub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
+    "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
+    "PreliminaryReport": "Preliminary Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "MayReport": "May Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "JuneReport": "June Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "JulyReport": "July Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "AugustReport": "August Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "BloodBank": "SeroTracker Blood Bank Seroprevalence Preliminary Report",
+    "LancetID": "Article (SeroTracker: a global SARS-CoV-2 seroprevalence dashboard)"
   }
 }
