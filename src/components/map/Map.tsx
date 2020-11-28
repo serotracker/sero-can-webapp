@@ -65,10 +65,10 @@ export default function Map() {
     }
   }
 
-  // iconSize: size of the icon
-  // iconAnchor: point of the icon which will correspond to marker's location
-  // popupAnchor: point from which the popup should open relative to the iconAnchor
-
+  // Definitions of the marker fields: 
+  //  iconSize: size of the icon
+  //  iconAnchor: point of the icon which will correspond to marker's location
+  //  popupAnchor: point from which the popup should open relative to the iconAnchor
   const nationalMarker = L.icon({ 
     iconUrl: require('../../assets/icons/national_pin.png'), 
     iconSize: [35, 50],
@@ -110,16 +110,18 @@ export default function Map() {
         id={'mapbox/light-v9'}
         zoomOffset={-1}>
       </TileLayer>
+      {/*
       <ImageOverlay
         url="https://www.solidbackgrounds.com/images/1920x1080/1920x1080-gray-solid-color-background.jpg"
         bounds={bounds}>
       </ImageOverlay>
+      */}
         {state.filteredRecords.map((record) => 
           <Marker 
             onClick={clickMarker}
-            icon={nationalMarker}
+            icon={record.pin_region_type == "country" ? nationalMarker : (record.pin_region_type == "state" ? regionalMarker : localMarker)}
             key={`marker-${record.source_name}`} 
-            position={[51.505, -0.09]}
+            position={[record.pin_latitude, record.pin_longitude]}
           >
           <Popup autoClose={false} className="pin-popup">
             <div className="popup-title">
@@ -164,15 +166,35 @@ export default function Map() {
           </Popup>
         </Marker>
         )}
+        {/*
+        <Marker 
+          icon={localMarker}
+          key={`marker`} 
+          position={[21.505, 1.05]}
+        >
+          <Popup>
+            <span>Local<br/> Easily customizable.</span>
+          </Popup>
+        </Marker>
         <Marker 
           icon={regionalMarker}
           key={`marker`} 
           position={[51.505, 1.05]}
         >
-        <Popup>
-          <span>A pretty CSS3 popup. <br/> Easily customizable.</span>
-        </Popup>
-      </Marker>
+          <Popup autoClose={false} draggable={true}>
+            <span>Regional<br/> Easily customizable.</span>
+          </Popup>
+        </Marker>
+        <Marker 
+          icon={nationalMarker}
+          key={`marker`} 
+          position={[81.505, 1.05]}
+        >
+          <Popup>
+            <span>National<br/> Easily customizable.</span>
+          </Popup>
+        </Marker>
+        */}
       <GeoJSON
         onEachFeature={(feature, layer) => onAltEachFeature(feature, layer, mapRef, state.language)}
         ref={geoJsonRef}
