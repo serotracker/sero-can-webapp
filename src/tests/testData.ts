@@ -4,7 +4,6 @@ export const testRecords: AirtableRecord[] = [
     {
         source_name: 'article1',
         source_type: 'source1',
-        study_status: 'status1',
         test_type: ['test1'],
         specimen_type: ['serum'],
         country: 'Canada',
@@ -21,7 +20,6 @@ export const testRecords: AirtableRecord[] = [
     {
         source_name: 'article2',
         source_type: 'source2',
-        study_status: 'status1',
         test_type: ['test1'],
         specimen_type: ['serum'],
         country: 'Canada',
@@ -38,7 +36,6 @@ export const testRecords: AirtableRecord[] = [
     {
         source_name: 'article3',
         source_type: 'source1',
-        study_status: 'status2',
         test_type: ['test1'],
         specimen_type: ['serum'],
         country: 'Canada',
@@ -55,7 +52,6 @@ export const testRecords: AirtableRecord[] = [
     {
         source_name: 'article4',
         source_type: 'source1',
-        study_status: 'status1',
         test_type: ['test2'],
         specimen_type: ['serum'],
         country: 'Canada',
@@ -72,7 +68,6 @@ export const testRecords: AirtableRecord[] = [
     {
         source_name: 'article1',
         source_type: 'source1',
-        study_status: 'status1',
         test_type: ['test1'],
         specimen_type: ['serum'],
         country: 'France',
@@ -89,7 +84,6 @@ export const testRecords: AirtableRecord[] = [
     {
         source_name: 'article2',
         source_type: 'source2',
-        study_status: 'status1',
         test_type: ['test1'],
         specimen_type: ['serum'],
         country: 'France',
@@ -106,7 +100,6 @@ export const testRecords: AirtableRecord[] = [
     {
         source_name: 'article3',
         source_type: 'source1',
-        study_status: 'status2',
         test_type: ['test1'],
         specimen_type: ['plasma'],
         country: 'France',
@@ -123,7 +116,6 @@ export const testRecords: AirtableRecord[] = [
     {
         source_name: 'article4',
         source_type: 'source1',
-        study_status: 'status1',
         test_type: ['test2'],
         specimen_type: null,
         country: 'France',
