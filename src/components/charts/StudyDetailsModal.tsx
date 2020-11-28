@@ -66,7 +66,7 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
 
   const {
     source_name, first_author, lead_org, publish_date, publisher, url,
-    summary, study_status, study_type,
+    summary, study_type,
     population_group, age, city, state, country, sex,
     seroprevalence, overall_risk_of_bias: risk_of_bias, denominator,
     sampling_method, sampling_end_date, sampling_start_date,
@@ -120,11 +120,6 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
                   <div>
                     <span className="secondary-title">{Translate('Summary')}: </span>
                     {getPossibleNullString(summary)}
-                  </div>
-                </div>
-                <div className="col-6 p-0 secondary-text">
-                  <div>
-                    <span className="secondary-title">{Translate('Status')}: </span>{getPossibleNullString(study_status)}
                   </div>
                 </div>
                 <div className="col-6 p-0 secondary-text">
