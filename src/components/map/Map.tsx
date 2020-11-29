@@ -1,6 +1,6 @@
-import { latLngBounds, LatLng} from "leaflet";
+import { latLngBounds } from "leaflet";
 import React, { createRef, useContext, useEffect, useState } from "react";
-import { GeoJSON, Map as LeafletMap, Marker, Popup, Rectangle, TileLayer, ImageOverlay } from "react-leaflet";
+import { GeoJSON, Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
 import L from "leaflet";
 import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
@@ -44,25 +44,9 @@ export default function Map() {
 
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 
-  // TODO: map all the lat/lng from the BE into an array of markers
-  const markers: [number, number][]  =  [[51.505, -0.09]];
-
-  function getRandomArbitrary(min: number, max: number) {
-    return Math.random() * (max - min) + min;
-  }
-
   const clickMarker = (e: React.MouseEvent<HTMLElement>) => {
     console.log(e);
     (e.target as any).openPopup();
-  }
-
-  const initMarker = (ref : any) => { 
-          if (ref && ref.leafletElement) {
-
-    window.setTimeout(() => {
-      ref.leafletElement.openPopup() 
-    })
-    }
   }
 
   // Definitions of the marker fields: 
@@ -110,12 +94,6 @@ export default function Map() {
         id={'mapbox/light-v9'}
         zoomOffset={-1}>
       </TileLayer>
-      {/*
-      <ImageOverlay
-        url="https://www.solidbackgrounds.com/images/1920x1080/1920x1080-gray-solid-color-background.jpg"
-        bounds={bounds}>
-      </ImageOverlay>
-      */}
         {state.filteredRecords.map((record) => 
           <Marker 
             onClick={clickMarker}
@@ -166,35 +144,6 @@ export default function Map() {
           </Popup>
         </Marker>
         )}
-        {/*
-        <Marker 
-          icon={localMarker}
-          key={`marker`} 
-          position={[21.505, 1.05]}
-        >
-          <Popup>
-            <span>Local<br/> Easily customizable.</span>
-          </Popup>
-        </Marker>
-        <Marker 
-          icon={regionalMarker}
-          key={`marker`} 
-          position={[51.505, 1.05]}
-        >
-          <Popup autoClose={false} draggable={true}>
-            <span>Regional<br/> Easily customizable.</span>
-          </Popup>
-        </Marker>
-        <Marker 
-          icon={nationalMarker}
-          key={`marker`} 
-          position={[81.505, 1.05]}
-        >
-          <Popup>
-            <span>National<br/> Easily customizable.</span>
-          </Popup>
-        </Marker>
-        */}
       <GeoJSON
         onEachFeature={(feature, layer) => onAltEachFeature(feature, layer, mapRef, state.language)}
         ref={geoJsonRef}
