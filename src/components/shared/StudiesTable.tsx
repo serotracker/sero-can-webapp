@@ -6,6 +6,7 @@ import { mobileDeviceWidth } from "../../constants";
 import { AirtableRecord } from "../../types";
 import Translate from "../../utils/translate/translateService";
 import StudyDetailsModal from "../charts/StudyDetailsModal";
+import ReferenceSearch from '../charts/ReferencesSearch';
 
 interface StudiesTableProps {
     showAllStudies: boolean,
@@ -23,30 +24,31 @@ export default function StudiesTable(props: StudiesTableProps) {
     const [direction, setDirection] = useState('descending');
     const initialState: AirtableRecord[] = [];
     const [data, setData] = useState(initialState);
+    const [searchResults, setSearchResults] = useState<AirtableRecord[] | undefined>(undefined);
     const isMobileDevice = useMediaQuery({ maxWidth: mobileDeviceWidth });
     useEffect(() => {
-        let newData = [];
+        let newData = searchResults || props.dataRecords || [];
 
         if (direction === 'descending') {
-            newData = _.orderBy(props.dataRecords,
+            newData = _.orderBy(newData,
                 [(o: any) => {
                     return o[column] || '';
                 }], ['desc']);
         }
         else {
-            newData = _.orderBy(props.dataRecords, [column], ['asc']);
+            newData = _.orderBy(newData, [column], ['asc']);
         }
 
         const splicedData = newData.splice((activePage - 1) * pageLength, pageLength);
         setData(splicedData);
 
         if (isMobileDevice) {
-            setPageLength(Math.ceil(props.dataRecords.length));
+            setPageLength(Math.ceil(newData.length));
         }
         else {
-            setTotalPages(Math.ceil(props.dataRecords.length / pageLength));
+            setTotalPages(Math.ceil(newData.length / pageLength));
         }
-    }, [activePage, column, direction, isMobileDevice, pageLength, props.dataRecords])
+    }, [activePage, column, direction, isMobileDevice, pageLength, props.dataRecords, searchResults])
 
     const getPopulation = (sex: string | null, age: string[] | null, population_group: string[] | null) => {
         // TODO: Check if we still need to accommodate for these edge cases.
@@ -92,6 +94,11 @@ export default function StudiesTable(props: StudiesTableProps) {
         setActivePage(1);
     }
 
+    const handleSearchChange = (results: any) => {
+        setSearchResults(results as AirtableRecord[])
+        setActivePage(1);
+      }
+
     const buildHeaderCell = (sortColumn: string, displayName: string, className: string) => {
         return (
             <Table.HeaderCell
@@ -105,6 +112,18 @@ export default function StudiesTable(props: StudiesTableProps) {
 
     return (
         <div className="col-12">
+            <div >
+                <div className="row">
+                <div className="col">
+                    <div className="py-3 w-100 section-title align-middle text-uppercase">
+                    {Translate('References')}
+                    </div>
+                </div>
+                <div className="col-auto">
+                    <ReferenceSearch source={props.dataRecords} onSearchResultChange={handleSearchChange} />
+                </div>
+                </div>
+            </div>
             <Table celled sortable fixed striped className="table mb-3 mt-0">
                 <Table.Header className="flex col-12 p-0">
                     <Table.Row className="flex col-12 p-0">
