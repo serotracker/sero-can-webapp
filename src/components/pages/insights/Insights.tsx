@@ -4,6 +4,7 @@ import { mobileDeviceOrTabletWidth } from "../../../constants";
 import InsightsCard from "./InsightsCard";
 import './styles.scss';
 import Translate from "../../../utils/translate/translateService";
+import October2020Update from '../../../assets/images/October2020Update.png';
 import September2020Update from '../../../assets/images/September2020Update.png'
 import MedRxivPub from '../../../assets/images/MedRXIV.jpg'
 import July2020Update from '../../../assets/images/IndustryUpdateJuly_2020.png'
@@ -29,13 +30,21 @@ export default function Insights() {
         </h3>
         <div className="flex insights-article-container">
         <div className="col-sm-12 col-lg-6 py-2">
-            <InsightsCard
-              identifier={Translate("ResearchArticle")}
-              date={"November 18, 2020"}
-              img={MedRxivPub}
-              title={Translate('IndustryReportTitles', ['MedRxivPub'])}
-              url="https://www.medrxiv.org/content/10.1101/2020.11.17.20233460v2.full"/>
-          </div>
+          <InsightsCard
+            identifier={Translate("ResearchArticle")}
+            date={"November 18, 2020"}
+            img={MedRxivPub}
+            title={Translate('IndustryReportTitles', ['MedRxivPub'])}
+            url="https://www.medrxiv.org/content/10.1101/2020.11.17.20233460v2.full"/>
+        </div>
+        <div className="col-sm-12 col-lg-6 py-2">
+          <InsightsCard
+            identifier={Translate("Report")}
+            date={"November 13, 2020"}
+            img={October2020Update}
+            title={Translate('IndustryReportTitles', ['OctoberReport'])}
+            url="https://drive.google.com/file/d/1aCgxzxv9J5Zvh4EVyI5REmSVgWLQ_Ip3/view?usp=sharing" />
+        </div>
         <div className="col-sm-12 col-lg-6 py-2">
             <InsightsCard
               identifier={Translate("Report")}
