@@ -71,19 +71,25 @@ function App() {
         payload: response
       })
     }
+
+    // Make sure that the page state is loaded
+    // after airtable records are retrieved
+    const loadData = async() => {
+      await getAirtableRecords();
+      history.listen(toggleFilters);
+      toggleFilters(history.location, 'REPLACE');
+    }
     
-    getAirtableRecords()
+    // Note: loading page state 
+    // right after filter options retrieved
+    // to ensure that filter bar is loaded nicely
+    // before all the data comes in
     allFilterOptions();
     history.listen(toggleFilters);
-    toggleFilters(history.location, 'REPLACE')
+    toggleFilters(history.location, 'REPLACE');
+    loadData();
     // We only want this to run once so we pass no dependencies. Do not remove this
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  // Call when first run ONLY.
-  useEffect(() => {
-  // We only want this to run once so we pass no dependencies. Do not remove this
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
