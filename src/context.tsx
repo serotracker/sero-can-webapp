@@ -175,6 +175,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
     case "UPDATE_FILTER":
       const new_filters: any = Object.assign({}, state.filters);
       new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
+      console.log(new_filters)
       return {
         ...state,
         filters: new_filters
