@@ -92,12 +92,6 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Call when first run ONLY.
-  useEffect(() => {
-  // We only want this to run once so we pass no dependencies. Do not remove this
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   useEffect(() => {
     const alreadyAcceptedCookes = localStorage.getItem('acceptedCookies');
     if (alreadyAcceptedCookes) {
