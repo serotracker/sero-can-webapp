@@ -94,54 +94,60 @@ export default function Map() {
         zoomOffset={-1}>
       </TileLayer>
         {state.records.map((record, idx) => 
-          <Marker 
-            onClick={clickMarker}
-            icon={record.pin_region_type == "country" ? nationalMarker : (record.pin_region_type == "state" ? regionalMarker : localMarker)}
-            key={`marker-${idx}`} 
-            position={[record.pin_latitude, record.pin_longitude]}
-          >
-          <Popup autoClose={false} className="pin-popup">
-            <div className="popup-title">
-              {`${record.estimate_grade} study details`}
-            </div>
-            <div className="popup-heading">
-              Study name
-            </div>
-            <div className="popup-text">
-              {`${record.source_name}`}
-            </div>
-            <div className="popup-heading">
-              Location
-            </div>
-            <div className="popup-text">
-              {record.city && `${record.city}`}{record.city && record.state && ","} {record.state && `${record.state}`}{record.state && record.country && ","} {record.country && `${record.country}`}
-            </div>
-            <div className="popup-heading">
-              Best seroprevalence (SP) estimate
-            </div>
-            <div className="popup-text">
-              {record.seroprevalence ? `${record.seroprevalence * 100}%` : "N/A"}
-            </div>
-            <div className="popup-heading">
-              N
-            </div>
-            <div className="popup-text">
-              {`${record.denominator}`}
-            </div>
-            <div className="popup-heading">
-              Age
-            </div>
-            <div className="popup-text">
-              {record.age ? `${record.age}` : "N/A"}
-            </div>
-            <div className="popup-heading">
-              Risk of Bias
-            </div>
-            <div className="popup-text">
-              {`${record.overall_risk_of_bias}`}
-            </div>
-          </Popup>
-        </Marker>
+        {
+          if(record.pin_latitude && record.pin_longitude){
+            return (
+              <Marker 
+                onClick={clickMarker}
+                icon={record.pin_region_type == "country" ? nationalMarker : (record.pin_region_type == "state" ? regionalMarker : localMarker)}
+                key={`marker-${idx}`} 
+                position={[record.pin_latitude, record.pin_longitude]}
+              >
+                <Popup autoClose={false} className="pin-popup">
+                  <div className="popup-title">
+                    {`${record.estimate_grade} study details`}
+                  </div>
+                  <div className="popup-heading">
+                    Study name
+                  </div>
+                  <div className="popup-text">
+                    {`${record.source_name}`}
+                  </div>
+                  <div className="popup-heading">
+                    Location
+                  </div>
+                  <div className="popup-text">
+                    {record.city && `${record.city}`}{record.city && record.state && ","} {record.state && `${record.state}`}{record.state && record.country && ","} {record.country && `${record.country}`}
+                  </div>
+                  <div className="popup-heading">
+                    Best seroprevalence (SP) estimate
+                  </div>
+                  <div className="popup-text">
+                    {record.seroprevalence ? `${record.seroprevalence * 100}%` : "N/A"}
+                  </div>
+                  <div className="popup-heading">
+                    N
+                  </div>
+                  <div className="popup-text">
+                    {`${record.denominator}`}
+                  </div>
+                  <div className="popup-heading">
+                    Age
+                  </div>
+                  <div className="popup-text">
+                    {record.age ? `${record.age}` : "N/A"}
+                  </div>
+                  <div className="popup-heading">
+                    Risk of Bias
+                  </div>
+                  <div className="popup-text">
+                    {`${record.overall_risk_of_bias}`}
+                  </div>
+                </Popup>
+              </Marker>
+            )
+          }
+        }
         )}
       <GeoJSON
         onEachFeature={(feature, layer) => onAltEachFeature(feature, layer, mapRef, state.language)}
