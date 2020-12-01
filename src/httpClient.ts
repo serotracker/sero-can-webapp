@@ -115,7 +115,6 @@ export default class httpClient {
 
         const date = filters['publish_date'] as Array<Date>
         const [startDate, endDate] = formatDates(date)
-        console.log(filters, reqBodyFilters);
         const reqBody = {
             filters: reqBodyFilters,
             start_date: startDate,
