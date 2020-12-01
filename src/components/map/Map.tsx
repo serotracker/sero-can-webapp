@@ -45,7 +45,6 @@ export default function Map() {
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 
   const clickMarker = (e: React.MouseEvent<HTMLElement>) => {
-    console.log(e);
     (e.target as any).openPopup();
   }
 
@@ -94,11 +93,11 @@ export default function Map() {
         id={'mapbox/light-v9'}
         zoomOffset={-1}>
       </TileLayer>
-        {state.records.map((record) => 
+        {state.records.map((record, idx) => 
           <Marker 
             onClick={clickMarker}
             icon={record.pin_region_type == "country" ? nationalMarker : (record.pin_region_type == "state" ? regionalMarker : localMarker)}
-            key={`marker-${record.source_name}`} 
+            key={`marker-${idx}`} 
             position={[record.pin_latitude, record.pin_longitude]}
           >
           <Popup autoClose={false} className="pin-popup">
