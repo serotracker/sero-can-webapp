@@ -94,7 +94,7 @@ export default function Map() {
         id={'mapbox/light-v9'}
         zoomOffset={-1}>
       </TileLayer>
-        {state.filteredRecords.map((record) => 
+        {state.records.map((record) => 
           <Marker 
             onClick={clickMarker}
             icon={record.pin_region_type == "country" ? nationalMarker : (record.pin_region_type == "state" ? regionalMarker : localMarker)}
@@ -133,7 +133,7 @@ export default function Map() {
               Age
             </div>
             <div className="popup-text">
-              {record.age ? `${record.age.join(", ")}` : "N/A"}
+              {record.age ? `${record.age}` : "N/A"}
             </div>
             <div className="popup-heading">
               Risk of Bias
