@@ -50,14 +50,14 @@ export default function StudiesTable(props: StudiesTableProps) {
         }
     }, [activePage, column, direction, isMobileDevice, pageLength, props.dataRecords, searchResults])
 
-    const getPopulation = (sex: string | null, age: string[] | null, population_group: string[] | null) => {
+    const getPopulation = (sex: string | null, age: string | null, population_group: string | null) => {
         // TODO: Check if we still need to accommodate for these edge cases.
         if (!population_group) {
             return "Not Reported";
         }
         const displaySex = sex && sex !== "All" && sex !== "Unspecified";
-        const displayAge = age && age[0] !== "All" && age[0] !== "Unspecified";
-        return `${displaySex ? `${sex}, ` : ""}${displayAge ? `${(age as string[]).join(", ")}, ` : ""}${population_group.join(", ")}`;
+        const displayAge = age && age !== "Multiple groups";
+        return `${displaySex ? `${sex}, ` : ""}${displayAge ? `${age}, ` : ""}${population_group}`;
     }
 
     const getGeography = (city: string[] | null | undefined, state: string[] | null | undefined, country: string | null) => {

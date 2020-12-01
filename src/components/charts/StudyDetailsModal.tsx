@@ -134,10 +134,10 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
               <div className="col-12 p-0 section-title">{Translate('Demographics').toUpperCase()}</div>
               <div className="col-12 px-2 py-1 flex section-container modal-text-container">
                 <div className="col-6 p-0 secondary-text">
-                  <span className="secondary-title">{Translate('Population')}: </span>{getPossibleNullStringArray(population_group)}
+                  <span className="secondary-title">{Translate('Population')}: </span>{getPossibleNullString(population_group)}
                 </div>
                 <div className="col-6 p-0 secondary-text">
-                  <span className="secondary-title">{Translate('AgeGroup')}: </span>{getPossibleNullStringArray(age)}
+                  <span className="secondary-title">{Translate('AgeGroup')}: </span>{getPossibleNullString(age)}
                 </div>
                 <div className="col-6 p-0 secondary-text">
                   <span>
