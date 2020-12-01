@@ -56,7 +56,7 @@ export default function StudiesTable(props: StudiesTableProps) {
             return "Not Reported";
         }
         const displaySex = sex && sex !== "All" && sex !== "Unspecified";
-        const displayAge = age && age !== "Multiple groups";
+        const displayAge = age && age !== "Multiple groups" && age !== "Unspecified";
         return `${displaySex ? `${sex}, ` : ""}${displayAge ? `${age}, ` : ""}${population_group}`;
     }
 
