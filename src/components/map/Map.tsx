@@ -117,7 +117,7 @@ export default function Map() {
                     Location
                   </div>
                   <div className="popup-text">
-                    {record.city && `${record.city}`}{record.city && record.state && ","} {record.state && `${record.state}`}{record.state && record.country && ","} {record.country && `${record.country}`}
+                    {record.city && `${record.city}`}{record.city && record.city.length != 0 && record.state && record.state.length != 0 && ", "}{record.state && `${record.state}`}{record.state && record.state.length != 0 && record.country && ", "}{record.city && record.city.length != 0 && record.state && record.state.length == 0 && record.country && ", "}{record.country && `${record.country}`}
                   </div>
                   <div className="popup-heading">
                     Best seroprevalence (SP) estimate
