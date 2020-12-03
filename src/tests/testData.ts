@@ -13,9 +13,6 @@ export const testRecords: AirtableRecord[] = [
         denominator: 2000,
         seroprevalence: 0.15,
         overall_risk_of_bias: "Low",
-        pin_latitude: 51.505,
-        pin_longitude: -0.09,
-        pin_region_type: "country",
         isotypes_reported: ['IgM'],
         include_in_n: true,
         estimate_grade: "National"
@@ -32,9 +29,6 @@ export const testRecords: AirtableRecord[] = [
         denominator: 1000,
         seroprevalence: 0.2,
         overall_risk_of_bias: "Low",
-        pin_latitude: 51.505,
-        pin_longitude: -0.09,
-        pin_region_type: "country",
         isotypes_reported: ['IgM'],
         include_in_n: true,
         estimate_grade: "National"
@@ -51,9 +45,6 @@ export const testRecords: AirtableRecord[] = [
         denominator: 200,
         seroprevalence: 0.12,
         overall_risk_of_bias: "Low",
-        pin_latitude: 51.505,
-        pin_longitude: -0.09,
-        pin_region_type: "country",
         isotypes_reported: ['IgM'],
         include_in_n: true,
         estimate_grade: "National"
@@ -70,9 +61,6 @@ export const testRecords: AirtableRecord[] = [
         denominator: 500,
         seroprevalence: 0.15,
         overall_risk_of_bias: "Low",
-        pin_latitude: 51.505,
-        pin_longitude: -0.09,
-        pin_region_type: "country",
         isotypes_reported: ['IgM'],
         include_in_n: false,
         estimate_grade: "National"
@@ -89,9 +77,6 @@ export const testRecords: AirtableRecord[] = [
         denominator: 1250,
         seroprevalence: 0.23,
         overall_risk_of_bias: "Low",
-        pin_latitude: 51.505,
-        pin_longitude: -0.09,
-        pin_region_type: "country",
         isotypes_reported: ['IgM'],
         include_in_n: true,
         estimate_grade: "National"
@@ -108,9 +93,6 @@ export const testRecords: AirtableRecord[] = [
         denominator: 700,
         seroprevalence: 0.25,
         overall_risk_of_bias: "Low",
-        pin_latitude: 51.505,
-        pin_longitude: -0.09,
-        pin_region_type: "country",
         isotypes_reported: ['IgM'],
         include_in_n: true,
         estimate_grade: "National"
@@ -127,9 +109,6 @@ export const testRecords: AirtableRecord[] = [
         denominator: 300,
         seroprevalence: 0.32,
         overall_risk_of_bias: "Low",
-        pin_latitude: 51.505,
-        pin_longitude: -0.09,
-        pin_region_type: "country",
         isotypes_reported: ['IgM'],
         include_in_n: true,
         estimate_grade: "National"
@@ -146,9 +125,6 @@ export const testRecords: AirtableRecord[] = [
         denominator: 500,
         seroprevalence: 0.2,
         overall_risk_of_bias: "High",
-        pin_latitude: 51.505,
-        pin_longitude: -0.09,
-        pin_region_type: "country",
         isotypes_reported: ['IgM', 'IgA'],
         include_in_n: false,
         estimate_grade: "National"

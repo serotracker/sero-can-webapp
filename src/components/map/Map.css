@@ -20,25 +20,6 @@ body {
   color: #777;
 }
 
-.pin-pop-up { 
-}
-
-.popup-title { 
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.popup-heading { 
-  font-weight: bold;
-  font-size: 12px;
-  margin-top: 8px;
-}
-
-.popup-text { 
-  font-weight: normal;
-  font-size: 12px;
-}
-
 div.map.leaflet-container.leaflet-touch.leaflet-retina.leaflet-fade-anim {
   /*border: 5px solid red;*/
   z-index: 1;

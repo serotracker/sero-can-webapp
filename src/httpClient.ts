@@ -73,9 +73,6 @@ export default class httpClient {
                 sampling_start_date: null,
                 sampling_end_date: item.sampling_end_date,
                 overall_risk_of_bias: item.overall_risk_of_bias,
-                pin_latitude: item.pin_latitude,
-                pin_longitude: item.pin_longitude,
-                pin_region_type: item.pin_region_type,
                 estimate_grade: item.estimate_grade
             };
 
@@ -154,9 +151,6 @@ export default class httpClient {
                 sampling_start_date: null,
                 sampling_end_date: item.sampling_end_date,
                 overall_risk_of_bias: item.overall_risk_of_bias,
-                pin_latitude: item.pin_latitude,
-                pin_longitude: item.pin_longitude,
-                pin_region_type: item.pin_region_type,
                 estimate_grade: item.estimate_grade
             };
 
@@ -259,5 +253,4 @@ export default class httpClient {
         }
         return [];
     }
-} 
-
+}

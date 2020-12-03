@@ -52,26 +52,21 @@ export default function Filters({filters}: FilterProps) {
     return formatted_options;
   }
 
-  const addFilter = async (data: any, filter_type: FilterType) => {
+  const addFilter = async (data: any, filter_type: string) => {
     dispatch({
       type: 'UPDATE_FILTER',
       payload: {
         filter_type,
         filter_value: data.value
       }
-    });  
-    
-    // Note: state.filters is not updated synchronously
-    // Hotfix for now, but we should come up with a better pattern
-    const updated_filters: FilterT = Object.assign({}, state.filters);
-    updated_filters[filter_type] = data.value;
+    });   
   
     const api = new httpClient()
     // Update current records when called
-    const records = await api.getAirtableRecords(updated_filters)
+    const records = await api.getAirtableRecords(state.filters)
     dispatch({
       type: 'GET_AIRTABLE_RECORDS',
-      payload: records
+      payload:  { records }
     }); 
     dispatch({
       type: 'SAVE_PAGE_STATE',
