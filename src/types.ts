@@ -23,13 +23,11 @@ export type AirtableRecord = {
     publisher?: string | null,
     overall_risk_of_bias: string | null,
     study_type?: string | null,
-    sample_size?: string | null,
     sampling_method?: string | null,
     sampling_start_date?: string | null,
     sampling_end_date?: string | null,
     summary?: string | null,
     url?: string | null,
-    include_in_n: boolean,
     estimate_grade: string | null
 };
 
