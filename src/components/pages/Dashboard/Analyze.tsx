@@ -5,11 +5,14 @@ import Charts from "../../charts/Charts";
 import AnalyzeMobile from '../../mobile/AnalyzeMobile';
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
+import MaintenanceModal from "../../shared/MaintenanceModal";
+import { isMaintenanceMode } from "../../../constants";
 
 export default function Analyze() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
 
   return (
+    <React.Fragment>
     <div className="fill flex dashboard">
       {!isMobileDeviceOrTablet ?
         (<div className="fill flex">
@@ -29,5 +32,7 @@ export default function Analyze() {
           </div>
         )}
     </div >
+    <MaintenanceModal isOpen={isMaintenanceMode} headerText={"Analyze"}/>
+    </React.Fragment>
   )
 }
