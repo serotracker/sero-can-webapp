@@ -7,6 +7,9 @@ import { AirtableRecord } from "../../types";
 import Translate from "../../utils/translate/translateService";
 import StudyDetailsModal from "../charts/StudyDetailsModal";
 import ReferenceSearch from '../charts/ReferencesSearch';
+import { sendAnalyticsEvent } from '../../utils/analyticsUtils';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
 interface StudiesTableProps {
     showAllStudies: boolean,
@@ -191,6 +194,17 @@ export default function StudiesTable(props: StudiesTableProps) {
                         null
                 }
             </Table>
+            <div className="d-flex justify-content-end">
+                <a target="_blank" rel="noopener noreferrer" onClick={() => sendAnalyticsEvent({category: 'Data Link Click', action: 'click', label: 'DownloadCsv'})} 
+                href="https://airtable.com/shraXWPJ9Yu7ybowM/tbljN2mhRVfSlZv2d?backgroundColor=blue&viewControls=on">
+                <FontAwesomeIcon
+                icon={faDownload}
+                className={'icon'}
+                color={'#455a64'}
+                size={"1x"} />
+                <span>{Translate('DownloadCsv')}</span>
+                </a>
+            </div>
         </div>
     )
 }
