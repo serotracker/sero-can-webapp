@@ -5,11 +5,14 @@ import Map from '../../map/Map';
 import MobileComponents from '../../mobile/ExploreMobile';
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
+import MaintenanceModal from "../../shared/MaintenanceModal";
+import { isMaintenanceMode } from "../../../constants";
 
 export default function Explore() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
 
   return (
+    <React.Fragment>
     <div className="fill flex dashboard">
       {!isMobileDeviceOrTablet ?
         (<div className="fill flex">
@@ -29,5 +32,7 @@ export default function Explore() {
           </div>
         )}
     </div >
+    <MaintenanceModal isOpen={isMaintenanceMode} headerText={"Explore"}/>
+    </React.Fragment>
   )
 }

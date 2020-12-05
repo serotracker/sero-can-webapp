@@ -271,6 +271,8 @@
   "SummaryStatistics": "Summary Statistics",
   "TeamLead": "Team Leads",
   "CountriesIncluded": "Countries Included",
+  "TemporaryMaintenance" : "Temporary Maintenance",
+  "TemporaryMaintenanceDescription" : "We are down for scheduled maintenance, service will return shortly.",
   "TestDetails": "Test Details",
   "TestInformation": "Test Information",
   "TestInformationTooltip": "Filter on test details, including assay type and antibody isotype.",
