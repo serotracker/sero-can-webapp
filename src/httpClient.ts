@@ -1,5 +1,6 @@
 import { AggregatedRecord, AggregationFactor, AirtableRecord, Filters, FilterType } from "./types";
 import { formatDates } from "./utils/utils";
+import {parseISO, format } from "date-fns";
 
 export default class httpClient {
 
@@ -43,50 +44,12 @@ export default class httpClient {
         }
     }
 
-    async getAllRecords() {
-        const response = await this.httpGet('/data_provider/records')
-        if (!response) {
-            return [];
-        }
-        const records = response.map((item: Record<string, any>) => {
-            // Convert response to AirtableRecord type
-            const record: AirtableRecord = {
-                include_in_n: true,
-                source_name: item.source_name,
-                lead_org: item.lead_org,
-                first_author: item.first_author,
-                source_type: item.source_type,
-                study_type: item.study_type,
-                test_type: item.study_type,
-                specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],
-                isotypes_reported: item.isotypes_reported,
-                sex: item.sex,
-                approving_regulator: item.approving_regulator,
-                country: item.country,
-                state: item.state,
-                city: item.city,
-                population_group: item.population_group,
-                age: item.age,
-                denominator: item.denominator_value,
-                seroprevalence: item.serum_pos_prevalence,
-                sample_size: null,
-                sampling_start_date: null,
-                sampling_end_date: item.sampling_end_date,
-                overall_risk_of_bias: item.overall_risk_of_bias,
-                estimate_grade: item.estimate_grade
-            };
-
-            return record;
-        });
-        return records
-    }
-
     async getAllFilterOptions() {
         const response = await this.httpGet('/data_provider/filter_options');
         const options: Record<string, any> = {}
         for(let k in response){
             // Currently no need for max and min date options
-            if(k != "max_date" && k != "min_date"){
+            if(k !== "max_date" && k !== "min_date"){
                 // For all the other options, use a Set instead of list
                 // Because that's the data model our filters are used to
                 // TODO: refactor so we can keep filter options in a list
@@ -95,7 +58,10 @@ export default class httpClient {
         }
         // We know that only these 3 isotypes will ever be reported, thus we can hardcode
         options.isotypes_reported = new Set(["IgG", "IgA", "IgM"]);
-        return options;
+        const updatedAt = format(parseISO(response.updated_at), "dd-MM-yyyy");
+        const maxDate = parseISO(response.min_date);     
+        const minDate = parseISO(response.max_date);
+        return { options, updatedAt, maxDate, minDate };
     }
     
     async getAirtableRecords(filters: Filters,
@@ -129,29 +95,30 @@ export default class httpClient {
         const filtered_records = response.map((item: Record<string, any>) => {
             // Convert response to AirtableRecord type
             const record: AirtableRecord = {
-                include_in_n: true,
-                source_name: item.source_name,
-                lead_org: item.lead_org,
+                age: item.age,
+                approving_regulator: item.approving_regulator,
+                city: item.city,
+                country: item.country,
+                denominator: item.denominator_value,
+                estimate_grade: item.estimate_grade,
                 first_author: item.first_author,
+                include_in_n: true,
+                isotypes_reported: item.isotypes_reported,
+                lead_org: item.lead_org,
+                overall_risk_of_bias: item.overall_risk_of_bias,
+                population_group: item.population_group,
+                sample_size: null,
+                sampling_end_date: item.sampling_end_date,
+                sampling_start_date: item.sampling_start_date,
+                seroprevalence: item.serum_pos_prevalence,
+                sex: item.sex,
+                source_name: item.source_name,
                 source_type: item.source_type,
+                specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],
+                state: item.state,
                 study_type: item.study_type,
                 test_type: item.study_type,
-                specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],
-                isotypes_reported: item.isotypes_reported,
-                sex: item.sex,
-                approving_regulator: item.approving_regulator,
-                country: item.country,
-                state: item.state,
-                city: item.city,
-                population_group: item.population_group,
-                age: item.age,
-                denominator: item.denominator_value,
-                seroprevalence: item.serum_pos_prevalence,
-                sample_size: null,
-                sampling_start_date: null,
-                sampling_end_date: item.sampling_end_date,
-                overall_risk_of_bias: item.overall_risk_of_bias,
-                estimate_grade: item.estimate_grade
+                url: item.url
             };
 
             return record;

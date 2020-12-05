@@ -1,4 +1,9 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  getPossibleNullString,
+  getPossibleNullDateString,
+  getPossibleNullStringArray
+} from "../../utils/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Button, Modal } from "semantic-ui-react";
@@ -25,20 +30,6 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
       height: 'auto'
     }
   };
-
-  const getPossibleNullString = (nullString: string | number | null | undefined) => {
-    if (nullString === null || nullString === undefined) {
-      return "Not Reported"
-    }
-    return nullString
-  }
-
-  const getPossibleNullStringArray = (nullString: string[] | null | undefined) => {
-    if (nullString === null || nullString === undefined) {
-      return "Not Reported"
-    }
-    return nullString.join(", ")
-  }
 
   const getAuthorString = (first_author: string | undefined | null, lead_org: string | null | undefined) => {
     if (lead_org && first_author) {
@@ -175,12 +166,12 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
                 </div>
                 <div className="col-12 p-0 secondary-text">
                   <div>
-                    <span className="secondary-title">{Translate('StartDate')}: </span>{getPossibleNullString(sampling_start_date)}
+                    <span className="secondary-title">{Translate('StartDate')}: </span>{getPossibleNullDateString(sampling_start_date)}
                   </div>
                 </div>
                 <div className="col-12 p-0 secondary-text">
                   <div>
-                    <span className="secondary-title">{Translate('EndDate')}: </span>{getPossibleNullString(sampling_end_date)}
+                    <span className="secondary-title">{Translate('EndDate')}: </span>{getPossibleNullDateString(sampling_end_date)}
                   </div>
                 </div>
               </div>
