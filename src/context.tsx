@@ -138,7 +138,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
           records: records ? records : state.analyze.records
         },
       };
-    }
+    };
     case "LOAD_PAGE_STATE": {
       const exploreIsOpen = action.payload;
       if (exploreIsOpen) {
@@ -169,8 +169,12 @@ const reducer = (state: State, action: Record<string, any>): State => {
     case "GET_AIRTABLE_RECORDS":
       return {
         ...state,
-        records: action.payload,
-        updatedAt: action.payload.updated_at,
+        records: action.payload
+      };
+    case "UPDATED_AT":
+      return {
+        ...state,
+        updatedAt: action.payload
       };
     case "UPDATE_FILTER":
       const new_filters: any = Object.assign({}, state.filters);

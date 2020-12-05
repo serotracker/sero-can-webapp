@@ -65,10 +65,15 @@ function App() {
     }
     
     const allFilterOptions = async () => {
-      const response = await api.getAllFilterOptions();
+      const { options, updatedAt, maxDate, minDate } = await api.getAllFilterOptions();
       dispatch({
         type: 'GET_ALL_FILTER_OPTIONS',
-        payload: response
+        payload: options
+      })
+
+      dispatch({
+        type: "UPDATED_AT",
+        payload: updatedAt
       })
     }
 

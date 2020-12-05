@@ -67,7 +67,7 @@ export default function StudiesTable(props: StudiesTableProps) {
         if (!country) {
             return "Not Reported";
         }
-        return `${city ? `${city.join(", ")}, ` : ""}${state ? `${state.join(", ")}, ` : ""}${country}`;
+        return `${city && city.length > 0 ? `${city.join(", ")}, ` : ""}${state && state.length > 0 ? `${state.join(", ")}, ` : ""}${country}`;
     }
 
     const pageLengthOptions = [
