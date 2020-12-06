@@ -4,8 +4,11 @@ import { GeoJSON, Map as LeafletMap, TileLayer } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
 import { altStyle, getBuckets, getMapUrl, mapAltDataToFeatures, onAltEachFeature } from "../../utils/mapUtils";
+// @ts-ignore
+import { TiledMapLayer, BasemapLayer } from 'react-esri-leaflet/v2' 
 import Legend from "./Legend";
 import './Map.css';
+import VectorTileLayer from './VectorTileLayer.js';
 
 export default function Map() {
   const mapRef = createRef<LeafletMap>();
@@ -55,6 +58,11 @@ export default function Map() {
       enableHighAccuracy={true}
       maxBoundsViscosity={1}
     >
+      <VectorTileLayer />
+      <TileLayer url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer/tile/{z}/{y}/{x}.pbf" /> {/* tile/{x}/{y}/{z}.pbf*/}
+      {/*
+      <TiledMapLayer url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer" />
+
       <TileLayer
         url={getMapUrl(state.language) + mapboxAccessToken}
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -62,6 +70,7 @@ export default function Map() {
         id={'mapbox/light-v9'}
         zoomOffset={-1}>
       </TileLayer>
+      
       <GeoJSON
         onEachFeature={(feature, layer) => onAltEachFeature(feature, layer, mapRef, state.language)}
         ref={geoJsonRef}
@@ -69,6 +78,7 @@ export default function Map() {
         data={mapRecords as GeoJSON.GeoJsonObject}
         style={(data) => altStyle(data, buckets)}>
       </GeoJSON>
+      */}
       <Legend buckets={buckets} />
     </LeafletMap>
   );
