@@ -53,7 +53,7 @@ function App() {
 
     const getAirtableRecords = async () => {
       const analyzeRecords = await api.getAirtableRecords(analyze.filters)
-      const exploreRecords = await api.getAirtableRecords(explore.filters)
+      const exploreRecords = await api.getAirtableRecords(explore.filters, true)
       dispatch({
         type: 'SET_PAGE_STATE',
         payload:  { records: exploreRecords, isExplorePageState: true }

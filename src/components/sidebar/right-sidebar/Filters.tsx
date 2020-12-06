@@ -68,7 +68,7 @@ export default function Filters({filters}: FilterProps) {
   
     const api = new httpClient()
     // Update current records when called
-    const records = await api.getAirtableRecords(updated_filters)
+    const records = await api.getAirtableRecords(updated_filters, state.dataPageState.exploreIsOpen)
     dispatch({
       type: 'GET_AIRTABLE_RECORDS',
       payload: records

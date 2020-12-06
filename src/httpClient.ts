@@ -65,6 +65,7 @@ export default class httpClient {
     }
     
     async getAirtableRecords(filters: Filters,
+        only_explore_columns=false,
         sorting_key = "denominator_value",
         reverse = false) {
         const reqBodyFilters: Record<string, string[]> = {}
@@ -76,6 +77,12 @@ export default class httpClient {
             }
         });
 
+        const all_columns = ["state", "city", "country", "age", "serum_pos_prevalence", "denominator_value", 
+        "overall_risk_of_bias", "source_name", "estimate_grade", "first_author", "source_type", "study_type", "test_type", "specimen_type",
+        "isotypes_reported", "approving_regulator", "population_group", "sampling_start_date", "sampling_end_date", "lead_organization", "url"];
+
+        const explore_columns = all_columns.slice(0, 9);
+
         const date = filters['publish_date'] as Array<Date>
         const [startDate, endDate] = formatDates(date)
         const reqBody = {
@@ -86,7 +93,7 @@ export default class httpClient {
             reverse: reverse,
             per_page: null,
             page_index: null,
-            columns: [],
+            columns: only_explore_columns ? explore_columns : all_columns,
         }
         const response = await this.httpPost('/data_provider/records', reqBody)
         if (!response) {
@@ -102,12 +109,10 @@ export default class httpClient {
                 denominator: item.denominator_value,
                 estimate_grade: item.estimate_grade,
                 first_author: item.first_author,
-                include_in_n: true,
                 isotypes_reported: item.isotypes_reported,
                 lead_org: item.lead_org,
                 overall_risk_of_bias: item.overall_risk_of_bias,
                 population_group: item.population_group,
-                sample_size: null,
                 sampling_end_date: item.sampling_end_date,
                 sampling_start_date: item.sampling_start_date,
                 seroprevalence: item.serum_pos_prevalence,
