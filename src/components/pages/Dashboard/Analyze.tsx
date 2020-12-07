@@ -12,21 +12,7 @@ import { AppContext } from "../../../context";
 export default function Analyze() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   const [, dispatch] = useContext(AppContext)
-
-  useEffect(() => {
-    dispatch({
-      type: 'LOAD_PAGE_STATE',
-      payload: false
-    })
-
-    return () => {
-      dispatch({
-        type: 'SAVE_PAGE_STATE',
-        payload: false
-      })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  
   return (
     <>
       <div className="fill flex dashboard">

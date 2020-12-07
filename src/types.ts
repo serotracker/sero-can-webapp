@@ -66,8 +66,6 @@ export type State = {
     healthcheck: string,
     explore: PageState,
     analyze: PageState,
-    filters: Filters,
-    records: AirtableRecord[]
     allFilterOptions: Filters,
     updatedAt: string,
     calendarStartDates: StartDates,

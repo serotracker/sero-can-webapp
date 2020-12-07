@@ -12,27 +12,13 @@ import { AppContext } from "../../../context";
 export default function Explore() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   const [, dispatch] = useContext(AppContext)
-
-  useEffect(() => {
-    dispatch({
-      type: 'LOAD_PAGE_STATE',
-      payload: true
-    })
-    return () => {
-      dispatch({
-        type: 'SAVE_PAGE_STATE',
-        payload: true
-      })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
   return (
     <React.Fragment>
       <div className="fill flex dashboard">
         {!isMobileDeviceOrTablet ?
           (<div className="fill flex">
             <div className="col-2 p-0 flex">
-              <LeftSidebar />
+              <LeftSidebar page={}/>
             </div>
             <div className="col-8 p-0 flex">
               <Map />
