@@ -1,19 +1,21 @@
 import React, { useContext } from "react";
-import Filters from "./Filters";
-import LastUpdated from "./LastUpdated";
-import "../sidebar.css"
-import "./RightSidebar.css"
-import Translate from "../../../utils/translate/translateService";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../../context";
+import Translate from "../../../utils/translate/translateService";
+import "../sidebar.css";
+import Datepicker from "./datepicker/Datepicker";
+import Filters from "./Filters";
+import LastUpdated from "./LastUpdated";
+import "./RightSidebar.css";
 
 export default function RightSidebar() {
   const [{filters}, ] = useContext(AppContext)
 
   return (
-    <div className="justify-content-between sidebar-container">
+    <div className="justify-content-between fill sidebar-container">
       <div className="filters-container mb-3">
         <Filters filters={filters}/>
+        <Datepicker/>
       </div>
       <div className="fill">
         <LastUpdated />

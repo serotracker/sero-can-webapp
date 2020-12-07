@@ -70,12 +70,18 @@ export type State = {
     records: AirtableRecord[]
     allFilterOptions: Filters,
     updatedAt: string,
+    calendarStartDates: StartDates,
     dataPageState: DataPageState,
     language: LanguageType,
     estimate_grade_prevalences: AlternateAggregatedRecord[],
     showCookieBanner: boolean,
     showAnalyzePopup: boolean
 };
+
+export type StartDates = {
+    minDate: Date,
+    maxDate: Date
+}
 
 export type PageState = {
     filters: Filters,

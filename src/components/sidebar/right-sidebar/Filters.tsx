@@ -73,16 +73,6 @@ export default function Filters({filters}: FilterProps) {
       type: 'GET_AIRTABLE_RECORDS',
       payload: records
     }); 
-    dispatch({
-      type: 'SAVE_PAGE_STATE',
-      payload: state.dataPageState.exploreIsOpen
-    })
-
-    // const estimateGradePrevalences = await api.getEstimateGrades(state.filters);
-    // dispatch({
-    //   type: 'UPDATE_ESTIMATE_PREVALENCES',
-    //   payload: estimateGradePrevalences
-    // });
   }
 
   const buildSectionHeader = (header_text: string, tooltip_text?: string | React.ReactNode, tooltip_header?: string) => {

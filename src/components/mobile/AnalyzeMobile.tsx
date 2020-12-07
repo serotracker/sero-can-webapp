@@ -6,13 +6,14 @@ import { AppContext } from "../../context";
 import Charts from "../charts/Charts";
 import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
 import TotalStats from "../sidebar/left-sidebar/TotalStats";
+import Datepicker from "../sidebar/right-sidebar/datepicker/Datepicker";
 import Filters from "../sidebar/right-sidebar/Filters";
 import LastUpdated from "../sidebar/right-sidebar/LastUpdated";
 
 export default function AnalyzeMobile() {
   const [showMobileFilters, setShowFilters] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
-  const [state, ] = useContext(AppContext)
+  const [state,] = useContext(AppContext)
 
   const handleFilterToggle = (showMobile: boolean, showSummary: boolean) => {
     setShowFilters(showMobile);
@@ -33,8 +34,8 @@ export default function AnalyzeMobile() {
           visible={showMobileFilters}
           width='wide'
         >
-
-          <Filters filters={state.filters}/>
+          <Filters filters={state.filters} />
+          <Datepicker/>
           <LastUpdated />
           <FontAwesomeIcon
             icon={faTimes}
@@ -66,7 +67,7 @@ export default function AnalyzeMobile() {
             size={"lg"} />
         </Sidebar>
         <Sidebar.Pusher className="fill flex">
-        <Charts />
+          {/* <Charts /> */}
           {/* Icons */}
           <div className="icon-container"
             style={{ top: 10, right: 15 }}>

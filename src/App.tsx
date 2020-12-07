@@ -1,6 +1,5 @@
-import { Location, LocationListener } from 'history';
-import React, { useContext, useEffect, useState } from "react";
-import { Redirect, Route, Switch, useHistory } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
 import CookiePolicy from "./components/pages/CookiePolicy";
@@ -18,7 +17,6 @@ import { setLanguageType } from "./utils/translate/translateService";
 
 function App() {
   const [{ language, analyze, filters, explore }, dispatch] = useContext(AppContext);
-  const history = useHistory();
   setLanguageType(language);
 
   useEffect(() => {    
@@ -36,20 +34,6 @@ function App() {
 
   useEffect(() => {
     const api = new httpClient()
-    const toggleFilters: LocationListener = async({ pathname }: Location) => {
-      if (pathname === "/Analyze") {
-        dispatch({
-          type: 'LOAD_PAGE_STATE',
-          payload: false
-        })
-      }
-      else if (pathname === "/Explore") {
-        dispatch({
-          type: 'LOAD_PAGE_STATE',
-          payload: true
-        })
-      };    
-    }
 
     const getAirtableRecords = async () => {
       const analyzeRecords = await api.getAirtableRecords(analyze.filters)
@@ -75,14 +59,17 @@ function App() {
         type: "UPDATED_AT",
         payload: updatedAt
       })
+
+      dispatch({
+        type: "MAX_MIN_DATES",
+        payload: { maxDate, minDate }
+      })
     }
 
     // Make sure that the page state is loaded
     // after airtable records are retrieved
     const loadData = async() => {
       await getAirtableRecords();
-      history.listen(toggleFilters);
-      toggleFilters(history.location, 'REPLACE');
     }
     
     // Note: loading page state 
@@ -90,8 +77,6 @@ function App() {
     // to ensure that filter bar is loaded nicely
     // before all the data comes in
     allFilterOptions();
-    history.listen(toggleFilters);
-    toggleFilters(history.location, 'REPLACE');
     loadData();
     // We only want this to run once so we pass no dependencies. Do not remove this
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -15,7 +15,7 @@ export function getEmptyFilters(): Filters {
     overall_risk_of_bias: new Set(),
     isotypes_reported: new Set(),
     specimen_type: new Set(),
-    publish_date: new Set(),
+    publish_date: new Set([new Date(2019, 1, 1, 1), new Date()]),
     estimate_grade: new Set()
   }
 }
@@ -39,7 +39,7 @@ export function getDefaultFilters(): Filters {
     overall_risk_of_bias: new Set(),
     isotypes_reported: new Set(),
     specimen_type: new Set(),
-    publish_date: new Set(),
+    publish_date: new Set([new Date(2019, 1, 1, 1), new Date()]),
     estimate_grade: new Set([
       Translate('EstimateGradeOptions', ['National']),
       Translate('EstimateGradeOptions', ['Regional']),
@@ -67,6 +67,11 @@ const initialState: State = {
     exploreIsOpen: true,
     showStudiesModal: false,
     routingOccurred: false
+  },
+  calendarStartDates: {
+    // Important, the fact that we use an hour here tells us that we are using a default value
+    minDate: new Date(2019, 1, 1, 1),
+    maxDate: new Date()
   },
   language: LanguageType.english,
   updatedAt: '',
@@ -182,6 +187,16 @@ const reducer = (state: State, action: Record<string, any>): State => {
       return {
         ...state,
         filters: new_filters
+      };
+
+    case "MAX_MIN_DATES":
+      const { minDate, maxDate } = action.payload;
+      return {
+        ...state,
+        calendarStartDates: {
+          minDate,
+          maxDate
+        },
       };
     default:
       return state
