@@ -6,7 +6,7 @@ import { AppContext } from "../../../../context";
 import { FilterType, PageState, State } from '../../../../types';
 import { updateFilters } from "../../../../utils/stateUpdateUtils";
 import Translate from "../../../../utils/translate/translateService";
-import InformationIcon from "../../../shared/InformationIcon";
+import SectionHeader from "../SectionHeader";
 
 interface DatepickerProps {
   page: string
@@ -55,32 +55,12 @@ export default function Datepicker({ page }: DatepickerProps) {
     </div>
   )
 
-  const buildSectionHeader = (header_text: string, tooltip_text?: string | React.ReactNode, tooltip_header?: string) => {
-    return (
-      <div className="pb-2 flex">
-        <div className="filter-section-header">{header_text}</div>
-        {tooltip_text && (
-          <div className="tooltip-vert-adj">
-            <InformationIcon
-              offset={10}
-              position="bottom right"
-              color="#455a64"
-              tooltipHeader={tooltip_header ? tooltip_header : header_text}
-              popupSize="small"
-              size="sm"
-              tooltip={tooltip_text} />
-          </div>
-        )}
-      </div>
-    )
-  }
-
   return (
     <div className="row justify-content-center">
         <div className="col-10 col align-items-center p-0">
           <div className="pb-1">
             <div>
-              {buildSectionHeader(Translate('DateRange'), Translate('DateRangeTooltip'))}
+              <SectionHeader header_text={Translate('DateRange')} tooltip_text={Translate('DateRangeTooltip')}/>
             </div>
             <div>
               <DatePicker

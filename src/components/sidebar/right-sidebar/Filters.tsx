@@ -8,6 +8,7 @@ import { updateFilters } from "../../../utils/stateUpdateUtils";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
 import Translate from "../../../utils/translate/translateService";
 import InformationIcon from "../../shared/InformationIcon";
+import SectionHeader from "./SectionHeader";
 
 interface FilterProps {
   page: string
@@ -72,26 +73,6 @@ export default function Filters({ page }: FilterProps) {
       state.chartAggregationFactor)
   }
 
-  const buildSectionHeader = (header_text: string, tooltip_text?: string | React.ReactNode, tooltip_header?: string) => {
-    return (
-      <div className="pb-2 flex">
-        <div className="filter-section-header">{header_text}</div>
-        {tooltip_text && (
-          <div className="tooltip-vert-adj">
-            <InformationIcon
-              offset={10}
-              position="bottom right"
-              color="#455a64"
-              tooltipHeader={tooltip_header ? tooltip_header : header_text}
-              popupSize="small"
-              size="sm"
-              tooltip={tooltip_text} />
-          </div>
-        )}
-      </div>
-    )
-  }
-
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
     return (
       <div className="pb-3">
@@ -142,7 +123,7 @@ export default function Filters({ page }: FilterProps) {
         <div className="col-10 col align-items-center p-0">
           <div className="pb-1">
             <div>
-              {buildSectionHeader(Translate('Geography'), Translate('GeographyTooltip'))}
+              <SectionHeader header_text={Translate('Geography')} tooltip_text={Translate('GeographyTooltip')}/>
             </div>
             <div>
               {buildFilterDropdown('country', Translate('Country'))}
@@ -154,16 +135,15 @@ export default function Filters({ page }: FilterProps) {
           <div className="pb-1">
             <div>
               {
-                buildSectionHeader(Translate('StudyInformation'),
+                <SectionHeader 
+                  header_text={Translate('StudyInformation')} 
+                  tooltip_text={
                   <div>
-                    <p>
-                      {Translate('StudyInformationTooltip', ['FirstParagraph'])}
-                    </p>
-                    <p>
-
-                      {Translate('StudyInformationTooltip', ['SecondParagraph'])}
-                    </p>
-                  </div>)
+                    <p>{Translate('StudyInformationTooltip', ['FirstParagraph'])}</p>
+                    <p>{Translate('StudyInformationTooltip', ['SecondParagraph'])}</p>
+                  </div>
+                  }
+                />
               }
             </div>
             <div>
@@ -175,7 +155,7 @@ export default function Filters({ page }: FilterProps) {
           </div>
           <div className="pb-1">
             <div>
-              {buildSectionHeader(Translate('Demographics'), Translate('DemographicsTooltip'))}
+              <SectionHeader header_text={Translate('Demographics')} tooltip_text={Translate('DemographicsTooltip')}/>
             </div>
             <div>
               {buildFilterDropdown('population_group', Translate('PopulationGroup'))}
@@ -189,7 +169,7 @@ export default function Filters({ page }: FilterProps) {
           </div>
           <div className="pb-1">
             <div>
-              {buildSectionHeader(Translate('TestInformation'), Translate('TestInformationTooltip'))}
+              <SectionHeader header_text={Translate('TestInformation')} tooltip_text={Translate('TestInformationTooltip')}/>
             </div>
             <div>
               {buildFilterDropdown('test_type', Translate('TestType'))}
