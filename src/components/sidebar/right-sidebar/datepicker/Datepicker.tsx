@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Input } from "semantic-ui-react";
 import { AppContext } from "../../../../context";
-import httpClient from "../../../../httpClient";
-import { Filters, FilterType, PageState, State } from '../../../../types';
+import { FilterType, PageState, State } from '../../../../types';
 import { updateFilters } from "../../../../utils/stateUpdateUtils";
 import Translate from "../../../../utils/translate/translateService";
+import InformationIcon from "../../../shared/InformationIcon";
 
 interface DatepickerProps {
   page: string
@@ -41,7 +41,7 @@ export default function Datepicker({ page }: DatepickerProps) {
 
   const CustomInput = ({ value, onClick, text }: any) => (
     <div className="col-12 p-0 flex column">
-      <div className="col-12 center-item">
+      <div>
         {text}
       </div>
       <Input className="col-12 p-0 cursor"
@@ -55,41 +55,70 @@ export default function Datepicker({ page }: DatepickerProps) {
     </div>
   )
 
+  const buildSectionHeader = (header_text: string, tooltip_text?: string | React.ReactNode, tooltip_header?: string) => {
+    return (
+      <div className="pb-2 flex">
+        <div className="filter-section-header">{header_text}</div>
+        {tooltip_text && (
+          <div className="tooltip-vert-adj">
+            <InformationIcon
+              offset={10}
+              position="bottom right"
+              color="#455a64"
+              tooltipHeader={tooltip_header ? tooltip_header : header_text}
+              popupSize="small"
+              size="sm"
+              tooltip={tooltip_text} />
+          </div>
+        )}
+      </div>
+    )
+  }
+
   return (
-    <div className="flex center-item">
-      <div className="col-xl-6 col-xs-12 flex p-0">
-        <DatePicker
-          selected={startDate}
-          minDate={state.calendarStartDates.minDate}
-          maxDate={endDate}
-          customInput={<CustomInput value={startDate} text={Translate("SamplingStartDate")} onClick={onclick} />}
-          closeOnScroll={true}
-          onChange={() => { }}
-          withPortal
-          showMonthDropdown
-          showYearDropdown
-          shouldCloseOnSelect={false}
-          dropdownMode="select"
-          onSelect={(date: Date) => datePickerChanged(true, date)} />
-      </div>
-      <div className="col-xl-6 col-xs-12 flex p-0">
-        <DatePicker
-          className="col-12 p-0 date-picker"
-          selected={endDate}
-          onSelect={(date: Date) => datePickerChanged(false, date)}
-          customInput={<CustomInput value={startDate} text={Translate("SamplingEndDate")} onClick={onclick} />}
-          minDate={startDate}
-          maxDate={state.calendarStartDates.maxDate}
-          onChange={() => { }}
-          withPortal
-          showMonthDropdown
-          closeOnScroll={true}
-          shouldCloseOnSelect={false}
-          showYearDropdown
-          todayButton="Today"
-          dropdownMode="select"
-        />
-      </div>
+    <div className="row justify-content-center">
+        <div className="col-10 col align-items-center p-0">
+          <div className="pb-1">
+            <div>
+              {buildSectionHeader(Translate('DateRange'), Translate('DateRangeTooltip'))}
+            </div>
+            <div>
+              <DatePicker
+                selected={startDate}
+                minDate={state.calendarStartDates.minDate}
+                maxDate={endDate}
+                customInput={<CustomInput value={startDate} text={Translate("StartDate")} onClick={onclick} />}
+                closeOnScroll={true}
+                onChange={() => { }}
+                withPortal
+                showMonthDropdown
+                showYearDropdown
+                shouldCloseOnSelect={false}
+                dropdownMode="select"
+                onSelect={(date: Date) => datePickerChanged(true, date)} 
+              />
+            </div>
+            <div>
+              <DatePicker
+                className="col-12 p-0 date-picker"
+                selected={endDate}
+                onSelect={(date: Date) => datePickerChanged(false, date)}
+                customInput={<CustomInput value={startDate} text={Translate("EndDate")} onClick={onclick} />}
+                minDate={startDate}
+                maxDate={state.calendarStartDates.maxDate}
+                onChange={() => { }}
+                withPortal
+                showMonthDropdown
+                closeOnScroll={true}
+                shouldCloseOnSelect={false}
+                showYearDropdown
+                todayButton="Today"
+                dropdownMode="select"
+              />
+            </div>
+          </div>
+          <div className="pb-1"></div>
+        </div>
     </div>
   )
 }

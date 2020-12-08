@@ -65,6 +65,7 @@
   "Dashboard": "Dashboard",
   "Data": "Data",
   "DateRange": "Date Range",
+  "DateRangeTooltip": "Filter studies by their sampling end dates.",
   "Demographics": "Demographics",
   "DemographicsTooltip": "Filter on demographic variables, including population group, sex, and age group.",
   "Details": "Details",
@@ -362,7 +363,5 @@
     "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "BloodBank": "SeroTracker Blood Bank Seroprevalence Preliminary Report",
     "LancetID": "Article (SeroTracker: a global SARS-CoV-2 seroprevalence dashboard)"
-  },
-  "SamplingStartDate": "Sampling Start Date",
-  "SamplingEndDate": "Sampling End Date"
+  }
 }
