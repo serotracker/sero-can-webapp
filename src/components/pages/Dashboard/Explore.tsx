@@ -37,7 +37,7 @@ export default function Explore() {
               <LeftSidebar page={PageStateEnum.explore} />
             </div>
             <div className="col-8 p-0 flex">
-              <Loader indeterminate active={state.analyze.isLoading}></Loader>
+              <Loader indeterminate active={state.explore.isLoading}></Loader>
               <Map />
             </div>
             <div className="col-2 p-0 flex">
