@@ -363,5 +363,9 @@
     "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "BloodBank": "SeroTracker Blood Bank Seroprevalence Preliminary Report",
     "LancetID": "Article (SeroTracker: a global SARS-CoV-2 seroprevalence dashboard)"
+  },
+  "ExploreBlurb": {
+    "FirstParagraph": "We are conducting a systematic review of SARS-CoV-2 serosurveys globally and our findings are visualized on this dashboard.",
+    "SecondParagraph": "You can configure the data displayed using the “Filter” toolbar on the right, and view the full list of studies we are tracking on the “Data” page."
   }
 }

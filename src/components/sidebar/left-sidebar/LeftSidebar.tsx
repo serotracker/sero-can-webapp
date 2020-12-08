@@ -1,6 +1,7 @@
 import React from "react";
 import "../sidebar.css";
 import AnalysisMethods from "./AnalysisMethods";
+import Translate from "../../../utils/translate/translateService";
 import TotalStats from "./TotalStats";
 import HealthAgencyLogo from '../../../assets/images/public-health-agency.png';
 import UcalgaryLogo from '../../../assets/images/University-Of-Calgary-Logo.png';
@@ -10,10 +11,30 @@ interface SideBarProps {
 }
 
 export default function LeftSidebar({ page }: SideBarProps) {
+
+  const ExploreText = () => (
+    <div className="analysis-methods">
+      <div className="section-title py-2 center">
+          WELCOME TO SEROTRACKER
+      </div>
+      <p>
+          {Translate('ExploreBlurb', ['FirstParagraph'])}
+      </p>
+      <p>
+          {Translate('ExploreBlurb', ['SecondParagraph'])}
+      </p>
+    </div>
+  )
+
   return (
     <div className="sidebar-container flex">
       <TotalStats page={page}/>
-      <AnalysisMethods />
+      {page == "explore" ? (
+        <ExploreText/>
+      ) : (
+        <AnalysisMethods />
+      )
+      }
       <div className="m-3">
         <a href="https://www.covid19immunitytaskforce.ca/" className="d-block mt-3 mx-auto" target="__blank" rel="noopener noreferrer">
           <img src="https://www.covid19immunitytaskforce.ca/wp-content/themes/pena-lite-child/CITF_logo_ENG.svg" className="d-block mx-auto" alt="COVID-19 Immunity Task Force Logo" height="25"></img>
