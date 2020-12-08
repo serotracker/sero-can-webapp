@@ -1,24 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { Link } from "react-router-dom";
 import { mobileDeviceOrTabletWidth } from "../../constants";
+import { getEmptyFilters } from "../../context";
+import httpClient from "../../httpClient";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 import Translate from "../../utils/translate/translateService";
-import { Link } from "react-router-dom";
-import ReferencesTable from "../../components/charts/ReferencesTable";
+import StudiesTable from "../shared/StudiesTable";
 import './static.css';
 
 export default function Data() {
     const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
-    const renderAirtable = (src: string) => {
-        return <div className="col-10 p-0 airtable-embed vertical-spacer">
-            <iframe
-                title="airtable-embed"
-                className="airtable-embed col-12 p-0"
-                src={src}
-                width="85%"
-                height="100%"
-            /></div>
-    }
+    const [allRecords, setAllRecords] = useState([])
+
+    useEffect(() => {
+        getAllRecords()
+    }, [])
 
     const clickLink = (link: string) => {
         sendAnalyticsEvent({
@@ -26,6 +23,13 @@ export default function Data() {
             action: 'click',
             label: link
         })
+    }
+
+    const getAllRecords = async () => {
+        const api = new httpClient()
+        // TODO: Figure out a better place to put this so we don't keep updating this either 
+        const res = await api.getAirtableRecords(getEmptyFilters());
+        setAllRecords(res)
     }
 
     return (
@@ -59,7 +63,7 @@ export default function Data() {
                     {Translate('OurDataText', ['Text'])}
                 </p>
 
-                <ReferencesTable />
+                <StudiesTable dataRecords={allRecords} showAllStudies={false}></StudiesTable>
 
                 <div className="d-flex d-flex justify-content-center">
                     <span>{Translate('UseOfData', null, null, [false, true])}</span>

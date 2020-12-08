@@ -6,7 +6,7 @@ import { Dropdown, DropdownProps, Modal } from "semantic-ui-react";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import { AppContext } from "../../context";
 import httpClient from "../../httpClient";
-import { AggregatedRecord, AggregationFactor } from "../../types";
+import { AggregationFactor, PageStateEnum } from "../../types";
 import { sendAnalyticsEvent } from '../../utils/analyticsUtils';
 import Translate from "../../utils/translate/translateService";
 import InformationIcon from "../shared/InformationIcon";
@@ -17,10 +17,9 @@ export default function Charts() {
   const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
   const [state, dispatch] = useContext(AppContext);
-  const { filters, showAnalyzePopup } = state;
-  const initState = [] as AggregatedRecord[];
+  const { showAnalyzePopup } = state;
   const [showModal, toggleModal] = useState(true);
-  const [records, setRecords] = useState(initState);
+  const records = state.analyze.metaAnalyzedRecords;
 
   const yAxisOptions = [
     { key: 'Geographies', text: Translate('Geographies'), value: AggregationFactor.country },
@@ -37,14 +36,19 @@ export default function Charts() {
     const updateCharts = async () => {
       const api = new httpClient();
       // TODO: Cache these results so we're not making this call every time we switch pages
-      const reAggregatedRecords = await api.postMetaAnalysis(filters, yAxisSelection);
-      const chartData = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
-      setRecords(chartData);
+      const reAggregatedRecords = await api.postMetaAnalysis(state.analyze.filters, yAxisSelection);
+      const metaAnalyzedRecords = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
+      dispatch({
+        type: "UPDATE_META_ANALYSIS",
+        payload: {
+          pageStateEnum: PageStateEnum.analyze, 
+          metaAnalyzedRecords
+        }
+      })
     }
-    if (state.dataPageState.routingOccurred) {
-      updateCharts();
-    }
-  }, [filters, state.dataPageState.routingOccurred, yAxisSelection])
+    updateCharts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [yAxisSelection])
 
   const handleChange = (event: SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
     setYAxis(data.value as AggregationFactor);
@@ -161,7 +165,7 @@ export default function Charts() {
         </ResponsiveContainer>
       </div>
       <div className="container col-11 my-3 references">
-        <ReferencesTable />
+        <ReferencesTable page={PageStateEnum.analyze} />
       </div>
     </div>
   );

@@ -1,38 +1,58 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
-import { mobileDeviceOrTabletWidth } from "../../../constants";
+import { Dimmer, Loader } from "semantic-ui-react";
+import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../../constants";
+import { AppContext } from "../../../context";
+import { PageStateEnum } from "../../../types";
 import Map from '../../map/Map';
 import MobileComponents from '../../mobile/ExploreMobile';
+import MaintenanceModal from "../../shared/MaintenanceModal";
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
-import MaintenanceModal from "../../shared/MaintenanceModal";
-import { isMaintenanceMode } from "../../../constants";
 
 export default function Explore() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
+  const [state, dispatch] = useContext(AppContext)
+
+  useEffect(() => {
+    dispatch({
+      type: "UPDATE_EXPLORE_IS_OPEN",
+      payload: true
+    })
+    return () => {
+      dispatch({
+        type: "UPDATE_EXPLORE_IS_OPEN",
+        payload: false
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
-    <React.Fragment>
-    <div className="fill flex dashboard">
-      {!isMobileDeviceOrTablet ?
-        (<div className="fill flex">
-          <div className="col-2 p-0 flex">
-            <LeftSidebar />
-          </div>
-          <div className="col-8 p-0 flex">
-            <Map />
-          </div>
-          <div className="col-2 p-0 flex">
-            <RightSidebar />
-          </div>
-        </div>) :
-        (
-          <div className="fill flex">
-            <MobileComponents />
-          </div>
-        )}
-    </div >
-    <MaintenanceModal isOpen={isMaintenanceMode} headerText={"Explore"}/>
-    </React.Fragment>
+    <>
+      <div className="fill flex dashboard">
+        {!isMobileDeviceOrTablet ?
+          (<div className="fill flex">
+            <div className="col-2 p-0 flex">
+              <LeftSidebar page={PageStateEnum.explore} />
+            </div>
+            <div className="col-8 p-0 flex">
+              <Loader indeterminate active={state.analyze.isLoading}></Loader>
+              <Map />
+            </div>
+            <div className="col-2 p-0 flex">
+              <RightSidebar page={PageStateEnum.explore} />
+            </div>
+          </div>) :
+          (
+            <div className="fill flex">
+              <MobileComponents />
+            </div>
+          )}
+
+
+      </div >
+      <MaintenanceModal isOpen={isMaintenanceMode} headerText={"Explore"} />
+    </>
   )
 }

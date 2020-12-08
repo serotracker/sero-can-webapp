@@ -59,15 +59,15 @@ export default class httpClient {
         // We know that only these 3 isotypes will ever be reported, thus we can hardcode
         options.isotypes_reported = new Set(["IgG", "IgA", "IgM"]);
         const updatedAt = format(parseISO(response.updated_at), "dd-MM-yyyy");
-        const maxDate = parseISO(response.min_date);     
-        const minDate = parseISO(response.max_date);
+        const maxDate = parseISO(response.max_date);     
+        const minDate = parseISO(response.min_date);
         return { options, updatedAt, maxDate, minDate };
     }
     
     async getAirtableRecords(filters: Filters,
-        only_explore_columns=false,
+        only_explore_columns: Boolean =false,
         sorting_key = "denominator_value",
-        reverse = false) {
+        reverse= false) {
         const reqBodyFilters: Record<string, string[]> = {}
 
         Object.keys(filters).forEach((o: string) => {

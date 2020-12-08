@@ -62,27 +62,39 @@ export enum LanguageType {
     english = 'en'
 }
 
+export enum PageStateEnum {
+    analyze = "analyze",
+    explore = "explore"
+}
+
 export type State = {
     healthcheck: string,
+    chartAggregationFactor: AggregationFactor,
     explore: PageState,
     analyze: PageState,
-    filters: Filters,
-    records: AirtableRecord[]
     allFilterOptions: Filters,
     updatedAt: string,
+    calendarStartDates: StartDates,
     dataPageState: DataPageState,
     language: LanguageType,
-    estimate_grade_prevalences: AlternateAggregatedRecord[],
     showCookieBanner: boolean,
     showAnalyzePopup: boolean
 };
 
-export type PageState = {
-    filters: Filters,
-    records: AirtableRecord[],
+export type StartDates = {
+    minDate: Date,
+    maxDate: Date
 }
 
-export type AlternateAggregatedRecord = {
+export type PageState = {
+    filters: Filters,
+    metaAnalyzedRecords: AggregatedRecord[],
+    records: AirtableRecord[],
+    isLoading: boolean,
+    estimateGradePrevalences: EstimateGradePrevalence[]
+}
+
+export type EstimateGradePrevalence = {
     testsAdministered: number;
     geographicalName: string;
     numberOfStudies: number;
