@@ -1,23 +1,24 @@
 import React, { useContext } from "react";
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
-import httpClient from "../../../httpClient";
-import { Filters as FilterT, FilterType } from '../../../types';
+import { FilterType, PageState, State } from '../../../types';
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import { getCountryName } from "../../../utils/mapUtils";
+import { updateFilters } from "../../../utils/stateUpdateUtils";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
 import Translate from "../../../utils/translate/translateService";
 import InformationIcon from "../../shared/InformationIcon";
 
 interface FilterProps {
-  filters: FilterT
+  page: string
 }
 
-export default function Filters({filters}: FilterProps) {
-  const [state, dispatch] = useContext(AppContext);  
+export default function Filters({page}: FilterProps) {
+  const [state, dispatch] = useContext(AppContext);    
+  const pageState= state[page as keyof State] as PageState;
 
   const getFilters = (filter_type: FilterType): string[] => {
-    return Array.from(filters[filter_type]) as string[]
+    return Array.from(pageState.filters[filter_type]) as string[]
   }
 
   const formatOptions = (options: any, filter_type: FilterType) => {
@@ -52,27 +53,16 @@ export default function Filters({filters}: FilterProps) {
     return formatted_options;
   }
 
-  const addFilter = async (data: any, filter_type: FilterType) => {
+  const addFilter = async (data: any, filterType: FilterType) => {
     dispatch({
       type: 'UPDATE_FILTER',
       payload: {
-        filter_type,
-        filter_value: data.value
+        filterType,
+        filterValue: data.value,
+        pageStateEnum: page
       }
     });  
-    
-    // Note: state.filters is not updated synchronously
-    // Hotfix for now, but we should come up with a better pattern
-    const updated_filters: FilterT = Object.assign({}, state.filters);
-    updated_filters[filter_type] = data.value;
-  
-    const api = new httpClient()
-    // Update current records when called
-    const records = await api.getAirtableRecords(updated_filters, state.dataPageState.exploreIsOpen)
-    dispatch({
-      type: 'GET_AIRTABLE_RECORDS',
-      payload: records
-    }); 
+    await updateFilters(dispatch, pageState.filters, filterType, data.value, state.dataPageState.exploreIsOpen, page)
   }
 
   const buildSectionHeader = (header_text: string, tooltip_text?: string | React.ReactNode, tooltip_header?: string) => {
@@ -96,9 +86,6 @@ export default function Filters({filters}: FilterProps) {
   }
 
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
-    if(!state.dataPageState.routingOccurred) {
-      return null;
-    }
     return (
       <div className="pb-3">
         <Dropdown

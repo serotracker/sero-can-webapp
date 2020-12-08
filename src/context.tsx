@@ -1,5 +1,5 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import { Filters, LanguageType, State } from "./types";
+import { Filters, FilterType, LanguageType, PageState, State } from "./types";
 import Translate from "./utils/translate/translateService";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
@@ -54,12 +54,15 @@ const initialState: State = {
   explore: {
     filters: getEmptyFilters(),
     records: [],
+    estimateGradePrevalences: [],
+    metaAnalyzedRecords: []
   },
   analyze: {
     filters: getDefaultFilters(),
     records: [],
+    estimateGradePrevalences: [],
+    metaAnalyzedRecords: []
   },
-  estimate_grade_prevalences: [],
   allFilterOptions: getEmptyFilters(),
   dataPageState: {
     exploreIsOpen: true,
@@ -99,11 +102,13 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         showAnalyzePopup: false
       };
-    case "UPDATE_ESTIMATE_PREVALENCES":
-      return {
-        ...state,
-        estimate_grade_prevalences: action.payload
-      };
+    case "UPDATE_ESTIMATE_PREVALENCES": {
+      const { pageStateEnum, estimateGradePrevalences } = action.payload;
+      const newState = { ...state };
+      const pageState = newState[pageStateEnum as keyof State] as PageState;
+      pageState.estimateGradePrevalences = estimateGradePrevalences;
+      return newState;
+    };
     case "SELECT_LANGUAGE":
       return {
         ...state,
@@ -114,24 +119,32 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         allFilterOptions: action.payload
       };
-    case "GET_AIRTABLE_RECORDS":
-      return {
-        ...state,
-        records: action.payload
-      };
+    case "GET_AIRTABLE_RECORDS": {
+      const { pageStateEnum, records } = action.payload;
+      const newState = { ...state };
+      const pageState = newState[pageStateEnum as keyof State] as PageState;
+      pageState.records = records;
+      return newState;
+    };
     case "UPDATED_AT":
       return {
         ...state,
         updatedAt: action.payload
       };
-    case "UPDATE_FILTER":
-      const new_filters: any = Object.assign({}, state.filters);
-      new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
-      return {
-        ...state,
-        filters: new_filters
-      };
-
+    case "UPDATE_FILTER": {
+      const { pageStateEnum, filterType, filterValue } = action.payload;
+      const newState = { ...state };
+      const pageState = newState[pageStateEnum as keyof State] as PageState;
+      pageState.filters[filterType as FilterType] = new Set(filterValue);
+      return newState;
+    };    
+    case "UPDATE_META_ANALYSIS": {
+      const { pageStateEnum, metaAnalyzedRecords } = action.payload;
+      const newState = { ...state };
+      const pageState = newState[pageStateEnum as keyof State] as PageState;
+      pageState.metaAnalyzedRecords = metaAnalyzedRecords;
+      return newState;
+    };
     case "MAX_MIN_DATES":
       const { minDate, maxDate } = action.payload;
       return {
@@ -141,6 +154,8 @@ const reducer = (state: State, action: Record<string, any>): State => {
           maxDate
         },
       };
+    case "UPDATE_EXPLORE_IS_OPEN":
+      return { ...state, dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload } }
     default:
       return state
   };

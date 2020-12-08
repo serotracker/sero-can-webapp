@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
 import { Menu, Segment, Sidebar } from "semantic-ui-react";
 import { AppContext } from "../../context";
+import { PageStateEnum } from "../../types";
 import Charts from "../charts/Charts";
 import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
 import TotalStats from "../sidebar/left-sidebar/TotalStats";
@@ -34,8 +35,8 @@ export default function AnalyzeMobile() {
           visible={showMobileFilters}
           width='wide'
         >
-          <Filters filters={state.filters} />
-          <Datepicker/>
+          <Filters page={PageStateEnum.analyze}/>
+          <Datepicker page={PageStateEnum.analyze}/>
           <LastUpdated />
           <FontAwesomeIcon
             icon={faTimes}
@@ -56,7 +57,7 @@ export default function AnalyzeMobile() {
           visible={showSummary}
           width='wide'
         >
-          <TotalStats />
+          <TotalStats page={PageStateEnum.analyze}/>
           <AnalysisMethods />
           <FontAwesomeIcon
             icon={faTimes}

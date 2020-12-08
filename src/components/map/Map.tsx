@@ -16,12 +16,12 @@ export default function Map() {
   const buckets = getBuckets(mapRecords.features);
 
   useEffect(() => {
-    if(state.estimate_grade_prevalences.length > 0){
+    if(state.explore.estimateGradePrevalences.length > 0){
       const importGeo = Countries as any;
       const features = importGeo.features as GeoJSON.Feature[]
       // We will iterate through all the features in the geoJson
       // if they are in the country dict we will attach their aggregated data to the feature for displaying
-      importGeo.features = mapAltDataToFeatures(features, state.estimate_grade_prevalences);
+      importGeo.features = mapAltDataToFeatures(features, state.explore.estimateGradePrevalences);
       setMapRecords(importGeo)
 
       // we need to update the key on the GEOJSON to let react know it's time to rerender
@@ -36,7 +36,7 @@ export default function Map() {
       })
       setMapRecords(initImportGeo);
     }
-  }, [state.estimate_grade_prevalences])
+  }, [state.explore.estimateGradePrevalences])
 
   const bounds = latLngBounds([-90, -200], [90, 180]);
   const maxBounds = latLngBounds([-90, -200], [90, 200]);

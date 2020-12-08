@@ -65,9 +65,9 @@ export default class httpClient {
     }
     
     async getAirtableRecords(filters: Filters,
-        only_explore_columns=false,
+        only_explore_columns: Boolean =false,
         sorting_key = "denominator_value",
-        reverse = false) {
+        reverse= false) {
         const reqBodyFilters: Record<string, string[]> = {}
 
         Object.keys(filters).forEach((o: string) => {

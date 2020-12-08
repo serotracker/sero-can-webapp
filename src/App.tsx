@@ -13,41 +13,18 @@ import { CookieBanner } from "./components/shared/CookieBanner";
 import { NavBar } from "./components/shared/NavBar";
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
+import { PageStateEnum } from "./types";
+import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
 
 function App() {
-  const [{ language, analyze, filters, explore }, dispatch] = useContext(AppContext);
+  const [{ language, explore, analyze }, dispatch] = useContext(AppContext);
   setLanguageType(language);
-
-  useEffect(() => {    
-    const updateCountryPrevalence = async () => {
-      const api = new httpClient()
-      // TODO: Figure out a better place to put this so we don't keep updating this either 
-      const estimateGradePrevalences = await api.getEstimateGrades(filters);
-      dispatch({
-        type: 'UPDATE_ESTIMATE_PREVALENCES',
-        payload: estimateGradePrevalences
-      });
-    }
-    updateCountryPrevalence();
-  }, [filters, dispatch])
 
   useEffect(() => {
     const api = new httpClient()
-
-    const getAirtableRecords = async () => {
-      const analyzeRecords = await api.getAirtableRecords(analyze.filters)
-      const exploreRecords = await api.getAirtableRecords(explore.filters, true)
-      dispatch({
-        type: 'SET_PAGE_STATE',
-        payload:  { records: exploreRecords, isExplorePageState: true }
-      });
-      dispatch({
-        type: 'SET_PAGE_STATE',
-        payload:  { records: analyzeRecords, isExplorePageState: false }
-      });
-    }
-    
+    initializeData(dispatch, explore.filters,true, PageStateEnum.explore)
+    initializeData(dispatch, analyze.filters,false, PageStateEnum.analyze)
     const allFilterOptions = async () => {
       const { options, updatedAt, maxDate, minDate } = await api.getAllFilterOptions();
       dispatch({
@@ -65,19 +42,8 @@ function App() {
         payload: { maxDate, minDate }
       })
     }
-
-    // Make sure that the page state is loaded
-    // after airtable records are retrieved
-    const loadData = async() => {
-      await getAirtableRecords();
-    }
     
-    // Note: loading page state 
-    // right after filter options retrieved
-    // to ensure that filter bar is loaded nicely
-    // before all the data comes in
     allFilterOptions();
-    loadData();
     // We only want this to run once so we pass no dependencies. Do not remove this
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
