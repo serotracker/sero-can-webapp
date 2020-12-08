@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
+import { Dimmer, Loader } from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../../constants";
 import { AppContext } from "../../../context";
 import { PageStateEnum } from "../../../types";
@@ -11,7 +12,7 @@ import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
 
 export default function Explore() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
-  const [, dispatch] = useContext(AppContext)
+  const [state, dispatch] = useContext(AppContext)
 
   useEffect(() => {
     dispatch({
@@ -36,6 +37,7 @@ export default function Explore() {
               <LeftSidebar page={PageStateEnum.explore} />
             </div>
             <div className="col-8 p-0 flex">
+              <Loader indeterminate active={state.analyze.isLoading}></Loader>
               <Map />
             </div>
             <div className="col-2 p-0 flex">
@@ -47,6 +49,8 @@ export default function Explore() {
               <MobileComponents />
             </div>
           )}
+
+
       </div >
       <MaintenanceModal isOpen={isMaintenanceMode} headerText={"Explore"} />
     </>

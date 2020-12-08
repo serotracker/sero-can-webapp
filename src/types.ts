@@ -69,6 +69,7 @@ export enum PageStateEnum {
 
 export type State = {
     healthcheck: string,
+    chartAggregationFactor: AggregationFactor,
     explore: PageState,
     analyze: PageState,
     allFilterOptions: Filters,
@@ -89,6 +90,7 @@ export type PageState = {
     filters: Filters,
     metaAnalyzedRecords: AggregatedRecord[],
     records: AirtableRecord[],
+    isLoading: boolean,
     estimateGradePrevalences: EstimateGradePrevalence[]
 }
 

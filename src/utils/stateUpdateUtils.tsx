@@ -8,8 +8,17 @@ export const updateFilters = async (
   filterType: FilterType,
   filterValue: any[],
   exploreIsOpen: Boolean,
-  page: string) => {
-    
+  page: string,
+  aggregationFactor: AggregationFactor) => {
+
+  dispatch({
+    type: "CHANGE_LOADING",
+    payload: {
+      pageStateEnum: page,
+      isLoading: true
+    }
+  })
+
   dispatch({
     type: 'UPDATE_FILTER',
     payload: {
@@ -24,39 +33,88 @@ export const updateFilters = async (
 
   const api = new httpClient()
   // Update current records when called
-  const records = await api.getAirtableRecords(updatedFilters, exploreIsOpen)
+  const [records,
+    estimateGradePrevalences, reAggregatedRecords] = await
+      Promise.all([
+        api.getAirtableRecords(filters, exploreIsOpen),
+        api.getEstimateGrades(filters),
+        page === "analyze" ? api.postMetaAnalysis(filters, aggregationFactor) : Promise.resolve()
+      ]);
+  const metaAnalyzedRecords = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
   dispatch({
     type: 'GET_AIRTABLE_RECORDS',
     payload: { pageStateEnum: page, records }
   });
-  const estimateGradePrevalences = await api.getEstimateGrades(updatedFilters);
   dispatch({
     type: 'UPDATE_ESTIMATE_PREVALENCES',
-    payload: {pageStateEnum: page, estimateGradePrevalences}
+    payload: { pageStateEnum: page, estimateGradePrevalences }
   });
+
+  if (page === "analyze") {
+    dispatch({
+      type: "UPDATE_META_ANALYSIS",
+      payload: {
+        pageStateEnum: page,
+        metaAnalyzedRecords
+      }
+    })
+  }
+
+  dispatch({
+    type: "CHANGE_LOADING",
+    payload: {
+      pageStateEnum: page,
+      isLoading: false
+    }
+  })
 }
 
 export const initializeData = async (dispatch: any, filters: Filters, exploreIsOpen: Boolean, page: string) => {
 
   const api = new httpClient()
-  const records = await api.getAirtableRecords(filters, exploreIsOpen)
+
+  dispatch({
+    type: "CHANGE_LOADING",
+    payload: {
+      pageStateEnum: page,
+      isLoading: true
+    }
+  })
+  // const records = await api.getAirtableRecords(filters, exploreIsOpen)
+  // const reAggregatedRecords = await api.postMetaAnalysis(filters, AggregationFactor.country);
+  // const estimateGradePrevalences = await api.getEstimateGrades(filters);
+
+  const [records,
+    reAggregatedRecords,
+    estimateGradePrevalences] = await Promise
+      .all([api.getAirtableRecords(filters, exploreIsOpen),
+      api.postMetaAnalysis(filters, AggregationFactor.country),
+      api.getEstimateGrades(filters)]);
+
+
+  const metaAnalyzedRecords = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
   dispatch({
     type: 'GET_AIRTABLE_RECORDS',
     payload: { pageStateEnum: page, records }
   });
-  const estimateGradePrevalences = await api.getEstimateGrades(filters);
   dispatch({
     type: 'UPDATE_ESTIMATE_PREVALENCES',
-    payload: {pageStateEnum: page, estimateGradePrevalences}
+    payload: { pageStateEnum: page, estimateGradePrevalences }
   });
 
-  const reAggregatedRecords = await api.postMetaAnalysis(filters, AggregationFactor.country);
-  const metaAnalyzedRecords = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
   dispatch({
     type: "UPDATE_META_ANALYSIS",
     payload: {
-      pageStateEnum: page, 
+      pageStateEnum: page,
       metaAnalyzedRecords
+    }
+  })
+
+  dispatch({
+    type: "CHANGE_LOADING",
+    payload: {
+      pageStateEnum: page,
+      isLoading: false
     }
   })
 }

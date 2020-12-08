@@ -12,7 +12,7 @@ interface DatepickerProps {
   page: string
 }
 
-export default function Datepicker({page}: DatepickerProps) {
+export default function Datepicker({ page }: DatepickerProps) {
   const [state, dispatch] = useContext(AppContext);
   const pageState = state[page as keyof State] as PageState;
   const [filterStartDate, filterEndDate] = Array.from(pageState.filters.publish_date);
@@ -30,7 +30,13 @@ export default function Datepicker({page}: DatepickerProps) {
     else {
       setEndDate(date);
     }
-    await updateFilters(dispatch, pageState.filters, "publish_date" as FilterType, newDates, state.dataPageState.exploreIsOpen, page)
+    await updateFilters(dispatch,
+      pageState.filters,
+      "publish_date" as FilterType,
+      newDates,
+      state.dataPageState.exploreIsOpen,
+      page,
+      state.chartAggregationFactor)
   }
 
   const CustomInput = ({ value, onClick, text }: any) => (

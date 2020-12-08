@@ -16,26 +16,15 @@ export default function Map() {
   const buckets = getBuckets(mapRecords.features);
 
   useEffect(() => {
-    if(state.explore.estimateGradePrevalences.length > 0){
-      const importGeo = Countries as any;
-      const features = importGeo.features as GeoJSON.Feature[]
-      // We will iterate through all the features in the geoJson
-      // if they are in the country dict we will attach their aggregated data to the feature for displaying
-      importGeo.features = mapAltDataToFeatures(features, state.explore.estimateGradePrevalences);
-      setMapRecords(importGeo)
+    const importGeo = Countries as any;
+    const features = importGeo.features as GeoJSON.Feature[]
+    // We will iterate through all the features in the geoJson
+    // if they are in the country dict we will attach their aggregated data to the feature for displaying
+    importGeo.features = mapAltDataToFeatures(features, state.explore.estimateGradePrevalences);
+    setMapRecords(importGeo)
 
-      // we need to update the key on the GEOJSON to let react know it's time to rerender
-      setForceUpdate(Math.random())
-    }
-    else{
-      // Initialize map so that it starts out colourless
-      const initImportGeo = Countries as any;
-      const features = initImportGeo.features as GeoJSON.Feature[]
-      initImportGeo.features = features.map(feature => {
-        return { ...feature, properties: { ...feature.properties, seroprevalence: null, error: null, n: null, num_studies: null } }
-      })
-      setMapRecords(initImportGeo);
-    }
+    // we need to update the key on the GEOJSON to let react know it's time to rerender
+    setForceUpdate(Math.random())
   }, [state.explore.estimateGradePrevalences])
 
   const bounds = latLngBounds([-90, -200], [90, 180]);

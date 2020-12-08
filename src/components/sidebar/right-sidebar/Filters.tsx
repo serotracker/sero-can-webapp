@@ -13,16 +13,16 @@ interface FilterProps {
   page: string
 }
 
-export default function Filters({page}: FilterProps) {
-  const [state, dispatch] = useContext(AppContext);    
-  const pageState= state[page as keyof State] as PageState;
+export default function Filters({ page }: FilterProps) {
+  const [state, dispatch] = useContext(AppContext);
+  const pageState = state[page as keyof State] as PageState;
 
   const getFilters = (filter_type: FilterType): string[] => {
     return Array.from(pageState.filters[filter_type]) as string[]
   }
 
   const formatOptions = (options: any, filter_type: FilterType) => {
-    if(!options) {
+    if (!options) {
       return
     }
     const formatted_options: Record<string, string>[] = [];
@@ -61,8 +61,15 @@ export default function Filters({page}: FilterProps) {
         filterValue: data.value,
         pageStateEnum: page
       }
-    });  
-    await updateFilters(dispatch, pageState.filters, filterType, data.value, state.dataPageState.exploreIsOpen, page)
+    });
+    await updateFilters(
+      dispatch,
+      pageState.filters,
+      filterType,
+      data.value,
+      state.dataPageState.exploreIsOpen,
+      page,
+      state.chartAggregationFactor)
   }
 
   const buildSectionHeader = (header_text: string, tooltip_text?: string | React.ReactNode, tooltip_header?: string) => {
@@ -96,7 +103,7 @@ export default function Filters({page}: FilterProps) {
           clearable
           selection
           options={formatOptions(state.allFilterOptions[filter_type], filter_type)}
-          onChange={async(e: any, data: any) => {
+          onChange={async (e: any, data: any) => {
             await addFilter(data, filter_type)
             sendAnalyticsEvent({
               /** Typically the object that was interacted with (e.g. 'Video') */

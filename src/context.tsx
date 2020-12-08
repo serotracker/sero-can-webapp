@@ -1,5 +1,5 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import { Filters, FilterType, LanguageType, PageState, State } from "./types";
+import { AggregationFactor, Filters, FilterType, LanguageType, PageState, State } from "./types";
 import Translate from "./utils/translate/translateService";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
@@ -51,17 +51,20 @@ export function getDefaultFilters(): Filters {
 // filter_options = all the elements that users could filter by
 const initialState: State = {
   healthcheck: '',
+  chartAggregationFactor: AggregationFactor.country,
   explore: {
     filters: getEmptyFilters(),
     records: [],
     estimateGradePrevalences: [],
-    metaAnalyzedRecords: []
+    metaAnalyzedRecords: [],
+    isLoading: false
   },
   analyze: {
     filters: getDefaultFilters(),
     records: [],
     estimateGradePrevalences: [],
-    metaAnalyzedRecords: []
+    metaAnalyzedRecords: [],
+    isLoading: false
   },
   allFilterOptions: getEmptyFilters(),
   dataPageState: {
@@ -137,7 +140,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
       const pageState = newState[pageStateEnum as keyof State] as PageState;
       pageState.filters[filterType as FilterType] = new Set(filterValue);
       return newState;
-    };    
+    };
     case "UPDATE_META_ANALYSIS": {
       const { pageStateEnum, metaAnalyzedRecords } = action.payload;
       const newState = { ...state };
@@ -154,6 +157,15 @@ const reducer = (state: State, action: Record<string, any>): State => {
           maxDate
         },
       };
+    case "CHANGE_LOADING": {
+      const { pageStateEnum, isLoading } = action.payload;
+      const newState = { ...state };
+      const pageState = newState[pageStateEnum as keyof State] as PageState;
+      pageState.isLoading = isLoading;
+      return newState;
+    };
+    case "UPDATE_AGGREGATION_FACTOR":
+      return { ...state, chartAggregationFactor: action.payload }
     case "UPDATE_EXPLORE_IS_OPEN":
       return { ...state, dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload } }
     default:
