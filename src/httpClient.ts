@@ -44,6 +44,20 @@ export default class httpClient {
         }
     }
 
+    async getEsriStyles(url: string) {
+
+        const res = await fetch(url);
+        if (res.status !== 200) {
+            const error_msg = res.json();
+            console.error(error_msg);
+            return;
+        }
+        else {
+            const response_json = await res.json();
+            return response_json;
+        }
+    }
+
     async getAllFilterOptions() {
         const response = await this.httpGet('/data_provider/filter_options');
         const options: Record<string, any> = {}

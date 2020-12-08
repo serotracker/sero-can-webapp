@@ -3,8 +3,8 @@ var vectorTileStyling = {
     water: {
         fill: true,
         weight: 1,
-        fillColor: '#06cccc',
-        color: '#06cccc',
+        fillColor: '#ff0000',
+        color: '#ff0000',
         fillOpacity: 0.2,
         opacity: 0.4,
     },
@@ -17,8 +17,8 @@ var vectorTileStyling = {
     },
     waterway: {
         weight: 1,
-        fillColor: '#2375e0',
-        color: '#2375e0',
+        fillColor: '#1aeb8d',
+        color: '#1aeb8d',
         fillOpacity: 0.2,
         opacity: 0.4
     },
@@ -150,6 +150,36 @@ var vectorTileStyling = {
         fillOpacity: 0.2,
         opacity: 0.4
     },
+    background: {
+        fill: true,
+        weight: 1,
+        fillColor: '#cc6f3d',
+        color: '#cc6f3d',
+        fillOpacity: 0.2,
+        opacity: 0.4
+      },
+    FINAL_ocean: {
+        fill: true,
+        fillColor: '#cc6f3d',
+        fillOpacity: 1,
+        opacity: 0
+      },
+    FINAL_background: {
+        fill: true,
+        weight: 1,
+        fillColor: '#E8E9EC',
+        color: '#E8E9EC',
+        fillOpacity: 0,
+        opacity: 0
+      },
+    FINAL_land: {
+        fill: true,
+        weight: 1,
+        fillColor: '#3dcc4e',
+        color: '#3dcc4e',
+        fillOpacity: 1,
+        opacity: 1
+      },
 
 
     // Do not symbolize some stuff for mapbox
@@ -247,5 +277,9 @@ esriStyle["Landmark/label"               ] = [];
 esriStyle["Medical/label"                ] = [];
 esriStyle["Park or farming/label"        ] = [];
 esriStyle["Building/label"               ] = [];
+esriStyle["Land"                   ] = vectorTileStyling.FINAL_land;
+esriStyle["Ocean"                      ] = vectorTileStyling.FINAL_ocean;
+//esriStyle["background"                   ] = vectorTileStyling.FINAL_background;
+//esriStyle["Land"                   ] = vectorTileStyling.FINAL_land;
 
 export default esriStyle;
