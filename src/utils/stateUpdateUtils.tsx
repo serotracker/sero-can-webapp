@@ -36,10 +36,11 @@ export const updateFilters = async (
   const [records,
     estimateGradePrevalences, reAggregatedRecords] = await
       Promise.all([
-        api.getAirtableRecords(filters, exploreIsOpen),
-        api.getEstimateGrades(filters),
-        page === "analyze" ? api.postMetaAnalysis(filters, aggregationFactor) : Promise.resolve()
+        api.getAirtableRecords(updatedFilters, exploreIsOpen),
+        api.getEstimateGrades(updatedFilters),
+        page === "analyze" ? api.postMetaAnalysis(updatedFilters, aggregationFactor) : Promise.resolve()
       ]);
+ 
   const metaAnalyzedRecords = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
   dispatch({
     type: 'GET_AIRTABLE_RECORDS',
