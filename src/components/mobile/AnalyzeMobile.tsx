@@ -68,7 +68,7 @@ export default function AnalyzeMobile() {
             size={"lg"} />
         </Sidebar>
         <Sidebar.Pusher className="fill flex">
-          {/* <Charts /> */}
+          <Charts />
           {/* Icons */}
           <div className="icon-container"
             style={{ top: 10, right: 15 }}>

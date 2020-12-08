@@ -80,10 +80,7 @@ export const initializeData = async (dispatch: any, filters: Filters, exploreIsO
       isLoading: true
     }
   })
-  // const records = await api.getAirtableRecords(filters, exploreIsOpen)
-  // const reAggregatedRecords = await api.postMetaAnalysis(filters, AggregationFactor.country);
-  // const estimateGradePrevalences = await api.getEstimateGrades(filters);
-
+  
   const [records,
     reAggregatedRecords,
     estimateGradePrevalences] = await Promise
