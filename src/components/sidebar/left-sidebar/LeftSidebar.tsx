@@ -15,7 +15,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
   const ExploreText = () => (
     <div className="analysis-methods">
       <div className="section-title py-2 center">
-          WELCOME TO SEROTRACKER
+          {Translate('Welcome').toUpperCase()}
       </div>
       <p>
           {Translate('ExploreBlurb', ['FirstParagraph'])}
