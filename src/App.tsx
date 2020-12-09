@@ -3,8 +3,8 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
 import CookiePolicy from "./components/pages/CookiePolicy";
-import Explore from "./components/pages/Dashboard/Explore";
 import Analyze from "./components/pages/Dashboard/Analyze";
+import Explore from "./components/pages/Dashboard/Explore";
 import Data from './components/pages/Data';
 import Insights from "./components/pages/insights/Insights";
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
@@ -13,45 +13,63 @@ import { CookieBanner } from "./components/shared/CookieBanner";
 import { NavBar } from "./components/shared/NavBar";
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
+import { PageStateEnum } from "./types";
+import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
 
 function App() {
-  const [{ language }, dispatch] = useContext(AppContext);
-  // DATA
+  const [{ language, explore, analyze }, dispatch] = useContext(AppContext);
+  setLanguageType(language);
+
   useEffect(() => {
     const api = new httpClient()
+    initializeData(dispatch, explore.filters,true, PageStateEnum.explore)
+    initializeData(dispatch, analyze.filters,false, PageStateEnum.analyze)
+    const allFilterOptions = async () => {
+      const { options, updatedAt, maxDate, minDate } = await api.getAllFilterOptions();
+      dispatch({
+        type: 'GET_ALL_FILTER_OPTIONS',
+        payload: options
+      })
+
+      dispatch({
+        type: "UPDATED_AT",
+        payload: updatedAt
+      })
+
+      dispatch({
+        type: "MAX_MIN_DATES",
+        payload: { maxDate, minDate }
+      })
+    }
+    
+    allFilterOptions();
+    // We only want this to run once so we pass no dependencies. Do not remove this
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
     const alreadyAcceptedCookes = localStorage.getItem('acceptedCookies');
     if (alreadyAcceptedCookes) {
       dispatch({
         type: 'ACCEPT_COOKIES'
       });
     }
-    const getAirtableRecords = async () => {
-      const response = await api.getAirtableRecords()
-      dispatch({
-        type: 'GET_AIRTABLE_RECORDS',
-        payload: response
-      });
-    }
-
     const handleResize = () => {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
-
     window.addEventListener('resize', handleResize)
-    getAirtableRecords();
-    handleResize();
 
-    setLanguageType(language);
-  }, [dispatch, language])
+    handleResize();
+  }, [dispatch])
 
   // ROUTING TABS
   return (
     <div className="App">
       <NavBar />
       <CookieBanner />
-      <Switch>
+      <Switch >
         <Route path="/About">
           <About />
         </Route>

@@ -1,30 +1,28 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../context";
-import httpClient from "../../../httpClient";
+import { State, PageState } from "../../../types";
 import Translate from "../../../utils/translate/translateService";
 import './TotalStats.css';
 
+interface TotalStatsProps {
+  page: string
+}
 
-export default function TotalStats() {
+export default function TotalStats({ page }: TotalStatsProps) {
   const [state] = useContext(AppContext);
   const [countries, setNumCountries] = useState(0);
   const [numStudies, setNumStudies] = useState(0);
-  const [seroprevalence, setSeroprevalence] = useState<any>(null);
   const [n, setN] = useState(0);
+  const pageState= state[page as keyof State] as PageState;
 
   useEffect(() => {
-    if(state.filtered_records.length > 0){
-      const updateCountryPrevalence = async () => {
-        const api = new httpClient();
-        const results = await api.postMetaAnalysisAll(state.filtered_records);
-        setNumCountries(results.countries);
-        setSeroprevalence(results.seroprevalence);
-        setN(results.n);
-      } 
-      setNumStudies(state.filtered_records.length);
-      updateCountryPrevalence();
+    const updateCountryPrevalence = async () => {
+      setNumCountries(pageState.estimateGradePrevalences.length);
+      setN(pageState.estimateGradePrevalences.map((o: Record<string, any>) => o.testsAdministered).reduce((a: number, b: number) => a + b, 0));
+      setNumStudies(pageState.estimateGradePrevalences.map((o: Record<string, any>) => o.numberOfStudies).reduce((a: number, b: number) => a + b, 0));
     }
-  }, [state.filtered_records])
+    updateCountryPrevalence();
+  }, [pageState.estimateGradePrevalences])
 
   return (
     <div className="col-12 p-0 stats-container">

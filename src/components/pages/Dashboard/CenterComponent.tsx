@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../../context";
+import httpClient from "../../../httpClient";
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import Translate from "../../../utils/translate/translateService";
 import Charts from "../../charts/Charts";
@@ -8,7 +9,6 @@ import './Component.css';
 
 export default function CentralPiece() {
   const [state, dispatch] = useContext(AppContext);
-
   const clickButton = (text: string) => {
 
     sendAnalyticsEvent({
@@ -19,22 +19,22 @@ export default function CentralPiece() {
   }
 
   const getClass = (shouldHighlight: boolean) => {
-    if (shouldHighlight === state.data_page_state.mapOpen) {
+    if (shouldHighlight === state.dataPageState.exploreIsOpen) {
       return 'center-highlighted'
     }
     return 'center-regular'
   }
 
   const displayCenter = () => {
-    return state.data_page_state.mapOpen ? <Map /> : <Charts />
+    return state.dataPageState.exploreIsOpen ? <Map /> : <Charts />
   }
   return (
     <div className="flex fill">
       <div className="center-button flex">
-        <div className={`center-item left-button ${getClass(true)}`} onClick={() => {
+        <div className={`center-item left-button ${getClass(true)}`} onClick={async () => {
           clickButton('Explore');
           dispatch({
-            type: 'SELECT_DATA_TAB',
+            type: 'SELECT_EXPLORE_OR_ANALYZE',
             payload: true
           })
         }}>
@@ -43,7 +43,7 @@ export default function CentralPiece() {
         <div className={`right-button ${getClass(false)}`} onClick={() => {
           clickButton('Analyze');
           dispatch({
-            type: 'SELECT_DATA_TAB',
+            type: 'SELECT_EXPLORE_OR_ANALYZE',
             payload: false
           })
         }}>

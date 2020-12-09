@@ -4,9 +4,8 @@ export type AirtableRecord = {
     lead_org?: string | null,
     first_author?: string | null,
     source_type: string | null,
-    study_status: string | null,
     test_type: string[] | null,
-    specimen_type: string | null,
+    specimen_type: string[] | null,
     isotypes_reported: string[] | null,
     manufacturer?: string | null,
     approving_regulator?: string | null,
@@ -15,22 +14,20 @@ export type AirtableRecord = {
     country: string | null,
     state?: string[] | null,
     city?: string[] | null,
-    population_group: string[] | null,
+    population_group: string | null,
     sex: string | null,
-    age: string[] | null,
+    age: string | null,
     denominator: number | null,
     seroprevalence: number | null,
     publish_date?: string[] | string | null,
     publisher?: string | null,
-    risk_of_bias: string | null,
+    overall_risk_of_bias: string | null,
     study_type?: string | null,
-    sample_size?: string | null,
     sampling_method?: string | null,
     sampling_start_date?: string | null,
     sampling_end_date?: string | null,
     summary?: string | null,
     url?: string | null,
-    include_in_n: boolean,
     estimate_grade: string | null
 };
 
@@ -38,7 +35,7 @@ export type AggregatedRecord = {
     error: number[];
     n: number;
     name: string;
-    num_studies: number;
+    numStudies: number;
     seroprevalence: number;
 }
 
@@ -46,43 +43,58 @@ export type AggregatedRecord = {
 // TODO: find typing to represent sets
 export type Filters = {
     source_type: any,
-    study_status: any,
     test_type: any,
     country: any,
     population_group: any,
     sex: any,
     age: any,
-    risk_of_bias: any,
+    overall_risk_of_bias: any,
     isotypes_reported: any,
     specimen_type: any
     publish_date: any,
     estimate_grade: any,
 };
 
-export type FilterType = 'country' | 'population_group' | 'sex' | 'age' | 'study_status' | 'test_type' | 'source_type' | 'risk_of_bias' | 'isotypes_reported' | 'specimen_type' | 'estimate_grade';
+export type FilterType = 'country' | 'population_group' | 'sex' | 'age' | 'test_type' | 'source_type' | 'overall_risk_of_bias' | 'isotypes_reported' | 'specimen_type' | 'estimate_grade';
 
 export enum LanguageType {
     french = 'fr',
     english = 'en'
 }
 
+export enum PageStateEnum {
+    analyze = "analyze",
+    explore = "explore"
+}
+
 export type State = {
     healthcheck: string,
-    airtable_records: AirtableRecord[],
-    filtered_records: AirtableRecord[],
-    filters: Filters,
-    filter_options: Filters,
-    all_filter_options: Filters,
-    updated_at: string,
-    data_page_state: DataPageState,
+    chartAggregationFactor: AggregationFactor,
+    explore: PageState,
+    analyze: PageState,
+    allFilterOptions: Filters,
+    updatedAt: string,
+    calendarStartDates: StartDates,
+    dataPageState: DataPageState,
     language: LanguageType,
-    country_prevalences: AggregatedRecord[],
-    estimate_grade_prevalences: AlternateAggregatedRecord[],
     showCookieBanner: boolean,
     showAnalyzePopup: boolean
 };
 
-export type AlternateAggregatedRecord = {
+export type StartDates = {
+    minDate: Date,
+    maxDate: Date
+}
+
+export type PageState = {
+    filters: Filters,
+    metaAnalyzedRecords: AggregatedRecord[],
+    records: AirtableRecord[],
+    isLoading: boolean,
+    estimateGradePrevalences: EstimateGradePrevalence[]
+}
+
+export type EstimateGradePrevalence = {
     testsAdministered: number;
     geographicalName: string;
     numberOfStudies: number;
@@ -103,18 +115,42 @@ export enum AggregationFactor {
     population_group = 'population_group',
     sex = 'sex',
     age = 'age',
-    study_status = 'study_status',
     test_type = 'test_type',
     source_type = 'source_type',
-    risk_of_bias = 'risk_of_bias',
+    overall_risk_of_bias = 'overall_risk_of_bias',
     isotypes_reported = 'isotypes_reported',
 }
 
 export type DataPageState = {
-    mapOpen: boolean
+    exploreIsOpen: boolean,
+    showStudiesModal: false,
+    routingOccurred: boolean
 }
 
 export type CustomMatcherResult = {
     pass: boolean
     message: string
+}
+
+export type PostRecordsBody = {
+    filters: {
+        country: String[],
+        source_type: String[],
+        source_name: String[],
+        overall_risk_of_bias: String[],
+        population_group: String[],
+        age: String[],
+        sex: String[],
+        test_type: String[],
+        isotypes_reported: String[],
+        specimen_type: String[],
+        estimate_grade: String[]
+    },
+    start_date: Date | null,
+    end_date: Date | null,
+    sorting_key: String,
+    reverse: Boolean,
+    per_page: Number,
+    page_index: Number,
+    columns: String[]
 }

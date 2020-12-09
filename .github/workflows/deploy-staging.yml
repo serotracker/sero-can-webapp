@@ -13,5 +13,5 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.0.4
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "sero-can-staging"
+          heroku_app_name: "serotracker-staging"
           heroku_email: "abeljohnjoseph@gmail.com"

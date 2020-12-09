@@ -1,4 +1,9 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  getPossibleNullString,
+  getPossibleNullDateString,
+  getPossibleNullStringArray
+} from "../../utils/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Button, Modal } from "semantic-ui-react";
@@ -26,20 +31,6 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
     }
   };
 
-  const getPossibleNullString = (nullString: string | number | null | undefined) => {
-    if (nullString === null || nullString === undefined) {
-      return "Not Reported"
-    }
-    return nullString
-  }
-
-  const getPossibleNullStringArray = (nullString: string[] | null | undefined) => {
-    if (nullString === null || nullString === undefined) {
-      return "Not Reported"
-    }
-    return nullString.join(", ")
-  }
-
   const getAuthorString = (first_author: string | undefined | null, lead_org: string | null | undefined) => {
     if (lead_org && first_author) {
       return Translate('StudyDetailsAuthorString', ['LeadOrg'], { 'FIRST_AUTHOR': first_author, 'LEAD_ORG': lead_org })
@@ -66,9 +57,9 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
 
   const {
     source_name, first_author, lead_org, publish_date, publisher, url,
-    summary, study_status, study_type,
+    summary, study_type,
     population_group, age, city, state, country, sex,
-    seroprevalence, risk_of_bias, denominator,
+    seroprevalence, overall_risk_of_bias: risk_of_bias, denominator,
     sampling_method, sampling_end_date, sampling_start_date,
     test_type, sensitivity, specificity, isotypes_reported, manufacturer, approving_regulator
   } = props.record
@@ -124,11 +115,6 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
                 </div>
                 <div className="col-6 p-0 secondary-text">
                   <div>
-                    <span className="secondary-title">{Translate('Status')}: </span>{getPossibleNullString(study_status)}
-                  </div>
-                </div>
-                <div className="col-6 p-0 secondary-text">
-                  <div>
                     <span className="secondary-title">{Translate('StudyType')}: </span>{getPossibleNullString(study_type)}
                   </div>
                 </div>
@@ -139,10 +125,10 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
               <div className="col-12 p-0 section-title">{Translate('Demographics').toUpperCase()}</div>
               <div className="col-12 px-2 py-1 flex section-container modal-text-container">
                 <div className="col-6 p-0 secondary-text">
-                  <span className="secondary-title">{Translate('Population')}: </span>{getPossibleNullStringArray(population_group)}
+                  <span className="secondary-title">{Translate('Population')}: </span>{getPossibleNullString(population_group)}
                 </div>
                 <div className="col-6 p-0 secondary-text">
-                  <span className="secondary-title">{Translate('AgeGroup')}: </span>{getPossibleNullStringArray(age)}
+                  <span className="secondary-title">{Translate('AgeGroup')}: </span>{getPossibleNullString(age)}
                 </div>
                 <div className="col-6 p-0 secondary-text">
                   <span>
@@ -180,12 +166,12 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
                 </div>
                 <div className="col-12 p-0 secondary-text">
                   <div>
-                    <span className="secondary-title">{Translate('StartDate')}: </span>{getPossibleNullString(sampling_start_date)}
+                    <span className="secondary-title">{Translate('StartDate')}: </span>{getPossibleNullDateString(sampling_start_date)}
                   </div>
                 </div>
                 <div className="col-12 p-0 secondary-text">
                   <div>
-                    <span className="secondary-title">{Translate('EndDate')}: </span>{getPossibleNullString(sampling_end_date)}
+                    <span className="secondary-title">{Translate('EndDate')}: </span>{getPossibleNullDateString(sampling_end_date)}
                   </div>
                 </div>
               </div>

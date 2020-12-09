@@ -6,7 +6,7 @@ import { Layer, LeafletMouseEvent } from 'leaflet';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Map, MapProps } from 'react-leaflet';
-import { LanguageType, AggregatedRecord, AlternateAggregatedRecord, RegionalPrevalenceEstimate } from "../types";
+import { LanguageType, AggregatedRecord, EstimateGradePrevalence, RegionalPrevalenceEstimate } from "../types";
 import { toPascalCase } from './translate/caseChanger';
 import Translate from './translate/translateService';
 
@@ -145,10 +145,10 @@ const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimat
   const regionString = minString === maxString ? minString : `${minString} - ${maxString}`;
 
   return (
-      <div className={"flex fit column " + (!isLastSection ? 'popup-section' : '')}>
-        <div className="section-title pt-1">{title.toUpperCase()}</div>
-        <div className="col-12 p-0 popup-content">{Translate('EstimateRange')}: <b>{regionString}</b></div>
-        <div className="col-12 p-0 popup-content">{Translate('NumberEstimates')}: <b>{regionalEstimate.numEstimates}</b></div>
+      <div key={Math.random()} className={"flex fit column " + (!isLastSection ? 'popup-section' : '')}>
+        <div key={Math.random()} className="section-title pt-1">{title.toUpperCase()}</div>
+        <div key={Math.random()} className="col-12 p-0 popup-content">{Translate('EstimateRange')}: <b>{regionString}</b></div>
+        <div key={Math.random()} className="col-12 p-0 popup-content">{Translate('NumberEstimates')}: <b>{regionalEstimate.numEstimates}</b></div>
       </div>
   )
 }
@@ -171,7 +171,7 @@ export const createAltPopup = (properties: any, language: LanguageType) => {
           <div className="fit popup-content">{Translate("TestsAdministered")}: <b>{properties?.testsAdministered}</b></div>
           <div className="fit popup-content">{Translate('NumSeroprevalenceEstimates')}: <b>{properties?.numberOfStudies}</b></div>
         </div>
-        {regions.map((o,i) => createPopupGeographySection(o[0],o[1],i==lastIndex))}
+        {regions.map((o,i) => createPopupGeographySection(o[0],o[1],i===lastIndex))}
       </div>)
   };
 
@@ -240,17 +240,17 @@ export const mapDataToFeatures = (features: GeoJSON.Feature[], prevalences: Aggr
   return features.map(feature => {
     const country = prevalenceCountryDict![feature?.properties?.name];
     if (country && country.seroprevalence) {
-      const { seroprevalence, error, n, num_studies } = country;
+      const { seroprevalence, error, n, numStudies: num_studies } = country;
       return { ...feature, properties: { ...feature.properties, seroprevalence, error, n, num_studies } }
     }
     return { ...feature, properties: { ...feature.properties, seroprevalence: null, error: null, n: null, num_studies: null } }
   })
 }
 
-export const mapAltDataToFeatures = (features: GeoJSON.Feature[], prevalences: AlternateAggregatedRecord[]) => {
-  const prevalenceCountryDict: Record<string, AlternateAggregatedRecord> = prevalences.reduce((a: any, x: AlternateAggregatedRecord) => ({ ...a, [x.geographicalName]: x }), {});
+export const mapAltDataToFeatures = (features: GeoJSON.Feature[], prevalences: EstimateGradePrevalence[]) => {
+  const prevalenceCountryDict: Record<string, EstimateGradePrevalence> = prevalences.reduce((a: any, x: EstimateGradePrevalence) => ({ ...a, [x.geographicalName]: x }), {});
   return features.map(feature => {
-    const country: AlternateAggregatedRecord = prevalenceCountryDict![feature?.properties?.name];
+    const country: EstimateGradePrevalence = prevalenceCountryDict![feature?.properties?.name];
     if (country && country.testsAdministered) {
       const { testsAdministered, geographicalName, numberOfStudies, localEstimate, nationalEstimate, regionalEstimate, sublocalEstimate } = country;
       return { ...feature, properties: { ...feature.properties, testsAdministered, geographicalName, numberOfStudies, localEstimate, nationalEstimate, regionalEstimate, sublocalEstimate } }

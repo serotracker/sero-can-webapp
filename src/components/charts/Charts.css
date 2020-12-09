@@ -32,7 +32,7 @@
 }
 
 .references {
-  flex: 0 1
+  flex: 0 1;
 }
 
 .charts-title {
@@ -48,7 +48,7 @@
   display: block;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 230px;
+  height: 400px;
 }
 
 .table thead tr {
@@ -78,4 +78,8 @@ table thead tr::-webkit-scrollbar-thumb {
 .table td {
   text-align: left;
   width: 20%;
+}
+
+.modal {
+  z-index: 6000;
 }
