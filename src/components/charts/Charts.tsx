@@ -14,7 +14,6 @@ import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
 
 export default function Charts() {
-  const [yAxisSelection, setYAxis] = useState(AggregationFactor.country);
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
   const [state, dispatch] = useContext(AppContext);
   const { showAnalyzePopup } = state;
@@ -36,7 +35,7 @@ export default function Charts() {
     const updateCharts = async () => {
       const api = new httpClient();
       // TODO: Cache these results so we're not making this call every time we switch pages
-      const reAggregatedRecords = await api.postMetaAnalysis(state.analyze.filters, yAxisSelection);
+      const reAggregatedRecords = await api.postMetaAnalysis(state.analyze.filters, state.chartAggregationFactor);
       const metaAnalyzedRecords = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
       dispatch({
         type: "UPDATE_META_ANALYSIS",
@@ -48,10 +47,13 @@ export default function Charts() {
     }
     updateCharts();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [yAxisSelection])
+  }, [state.chartAggregationFactor])
 
   const handleChange = (event: SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
-    setYAxis(data.value as AggregationFactor);
+    dispatch({
+      type: "UPDATE_AGGREGATION_FACTOR",
+      payload: data.value as AggregationFactor
+    })
     sendAnalyticsEvent({
       category: 'Independent Variable',
       action: 'selection',
