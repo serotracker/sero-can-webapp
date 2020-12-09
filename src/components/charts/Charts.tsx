@@ -3,7 +3,7 @@ import React, { SyntheticEvent, useContext, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Bar, BarChart, CartesianGrid, ErrorBar, LabelList, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Dropdown, DropdownProps, Modal } from "semantic-ui-react";
-import { mobileDeviceOrTabletWidth } from "../../constants";
+import { mobileDeviceOrTabletWidth, isMaintenanceMode } from "../../constants";
 import { AppContext } from "../../context";
 import httpClient from "../../httpClient";
 import { AggregationFactor, PageStateEnum } from "../../types";
@@ -121,7 +121,7 @@ export default function Charts() {
 
   return (
     <div className="charts-page">
-      {showAnalyzePopup ? <MobileInfoModal /> : null}
+      {(showAnalyzePopup && !isMaintenanceMode) ? <MobileInfoModal /> : null}
       <div className={isMobileDeviceOrTablet ? "mobile-charts container col-11 center-item flex my-3" : "charts container col-11 center-item flex my-3"}>
         <div className="col-12 p-0 flex">
           <div className="col-sm-1 col-lg-3">

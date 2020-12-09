@@ -49,8 +49,6 @@ export default function Explore() {
               <MobileComponents />
             </div>
           )}
-
-
       </div >
       <MaintenanceModal isOpen={isMaintenanceMode} headerText={"Explore"} />
     </>
