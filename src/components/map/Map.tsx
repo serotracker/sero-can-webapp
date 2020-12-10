@@ -45,6 +45,10 @@ export default function Map() {
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 
   const clickMarker = (e: React.MouseEvent<HTMLElement>) => {
+    // TODO: Upon clicking on a marker, make the marker and the popover draggable
+    //       and keep a record of the lat/lng that the marker was originally at 
+    //       so that upon closing the popover, the marker can go back to the original
+    //       location.
     (e.target as any).openPopup();
   }
 
@@ -84,7 +88,7 @@ export default function Map() {
       minZoom={2}
       maxBounds={maxBounds}
       enableHighAccuracy={true}
-      maxBoundsViscosity={1}
+      maxBoundsViscosity={0.5}
     >
       <TileLayer
         url={getMapUrl(state.language) + mapboxAccessToken}
