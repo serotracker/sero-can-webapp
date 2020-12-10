@@ -99,7 +99,7 @@ export default function Map() {
             return (
               <Marker 
                 onClick={clickMarker}
-                icon={record.pin_region_type == "country" ? nationalMarker : (record.pin_region_type == "state" ? regionalMarker : localMarker)}
+                icon={record.estimate_grade == "National" ? nationalMarker : (record.estimate_grade == "Regional" ? regionalMarker : localMarker)}
                 key={`marker-${idx}`} 
                 position={[record.pin_latitude, record.pin_longitude]}
               >

@@ -5,6 +5,10 @@ import { colors } from "../../utils/mapUtils";
 import "./Legend.css";
 import Translate from "../../utils/translate/translateService";
 
+import NationalPinIcon from "../../assets/icons/national_pin.png";
+import RegionalPinIcon from "../../assets/icons/regional_pin.png";
+import LocalPinIcon from "../../assets/icons/local_pin.png";
+
 interface LegendProps {
   buckets: number[]
 }
@@ -30,7 +34,13 @@ export default function Legend(props: LegendProps) {
 
   return (
     <div className={isMobileDeviceOrTablet ? "info flex legend-mobile center-item" : "info flex legend center-item"}>
-      <div className="flex center-item" key={Math.random()}>
+      <div className="flex center-item legend-container" key={Math.random()}>
+        <i className="block"><img src={NationalPinIcon} style={{ width: "14px", height: "20px"}}/></i>
+        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("NationalEstimates")}</p>
+        <i className="block"><img src={RegionalPinIcon} style={{ width: "14px", height: "20px"}}/></i>
+        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("RegionalEstimates")}</p>
+        <i className="block"><img src={LocalPinIcon} style={{ width: "14px", height: "20px"}}/></i>
+        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("LocalEstimates")}</p>
         <i className="block" style={{ background: colors[6] }}></i>
         <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("CountryEstimatesExist")}</p>
       </div>
