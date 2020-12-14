@@ -5,10 +5,10 @@ import French from "i18n-iso-countries/langs/fr.json";
 import { Layer, LeafletMouseEvent } from 'leaflet';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Map, MapProps } from 'react-leaflet';
 import { LanguageType, AggregatedRecord, AlternateAggregatedRecord, RegionalPrevalenceEstimate } from "../types";
 import { toPascalCase } from './translate/caseChanger';
 import Translate from './translate/translateService';
+import _ from "lodash";
 
 export const getBuckets = (features: GeoJSON.Feature[]) => {
   // This is some javascript voodoo to get maxSeroprevalence
@@ -74,11 +74,11 @@ export const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefine
   return {
     fillColor: getColor(feature?.properties?.seroprevalence, buckets),
     weight: 1,
-    opacity: 1,
+    opacity: 0,
     color: 'white',
     dashArray: '0',
     fillOpacity: 0.7,
-    zIndex: 650
+    //zIndex: 0
   }
 }
 
@@ -86,11 +86,11 @@ export const altStyle = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undef
   return {
     fillColor: feature?.properties?.geographicalName ? colors[6] : colors[7],
     weight: 1,
-    opacity: 1,
+    opacity: 0,
     color: 'white',
     dashArray: '0',
-    fillOpacity: 0.7,
-    zIndex: 650
+    fillOpacity: 0,
+    //zIndex: 0
   }
 }
 
@@ -100,12 +100,26 @@ export const highlightFeature = (e: LeafletMouseEvent) => {
     weight: 5,
     color: '#666',
     dashArray: '',
-    fillOpacity: 0.7,
-    zIndex: 200
+    fillOpacity: 0,
+    //zIndex: 200
   });
-  layer.bringToFront();
+  layer.bringToBack();
 
 }
+
+export const highlightVectorFeature = (e: LeafletMouseEvent) => {
+  const layer = e.target;
+  layer.setFeatureStyle(e.layer.properties.CODE, {
+    color: '#00456E',
+    weight: 3,
+    fillOpacity: 0.4,
+    fill: true ,
+  });
+
+  layer.bringToBack();
+}
+
+export const resetHighlightVectorFeature = (e: LeafletMouseEvent) => e.target.resetFeatureStyle(e.layer.properties.CODE);
 
 export const resetHighlight = (e: LeafletMouseEvent) => {
   const layer = e.target;
@@ -183,14 +197,14 @@ export const createAltPopup = (properties: any, language: LanguageType) => {
 }
 
 
-export const zoomToFeature = (e: LeafletMouseEvent, mapRef: React.RefObject<Map<MapProps>>
+export const zoomToFeature = (e: LeafletMouseEvent, mapRef: any
 ) => {
   const map = mapRef?.current?.leafletElement
   map?.fitBounds(e.target.getBounds());
 };
 
 // This method sets all the functionality for each GeoJSON item
-export const onEachFeature = (feature: GeoJSON.Feature, layer: Layer, mapRef: React.RefObject<Map<MapProps>>, language: LanguageType) => {
+export const onEachFeature = (feature: GeoJSON.Feature, layer: Layer, mapRef: any, language: LanguageType) => {
 
   layer.bindPopup(ReactDOMServer.renderToString(createPopup(feature.properties, language)), { closeButton: false, autoPan: false });
 
@@ -213,7 +227,7 @@ export const onEachFeature = (feature: GeoJSON.Feature, layer: Layer, mapRef: Re
 }
 
 // This refers to the old map that displayed seroprevalences directly
-export const onAltEachFeature = (feature: GeoJSON.Feature, layer: Layer, mapRef: React.RefObject<Map<MapProps>>, language: LanguageType) => {
+export const onAltEachFeature = (feature: GeoJSON.Feature, layer: Layer, mapRef: any, language: LanguageType) => {
 
   layer.bindPopup(ReactDOMServer.renderToString(createAltPopup(feature.properties, language)), { closeButton: false, autoPan: false });
 

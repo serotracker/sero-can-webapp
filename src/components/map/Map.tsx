@@ -1,18 +1,16 @@
 import { latLngBounds } from "leaflet";
 import React, { createRef, useContext, useEffect, useState } from "react";
-import { GeoJSON, Map as LeafletMap, TileLayer } from "react-leaflet";
+import { GeoJSON, MapContainer, TileLayer } from "react-leaflet";
 import Countries from "../../assets/countries-geo.json";
 import { AppContext } from "../../context";
-import { altStyle, getBuckets, getMapUrl, mapAltDataToFeatures, onAltEachFeature } from "../../utils/mapUtils";
-// @ts-ignore
-import { TiledMapLayer, BasemapLayer } from 'react-esri-leaflet/v2' 
+import { getBuckets, getMapUrl, mapAltDataToFeatures } from "../../utils/mapUtils";
 import Legend from "./Legend";
 import './Map.css';
 import VectorTileLayer from './VectorTileLayer.js';
 
 export default function Map() {
-  const mapRef = createRef<LeafletMap>();
-  const geoJsonRef = createRef<GeoJSON>();
+  const mapRef = createRef<typeof MapContainer>();
+  const geoJsonRef = createRef<typeof GeoJSON>();
   const [state] = useContext(AppContext);
   const [mapRecords, setMapRecords] = useState(Countries as any);
   const [forceUpdate, setForceUpdate] = useState(Math.random());
@@ -46,8 +44,7 @@ export default function Map() {
 
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_API_KEY;
   return (
-    <LeafletMap
-      ref={mapRef}
+    <MapContainer
       center={[0, 0]}
       zoom={1}
       className="map w-100"
@@ -55,32 +52,48 @@ export default function Map() {
       bounds={bounds}
       minZoom={2}
       maxBounds={maxBounds}
-      enableHighAccuracy={true}
       maxBoundsViscosity={1}
     >
-      <VectorTileLayer url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer"/>
-      {/*
-      <TiledMapLayer url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer" />
-        <VectorTileLayer url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_labels/VectorTileServer"/>
+
+      <VectorTileLayer 
+        url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer"
+        interactive
+        getFeatureId={(feat : any) => feat.properties.CODE}
+        zIndex={50}
+        fetchApiStyle
+      />
+
+      <VectorTileLayer 
+        url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer"
+        fetchApiStyle
+      />
+
+      <VectorTileLayer 
+        url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer"
+        zIndex={70}
+        fetchApiStyle
+        front
+      />
+
+      <Legend buckets={buckets} />
+
       <TileLayer
         url={getMapUrl(state.language) + mapboxAccessToken}
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         tileSize={512}
-        id={'mapbox/light-v9'}
-        zoomOffset={-1}>
-      </TileLayer>
-        <VectorTileLayer url="https://basemaps.arcgis.com/v1/arcgis/rest/services/World_Basemap/VectorTileServer"/>
-      <TileLayer url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer/tile/{z}/{y}/{x}.pbf" />
-      
+        id={'serotracker/ckigku3zy5ofb19maxsv6uokr'}
+        zoomOffset={-1}
+        zIndex={200}
+      />
+
+      {/*
       <GeoJSON
         onEachFeature={(feature, layer) => onAltEachFeature(feature, layer, mapRef, state.language)}
-        ref={geoJsonRef}
         key={forceUpdate}
         data={mapRecords as GeoJSON.GeoJsonObject}
         style={(data) => altStyle(data, buckets)}>
       </GeoJSON>
       */}
-      <Legend buckets={buckets} />
-    </LeafletMap>
+    </MapContainer>
   );
 }
