@@ -10,9 +10,11 @@ import { toPascalCase } from './translate/caseChanger';
 import Translate from './translate/translateService';
 import _ from "lodash";
 
-export const getBuckets = (features: GeoJSON.Feature[]) => {
+export const getBuckets = (features: any) => {
+  if (!features)
+    return [0];
   // This is some javascript voodoo to get maxSeroprevalence
-  const maxSeroprevalence = Math.max.apply(Math, features.filter(o => o.properties?.seroprevalence).map((o) => o?.properties?.seroprevalence));
+  const maxSeroprevalence = Math.max.apply(Math, features.filter((o : any) => o.properties?.seroprevalence).map((o : any) => o?.properties?.seroprevalence));
   const roundedMax = Math.ceil(maxSeroprevalence);
   const maxLogit = getLogit(roundedMax);
 
@@ -105,18 +107,6 @@ export const highlightFeature = (e: LeafletMouseEvent) => {
   });
   layer.bringToBack();
 
-}
-
-export const highlightVectorFeature = (e: LeafletMouseEvent) => {
-  const layer = e.target;
-  layer.setFeatureStyle(e.layer.properties.CODE, {
-    color: '#00456E',
-    weight: 3,
-    fillOpacity: 0.4,
-    fill: true ,
-  });
-
-  layer.bringToBack();
 }
 
 export const resetHighlightVectorFeature = (e: LeafletMouseEvent) => e.target.resetFeatureStyle(e.layer.properties.CODE);

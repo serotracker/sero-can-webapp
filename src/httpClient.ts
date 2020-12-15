@@ -58,6 +58,20 @@ export default class httpClient {
         }
     }
 
+    async getCountries() {
+
+        const res = await fetch("https://restcountries.eu/rest/v2/");
+        if (res.status !== 200) {
+            const error_msg = res.json();
+            console.error(error_msg);
+            return;
+        }
+        else {
+            const response_json = await res.json();
+            return response_json;
+        }
+    }
+
     async getAllFilterOptions() {
         const response = await this.httpGet('/data_provider/filter_options');
         const options: Record<string, any> = {}

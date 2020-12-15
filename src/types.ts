@@ -75,6 +75,7 @@ export type State = {
     dataPageState: DataPageState,
     language: LanguageType,
     estimate_grade_prevalences: AlternateAggregatedRecord[],
+    countries: any;
     showCookieBanner: boolean,
     showAnalyzePopup: boolean
 };

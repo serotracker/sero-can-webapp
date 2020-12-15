@@ -1,41 +1,32 @@
 import { latLngBounds } from "leaflet";
-import React, { createRef, useContext, useEffect, useState } from "react";
-import { GeoJSON, MapContainer, TileLayer } from "react-leaflet";
-import Countries from "../../assets/countries-geo.json";
+import React, { useContext, useEffect, useState } from "react";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { AppContext } from "../../context";
-import { getBuckets, getMapUrl, mapAltDataToFeatures } from "../../utils/mapUtils";
+import { getBuckets, getMapUrl } from "../../utils/mapUtils";
 import Legend from "./Legend";
 import './Map.css';
 import VectorTileLayer from './VectorTileLayer.js';
+import CountriesTileLayer from "./CountriesTileLayer"
+import { layerStyle } from './MapStyle';
+import _ from "lodash";
 
 export default function Map() {
-  const mapRef = createRef<typeof MapContainer>();
-  const geoJsonRef = createRef<typeof GeoJSON>();
   const [state] = useContext(AppContext);
-  const [mapRecords, setMapRecords] = useState(Countries as any);
-  const [forceUpdate, setForceUpdate] = useState(Math.random());
-  const buckets = getBuckets(mapRecords.features);
+  const [mapRecords, setMapRecords] = useState(state.countries as any);
+  const buckets = getBuckets(mapRecords);
 
   useEffect(() => {
     if(state.estimate_grade_prevalences.length > 0){
-      const importGeo = Countries as any;
-      const features = importGeo.features as GeoJSON.Feature[]
-      // We will iterate through all the features in the geoJson
-      // if they are in the country dict we will attach their aggregated data to the feature for displaying
-      importGeo.features = mapAltDataToFeatures(features, state.estimate_grade_prevalences);
-      setMapRecords(importGeo)
+      const countriesData = state.countries.map( (country : any) => {
+        const countryEstimate = state.estimate_grade_prevalences.find(element => element.geographicalName == country.name);
 
-      // we need to update the key on the GEOJSON to let react know it's time to rerender
-      setForceUpdate(Math.random())
-    }
-    else{
-      // Initialize map so that it starts out colourless
-      const initImportGeo = Countries as any;
-      const features = initImportGeo.features as GeoJSON.Feature[]
-      initImportGeo.features = features.map(feature => {
-        return { ...feature, properties: { ...feature.properties, seroprevalence: null, error: null, n: null, num_studies: null } }
+        if (countryEstimate && countryEstimate.testsAdministered) {
+          const { testsAdministered, geographicalName, numberOfStudies, localEstimate, nationalEstimate, regionalEstimate, sublocalEstimate } = countryEstimate;
+          return { ...country, properties: { testsAdministered, geographicalName, numberOfStudies, localEstimate, nationalEstimate, regionalEstimate, sublocalEstimate }}
+        }
+        return { ...country, properties: { testsAdministered: null, geographicalName: null, numberOfStudies: null, localEstimate: null, nationalEstimate: null, regionalEstimate: null, sublocalEstimate: null } }
       })
-      setMapRecords(initImportGeo);
+      setMapRecords(countriesData);
     }
   }, [state.estimate_grade_prevalences])
 
@@ -43,28 +34,28 @@ export default function Map() {
   const maxBounds = latLngBounds([-90, -200], [90, 200]);
 
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_API_KEY;
+
   return (
     <MapContainer
-      center={[0, 0]}
-      zoom={1}
+      center={bounds.getCenter()}
+      zoom={3}
       className="map w-100"
       bounceAtZoomLimits={true}
       bounds={bounds}
-      minZoom={2}
+      minZoom={3}
       maxBounds={maxBounds}
       maxBoundsViscosity={1}
     >
 
-      <VectorTileLayer 
+      <CountriesTileLayer
         url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer"
-        interactive
-        getFeatureId={(feat : any) => feat.properties.CODE}
+        records={mapRecords}
         zIndex={50}
-        fetchApiStyle
       />
 
       <VectorTileLayer 
         url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer"
+        style={layerStyle}
         fetchApiStyle
       />
 
@@ -72,6 +63,7 @@ export default function Map() {
         url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer"
         zIndex={70}
         fetchApiStyle
+        style={layerStyle}
         front
       />
 

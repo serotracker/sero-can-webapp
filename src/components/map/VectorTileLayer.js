@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useMap } from "react-leaflet";
 import L from 'leaflet';
-import MapStyle from './MapStyle';
+import { layerStyle } from './MapStyle';
 import httpClient from "../../httpClient";
 import _ from "lodash";
 import { highlightVectorFeature, resetHighlightVectorFeature } from "../../utils/mapUtils";
@@ -35,13 +35,13 @@ const parseApiStyle = async (url) => {
       vectorTileLayerStyles[layerName] = {
         weight: 1 ,
         color: layer.paint["line-color"],
-        fillColor: layer.paint["fill-color"] || MapStyle.Default.color,
+        fillColor: layer.paint["fill-color"] || layerStyle.Default.color,
         opacity: 1
       };
     } else if (layer.type === "fill") {
       vectorTileLayerStyles[layerName] = {
         weight: 0,
-        fillColor: layer.paint["fill-color"] || MapStyle.Default.color,
+        fillColor: layer.paint["fill-color"] || layerStyle.Default.color,
         fillOpacity: 1,
         fill: true 
       };
@@ -63,49 +63,29 @@ const parseApiStyle = async (url) => {
 
 export default function VectorTileLayer(props) {
 
-  const { url, fetchApiStyle, interactive, getFeatureId, front, zIndex } = props;
+  const { url, fetchApiStyle, front, zIndex, style } = props;
   const map = useMap();
   
   useEffect(() => {
       (async function buildVectorTileLayer() {
 
-        var mappingStyle = MapStyle;
+        var mappingStyle = style;
         
         if (fetchApiStyle)
         {
           const apiStyle = await parseApiStyle(url);
 
           if (apiStyle)
-            mappingStyle = _.merge(apiStyle, MapStyle); // use styles from API but overwrite if found in mappingStyle
+            mappingStyle = _.merge(apiStyle, style); // use styles from API but overwrite if found in mappingStyle
         }
         
         var layer = L.vectorGrid.protobuf(`${url}/tile/{z}/{y}/{x}.pbf`, {
           rendererFactory: L.canvas.tile,
           attribution: '',
-          interactive: interactive,
           vectorTileLayerStyles: mappingStyle,
-          getFeatureId : getFeatureId,
           zIndex: zIndex
         }
         ).addTo(map);
-
-        if (interactive) {
-          //layer.bindPopup(ReactDOMServer.renderToString(createPopup(feature.properties, language)), { closeButton: false, autoPan: false }); //TODO: get this popup working.
-          layer.on({
-            mouseover: (e) => {
-              highlightVectorFeature(e);
-            },
-            mouseout: (e) => {
-              resetHighlightVectorFeature(e);
-            },
-            mousemove: (e) => {
-              
-            },
-            click: (e) => {
-              console.log("Click")
-            }
-          })
-        }
 
         if(front) 
         {

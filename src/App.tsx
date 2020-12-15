@@ -34,6 +34,20 @@ function App() {
     updateCountryPrevalence();
   }, [filters, dispatch])
 
+  // pulls from ISO api to get standardized country names, codes and translations
+  useEffect(() => {    
+    const updateCountriesJson = async () => {
+      const api = new httpClient()
+      // TODO: Figure out a better place to put this so we don't keep updating this either 
+      const countriesJson = await api.getCountries();
+      dispatch({
+        type: 'UPDATE_COUNTRIES_JSON',
+        payload: countriesJson
+      });
+    }
+    updateCountriesJson();
+  }, [dispatch])
+
   useEffect(() => {
     const api = new httpClient()
     const toggleFilters: LocationListener = async({ pathname }: Location) => {

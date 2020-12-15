@@ -62,6 +62,7 @@ const initialState: State = {
   filters: getEmptyFilters(),
   records: [],
   estimate_grade_prevalences: [],
+  countries: [],
   allFilterOptions: getEmptyFilters(),
   dataPageState: {
     exploreIsOpen: true,
@@ -100,6 +101,11 @@ const reducer = (state: State, action: Record<string, any>): State => {
       return {
         ...state,
         estimate_grade_prevalences: action.payload
+      };
+    case "UPDATE_COUNTRIES_JSON":
+      return {
+        ...state,
+        countries: action.payload
       };
     case "SAVE_PAGE_STATE": {
       const isExplorePageState = action.payload;
