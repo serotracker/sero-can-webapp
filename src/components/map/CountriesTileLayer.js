@@ -3,6 +3,7 @@ import { useMap } from "react-leaflet";
 import L from 'leaflet';
 import { layerStyle, highlightStyles } from './MapStyle';
 import _ from "lodash";
+import { createAltPopup } from "../../utils/mapUtils"
 //import { createPopup } from "../../utils/mapUtils";
 import ReactDOMServer from 'react-dom/server';
 // eslint-disable-next-line no-unused-vars
@@ -19,8 +20,7 @@ const toggleCountrySelection = (e, layer, highlightStyle) => {
 const createPopup = () => {
   return (
     <div className="col-12 p-0 flex">
-      <div className="col-12 p-0 popup-header">{"TEST!"}</div>
-      <div className="col-12 p-0 flex popup-content">{"mhm"}</div>
+      <div className="col-12 p-0 popup-header">{"Initial"}</div>
     </div>)
 }
 
@@ -51,6 +51,8 @@ export default function CountriesTileLayer(props) {
         if(layer.getPopup())
         {
           layer.openPopup(e.latlng);
+          const properties = records.find(x => x.alpha3Code === e.alpha3Code)
+          var test2 = createAltPopup(properties,'en')
           layer.setContent();
         }
 
