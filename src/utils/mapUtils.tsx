@@ -5,7 +5,7 @@ import French from "i18n-iso-countries/langs/fr.json";
 import { Layer, LeafletMouseEvent } from 'leaflet';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { LanguageType, AggregatedRecord, AlternateAggregatedRecord, RegionalPrevalenceEstimate } from "../types";
+import { LanguageType, AggregatedRecord, EstimateGradePrevalence, RegionalPrevalenceEstimate } from "../types";
 import { toPascalCase } from './translate/caseChanger';
 import Translate from './translate/translateService';
 import _ from "lodash";
@@ -251,10 +251,10 @@ export const mapDataToFeatures = (features: GeoJSON.Feature[], prevalences: Aggr
   })
 }
 
-export const mapAltDataToFeatures = (features: GeoJSON.Feature[], prevalences: AlternateAggregatedRecord[]) => {
-  const prevalenceCountryDict: Record<string, AlternateAggregatedRecord> = prevalences.reduce((a: any, x: AlternateAggregatedRecord) => ({ ...a, [x.geographicalName]: x }), {});
+export const mapAltDataToFeatures = (features: GeoJSON.Feature[], prevalences: EstimateGradePrevalence[]) => {
+  const prevalenceCountryDict: Record<string, EstimateGradePrevalence> = prevalences.reduce((a: any, x: EstimateGradePrevalence) => ({ ...a, [x.geographicalName]: x }), {});
   return features.map(feature => {
-    const country: AlternateAggregatedRecord = prevalenceCountryDict![feature?.properties?.name];
+    const country: EstimateGradePrevalence = prevalenceCountryDict![feature?.properties?.name];
     if (country && country.testsAdministered) {
       const { testsAdministered, geographicalName, numberOfStudies, localEstimate, nationalEstimate, regionalEstimate, sublocalEstimate } = country;
       return { ...feature, properties: { ...feature.properties, testsAdministered, geographicalName, numberOfStudies, localEstimate, nationalEstimate, regionalEstimate, sublocalEstimate } }

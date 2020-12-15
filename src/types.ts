@@ -23,13 +23,11 @@ export type AirtableRecord = {
     publisher?: string | null,
     overall_risk_of_bias: string | null,
     study_type?: string | null,
-    sample_size?: string | null,
     sampling_method?: string | null,
     sampling_start_date?: string | null,
     sampling_end_date?: string | null,
     summary?: string | null,
     url?: string | null,
-    include_in_n: boolean,
     estimate_grade: string | null
 };
 
@@ -64,28 +62,40 @@ export enum LanguageType {
     english = 'en'
 }
 
+export enum PageStateEnum {
+    analyze = "analyze",
+    explore = "explore"
+}
+
 export type State = {
     healthcheck: string,
+    chartAggregationFactor: AggregationFactor,
     explore: PageState,
     analyze: PageState,
-    filters: Filters,
-    records: AirtableRecord[]
     allFilterOptions: Filters,
     updatedAt: string,
+    calendarStartDates: StartDates,
     dataPageState: DataPageState,
     language: LanguageType,
-    estimate_grade_prevalences: AlternateAggregatedRecord[],
-    countries: any;
     showCookieBanner: boolean,
-    showAnalyzePopup: boolean
+    showAnalyzePopup: boolean,
+    countries: any
 };
+
+export type StartDates = {
+    minDate: Date,
+    maxDate: Date
+}
 
 export type PageState = {
     filters: Filters,
+    metaAnalyzedRecords: AggregatedRecord[],
     records: AirtableRecord[],
+    isLoading: boolean,
+    estimateGradePrevalences: EstimateGradePrevalence[]
 }
 
-export type AlternateAggregatedRecord = {
+export type EstimateGradePrevalence = {
     testsAdministered: number;
     geographicalName: string;
     numberOfStudies: number;

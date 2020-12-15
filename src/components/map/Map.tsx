@@ -16,9 +16,9 @@ export default function Map() {
   const buckets = getBuckets(mapRecords);
 
   useEffect(() => {
-    if(state.estimate_grade_prevalences.length > 0){
+    if(state.explore.estimateGradePrevalences.length > 0){
       const countriesData = state.countries.map( (country : any) => {
-        const countryEstimate = state.estimate_grade_prevalences.find(element => element.geographicalName == country.name);
+        const countryEstimate = state.explore.estimateGradePrevalences.find(element => element.geographicalName == country.name);
 
         if (countryEstimate && countryEstimate.testsAdministered) {
           const { testsAdministered, geographicalName, numberOfStudies, localEstimate, nationalEstimate, regionalEstimate, sublocalEstimate } = countryEstimate;
@@ -28,7 +28,7 @@ export default function Map() {
       })
       setMapRecords(countriesData);
     }
-  }, [state.estimate_grade_prevalences])
+  }, [state.explore.estimateGradePrevalences])
 
   const bounds = latLngBounds([-90, -200], [90, 180]);
   const maxBounds = latLngBounds([-90, -200], [90, 200]);

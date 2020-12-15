@@ -79,3 +79,7 @@ table thead tr::-webkit-scrollbar-thumb {
   text-align: left;
   width: 20%;
 }
+
+.modal {
+  z-index: 6000;
+}

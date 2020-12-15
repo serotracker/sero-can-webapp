@@ -1,23 +1,28 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../context";
+import { State, PageState } from "../../../types";
 import Translate from "../../../utils/translate/translateService";
 import './TotalStats.css';
-export default function TotalStats() {
+
+interface TotalStatsProps {
+  page: string
+}
+
+export default function TotalStats({ page }: TotalStatsProps) {
   const [state] = useContext(AppContext);
   const [countries, setNumCountries] = useState(0);
   const [numStudies, setNumStudies] = useState(0);
   const [n, setN] = useState(0);
+  const pageState= state[page as keyof State] as PageState;
 
   useEffect(() => {
     const updateCountryPrevalence = async () => {
-      setNumCountries( state.estimate_grade_prevalences.length);
-      setN( state.estimate_grade_prevalences.map((o: Record<string, any>) => o.testsAdministered).reduce((a: number, b: number) => a + b, 0));
-      setNumStudies( state.estimate_grade_prevalences.map((o: Record<string, any>) => o.numberOfStudies).reduce((a: number, b: number) => a + b, 0));
+      setNumCountries(pageState.estimateGradePrevalences.length);
+      setN(pageState.estimateGradePrevalences.map((o: Record<string, any>) => o.testsAdministered).reduce((a: number, b: number) => a + b, 0));
+      setNumStudies(pageState.estimateGradePrevalences.map((o: Record<string, any>) => o.numberOfStudies).reduce((a: number, b: number) => a + b, 0));
     }
-    if (state.dataPageState.routingOccurred) {
-      updateCountryPrevalence();
-    }
-  }, [state.dataPageState.routingOccurred, state.estimate_grade_prevalences])
+    updateCountryPrevalence();
+  }, [pageState.estimateGradePrevalences])
 
   return (
     <div className="col-12 p-0 stats-container">

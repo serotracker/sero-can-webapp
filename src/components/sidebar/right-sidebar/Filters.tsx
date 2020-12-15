@@ -1,27 +1,29 @@
 import React, { useContext } from "react";
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
-import httpClient from "../../../httpClient";
-import { Filters as FilterT, FilterType } from '../../../types';
+import { FilterType, PageState, State } from '../../../types';
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import { getCountryName } from "../../../utils/mapUtils";
+import { updateFilters } from "../../../utils/stateUpdateUtils";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
 import Translate from "../../../utils/translate/translateService";
 import InformationIcon from "../../shared/InformationIcon";
+import SectionHeader from "./SectionHeader";
 
 interface FilterProps {
-  filters: FilterT
+  page: string
 }
 
-export default function Filters({filters}: FilterProps) {
-  const [state, dispatch] = useContext(AppContext);  
+export default function Filters({ page }: FilterProps) {
+  const [state, dispatch] = useContext(AppContext);
+  const pageState = state[page as keyof State] as PageState;
 
   const getFilters = (filter_type: FilterType): string[] => {
-    return Array.from(filters[filter_type]) as string[]
+    return Array.from(pageState.filters[filter_type]) as string[]
   }
 
   const formatOptions = (options: any, filter_type: FilterType) => {
-    if(!options) {
+    if (!options) {
       return
     }
     const formatted_options: Record<string, string>[] = [];
@@ -52,57 +54,23 @@ export default function Filters({filters}: FilterProps) {
     return formatted_options;
   }
 
-  const addFilter = async (data: any, filter_type: FilterType) => {
+  const addFilter = async (data: any, filterType: FilterType) => {
     dispatch({
       type: 'UPDATE_FILTER',
       payload: {
-        filter_type,
-        filter_value: data.value
+        filterType,
+        filterValue: data.value,
+        pageStateEnum: page
       }
-    });  
-    
-    // Note: state.filters is not updated synchronously
-    // Hotfix for now, but we should come up with a better pattern
-    const updated_filters: FilterT = Object.assign({}, state.filters);
-    updated_filters[filter_type] = data.value;
-  
-    const api = new httpClient()
-    // Update current records when called
-    const records = await api.getAirtableRecords(updated_filters)
-    dispatch({
-      type: 'GET_AIRTABLE_RECORDS',
-      payload: records
-    }); 
-    dispatch({
-      type: 'SAVE_PAGE_STATE',
-      payload: state.dataPageState.exploreIsOpen
-    })
-
-    // const estimateGradePrevalences = await api.getEstimateGrades(state.filters);
-    // dispatch({
-    //   type: 'UPDATE_ESTIMATE_PREVALENCES',
-    //   payload: estimateGradePrevalences
-    // });
-  }
-
-  const buildSectionHeader = (header_text: string, tooltip_text?: string | React.ReactNode, tooltip_header?: string) => {
-    return (
-      <div className="pb-2 flex">
-        <div className="filter-section-header">{header_text}</div>
-        {tooltip_text && (
-          <div className="tooltip-vert-adj">
-            <InformationIcon
-              offset={10}
-              position="bottom right"
-              color="#455a64"
-              tooltipHeader={tooltip_header ? tooltip_header : header_text}
-              popupSize="small"
-              size="sm"
-              tooltip={tooltip_text} />
-          </div>
-        )}
-      </div>
-    )
+    });
+    await updateFilters(
+      dispatch,
+      pageState.filters,
+      filterType,
+      data.value,
+      state.dataPageState.exploreIsOpen,
+      page,
+      state.chartAggregationFactor)
   }
 
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
@@ -119,7 +87,7 @@ export default function Filters({filters}: FilterProps) {
           clearable
           selection
           options={formatOptions(state.allFilterOptions[filter_type], filter_type)}
-          onChange={async(e: any, data: any) => {
+          onChange={async (e: any, data: any) => {
             await addFilter(data, filter_type)
             sendAnalyticsEvent({
               /** Typically the object that was interacted with (e.g. 'Video') */
@@ -158,7 +126,7 @@ export default function Filters({filters}: FilterProps) {
         <div className="col-10 col align-items-center p-0">
           <div className="pb-1">
             <div>
-              {buildSectionHeader(Translate('Geography'), Translate('GeographyTooltip'))}
+              <SectionHeader header_text={Translate('Geography')} tooltip_text={Translate('GeographyTooltip')}/>
             </div>
             <div>
               {buildFilterDropdown('country', Translate('Country'))}
@@ -170,16 +138,15 @@ export default function Filters({filters}: FilterProps) {
           <div className="pb-1">
             <div>
               {
-                buildSectionHeader(Translate('StudyInformation'),
+                <SectionHeader 
+                  header_text={Translate('StudyInformation')} 
+                  tooltip_text={
                   <div>
-                    <p>
-                      {Translate('StudyInformationTooltip', ['FirstParagraph'])}
-                    </p>
-                    <p>
-
-                      {Translate('StudyInformationTooltip', ['SecondParagraph'])}
-                    </p>
-                  </div>)
+                    <p>{Translate('StudyInformationTooltip', ['FirstParagraph'])}</p>
+                    <p>{Translate('StudyInformationTooltip', ['SecondParagraph'])}</p>
+                  </div>
+                  }
+                />
               }
             </div>
             <div>
@@ -191,7 +158,7 @@ export default function Filters({filters}: FilterProps) {
           </div>
           <div className="pb-1">
             <div>
-              {buildSectionHeader(Translate('Demographics'), Translate('DemographicsTooltip'))}
+              <SectionHeader header_text={Translate('Demographics')} tooltip_text={Translate('DemographicsTooltip')}/>
             </div>
             <div>
               {buildFilterDropdown('population_group', Translate('PopulationGroup'))}
@@ -205,7 +172,7 @@ export default function Filters({filters}: FilterProps) {
           </div>
           <div className="pb-1">
             <div>
-              {buildSectionHeader(Translate('TestInformation'), Translate('TestInformationTooltip'))}
+              <SectionHeader header_text={Translate('TestInformation')} tooltip_text={Translate('TestInformationTooltip')}/>
             </div>
             <div>
               {buildFilterDropdown('test_type', Translate('TestType'))}

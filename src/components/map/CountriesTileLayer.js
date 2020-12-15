@@ -46,33 +46,7 @@ export default function CountriesTileLayer(props) {
 
     layer.bindPopup(ReactDOMServer.renderToString(createPopup()), { closeButton: false, autoPan: false });
 
-    layer.on({
-      mouseover: (e) => {
-        if(layer.getPopup())
-        {
-          layer.openPopup(e.latlng);
-          const properties = records.find(x => x.alpha3Code === e.alpha3Code)
-          var test2 = createAltPopup(properties,'en')
-          layer.setContent();
-        }
-
-        toggleCountrySelection(e, e.target, highlightStyles.hovering)
-      },
-      mouseout: (e) => {
-        if(layer.getPopup())
-          layer.closePopup();
-
-        toggleCountrySelection(e, e.target, highlightStyles.default)
-      },
-      mousemove: (e) => {
-        const pop = layer.getPopup()
-        if(pop)
-          pop.setLatLng(e.latlng)
-      },
-      click: (e) => {}
-      })
-
-      setLayer(layer);
+    setLayer(layer);
   },[])
 
   useEffect(() => {
@@ -89,6 +63,38 @@ export default function CountriesTileLayer(props) {
         });
       }
     });
+
+    if ( layer )
+    {
+      layer.on({
+        mouseover: (e) => {
+          var pop = layer.getPopup()
+          if(pop)
+          {
+            layer.openPopup(e.latlng);
+            const properties = records.find(x => x.alpha3Code === e.sourceTarget.properties.CODE)?.properties
+            if (properties) {
+              var test2 = ReactDOMServer.renderToString(createAltPopup(properties,'en'))
+              pop.setContent(test2);
+            }
+          }
+  
+          toggleCountrySelection(e, e.target, highlightStyles.hovering)
+        },
+        mouseout: (e) => {
+          if(layer.getPopup())
+            layer.closePopup();
+  
+          toggleCountrySelection(e, e.target, highlightStyles.default)
+        },
+        mousemove: (e) => {
+          const pop = layer.getPopup()
+          if(pop)
+            pop.setLatLng(e.latlng)
+        },
+        click: (e) => {}
+        })
+    }
   },[records])
 
   return null;

@@ -1,6 +1,5 @@
-import { Location, LocationListener } from 'history';
-import React, { useContext, useEffect, useState } from "react";
-import { Redirect, Route, Switch, useHistory } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
 import CookiePolicy from "./components/pages/CookiePolicy";
@@ -14,25 +13,40 @@ import { CookieBanner } from "./components/shared/CookieBanner";
 import { NavBar } from "./components/shared/NavBar";
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
+import { PageStateEnum } from "./types";
+import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
 
 function App() {
-  const [{ language, analyze, filters, explore }, dispatch] = useContext(AppContext);
-  const history = useHistory();
+  const [{ language, explore, analyze }, dispatch] = useContext(AppContext);
   setLanguageType(language);
 
-  useEffect(() => {    
-    const updateCountryPrevalence = async () => {
-      const api = new httpClient()
-      // TODO: Figure out a better place to put this so we don't keep updating this either 
-      const estimateGradePrevalences = await api.getEstimateGrades(filters);
+  useEffect(() => {
+    const api = new httpClient()
+    initializeData(dispatch, explore.filters,true, PageStateEnum.explore)
+    initializeData(dispatch, analyze.filters,false, PageStateEnum.analyze)
+    const allFilterOptions = async () => {
+      const { options, updatedAt, maxDate, minDate } = await api.getAllFilterOptions();
       dispatch({
-        type: 'UPDATE_ESTIMATE_PREVALENCES',
-        payload: estimateGradePrevalences
-      });
+        type: 'GET_ALL_FILTER_OPTIONS',
+        payload: options
+      })
+
+      dispatch({
+        type: "UPDATED_AT",
+        payload: updatedAt
+      })
+
+      dispatch({
+        type: "MAX_MIN_DATES",
+        payload: { maxDate, minDate }
+      })
     }
-    updateCountryPrevalence();
-  }, [filters, dispatch])
+    
+    allFilterOptions();
+    // We only want this to run once so we pass no dependencies. Do not remove this
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // pulls from ISO api to get standardized country names, codes and translations
   useEffect(() => {    
@@ -47,69 +61,6 @@ function App() {
     }
     updateCountriesJson();
   }, [dispatch])
-
-  useEffect(() => {
-    const api = new httpClient()
-    const toggleFilters: LocationListener = async({ pathname }: Location) => {
-      if (pathname === "/Analyze") {
-        dispatch({
-          type: 'LOAD_PAGE_STATE',
-          payload: false
-        })
-      }
-      else if (pathname === "/Explore") {
-        dispatch({
-          type: 'LOAD_PAGE_STATE',
-          payload: true
-        })
-      };    
-    }
-
-    const getAirtableRecords = async () => {
-      const analyzeRecords = await api.getAirtableRecords(analyze.filters)
-      const exploreRecords = await api.getAirtableRecords(explore.filters)
-      dispatch({
-        type: 'SET_PAGE_STATE',
-        payload:  { records: exploreRecords, isExplorePageState: true }
-      });
-      dispatch({
-        type: 'SET_PAGE_STATE',
-        payload:  { records: analyzeRecords, isExplorePageState: false }
-      });
-    }
-    
-    const allFilterOptions = async () => {
-      const { options, updatedAt, maxDate, minDate } = await api.getAllFilterOptions();
-      dispatch({
-        type: 'GET_ALL_FILTER_OPTIONS',
-        payload: options
-      })
-
-      dispatch({
-        type: "UPDATED_AT",
-        payload: updatedAt
-      })
-    }
-
-    // Make sure that the page state is loaded
-    // after airtable records are retrieved
-    const loadData = async() => {
-      await getAirtableRecords();
-      history.listen(toggleFilters);
-      toggleFilters(history.location, 'REPLACE');
-    }
-    
-    // Note: loading page state 
-    // right after filter options retrieved
-    // to ensure that filter bar is loaded nicely
-    // before all the data comes in
-    allFilterOptions();
-    history.listen(toggleFilters);
-    toggleFilters(history.location, 'REPLACE');
-    loadData();
-    // We only want this to run once so we pass no dependencies. Do not remove this
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   useEffect(() => {
     const alreadyAcceptedCookes = localStorage.getItem('acceptedCookies');

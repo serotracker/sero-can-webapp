@@ -1,5 +1,5 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import { Filters, LanguageType, State } from "./types";
+import { AggregationFactor, Filters, FilterType, LanguageType, PageState, State } from "./types";
 import Translate from "./utils/translate/translateService";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
@@ -15,7 +15,7 @@ export function getEmptyFilters(): Filters {
     overall_risk_of_bias: new Set(),
     isotypes_reported: new Set(),
     specimen_type: new Set(),
-    publish_date: new Set(),
+    publish_date: new Set([new Date(2019, 1, 1, 1), new Date()]),
     estimate_grade: new Set()
   }
 }
@@ -39,7 +39,7 @@ export function getDefaultFilters(): Filters {
     overall_risk_of_bias: new Set(),
     isotypes_reported: new Set(),
     specimen_type: new Set(),
-    publish_date: new Set(),
+    publish_date: new Set([new Date(2019, 1, 1, 1), new Date()]),
     estimate_grade: new Set([
       Translate('EstimateGradeOptions', ['National']),
       Translate('EstimateGradeOptions', ['Regional']),
@@ -51,28 +51,37 @@ export function getDefaultFilters(): Filters {
 // filter_options = all the elements that users could filter by
 const initialState: State = {
   healthcheck: '',
+  chartAggregationFactor: AggregationFactor.country,
   explore: {
     filters: getEmptyFilters(),
     records: [],
+    estimateGradePrevalences: [],
+    metaAnalyzedRecords: [],
+    isLoading: false
   },
   analyze: {
     filters: getDefaultFilters(),
     records: [],
+    estimateGradePrevalences: [],
+    metaAnalyzedRecords: [],
+    isLoading: false
   },
-  filters: getEmptyFilters(),
-  records: [],
-  estimate_grade_prevalences: [],
-  countries: [],
   allFilterOptions: getEmptyFilters(),
   dataPageState: {
     exploreIsOpen: true,
     showStudiesModal: false,
     routingOccurred: false
   },
+  calendarStartDates: {
+    // Important, the fact that we use an hour here tells us that we are using a default value
+    minDate: new Date(2019, 1, 1, 1),
+    maxDate: new Date()
+  },
   language: LanguageType.english,
   updatedAt: '',
   showCookieBanner: false,
-  showAnalyzePopup: true
+  showAnalyzePopup: true,
+  countries : []
 };
 
 const reducer = (state: State, action: Record<string, any>): State => {
@@ -97,71 +106,18 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         showAnalyzePopup: false
       };
-    case "UPDATE_ESTIMATE_PREVALENCES":
-      return {
-        ...state,
-        estimate_grade_prevalences: action.payload
-      };
+    case "UPDATE_ESTIMATE_PREVALENCES": {
+      const { pageStateEnum, estimateGradePrevalences } = action.payload;
+      const newState = { ...state };
+      const pageState = newState[pageStateEnum as keyof State] as PageState;
+      pageState.estimateGradePrevalences = estimateGradePrevalences;
+      return newState;
+    };
     case "UPDATE_COUNTRIES_JSON":
       return {
         ...state,
         countries: action.payload
       };
-    case "SAVE_PAGE_STATE": {
-      const isExplorePageState = action.payload;
-      if (isExplorePageState) {
-        return {
-          ...state,
-          explore: {
-            filters: Object.assign({}, state.filters),
-            records: Object.assign([], state.records)
-          },
-        }
-      }
-      return {
-        ...state,
-        analyze: {
-          filters: Object.assign({}, state.filters),
-          records: Object.assign([], state.records)
-        },
-      };
-    };
-    case "SET_PAGE_STATE": {
-      const { isExplorePageState, records, filters } = action.payload;
-      if (isExplorePageState) {
-        return {
-          ...state,
-          explore: {
-            filters: filters ? filters : state.explore.filters,
-            records: records ? records : state.explore.records
-          },
-        }
-      }
-      return {
-        ...state,
-        analyze: {
-          filters: filters ? filters : state.analyze.filters,
-          records: records ? records : state.analyze.records
-        },
-      };
-    };
-    case "LOAD_PAGE_STATE": {
-      const exploreIsOpen = action.payload;
-      if (exploreIsOpen) {
-        return {
-          ...state,
-          filters: Object.assign({}, state.explore.filters),
-          records: Object.assign([], state.explore.records),
-          dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload, routingOccurred: true }
-        };
-      };
-      return {
-        ...state,
-        filters: Object.assign({}, state.analyze.filters),
-        records: Object.assign([], state.analyze.records),
-        dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload, routingOccurred: true }
-      };
-    };
     case "SELECT_LANGUAGE":
       return {
         ...state,
@@ -172,23 +128,52 @@ const reducer = (state: State, action: Record<string, any>): State => {
         ...state,
         allFilterOptions: action.payload
       };
-    case "GET_AIRTABLE_RECORDS":
-      return {
-        ...state,
-        records: action.payload
-      };
+    case "GET_AIRTABLE_RECORDS": {
+      const { pageStateEnum, records } = action.payload;
+      const newState = { ...state };
+      const pageState = newState[pageStateEnum as keyof State] as PageState;
+      pageState.records = records;
+      return newState;
+    };
     case "UPDATED_AT":
       return {
         ...state,
         updatedAt: action.payload
       };
-    case "UPDATE_FILTER":
-      const new_filters: any = Object.assign({}, state.filters);
-      new_filters[action.payload.filter_type] = new Set(action.payload.filter_value);
+    case "UPDATE_FILTER": {
+      const { pageStateEnum, filterType, filterValue } = action.payload;
+      const newState = { ...state };
+      const pageState = newState[pageStateEnum as keyof State] as PageState;
+      pageState.filters[filterType as FilterType] = new Set(filterValue);
+      return newState;
+    };
+    case "UPDATE_META_ANALYSIS": {
+      const { pageStateEnum, metaAnalyzedRecords } = action.payload;
+      const newState = { ...state };
+      const pageState = newState[pageStateEnum as keyof State] as PageState;
+      pageState.metaAnalyzedRecords = metaAnalyzedRecords;
+      return newState;
+    };
+    case "MAX_MIN_DATES":
+      const { minDate, maxDate } = action.payload;
       return {
         ...state,
-        filters: new_filters
+        calendarStartDates: {
+          minDate,
+          maxDate
+        },
       };
+    case "CHANGE_LOADING": {
+      const { pageStateEnum, isLoading } = action.payload;
+      const newState = { ...state };
+      const pageState = newState[pageStateEnum as keyof State] as PageState;
+      pageState.isLoading = isLoading;
+      return newState;
+    };
+    case "UPDATE_AGGREGATION_FACTOR":
+      return { ...state, chartAggregationFactor: action.payload }
+    case "UPDATE_EXPLORE_IS_OPEN":
+      return { ...state, dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload } }
     default:
       return state
   };
