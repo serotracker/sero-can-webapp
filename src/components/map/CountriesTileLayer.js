@@ -44,26 +44,32 @@ export default function CountriesTileLayer(props) {
     }
     ).addTo(map);
 
+    layer.bindPopup(ReactDOMServer.renderToString(createPopup()), { closeButton: false, autoPan: false });
 
-    layer.bindPopup(ReactDOMServer.renderToString(createPopup()), { closeButton: false, autoPan: false }); //TODO: get this popup working.
-
-    /*
-    var pop = layer.getPopup();
-        if (pop)
-          pop.setLatLng(e.latlng);
-        toggleCountrySelection(e, e.target, highlightStyles.hovering)
-    */
     layer.on({
       mouseover: (e) => {
+        if(layer.getPopup())
+        {
+          layer.openPopup(e.latlng);
+          layer.setContent();
+        }
+
         toggleCountrySelection(e, e.target, highlightStyles.hovering)
       },
-      mouseout: (e) => toggleCountrySelection(e, e.target, highlightStyles.default),
-      mousemove: (e) => layer.getPopup()?.setLatLng(e.latlng),
-      click: (e) => {
-        console.log("Click")
-      }
+      mouseout: (e) => {
+        if(layer.getPopup())
+          layer.closePopup();
+
+        toggleCountrySelection(e, e.target, highlightStyles.default)
+      },
+      mousemove: (e) => {
+        const pop = layer.getPopup()
+        if(pop)
+          pop.setLatLng(e.latlng)
+      },
+      click: (e) => {}
       })
-      
+
       setLayer(layer);
   },[])
 
