@@ -74,9 +74,6 @@ export default function Filters({ page }: FilterProps) {
   }
 
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
-    if(!state.dataPageState.routingOccurred) {
-      return null;
-    }
     return (
       <div className="pb-3">
         <Dropdown

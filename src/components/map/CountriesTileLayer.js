@@ -4,7 +4,6 @@ import L from 'leaflet';
 import { layerStyle, highlightStyles } from './MapStyle';
 import _ from "lodash";
 import { createAltPopup } from "../../utils/mapUtils"
-//import { createPopup } from "../../utils/mapUtils";
 import ReactDOMServer from 'react-dom/server';
 // eslint-disable-next-line no-unused-vars
 import VectorGrid from "leaflet.vectorgrid";
@@ -20,7 +19,6 @@ const toggleCountrySelection = (e, layer, highlightStyle) => {
 const createPopup = () => {
   return (
     <div className="col-12 p-0 flex">
-      <div className="col-12 p-0 popup-header">{"Initial"}</div>
     </div>)
 }
 
@@ -50,31 +48,35 @@ export default function CountriesTileLayer(props) {
   },[])
 
   useEffect(() => {
-    records.forEach(element => {
-      if (element.properties.testsAdministered != null)
-      {
-        layer.setFeatureStyle(element.alpha3Code, {
-          weight: 1,
-          color: '#00456E',
-          dashArray: '',
-          fillOpacity: 0.7,
-          fill: true ,
-          zIndex: 200
-        });
-      }
-    });
-
     if ( layer )
     {
+      records.forEach(element => {
+        if (element.properties.testsAdministered != null)
+        {
+          layer.setFeatureStyle(element.alpha3Code, {
+            weight: 1,
+            color: '#00456E',
+            dashArray: '',
+            fillOpacity: 0.7,
+            fill: true ,
+            zIndex: 200
+          });
+        }
+        else
+        {
+          layer.resetFeatureStyle(element.alpha3Code);
+        }
+      });
+
       layer.on({
         mouseover: (e) => {
           var pop = layer.getPopup()
           if(pop)
           {
             layer.openPopup(e.latlng);
-            const properties = records.find(x => x.alpha3Code === e.sourceTarget.properties.CODE)?.properties
-            if (properties) {
-              var test2 = ReactDOMServer.renderToString(createAltPopup(properties,'en'))
+            const country = records.find(x => x.alpha3Code === e.sourceTarget.properties.CODE)
+            if (country) {
+              var test2 = ReactDOMServer.renderToString(createAltPopup(country,'en'))
               pop.setContent(test2);
             }
           }
@@ -89,13 +91,13 @@ export default function CountriesTileLayer(props) {
         },
         mousemove: (e) => {
           const pop = layer.getPopup()
-          if(pop)
+          if(pop && e.latlng)
             pop.setLatLng(e.latlng)
         },
         click: (e) => {}
         })
     }
-  },[records])
+  },[records, layer])
 
   return null;
 }

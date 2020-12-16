@@ -18,7 +18,7 @@ export default function Map() {
   useEffect(() => {
     if(state.explore.estimateGradePrevalences.length > 0){
       const countriesData = state.countries.map( (country : any) => {
-        const countryEstimate = state.explore.estimateGradePrevalences.find(element => element.geographicalName == country.name);
+        const countryEstimate = state.explore.estimateGradePrevalences.find(element => element.geographicalName === country.name);
 
         if (countryEstimate && countryEstimate.testsAdministered) {
           const { testsAdministered, geographicalName, numberOfStudies, localEstimate, nationalEstimate, regionalEstimate, sublocalEstimate } = countryEstimate;
@@ -28,7 +28,7 @@ export default function Map() {
       })
       setMapRecords(countriesData);
     }
-  }, [state.explore.estimateGradePrevalences])
+  }, [state.explore.estimateGradePrevalences, state.countries])
 
   const bounds = latLngBounds([-90, -200], [90, 180]);
   const maxBounds = latLngBounds([-90, -200], [90, 200]);
@@ -77,15 +77,6 @@ export default function Map() {
         zoomOffset={-1}
         zIndex={200}
       />
-
-      {/*
-      <GeoJSON
-        onEachFeature={(feature, layer) => onAltEachFeature(feature, layer, mapRef, state.language)}
-        key={forceUpdate}
-        data={mapRecords as GeoJSON.GeoJsonObject}
-        style={(data) => altStyle(data, buckets)}>
-      </GeoJSON>
-      */}
     </MapContainer>
   );
 }

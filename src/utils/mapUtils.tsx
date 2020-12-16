@@ -123,26 +123,6 @@ export const resetHighlight = (e: LeafletMouseEvent) => {
   });
 };
 
-// This refers to the old map that displayed seroprevalences directly
-export const createPopup = (properties: any, language: LanguageType) => {
-  if (properties.seroprevalence) {
-    let error = properties?.error;
-    return (
-      <div className="col-12 p-0 flex">
-        <div className="col-12 p-0 popup-header">{getCountryName(properties.name, language, "CountryOptions")}</div>
-        <div className="col-12 p-0 popup-content">{Translate("Seroprevalence")}: {properties?.seroprevalence.toFixed(2)}%</div>
-        <div className="col-12 p-0 popup-content">{Translate("95%ConfidenceInterval")}: {(properties?.seroprevalence - error[0]).toFixed(2)}%-{(properties?.seroprevalence + error[1]).toFixed(2)}%</div>
-        <div className="col-12 p-0 popup-content">{Translate("TotalTests")}: {properties?.n}</div>
-        <div className="col-12 p-0 popup-content">{Translate('TotalEstimates')}: {properties?.num_studies}</div>
-      </div>)
-  };
-  return (
-    <div className="col-12 p-0 flex">
-      <div className="col-12 p-0 popup-header">{getCountryName(properties.name, language, "CountryOptions")}</div>
-      <div className="col-12 p-0 flex popup-content">{Translate('NoData')}</div>
-    </div>)
-}
-
 const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimate, title: string, isLastSection?: boolean) => {
   const minString = `${(regionalEstimate.minEstimate * 100).toFixed(2)}%`
   const maxString = `${(regionalEstimate.maxEstimate * 100).toFixed(2)}%`
@@ -157,7 +137,9 @@ const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimat
   )
 }
 
-export const createAltPopup = (properties: any, language: LanguageType) => {
+export const createAltPopup = (country: any, language: LanguageType) => {
+
+  const properties = country?.properties
 
   if (properties.testsAdministered) {
     var regions: Array<any> = []
@@ -181,7 +163,7 @@ export const createAltPopup = (properties: any, language: LanguageType) => {
 
   return (
     <div className="col-12 p-0 flex">
-      <div className="col-12 p-0 popup-header">{getCountryName(properties.name, language, "CountryOptions")}</div>
+      <div className="col-12 p-0 popup-header">{country.name}</div>
       <div className="col-12 p-0 flex popup-content">{Translate('NoData')}</div>
     </div>)
 }
@@ -192,52 +174,6 @@ export const zoomToFeature = (e: LeafletMouseEvent, mapRef: any
   const map = mapRef?.current?.leafletElement
   map?.fitBounds(e.target.getBounds());
 };
-
-// This method sets all the functionality for each GeoJSON item
-export const onEachFeature = (feature: GeoJSON.Feature, layer: Layer, mapRef: any, language: LanguageType) => {
-
-  layer.bindPopup(ReactDOMServer.renderToString(createPopup(feature.properties, language)), { closeButton: false, autoPan: false });
-
-  layer.on({
-    mouseover: (e: LeafletMouseEvent) => {
-      layer.openPopup();
-      highlightFeature(e)
-    },
-    mouseout: (e: LeafletMouseEvent) => {
-      layer.closePopup();
-      resetHighlight(e)
-    },
-    mousemove: (e: LeafletMouseEvent) => {
-      layer.getPopup()?.setLatLng(e.latlng);
-    },
-    click: (e: LeafletMouseEvent) => {
-      zoomToFeature(e, mapRef);
-    }
-  })
-}
-
-// This refers to the old map that displayed seroprevalences directly
-export const onAltEachFeature = (feature: GeoJSON.Feature, layer: Layer, mapRef: any, language: LanguageType) => {
-
-  layer.bindPopup(ReactDOMServer.renderToString(createAltPopup(feature.properties, language)), { closeButton: false, autoPan: false });
-
-  layer.on({
-    mouseover: (e: LeafletMouseEvent) => {
-      layer.openPopup();
-      highlightFeature(e)
-    },
-    mouseout: (e: LeafletMouseEvent) => {
-      layer.closePopup();
-      resetHighlight(e)
-    },
-    mousemove: (e: LeafletMouseEvent) => {
-      layer.getPopup()?.setLatLng(e.latlng);
-    },
-    click: (e: LeafletMouseEvent) => {
-      zoomToFeature(e, mapRef);
-    }
-  })
-}
 
 export const mapDataToFeatures = (features: GeoJSON.Feature[], prevalences: AggregatedRecord[]) => {
   const prevalenceCountryDict: Record<string, AggregatedRecord> = prevalences.reduce((a: any, x: AggregatedRecord) => ({ ...a, [x.name]: x }), {});
