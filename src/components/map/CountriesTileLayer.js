@@ -25,7 +25,7 @@ export default function CountriesTileLayer(props) {
   useEffect(() => {
         
     var layer = L.vectorGrid.protobuf(`${url}/tile/{z}/{y}/{x}.pbf`, {
-      rendererFactory: L.canvas.tile,
+      rendererFactory: L.svg.tile,
       attribution: '',
       interactive: true,
       vectorTileLayerStyles: layerStyle,
@@ -95,31 +95,3 @@ export default function CountriesTileLayer(props) {
 
   return null;
 }
-
-
-/*
-{
-      Countries: function(properties : any) 
-      {
-      const found = mapRecords.find((x : any)=> x.alpha3Code == properties.CODE)
-    
-      if (found) {   // If there exists sero prev data, blue, else clear.
-          return ({
-                    weight: 1,
-                    color: '#00456E',
-                    dashArray: '',
-                    fillOpacity: 0.7,
-                    fill: true ,
-                    zIndex: 200
-                });
-        }
-        else 
-        {
-            return ({
-                fillColor: '#ffffff',
-                fillOpacity : 0
-            });
-        }
-      }
-      }
-*/

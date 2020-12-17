@@ -20,6 +20,9 @@ export const layerStyle = {
             dashArray: '4, 4',
             color: "#8d9996"
         },
+    DISPUTED_AREAS: {
+            fillColor: "#DDDDDD"
+    },
     Default : {
             color: "#C1C1C1",
         },
