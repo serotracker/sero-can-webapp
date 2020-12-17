@@ -44,7 +44,7 @@ const getDecimalFromLogit = (logit: number) => {
 
 export const getMapUrl = (language: LanguageType) => {
   return language === LanguageType.english ? 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token='
-    : 'https://api.mapbox.com/styles/v1/serotracker/ckb5pp5aj33xn1it8hivdofiv/tiles/512/{z}/{x}/{y}?access_token='
+    : 'https://api.mapbox.com/styles/v1/serotracker/ckis9oc3k0qg51anfziiqixam/tiles/512/{z}/{x}/{y}?access_token='
 }
 
 export const colors = ['#76E57F', '#62CA7C', '#4FB079', '#3B9577', '#277A74', '#146071', '#00456E', "#EEEEEE"]

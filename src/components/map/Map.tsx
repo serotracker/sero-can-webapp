@@ -1,5 +1,5 @@
 import { latLngBounds } from "leaflet";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef, RefObject } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { AppContext } from "../../context";
 import { getBuckets, getMapUrl } from "../../utils/mapUtils";
@@ -8,12 +8,13 @@ import './Map.css';
 import VectorTileLayer from './VectorTileLayer.js';
 import CountriesTileLayer from "./CountriesTileLayer"
 import { layerStyle } from './MapStyle';
-import _ from "lodash";
+
 
 export default function Map() {
   const [state] = useContext(AppContext);
   const [mapRecords, setMapRecords] = useState(state.countries as any);
   const buckets = getBuckets(mapRecords);
+  const tileLayerRef = useRef<typeof TileLayer>();
 
   useEffect(() => {
     if(state.explore.estimateGradePrevalences.length > 0){
@@ -30,6 +31,24 @@ export default function Map() {
     }
   }, [state.explore.estimateGradePrevalences, state.countries])
 
+  /*
+  useEffect(() => {
+    // @ts-ignore
+    if(tileLayerRef.current)
+    {
+      // @ts-ignore
+      tileLayerRef.bringToFront()
+    }
+  }, [tileLayerRef])
+  */
+ const onLoad = () => {
+  if(tileLayerRef.current)
+    {
+      // @ts-ignore
+      tileLayerRef.bringToFront()
+    }
+  };
+
   const bounds = latLngBounds([-90, -200], [90, 180]);
   const maxBounds = latLngBounds([-90, -200], [90, 200]);
 
@@ -41,6 +60,7 @@ export default function Map() {
       zoom={3}
       className="map w-100"
       bounceAtZoomLimits={true}
+      worldCopyJump={true}
       bounds={bounds}
       minZoom={3}
       maxBounds={maxBounds}
@@ -70,12 +90,13 @@ export default function Map() {
       <Legend buckets={buckets} />
 
       <TileLayer
+        ref={(tl : any) => tl?.bringToFront()}
         url={getMapUrl(state.language) + mapboxAccessToken}
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         tileSize={512}
-        id={'serotracker/ckigku3zy5ofb19maxsv6uokr'}
+        id={'serotracker/ckis9n3mt0qkg19o0q03wkg84'}
         zoomOffset={-1}
-        zIndex={200}
+        zIndex={800}
       />
     </MapContainer>
   );

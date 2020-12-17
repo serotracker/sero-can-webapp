@@ -36,6 +36,7 @@ const parseApiStyle = async (url) => {
         weight: 1 ,
         color: layer.paint["line-color"],
         fillColor: layer.paint["fill-color"] || layerStyle.Default.color,
+        dashArray: layer.paint["line-dasharray"]?.join() || undefined,
         opacity: 1
       };
     } else if (layer.type === "fill") {

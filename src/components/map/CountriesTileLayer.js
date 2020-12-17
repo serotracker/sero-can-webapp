@@ -16,12 +16,6 @@ const toggleCountrySelection = (e, layer, highlightStyle) => {
     layer.setFeatureStyle(e.layer.properties.CODE, highlightStyle);
 }
 
-const createPopup = () => {
-  return (
-    <div className="col-12 p-0 flex">
-    </div>)
-}
-
 export default function CountriesTileLayer(props) {
 
   const { url, records, zIndex } = props;
@@ -41,8 +35,6 @@ export default function CountriesTileLayer(props) {
       zIndex: zIndex
     }
     ).addTo(map);
-
-    layer.bindPopup(ReactDOMServer.renderToString(createPopup()), { closeButton: false, autoPan: false });
 
     setLayer(layer);
   },[])
@@ -96,6 +88,8 @@ export default function CountriesTileLayer(props) {
         },
         click: (e) => {}
         })
+
+        layer.bindPopup(ReactDOMServer.renderToString(null), { closeButton: false, autoPan: false });
     }
   },[records, layer])
 

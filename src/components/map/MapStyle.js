@@ -7,14 +7,18 @@ export const layerStyle = {
         },
     Ocean : {
             weight: 1,
-            color: "#CAD2D3",
-            fillColor: "#CAD2D3",
+            color: "#d3dedc",
+            fillColor: "#d3dedc",
             opacity: 1
         },
     Countries: {
             weight: 0,
             color: "#ECEEEE",
             fill: false
+        },
+    DISPUTED_BORDERS: {
+            dashArray: '4, 4',
+            color: "#8d9996"
         },
     Default : {
             color: "#C1C1C1",
