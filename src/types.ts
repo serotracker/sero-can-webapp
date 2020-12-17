@@ -98,6 +98,7 @@ export type PageState = {
 export type EstimateGradePrevalence = {
     testsAdministered: number;
     geographicalName: string;
+    alpha3Code: string;
     numberOfStudies: number;
     localEstimate?: RegionalPrevalenceEstimate,
     nationalEstimate?: RegionalPrevalenceEstimate,

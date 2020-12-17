@@ -186,7 +186,8 @@ export default class httpClient {
             return {
                 numberOfStudies: record.n_estimates,
                 testsAdministered: record.n_tests_administered,
-                geographicalName: record.country,
+                geographicalName: record.country,          
+                alpha3Code: record.country_iso3,
                 localEstimate: {
                     maxEstimate: estimateSummary.Local.max_estimate,
                     minEstimate: estimateSummary.Local.min_estimate,

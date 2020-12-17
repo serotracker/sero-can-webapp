@@ -14,12 +14,11 @@ export default function Map() {
   const [state] = useContext(AppContext);
   const [mapRecords, setMapRecords] = useState(state.countries as any);
   const buckets = getBuckets(mapRecords);
-  const tileLayerRef = useRef<typeof TileLayer>();
 
   useEffect(() => {
     if(state.explore.estimateGradePrevalences.length > 0){
       const countriesData = state.countries.map( (country : any) => {
-        const countryEstimate = state.explore.estimateGradePrevalences.find(element => element.geographicalName === country.name);
+        const countryEstimate = state.explore.estimateGradePrevalences.find(element => element.alpha3Code === country.alpha3Code);
 
         if (countryEstimate && countryEstimate.testsAdministered) {
           const { testsAdministered, geographicalName, numberOfStudies, localEstimate, nationalEstimate, regionalEstimate, sublocalEstimate } = countryEstimate;
@@ -30,24 +29,6 @@ export default function Map() {
       setMapRecords(countriesData);
     }
   }, [state.explore.estimateGradePrevalences, state.countries])
-
-  /*
-  useEffect(() => {
-    // @ts-ignore
-    if(tileLayerRef.current)
-    {
-      // @ts-ignore
-      tileLayerRef.bringToFront()
-    }
-  }, [tileLayerRef])
-  */
- const onLoad = () => {
-  if(tileLayerRef.current)
-    {
-      // @ts-ignore
-      tileLayerRef.bringToFront()
-    }
-  };
 
   const bounds = latLngBounds([-90, -200], [90, 180]);
   const maxBounds = latLngBounds([-90, -200], [90, 200]);
@@ -60,7 +41,6 @@ export default function Map() {
       zoom={3}
       className="map w-100"
       bounceAtZoomLimits={true}
-      worldCopyJump={true}
       bounds={bounds}
       minZoom={3}
       maxBounds={maxBounds}
