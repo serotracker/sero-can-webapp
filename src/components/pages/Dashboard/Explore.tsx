@@ -5,6 +5,7 @@ import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../../constants
 import { AppContext } from "../../../context";
 import { PageStateEnum } from "../../../types";
 import Map from '../../map/Map';
+import MapboxMap from '../../map/MapboxMap';
 import MobileComponents from '../../mobile/ExploreMobile';
 import MaintenanceModal from "../../shared/MaintenanceModal";
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
@@ -38,7 +39,8 @@ export default function Explore() {
             </div>
             <div className="col-8 p-0 flex">
               <Loader indeterminate active={state.explore.isLoading}></Loader>
-              <Map />
+              <MapboxMap />
+              {/*<Map />*/}
             </div>
             <div className="col-2 p-0 flex">
               <RightSidebar page={PageStateEnum.explore} />
