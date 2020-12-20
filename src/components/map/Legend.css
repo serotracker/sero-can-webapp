@@ -4,14 +4,14 @@
   line-height: 18px;
   max-width: 50vw;
   position: absolute;
-  bottom: 2vh;
+  top: 2vh;
   /* left: calc(50% - 25vw); */
   right: 1vw;
   z-index: 500;
 }
 
 .legend p {
-  font-size: 20px;
+  font-size: 14px;
 }
 
 .legend-mobile {

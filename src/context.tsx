@@ -82,10 +82,16 @@ const initialState: State = {
   showCookieBanner: false,
   showAnalyzePopup: true,
   countries : []
+  showEstimatePins: true
 };
 
 const reducer = (state: State, action: Record<string, any>): State => {
   switch (action.type) {
+    case "TOGGLE_ESTIMATE_PINS":
+      return {
+        ...state,
+        showEstimatePins: !state.showEstimatePins
+      };
     case "CLOSE_COOKIE_BANNER":
       return {
         ...state,

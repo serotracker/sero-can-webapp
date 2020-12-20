@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import { colors } from "../../utils/mapUtils";
+import { AppContext } from "../../context";
 import "./Legend.css";
 import Translate from "../../utils/translate/translateService";
 
@@ -10,6 +11,7 @@ interface LegendProps {
 }
 
 export default function Legend(props: LegendProps) {
+  const [state, dispatch] = useContext(AppContext);
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
 
   // const labels = buckets.map((value, index) => {
@@ -28,9 +30,21 @@ export default function Legend(props: LegendProps) {
   //   return null;
   // })
 
+  const clickEstimatePinsCheckbox = (e: React.MouseEvent<HTMLElement>) => {
+    dispatch({ type: 'TOGGLE_ESTIMATE_PINS' })
+  }
+
   return (
     <div className={isMobileDeviceOrTablet ? "info flex legend-mobile center-item" : "info flex legend center-item"}>
-      <div className="flex center-item" key={Math.random()}>
+      <div className="flex center-item legend-container" key={Math.random()}>
+        <i className="block"><input type="checkbox" onClick={clickEstimatePinsCheckbox} /></i>
+        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>Estimate pins</p>
+        <i className="block"><img src={NationalPinIcon} style={{ width: "14px", height: "20px"}}/></i>
+        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("NationalEstimates")}</p>
+        <i className="block"><img src={RegionalPinIcon} style={{ width: "14px", height: "20px"}}/></i>
+        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("RegionalEstimates")}</p>
+        <i className="block"><img src={LocalPinIcon} style={{ width: "14px", height: "20px"}}/></i>
+        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("LocalEstimates")}</p>
         <i className="block" style={{ background: colors[6] }}></i>
         <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("CountryEstimatesExist")}</p>
       </div>
