@@ -11,6 +11,8 @@
 }
 
 .legend p {
+  text-align: start;
+  padding-left: 2em !important;
   font-size: 14px;
 }
 
