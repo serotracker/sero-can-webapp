@@ -32,12 +32,13 @@ export default function Legend(props: LegendProps) {
 
   const clickEstimatePinsCheckbox = (e: React.MouseEvent<HTMLElement>) => {
     dispatch({ type: 'TOGGLE_ESTIMATE_PINS' })
+    console.log(state.showEstimatePins)
   }
 
   return (
     <div className={isMobileDeviceOrTablet ? "info flex legend-mobile center-item" : "info flex legend center-item"}>
       <div className="flex center-item legend-container" key={Math.random()}>
-        <i className="block"><input type="checkbox" onClick={clickEstimatePinsCheckbox} /></i>
+        <i className="block"><input type="checkbox" checked={state.showEstimatePins} onClick={clickEstimatePinsCheckbox} /></i>
         <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>Estimate pins</p>
         <i className="block"><img src={NationalPinIcon} style={{ width: "14px", height: "20px"}}/></i>
         <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("NationalEstimates")}</p>

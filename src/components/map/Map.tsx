@@ -111,7 +111,7 @@ export default function Map() {
         zoomOffset={-1}
         zIndex={mapZIndex.Labels}
       />
-        {state.records.map((record, idx) => 
+        {state.showEstimatePins && state.records.map((record, idx) => 
         {
           if(record.pin_latitude && record.pin_longitude){
             return (
