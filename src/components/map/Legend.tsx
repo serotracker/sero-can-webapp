@@ -39,13 +39,13 @@ export default function Legend(props: LegendProps) {
     <div className={isMobileDeviceOrTablet ? "info flex legend-mobile center-item" : "info flex legend center-item"}>
       <div className="flex center-item legend-container" key={Math.random()}>
         <i className="block"><input type="checkbox" checked={state.showEstimatePins} onClick={clickEstimatePinsCheckbox} /></i>
-        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>Estimate pins</p>
+        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>Study pins</p>
         <i className="block"><img src={NationalPinIcon} style={{ width: "14px", height: "20px"}}/></i>
-        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("NationalEstimates")}</p>
+        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("NationalStudies")}</p>
         <i className="block"><img src={RegionalPinIcon} style={{ width: "14px", height: "20px"}}/></i>
-        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("RegionalEstimates")}</p>
+        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("RegionalStudies")}</p>
         <i className="block"><img src={LocalPinIcon} style={{ width: "14px", height: "20px"}}/></i>
-        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("LocalEstimates")}</p>
+        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("LocalStudies")}</p>
         <i className="block" style={{ background: colors[6] }}></i>
         <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("CountryEstimatesExist")}</p>
       </div>
