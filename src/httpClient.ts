@@ -4,9 +4,9 @@ import {parseISO, format } from "date-fns";
 
 export default class httpClient {
 
-    async httpGet(url: string) {
+    async httpGet(url: string, useAppRoute: boolean) {
         let url_full = url;
-        if (process.env.REACT_APP_ROUTE) {
+        if (useAppRoute && process.env.REACT_APP_ROUTE) {
             url_full = process.env.REACT_APP_ROUTE + url_full;
         }
         const res = await fetch(url_full);
@@ -44,36 +44,8 @@ export default class httpClient {
         }
     }
 
-    async getEsriStyles(url: string) {
-
-        const res = await fetch(url);
-        if (res.status !== 200) {
-            const error_msg = res.json();
-            console.error(error_msg);
-            return;
-        }
-        else {
-            const response_json = await res.json();
-            return response_json;
-        }
-    }
-
-    async getCountries() {
-
-        const res = await fetch("https://restcountries.eu/rest/v2/");
-        if (res.status !== 200) {
-            const error_msg = res.json();
-            console.error(error_msg);
-            return;
-        }
-        else {
-            const response_json = await res.json();
-            return response_json;
-        }
-    }
-
     async getAllFilterOptions() {
-        const response = await this.httpGet('/data_provider/filter_options');
+        const response = await this.httpGet('/data_provider/filter_options', true);
         const options: Record<string, any> = {}
         for(let k in response){
             // Currently no need for max and min date options

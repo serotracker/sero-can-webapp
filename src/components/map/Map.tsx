@@ -8,7 +8,7 @@ import './Map.css';
 import VectorTileLayer from './VectorTileLayer.js';
 import CountriesTileLayer from "./CountriesTileLayer"
 import { layerStyle } from './MapStyle';
-
+import { mapZIndex } from './../../constants'
 
 export default function Map() {
   const [state] = useContext(AppContext);
@@ -49,8 +49,8 @@ export default function Map() {
 
       <CountriesTileLayer
         url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer"
-        records={mapRecords}
-        zIndex={50}
+        mapRecords={mapRecords}
+        zIndex={mapZIndex.CountriesTileLayer}
       />
 
       <VectorTileLayer 
@@ -61,7 +61,7 @@ export default function Map() {
 
       <VectorTileLayer 
         url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer"
-        zIndex={70}
+        zIndex={mapZIndex.DisputedAreasAndBorders}
         fetchApiStyle
         style={layerStyle}
         front
@@ -76,7 +76,7 @@ export default function Map() {
         tileSize={512}
         id={'serotracker/ckis9n3mt0qkg19o0q03wkg84'}
         zoomOffset={-1}
-        zIndex={800}
+        zIndex={mapZIndex.Labels}
       />
     </MapContainer>
   );

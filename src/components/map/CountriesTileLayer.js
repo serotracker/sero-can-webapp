@@ -18,13 +18,12 @@ const toggleCountrySelection = (e, layer, highlightStyle) => {
 
 export default function CountriesTileLayer(props) {
 
-  const { url, records, zIndex } = props;
+  const { url, mapRecords, zIndex } = props;
   const map = useMap();
   const [layer, setLayer] = useState(undefined);
   
   useEffect(() => {
-        
-    var layer = L.vectorGrid.protobuf(`${url}/tile/{z}/{y}/{x}.pbf`, {
+    const vectorGridLayer = L.vectorGrid.protobuf(`${url}/tile/{z}/{y}/{x}.pbf`, {
       rendererFactory: L.svg.tile,
       attribution: '',
       interactive: true,
@@ -36,13 +35,13 @@ export default function CountriesTileLayer(props) {
     }
     ).addTo(map);
 
-    setLayer(layer);
-  },[])
+    setLayer(vectorGridLayer);
+  },[map, url, zIndex])
 
   useEffect(() => {
-    if ( layer )
+    if (layer)
     {
-      records.forEach(element => {
+      mapRecords.forEach(element => {
         if (element.properties.testsAdministered != null)
         {
           layer.setFeatureStyle(element.alpha3Code, {
@@ -62,14 +61,13 @@ export default function CountriesTileLayer(props) {
 
       layer.on({
         mouseover: (e) => {
-          var pop = layer.getPopup()
+          const pop = layer.getPopup()
           if(pop)
           {
             layer.openPopup(e.latlng);
-            const country = records.find(x => x.alpha3Code === e.sourceTarget.properties.CODE)
+            const country = mapRecords.find(x => x.alpha3Code === e.sourceTarget.properties.CODE)
             if (country) {
-              var test2 = ReactDOMServer.renderToString(createAltPopup(country,'en'))
-              pop.setContent(test2);
+              pop.setContent(ReactDOMServer.renderToString(createAltPopup(country,'en')));
             }
           }
   
@@ -77,21 +75,24 @@ export default function CountriesTileLayer(props) {
         },
         mouseout: (e) => {
           if(layer.getPopup())
+          {
             layer.closePopup();
+          }
   
           toggleCountrySelection(e, e.target, highlightStyles.default)
         },
         mousemove: (e) => {
           const pop = layer.getPopup()
           if(pop && e.latlng)
+          {
             pop.setLatLng(e.latlng)
+          }
         },
-        click: (e) => {}
         })
 
         layer.bindPopup(ReactDOMServer.renderToString(null), { closeButton: false, autoPan: false });
     }
-  },[records, layer])
+  },[mapRecords, layer])
 
   return null;
 }

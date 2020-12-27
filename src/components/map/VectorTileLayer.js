@@ -4,17 +4,8 @@ import L from 'leaflet';
 import { layerStyle } from './MapStyle';
 import httpClient from "../../httpClient";
 import _ from "lodash";
-import { highlightVectorFeature, resetHighlightVectorFeature } from "../../utils/mapUtils";
 // eslint-disable-next-line no-unused-vars
 import VectorGrid from "leaflet.vectorgrid";
-
-// custom componants for 2.X https://react-leaflet.js.org/legacy/docs/en/custom-components
-// for 3.X + https://react-leaflet.js.org/docs/api-map/#mapcontainer
-// <TileLayer url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer/tile/{z}/{y}/{x}.pbf" /> 
-// above is wrong because mapbox doesn't know how to use ESRIs return pbf format into useable vector tiles :(
-//  TEST: esriTilesUrl = "https://basemaps.arcgis.com/v1/arcgis/rest/services/World_Basemap/VectorTileServer/tile/{z}/{y}/{x}.pbf";
-// plugin for protobuffer to compile with the MapBox Vector Tile Specification https://leaflet.github.io/Leaflet.VectorGrid/vectorgrid-api-docs.html
-
 
 // Parser for Esri ArcGis styles for leaflet.
 // ArcGIS Vector labels do not work in the current version
@@ -25,7 +16,7 @@ const parseApiStyle = async (url) => {
   const vectorTileLayerStyles = {};
 
   // get the actual JSON style file from the ArcGIS REST endpoint
-  const data = await api.getEsriStyles(`${url}/resources/styles/root.json`);
+  const data = await api.httpGet(`${url}/resources/styles/root.json`, false);
 
   // loop over the layers property specifically for the JSON style
   data.layers.forEach(layer => {
@@ -70,7 +61,7 @@ export default function VectorTileLayer(props) {
   useEffect(() => {
       (async function buildVectorTileLayer() {
 
-        var mappingStyle = style;
+        let mappingStyle = style;
         
         if (fetchApiStyle)
         {
@@ -80,7 +71,7 @@ export default function VectorTileLayer(props) {
             mappingStyle = _.merge(apiStyle, style); // use styles from API but overwrite if found in mappingStyle
         }
         
-        var layer = L.vectorGrid.protobuf(`${url}/tile/{z}/{y}/{x}.pbf`, {
+        const layer = L.vectorGrid.protobuf(`${url}/tile/{z}/{y}/{x}.pbf`, {
           rendererFactory: L.canvas.tile,
           attribution: '',
           vectorTileLayerStyles: mappingStyle,

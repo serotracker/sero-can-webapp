@@ -12,7 +12,9 @@ import _ from "lodash";
 
 export const getBuckets = (features: any) => {
   if (!features)
+  {
     return [0];
+  }
   // This is some javascript voodoo to get maxSeroprevalence
   const maxSeroprevalence = Math.max.apply(Math, features.filter((o : any) => o.properties?.seroprevalence).map((o : any) => o?.properties?.seroprevalence));
   const roundedMax = Math.ceil(maxSeroprevalence);
@@ -106,14 +108,12 @@ export const highlightFeature = (e: LeafletMouseEvent) => {
     //zIndex: 200
   });
   layer.bringToBack();
-
 }
 
 export const resetHighlightVectorFeature = (e: LeafletMouseEvent) => e.target.resetFeatureStyle(e.layer.properties.CODE);
 
 export const resetHighlight = (e: LeafletMouseEvent) => {
   const layer = e.target;
-
   layer.setStyle({
     weight: 2,
     opacity: 1,
