@@ -78,7 +78,8 @@ export type State = {
     dataPageState: DataPageState,
     language: LanguageType,
     showCookieBanner: boolean,
-    showAnalyzePopup: boolean
+    showAnalyzePopup: boolean,
+    countries: any
 };
 
 export type StartDates = {
@@ -97,6 +98,7 @@ export type PageState = {
 export type EstimateGradePrevalence = {
     testsAdministered: number;
     geographicalName: string;
+    alpha3Code: string;
     numberOfStudies: number;
     localEstimate?: RegionalPrevalenceEstimate,
     nationalEstimate?: RegionalPrevalenceEstimate,

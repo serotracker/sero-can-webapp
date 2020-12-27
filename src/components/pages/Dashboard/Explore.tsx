@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React , { useContext, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Dimmer, Loader } from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../../constants";

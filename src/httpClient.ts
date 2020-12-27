@@ -4,9 +4,9 @@ import {parseISO, format } from "date-fns";
 
 export default class httpClient {
 
-    async httpGet(url: string) {
+    async httpGet(url: string, useAppRoute: boolean) {
         let url_full = url;
-        if (process.env.REACT_APP_ROUTE) {
+        if (useAppRoute && process.env.REACT_APP_ROUTE) {
             url_full = process.env.REACT_APP_ROUTE + url_full;
         }
         const res = await fetch(url_full);
@@ -45,7 +45,7 @@ export default class httpClient {
     }
 
     async getAllFilterOptions() {
-        const response = await this.httpGet('/data_provider/filter_options');
+        const response = await this.httpGet('/data_provider/filter_options', true);
         const options: Record<string, any> = {}
         for(let k in response){
             // Currently no need for max and min date options
@@ -158,7 +158,8 @@ export default class httpClient {
             return {
                 numberOfStudies: record.n_estimates,
                 testsAdministered: record.n_tests_administered,
-                geographicalName: record.country,
+                geographicalName: record.country,          
+                alpha3Code: record.country_iso3,
                 localEstimate: {
                     maxEstimate: estimateSummary.Local.max_estimate,
                     minEstimate: estimateSummary.Local.min_estimate,

@@ -48,6 +48,19 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // pulls from ISO api to get standardized country names, codes and translations
+  useEffect(() => {    
+    const updateCountriesJson = async () => {
+      const api = new httpClient()
+      const countriesJson = await api.httpGet("https://restcountries.eu/rest/v2/", false);
+      dispatch({
+        type: 'UPDATE_COUNTRIES_JSON',
+        payload: countriesJson
+      });
+    }
+    updateCountriesJson();
+  }, [dispatch])
+
   useEffect(() => {
     const alreadyAcceptedCookes = localStorage.getItem('acceptedCookies');
     if (alreadyAcceptedCookes) {
