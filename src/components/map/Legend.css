@@ -27,6 +27,16 @@
   z-index: 500;
 }
 
+.legend-container { 
+  flex-direction: column;
+  align-items: left;
+}
+
+.legend-item {
+  display: flex;
+  padding: 0.5em 0;
+}
+
 .mobile-text {
   text-align: start;
   margin-left: -5px;
@@ -61,6 +71,8 @@ h4.legend-title:hover span {
   bottom: 10px;
   padding: 1em;
   font-weight: 400;
+  display: flex;
+  padding: 0.5em 0;
   font-size: 0.875em;
   background-color: #fff;
   color: #000;

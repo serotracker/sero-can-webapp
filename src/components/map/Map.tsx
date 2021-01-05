@@ -1,6 +1,6 @@
-import { latLngBounds } from "leaflet";
-import React, { useContext, useEffect, useState, useRef, RefObject } from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { latLngBounds, icon } from "leaflet";
+import React, { useContext, useEffect, useState } from "react";
+import { Marker, Popup, MapContainer, TileLayer } from "react-leaflet";
 import { AppContext } from "../../context";
 import { getBuckets, getMapUrl } from "../../utils/mapUtils";
 import Legend from "./Legend";
@@ -35,33 +35,25 @@ export default function Map() {
 
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 
-  const clickMarker = (e: React.MouseEvent<HTMLElement>) => {
-    // TODO: Upon clicking on a marker, make the marker and the popover draggable
-    //       and keep a record of the lat/lng that the marker was originally at 
-    //       so that upon closing the popover, the marker can go back to the original
-    //       location.
-    (e.target as any).openPopup();
-  }
-
   // Definitions of the marker fields: 
   //  iconSize: size of the icon
   //  iconAnchor: point of the icon which will correspond to marker's location
   //  popupAnchor: point from which the popup should open relative to the iconAnchor
-  const nationalMarker = L.icon({ 
+  const nationalMarker = icon({ 
     iconUrl: require('../../assets/icons/national_pin.png'), 
     iconSize: [28, 40],
     iconAnchor: [14, 40],
     popupAnchor: [0, -30]
   })
 
-  const regionalMarker = L.icon({ 
+  const regionalMarker = icon({ 
     iconUrl: require('../../assets/icons/regional_pin.png'), 
     iconSize: [21, 30],
     iconAnchor: [10.5, 30],
     popupAnchor: [0, -20]
   })
 
-  const localMarker = L.icon({ 
+  const localMarker = icon({ 
     iconUrl: require('../../assets/icons/local_pin.png'), 
     iconSize: [14, 20],
     iconAnchor: [7, 20],
@@ -111,13 +103,17 @@ export default function Map() {
         zoomOffset={-1}
         zIndex={mapZIndex.Labels}
       />
-        {state.showEstimatePins && state.records.map((record, idx) => 
+      {state.showEstimatePins && state.explore.records.map((record, idx) => 
         {
           if(record.pin_latitude && record.pin_longitude){
             return (
               <Marker 
-                onClick={clickMarker}
-                icon={record.estimate_grade == "National" ? nationalMarker : (record.estimate_grade == "Regional" ? regionalMarker : localMarker)}
+                eventHandlers={{
+                  click: (e) => {
+                    (e.target as any).openPopup();
+                  },
+                }}
+                icon={record.estimate_grade === "National" ? nationalMarker : (record.estimate_grade === "Regional" ? regionalMarker : localMarker)}
                 key={`marker-${idx}`} 
                 position={[record.pin_latitude, record.pin_longitude]}
               >
@@ -135,7 +131,7 @@ export default function Map() {
                     Location
                   </div>
                   <div className="popup-text">
-                    {record.city && `${record.city}`}{record.city && record.city.length != 0 && record.state && record.state.length != 0 && ", "}{record.state && `${record.state}`}{record.state && record.state.length != 0 && record.country && ", "}{record.city && record.city.length != 0 && record.state && record.state.length == 0 && record.country && ", "}{record.country && `${record.country}`}
+                    {record.city && `${record.city}`}{record.city && record.city.length !== 0 && record.state && record.state.length !== 0 && ", "}{record.state && `${record.state}`}{record.state && record.state.length !== 0 && record.country && ", "}{record.city && record.city.length !== 0 && record.state && record.state.length === 0 && record.country && ", "}{record.country && `${record.country}`}
                   </div>
                   <div className="popup-heading">
                     Best seroprevalence (SP) estimate
@@ -166,7 +162,7 @@ export default function Map() {
             )
           }
         }
-        )}
+      )}
     </MapContainer>
   );
 }

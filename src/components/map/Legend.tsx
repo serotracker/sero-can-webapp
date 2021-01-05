@@ -6,6 +6,10 @@ import { AppContext } from "../../context";
 import "./Legend.css";
 import Translate from "../../utils/translate/translateService";
 
+import NationalPinIcon from "../../assets/icons/national_pin.png";
+import RegionalPinIcon from "../../assets/icons/regional_pin.png";
+import LocalPinIcon from "../../assets/icons/local_pin.png";
+
 interface LegendProps {
   buckets: number[]
 }
@@ -37,17 +41,27 @@ export default function Legend(props: LegendProps) {
 
   return (
     <div className={isMobileDeviceOrTablet ? "info flex legend-mobile center-item" : "info flex legend center-item"}>
-      <div className="flex center-item legend-container" key={Math.random()}>
-        <i className="block"><input type="checkbox" checked={state.showEstimatePins} onClick={clickEstimatePinsCheckbox} /></i>
-        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>Study pins</p>
-        <i className="block"><img src={NationalPinIcon} style={{ width: "14px", height: "20px"}}/></i>
-        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("NationalStudies")}</p>
-        <i className="block"><img src={RegionalPinIcon} style={{ width: "14px", height: "20px"}}/></i>
-        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("RegionalStudies")}</p>
-        <i className="block"><img src={LocalPinIcon} style={{ width: "14px", height: "20px"}}/></i>
-        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("LocalStudies")}</p>
-        <i className="block" style={{ background: colors[6] }}></i>
-        <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("CountryEstimatesExist")}</p>
+      <div className="flex legend-container" key={Math.random()}>
+        <div className="legend-item">
+          <i className="block"><input type="checkbox" checked={state.showEstimatePins} onClick={clickEstimatePinsCheckbox} /></i>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>Study pins</p>
+        </div>
+        <div className="legend-item">
+          <i className="block"><img src={NationalPinIcon} alt="national pin icon" style={{ width: "14px", height: "20px"}}/></i>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("NationalStudies")}</p>
+        </div>
+        <div className="legend-item">
+          <i className="block"><img src={RegionalPinIcon} alt="regional pin icon" style={{ width: "14px", height: "20px"}}/></i>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("RegionalStudies")}</p>
+        </div>
+        <div className="legend-item">
+          <i className="block"><img src={LocalPinIcon} alt="local pin icon" style={{ width: "14px", height: "20px"}}/></i>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("LocalStudies")}</p>
+        </div>
+        <div className="legend-item">
+          <i className="block" style={{ background: colors[6] }}></i>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("CountryEstimatesExist")}</p>
+        </div>
       </div>
       {/* {labels} */}
       {/* <h4 className="legend-title p-0 middle">{Translate('Seroprevalence')}

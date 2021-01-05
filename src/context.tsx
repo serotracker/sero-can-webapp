@@ -81,7 +81,7 @@ const initialState: State = {
   updatedAt: '',
   showCookieBanner: false,
   showAnalyzePopup: true,
-  countries : []
+  countries : [],
   showEstimatePins: true
 };
 
