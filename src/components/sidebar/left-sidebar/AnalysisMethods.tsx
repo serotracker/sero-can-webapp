@@ -1,37 +1,38 @@
 import React from "react";
+import Translate from "../../../utils/translate/translateService";
 import InformationText from "../../shared/InformationText";
 import './AnalysisMethods.css';
 
 const MIN_DENOMINATOR = 100
 export default function AnalysisMethods() {
-  return (
-    <div className="analysis-methods">
-        <div className="section-title py-2 center">
-            ANALYSIS METHODS
-        </div>
-        <div>
+    return (
+        <div className="analysis-methods">
+            <div className="section-title py-2 center">
+                {Translate("AnalysisMethods", ["Title"]).toUpperCase()}
+            </div>
             <div>
-                {'The seroprevalence shown for each country or factor is calculated by '}
-                    <InformationText 
+                <div>
+                    {Translate("AnalysisMethods", ["FirstParagraph", "FirstSentence"], null, [false, true])}
+                    <InformationText
                         tooltip={
                             <div>
-                            <p>
-                                The aggregation technique used is fixed-effects, inverse-variance-weighted meta-analysis of prevalence, with the Freeman-Tukey double arcsin transform used to stabilize variance. Records over sample size {MIN_DENOMINATOR} considered.
-                            </p>
-                        </div>
+                                <p>
+                                    {Translate("AnalysisMethods", ["Tooltip"], { "MIN_DENOMINATOR": MIN_DENOMINATOR })}
+                                </p>
+                            </div>
                         }
-                        text="aggregating"
+                        text={Translate("Aggregating").toLowerCase()}
                         offset={-12}
-                    /> 
-                {' all seroprevalence estimates that match the filters you specify.'}
+                    />
+                    {Translate("AnalysisMethods", ["FirstParagraph", "SecondSentence"], null, [true, false])}
+                </div>
             </div>
+            <p>
+            {Translate("AnalysisMethods", ["SecondParagraph"], null)}
+        </p>
+            <p>
+            {Translate("AnalysisMethods", ["ThirdParagraph"], null)}
+        </p>
         </div>
-        <p>
-            Default filters: national and regional estimates, in the general population and blood donors. 
-        </p>
-        <p>
-            These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias. 
-        </p>
-    </div>
-  )
+    )
 }

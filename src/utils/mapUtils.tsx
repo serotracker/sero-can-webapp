@@ -1,14 +1,8 @@
 
-import * as Countries from 'i18n-iso-countries';
-import English from "i18n-iso-countries/langs/en.json";
-import French from "i18n-iso-countries/langs/fr.json";
-import { Layer, LeafletMouseEvent } from 'leaflet';
+import { LeafletMouseEvent } from 'leaflet';
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import { LanguageType, AggregatedRecord, EstimateGradePrevalence, RegionalPrevalenceEstimate } from "../types";
-import { toPascalCase } from './translate/caseChanger';
-import Translate from './translate/translateService';
-import _ from "lodash";
+import { AggregatedRecord, EstimateGradePrevalence, LanguageType, RegionalPrevalenceEstimate } from "../types";
+import Translate, { getCountryName } from './translate/translateService';
 
 export const getBuckets = (features: any) => {
   if (!features)
@@ -61,15 +55,6 @@ export const getColor = (d: number | null, buckets: number[]) => {
               colors[6]
 }
 
-Countries.registerLocale(English);
-Countries.registerLocale(French);
-
-export const getCountryName = (country: string, language: LanguageType, optionString: string) => {
-  const code = Countries.getAlpha2Code(country, 'en'); //TODO: Review our strategy for country name language localization
-  const translatedCountryName = Countries.getName(code, language);
-  const displayText = translatedCountryName ? translatedCountryName : (Translate(optionString, [toPascalCase(country)]) || country);
-  return displayText;
-}
 
 // This refers to the old map that displayed seroprevalences directly
 export const style = (feature: GeoJSON.Feature<GeoJSON.Geometry, any> | undefined, buckets: number[]) => {

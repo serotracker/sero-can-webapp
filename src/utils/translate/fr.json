@@ -1,3 +1,384 @@
-{  
-  "Seroprevalence": "Séroprévalence"
+{
+    "95%ConfidenceInterval": "Intervalle de confiance de 95 %",
+    "95%ConfidenceIntervalTooltip": "Les barres d'erreur plus larges indiquent une incertitude plus accentu\u00e9e dans l'estimation regroup\u00e9e de s\u00e9ropr\u00e9valence.",
+    "About": "\u00c0 propos",
+    "Accept": "Accepter",
+    "Article": "Article",
+    "AcceptCookies": "Accepter les fichiers t\u00e9moins",
+    "Publication": "Publication",
+    "AboutPage": {
+        "AboutSection": {
+            "SupportedBy": "SeroTracker dispose du soutien de",
+            "PublicHealthAgency": "l'Agence de la sant\u00e9 publique du Canada",
+            "HostedAt": "et est h\u00e9berg\u00e9 par",
+            "PartOne": "\u00c0 mesure que la phase aigu\u00eb de la pand\u00e9mie de la COVID-19 d\u00e9passe son pic, de nombreux pays acc\u00e9l\u00e8rent leurs investissements dans les tests s\u00e9rologiques (d'anticorps). La compr\u00e9hension de mod\u00e8les d'anticorps dans la population et d'une immunit\u00e9 potentielle sont des sujets d'un grand int\u00e9r\u00eat \u00e0 la fois pour les cliniciens, les agents de la sant\u00e9 publique et les responsables politiques.",
+            "PartTwo": "SeroTracker est un centre de connaissances qui traque et synth\u00e9tise les r\u00e9sultats des efforts de s\u00e9rosurveillance du SRAS-CoV-2 \u00e0 travers le monde.",
+            "HealthInformatics": "le Centre d'informatique de sant\u00e9 de l'Universit\u00e9 de Calgary.",
+            "ThroughThe": "à travers le",
+            "Covid19ImmunityTaskForce": "Groupe de travail sur l'immunit\u00e9 face \u00e0 la COVID-19,",
+            "MappingTheExtent": "Le Groupe de travail sur l’immunité face à la COVID-19 est la cartographie l'étendue de l'infection par le SRAS-CoV-2 au Canada et SeroTracker fournit également du contenu pour leur",
+            "GlobalSerologicalKnowledgeHub": "Portail de connaissances internationales sur les tests s\u00e9rologiques du Groupe de travail."
+        },
+        "ContactSection": {
+            "BulletPointFive": {
+                "PartOne": "Pour nous signaler",
+                "PartThree": "ou des \u00e9tudes que nous n'avons pas encore captur\u00e9es, veuillez remplir",
+                "PartTwo": "de nouvelles \u00e9tudes sur la s\u00e9ropr\u00e9valence du SRAS-CoV-2"
+            },
+            "BulletPointOne": {
+                "PartOne": "Pour toute demande li\u00e9e \u00e0 SeroTracker (y compris pour soutenir nos efforts, pour collaborer avec nous, ou si vous \u00eates un journaliste qui cherche \u00e0 rendre compte de nos observations), veuillez contacter Rahul Arora \u00e0 ",
+                "PartTwo": "et Tingting Yan \u00e0 ",
+                "PartThree": "Les journalistes et les membres des médias: Pour Caroline Phaneuf s'il vous plaît à",
+                "PartFour": "et Kelly Johnston"
+            },
+            "SectionOne": "Nous sommes une \u00e9quipe interdisciplinaire de chercheurs et d'ing\u00e9nieurs \u00e0 l'Universit\u00e9 d\u2019Oxford, l'Universit\u00e9 de Toronto, l'Universit\u00e9 de Waterloo, l'Universit\u00e9 de Calgary et \u00e0 l'Universit\u00e9 de Harvard."
+        },
+        "Mapbox": "prend en charge l'infrastructure de mappage de SeroTracker."
+    },
+    "AboutSeroTracker": "\u00c0 propos de SeroTracker",
+    "Age": "\u00c2ge",
+    "AgeGroup": "Groupe d'\u00e2ge",
+    "AgeOptions": {
+        "Adults(18-64)": "Adultes (18-64)",
+        "All": "Tous",
+        "Children(0-12)": "Enfants (0-12)",
+        "Seniors(65+)": "Personnes \u00e2g\u00e9es (65+)",
+        "Unspecified": "Non pr\u00e9cis\u00e9",
+        "Youth(13-17)": "Jeunes (13-17)"
+    },
+    "AggregatedPrevalence": "Fr\u00e9quence cumulative",
+    "Analyze": "Analyser",
+    "AnalysisMethods": {
+        "FirstParagraph": {
+
+
+        },
+        "SecondParagraph": "filtres par défaut:. Estimations nationales et régionales, dans la population générale et les donneurs de sang",
+        "ThirdParagraph": "Ces estimations agrégées doivent être interprétées avec prudence, surtout si les études qui ont été agrégées ne comportaient pas des échantillons représentatifs ou étaient à risque élevé de biais",
+        "Title": "Méthodes d'analyse",
+        "Tooltip": "La technique d'agrégation est à effets fixes, méta-analyse pondérée inverse la variance de la prévalence, avec la double arcsin Freeman-Tukey transformée utilisés pour stabiliser la variance sur la taille des échantillons MIN_DENOMINATOR dossiers considérés."
+    },
+    "Welcome": "Bienvenue à SeroTracker",
+    "Aggregating": "Agrégation",
+    "UseOfData": "L'utilisation de ces données est régie par SeroTracker de",
+    "AuthorAndLeadOrganizationNotReported": "Auteur et organisation responsable non indiqu\u00e9s",
+    "BlankUniversity": "Universit\u00e9 de NOM",
+    "ChangeSettings": "Modifier les param\u00e8tres",
+    "CoDirector": "Codirecteur",
+    "ContactUs": "Nous contacter",
+    "Countries": "Pays",
+    "Country": "Pays",
+    "CountryOptions": {
+        "England": "Angleterre",
+        "Iran": "Iran",
+        "Scotland": "\u00c9cosse",
+        "UnitedStates": "\u00c9tats-Unis"
+    },
+    "CPPInvestmentBoard": "Office d'investissement du RPC",
+    "Dashboard": "Tableau de bord",
+    "Data": "Donn\u00e9es",
+    "DateRange": "Plage de donn\u00e9es",
+    "Demographics": "Donn\u00e9es d\u00e9mographiques",
+    "DemographicsTooltip": "Filtrer les variables d\u00e9mographiques, y compris le groupe de population, le sexe et le groupe d'\u00e2ge.",
+    "Details": "D\u00e9tails",
+    "DevelopmentTeam": "\u00c9quipe de d\u00e9veloppement",
+    "EconomicsTeam": "\u00c9quipe \u00e9conomique",
+    "EndDate": "Date de fin",
+    "English": "anglais",
+    "Estimate": "Estimation",
+    "EstimateGrade": "Niveau d'estimation",
+    "EstimateGradeOptions": {
+        "National": "National",
+        "Regional": "R\u00e9gional",
+        "Local": "Local",
+        "Hyperlocal": "Hyperlocal"
+    },
+    "ExecutiveDirector": "Directeur g\u00e9n\u00e9ral",
+    "Explore": "Explorer",
+    "Filter": "Filtrer",
+    "FilterTooltip": "Filtrer le fichier de donn\u00e9es SeroTracker selon l'emplacement g\u00e9ographique, l'\u00e9tude, les donn\u00e9es d\u00e9mographiques et le type de test. Seules les \u00e9tudes correspondant aux filtres s\u00e9lectionn\u00e9s seront choisies.",
+    "For": "Pour",
+    "French": "fran\u00e7ais",
+    "Geographies": "G\u00e9ographies",
+    "Geography": "G\u00e9ographie",
+    "GeographyTooltip": "S\u00e9lectionner les pays concern\u00e9s.",
+    "Here": "Ici",
+    "Isotypes": "Isotypes",
+    "IsotypesReported": "Isotypes signal\u00e9s",
+    "IsotypesReportedOptions": {
+        "IgA": "IgA",
+        "IgG": "IgG",
+        "IgM": "IgM",
+        "IgMIgG": "IgM IgG"
+    },
+    "LancetArticle": "Num\u00e9ro d'identification Lancet",
+    "LastUpdatedTooltip": "SeroTracker est constamment mis \u00e0 jour avec des r\u00e9sultats d'\u00e9tudes s\u00e9rologiques nouvellement parues. Les nouvelles \u00e9tudes que nous trouvons sont incluses dans les 48 heures suivant leur publication.",
+    "Location": "Lieu",
+    "Manufacturer": "Fabricant",
+    "Methods": "M\u00e9thodes",
+    "MethodsText": {
+        "FirstParagraph": "SeroTracker assure une synth\u00e8se syst\u00e9matique mondiale de projets de s\u00e9rosurveillance du SRAS-CoV-2. Nous filtrons les articles scientifiques, les pr\u00e9impressions, les rapports gouvernementaux et les articles parus dans les m\u00e9dias afin d'identifier les estimations de pr\u00e9valence indiqu\u00e9es ci-dessous. Nous mettons \u00e0 jour nos donn\u00e9es avec tous les rapports de s\u00e9ropr\u00e9valence que nous avons pu trouver dans nos recherches.",
+        "SecondParagraphPartOne": "Vous pouvez consulter la totalit\u00e9 de nos m\u00e9thodes",
+        "SecondParagraphPartTwo": "Pour soumettre une \u00e9tude de s\u00e9ropr\u00e9valence du SRAS-CoV-2 que nous n'avions pas encore incluse ci-dessous, veuillez utiliser"
+    },
+    "N": "N",
+    "Name": "Nom",
+    "NoData": "Aucune donn\u00e9e",
+    "NotReported": "Non signal\u00e9e",
+    "OurData": "Nos donn\u00e9es",
+    "OurDataText": {
+        "PointOne": "saisissent la totalit\u00e9 des \u00e9tudes indiquant des estimations de pr\u00e9valence",
+        "PointTwo": "d\u00e9crivent des \u00e9tudes qui n'ont pas encore signal\u00e9 d'estimations de s\u00e9ropr\u00e9valence",
+        "Text": "Le tableau ci-dessous d\u00e9crit nos r\u00e9sultats, y compris des informations d\u00e9taill\u00e9es pour chaque \u00e9tude, chaque estimation de pr\u00e9valence et les risques de partialit\u00e9 associ\u00e9s."
+    },
+    "OurTeam": "Notre \u00e9quipe",
+    "OverallRiskOfBias": "Risque g\u00e9n\u00e9ral de partialit\u00e9",
+    "Paper": "Article",
+    "PaperText": "Vous trouverez notre premier manuscrit d\u00e9crivant les enseignements des s\u00e9rosondages jusqu'au 1er mai sur",
+    "PlannedSerosurveys": "S\u00e9rosondages planifi\u00e9s",
+    "Population": "Population",
+    "PopulationGroup": "Groupe de population",
+    "PrivacyPolicy": "Politique de confidentialit\u00e9",
+    "GeneralTerms": "Conditions g\u00e9n\u00e9rales",
+    "Legalese": "Jargon juridique",
+    "DisclaimerBody": "Les noms des emplacements apparaissant sur le site Web correspondent aux d\u00e9signations officielles de simplemaps.com. Le contenu du site n\u2019exprime aucune opinion de la part de l\u2019\u00e9quipe de SeroTracker, de ses membres et des organisations auxquelles ceux-ci sont affili\u00e9s, ou du Groupe de travail sur l\u2019immunit\u00e9 face \u00e0 la COVID-19 en ce qui concerne la situation juridique d\u2019un pays, d\u2019un territoire ou de ses autorit\u00e9s. Nous ne garantissons pas l\u2019absence d\u2019erreur au sein des fronti\u00e8res, des noms g\u00e9ographiques et des donn\u00e9es connexes s\u2019affichant sur les cartes ou dans les listes, les tableaux, les documents et les bases de donn\u00e9es du site Web. L\u2019emploi de ces renseignements ne constitue par ailleurs pas un cautionnement officiel par l\u2019\u00e9quipe de SeroTracker, ses membres et les organisations auxquelles ceux-ci sont affili\u00e9s, ou le Groupe de travail sur l\u2019immunit\u00e9 face \u00e0 la COVID-19.",
+    "DisclaimerListHeader": "Conditions d\u2019utilisation du site Web:",
+    "DisclaimerList1": "Le pr\u00e9sent site Web et son contenu, y compris toute donn\u00e9e, carte et analyse (\u00ab site Web \u00bb), est la propri\u00e9t\u00e9 intellectuelle de SeroTracker (2020, tous droits r\u00e9serv\u00e9s). Le site Web est offert exclusivement pour un usage \u00e0 but non lucratif \u00e0 des fins de sant\u00e9, d\u2019\u00e9ducation et de recherche. Le pr\u00e9sent site Web ne constitue pas des conseils m\u00e9dicaux.",
+    "DisclaimerList2": "L\u2019utilisation du pr\u00e9sent site Web par des organismes \u00e0 but lucratif ou \u00e0 une fin lucrative sans le consentement \u00e9crit explicite d\u2019un repr\u00e9sentant* de SeroTracker est strictement interdite. La redistribution du site Web ou de ses donn\u00e9es sous-jacentes sans le consentement \u00e9crit explicite d\u2019un repr\u00e9sentant* de SeroTracker est \u00e9galement strictement interdite.",
+    "DisclaimerList3": "Si vous utilisez les renseignements du site Web ou publiez un lien vers celui-ci, attribuez les droits \u00e0 SeroTracker par SeroTracker Collaboration.",
+    "DisclaimerList4": "Le site Web d\u00e9pend de donn\u00e9es publiques provenant de diverses sources qui se contredisent parfois. L\u2019\u00e9quipe de SeroTracker et le Groupe de travail sur l\u2019immunit\u00e9 face \u00e0 la COVID-19 se d\u00e9gagent de toute responsabilit\u00e9 par rapport \u00e0 toute d\u00e9claration ou garantie au sujet du site Web, qu\u2019il soit question de sa pr\u00e9cision, de son accessibilit\u00e9, de sa fiabilit\u00e9, de son exhaustivit\u00e9 ou du respect des droits de tierces parties.",
+    "DisclaimerList5": "Toute utilisation inexacte ou \u00e0 des fins publicitaires ou commerciales des noms, des logos, des marques de commerce ou de l\u2019habillage commercial de SeroTracker ou du Groupe de travail sur l\u2019immunit\u00e9 face \u00e0 la COVID-19 est strictement interdite, sauf avec le consentement \u00e9crit explicite d\u2019un repr\u00e9sentant* de SeroTracker. ",
+    "DisclaimerList6": "Les pr\u00e9sentes conditions d\u2019utilisation sont sujettes \u00e0 modification. En utilisant le site Web, vous reconnaissez que vous acceptez ces conditions et leurs \u00e9ventuelles modifications",
+    "DisclaimerFooter": "* Les repr\u00e9sentants de SeroTracker sont list\u00e9s sur le site Web de l\u2019entreprise.",
+    "PopulationGroupOptions": {
+        "All": "Tous",
+        "BloodDonors": "Donneurs de sang",
+        "Children": "Enfants",
+        "CommunityResident": "Habitant de la communaut\u00e9",
+        "FactoryWorker": "Travailleur d'usine",
+        "GeneralPopulation": "Population g\u00e9n\u00e9rale",
+        "HealthCareWorkers": "Travailleurs de la sant\u00e9",
+        "HotelStaffMember": "Membre d'\u00e9quipe h\u00f4teli\u00e8re",
+        "IndustrySpecificEmployees": "Employ\u00e9s sp\u00e9cifiques \u00e0 une industrie",
+        "NonCovidHospitalizedPatients": "Patients hospitalis\u00e9s hors COVID",
+        "NonCovidPatientsInHealthCareSettings": "Patients hors COVID dans des lieux de soins",
+        "PregnantOrParturientWomen": "Femmes enceintes ou parturientes",
+        "RelativeOfHealthCareWorker": "Proche d'un travailleur de la sant\u00e9",
+        "Students": "\u00c9tudiants",
+        "Unspecified": "Non sp\u00e9cifi\u00e9",
+        "FirstResponders": "Premiers r\u00e9pondants",
+        "ResidualSera": "S\u00e9rums r\u00e9siduels"
+    },
+    "Populations": "Populations",
+    "PrevalenceEstimateDetails": "D\u00e9tails de l'estimation de pr\u00e9valence",
+    "Published": "Publi\u00e9",
+    "References": "R\u00e9f\u00e9rences",
+    "RegulatoryApproval": "Autorisation r\u00e9glementaire",
+    "ResearchTeam": "\u00c9quipe de recherche",
+    "RiskOfBias": "Risque de partialit\u00e9",
+    "RiskOfBiasOptions": {
+        "High": "\u00c9lev\u00e9",
+        "Low": "Faible",
+        "Moderate": "Moyen",
+        "Unclear": "Incertain"
+    },
+    "SampleSize": "Taille de l'\u00e9chantillon",
+    "Sampling": "\u00c9chantillonnage",
+    "SamplingMethod": "M\u00e9thode d'\u00e9chantillonnage",
+    "SchoolName": {
+        "Schulich": "\u00c9cole d'ing\u00e9nieurs Schulich",
+        "Cumming": "\u00c9cole de m\u00e9decine Cumming"
+    },
+    "ScientificLead": "Responsable scientifique",
+    "Sensitivity": "Sensibilit\u00e9",
+    "Prevalence": "Pr\u00e9valence",
+    "Seroprevalence": "S\u00e9ropr\u00e9valence",
+    "SeroprevalenceBy": "S\u00e9ropr\u00e9valence par",
+    "SeroPrevalenceByCountry": "Estimations cumulatives de s\u00e9ropr\u00e9valence dans diff\u00e9rents pays",
+    "SeroprevalenceScale": "\u00c9chelle de s\u00e9ropr\u00e9valence",
+    "SeroprevalenceScaleTooltip": "Cr\u00e9\u00e9 \u00e0 partir de la transformation par logit de la valeur maximale afin de d\u00e9terminer les 'coffres'",
+    "SeroprevalenceTooltip": {
+        "FirstParagraph": "Pr\u00e9valence d'anticorps contre le SRAS-CoV-2, cumul\u00e9e dans les filtres que vous avez s\u00e9lectionn\u00e9s.",
+        "SecondParagraph": "NB: Cela ne devrait pas être interprétée comme une estimation représentative de séroprévalence dans la région d'intérêt, en particulier si les études agrégées ont biaisé des échantillons",
+        "ThirdParagraph": "technique Pooling: effets fixes agrégation pondérés inverse variance des enregistrements avec taille de l'échantillon sur MIN_DENOMINATOR."
+    },
+    "NumberEstimates": "Nombre d'estimations",
+    "EstimateRange": "Plage d'estimation",
+    "Serosurveys": "S\u00e9rosondages",
+    "SerosurveysReportingPrevalence": "Pr\u00e9valence de signalement des s\u00e9rosondages",
+    "Settings": "Param\u00e8tres",
+    "Sex": "Sexe",
+    "SexOptions": {
+        "All": "Tous",
+        "Female": "Femme",
+        "Male": "Homme",
+        "Unspecified": "Non pr\u00e9cis\u00e9"
+    },
+    "Insights": "Perspectives",
+    "ScientificAdvisorsAndCollaborators": "Conseillers et collaborateurs scientifiques",
+    "ReportsAndArticles": "Rapports et articles",
+    "Report": "Rapport",
+    "ManuscriptAndPreprint": "Manuscrit et pr\u00e9impression",
+    "PaperTextTwo": "Pour plus d'informations sur notre tableau de bord, consultez",
+    "LancetID": "The Lancet Infectious Diseases",
+    "ViewFile": "Consulter le fichier",
+    "ViewHere": "Consulter ici",
+    "PrivateSectorMonitoringTeam": "\u00c9quipe de suivi du secteur priv\u00e9",
+    "TermsOfUse": "Conditions d'utilisation",
+    "CookiePolicy": "Politique sur les fichiers t\u00e9moins",
+    "CookiePolicyBody": "Nous utilisons des fichiers t\u00e9moins pour nous permettre de livrer une meilleure exp\u00e9rience d'utilisation et nous ne collectons jamais de donn\u00e9es personnelles. En utilisant notre site Internet, vous confirmez que vous avez lu et accept\u00e9 nos ",
+    "Source": "Source",
+    "SourceType": "Type de source",
+    "SourceTypeOptions": {
+        "Preprint": "Pr\u00e9impression",
+        "Publication": "Publication",
+        "InstitutionalReport": "Rapport institutionnel",
+        "NewsAndMedia": "Actualit\u00e9s et m\u00e9dias"
+    },
+    "IndustryReportTitles": {
+        "AugustReport": "Rapport d'Août - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
+        "BloodBank": "SeroTracker banque de sang séroprévalence Rapport préliminaire",
+        "JulyReport": "Rapport de Juillet - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+        "JuneReport": "Rapport de Juin - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+        "LancetID": "Article (SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2)",
+        "MayReport": "Rapport de mai - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+        "MedRxivPub": "Séroprévalence globale du SRAS-CoV-2 anticorps: une revue systématique et méta-analyse",
+        "OctoberReport": "Rapport d'Octobre - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
+        "PreliminaryReport": "Rapport préliminaire - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+        "PrePrint": "leçons d'un examen rapide et systématique du début des SRAS-CoV-2 enquêtes sérologiques",
+        "SeptemberReport": "Rapport de Septembre - Covid-19 Dépistage et d'essais dans le secteur privé du Canada"
+    },
+    "Specificity": "Sp\u00e9cificit\u00e9",
+    "SpecimenType": "Type de sp\u00e9cimen",
+    "SpecimenTypeOptions": {
+        "DriedBlood": "Sang s\u00e9ch\u00e9",
+        "Plasma": "Plasma",
+        "Serum": "S\u00e9rum",
+        "WholeBlood": "Sang total"
+    },
+    "StartDate": "Date de d\u00e9but",
+    "Status": "\u00c9tat",
+    "StudiesPerPage": "\u00c9tudes par page",
+    "Study": "\u00c9tude",
+    "StudyDetailsAuthorString": {
+        "LeadOrg": "Par FIRST_AUTHOR \u00e0 LEAD_ORG",
+        "NoLeadOrg": "Par FIRST_AUTHOR"
+    },
+    "StudyDetailsPublishString": {
+        "NoPublishDate": "Publi\u00e9 par PUBLISHER",
+        "NoPublisher": "Publi\u00e9 le PUBLISH_DATE",
+        "PublisherAndDate": "Publi\u00e9 le PUBLISH_DATE par PUBLISHER"
+    },
+    "StudyInformation": "Informations sur l'\u00e9tude",
+    "StudyInformationTooltip": {
+        "FirstParagraph": "Trier selon les d\u00e9tails d'\u00e9tude, y compris le type de source (publication, pr\u00e9impression, actualit\u00e9 ou rapport) et l'\u00e9tat de l'\u00e9tude (en cours, compl\u00e9t\u00e9e).",
+        "SecondParagraph": "Risque de partialit\u00e9: Reflète la mesure dans laquelle la prévalence réelle peut être différente de la prévalence estimée par les examinateurs de SeroTracker en fonction de l’outil d’evaluation critique de l’Institut Joanna Briggs"
+    },
+    "StudySize": "Taille de l'\u00e9tude",
+    "StudyStatus": "\u00c9tat de l'\u00e9tude",
+    "StudyStatusOptions": {
+        "Completed": "Compl\u00e9t\u00e9e",
+        "Ongoing": "En cours"
+    },
+    "ExploreBlurb": {
+        "FirstParagraph": "Nous menons un examen systématique du SRAS-CoV-2 au niveau mondial et nos résultats d'enquêtes sérologiques sont visualisés sur ce tableau de bord",
+        "SecondParagraph": "Vous pouvez configurer les données affichées utilisant le barre 'filtre' à droite, et consulter la liste complète des études que nous suivons sur la page 'Les données'"
+    },
+    "StudyType": "Type d'\u00e9tude",
+    "NationalEstimateRange": "Plage d'estimation nationale",
+    "NationalEstimates": "Estimations nationales",
+    "RegionalEstimateRange": "Plage d'estimation r\u00e9gionale",
+    "DownloadCsv": "Télécharger CSV",
+    "RegionalEstimates": "Estimations r\u00e9gionales",
+    "LocalEstimateRange": "Plage d'estimation locale",
+    "LocalEstimates": "Estimations locales",
+    "SublocalEstimateRange": "Plage d'estimation sous-locale",
+    "SublocalEstimates": "Estimations sous-locales",
+    "CountryEstimatesExist": "Pays dot\u00e9s d'estimations de s\u00e9ropr\u00e9valence",
+    "DateRangeTooltip": "Des études Filtrer par leurs dates de fin d'échantillonnage.",
+    "DatabaseUptoDateTo": "Base de données à jour pour",
+    "Summary": "R\u00e9sum\u00e9",
+    "SummaryStatistics": "Statistiques sommaires",
+    "TeamLead": "Responsables d'\u00e9quipes",
+    "CountriesIncluded": "Pays inclus",
+    "TemporaryMaintenance": "Entretien provisoire",
+    "TemporaryMaintenanceDescription": "Nous sommes en cours de maintenance programmée, le service sera de retour sous peu.",
+    "ResearchArticle": "Article de recherche",
+    "TestDetails": "D\u00e9tails des tests",
+    "TestInformation": "Informations sur les tests",
+    "TestInformationTooltip": "Trier par d\u00e9tail de test, y compris le type d'examen et l'isotype d'anticorps.",
+    "NumSeroprevalenceEstimates": "Nombre d'estimations de s\u00e9ropr\u00e9valence",
+    "TestsAdministered": "Tests d'anticorps administr\u00e9s",
+    "TestType": "Type de test",
+    "TestTypeOptions": {
+        "ChemiluminescenceImmunoassay": "Immunodosage en chimiluminescence",
+        "ColloidalGold": "Or collo\u00efdal",
+        "ElectroChemiluminescenceImmunoassay": "Immunodosage en \u00e9lectrochimiluminescence",
+        "ELISA": "ELISA",
+        "LFIA": "LFIA",
+        "LIPS": "LIPS",
+        "MicrosphereImmunoassay": "Immunodosage \u00e0 microsph\u00e8re",
+        "NeutralizationAssay": "Test de neutralisation",
+        "NotReported": "Non signal\u00e9",
+        "RapidImmunochromatographicTest": "Test immunochromatographique rapide",
+        "RDT": "RDT",
+        "SolidPhaseImmunochromatography": "Immunochromatographie en phase solide"
+    },
+    "TestUsed": "Test utilis\u00e9",
+    "ThisForm": "Ce formulaire",
+    "Biographies": {
+        "Tim": {
+            "PartOne": "Directeur, \u00c9cole de sant\u00e9 des populations et de sant\u00e9 mondiale, Universit\u00e9 McGill",
+            "PartTwo": "Directeur g\u00e9n\u00e9ral, Groupe de travail sur l\u2019immunit\u00e9 face \u00e0 la COVID-19"
+        },
+        "Tyler": {
+            "PartOne": "Directeur adjoint, Centre d'informatique de sant\u00e9",
+            "PartTwo": "Professeur associ\u00e9, Universit\u00e9 de Calgary"
+        },
+        "Matthew": {
+            "PartOne": "Gestionnaire de programme, Diagnostics / Tests, Groupe de travail sur l\u2019immunit\u00e9 face \u00e0 la COVID-19",
+            "PartTwo": "Professeur adjoint, Universit\u00e9 McGill"
+        },
+        "DavidN": {
+            "PartOne": "Co-pr\u00e9sidente, Groupe de travail sur l\u2019immunit\u00e9 face \u00e0 la COVID-19",
+            "PartTwo": "Pr\u00e9sident \u00e9m\u00e9rite, Universit\u00e9 de Toronto"
+        },
+        "DavidB": {
+            "PartOne": "Gestionnaire de programme, Gestion / Analyse des donn\u00e9es, Groupe de travail sur l\u2019immunit\u00e9 face \u00e0 la COVID-19",
+            "PartTwo": "Professeur, Universit\u00e9 McGill"
+        },
+        "Jesse": {
+            "PartOne": "Scientifique, Groupe de travail sur l\u2019immunit\u00e9 face \u00e0 la COVID-19",
+            "PartTwo": "Professeur adjoint, Universit\u00e9 McGill"
+        },
+        "Jonathan": {
+            "PartOne": "Gestionnaire de programme, \u00c9pid\u00e9miologie / M\u00e9thodes, Groupe de travail sur l\u2019immunit\u00e9 face \u00e0 la COVID-19",
+            "PartTwo": "Professeur associ\u00e9, Universit\u00e9 McGill"
+        },
+        "ErinO": {
+            "PartOne": "Chef du projet, Centre d'informatique de la santé",
+            "PartTwo": "Université de Calgary"
+        },
+        "BruceM": {
+            "PartOne": "directeur scientifique (Stratégie), Groupe de travail sur l’immunité face à la COVID-19",
+            "PartTwo": "Professeur, Université McGill"
+        },
+        "CatherineE": {
+            "PartOne": "Operations Manager, Centre d'informatique de la santé",
+            "PartTwo": "Professeur adjoint, Université de Calgary"
+        },
+        "CatherineH": {
+            "PartOne": "Co-président, Groupe de travail sur l’immunité face à la COVID-19",
+            "PartTwo": "Professeur, Université McGill"
+        }
+    },
+    "Today": "Aujourd'hui",
+    "TotalEstimates": "Estimations totales",
+    "TotalTests": "Total des tests",
+    "UniversityOf": "Universit\u00e9 de NAME",
+    "InitInfoModalText": {
+        "PartOne": "Bienvenue dans l'onglet Analyse de SeroTracker ! Nous menons un examen syst\u00e9matique des s\u00e9rosondages du SRAS-CoV-2 et nous utilisons les donn\u00e9es provenant de cet examen afin de constituer ce tableau de bord.",
+        "PartTwo": "Notre tableau de bord agr\u00e8ge les estimations de s\u00e9ropr\u00e9valence pour chaque pays. Ces estimations agr\u00e9g\u00e9es comportent par d\u00e9faut des estimations nationales et r\u00e9gionales de s\u00e9ropr\u00e9valence dans la population g\u00e9n\u00e9rale ou chez les donneurs de sang. Elles excluent les estimations pr\u00e9sent\u00e9es uniquement dans l'actualit\u00e9.",
+        "PartThree": "Ces estimations agr\u00e9g\u00e9es doivent \u00eatre interpr\u00e9t\u00e9es avec prudence, surtout si les \u00e9tudes concern\u00e9es ne comprennent pas d'\u00e9chantillons repr\u00e9sentatifs ou si elles pr\u00e9sentent un risque \u00e9lev\u00e9 de partialit\u00e9. Vous pouvez consulter les publications d'origine plus en profondeur gr\u00e2ce \u00e0 la liste de r\u00e9f\u00e9rences en bas de page."
+    }
 }

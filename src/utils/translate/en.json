@@ -37,7 +37,19 @@
   },
   "AboutSeroTracker": "About SeroTracker",
   "Age": "Age",
+  "Aggregating": "Aggregating",
   "AgeGroup": "Age Group",
+  "AnalysisMethods": {
+   "Title": "Analysis Methods",
+   "FirstParagraph": {
+     "FirstSentence": "The seroprevalence shown for each country or factor is calculated by ",
+     "SecondSentence": "all seroprevalence estimates that match the filters you specify."     
+   },
+   "SecondParagraph": "Default filters: national and regional estimates, in the general population and blood donors. ",
+   "ThirdParagraph": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias.",
+   "Tooltip": "The aggregation technique used is fixed-effects, inverse-variance-weighted meta-analysis of prevalence, with the Freeman-Tukey double arcsin transform used to stabilize variance. Records over sample size MIN_DENOMINATOR considered."
+  },
+  
   "AgeOptions": {
     "Adults(18-64)": "Adults (18-64)",
     "All": "All",
