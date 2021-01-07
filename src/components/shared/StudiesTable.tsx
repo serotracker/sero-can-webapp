@@ -5,6 +5,7 @@ import { Dropdown, DropdownProps, Pagination, Table } from "semantic-ui-react";
 import { mobileDeviceWidth } from "../../constants";
 import { AirtableRecord } from "../../types";
 import Translate from "../../utils/translate/translateService";
+import { getGeography } from "../../utils/utils";
 import StudyDetailsModal from "../charts/StudyDetailsModal";
 import ReferenceSearch from '../charts/ReferencesSearch';
 import { sendAnalyticsEvent } from '../../utils/analyticsUtils';
@@ -61,13 +62,6 @@ export default function StudiesTable(props: StudiesTableProps) {
         const displaySex = sex && sex !== "All" && sex !== "Unspecified";
         const displayAge = age && age !== "Multiple groups" && age !== "Unspecified";
         return `${displaySex ? `${sex}, ` : ""}${displayAge ? `${age}, ` : ""}${population_group}`;
-    }
-
-    const getGeography = (city: string[] | null | undefined, state: string[] | null | undefined, country: string | null) => {
-        if (!country) {
-            return "Not Reported";
-        }
-        return `${city && city.length > 0 ? `${city.join(", ")}, ` : ""}${state && state.length > 0 ? `${state.join(", ")}, ` : ""}${country}`;
     }
 
     const pageLengthOptions = [
