@@ -22,6 +22,9 @@ export type AirtableRecord = {
     publish_date?: string[] | string | null,
     publisher?: string | null,
     overall_risk_of_bias: string | null,
+    pin_latitude: number,
+    pin_longitude: number,
+    pin_region_type: string | null,
     study_type?: string | null,
     sampling_method?: string | null,
     sampling_start_date?: string | null,
@@ -80,6 +83,7 @@ export type State = {
     showCookieBanner: boolean,
     showAnalyzePopup: boolean,
     countries: any
+    showEstimatePins: boolean
 };
 
 export type StartDates = {

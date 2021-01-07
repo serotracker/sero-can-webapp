@@ -12,7 +12,8 @@ export const NavBar = () => {
   const [tab, setTab] = useState("");
 
   const getTabClass = (tabName: string) => {
-    return tabName === tab ? 'bold col-auto h-100 flex center-item' : 'regular col-auto h-100 flex center-item';
+    const style = tabName === tab ? 'bold col-auto h-100 flex center-item' : 'regular col-auto h-100 flex center-item';
+    return isMobileDeviceOrTablet ? style.concat(" px-1") : style;
   }
 
   const usePageViews = () => {
