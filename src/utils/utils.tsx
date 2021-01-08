@@ -33,3 +33,10 @@ export const getPossibleNullStringArray = (nullString: string[] | null | undefin
   }
   return nullString.join(", ")
 }
+    
+export const getGeography = (city: string[] | null | undefined, state: string[] | null | undefined, country: string | null) => {
+  if (!country) {
+    return "Not Reported";
+  }
+  return `${city && city.length > 0 ? `${city.join(", ")}, ` : ""}${state && state.length > 0 ? `${state.join(", ")}, ` : ""}${country}`;
+}

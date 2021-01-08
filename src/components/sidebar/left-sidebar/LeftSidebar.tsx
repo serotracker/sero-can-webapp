@@ -29,7 +29,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
   return (
     <div className="sidebar-container flex">
       <TotalStats page={page}/>
-      {page == "explore" ? (
+      {page === "explore" ? (
         <ExploreText/>
       ) : (
         <AnalysisMethods />

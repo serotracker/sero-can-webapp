@@ -129,12 +129,28 @@
     cursor: pointer;
 }
 
+.popup-title { 
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.popup-heading { 
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.popup-text { 
+  font-weight: normal;
+  font-size: 12px;
+}
+
 .popup-header {
     font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-size: 1.40em;
     line-height: 1.2;
     margin-bottom: 0.25em;
-    color: #455a64;
+    color: #333333;
     display:flex;
     justify-content: flex-start;
     font-weight: 600;

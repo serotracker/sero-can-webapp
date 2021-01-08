@@ -1,8 +1,7 @@
 import { faBars, faFilter, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Menu, Segment, Sidebar } from "semantic-ui-react";
-import { AppContext } from "../../context";
 import { PageStateEnum } from "../../types";
 import Charts from "../charts/Charts";
 import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
@@ -14,7 +13,6 @@ import LastUpdated from "../sidebar/right-sidebar/LastUpdated";
 export default function AnalyzeMobile() {
   const [showMobileFilters, setShowFilters] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
-  const [state,] = useContext(AppContext)
 
   const handleFilterToggle = (showMobile: boolean, showSummary: boolean) => {
     setShowFilters(showMobile);

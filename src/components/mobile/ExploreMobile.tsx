@@ -1,8 +1,7 @@
 import { faBars, faFilter, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import { Menu, Segment, Sidebar } from "semantic-ui-react";
-import { AppContext } from "../../context";
 import { PageStateEnum } from "../../types";
 import Map from '../map/Map';
 import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
