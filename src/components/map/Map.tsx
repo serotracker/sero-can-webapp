@@ -6,9 +6,7 @@ import { getBuckets, getMapUrl } from "../../utils/mapUtils";
 import CountriesTileLayer from "./CountriesTileLayer";
 import Legend from "./Legend";
 import './Map.css';
-import { layerStyle } from './MapStyle';
-import VectorTileLayer from './VectorTileLayer.js';
-import CountriesTileLayer from "./CountriesTileLayer"
+import VectorTileLayer from './VectorTileLayer';
 import { layerStyle } from './MapStyle';
 import { mapZIndex } from './../../constants'
 

@@ -1,12 +1,8 @@
 
-import * as Countries from 'i18n-iso-countries';
-import English from "i18n-iso-countries/langs/en.json";
-import French from "i18n-iso-countries/langs/fr.json";
 import { LeafletMouseEvent } from 'leaflet';
 import React from 'react';
-import { LanguageType, AggregatedRecord, EstimateGradePrevalence, RegionalPrevalenceEstimate } from "../types";
-import { toPascalCase } from './translate/caseChanger';
-import Translate from './translate/translateService';
+import { AggregatedRecord, EstimateGradePrevalence, LanguageType, RegionalPrevalenceEstimate } from "../types";
+import Translate, { getCountryName } from './translate/translateService';
 
 export const getBuckets = (features: any) => {
   if (!features)
