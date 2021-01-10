@@ -9,6 +9,8 @@ import VectorTileLayer from './VectorTileLayer.js';
 import CountriesTileLayer from "./CountriesTileLayer"
 import { layerStyle } from './MapStyle';
 import { mapZIndex } from './../../constants'
+import Translate from "../../utils/translate/translateService";
+import { getGeography } from "../../utils/utils";
 
 export default function Map() {
   const [state] = useContext(AppContext);
@@ -131,7 +133,7 @@ export default function Map() {
                     Location
                   </div>
                   <div className="popup-text">
-                    {record.city && `${record.city}`}{record.city && record.city.length !== 0 && record.state && record.state.length !== 0 && ", "}{record.state && `${record.state}`}{record.state && record.state.length !== 0 && record.country && ", "}{record.city && record.city.length !== 0 && record.state && record.state.length === 0 && record.country && ", "}{record.country && `${record.country}`}
+                    { getGeography(record.city, record.state, record.country) }
                   </div>
                   <div className="popup-heading">
                     Best seroprevalence (SP) estimate
@@ -149,7 +151,7 @@ export default function Map() {
                     Population group
                   </div>
                   <div className="popup-text">
-                    {record.population_group ? `${record.population_group}` : "N/A"}
+                    {record.population_group ? `${record.population_group}` : Translate("NotReported")}
                   </div>
                   <div className="popup-heading">
                     Risk of Bias
