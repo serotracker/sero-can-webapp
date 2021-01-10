@@ -36,7 +36,6 @@ export default function Legend(props: LegendProps) {
 
   const clickEstimatePinsCheckbox = (e: React.MouseEvent<HTMLElement>) => {
     dispatch({ type: 'TOGGLE_ESTIMATE_PINS' })
-    console.log(state.showEstimatePins)
   }
 
   return (
