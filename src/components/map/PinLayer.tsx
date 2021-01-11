@@ -52,13 +52,13 @@ export default function PinLayer() {
             >
               <Popup autoClose={false} className="pin-popup">
                 <div className="popup-title">
-                  {`${record.estimate_grade} study details`}
+                  {Translate(`${record.estimate_grade}StudyDetails`)}
                 </div>
                 <div className="popup-heading">
                   {Translate("StudyName")}
                 </div>
                 <div className="popup-text">
-                  {`${record.source_name}`}
+                  {record.url ? <a href={record.url} target="_blank" rel="noopener noreferrer">{record.source_name}</a> : record.source_name}
                 </div>
                 <div className="popup-heading">
                   {Translate("Location")}
@@ -67,8 +67,8 @@ export default function PinLayer() {
                   {getGeography(record.city, record.state, record.country)}
                 </div>
                 <div className="popup-heading">
-                  Best seroprevalence (SP) estimate
-              </div>
+                  {Translate("BestSeroprevalenceEstimate")}
+                </div>
                 <div className="popup-text">
                   {record.seroprevalence ? `${(record.seroprevalence * 100).toFixed(1)}%` : "N/A"}
                 </div>

@@ -6,6 +6,12 @@
   "Article": "Article",
   "AcceptCookies": "Accept Cookies",
   "Publication": "Publication",
+  "NationalStudyDetails": "National study details",
+  "RegionalStudyDetails": "Regional study details",
+  "LocalStudyDetails": "Local study details",
+  "StudyPins": "Show Study Pins",
+  "StudyName": "Study Name",
+  "BestSeroprevalenceEstimate": "Best Seroprevalence Estimate",
   "AboutPage": {
     "AboutSection": {
       "SupportedBy": "SeroTracker is supported by the",
