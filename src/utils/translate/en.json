@@ -2,28 +2,18 @@
   "95%ConfidenceInterval": "95% Confidence Interval",
   "95%ConfidenceIntervalTooltip": "Wider error bars indicate greater uncertainty in the pooled seroprevalence estimate.",
   "About": "About",
-  "Accept": "Accept",
-  "Article": "Article",
-  "AcceptCookies": "Accept Cookies",
-  "Publication": "Publication",
-  "NationalStudyDetails": "National study details",
-  "RegionalStudyDetails": "Regional study details",
-  "LocalStudyDetails": "Local study details",
-  "StudyPins": "Show Study Pins",
-  "StudyName": "Study Name",
-  "BestSeroprevalenceEstimate": "Best Seroprevalence Estimate",
   "AboutPage": {
     "AboutSection": {
-      "SupportedBy": "SeroTracker is supported by the",
-      "PublicHealthAgency": "Public Health Agency of Canada",
-      "ThroughThe": "through the",
       "Covid19ImmunityTaskForce": "COVID-19 Immunity Task Force.",
-      "HostedAt": "SeroTracker is also hosted at the",      
-      "HealthInformatics": "University of Calgary's Centre for Health Informatics.",      
-      "PartOne": "As the acute phase of the COVID-19 pandemic passes its peak, many countries are accelerating their investments in serological (antibody) testing. Understanding population antibody patterns and potential immunity is of great interest to clinicians, public health officials, and policymakers alike.",
-      "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide.",    
+      "GlobalSerologicalKnowledgeHub": "Global Serological Knowledge Hub",
+      "HealthInformatics": "University of Calgary's Centre for Health Informatics.",
+      "HostedAt": "SeroTracker is also hosted at the",
       "MappingTheExtent": "The COVID-19 Immunity Task Force is mapping the extent of SARS-CoV-2 infection in Canada, and SeroTracker also provides content for their",
-      "GlobalSerologicalKnowledgeHub": "Global Serological Knowledge Hub"
+      "PartOne": "As the acute phase of the COVID-19 pandemic passes its peak, many countries are accelerating their investments in serological (antibody) testing. Understanding population antibody patterns and potential immunity is of great interest to clinicians, public health officials, and policymakers alike.",
+      "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide.",
+      "PublicHealthAgency": "Public Health Agency of Canada",
+      "SupportedBy": "SeroTracker is supported by the",
+      "ThroughThe": "through the"
     },
     "ContactSection": {
       "BulletPointFive": {
@@ -32,30 +22,20 @@
         "PartTwo": "new SARS-CoV-2 seroprevalence studies"
       },
       "BulletPointOne": {
+        "PartFour": "and Kelly Johnston at",
         "PartOne": "For all SeroTracker inquiries (including to support our efforts, collaborate with us, or if you are a journalist interested in reporting on our findings), please contact Rahul Arora at ",
-        "PartTwo": "and Tingting Yan at ",
         "PartThree": "Journalists and members of the media: please contact Caroline Phaneuf at",
-        "PartFour": "and Kelly Johnston at"
+        "PartTwo": "and Tingting Yan at "
       },
       "SectionOne": "We are an interdisciplinary team of researchers and engineers at the University of Oxford, University of Toronto, University of Waterloo, University of Calgary, and Harvard University."
     },
     "Mapbox": "supports SeroTracker's mapping infrastructure."
   },
   "AboutSeroTracker": "About SeroTracker",
+  "Accept": "Accept",
+  "AcceptCookies": "Accept Cookies",
   "Age": "Age",
-  "Aggregating": "Aggregating",
   "AgeGroup": "Age Group",
-  "AnalysisMethods": {
-   "Title": "Analysis Methods",
-   "FirstParagraph": {
-     "FirstSentence": "The seroprevalence shown for each country or factor is calculated by ",
-     "SecondSentence": "all seroprevalence estimates that match the filters you specify."     
-   },
-   "SecondParagraph": "Default filters: national and regional estimates, in the general population and blood donors. ",
-   "ThirdParagraph": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias.",
-   "Tooltip": "The aggregation technique used is fixed-effects, inverse-variance-weighted meta-analysis of prevalence, with the Freeman-Tukey double arcsin transform used to stabilize variance. Records over sample size MIN_DENOMINATOR considered."
-  },
-  
   "AgeOptions": {
     "Adults(18-64)": "Adults (18-64)",
     "All": "All",
@@ -65,50 +45,149 @@
     "Youth(13-17)": "Youth (13-17)"
   },
   "AggregatedPrevalence": "Aggregated Prevalence",
+  "Aggregating": "Aggregating",
+  "AnalysisMethods": {
+    "FirstParagraph": {
+      "FirstSentence": "The seroprevalence shown for each country or factor is calculated by ",
+      "SecondSentence": "all seroprevalence estimates that match the filters you specify."
+    },
+    "SecondParagraph": "Default filters: national and regional estimates, in the general population and blood donors. ",
+    "ThirdParagraph": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias.",
+    "Title": "Analysis Methods",
+    "Tooltip": "The aggregation technique used is fixed-effects, inverse-variance-weighted meta-analysis of prevalence, with the Freeman-Tukey double arcsin transform used to stabilize variance. Records over sample size MIN_DENOMINATOR considered."
+  },
   "Analyze": "Analyze",
+  "Article": "Article",
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
+  "BestSeroprevalenceEstimate": "Best Seroprevalence Estimate",
+  "Biographies": {
+    "BruceM": {
+      "PartOne": "Associate Scientific Director (Strategy), COVID-19 Immunity Task Force",
+      "PartTwo": "Professor, McGill University"
+    },
+    "CatherineE": {
+      "PartOne": "Operations Manager, Centre for Health Informatics",
+      "PartTwo": "Adjunct Assistant Professor, University of Calgary"
+    },
+    "CatherineH": {
+      "PartOne": "Co-Chair, COVID-19 Immunity Task Force",
+      "PartTwo": "Professor, McGill University"
+    },
+    "DavidB": {
+      "PartOne": "Scientific Program Manager, Data Management/Analytics, COVID-19 Immunity Task Force",
+      "PartTwo": "Professor, McGill University"
+    },
+    "DavidN": {
+      "PartOne": "Co-Chair, COVID-19 Immunity Task Force",
+      "PartTwo": "President Emeritus, University of Toronto"
+    },
+    "ErinO": {
+      "PartOne": "Project Lead, Centre for Health Informatics",
+      "PartTwo": "University of Calgary"
+    },
+    "Jesse": {
+      "PartOne": "Scientist, COVID-19 Immunity Task Force",
+      "PartTwo": "Assistant Professor, McGill University"
+    },
+    "Jonathan": {
+      "PartOne": "Scientific Program Manager, Epidemiology/Methods, COVID-19 Immunity Task Force",
+      "PartTwo": "Associate Professor, McGill University"
+    },
+    "Matthew": {
+      "PartOne": "Scientific Program Manager, Diagnostics/Testing, COVID-19 Immunity Task Force",
+      "PartTwo": "Assistant Professor, McGill University"
+    },
+    "Tim": {
+      "PartOne": "Director, School of Population and Global Health, McGill University",
+      "PartTwo": "Executive Director, Canadian COVID-19 Immunity Task Force"
+    },
+    "Tyler": {
+      "PartOne": "Associate Director, Centre for Health Informatics",
+      "PartTwo": "Associate Professor, University of Calgary"
+    }
+  },
   "BlankUniversity": "NAME University",
+  "CPPInvestmentBoard": "CPP Investment Board",
   "ChangeSettings": "Change Settings",
   "CoDirector": "Co-Director",
   "ContactUs": "Contact Us",
+  "CookiePolicy": "Cookie Policy",
+  "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
   "Countries": "Countries",
+  "CountriesIncluded": "Countries Included",
   "Country": "Country/Sovereignty/Region",
+  "CountryEstimatesExist": "Countries With Seroprevalence Estimates",
   "CountryOptions": {
     "England": "England",
     "Iran": "Iran",
     "Scotland": "Scotland",
     "UnitedStates": "United States"
   },
-  "CPPInvestmentBoard": "CPP Investment Board",
   "Dashboard": "Dashboard",
   "Data": "Data",
+  "DatabaseUptoDateTo": "Database Up to Date To",
   "DateRange": "Date Range",
   "DateRangeTooltip": "Filter studies by their sampling end dates.",
   "Demographics": "Demographics",
   "DemographicsTooltip": "Filter on demographic variables, including population group, sex, and age group.",
   "Details": "Details",
   "DevelopmentTeam": "Development Team",
+  "DisclaimerBody": "The names of locations included on the Website correspond with the official designations used by the simplemaps.com . The presentation of material therein does not imply the expression of any opinion whatsoever on the part of the SeroTracker team, the SeroTracker team members or their affiliated institutions, or The COVID-19 Immunity Task Force concerning the legal status of any country, area or territory or of its authorities. The depiction and use of boundaries, geographic names and related data shown on maps and included in lists, tables, documents, and databases on this website are not warranted to be error free nor do they necessarily imply official endorsement or acceptance by the SeroTracker team, the SeroTracker team members or their affiliated institutions, or The COVID-19 Immunity Task Force.",
+  "DisclaimerFooter": " *The representatives of SeroTracker are listed on the SeroTracker website. ",
+  "DisclaimerList1": "This website and its contents herein, including all data, mapping, and analysis (“Website”), copyright 2020 SeroTracker, all rights reserved, is provided solely for non-profit public health, educational, and academic research purposes. You should not rely on this Website for medical advice or guidance. ",
+  "DisclaimerList2": "Use of the Website by commercial parties and/or in commerce without explicit written permission by a representative* of SeroTracker is strictly prohibited. Redistribution of the Website or the aggregated data set underlying the Website without explicit written permission by a representative* of SeroTracker is also strictly prohibited.",
+  "DisclaimerList3": "When using information from the website or linking to the website, attribute the Website as SeroTracker by the SeroTracker Collaboration.",
+  "DisclaimerList4": "The Website relies upon publicly available data from multiple sources that do not always agree. The SeroTracker team and The COVID-19 Immunity Task Force hereby disclaims any and all representations and warranties with respect to the Website, including accuracy, fitness for use, reliability, completeness, and non-infringement of third party rights. ",
+  "DisclaimerList5": "Any use of the SeroTracker or The COVID-19 Immunity Task Force names, logos, trademarks, and/or trade dress in a factually inaccurate manner or for marketing, promotional or commercial purposes without explicit written permission by a representative* of SeroTracker is strictly prohibited. ",
+  "DisclaimerList6": "These terms and conditions are subject to change. Your use of the Website constitutes your acceptance of these terms and conditions and any future modifications thereof.",
+  "DisclaimerListHeader": "Terms and Conditions of Website Use:",
+  "DownloadCsv": "Download CSV",
   "EconomicsTeam": "Economics Team",
   "EndDate": "End Date",
   "English": "English",
   "Estimate": "Estimate",
   "EstimateGrade": "Estimate Grade",
   "EstimateGradeOptions": {
-    "National": "National",
-    "Regional": "Regional",
+    "Hyperlocal": "Hyperlocal",
     "Local": "Local",
-    "Hyperlocal": "Hyperlocal"
+    "National": "National",
+    "Regional": "Regional"
   },
+  "EstimateRange": "Estimate Range",
   "ExecutiveDirector": "Executive Director",
   "Explore": "Explore",
+  "ExploreBlurb": {
+    "FirstParagraph": "We are conducting a systematic review of SARS-CoV-2 serosurveys globally and our findings are visualized on this dashboard.",
+    "SecondParagraph": "You can configure the data displayed using the “Filter” toolbar on the right, and view the full list of studies we are tracking on the “Data” page."
+  },
   "Filter": "Filter",
   "FilterTooltip": "Filter the SeroTracker dataset based on geography, study, demographics, and test. Only studies matching all of the listed filters will be included.",
   "For": "For",
   "French": "Français",
+  "GeneralTerms": "General Terms",
   "Geographies": "Geographies",
   "Geography": "Geography",
   "GeographyTooltip": "Select countries of interest.",
   "Here": "Here",
+  "IndustryReportTitles": {
+    "AugustReport": "August Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "BloodBank": "SeroTracker Blood Bank Seroprevalence Preliminary Report",
+    "JulyReport": "July Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "JuneReport": "June Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "LancetID": "Article (SeroTracker: a global SARS-CoV-2 seroprevalence dashboard)",
+    "MayReport": "May Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "MedRxivPub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
+    "OctoberReport": "October Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
+    "PreliminaryReport": "Preliminary Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector"
+  },
+  "InitInfoModalText": {
+    "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
+    "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias. You can explore the source literature in depth on the references card at the bottom of this page.",
+    "PartTwo": "Our dashboard aggregates seroprevalence estimates in each country. By default, these aggregated estimates include national and regional seroprevalence estimates of the general population or blood donors, and excludes estimates presented only in the news."
+  },
+  "Insights": "Insights",
   "Isotypes": "Isotypes",
   "IsotypesReported": "Isotypes Reported",
   "IsotypesReportedOptions": {
@@ -117,11 +196,17 @@
     "IgM": "IgM",
     "IgMIgG": "IgM IgG"
   },
-  "DatabaseUptoDateTo": "Database Up to Date To",
   "LancetArticle": "Lancet ID",
+  "LancetID": "The Lancet Infectious Diseases",
   "LastUpdatedTooltip": "SeroTracker is continuously updated with findings from newly-released serological studies. We include new studies from our search within 48 hours of publication.",
+  "Legalese": "Legalese",
+  "LocalEstimateRange": "Local Estimate Range",
+  "LocalEstimates": "Local Estimates",
+  "LocalStudies": "Local Studies",
+  "LocalStudyDetails": "Local study details",
   "Location": "Location",
   "Manufacturer": "Manufacturer",
+  "ManuscriptAndPreprint": "Manuscript and Preprint",
   "Methods": "Methods",
   "MethodsText": {
     "FirstParagraph": "SeroTracker provides a systematic synthesis of SARS-CoV-2 serosurveillance projects globally. We screened peer-reviewed articles, preprints, government reports, and media articles to identify the prevalence estimates reported below. Our data is updated with all new reports of seroprevalence findings that were captured in our search.",
@@ -130,8 +215,14 @@
   },
   "N": "N",
   "Name": "Name",
+  "NationalEstimateRange": "National Estimate Range",
+  "NationalEstimates": "National Estimates",
+  "NationalStudies": "National Studies",
+  "NationalStudyDetails": "National study details",
   "NoData": "No Data",
   "NotReported": "Not Reported",
+  "NumSeroprevalenceEstimates": "Number of Seroprevalence Estimates",
+  "NumberEstimates": "Number of Estimates",
   "OurData": "Our Data",
   "OurDataText": {
     "PointOne": "captures all studies reporting prevalence estimates",
@@ -142,28 +233,17 @@
   "OverallRiskOfBias": "Overall Risk Of Bias",
   "Paper": "Paper",
   "PaperText": "Our first manuscript, describing lessons from serosurveys up to May 1, can be found on",
+  "PaperTextTwo": "More information about our dashboard can be found in",
   "PlannedSerosurveys": "Planned Serosurveys",
   "Population": "Population",
   "PopulationGroup": "Population Group",
-  "PrivacyPolicy": "Privacy Policy",
-  "GeneralTerms": "General Terms",
-  "Legalese": "Legalese",
-  "DisclaimerBody": "The names of locations included on the Website correspond with the official designations used by the simplemaps.com . The presentation of material therein does not imply the expression of any opinion whatsoever on the part of the SeroTracker team, the SeroTracker team members or their affiliated institutions, or The COVID-19 Immunity Task Force concerning the legal status of any country, area or territory or of its authorities. The depiction and use of boundaries, geographic names and related data shown on maps and included in lists, tables, documents, and databases on this website are not warranted to be error free nor do they necessarily imply official endorsement or acceptance by the SeroTracker team, the SeroTracker team members or their affiliated institutions, or The COVID-19 Immunity Task Force.",
-  "DisclaimerListHeader": "Terms and Conditions of Website Use:",
-  "DisclaimerList1": "This website and its contents herein, including all data, mapping, and analysis (“Website”), copyright 2020 SeroTracker, all rights reserved, is provided solely for non-profit public health, educational, and academic research purposes. You should not rely on this Website for medical advice or guidance. ",
-  "DisclaimerList2": "Use of the Website by commercial parties and/or in commerce without explicit written permission by a representative* of SeroTracker is strictly prohibited. Redistribution of the Website or the aggregated data set underlying the Website without explicit written permission by a representative* of SeroTracker is also strictly prohibited.",
-  "DisclaimerList3": "When using information from the website or linking to the website, attribute the Website as SeroTracker by the SeroTracker Collaboration.",
-  "DisclaimerList4": "The Website relies upon publicly available data from multiple sources that do not always agree. The SeroTracker team and The COVID-19 Immunity Task Force hereby disclaims any and all representations and warranties with respect to the Website, including accuracy, fitness for use, reliability, completeness, and non-infringement of third party rights. ",
-  "DisclaimerList5": "Any use of the SeroTracker or The COVID-19 Immunity Task Force names, logos, trademarks, and/or trade dress in a factually inaccurate manner or for marketing, promotional or commercial purposes without explicit written permission by a representative* of SeroTracker is strictly prohibited. ",
-  "DisclaimerList6": "These terms and conditions are subject to change. Your use of the Website constitutes your acceptance of these terms and conditions and any future modifications thereof.",
-  "DisclaimerFooter": " *The representatives of SeroTracker are listed on the SeroTracker website. ",
-  "DownloadCsv": "Download CSV",
   "PopulationGroupOptions": {
     "All": "All",
     "BloodDonors": "Blood donors",
     "Children": "Children",
     "CommunityResident": "Community resident",
     "FactoryWorker": "Factory worker",
+    "FirstResponders": "First responders",
     "GeneralPopulation": "General population",
     "HealthCareWorkers": "Health care workers",
     "HotelStaffMember": "Hotel staff member",
@@ -172,16 +252,26 @@
     "NonCovidPatientsInHealthCareSettings": "Non-COVID patients in health care settings",
     "PregnantOrParturientWomen": "Pregnant or Parturient Women",
     "RelativeOfHealthCareWorker": "Relative of health care worker",
+    "ResidualSera": "Residual sera",
     "Students": "Students",
-    "Unspecified": "Unspecified",
-    "FirstResponders": "First responders",
-    "ResidualSera": "Residual sera"
+    "Unspecified": "Unspecified"
   },
   "Populations": "Populations",
+  "Prevalence": "Prevalence",
   "PrevalenceEstimateDetails": "Prevalence Estimate Details",
+  "PrivacyPolicy": "Privacy Policy",
+  "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
+  "Publication": "Publication",
   "Published": "Published",
   "References": "References",
+  "RegionalEstimateRange": "Regional Estimate Range",
+  "RegionalEstimates": "Regional Estimates",
+  "RegionalStudies": "Regional Studies",
+  "RegionalStudyDetails": "Regional study details",
   "RegulatoryApproval": "Regulatory Approval",
+  "Report": "Report",
+  "ReportsAndArticles": "Reports & Articles",
+  "ResearchArticle": "Research Article",
   "ResearchTeam": "Research Team",
   "RiskOfBias": "Risk Of Bias",
   "RiskOfBiasOptions": {
@@ -194,15 +284,15 @@
   "Sampling": "Sampling",
   "SamplingMethod": "Sampling Method",
   "SchoolName": {
-    "Schulich": "Schulich School of Engineering",
-    "Cumming": "Cumming School of Medicine"
+    "Cumming": "Cumming School of Medicine",
+    "Schulich": "Schulich School of Engineering"
   },
+  "ScientificAdvisorsAndCollaborators": "Scientific Advisors and Project Staff",
   "ScientificLead": "Scientific Lead",
   "Sensitivity": "Sensitivity",
-  "Prevalence": "Prevalence",
+  "SeroPrevalenceByCountry": "Aggregated Seroprevalence Estimates in Different Countries",
   "Seroprevalence": "Seroprevalence",
   "SeroprevalenceBy": "Seroprevalence by",
-  "SeroPrevalenceByCountry": "Aggregated Seroprevalence Estimates in Different Countries",
   "SeroprevalenceScale": "Seroprevalence Scale",
   "SeroprevalenceScaleTooltip": "Made from the logit transform of the maximum value to determine the 'bins'",
   "SeroprevalenceTooltip": {
@@ -210,8 +300,6 @@
     "SecondParagraph": "NB: This should not be interpreted as a representative estimate of seroprevalence in the region of interest, especially if the aggregated studies have biased samples.",
     "ThirdParagraph": "Pooling technique: fixed effects inverse-variance weighted aggregation of records with sample size over MIN_DENOMINATOR."
   },
-  "NumberEstimates": "Number of Estimates",
-  "EstimateRange": "Estimate Range",
   "Serosurveys": "Serosurveys",
   "SerosurveysReportingPrevalence": "Serosurveys Reporting Prevalence",
   "Settings": "Settings",
@@ -222,27 +310,13 @@
     "Male": "Male",
     "Unspecified": "Unspecified"
   },
-  "Insights": "Insights",
-  "ScientificAdvisorsAndCollaborators": "Scientific Advisors and Project Staff",
-  "ReportsAndArticles": "Reports & Articles",
-  "Report": "Report",
-  "ManuscriptAndPreprint": "Manuscript and Preprint",
-  "PaperTextTwo": "More information about our dashboard can be found in",
-  "LancetID": "The Lancet Infectious Diseases",
-  "ViewFile": "View File",
-  "ViewHere": "View Here",
-  "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
-  "TermsOfUse": "Terms of Use",
-  "CookiePolicy": "Cookie Policy",
-  "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
-  "Source": "Source",  
-  "ResearchArticle": "Research Article",
+  "Source": "Source",
   "SourceType": "Source Type",
   "SourceTypeOptions": {
-    "Preprint": "Preprint",
-    "Publication": "Publication",
     "InstitutionalReport": "Institutional Report",
-    "NewsAndMedia": "News and Media"
+    "NewsAndMedia": "News and Media",
+    "Preprint": "Preprint",
+    "Publication": "Publication"
   },
   "Specificity": "Specificity",
   "SpecimenType": "Specimen Type",
@@ -270,6 +344,8 @@
     "FirstParagraph": "Filter on study details, including source type (publication, preprint, news, or report) and study status (ongoing, completed).",
     "SecondParagraph": "Risk of Bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates."
   },
+  "StudyName": "Study Name",
+  "StudyPins": "Show Study Pins",
   "StudySize": "Study Size",
   "StudyStatus": "Study Status",
   "StudyStatusOptions": {
@@ -277,118 +353,41 @@
     "Ongoing": "Ongoing"
   },
   "StudyType": "Study Type",
-  "NationalEstimateRange": "National Estimate Range",
-  "NationalEstimates": "National Estimates",
-  "NationalStudies": "National Studies",
-  "RegionalEstimateRange": "Regional Estimate Range",
-  "RegionalEstimates": "Regional Estimates",
-  "RegionalStudies": "Regional Studies",
-  "LocalEstimateRange": "Local Estimate Range",
-  "LocalEstimates": "Local Estimates",
-  "LocalStudies": "Local Studies",
   "SublocalEstimateRange": "Sublocal Estimate Range",
   "SublocalEstimates": "Sublocal Estimates",
-  "CountryEstimatesExist": "Countries With Seroprevalence Estimates",
   "Summary": "Summary",
   "SummaryStatistics": "Summary Statistics",
   "TeamLead": "Team Leads",
-  "CountriesIncluded": "Countries Included",
-  "TemporaryMaintenance" : "Temporary Maintenance",
-  "TemporaryMaintenanceDescription" : "We are down for scheduled maintenance, service will return shortly.",
+  "TemporaryMaintenance": "Temporary Maintenance",
+  "TemporaryMaintenanceDescription": "We are down for scheduled maintenance, service will return shortly.",
+  "TermsOfUse": "Terms of Use",
   "TestDetails": "Test Details",
   "TestInformation": "Test Information",
   "TestInformationTooltip": "Filter on test details, including assay type and antibody isotype.",
-  "NumSeroprevalenceEstimates": "Number of Seroprevalence Estimates",
-  "TestsAdministered": "Antibody Tests Administered",
   "TestType": "Test Type",
   "TestTypeOptions": {
     "ChemiluminescenceImmunoassay": "Chemiluminescence Immunoassay",
     "ColloidalGold": "Colloidal gold",
-    "ElectroChemiluminescenceImmunoassay": "Electro Chemiluminescence Immunoassay",
     "ELISA": "ELISA",
+    "ElectroChemiluminescenceImmunoassay": "Electro Chemiluminescence Immunoassay",
     "LFIA": "LFIA",
     "LIPS": "LIPS",
     "MicrosphereImmunoassay": "Microsphere immunoassay",
     "NeutralizationAssay": "Neutralization assay",
     "NotReported": "NotReported",
-    "RapidImmunochromatographicTest": "Rapid immunochromatographic test",
     "RDT": "RDT",
+    "RapidImmunochromatographicTest": "Rapid immunochromatographic test",
     "SolidPhaseImmunochromatography": "Solid phase immunochromatography"
   },
   "TestUsed": "Test Used",
+  "TestsAdministered": "Antibody Tests Administered",
   "ThisForm": "This form",
-  "Biographies": {
-    "Tim": {
-      "PartOne": "Director, School of Population and Global Health, McGill University",
-      "PartTwo": "Executive Director, Canadian COVID-19 Immunity Task Force"
-    },
-    "Tyler": {
-      "PartOne": "Associate Director, Centre for Health Informatics",
-      "PartTwo": "Associate Professor, University of Calgary"
-    },
-    "Matthew": {
-      "PartOne": "Scientific Program Manager, Diagnostics/Testing, COVID-19 Immunity Task Force",
-      "PartTwo": "Assistant Professor, McGill University"
-    },
-    "DavidN": {
-      "PartOne": "Co-Chair, COVID-19 Immunity Task Force",
-      "PartTwo": "President Emeritus, University of Toronto"
-    },
-    "DavidB": {
-      "PartOne": "Scientific Program Manager, Data Management/Analytics, COVID-19 Immunity Task Force",
-      "PartTwo": "Professor, McGill University"
-    },
-    "Jesse": {
-      "PartOne": "Scientist, COVID-19 Immunity Task Force",
-      "PartTwo": "Assistant Professor, McGill University"
-    },
-    "Jonathan": {
-      "PartOne": "Scientific Program Manager, Epidemiology/Methods, COVID-19 Immunity Task Force",
-      "PartTwo": "Associate Professor, McGill University"
-    },
-    "CatherineH": {
-      "PartOne": "Co-Chair, COVID-19 Immunity Task Force",
-      "PartTwo": "Professor, McGill University"
-    },
-    "ErinO": {
-      "PartOne": "Project Lead, Centre for Health Informatics",
-      "PartTwo": "University of Calgary"
-    },
-    "CatherineE": {
-      "PartOne": "Operations Manager, Centre for Health Informatics",
-      "PartTwo": "Adjunct Assistant Professor, University of Calgary"
-    },
-    "BruceM": {
-      "PartOne": "Associate Scientific Director (Strategy), COVID-19 Immunity Task Force",
-      "PartTwo": "Professor, McGill University"
-    }
-  },
   "Today": "Today",
   "TotalEstimates": "Total Estimates",
   "TotalTests": "Total Tests",
   "UniversityOf": "University of NAME",
   "UseOfData": "Use of this data is governed by SeroTracker's",
-  "InitInfoModalText": {
-    "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
-    "PartTwo": "Our dashboard aggregates seroprevalence estimates in each country. By default, these aggregated estimates include national and regional seroprevalence estimates of the general population or blood donors, and excludes estimates presented only in the news.",
-    "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias. You can explore the source literature in depth on the references card at the bottom of this page."
-  },
-  "IndustryReportTitles": {
-    "MedRxivPub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
-    "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
-    "PreliminaryReport": "Preliminary Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "MayReport": "May Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "JuneReport": "June Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "JulyReport": "July Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "AugustReport": "August Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "OctoberReport": "October Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "BloodBank": "SeroTracker Blood Bank Seroprevalence Preliminary Report",
-    "LancetID": "Article (SeroTracker: a global SARS-CoV-2 seroprevalence dashboard)"
-  },
-  "ExploreBlurb": {
-    "FirstParagraph": "We are conducting a systematic review of SARS-CoV-2 serosurveys globally and our findings are visualized on this dashboard.",
-    "SecondParagraph": "You can configure the data displayed using the “Filter” toolbar on the right, and view the full list of studies we are tracking on the “Data” page."
-  },
+  "ViewFile": "View File",
+  "ViewHere": "View Here",
   "Welcome": "Welcome to SeroTracker"
 }
