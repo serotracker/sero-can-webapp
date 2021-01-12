@@ -1,6 +1,6 @@
 import React , { useContext, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
-import { Dimmer, Loader } from "semantic-ui-react";
+import { Loader } from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../../constants";
 import { AppContext } from "../../../context";
 import { PageStateEnum } from "../../../types";

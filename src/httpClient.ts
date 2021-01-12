@@ -4,9 +4,9 @@ import {parseISO, format } from "date-fns";
 
 export default class httpClient {
 
-    async httpGet(url: string) {
+    async httpGet(url: string, useAppRoute: boolean) {
         let url_full = url;
-        if (process.env.REACT_APP_ROUTE) {
+        if (useAppRoute && process.env.REACT_APP_ROUTE) {
             url_full = process.env.REACT_APP_ROUTE + url_full;
         }
         const res = await fetch(url_full);
@@ -87,7 +87,7 @@ export default class httpClient {
     }
 
     async getAllFilterOptions() {
-        const response = await this.httpGet('/data_provider/filter_options');
+        const response = await this.httpGet('/data_provider/filter_options', true);
         const options: Record<string, any> = {}
         for(let k in response){
             // Currently no need for max and min date options
@@ -119,11 +119,11 @@ export default class httpClient {
             }
         });
 
-        const all_columns = ["state", "city", "country", "age", "serum_pos_prevalence", "denominator_value", 
-        "overall_risk_of_bias", "source_name", "estimate_grade", "first_author", "source_type", "study_type", "test_type", "specimen_type",
+        const all_columns = ["state", "city", "country", "age", "serum_pos_prevalence", "denominator_value", "population_group", 
+        "overall_risk_of_bias", "source_name", "estimate_grade", "pin_latitude", "pin_longitude", "pin_region_type", "first_author", "source_type", "study_type", "test_type", "specimen_type",
         "isotypes_reported", "approving_regulator", "population_group", "sampling_start_date", "sampling_end_date", "lead_organization", "url"];
 
-        const explore_columns = all_columns.slice(0, 9);
+        const explore_columns = all_columns.slice(0, 13);
 
         const date = filters['publish_date'] as Array<Date>
         const [startDate, endDate] = formatDates(date)
@@ -154,6 +154,9 @@ export default class httpClient {
                 isotypes_reported: item.isotypes_reported,
                 lead_org: item.lead_org,
                 overall_risk_of_bias: item.overall_risk_of_bias,
+                pin_latitude: item.pin_latitude,
+                pin_longitude: item.pin_longitude,
+                pin_region_type: item.pin_region_type,
                 population_group: item.population_group,
                 sampling_end_date: item.sampling_end_date,
                 sampling_start_date: item.sampling_start_date,

@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useMap } from "react-leaflet";
 import L from 'leaflet';
 import { layerStyle, highlightStyles } from './MapStyle';
-import _ from "lodash";
 import { createAltPopup } from "../../utils/mapUtils"
 import ReactDOMServer from 'react-dom/server';
 // eslint-disable-next-line no-unused-vars
@@ -12,19 +11,18 @@ const toggleCountrySelection = (e, layer, highlightStyle) => {
   // only change selection style on countries that have seroprev data
   const layerStyle = layer._overriddenStyles[e.layer.properties.CODE]; //TODO: refactor this kinda ugly
 
-  if (layerStyle) 
+  if (layerStyle)
     layer.setFeatureStyle(e.layer.properties.CODE, highlightStyle);
 }
 
 export default function CountriesTileLayer(props) {
 
-  const { url, records, zIndex } = props;
+  const { url, mapRecords, zIndex } = props;
   const map = useMap();
   const [layer, setLayer] = useState(undefined);
-  
+
   useEffect(() => {
-        
-    var layer = L.vectorGrid.protobuf(`${url}/tile/{z}/{y}/{x}.pbf`, {
+    const vectorGridLayer = L.vectorGrid.protobuf(`${url}/tile/{z}/{y}/{x}.pbf`, {
       rendererFactory: L.svg.tile,
       attribution: '',
       interactive: true,
@@ -36,13 +34,13 @@ export default function CountriesTileLayer(props) {
     }
     ).addTo(map);
 
-    setLayer(layer);
-  },[])
+    setLayer(vectorGridLayer);
+  },[map, url, zIndex])
 
   useEffect(() => {
-    if ( layer )
+    if (layer)
     {
-      records.forEach(element => {
+      mapRecords.forEach(element => {
         if (element.properties.testsAdministered != null)
         {
           layer.setFeatureStyle(element.alpha3Code, {
@@ -62,36 +60,38 @@ export default function CountriesTileLayer(props) {
 
       layer.on({
         mouseover: (e) => {
-          var pop = layer.getPopup()
+          const pop = layer.getPopup()
           if(pop)
           {
             layer.openPopup(e.latlng);
-            const country = records.find(x => x.alpha3Code === e.sourceTarget.properties.CODE)
+            const country = mapRecords.find(x => x.alpha3Code === e.sourceTarget.properties.CODE)
             if (country) {
-              var test2 = ReactDOMServer.renderToString(createAltPopup(country,'en'))
-              pop.setContent(test2);
+              pop.setContent(ReactDOMServer.renderToString(createAltPopup(country,'en')));
             }
           }
-  
+
           toggleCountrySelection(e, e.target, highlightStyles.hovering)
         },
         mouseout: (e) => {
           if(layer.getPopup())
+          {
             layer.closePopup();
-  
+          }
+
           toggleCountrySelection(e, e.target, highlightStyles.default)
         },
         mousemove: (e) => {
           const pop = layer.getPopup()
           if(pop && e.latlng)
+          {
             pop.setLatLng(e.latlng)
+          }
         },
-        click: (e) => {}
         })
 
         layer.bindPopup(ReactDOMServer.renderToString(null), { closeButton: false, autoPan: false });
     }
-  },[records, layer])
+  },[mapRecords, layer])
 
   return null;
 }

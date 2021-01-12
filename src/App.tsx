@@ -52,8 +52,7 @@ function App() {
   useEffect(() => {    
     const updateCountriesJson = async () => {
       const api = new httpClient()
-      // TODO: Figure out a better place to put this so we don't keep updating this either 
-      const countriesJson = await api.getCountries();
+      const countriesJson = await api.httpGet("https://restcountries.eu/rest/v2/", false);
       dispatch({
         type: 'UPDATE_COUNTRIES_JSON',
         payload: countriesJson
