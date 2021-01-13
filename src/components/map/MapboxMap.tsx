@@ -70,11 +70,45 @@ class MapboxMap extends React.Component {
         map = new mapboxgl.Map({
             container: this.mapContainer,
             // @ts-ignore
-            style: style,
+            style: "mapbox://styles/mapbox/dark-v10",//style,
             center: [this.state.lng, this.state.lat],
             zoom: this.state.zoom,
+            transformRequest: (url, resourceType) => {
+              if (resourceType === "Tile")
+              {
+                return {
+                  url: url, 
+                  headers: { 
+                    // Mapbox expects uncompressed files, esri delivers compressed files in Gzip. Soln: https://stackoverflow.com/questions/53801169/how-to-load-large-geojson-file-into-mapbox https://github.com/mapbox/mapbox-gl-js/issues/1567
+                    "Content-Encoding":"gzip" // worth looking into for exmaples? https://github.com/maphubs/mapbox-gl-arcgis-tiled-map-service
+                  }
+                }
+              }
+              //console.log(url, resourceType)
+             return { url };
+            },
           });
 
+        map.on('load', () => {
+          map.addLayer({
+            "id": "road2",
+            "type": "line",
+            "source": {
+                    "type": "vector",
+                    "tiles": ["https://basemaps.arcgis.com/arcgis/rest/services/OpenStreetMap_FTS_v2/VectorTileServer/tile/{z}/{y}/{x}.pbf"]
+            },
+            "source-layer": "road",
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "miter"
+            },
+            "paint": {
+                "line-color": "rgba(65,244,244,0.3)",
+                "line-width": 3
+            }
+        }, 'waterway-label');
+        })
+          /*
         map.on("move", () => {
         this.setState({
             lng: map.getCenter().lng.toFixed(4),
@@ -82,6 +116,7 @@ class MapboxMap extends React.Component {
             zoom: map.getZoom().toFixed(2),
         });
         });
+        */
     })
   }
   

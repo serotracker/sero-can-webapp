@@ -163,6 +163,8 @@ export default function Map() {
               </Marker>
             )
           }
+          else
+            return null;
         }
       )}
     </MapContainer>

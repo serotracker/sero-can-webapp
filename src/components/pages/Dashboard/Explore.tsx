@@ -4,7 +4,6 @@ import { Loader } from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../../constants";
 import { AppContext } from "../../../context";
 import { PageStateEnum } from "../../../types";
-import Map from '../../map/Map';
 import MapboxMap from '../../map/MapboxMap';
 import MobileComponents from '../../mobile/ExploreMobile';
 import MaintenanceModal from "../../shared/MaintenanceModal";
