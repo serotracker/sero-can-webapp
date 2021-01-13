@@ -3,10 +3,9 @@ import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType, PageState, State } from '../../../types';
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
-import { getCountryName } from "../../../utils/mapUtils";
 import { updateFilters } from "../../../utils/stateUpdateUtils";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
-import Translate from "../../../utils/translate/translateService";
+import Translate, { getCountryName } from "../../../utils/translate/translateService";
 import InformationIcon from "../../shared/InformationIcon";
 import SectionHeader from "./SectionHeader";
 

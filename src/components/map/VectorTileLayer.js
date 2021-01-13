@@ -86,7 +86,7 @@ export default function VectorTileLayer(props) {
 
         return; 
       })();
-  },[map])
+  },[fetchApiStyle, front, map, style, url, zIndex])
 
   return null;
 }

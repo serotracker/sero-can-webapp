@@ -177,9 +177,9 @@ const reducer = (state: State, action: Record<string, any>): State => {
       return newState;
     };
     case "UPDATE_AGGREGATION_FACTOR":
-      return { ...state, chartAggregationFactor: action.payload }
+      return { ...state, chartAggregationFactor: action.payload };
     case "UPDATE_EXPLORE_IS_OPEN":
-      return { ...state, dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload } }
+      return { ...state, dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload } };
     default:
       return state
   };

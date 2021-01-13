@@ -8,7 +8,7 @@ import { AppContext } from "../../context";
 import httpClient from "../../httpClient";
 import { AggregationFactor, PageStateEnum } from "../../types";
 import { sendAnalyticsEvent } from '../../utils/analyticsUtils';
-import Translate from "../../utils/translate/translateService";
+import Translate, { getCountryName } from "../../utils/translate/translateService";
 import InformationIcon from "../shared/InformationIcon";
 import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
@@ -40,13 +40,13 @@ export default function Charts() {
       dispatch({
         type: "UPDATE_META_ANALYSIS",
         payload: {
-          pageStateEnum: PageStateEnum.analyze, 
+          pageStateEnum: PageStateEnum.analyze,
           metaAnalyzedRecords
         }
       })
     }
     updateCharts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.chartAggregationFactor])
 
   const handleChange = (event: SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
@@ -69,7 +69,7 @@ export default function Charts() {
       const upper = (seroprevalence + error[1]).toFixed(2);
       return (
         <div className="col flex popup">
-          <div className="col-12 p-0 popup-header">{name}</div>
+          <div className="col-12 p-0 popup-header">{getCountryName(name, state.language, "")}</div>
           <div className="col-12 p-0 popup-content">{Translate("Seroprevalence")}: {seroprevalence.toFixed(2)}%</div>
           <div className="col-12 p-0 popup-content">{Translate("95%ConfidenceInterval")}: {lower}%-{upper}%</div>
           <div className="col-12 p-0 popup-content">{Translate('TotalTests')}: {n}</div>

@@ -17,7 +17,7 @@ const toggleCountrySelection = (e, layer, highlightStyle) => {
 
 export default function CountriesTileLayer(props) {
 
-  const { url, mapRecords, zIndex } = props;
+  const { url, records, zIndex, language } = props;
   const map = useMap();
   const [layer, setLayer] = useState(undefined);
 
@@ -40,7 +40,7 @@ export default function CountriesTileLayer(props) {
   useEffect(() => {
     if (layer)
     {
-      mapRecords.forEach(element => {
+      records.forEach(element => {
         if (element.properties.testsAdministered != null)
         {
           layer.setFeatureStyle(element.alpha3Code, {
@@ -64,9 +64,9 @@ export default function CountriesTileLayer(props) {
           if(pop)
           {
             layer.openPopup(e.latlng);
-            const country = mapRecords.find(x => x.alpha3Code === e.sourceTarget.properties.CODE)
+            const country = records.find(x => x.alpha3Code === e.sourceTarget.properties.CODE)
             if (country) {
-              pop.setContent(ReactDOMServer.renderToString(createAltPopup(country,'en')));
+              pop.setContent(ReactDOMServer.renderToString(createAltPopup(country, language)));
             }
           }
 
@@ -91,7 +91,7 @@ export default function CountriesTileLayer(props) {
 
         layer.bindPopup(ReactDOMServer.renderToString(null), { closeButton: false, autoPan: false });
     }
-  },[mapRecords, layer])
+  },[records, layer, language])
 
   return null;
 }

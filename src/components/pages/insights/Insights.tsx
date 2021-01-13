@@ -83,7 +83,7 @@ export default function Insights() {
               identifier={Translate("Report")}
               date={"July 22, 2020"}
               img={BloodBank}
-              title="SeroTracker Blood Bank Seroprevalence Preliminary Report"
+              title={Translate('IndustryReportTitles', ['BloodBank'])}
               url="https://drive.google.com/file/d/1It2CzAwEfTcQ1zIC6z2fO7i7XEfmWfom/view?usp=sharing" />
           </div>
           <div className="col-sm-12 col-lg-6 py-2">
