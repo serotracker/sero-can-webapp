@@ -77,6 +77,8 @@ export default class httpClient {
             }
         });
 
+        // TODO: Clean up these columns, probably with a column interface with a field indicating
+        // whether or not it should be on the explore page 
         const all_columns = ["state", "city", "country", "age", "serum_pos_prevalence", "denominator_value", "population_group", 
         "overall_risk_of_bias", "source_name", "estimate_grade", "pin_latitude", "pin_longitude", "pin_region_type", 
         "sampling_start_date", "sampling_end_date", "first_author", "source_type", "study_type", "test_type", "specimen_type",
