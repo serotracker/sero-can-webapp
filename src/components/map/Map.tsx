@@ -10,7 +10,7 @@ import CountriesTileLayer from "./CountriesTileLayer"
 import { layerStyle } from './MapStyle';
 import { mapZIndex } from './../../constants'
 import Translate from "../../utils/translate/translateService";
-import { getGeography } from "../../utils/utils";
+import { getGeography, getPossibleNullDateString } from "../../utils/utils";
 
 export default function Map() {
   const [state] = useContext(AppContext);
@@ -134,6 +134,12 @@ export default function Map() {
                   </div>
                   <div className="popup-text">
                     { getGeography(record.city, record.state, record.country) }
+                  </div>
+                  <div className="popup-heading">
+                    Sampling dates
+                  </div>
+                  <div className="popup-text">
+                    { `${getPossibleNullDateString(record.sampling_start_date)} → ${getPossibleNullDateString(record.sampling_end_date)}` }
                   </div>
                   <div className="popup-heading">
                     Best seroprevalence (SP) estimate
