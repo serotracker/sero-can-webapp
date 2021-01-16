@@ -1,22 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from "react-router-dom";
 import App from './App';
-import { AppContextProvider } from './context';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import GAListener from './utils/analyticsUtils';
+import { AppContextProvider } from './context'
+import {Router} from 'react-router-dom';
+import GAListener from "./utils/analyticsUtils";
+import {createBrowserHistory} from 'history';
+
+const history = createBrowserHistory()
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <AppContextProvider>
-        <GAListener trackingId={process.env.REACT_APP_GA_TRACKERID}>
+    <Router history={history}>
+      <GAListener trackingId={process.env.REACT_APP_GA_TRACKERID}>
+        <AppContextProvider>
           <App />
-        </GAListener>
-      </AppContextProvider>
+        </AppContextProvider>
+
+      </GAListener>
     </Router>
-  </React.StrictMode>,
+  </React.StrictMode >,
   document.getElementById('root')
 );
 

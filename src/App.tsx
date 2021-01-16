@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Router, Switch, useHistory } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
 import CookiePolicy from "./components/pages/CookiePolicy";
@@ -13,7 +13,7 @@ import { CookieBanner } from "./components/shared/CookieBanner";
 import { NavBar } from "./components/shared/NavBar";
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
-import { PageStateEnum } from "./types";
+import { LanguageType, PageStateEnum } from "./types";
 import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
 
@@ -21,10 +21,11 @@ function App() {
   const [{ language, explore, analyze }, dispatch] = useContext(AppContext);
   setLanguageType(language);
 
+  // General call that happens once at the start of everything.
   useEffect(() => {
     const api = new httpClient()
-    initializeData(dispatch, explore.filters,true, PageStateEnum.explore)
-    initializeData(dispatch, analyze.filters,false, PageStateEnum.analyze)
+    initializeData(dispatch, explore.filters, true, PageStateEnum.explore)
+    initializeData(dispatch, analyze.filters, false, PageStateEnum.analyze)
     const allFilterOptions = async () => {
       const { options, updatedAt, maxDate, minDate } = await api.getAllFilterOptions();
       dispatch({
@@ -42,14 +43,14 @@ function App() {
         payload: { maxDate, minDate }
       })
     }
-    
+
     allFilterOptions();
     // We only want this to run once so we pass no dependencies. Do not remove this
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // pulls from ISO api to get standardized country names, codes and translations
-  useEffect(() => {    
+  useEffect(() => {
     const updateCountriesJson = async () => {
       const api = new httpClient()
       const countriesJson = await api.httpGet("https://restcountries.eu/rest/v2/", false);
@@ -61,6 +62,7 @@ function App() {
     updateCountriesJson();
   }, [dispatch])
 
+  // Cookie managing
   useEffect(() => {
     const alreadyAcceptedCookes = localStorage.getItem('acceptedCookies');
     if (alreadyAcceptedCookes) {
@@ -77,40 +79,57 @@ function App() {
     handleResize();
   }, [dispatch])
 
-  // ROUTING TABS
+  const listenForUrlLanguage = (pathname: string) => {
+    if (pathname.includes("/en/") && language !== LanguageType.english) {
+      dispatch({
+        type: "SELECT_LANGUAGE",
+        payload: LanguageType.english
+      })
+    }
+    else if (pathname.includes("/fr/") && language !== LanguageType.french) {
+      dispatch({
+        type: "SELECT_LANGUAGE",
+        payload: LanguageType.french
+      })
+    }
+  }
+
+  const history = useHistory()
+  listenForUrlLanguage(history.location.pathname)
+
   return (
     <div className="App">
       <NavBar />
       <CookieBanner />
-      <Switch >
-        <Route path="/About">
+      <Switch>
+        <Route path="/:language/About">
           <About />
         </Route>
-        <Route path="/Explore">
+        <Route path="/:language/Explore">
           <Explore />
         </Route>
-        <Route path="/Dashboard">
-          <Redirect to="/Explore" />
+        <Route path="/:language/Dashboard">
+          <Redirect to="/:language/Explore" />
         </Route>
-        <Route path="/Analyze">
+        <Route path="/:language/Analyze">
           <Analyze />
         </Route>
-        <Route path="/Data">
+        <Route path="/:language/Data">
           <Data />
         </Route>
-        <Route path="/PrivacyPolicy">
+        <Route path="/:language/PrivacyPolicy">
           <PrivacyPolicy />
         </Route>
-        <Route path="/CookiePolicy">
+        <Route path="/:language/CookiePolicy">
           <CookiePolicy />
         </Route>
-        <Route path="/TermsOfUse">
+        <Route path="/:language/TermsOfUse">
           <TermsOfUse />
         </Route>
-        <Route path="/Insights">
+        <Route path="/:language/Insights">
           <Insights />
         </Route>
-        <Redirect exact from="/" to="/Explore" />
+        <Redirect exact from="/" to={`/${language}/Explore`} />
       </Switch>
     </div>
   );

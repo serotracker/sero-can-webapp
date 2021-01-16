@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React, { SyntheticEvent, useContext, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { Bar, BarChart, CartesianGrid, ErrorBar, LabelList, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, ErrorBar, LabelList, LabelProps, Legend, ResponsiveContainer, TickFormatterFunction, Tooltip, XAxis, YAxis } from 'recharts';
 import { Dropdown, DropdownProps, Modal } from "semantic-ui-react";
 import { mobileDeviceOrTabletWidth, isMaintenanceMode } from "../../constants";
 import { AppContext } from "../../context";
@@ -121,6 +121,10 @@ export default function Charts() {
     </Modal>
   )
 
+  const tickFormatter: TickFormatterFunction = (value: string) => {
+    return getCountryName(value, state.language, "")    
+  }
+
   return (
     <div className="charts-page">
       {(showAnalyzePopup && !isMaintenanceMode) ? <MobileInfoModal /> : null}
@@ -156,7 +160,7 @@ export default function Charts() {
           <BarChart data={records} layout='vertical' barGap={10}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" name={`${Translate("Seroprevalence")} (%)`} padding={{ left: 0, right: 30 }} />
-            <YAxis dataKey="name" type="category" interval={0} width={getYAxisWidth(records) * 7} />
+            <YAxis dataKey="name" type="category" interval={0} width={getYAxisWidth(records) * 7} tickFormatter={tickFormatter} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
             <Bar isAnimationActive={false} dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60} barSize={20}>

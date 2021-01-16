@@ -1,7 +1,14 @@
 import { format, parseISO, formatISO, add } from "date-fns";
+import { LanguageType } from "../types";
+
+let language = LanguageType.english;
+
+export const setLanguage = (newLanguage: LanguageType) => {
+  language = newLanguage;
+}
 
 export const formatDates = (dates: Array<Date> | null) => {
-  
+
   let endDate = formatISO(new Date());
   let startDate = formatISO(add(new Date(endDate), { years: -2 }));
   if (dates) {
@@ -33,10 +40,14 @@ export const getPossibleNullStringArray = (nullString: string[] | null | undefin
   }
   return nullString.join(", ")
 }
-    
+
 export const getGeography = (city: string[] | null | undefined, state: string[] | null | undefined, country: string | null) => {
   if (!country) {
     return "Not Reported";
   }
   return `${city && city.length > 0 ? `${city.join(", ")}, ` : ""}${state && state.length > 0 ? `${state.join(", ")}, ` : ""}${country}`;
+}
+
+export const withLocaleUrl = (path: string) => {
+  return `/${language}/${path}`;
 }
