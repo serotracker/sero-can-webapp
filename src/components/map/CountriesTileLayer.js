@@ -38,10 +38,12 @@ export default function CountriesTileLayer(props) {
   },[map, url, zIndex])
 
   useEffect(() => {
-    if (layer)
+    // If the user navigates away from the map and navigates back it will crash unless we copy and check the element 
+    const recordsCopy = Object.assign([], records)
+    if (layer && recordsCopy)
     {
-      records.forEach(element => {
-        if (element.properties.testsAdministered != null)
+      recordsCopy.forEach(element => {
+        if (element && element.properties && element.properties.testsAdministered != null)
         {
           layer.setFeatureStyle(element.alpha3Code, {
             weight: 1,

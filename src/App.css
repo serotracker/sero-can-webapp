@@ -40,7 +40,7 @@
     color: white;
 }
 
-.regular a {
+.regular a, .regular div{
     font-weight: 500;
     color: lightgrey;
 }
@@ -225,4 +225,9 @@
 
 .modal-content {
     border: none
+}
+
+.checkbox {
+    width: 1.25em;
+    height: 1.25em;
 }

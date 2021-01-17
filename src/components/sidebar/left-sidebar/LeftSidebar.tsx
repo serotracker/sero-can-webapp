@@ -31,9 +31,9 @@ export default function LeftSidebar({ page }: SideBarProps) {
 
   return (
     <div className="sidebar-container flex">
-      <TotalStats page={page}/>
+      <TotalStats page={page} />
       {page === "explore" ? (
-        <ExploreText/>
+        <ExploreText />
       ) : (
           <AnalysisMethods />
         )
@@ -48,14 +48,6 @@ export default function LeftSidebar({ page }: SideBarProps) {
         <a href="https://cumming.ucalgary.ca/centres/centre-health-informatics" className="d-block mt-3 mx-auto" target="__blank" rel="noopener noreferrer">
           <img src={UcalgaryLogo} className="d-block mx-auto" alt="Centre for Health Informatics" height="22"></img>
         </a>
-      </div>
-      <div className="col-12 p-0 flex row center">
-        <div className="p-2 cursor" onClick={() => dispatch({ type: "SELECT_LANGUAGE", payload: LanguageType.english })}>
-          En
-      </div>
-        <div className="p-2 cursor" onClick={() => dispatch({ type: "SELECT_LANGUAGE", payload: LanguageType.french })}>
-          Fr
-      </div>
       </div>
     </div>
   )
