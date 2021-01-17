@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Redirect, Route, Router, Switch, useHistory } from "react-router-dom";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
 import CookiePolicy from "./components/pages/CookiePolicy";
@@ -130,6 +130,8 @@ function App() {
           <Insights />
         </Route>
         <Redirect exact from="/" to={`/${language}/Explore`} />
+        {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Insights"].map(route =>
+          <Redirect from={`/${route}`} to={`${language}/${route}`}></Redirect>)}
       </Switch>
     </div>
   );
