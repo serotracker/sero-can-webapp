@@ -92,7 +92,6 @@ export const NavBar = () => {
               Translate('About')}
           </Link>
         </div>
-
         <div className={getTabClass('/Language') + " cursor"} onClick={() => changeLanguages()}>
           <div>
             {state.language === LanguageType.english ?

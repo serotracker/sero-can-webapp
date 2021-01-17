@@ -17,7 +17,6 @@ ReactDOM.render(
         <AppContextProvider>
           <App />
         </AppContextProvider>
-
       </GAListener>
     </Router>
   </React.StrictMode >,
