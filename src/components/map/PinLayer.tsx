@@ -1,10 +1,10 @@
 
-import { Marker, Popup, MapContainer, TileLayer } from "react-leaflet";
+import { icon, LeafletMouseEvent } from "leaflet";
 import React, { useContext } from 'react';
+import { Marker, Popup } from "react-leaflet";
 import { AppContext } from '../../context';
 import Translate from '../../utils/translate/translateService';
 import { getGeography } from '../../utils/utils';
-import { icon, LeafletMouseEvent } from "leaflet";
 
 
 export default function PinLayer() {

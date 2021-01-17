@@ -85,7 +85,7 @@ export default function Map() {
         zIndex={mapZIndex.Labels}
         key={countryUrl}
       />
-        <PinLayer />
+      { state.showEstimatePins && <PinLayer />}
     </MapContainer>
   );
 }

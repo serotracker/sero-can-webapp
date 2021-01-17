@@ -25,7 +25,7 @@ export default function Legend(props: LegendProps) {
     <div className={isMobileDeviceOrTablet ? "info flex legend-mobile center-item" : "info flex legend center-item"}>
       <div className="flex legend-container" key={Math.random()}>
         <div className="legend-item cursor" onClick={clickEstimatePinsCheckbox}>
-          <i className="block"><input type="checkbox" checked={state.showEstimatePins} /></i>
+          <i className="block"><input className="checkbox" type="checkbox" checked={state.showEstimatePins} /></i>
           <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("StudyPins")}</p>
         </div>
         <div className="legend-item">

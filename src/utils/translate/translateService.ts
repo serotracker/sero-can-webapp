@@ -7,6 +7,7 @@ import FrenchCountries from "i18n-iso-countries/langs/fr.json";
 import English from './en.json';
 import French from './fr.json';
 import { toPascalCase } from "./caseChanger";
+import { setLanguage } from "../utils";
 
 interface TranslateStringProps {
   text: string;
@@ -40,6 +41,7 @@ const recursiveFind = (object: any, keys: string[], index: number): string => {
 let language: LanguageType = LanguageType.english;
 
 export const setLanguageType = (newLanguage: LanguageType) => {
+  setLanguage(newLanguage);
   language = newLanguage;
 }
 
