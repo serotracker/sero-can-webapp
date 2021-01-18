@@ -77,11 +77,14 @@ export default class httpClient {
             }
         });
 
+        // TODO: Clean up these columns, probably with a column interface with a field indicating
+        // whether or not it should be on the explore page 
         const all_columns = ["state", "city", "country", "age", "serum_pos_prevalence", "denominator_value", "population_group", 
-        "overall_risk_of_bias", "source_name", "estimate_grade", "pin_latitude", "pin_longitude", "pin_region_type", "first_author", "source_type", "study_type", "test_type", "specimen_type",
-        "isotypes_reported", "approving_regulator", "population_group", "sampling_start_date", "sampling_end_date", "lead_organization", "url"];
+        "overall_risk_of_bias", "source_name", "estimate_grade", "pin_latitude", "pin_longitude", "pin_region_type", 
+        "sampling_start_date", "sampling_end_date", "first_author", "source_type", "study_type", "test_type", "specimen_type",
+        "isotypes_reported", "approving_regulator", "population_group", "lead_organization", "url"];
 
-        const explore_columns = all_columns.slice(0, 13);
+        const explore_columns = all_columns.slice(0, 15);
 
         const date = filters['publish_date'] as Array<Date>
         const [startDate, endDate] = formatDates(date)
