@@ -1,5 +1,5 @@
 import React from "react";
-import mapboxgl from "mapbox-gl";
+import mapboxgl, { Layer, RasterLayer } from "mapbox-gl";
 import httpClient from "../../httpClient";
 import './MapboxMap';
 
@@ -13,44 +13,36 @@ interface state {
 
 // Takes in the style JSON object from VectorTileServer API response 
 // Modifies & adds attributes for Mapbox GL compatability 
-function format (style : any, metadata : any, endpointUrl : any) {
+async function prepare(url : string) {
 
-style.sprite = "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer/resources/styles/../sprites/sprite";
-style.glyphs = "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer/resources/styles/../fonts/{fontstack}/{range}.pbf";
-// ArcGIS Pro published vector services dont prepend tile or tileMap urls with a /
-style.sources.esri = {
+  const styleUrl = url+"/resources/styles/root.json";
+
+  const api = new httpClient()
+
+  let fetchedStyle = await api.getStyles(styleUrl);
+  fetchedStyle.sprite = url+"/resources/styles/../sprites/sprite";
+  fetchedStyle.glyphs = url+"/resources/styles/../fonts/{fontstack}/{range}.pbf";
+  fetchedStyle.sources.esri = {
     type: 'vector',
-    tiles: ["https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer/tile/{z}/{y}/{x}.pbf"],
+    tiles: [url+"/tile/{z}/{y}/{x}.pbf"],
     maxzoom: 23,  
-    //scheme: 'xyz',
-    //tilejson: metadata.tilejson || '2.0.0',
-    //format: (metadata.tileInfo && metadata.tileInfo.format) || 'pbf',
-    /* mapbox-gl-js does not respect the indexing of esri tiles
-    because we cache to different zoom levels depending on feature density, in rural areas 404s will still be encountered.
-    more info: https://github.com/mapbox/mapbox-gl-js/pull/1377
-    */
-    //index: metadata.tileMap ? style.sources.esri.url + '/' + metadata.tileMap : null,
-    //maxzoom: 23,  
-    //url: "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer/tile/{z}/{y}/{x}.pbf",
-    //tiles: ["https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer/tile/{z}/{y}/{x}.pbf"],
     };
-    return style;
-}
 
-async function prepare() {
-
-    const styleUrl = "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer/resources/styles/root.json"
-    const metadataUrl = "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer";
-
-    const api = new httpClient()
-
-    const fetchedStyle = await api.getStyles(styleUrl);
-    const fetchedmetadata = await api.getStyles(metadataUrl);
-
-    const style = format(fetchedStyle, fetchedmetadata, styleUrl);
-
-    return style;
+  return fetchedStyle;
 };
+
+function addEsriLayer(map : mapboxgl.Map, url : string){
+  prepare(url).then((style : mapboxgl.Style) => {
+    const layerGuid = "esri"+(Math.random().toString())
+    const source = style?.sources?.esri;
+    map.addSource(layerGuid, source as mapboxgl.VectorSource);
+
+    style?.layers?.forEach((layer : any) => {
+      layer.source = layerGuid
+      map.addLayer(layer)
+    });
+  })
+}
 
 class MapboxMap extends React.Component {
   mapContainer: string | HTMLElement = "";
@@ -67,35 +59,47 @@ class MapboxMap extends React.Component {
 
   componentDidMount() {
 
-    var map : any;
+    var map : mapboxgl.Map;
 
-    prepare().then((style) => {
-        map = new mapboxgl.Map({
-            container: this.mapContainer,
-            style: style, //"mapbox://styles/mapbox/dark-v10"
-            center: [this.state.lng, this.state.lat],
-            zoom: this.state.zoom,
-            /*transformRequest: (url : any, resourceType : any) => {
-              if (resourceType === "Tile")
-              {
-                return {
-                  url: url, 
-                  headers: { 
-                    // Mapbox expects uncompressed files, esri delivers compressed files in Gzip. Soln: https://stackoverflow.com/questions/53801169/how-to-load-large-geojson-file-into-mapbox https://github.com/mapbox/mapbox-gl-js/issues/1567
-                    "Content-Encoding":"gzip" // worth looking into for exmaples? https://github.com/maphubs/mapbox-gl-arcgis-tiled-map-service
-                  }
-                }
-              }
-             return { url }; 
-            }, */
-          });
+    // Sets WHO polygons as basemap
+    prepare("https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer").then((style) => {
+    map = new mapboxgl.Map({
+        container: this.mapContainer,
+        style: style,
+        center: [this.state.lng, this.state.lat],
+        zoom: this.state.zoom,
+      });
 
-        map.on('load', () => {
-          
-        })
+    map.on('load', () => {
+      addEsriLayer(map, "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer")
+      var e = map.getSource('esri')
+      console.log(e)
     })
+
+    var hoveredStateId : any = null;
+    // When the user moves their mouse over the state-fill layer, we'll update the
+    // feature state for the feature under the mouse.
+    map.on('mousemove', 'Land/1', function (e : any) {
+        console.log(e)
+        var f = e?.features[0]?.layer
+        f.paint = {
+          "fill-color" : "#3f1fe0"
+        }
+      });
+      
+      // When the mouse leaves the state-fill layer, update the feature state of the
+      // previously hovered feature.
+      map.on('mouseleave', 'esri', function () {
+      if (hoveredStateId) {
+      map.setFeatureState(
+      { source: 'states', id: hoveredStateId },
+      { hover: false }
+      );
+      }
+      hoveredStateId = null;
+      });
+  })
   }
-  
 
   render() {
     return (
