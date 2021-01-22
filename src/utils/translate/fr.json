@@ -45,10 +45,13 @@
         "Youth(13-17)": "Jeunes (13-17)"
     },
     "AggregatedPrevalence": "Fréquence cumulative",
-    "Aggregating": "Agrégation",
+    "Aggregating": "agrégeant ",
     "AnalysisMethods": {
-        "FirstParagraph": {},
-        "SecondParagraph": "filtres par défaut:. Estimations nationales et régionales, dans la population générale et les donneurs de sang",
+        "FirstParagraph": {
+            "FirstSentence": "La séroprévalence de chaque pays indiqué est calculée en ",
+            "SecondSentence": "de toutes les estimations de séroprévalence qui correspondent aux filtres que vous spécifiez."
+        },
+        "SecondParagraph": "filtres par défaut: Estimations nationales et régionales, dans la population générale et les donneurs de sang",
         "ThirdParagraph": "Ces estimations agrégées doivent être interprétées avec prudence, surtout si les études qui ont été agrégées ne comportaient pas des échantillons représentatifs ou étaient à risque élevé de biais",
         "Title": "Méthodes d'analyse",
         "Tooltip": "La technique d'agrégation est à effets fixes, méta-analyse pondérée inverse la variance de la prévalence, avec la double arcsin Freeman-Tukey transformée utilisés pour stabiliser la variance sur la taille des échantillons MIN_DENOMINATOR dossiers considérés."
