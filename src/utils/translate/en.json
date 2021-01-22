@@ -52,7 +52,7 @@
       "SecondSentence": "all seroprevalence estimates that match the filters you specify."
     },
     "SecondParagraph": "Default filters: national and regional estimates, in the general population and blood donors. ",
-    "ThirdParagraph": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias.",
+    "ThirdParagraph": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high Risk of bias.",
     "Title": "Analysis Methods",
     "Tooltip": "The aggregation technique used is fixed-effects, inverse-variance-weighted meta-analysis of prevalence, with the Freeman-Tukey double arcsin transform used to stabilize variance. Records over sample size MIN_DENOMINATOR considered."
   },
@@ -184,7 +184,7 @@
   },
   "InitInfoModalText": {
     "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
-    "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high risk of bias. You can explore the source literature in depth on the references card at the bottom of this page.",
+    "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high Risk of bias. You can explore the source literature in depth on the references card at the bottom of this page.",
     "PartTwo": "Our dashboard aggregates seroprevalence estimates in each country. By default, these aggregated estimates include national and regional seroprevalence estimates of the general population or blood donors, and excludes estimates presented only in the news."
   },
   "Insights": "Insights",
@@ -227,10 +227,10 @@
   "OurDataText": {
     "PointOne": "captures all studies reporting prevalence estimates",
     "PointTwo": "describes studies that have not yet reported seroprevalence estimates",
-    "Text": "The table below describes our findings, including detailed information about each study, each prevalence estimate, and the associated risk of bias."
+    "Text": "The table below describes our findings, including detailed information about each study, each prevalence estimate, and the associated Risk of bias."
   },
   "OurTeam": "Our Team",
-  "OverallRiskOfBias": "Overall Risk Of Bias",
+  "OverallRiskOfBias": "Overall Risk of bias",
   "Paper": "Paper",
   "PaperText": "Our first manuscript, describing lessons from serosurveys up to May 1, can be found on",
   "PaperTextTwo": "More information about our dashboard can be found in",
@@ -273,7 +273,7 @@
   "ReportsAndArticles": "Reports & Articles",
   "ResearchArticle": "Research Article",
   "ResearchTeam": "Research Team",
-  "RiskOfBias": "Risk Of Bias",
+  "RiskOfBias": "Risk of bias",
   "RiskOfBiasOptions": {
     "High": "High",
     "Low": "Low",
@@ -282,6 +282,7 @@
   },
   "SampleSize": "Sample Size",
   "Sampling": "Sampling",
+  "SamplingDates": "Sampling dates",
   "SamplingMethod": "Sampling Method",
   "SchoolName": {
     "Cumming": "Cumming School of Medicine",
@@ -342,7 +343,7 @@
   "StudyInformation": "Study Information",
   "StudyInformationTooltip": {
     "FirstParagraph": "Filter on study details, including source type (publication, preprint, news, or report) and study status (ongoing, completed).",
-    "SecondParagraph": "Risk of Bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates."
+    "SecondParagraph": "Risk of bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates."
   },
   "StudyName": "Study Name",
   "StudyPins": "Show Study Pins",

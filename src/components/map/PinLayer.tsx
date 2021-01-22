@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import { Marker, Popup } from "react-leaflet";
 import { AppContext } from '../../context';
 import Translate from '../../utils/translate/translateService';
-import { getGeography } from '../../utils/utils';
+import { getGeography, getPossibleNullDateString } from '../../utils/utils';
 
 
 export default function PinLayer() {
@@ -66,6 +66,16 @@ export default function PinLayer() {
                 <div className="popup-text">
                   {getGeography(record.city, record.state, record.country)}
                 </div>
+                {(record.sampling_start_date && record.sampling_end_date) && (
+                  <>
+                    <div className="popup-heading">
+                      {Translate("SamplingDates")}
+                    </div>
+                    <div className="popup-text">
+                      {`${getPossibleNullDateString(record.sampling_start_date)} → ${getPossibleNullDateString(record.sampling_end_date)}`}
+                    </div>
+                  </>)
+                }
                 <div className="popup-heading">
                   {Translate("BestSeroprevalenceEstimate")}
                 </div>
