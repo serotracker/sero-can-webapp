@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { DropdownProps, Radio, CheckboxProps, Form } from "semantic-ui-react";
+import { CheckboxProps, Radio } from "semantic-ui-react";
 import { AppContext } from "../../../context";
 import { LanguageType } from "../../../types";
 import Translate from "../../../utils/translate/translateService";

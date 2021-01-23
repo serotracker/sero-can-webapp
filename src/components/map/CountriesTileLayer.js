@@ -17,7 +17,7 @@ const toggleCountrySelection = (e, layer, highlightStyle) => {
 
 export default function CountriesTileLayer(props) {
 
-  const { url, mapRecords, zIndex } = props;
+  const { url, records, zIndex, language } = props;
   const map = useMap();
   const [layer, setLayer] = useState(undefined);
 
@@ -38,10 +38,12 @@ export default function CountriesTileLayer(props) {
   },[map, url, zIndex])
 
   useEffect(() => {
-    if (layer)
+    // If the user navigates away from the map and navigates back it will crash unless we copy and check the element 
+    const recordsCopy = Object.assign([], records)
+    if (layer && recordsCopy)
     {
-      mapRecords.forEach(element => {
-        if (element.properties.testsAdministered != null)
+      recordsCopy.forEach(element => {
+        if (element && element.properties && element.properties.testsAdministered != null)
         {
           layer.setFeatureStyle(element.alpha3Code, {
             weight: 1,
@@ -64,9 +66,9 @@ export default function CountriesTileLayer(props) {
           if(pop)
           {
             layer.openPopup(e.latlng);
-            const country = mapRecords.find(x => x.alpha3Code === e.sourceTarget.properties.CODE)
+            const country = records.find(x => x.alpha3Code === e.sourceTarget.properties.CODE)
             if (country) {
-              pop.setContent(ReactDOMServer.renderToString(createAltPopup(country,'en')));
+              pop.setContent(ReactDOMServer.renderToString(createAltPopup(country, language)));
             }
           }
 
@@ -91,7 +93,7 @@ export default function CountriesTileLayer(props) {
 
         layer.bindPopup(ReactDOMServer.renderToString(null), { closeButton: false, autoPan: false });
     }
-  },[mapRecords, layer])
+  },[records, layer, language])
 
   return null;
 }

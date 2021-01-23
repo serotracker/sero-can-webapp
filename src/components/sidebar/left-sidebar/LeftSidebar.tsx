@@ -1,39 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../sidebar.css";
 import AnalysisMethods from "./AnalysisMethods";
 import Translate from "../../../utils/translate/translateService";
 import TotalStats from "./TotalStats";
 import HealthAgencyLogo from '../../../assets/images/public-health-agency.png';
 import UcalgaryLogo from '../../../assets/images/University-Of-Calgary-Logo.png';
+import { AppContext } from "../../../context";
+import { LanguageType } from "../../../types";
 
 interface SideBarProps {
   page: string
 }
 
 export default function LeftSidebar({ page }: SideBarProps) {
+  const [state, dispatch] = useContext(AppContext);
 
   const ExploreText = () => (
     <div className="analysis-methods">
       <div className="section-title py-2 center">
-          {Translate('Welcome').toUpperCase()}
+        {Translate('Welcome').toUpperCase()}
       </div>
       <p>
-          {Translate('ExploreBlurb', ['FirstParagraph'])}
+        {Translate('ExploreBlurb', ['FirstParagraph'])}
       </p>
       <p>
-          {Translate('ExploreBlurb', ['SecondParagraph'])}
+        {Translate('ExploreBlurb', ['SecondParagraph'])}
       </p>
     </div>
   )
 
   return (
     <div className="sidebar-container flex">
-      <TotalStats page={page}/>
+      <TotalStats page={page} />
       {page === "explore" ? (
-        <ExploreText/>
+        <ExploreText />
       ) : (
-        <AnalysisMethods />
-      )
+          <AnalysisMethods />
+        )
       }
       <div className="m-3">
         <a href="https://www.covid19immunitytaskforce.ca/" className="d-block mt-3 mx-auto" target="__blank" rel="noopener noreferrer">
