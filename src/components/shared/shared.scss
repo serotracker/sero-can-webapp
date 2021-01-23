@@ -17,3 +17,22 @@
 .maintenance-modal {
   z-index: 8000;
 }
+
+div#root div.App div.static-content table tbody tr.highlight {
+  background-color: rgba(85,166,186, 0.2);
+}
+
+.hover {
+  position: absolute;
+  right: 10px;
+  top: 50%;  /* position the top  edge of the element at the middle of the parent */
+  transform: translate(0%, -50%);  
+  transition-delay: 3s;
+  transition: opacity 3s;
+  opacity: 1;
+}
+
+.no-hover {
+  opacity: 0;
+  position: absolute;
+}

@@ -38,7 +38,6 @@ export default function InsightsCard(props: InsightsCardProps) {
                 className={'icon'}
                 color={'white'}
                 size={"lg"} />
-
             </div>
           </div>
         </a>

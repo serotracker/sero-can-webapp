@@ -51,7 +51,7 @@ export const NavBar = () => {
   return (
     <header className="App-header col-12 px-sm-2">
       <div className="App-title col-auto py-3 px-0 flex left">
-        <Link to={withLocaleUrl("")} className="flex">
+        <Link to={withLocaleUrl("Explore")} className="flex">
           <img src={MultiColorIcon} width={23} height={23} alt="" />
           {!isMobileDeviceOrTablet && (<div className="col-auto px-2" >SeroTracker</div>)}
         </Link>
