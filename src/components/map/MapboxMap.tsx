@@ -34,8 +34,16 @@ async function prepare(url : string) {
 function addEsriLayer(map : mapboxgl.Map, url : string){
   prepare(url).then((style : mapboxgl.Style) => {
     const layerGuid = "esri"+(Math.random().toString())
-    const source = style?.sources?.esri;
+    var source = style?.sources?.esri as mapboxgl.VectorSource;
+
+    //@ts-ignore
+    const l = style?.layers[0];
+    if(l?.id === "Countries")
+    {
+      source.promoteId = {"Countries": "CODE"}
+    }
     map.addSource(layerGuid, source as mapboxgl.VectorSource);
+
 
     style?.layers?.forEach((layer : any) => {
       layer.source = layerGuid
@@ -72,6 +80,7 @@ class MapboxMap extends React.Component {
 
     map.on('load', () => {
       addEsriLayer(map, "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer")
+      addEsriLayer(map, "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer")
       var e = map.getSource('esri')
       console.log(e)
     })
@@ -80,11 +89,21 @@ class MapboxMap extends React.Component {
     // When the user moves their mouse over the state-fill layer, we'll update the
     // feature state for the feature under the mouse.
     map.on('mousemove', 'Land/1', function (e : any) {
-        console.log(e)
         var f = e?.features[0]?.layer
         f.paint = {
-          "fill-color" : "#3f1fe0"
+          "fill-color" : "rgba(255, 255, 0, 1)"
         }
+        var layer = map.getLayer('Countries');
+        var layer2 = map.getLayer('Land/1');
+        /*
+        var features = map.querySourceFeatures('Land/1', {
+          sourceLayer: 'Land'
+          });
+          */
+        var features2 = map.queryRenderedFeatures(undefined, { layers: ['Countries'] });
+        var features2 = map.queryRenderedFeatures(undefined, { layers: ['Land/1'] });
+        var features3 = map.querySourceFeatures('Land/1');
+        console.log(e)
       });
       
       // When the mouse leaves the state-fill layer, update the feature state of the
