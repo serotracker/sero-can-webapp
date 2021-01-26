@@ -1,5 +1,6 @@
 
 export type AirtableRecord = {
+    source_id: string,
     source_name: string | null,
     lead_org?: string | null,
     first_author?: string | null,

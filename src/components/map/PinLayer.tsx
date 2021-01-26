@@ -50,7 +50,7 @@ export default function PinLayer() {
               key={`marker-${idx}`}
               position={[record.pin_latitude, record.pin_longitude]}
             >
-              <Popup autoClose={false} className="pin-popup">
+              {/*<Popup autoClose={false} className="pin-popup">
                 <div className="popup-title">
                   {Translate(`${record.estimate_grade}StudyDetails`)}
                 </div>
@@ -100,7 +100,7 @@ export default function PinLayer() {
                 <div className="popup-text">
                   {`${record.overall_risk_of_bias}`}
                 </div>
-              </Popup>
+              </Popup>*/}
             </Marker>)
         }
       })}

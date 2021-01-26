@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import httpClient from '../httpClient'
 import { AggregationFactor, Filters, FilterType } from '../types'
+import { pins_columns, all_columns } from '../constants';
 
 export const updateFilters = async (
   dispatch: any,
@@ -36,7 +37,7 @@ export const updateFilters = async (
   const [records,
     estimateGradePrevalences, reAggregatedRecords] = await
       Promise.all([
-        api.getAirtableRecords(updatedFilters, exploreIsOpen),
+        api.getAirtableRecords(updatedFilters, exploreIsOpen ? pins_columns : all_columns),
         api.getEstimateGrades(updatedFilters),
         page === "analyze" ? api.postMetaAnalysis(updatedFilters, aggregationFactor) : Promise.resolve()
       ]);
@@ -85,7 +86,7 @@ export const initializeData = async (dispatch: any, filters: Filters, exploreIsO
   const [records,
     reAggregatedRecords,
     estimateGradePrevalences] = await Promise
-      .all([api.getAirtableRecords(filters, exploreIsOpen),
+      .all([api.getAirtableRecords(filters, exploreIsOpen ? pins_columns : all_columns),
       api.postMetaAnalysis(filters, AggregationFactor.country),
       api.getEstimateGrades(filters)]);
 

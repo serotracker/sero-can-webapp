@@ -1,6 +1,7 @@
 import { AggregatedRecord, AggregationFactor, AirtableRecord, Filters, FilterType } from "./types";
 import { formatDates } from "./utils/utils";
 import {parseISO, format } from "date-fns";
+import { all_columns } from "./constants";
 
 export default class httpClient {
 
@@ -65,7 +66,7 @@ export default class httpClient {
     }
     
     async getAirtableRecords(filters: Filters,
-        only_explore_columns: Boolean =false,
+        columns: string[] = all_columns,
         sorting_key = "denominator_value",
         reverse= false) {
         const reqBodyFilters: Record<string, string[]> = {}
@@ -77,15 +78,6 @@ export default class httpClient {
             }
         });
 
-        // TODO: Clean up these columns, probably with a column interface with a field indicating
-        // whether or not it should be on the explore page 
-        const all_columns = ["state", "city", "country", "age", "serum_pos_prevalence", "denominator_value", "population_group", 
-        "overall_risk_of_bias", "source_name", "estimate_grade", "pin_latitude", "pin_longitude", "pin_region_type", 
-        "sampling_start_date", "sampling_end_date", "url", "first_author", "source_type", "study_type", "test_type", "specimen_type",
-        "isotypes_reported", "approving_regulator", "population_group", "lead_organization"];
-
-        const explore_columns = all_columns.slice(0, 16);
-
         const date = filters['publish_date'] as Array<Date>
         const [startDate, endDate] = formatDates(date)
         const reqBody = {
@@ -96,7 +88,7 @@ export default class httpClient {
             reverse: reverse,
             per_page: null,
             page_index: null,
-            columns: only_explore_columns ? explore_columns : all_columns,
+            columns,
         }
         const response = await this.httpPost('/data_provider/records', reqBody)
         if (!response) {
@@ -124,6 +116,7 @@ export default class httpClient {
                 seroprevalence: item.serum_pos_prevalence,
                 sex: item.sex,
                 source_name: item.source_name,
+                source_id: item.source_id,
                 source_type: item.source_type,
                 specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],
                 state: item.state,
