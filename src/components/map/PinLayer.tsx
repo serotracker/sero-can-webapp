@@ -1,14 +1,17 @@
 
 import { icon, LeafletMouseEvent } from "leaflet";
-import React, { useContext } from 'react';
-import { Marker, Popup } from "react-leaflet";
+import React, { useContext, useState } from 'react';
+import { Marker } from "react-leaflet";
 import { AppContext } from '../../context';
-import Translate from '../../utils/translate/translateService';
-import { getGeography, getPossibleNullDateString } from '../../utils/utils';
+import PinModal from './PinModal';
+import httpClient from "../../httpClient";
+import { AirtableRecord } from "../../types";
+import ReactDOMServer from "react-dom/server";
 
 
 export default function PinLayer() {
   const [state] = useContext(AppContext);
+  const [currentRecord, setRecord] = useState({} as AirtableRecord);
 
   // Definitions of the marker fields: 
   //  iconSize: size of the icon
@@ -35,6 +38,13 @@ export default function PinLayer() {
     popupAnchor: [0, -10]
   });
 
+  const getRecord = async (source_id: string) => {
+      const api = new httpClient()
+      // TODO: Figure out a better place to put this so we don't keep updating this either 
+      const res = await api.getOneAirtableRecord(source_id);
+      setRecord(res);
+  }
+
   return (
     <div>
       {state.explore.records.map((record, idx) => {
@@ -43,64 +53,16 @@ export default function PinLayer() {
             <Marker
               eventHandlers={{
                 click: (e: LeafletMouseEvent) => {
-                  e.target.openPopup();
+                  setRecord({} as AirtableRecord);
+                  getRecord(record.source_id);
+                  e.target.openPopup()
                 },
               }}
               icon={record.estimate_grade === "National" ? nationalMarker : (record.estimate_grade === "Regional" ? regionalMarker : localMarker)}
               key={`marker-${idx}`}
               position={[record.pin_latitude, record.pin_longitude]}
             >
-              {/*<Popup autoClose={false} className="pin-popup">
-                <div className="popup-title">
-                  {Translate(`${record.estimate_grade}StudyDetails`)}
-                </div>
-                <div className="popup-heading">
-                  {Translate("StudyName")}
-                </div>
-                <div className="popup-text">
-                  {record.url ? <a href={record.url} target="_blank" rel="noopener noreferrer">{record.source_name}</a> : record.source_name}
-                </div>
-                <div className="popup-heading">
-                  {Translate("Location")}
-                </div>
-                <div className="popup-text">
-                  {getGeography(record.city, record.state, record.country)}
-                </div>
-                {(record.sampling_start_date && record.sampling_end_date) && (
-                  <>
-                    <div className="popup-heading">
-                      {Translate("SamplingDates")}
-                    </div>
-                    <div className="popup-text">
-                      {`${getPossibleNullDateString(record.sampling_start_date)} → ${getPossibleNullDateString(record.sampling_end_date)}`}
-                    </div>
-                  </>)
-                }
-                <div className="popup-heading">
-                  {Translate("BestSeroprevalenceEstimate")}
-                </div>
-                <div className="popup-text">
-                  {record.seroprevalence ? `${(record.seroprevalence * 100).toFixed(1)}%` : "N/A"}
-                </div>
-                <div className="popup-heading">
-                  {Translate("N")}
-                </div>
-                <div className="popup-text">
-                  {`${record.denominator}`}
-                </div>
-                <div className="popup-heading">
-                  {Translate("PopulationGroup")}
-                </div>
-                <div className="popup-text">
-                  {record.population_group ? `${record.population_group}` : Translate("NotReported")}
-                </div>
-                <div className="popup-heading">
-                  {Translate("RiskOfBias")}
-                </div>
-                <div className="popup-text">
-                  {`${record.overall_risk_of_bias}`}
-                </div>
-              </Popup>*/}
+                <PinModal record={currentRecord} key={`popup-${idx}`}/>
             </Marker>)
         }
       })}

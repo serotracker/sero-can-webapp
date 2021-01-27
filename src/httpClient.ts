@@ -1,11 +1,11 @@
-import { AggregatedRecord, AggregationFactor, AirtableRecord, Filters, FilterType } from "./types";
-import { formatDates } from "./utils/utils";
+import { AggregatedRecord, AggregationFactor, Filters, FilterType } from "./types";
+import { formatDates, mapToAirtableRecord } from "./utils/utils";
 import {parseISO, format } from "date-fns";
 import { all_columns } from "./constants";
 
 export default class httpClient {
 
-    async httpGet(url: string, useAppRoute: boolean) {
+    async httpGet(url: string, useAppRoute: boolean = true) {
         let url_full = url;
         if (useAppRoute && process.env.REACT_APP_ROUTE) {
             url_full = process.env.REACT_APP_ROUTE + url_full;
@@ -22,9 +22,9 @@ export default class httpClient {
         }
     }
 
-    async httpPost(url: string, data: Record<string, any>) {
+    async httpPost(url: string, data: Record<string, any>, useAppRoute: boolean = true) {
         let url_full = url;
-        if (process.env.REACT_APP_ROUTE) {
+        if (useAppRoute && process.env.REACT_APP_ROUTE) {
             url_full = process.env.REACT_APP_ROUTE + url_full;
         }
         const res = await fetch(url_full, {
@@ -46,7 +46,7 @@ export default class httpClient {
     }
 
     async getAllFilterOptions() {
-        const response = await this.httpGet('/data_provider/filter_options', true);
+        const response = await this.httpGet('/data_provider/filter_options');
         const options: Record<string, any> = {}
         for(let k in response){
             // Currently no need for max and min date options
@@ -96,40 +96,16 @@ export default class httpClient {
         }
         const filtered_records = response.map((item: Record<string, any>) => {
             // Convert response to AirtableRecord type
-            const record: AirtableRecord = {
-                age: item.age,
-                approving_regulator: item.approving_regulator,
-                city: item.city,
-                country: item.country,
-                denominator: item.denominator_value,
-                estimate_grade: item.estimate_grade,
-                first_author: item.first_author,
-                isotypes_reported: item.isotypes_reported,
-                lead_org: item.lead_org,
-                overall_risk_of_bias: item.overall_risk_of_bias,
-                pin_latitude: item.pin_latitude,
-                pin_longitude: item.pin_longitude,
-                pin_region_type: item.pin_region_type,
-                population_group: item.population_group,
-                sampling_end_date: item.sampling_end_date,
-                sampling_start_date: item.sampling_start_date,
-                seroprevalence: item.serum_pos_prevalence,
-                sex: item.sex,
-                source_name: item.source_name,
-                source_id: item.source_id,
-                source_type: item.source_type,
-                specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],
-                state: item.state,
-                study_type: item.study_type,
-                test_type: item.study_type,
-                url: item.url
-            };
-
-            return record;
+            return mapToAirtableRecord(item);
         });
-        // Remove timestamp from updated at string
 
         return filtered_records;
+    }
+
+    async getOneAirtableRecord(source_id: string) {
+        const response = await this.httpGet(`/data_provider/record_details/${source_id}`);
+        console.log(response);
+        return mapToAirtableRecord(response);
     }
 
     async getEstimateGrades(filters: Filters) {
