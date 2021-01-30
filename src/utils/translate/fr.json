@@ -204,6 +204,7 @@
     "Location": "Lieu",
     "Manufacturer": "Fabricant",
     "ManuscriptAndPreprint": "Manuscrit et préimpression",
+    "Media" : "Médias" ,
     "Methods": "Méthodes",
     "MethodsText": {
         "FirstParagraph": "SeroTracker assure une synthèse systématique mondiale de projets de sérosurveillance du SRAS-CoV-2. Nous filtrons les articles scientifiques, les préimpressions, les rapports gouvernementaux et les articles parus dans les médias afin d'identifier les estimations de prévalence indiquées ci-dessous. Nous mettons à jour nos données avec tous les rapports de séroprévalence que nous avons pu trouver dans nos recherches.",

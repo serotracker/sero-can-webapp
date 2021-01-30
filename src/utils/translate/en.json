@@ -207,6 +207,7 @@
   "Location": "Location",
   "Manufacturer": "Manufacturer",
   "ManuscriptAndPreprint": "Manuscript and Preprint",
+  "Media" : "Media" ,
   "Methods": "Methods",
   "MethodsText": {
     "FirstParagraph": "SeroTracker provides a systematic synthesis of SARS-CoV-2 serosurveillance projects globally. We screened peer-reviewed articles, preprints, government reports, and media articles to identify the prevalence estimates reported below. Our data is updated with all new reports of seroprevalence findings that were captured in our search.",
