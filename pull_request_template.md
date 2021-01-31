@@ -1,4 +1,4 @@
-## Briefly the feature or bug that this PR addresses.
+## Briefly describe the feature or bug that this PR addresses.
 
 ## Please link the Airtable ticket associated with this PR.
 
