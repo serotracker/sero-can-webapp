@@ -130,7 +130,7 @@ function App() {
         <Route path="/:language/Insights">
           <Insights />
         </Route>
-        <Route path="/Canada">
+        <Route path="/:language/Canada">
           <TableauEmbed
             url="https://public.tableau.com/views/SeroTrackerExp_16121485899730/Explore?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"
             options={{
