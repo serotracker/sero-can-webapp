@@ -11,6 +11,7 @@ import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import TermsOfUse from "./components/pages/TermsOfUse";
 import { CookieBanner } from "./components/shared/CookieBanner";
 import { NavBar } from "./components/shared/NavBar";
+import TableauEmbed from "./components/shared/TableauEmbed";
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
 import { LanguageType, PageStateEnum } from "./types";
@@ -129,8 +130,13 @@ function App() {
         <Route path="/:language/Insights">
           <Insights />
         </Route>
+        <Route path="/Canada">
+          <TableauEmbed
+            url="https://public.tableau.com/views/BeerStyles_16115082996360/100BeerStyles?:language=en&:display_count=y&mobile=&:origin=viz_share_link"
+          />
+        </Route>
         <Redirect exact from="/" to={`/${language}/Explore`} />
-        {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Insights"].map(route =>
+        {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Insights", "Canada"].map(route =>
           <Redirect from={`/${route}`} to={`${language}/${route}`}></Redirect>)}
       </Switch>
     </div>

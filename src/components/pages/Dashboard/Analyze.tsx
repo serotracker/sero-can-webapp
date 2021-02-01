@@ -1,12 +1,10 @@
 import React from "react";
-// @ts-ignore
-// The tableau JS API does not have good typescript support
-import TableauReport from 'tableau-react-embed';
+import TableauEmbed from '../../shared/TableauEmbed';
 
 export default function Analyze() {
   return (
     <>
-      <TableauReport
+      <TableauEmbed
         url="http://public.tableau.com/views/RegionalSampleWorkbook/Storms"
       />
     </>
