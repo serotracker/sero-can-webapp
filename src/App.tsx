@@ -132,7 +132,11 @@ function App() {
         </Route>
         <Route path="/Canada">
           <TableauEmbed
-            url="https://public.tableau.com/views/BeerStyles_16115082996360/100BeerStyles?:language=en&:display_count=y&mobile=&:origin=viz_share_link"
+            url="https://public.tableau.com/views/SeroTrackerExp_16121485899730/Explore?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"
+            options={{
+              width: "1200px",
+              height: "900px"
+            }}
           />
         </Route>
         <Redirect exact from="/" to={`/${language}/Explore`} />

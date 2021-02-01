@@ -7,7 +7,8 @@ import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 
 interface TableauEmbedProps {
-    url: string
+    url: string,
+    options?: Record<string, string>
 }
 
 export default function TableauEmbed(props: TableauEmbedProps) {
@@ -15,15 +16,18 @@ export default function TableauEmbed(props: TableauEmbedProps) {
     // All other vizCreate options are supported here, too
     // They are listed here: 
     // https://onlinehelp.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api_ref.htm#ref_head_9
+    // const options = {
+    //     width: "100%",
+    //     height: "100%"
+    // }
 
     return (
         <>
-            <div className="col-12 page">
-                <div className="pb-5 pt-5">
-                    <TableauReport
-                        url={props.url}
-                    />
-                </div>
+            <div className="col-12 page pb-5 pt-5">
+                <TableauReport
+                    url={props.url}
+                    options={props.options ? props.options : {}} 
+                />
             </div>
         </>
     )
