@@ -245,6 +245,7 @@ export default class httpClient {
         return formattedResponse;
     }
 
+    // Note: deprecated but leaving here in case we need again
     async postMetaAnalysis(filters: Filters,
         aggregation_variable: AggregationFactor,
         meta_analysis_technique: string = 'fixed',

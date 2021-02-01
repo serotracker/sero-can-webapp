@@ -3,7 +3,6 @@ import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
 import CookiePolicy from "./components/pages/CookiePolicy";
-import Analyze from "./components/pages/Dashboard/Analyze";
 import Explore from "./components/pages/Dashboard/Explore";
 import Data from './components/pages/Data';
 import Insights from "./components/pages/insights/Insights";
@@ -11,6 +10,7 @@ import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import TermsOfUse from "./components/pages/TermsOfUse";
 import { CookieBanner } from "./components/shared/CookieBanner";
 import { NavBar } from "./components/shared/NavBar";
+import TableauEmbed from "./components/shared/TableauEmbed";
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
 import { LanguageType, PageStateEnum } from "./types";
@@ -25,7 +25,6 @@ function App() {
   useEffect(() => {
     const api = new httpClient()
     initializeData(dispatch, explore.filters, true, PageStateEnum.explore)
-    initializeData(dispatch, analyze.filters, false, PageStateEnum.analyze)
     const allFilterOptions = async () => {
       const { options, updatedAt, maxDate, minDate } = await api.getAllFilterOptions();
       dispatch({
@@ -95,7 +94,10 @@ function App() {
   }
 
   const history = useHistory()
-  listenForUrlLanguage(history.location.pathname)
+  listenForUrlLanguage(history.location.pathname);
+
+  const ANALYZE_URL = "https://public.tableau.com/views/SeroTrackerExp_16121485899730/Analyze?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"
+  const CANADIAN_EXPLORE_URL = "https://public.tableau.com/views/SeroTrackerExp_16121485899730/Explore?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"
 
   return (
     <div className="App">
@@ -112,7 +114,13 @@ function App() {
           <Redirect to="/:language/Explore" />
         </Route>
         <Route path="/:language/Analyze">
-          <Analyze />
+        <TableauEmbed
+          url={ANALYZE_URL}
+          options={{
+            width: "80vw",
+            height: "3000px"
+          }}
+        />
         </Route>
         <Route path="/:language/Data">
           <Data />
@@ -129,8 +137,17 @@ function App() {
         <Route path="/:language/Insights">
           <Insights />
         </Route>
+        <Route path="/:language/Canada">
+          <TableauEmbed
+            url={CANADIAN_EXPLORE_URL}
+            options={{
+              width: "80vw",
+              height: "1000px"
+            }}
+          />
+        </Route>
         <Redirect exact from="/" to={`/${language}/Explore`} />
-        {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Insights"].map(route =>
+        {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Insights", "Canada"].map(route =>
           <Redirect from={`/${route}`} to={`${language}/${route}`}></Redirect>)}
       </Switch>
     </div>
