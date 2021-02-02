@@ -41,6 +41,18 @@ function addEsriLayer(map : mapboxgl.Map, url : string){
     if(l?.id === "Countries")
     {
       source.promoteId = {"Countries": "CODE"}
+      //@ts-ignore
+      l.paint = {
+        'line-color' : "#eb4034",
+        'line-width' : 1,
+        'line-opacity': [
+        'case',
+        ['boolean', ['feature-state', 'hover'], false],
+        1,
+        0.5
+        ]
+      }
+     //l.type = "fill"
     }
     map.addSource(layerGuid, source as mapboxgl.VectorSource);
 
@@ -79,10 +91,29 @@ class MapboxMap extends React.Component {
       });
 
     map.on('load', () => {
-      addEsriLayer(map, "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer")
+
+      
+      map.addSource('country-polygons', {
+        'type': 'vector',
+        'url': 'mapbox://mapbox.country-boundaries-v1'
+        });
+        
+      map.addLayer({
+      'id': 'polygons',
+      'type': 'fill',
+      'source': 'country-polygons',
+      'source-layer':'country_boundaries',
+      'paint': {'fill-opacity': 0}});
+      
       addEsriLayer(map, "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer")
-      var e = map.getSource('esri')
-      console.log(e)
+      addEsriLayer(map, "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer")
+
+      map.addSource('some id', {
+        type: 'geojson',
+        data: 'https://covid19.who.int/geo/topojson-WHO-world-map-optimized-v3.json'
+      });
+
+      
     })
 
     var hoveredStateId : any = null;
@@ -90,20 +121,12 @@ class MapboxMap extends React.Component {
     // feature state for the feature under the mouse.
     map.on('mousemove', 'Land/1', function (e : any) {
         var f = e?.features[0]?.layer
-        f.paint = {
-          "fill-color" : "rgba(255, 255, 0, 1)"
-        }
-        var layer = map.getLayer('Countries');
-        var layer2 = map.getLayer('Land/1');
-        /*
-        var features = map.querySourceFeatures('Land/1', {
-          sourceLayer: 'Land'
-          });
-          */
-        var features2 = map.queryRenderedFeatures(undefined, { layers: ['Countries'] });
-        var features2 = map.queryRenderedFeatures(undefined, { layers: ['Land/1'] });
-        var features3 = map.querySourceFeatures('Land/1');
-        console.log(e)
+        var features1 = map.queryRenderedFeatures(undefined, { layers: ['polygons'] });
+        var features4 = map.queryRenderedFeatures(undefined, { layers: ['Countries'] });
+        var features5 = map.queryRenderedFeatures(undefined, { layers: ['Land/1'] });
+        var features6 = map.querySourceFeatures('Countries');
+        var featuresF = map.queryRenderedFeatures(e.point);
+        var features = map.querySourceFeatures( 'country-polygons', {sourceLayer: 'country_boundaries'});
       });
       
       // When the mouse leaves the state-fill layer, update the feature state of the
