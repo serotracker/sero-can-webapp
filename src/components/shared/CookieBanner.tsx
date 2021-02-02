@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import { AppContext } from '../../context'
 import Translate from '../../utils/translate/translateService'
+import { withLocaleUrl } from '../../utils/utils'
 import "./shared.scss"
 
 export const CookieBanner = () => {
@@ -24,7 +25,7 @@ export const CookieBanner = () => {
           <div className="col-md-6 p-3 flex column">
             <div>
               {Translate('CookiePolicyBody', null, null, [false, true])}
-              <Link to="/CookiePolicy">{Translate('CookiePolicy')}</Link>
+              <Link to={withLocaleUrl("CookiePolicy")}>{Translate('CookiePolicy')}</Link>
             </div>
             <div className="flex right">
               <Button color="blue" onClick={acceptCookes}>{Translate('Accept')}</Button>

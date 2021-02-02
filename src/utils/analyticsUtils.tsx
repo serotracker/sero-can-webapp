@@ -1,7 +1,7 @@
 import { Location, LocationListener, UnregisterCallback } from 'history'
 import { useEffect } from 'react'
 import ReactGA from 'react-ga'
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 
 const sendPageView: LocationListener = (location: Location): void => {
   ReactGA.set({ page: location.pathname })

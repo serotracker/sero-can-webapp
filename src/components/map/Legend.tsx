@@ -17,23 +17,6 @@ interface LegendProps {
 export default function Legend(props: LegendProps) {
   const [state, dispatch] = useContext(AppContext);
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
-
-  // const labels = buckets.map((value, index) => {
-  //   if (index !== buckets.length) {
-  //     const from = value;
-  //     const to = buckets[index + 1]
-  //     // TODO: Check into passing in an array of colours instead of the getColor function
-  //     return (
-  //       <div className="bin flex" key={Math.random()}>
-  //         <div className={isMobileDeviceOrTablet ? "col-12 mobile-text p-0" : "col-12 p-0"}>
-  //           {isMobileDeviceOrTablet ? `${from}%${to ? '' : "+"}` : `${from}%${to ? `- ${to}%` : "+"}`}</div>
-  //         <i className="col-12 p-0" style={{ background: getColor(from, buckets) }}></i>
-  //       </div>
-  //     )
-  //   }
-  //   return null;
-  // })
-
   const clickEstimatePinsCheckbox = (e: React.MouseEvent<HTMLElement>) => {
     dispatch({ type: 'TOGGLE_ESTIMATE_PINS' })
   }
@@ -41,9 +24,9 @@ export default function Legend(props: LegendProps) {
   return (
     <div className={isMobileDeviceOrTablet ? "info flex legend-mobile center-item" : "info flex legend center-item"}>
       <div className="flex legend-container" key={Math.random()}>
-        <div className="legend-item">
-          <i className="block"><input type="checkbox" checked={state.showEstimatePins} onClick={clickEstimatePinsCheckbox} /></i>
-          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>Study pins</p>
+        <div className="legend-item cursor" onClick={clickEstimatePinsCheckbox}>
+          <i className="block"><input className="checkbox" type="checkbox" checked={state.showEstimatePins} /></i>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("StudyPins")}</p>
         </div>
         <div className="legend-item">
           <i className="block"><img src={NationalPinIcon} alt="national pin icon" style={{ width: "14px", height: "20px"}}/></i>
@@ -62,13 +45,6 @@ export default function Legend(props: LegendProps) {
           <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("CountryEstimatesExist")}</p>
         </div>
       </div>
-      {/* {labels} */}
-      {/* <h4 className="legend-title p-0 middle">{Translate('Seroprevalence')}
-        <span className="popup">
-          <div className="popup-header">{Translate("SeroprevalenceScale")}</div>
-          <div className="popup-content">{Translate("SeroprevalenceScaleTooltip")}</div>
-        </span>
-      </h4> */}
     </div>
   )
 }

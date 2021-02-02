@@ -1,14 +1,14 @@
 import _ from "lodash";
 import React, { SyntheticEvent, useContext, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { Bar, BarChart, CartesianGrid, ErrorBar, LabelList, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, ErrorBar, LabelList, LabelProps, Legend, ResponsiveContainer, TickFormatterFunction, Tooltip, XAxis, YAxis } from 'recharts';
 import { Dropdown, DropdownProps, Modal } from "semantic-ui-react";
 import { mobileDeviceOrTabletWidth, isMaintenanceMode } from "../../constants";
 import { AppContext } from "../../context";
 import httpClient from "../../httpClient";
 import { AggregationFactor, PageStateEnum } from "../../types";
 import { sendAnalyticsEvent } from '../../utils/analyticsUtils';
-import Translate from "../../utils/translate/translateService";
+import Translate, { getCountryName } from "../../utils/translate/translateService";
 import InformationIcon from "../shared/InformationIcon";
 import './Charts.css';
 import ReferencesTable from "./ReferencesTable";
@@ -40,13 +40,13 @@ export default function Charts() {
       dispatch({
         type: "UPDATE_META_ANALYSIS",
         payload: {
-          pageStateEnum: PageStateEnum.analyze, 
+          pageStateEnum: PageStateEnum.analyze,
           metaAnalyzedRecords
         }
       })
     }
     updateCharts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.chartAggregationFactor])
 
   const handleChange = (event: SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
@@ -69,7 +69,7 @@ export default function Charts() {
       const upper = (seroprevalence + error[1]).toFixed(2);
       return (
         <div className="col flex popup">
-          <div className="col-12 p-0 popup-header">{name}</div>
+          <div className="col-12 p-0 popup-header">{getCountryName(name, state.language, "")}</div>
           <div className="col-12 p-0 popup-content">{Translate("Seroprevalence")}: {seroprevalence.toFixed(2)}%</div>
           <div className="col-12 p-0 popup-content">{Translate("95%ConfidenceInterval")}: {lower}%-{upper}%</div>
           <div className="col-12 p-0 popup-content">{Translate('TotalTests')}: {n}</div>
@@ -121,6 +121,10 @@ export default function Charts() {
     </Modal>
   )
 
+  const tickFormatter: TickFormatterFunction = (value: string) => {
+    return getCountryName(value, state.language, "")    
+  }
+
   return (
     <div className="charts-page">
       {(showAnalyzePopup && !isMaintenanceMode) ? <MobileInfoModal /> : null}
@@ -156,7 +160,7 @@ export default function Charts() {
           <BarChart data={records} layout='vertical' barGap={10}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" name={`${Translate("Seroprevalence")} (%)`} padding={{ left: 0, right: 30 }} />
-            <YAxis dataKey="name" type="category" interval={0} width={getYAxisWidth(records) * 7} />
+            <YAxis dataKey="name" type="category" interval={0} width={getYAxisWidth(records) * 7} tickFormatter={tickFormatter} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
             <Bar isAnimationActive={false} dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60} barSize={20}>
