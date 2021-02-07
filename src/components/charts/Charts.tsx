@@ -156,6 +156,7 @@ export default function Charts() {
               tooltipHeader={Translate("95%ConfidenceInterval")} />
           </div>
         </div>
+        {(records.length > 0) || (state.analyze.isLoading) ? 
         <ResponsiveContainer width="100%" height="80%">
           <BarChart data={records} layout='vertical' barGap={10}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -166,9 +167,16 @@ export default function Charts() {
             <Bar isAnimationActive={false} dataKey="seroprevalence" name={`${Translate('Seroprevalence')} (%)`} fill="#55A6BA" maxBarSize={60} barSize={20}>
               <LabelList dataKey="seroprevalence" position="right" content={renderCustomizedLabel} />
               <ErrorBar dataKey="error" width={4} strokeWidth={2} />
-            </Bar>
+            </Bar>       
           </BarChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer> : 
+        <div className="no-data-container">
+          <div>
+            <div className="no-data-text pb-1">{Translate('NoDataAnalyze', ['PartOne'])}</div> 
+            <div className="no-data-text">{Translate('NoDataAnalyze', ['PartTwo'])}</div>
+          </div>
+        </div>
+        }
       </div>
       <div className="container col-11 my-3 references">
         <ReferencesTable page={PageStateEnum.analyze} />

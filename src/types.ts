@@ -82,7 +82,7 @@ export type State = {
     language: LanguageType,
     showCookieBanner: boolean,
     showAnalyzePopup: boolean,
-    countries: any
+    countries: any,
     showEstimatePins: boolean
 };
 
