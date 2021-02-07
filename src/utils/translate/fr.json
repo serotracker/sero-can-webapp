@@ -223,8 +223,8 @@
     "Sublocal": "Sous-local",
     "NoData": "Aucune donnée",
     "NoDataAnalyze": {
-        "PartOne": "Il n'y a pas de données disponibles.",
-        "PartTwo": "Modifiez vos filtres pour visualizer des résultats."
+        "PartOne": "Il n'y pas de données correspondant a vos filtres.",
+        "PartTwo": "Veuillez modifier vos filtres et réessayer pour visualizer des résultats."
     },
     "NationalStudies": "Études nationale",
     "RegionalStudies": "Études régionale",
