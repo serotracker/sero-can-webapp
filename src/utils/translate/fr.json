@@ -222,6 +222,10 @@
     "StudyPins": "Afficher les lieux d'étude",
     "Sublocal": "Sous-local",
     "NoData": "Aucune donnée",
+    "NoDataAnalyze": {
+        "PartOne": "Il n'y a pas de données disponibles.",
+        "PartTwo": "Modifiez vos filtres pour visualizer des résultats."
+    },
     "NationalStudies": "Études nationale",
     "RegionalStudies": "Études régionale",
     "LocalStudies": "Études locale",
