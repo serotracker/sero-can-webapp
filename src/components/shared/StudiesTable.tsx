@@ -63,8 +63,13 @@ export default function StudiesTable(props: StudiesTableProps) {
             newData = _.orderBy(newData, [column], ['asc']);
         }
 
-        const splicedData = newData.splice((activePage - 1) * pageLength, pageLength);
-        setData(splicedData);
+        console.log(newData.length);
+
+        // Note: need to use slice instead of splice here to make sure we are not 
+        // mutating the original array
+        const startingPos = (activePage - 1) * pageLength;
+        const slicedData = newData.slice(startingPos, startingPos + pageLength - 1);
+        setData(slicedData);
 
         if (isMobileDevice) {
             setPageLength(Math.ceil(newData.length));
