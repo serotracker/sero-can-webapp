@@ -220,6 +220,10 @@
   "NationalStudies": "National Studies",
   "NationalStudyDetails": "National study details",
   "NoData": "No Data",
+  "NoDataAnalyze": {
+    "PartOne":"No data is available for the filters you've specified.",
+    "PartTwo": "Please try a different filter combination."
+  },
   "NotReported": "Not Reported",
   "NumSeroprevalenceEstimates": "Number of Seroprevalence Estimates",
   "NumberEstimates": "Number of Estimates",

@@ -83,3 +83,16 @@ table thead tr::-webkit-scrollbar-thumb {
 .modal {
   z-index: 6000;
 }
+
+.no-data-container {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.no-data-text {
+  font-size: 20px;
+}
