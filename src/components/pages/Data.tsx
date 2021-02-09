@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
+import { Loader, Segment } from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../constants";
 import { getEmptyFilters } from "../../context";
 import httpClient from "../../httpClient";
@@ -13,9 +14,15 @@ import MaintenanceModal from "../shared/MaintenanceModal";
 export default function Data() {
     const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
     const [allRecords, setAllRecords] = useState([])
+    const[isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        getAllRecords()
+        // note: using IIFE here so that we can 
+        // have async/await behaviour in useEffect
+        (async () => {
+            await getAllRecords();
+            setIsLoading(false);
+        })()
     }, [])
 
     const clickLink = (link: string) => {
@@ -65,7 +72,10 @@ export default function Data() {
                         {Translate('OurDataText', ['Text'])}
                     </p>
 
-                    <StudiesTable dataRecords={allRecords} showAllStudies={false}></StudiesTable>
+                    <Segment>
+                        <Loader indeterminate active={isLoading}/>
+                        <StudiesTable dataRecords={allRecords} showAllStudies={false}></StudiesTable>
+                    </Segment>
 
                     <div className="d-flex d-flex justify-content-center">
                         <span>{Translate('UseOfData', null, null, [false, true])}</span>
