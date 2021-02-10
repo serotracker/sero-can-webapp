@@ -43,7 +43,7 @@ export default function Data() {
     return (
         <>
             <div className="col-12 page">
-                <div className={isMobileDeviceOrTablet ? "pb-5" : "static-content pb-5"}>
+                <div className={isMobileDeviceOrTablet ? "" : "static-content"}>
                     <h1>
                         {Translate('Methods')}
                     </h1>
@@ -71,12 +71,16 @@ export default function Data() {
                     <p>
                         {Translate('OurDataText', ['Text'])}
                     </p>
+                </div>
 
+                <div className={isMobileDeviceOrTablet ? "pb-3 pt-3" : "pb-3 pt-3 reference-table"}>
                     <Segment>
                         <Loader indeterminate active={isLoading}/>
                         <StudiesTable dataRecords={allRecords} showAllStudies={false}></StudiesTable>
                     </Segment>
+                </div>
 
+                <div className={isMobileDeviceOrTablet ? "pb-5" : "static-content pb-5"}>
                     <div className="d-flex d-flex justify-content-center">
                         <span>{Translate('UseOfData', null, null, [false, true])}</span>
                         <Link className="px-1" to="/TermsOfUse">{Translate('TermsOfUse')}</Link>
