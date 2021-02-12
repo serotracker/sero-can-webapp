@@ -27,6 +27,10 @@
     width: 60%;
 }
 
+.reference-table {
+    width: 80%;
+}
+
 .static-content li {
     margin-top: 6px;
     margin-bottom: 6px;
