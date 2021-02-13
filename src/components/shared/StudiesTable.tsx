@@ -66,7 +66,7 @@ export default function StudiesTable(props: StudiesTableProps) {
         // Note: need to use slice instead of splice here to make sure we are not 
         // mutating the original array
         const startingPos = (activePage - 1) * pageLength;
-        const slicedData = newData.slice(startingPos, startingPos + pageLength - 1);
+        const slicedData = newData.slice(startingPos, startingPos + pageLength);
         setData(slicedData);
 
         if (isMobileDevice) {
