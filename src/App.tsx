@@ -3,7 +3,6 @@ import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
 import CookiePolicy from "./components/pages/CookiePolicy";
-import Analyze from "./components/pages/Dashboard/Analyze";
 import Explore from "./components/pages/Dashboard/Explore";
 import Data from './components/pages/Data';
 import Insights from "./components/pages/insights/Insights";
@@ -96,7 +95,10 @@ function App() {
   }
 
   const history = useHistory()
-  listenForUrlLanguage(history.location.pathname)
+  listenForUrlLanguage(history.location.pathname);
+
+  const ANALYZE_URL = "https://public.tableau.com/views/SeroTrackerExp_16121485899730/Analyze?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"
+  const CANADIAN_EXPLORE_URL = "https://public.tableau.com/views/SeroTrackerExp_16121485899730/Explore?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"
 
   return (
     <div className="App">
@@ -113,7 +115,13 @@ function App() {
           <Redirect to="/:language/Explore" />
         </Route>
         <Route path="/:language/Analyze">
-          <Analyze />
+        <TableauEmbed
+          url={ANALYZE_URL}
+          options={{
+            width: "80vw",
+            height: "3000px"
+          }}
+        />
         </Route>
         <Route path="/:language/Data">
           <Data />
@@ -132,10 +140,10 @@ function App() {
         </Route>
         <Route path="/:language/Canada">
           <TableauEmbed
-            url="https://public.tableau.com/views/SeroTrackerExp_16121485899730/Explore?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"
+            url={CANADIAN_EXPLORE_URL}
             options={{
-              width: "1200px",
-              height: "900px"
+              width: "80vw",
+              height: "1000px"
             }}
           />
         </Route>
