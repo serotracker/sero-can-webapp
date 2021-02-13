@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import Carousel from "react-multi-carousel";
 import Translate from "../../../utils/translate/translateService";
+import { Card, Image } from "semantic-ui-react";
 
 import October2020Update from '../../../assets/images/October2020Update.png';
 import September2020Update from '../../../assets/images/September2020Update.png'
@@ -20,48 +21,52 @@ interface InsightsCardProps {
   identifier: string,
   date: string,
   title: string,
-  img: string,
+  img?: string,
   url: string,
   italicize?: string
 }
 
 export default function InsightsCard(props: InsightsCardProps) {
   return (
-    <div className="flex card column insights-card">
-      <div className="flex space-between pb-1">
-        <div className="section-title insights-card-identifier">
-          {props.identifier.toUpperCase()}
-        </div>
-        <div className="insights-card-date">
-          {props.date}
-        </div>
-      </div>
-      <div className="flex center-item insights-card-image">
-        <img src={props.img} alt="" className="fit insights-card-image"></img>
-        <a href={props.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="overlay flex">
-          <div className="insights-card-image-overlay flex fill center-item column">
-            <div>{Translate('ViewFile')}</div>
-            <div className="flex center-item">
-              <FontAwesomeIcon
-                icon={faFile}
-                className={'icon'}
-                color={'white'}
-                size={"lg"} />
+    <div className="column insights-card-wrapper pb-4">
+      <Card className={props.img ? "insights-card" : "insights-card-no-img"}> 
+        {props.img && (
+          <Card.Content>
+            <div className="flex center-item insights-card-image mb-2">
+              <img src={props.img} alt="" className="fit insights-card-image"></img>
+              <a href={props.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="overlay flex">
+                <div className="insights-card-image-overlay flex fill center-item column">
+                  <div>{Translate('ViewFile')}</div>
+                  <div className="flex center-item">
+                    <FontAwesomeIcon
+                      icon={faFile}
+                      className={'icon'}
+                      color={'white'}
+                      size={"lg"} />
+                  </div>
+                </div>
+              </a>
             </div>
+          </Card.Content>
+        )}
+        <Card.Content>
+          <div className="insights-card-title pb-1">
+            <a href={props.url} target="_blank" rel="noopener noreferrer" className="">
+              {props.italicize ? <i>{props.italicize}&nbsp;</i> : null}{props.title}
+            </a>
           </div>
-        </a>
-      </div>
-      <div className="fit insights-card-title">
-        <a href={props.url} target="_blank" rel="noopener noreferrer" className="">
-          {props.italicize ? <i>{props.italicize}&nbsp;</i> : null}{props.title}
-        </a>
-      </div>
+          <div className="insights-card-date">
+            {props.date}
+          </div>
+        </Card.Content>
+      </Card>
     </div>
   )
 }
+
 
 const listOfReports: InsightsCardProps[] = [
   {         
@@ -152,126 +157,108 @@ const listOfMediaInsightProps: InsightsCardProps[] = [
     identifier: Translate("Media"),
     date: "May 23, 2020",
     title: Translate('IndustryMediaTitles', ['UnderstandingVirus']),
-    img: "",
     url: "https://www.bloomberg.com/news/articles/2020-05-06/understanding-the-virus-and-its-unanswered-questions-quicktake",
   },
   {
     identifier: Translate("Media"),
     date: "May 24, 2020",
     title: Translate('IndustryMediaTitles', ['KnowledgeHub']),
-    img: "",
     url: "https://www.research.ox.ac.uk/Article/2020-05-28-knowledge-hub-developed-to-track-sars-cov-antibody-studies",
   },
   {
     identifier: Translate("Media"),
     date: "May 28, 2020",
     title: Translate('IndustryMediaTitles', ['GlobalLaunch']),
-    img: "",
     url: "https://www.covid19immunitytaskforce.ca/global-launch-of-serotracker-a-covid-19-antibody-testing-hub-in-partnership-with-canadas-covid-19-immunity-task-force/",
   },
   {
     identifier: Translate("Media"),
     date: "June 2, 2020",
     title: Translate('IndustryMediaTitles', ['StudentsBuild']),
-    img: "",
     url: "https://uwaterloo.ca/stories/engineering-students/students-build-online-dashboard-track-covid-19-antibody",
   },
   {
     identifier: Translate("Media"),
     date: "June 2, 2020",
     title: Translate('IndustryMediaTitles', ['NewlyLaunched']),
-    img: "",
     url: "https://publications.mcgill.ca/medenews/2020/06/16/newly-launched-serotracker-will-monitor-global-antibody-testing-efforts/",
   },
   {
     identifier: Translate("Media"),
     date: "June 11, 2020",
     title: Translate('IndustryMediaTitles', ['VeteranDoctor']),
-    img: "",
     url: "https://www.marsdd.com/magazine/what-if-there-is-no-covid-19-vaccine/",
   },
   {
     identifier: Translate("Media"),
     date: "July 7, 2020",
     title: Translate('IndustryMediaTitles', ['CovidRadar']),
-    img: "",
     url: "https://m1newstv.com/subnotificacao-no-brasil-e-na-rocinha-e-a-media-mundial/",
   },
   {
     identifier: Translate("Media"),
     date: "July 22, 2020",
     title: Translate('IndustryMediaTitles', ['HowMany']),
-    img: "",
     url: "https://www.newscientist.com/article/mg24632873-000-how-many-of-us-are-likely-to-have-caught-the-coronavirus-so-far/",
   },
   {
     identifier: Translate("Media"),
     date: "August 3, 2020",
     title: Translate('IndustryMediaTitles', ['Lecturership']),
-    img: "",
     url: "https://eng.ox.ac.uk/chi/news/adjunct-lecturership-for-rahul/",
   },
   {
     identifier: Translate("Media"),
     date: "August 17, 2020",
     title: Translate('IndustryMediaTitles', ['HomeTests']),
-    img: "",
     url: "https://www.forbes.com/sites/williamhaseltine/2020/08/17/cheap-daily-home-tests-are-the-first-step-to-containing-the-pandemic/?sh=677d47d14ad4",
   },
   {
     identifier: Translate("Media"),
     date: "November 10, 2020",
     title: Translate('IndustryMediaTitles', ['Webinar']),
-    img: "",
     url: "http://www.himsschapter.org/event/serotracker-covid-19-journey-himss-canadian-prairies-chapter-webinar",
   },
   {
     identifier: Translate("Media"),
     date: "November 23, 2020",
     title: Translate('IndustryMediaTitles', ['AlumniAndStudents']),
-    img: "",
     url: "https://cumming.ucalgary.ca/news/serotracker",
   },
   {
     identifier: Translate("Media"),
     date: "November 24, 2020",
     title: Translate('IndustryMediaTitles', ['InfectionRate']),
-    img: "",
     url: "https://taz.de/Studie-zu-globaler-Corona-Infektionsrate/!5730030/",
   },
   {
     identifier: Translate("Media"),
     date: "January 2021",
     title: Translate('IndustryMediaTitles', ['McKinseyHealthcare']),
-    img: "",
     url: "https://www.mckinsey.com/~/media/McKinsey/Industries/Healthcare%20Systems%20and%20Services/Our%20Insights/McKinsey%20on%20Healthcare%202020%20Year%20in%20Review/McKinsey-on-Healthcare-2020-Year-in-Review.pdf",
   },
   {
     identifier: Translate("Media"),
     date: "January 14, 2021",
     title: Translate('IndustryMediaTitles', ['JouleRecipients']),
-    img: "",
     url: "https://markets.businessinsider.com/amp/news/joule-announces-2020-innovation-grant-recipients-1029968953",
   },
   {
     identifier: Translate("Media"),
     date: "January 15, 2021",
     title: Translate('IndustryMediaTitles', ['JouleInnovation']),
-    img: "",
     url: "https://joulecma.ca/innovate/grants/serotracker ",
   },
   {
     identifier: Translate("Media"),
     date: "January 20, 2021",
     title: Translate('IndustryMediaTitles', ['WhenEnd']),
-    img: "",
     url: "https://www.mckinsey.com/industries/healthcare-systems-and-services/our-insights/when-will-the-covid-19-pandemic-end",
   },
   {
     identifier: Translate("Media"),
     date: "January 23, 2021",
     title: Translate('IndustryMediaTitles', ['JouleAnnounce']),
-    img: "",
     url: "https://www.newswire.ca/news-releases/joule-announces-2020-innovation-grant-recipients-867798355.html",
   },
 ]
@@ -311,16 +298,16 @@ const getCarouselOfInsightCards = (listOfInsightCardProps: InsightsCardProps[]) 
       dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
     >
-    {
-      listOfInsightCardProps.map((insightProps, idx) => {
-      return <InsightsCard
-        identifier={insightProps.identifier}
-        date={insightProps.date}
-        img={insightProps.img}
-        title={insightProps.title}
-        url={insightProps.url} />
-      })
-    }
+        {
+          listOfInsightCardProps.map((insightProps, idx) => {
+            return <InsightsCard
+              identifier={insightProps.identifier}
+              date={insightProps.date}
+              img={insightProps.img}
+              title={insightProps.title}
+              url={insightProps.url} />
+            })
+        }
     </Carousel>
   )
 }
