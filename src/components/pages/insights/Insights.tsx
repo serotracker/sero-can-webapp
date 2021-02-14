@@ -1,9 +1,11 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../../constants";
-import { getCarouselOfMedia, getCarouselOfResearchArticles, getCarouselOfReports } from "./InsightsCard";
+import { InsightsCard } from "./InsightsCard";
+import { insightsInfo } from "./InsightsConstants";
 import './styles.scss';
 import Translate from "../../../utils/translate/translateService";
+import Slider from "react-slick";
 
 export default function Insights() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
@@ -17,16 +19,67 @@ export default function Insights() {
         <h3 className="normal">
           {Translate('Research Articles')}
         </h3>
-        { getCarouselOfResearchArticles() }
+        { getCarouselOfInsightCards("articles") }
         <h3 className="normal">
           {Translate('Reports')}
         </h3>
-        { getCarouselOfReports() }
+        { getCarouselOfInsightCards("reports") }
         <h3 className="normal">
           {Translate('Media')}
         </h3>
-        { getCarouselOfMedia() }
+        { getCarouselOfInsightCards("media") }
       </div>
+    </div>
+  )
+}
+
+const sliderSettings = {
+  dots: true,
+  infinite: true,
+  arrows: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  responsive: [
+    {
+      breakpoint: 1048,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    }
+  ]
+};
+
+export type InsightsType = 'articles' | 'reports' | 'media';
+
+const getCarouselOfInsightCards = (type: InsightsType) => {
+  return (
+    <div className="slider-container">
+      <Slider 
+        {...sliderSettings}
+      >
+          {
+            insightsInfo[type].map((insightProps, idx) => {
+              return <InsightsCard
+                date={insightProps.date}
+                img={insightProps.img}
+                title={insightProps.title}
+                url={insightProps.url} />
+              })
+          }
+      </Slider>
     </div>
   )
 }

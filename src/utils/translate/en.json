@@ -200,7 +200,8 @@
     "OctoberReport": "October Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
     "PreliminaryReport": "Preliminary Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector"
+    "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "YearInReview2020": "SeroTracker 2020 Year in Review"
   },
   "InitInfoModalText": {
     "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
