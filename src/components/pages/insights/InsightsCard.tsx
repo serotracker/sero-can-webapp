@@ -1,7 +1,7 @@
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import Carousel from "react-multi-carousel";
+import Slider from "react-slick";
 import Translate from "../../../utils/translate/translateService";
 import { Card, Image } from "semantic-ui-react";
 
@@ -28,7 +28,7 @@ interface InsightsCardProps {
 
 export default function InsightsCard(props: InsightsCardProps) {
   return (
-    <div className="column insights-card-wrapper pb-4">
+    <div className="py-4 px-2">
       <Card className={props.img ? "insights-card" : "insights-card-no-img"}> 
         {props.img && (
           <Card.Content>
@@ -263,52 +263,53 @@ const listOfMediaInsightProps: InsightsCardProps[] = [
   },
 ]
 
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    slidesToSlide: 3 // optional, default to 1.
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-    slidesToSlide: 2 // optional, default to 1.
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1 // optional, default to 1.
-  }
+const sliderSettings = {
+  dots: true,
+  infinite: true,
+  arrows: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  responsive: [
+    {
+      breakpoint: 1048,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    }
+  ]
 };
 
 const getCarouselOfInsightCards = (listOfInsightCardProps: InsightsCardProps[]) => {
   return (
-    <Carousel 
-      swipeable={false}
-      draggable={false}
-      showDots={true}
-      responsive={responsive}
-      ssr={true} // means to render carousel on server-side.
-      infinite={true}
-      keyBoardControl={true}
-      customTransition="all .5"
-      transitionDuration={500}
-      containerClass="carousel-container"
-      removeArrowOnDeviceType={["tablet", "mobile"]}
-      dotListClass="custom-dot-list-style"
-      itemClass="carousel-item-padding-40-px"
-    >
-        {
-          listOfInsightCardProps.map((insightProps, idx) => {
-            return <InsightsCard
-              identifier={insightProps.identifier}
-              date={insightProps.date}
-              img={insightProps.img}
-              title={insightProps.title}
-              url={insightProps.url} />
-            })
-        }
-    </Carousel>
+    <div className="slider-container">
+      <Slider 
+        {...sliderSettings}
+      >
+          {
+            listOfInsightCardProps.map((insightProps, idx) => {
+              return <InsightsCard
+                identifier={insightProps.identifier}
+                date={insightProps.date}
+                img={insightProps.img}
+                title={insightProps.title}
+                url={insightProps.url} />
+              })
+          }
+      </Slider>
+    </div>
   )
 }
 

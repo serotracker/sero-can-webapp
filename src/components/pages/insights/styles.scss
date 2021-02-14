@@ -21,11 +21,6 @@
   overflow: hidden;
 }
 
-.insights-card-wrapper {
-  padding: 10px;
-  margin-right: 8px;
-}
-
 .insights-card {
   height: 280px;
 }
@@ -63,7 +58,19 @@
   height: 100%;
 }
 
-.insights-article-container {
-  background-color: #F5F5F5;
-  overflow-y: auto;
+// CSS trick to get arrows to show
+// https://stackoverflow.com/questions/28998536/slick-slider-next-arrows-not-showing
+.slick-prev:before, .slick-next:before{
+  color:black;
+  font-size: 40px; 
+  line-height: 1;
+  font-family: "slick"
+}
+
+.slick-prev:before { content: "‹"; }
+.slick-next:before { content: "›"; }
+
+// https://github.com/akiran/react-slick/issues/1571
+.slider-container {
+  max-width: 80vw;
 }
