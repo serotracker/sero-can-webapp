@@ -168,18 +168,41 @@
     "Geography": "Géographie",
     "GeographyTooltip": "Sélectionner les pays concernés.",
     "Here": "Ici",
+    "IndustryMediaTitles": {
+        "UnderstandingVirus": "Understanding the Virus and Its Unanswered Questions",
+        "KnowledgeHub": "Knowledge hub developed to track SARS-CoV antibody studies",
+        "GlobalLaunch": "Global launch of SeroTracker: a COVID-19 antibody testing hub, in partnership with Canada's COVID-19 Immunity Task Force",
+        "StudentsBuild": "Students build online dashboard to track COVID-19 antibody studies",
+        "NewlyLaunched": "Newly launched SeroTracker will monitor global antibody testing efforts",
+        "VeteranDoctor": "What if there is no COVID-19 vaccine? A veteran doctor of the HIV/AIDS crisis provides alternatives",
+        "CovidRadar": "Covid Radar: taxa de subnotificação de casos de covid-19 na Rocinha chega a 62 vezes [COVID-19 underreporting rate in Rocinha reaches 62 times].",
+        "HowMany": "How many of us are likely to have caught the coronavirus so far?",
+        "Lecturership": "Adjunct lecturership for CHI Lab DPhil student Rahul Arora.",
+        "HomeTests": "Cheap, Daily Home Tests Are The First Step To Containing The Pandemic",
+        "Webinar": "SeroTracker COVID-19 Journey: HIMSS Canadian Prairies Chapter Webinar",
+        "AlumniAndStudents": "The Serotracker: Alumni and students develop tool to track Covid-19 spread",
+        "InfectionRate": "Study on the global coronavirus infection rate: the number of unreported cases",
+        "McKinseyHealthcare": "McKinsey on healthcare: 2020 year in review",
+        "JouleRecipients": "Joule announces 2020 Innovation grant recipients",
+        "JouleInnovation": "SeroTracker: Joule innovation grant recipient",
+        "WhenEnd": "When will the COVID-19 pandemic end?",
+        "JouleAnnounce": "Joule announces 2020 Innovation grant recipients"
+    },
     "IndustryReportTitles": {
         "AugustReport": "Rapport d'Août - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
         "BloodBank": "SeroTracker banque de sang séroprévalence Rapport préliminaire",
         "JulyReport": "Rapport de Juillet - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
         "JuneReport": "Rapport de Juin - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-        "LancetID": "Article (SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2)",
         "MayReport": "Rapport de mai - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-        "MedRxivPub": "Séroprévalence globale du SRAS-CoV-2 anticorps: une revue systématique et méta-analyse",
         "OctoberReport": "Rapport d'Octobre - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
         "PreliminaryReport": "Rapport préliminaire - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-        "PrePrint": "leçons d'un examen rapide et systématique du début des SRAS-CoV-2 enquêtes sérologiques",
-        "SeptemberReport": "Rapport de Septembre - Covid-19 Dépistage et d'essais dans le secteur privé du Canada"
+        "SeptemberReport": "Rapport de Septembre - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+        "YearInReview2020": "Bilan de l’année 2020 de SeroTracker"
+    },
+    "ResearchArticleTitles": {
+        "PrePrint": "Leçons d'un examen rapide et systématique du début des SRAS-CoV-2 enquêtes sérologiques",
+        "MedRxivPub": "Séroprévalence globale du SRAS-CoV-2 anticorps: une revue systématique et méta-analyse",
+        "LancetID": "SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2"
     },
     "InitInfoModalText": {
         "PartOne": "Bienvenue dans l'onglet Analyse de SeroTracker ! Nous menons un examen systématique des sérosondages du SRAS-CoV-2 et nous utilisons les données provenant de cet examen afin de constituer ce tableau de bord.",
@@ -204,6 +227,7 @@
     "Location": "Lieu",
     "Manufacturer": "Fabricant",
     "ManuscriptAndPreprint": "Manuscrit et préimpression",
+    "Media" : "Médias" ,
     "Methods": "Méthodes",
     "MethodsText": {
         "FirstParagraph": "SeroTracker assure une synthèse systématique mondiale de projets de sérosurveillance du SRAS-CoV-2. Nous filtrons les articles scientifiques, les préimpressions, les rapports gouvernementaux et les articles parus dans les médias afin d'identifier les estimations de prévalence indiquées ci-dessous. Nous mettons à jour nos données avec tous les rapports de séroprévalence que nous avons pu trouver dans nos recherches.",
@@ -278,8 +302,9 @@
     "RegionalEstimates": "Estimations régionales",
     "RegulatoryApproval": "Autorisation réglementaire",
     "Report": "Rapport",
+    "Reports": "Rapports",
     "ReportsAndArticles": "Rapports et articles",
-    "ResearchArticle": "Article de recherche",
+    "ResearchArticles": "Articles de recherche",
     "ResearchTeam": "Équipe de recherche",
     "RiskOfBias": "Risque de partialité",
     "RiskOfBiasOptions": {
