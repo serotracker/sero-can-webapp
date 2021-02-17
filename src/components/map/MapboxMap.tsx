@@ -1,15 +1,16 @@
-import React from "react";
 import mapboxgl, { Layer, RasterLayer } from "mapbox-gl";
 import httpClient from "../../httpClient";
 import './MapboxMap';
+import React, { useContext, useEffect, useState, useRef } from "react";
+import { AppContext } from "../../context";
+import { getBuckets, getMapUrl } from "../../utils/mapUtils";
+import { mapZIndex } from './../../constants';
+import Legend from "./Legend";
+import './Map.css';
+import { layerStyle } from './MapStyle';
+import PinLayer from "./PinLayer";
 
 mapboxgl.accessToken = "pk.eyJ1Ijoic2Vyb3RyYWNrZXIiLCJhIjoiY2tha2d4bTdmMDJ3dzJ3azFqbnphdWlzZSJ9.IutISibpBV33t_7ybaCNTg";
-
-interface state {
-    lng: number,
-    lat: number,
-    zoom: number
-  }
 
 // Takes in the style JSON object from VectorTileServer API response 
 // Modifies & adds attributes for Mapbox GL compatability 
@@ -64,18 +65,9 @@ function addEsriLayer(map : mapboxgl.Map, url : string){
   })
 }
 
+/*
 class MapboxMap extends React.Component {
   mapContainer: string | HTMLElement = "";
-  state: state;
-
-  constructor(props : any) {
-    super(props);
-    this.state = {
-      lng: 5,
-      lat: 34,
-      zoom: 2,
-    };
-  }
 
   componentDidMount() {
 
@@ -101,9 +93,14 @@ class MapboxMap extends React.Component {
       map.addLayer({
       'id': 'polygons',
       'type': 'fill',
+      'minzoom' : 0,
+      'maxzoom' : 6,
       'source': 'country-polygons',
       'source-layer':'country_boundaries',
-      'paint': {'fill-opacity': 0}});
+      'paint': {
+        'fill-color' : '#64767e',
+        'fill-opacity': 0.5
+      }});
       
       addEsriLayer(map, "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer")
       addEsriLayer(map, "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer")
@@ -113,7 +110,10 @@ class MapboxMap extends React.Component {
         data: 'https://covid19.who.int/geo/topojson-WHO-world-map-optimized-v3.json'
       });
 
-      
+      map.on('render', function() {
+        var pgons = map.getLayer('polygons');
+        var features = map.querySourceFeatures( 'country-polygons', {sourceLayer: 'country_boundaries'});
+        });
     })
 
     var hoveredStateId : any = null;
@@ -151,3 +151,85 @@ class MapboxMap extends React.Component {
 }
 
 export default MapboxMap;
+*/
+
+
+
+
+export default function MapBox() {
+  const mapContainerRef = useRef<HTMLDivElement>(null);
+  const [state] = useContext(AppContext);
+  const [mapRecords, setMapRecords] = useState(state.countries as any);
+  const mapRef = useRef<mapboxgl.Map>(null);
+  const buckets = getBuckets(mapRecords);
+
+  useEffect(() => {
+    // Sets WHO polygons as basemap
+    prepare("https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer").then((style) => {
+
+      const map = new mapboxgl.Map({
+        //@ts-ignore
+        container: mapContainerRef.current,
+        style: style,
+        center: [-80, 45],
+        zoom: 5,
+      });
+
+      //@ts-ignore
+      mapRef.current = map;
+
+      map.on("load", () => {
+        addEsriLayer(
+          map,
+          "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer"
+        );
+        addEsriLayer(
+          map,
+          "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer"
+        );
+      });
+    });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (state.explore.estimateGradePrevalences.length > 0) {
+      const countriesData = state.countries.map((country: any) => {
+        const countryEstimate = state.explore.estimateGradePrevalences.find(element => element.alpha3Code === country.alpha3Code);
+
+        if (countryEstimate && countryEstimate.testsAdministered) {
+          const { testsAdministered, geographicalName, numberOfStudies, localEstimate, nationalEstimate, regionalEstimate, sublocalEstimate } = countryEstimate;
+          return { ...country, properties: { testsAdministered, geographicalName, numberOfStudies, localEstimate, nationalEstimate, regionalEstimate, sublocalEstimate } }
+        }
+        return { ...country, properties: { testsAdministered: null, geographicalName: null, numberOfStudies: null, localEstimate: null, nationalEstimate: null, regionalEstimate: null, sublocalEstimate: null } }
+      })
+      setMapRecords(countriesData);
+      var map = mapRef?.current;
+
+      map?.addSource("country-polygons", {
+      type: "vector",
+      url: "mapbox://mapbox.country-boundaries-v1",
+      });
+      var isoCodes = ["CAN", "USA"];
+
+      map?.addLayer({
+      id: "polygons",
+      type: "fill",
+      minzoom: 0,
+      maxzoom: 6,
+      source: "country-polygons",
+      "source-layer": "country_boundaries",
+      paint: {
+        "fill-color": "#64767e",
+        "fill-opacity": [
+          'case',
+          ['in', ['get', 'iso_3166_1_alpha_3'], ["literal", ["CAN", "USA"]]], 0.3,
+          0.7
+          ],
+      },
+      });
+
+    }
+  }, [state.explore.estimateGradePrevalences, state.countries, state.language])
+
+  return (<div className="mapContainer w-100" ref={mapContainerRef}/>);
+}

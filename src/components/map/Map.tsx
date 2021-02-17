@@ -51,7 +51,6 @@ export default function Map() {
       maxBounds={maxBounds}
       maxBoundsViscosity={1}
     >
-
       <CountriesTileLayer
         url="https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer"
         records={mapRecords}
