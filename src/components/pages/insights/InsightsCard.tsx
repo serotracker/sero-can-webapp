@@ -6,7 +6,8 @@ import { Card } from "semantic-ui-react";
 
 export interface InsightsCardProps {
   date: string,
-  title: string,
+  titleKey1: string,
+  titleKey2: string[],
   img?: string,
   url: string,
   italicize?: string
@@ -41,7 +42,7 @@ export function InsightsCard(props: InsightsCardProps) {
         <Card.Content>
           <div className="insights-card-title pb-1">
             <a href={props.url} target="_blank" rel="noopener noreferrer" className="">
-              {props.italicize ? <i>{props.italicize}&nbsp;</i> : null}{props.title}
+              {props.italicize ? <i>{props.italicize}&nbsp;</i> : null}{Translate(props.titleKey1, props.titleKey2)}
             </a>
           </div>
           <div className="insights-card-date">

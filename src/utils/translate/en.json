@@ -194,14 +194,16 @@
     "BloodBank": "SeroTracker Blood Bank Seroprevalence Preliminary Report",
     "JulyReport": "July Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "JuneReport": "June Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "LancetID": "SeroTracker: a global SARS-CoV-2 seroprevalence dashboard",
     "MayReport": "May Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "MedRxivPub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
     "OctoberReport": "October Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
     "PreliminaryReport": "Preliminary Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "YearInReview2020": "SeroTracker 2020 Year in Review"
+  },
+  "ResearchArticleTitles": {
+    "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
+    "MedRxivPub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
+    "LancetID": "SeroTracker: a global SARS-CoV-2 seroprevalence dashboard"
   },
   "InitInfoModalText": {
     "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
@@ -296,8 +298,9 @@
   "RegionalStudyDetails": "Regional study details",
   "RegulatoryApproval": "Regulatory Approval",
   "Report": "Report",
+  "Reports": "Reports",
   "ReportsAndArticles": "Reports & Articles",
-  "ResearchArticle": "Research Article",
+  "ResearchArticles": "Research Articles",
   "ResearchTeam": "Research Team",
   "RiskOfBias": "Risk of bias",
   "RiskOfBiasOptions": {

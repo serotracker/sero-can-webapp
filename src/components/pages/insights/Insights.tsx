@@ -17,7 +17,7 @@ export default function Insights() {
           {Translate('Insights')}
         </h1>
         <h3 className="normal">
-          {Translate('Research Articles')}
+          {Translate('ResearchArticles')}
         </h3>
         { getCarouselOfInsightCards("articles") }
         <h3 className="normal">
@@ -75,7 +75,8 @@ const getCarouselOfInsightCards = (type: InsightsType) => {
               return <InsightsCard
                 date={insightProps.date}
                 img={insightProps.img}
-                title={insightProps.title}
+                titleKey1={insightProps.titleKey1}
+                titleKey2={insightProps.titleKey2}
                 url={insightProps.url} />
               })
           }
