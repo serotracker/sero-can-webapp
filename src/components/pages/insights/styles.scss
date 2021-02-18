@@ -2,30 +2,31 @@
   width: 100%;
   border-radius: 5px;
   position:relative;
-  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2) inset;
-  object-fit: contain;
-  height: auto;
+  object-fit: cover;
+  height: 120px;
   align-items: flex-start;
 }
 
-.insights-card-identifier {
-  font-size: 1.1em;
-}
-
 .insights-card-date {
-  font-size: 1.1em;
+  font-size: 0.9em;
   font-weight: 500;
 }
 
 .insights-card-title {
-  padding: 0.5em 0;
-  font-size: 1.5em;
+  line-height: 1.3em;
+  font-size: 1.2em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .insights-card {
-  padding: 10px;
-  overflow-y: auto;
-  margin-right: 8px;
+  height: 280px;
+}
+
+.insights-card-no-img {
+  height: 120px;
 }
 
 
@@ -57,7 +58,19 @@
   height: 100%;
 }
 
-.insights-article-container {
-  background-color: #F5F5F5;
-  overflow-y: auto;
+// CSS trick to get arrows to show
+// https://stackoverflow.com/questions/28998536/slick-slider-next-arrows-not-showing
+.slick-prev:before, .slick-next:before{
+  color:black;
+  font-size: 40px; 
+  line-height: 1;
+  font-family: "slick"
+}
+
+.slick-prev:before { content: "‹"; }
+.slick-next:before { content: "›"; }
+
+// https://github.com/akiran/react-slick/issues/1571
+.slider-container {
+  max-width: 80vw;
 }

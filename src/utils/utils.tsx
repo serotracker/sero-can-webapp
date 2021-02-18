@@ -31,7 +31,7 @@ export const getPossibleNullDateString = (nullString: string | null | undefined)
   if (nullString === null || nullString === undefined) {
     return "Not Reported"
   }
-  return format(parseISO(nullString), "dd-MM-yyyy")
+  return format(parseISO(nullString), "yyyy/MM/dd")
 }
 
 export const getPossibleNullStringArray = (nullString: string[] | null | undefined) => {

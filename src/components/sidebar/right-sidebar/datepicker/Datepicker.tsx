@@ -3,7 +3,7 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Input } from "semantic-ui-react";
 import { AppContext } from "../../../../context";
-import { FilterType, LanguageType, PageState, State } from '../../../../types';
+import { FilterType, PageState, State } from '../../../../types';
 import { updateFilters } from "../../../../utils/stateUpdateUtils";
 import Translate from "../../../../utils/translate/translateService";
 import SectionHeader from "../SectionHeader";
@@ -70,6 +70,7 @@ export default function Datepicker({ page }: DatepickerProps) {
           </div>
           <div>
             <DatePicker
+              dateFormat="yyyy/MM/dd"
               selected={startDate}
               minDate={state.calendarStartDates.minDate}
               maxDate={endDate}
@@ -87,6 +88,7 @@ export default function Datepicker({ page }: DatepickerProps) {
           </div>
           <div>
             <DatePicker
+            dateFormat="yyyy/MM/dd"
               className="col-12 p-0 date-picker"
               selected={endDate}
               locale={state.language}

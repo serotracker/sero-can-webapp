@@ -20,6 +20,7 @@
     "@types/react-leaflet": "^2.5.1",
     "@types/react-responsive": "^8.0.2",
     "@types/react-router-dom": "^5.1.5",
+    "@types/react-slick": "^0.23.4",
     "@types/recharts": "^1.8.14",
     "crypto-js": "^4.0.0",
     "date-fns": "^2.16.1",
@@ -40,6 +41,7 @@
     "react-responsive": "^8.0.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-slick": "^0.28.0",
     "recharts": "^1.8.5",
     "semantic-ui-react": "^0.88.2",
     "typescript": "^3.8.3"

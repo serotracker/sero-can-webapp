@@ -2,7 +2,8 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import {
   getPossibleNullString,
   getPossibleNullDateString,
-  getPossibleNullStringArray
+  getPossibleNullStringArray,
+  getGeography
 } from "../../utils/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
@@ -132,7 +133,7 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
                 </div>
                 <div className="col-6 p-0 secondary-text">
                   <span>
-                    <span className="secondary-title">{Translate('Location')}: </span>{city ? `${city.join(", ")}, ` : ""}{state ? `${state.join(", ")}, ` : ""}{country ? country : ""}
+                    <span className="secondary-title">{Translate('Location')}: </span>{getGeography(city, state, country)}
                   </span>
                 </div>
                 <div className="col-6 p-0 secondary-text">

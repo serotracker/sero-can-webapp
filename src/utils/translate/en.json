@@ -169,18 +169,41 @@
   "Geography": "Geography",
   "GeographyTooltip": "Select countries of interest.",
   "Here": "Here",
+  "IndustryMediaTitles": {
+    "UnderstandingVirus": "Understanding the Virus and Its Unanswered Questions",
+    "KnowledgeHub": "Knowledge hub developed to track SARS-CoV antibody studies",
+    "GlobalLaunch": "Global launch of SeroTracker: a COVID-19 antibody testing hub, in partnership with Canada's COVID-19 Immunity Task Force",
+    "StudentsBuild": "Students build online dashboard to track COVID-19 antibody studies",
+    "NewlyLaunched": "Newly launched SeroTracker will monitor global antibody testing efforts",
+    "VeteranDoctor": "What if there is no COVID-19 vaccine? A veteran doctor of the HIV/AIDS crisis provides alternatives",
+    "CovidRadar": "Covid Radar: taxa de subnotificação de casos de covid-19 na Rocinha chega a 62 vezes [COVID-19 underreporting rate in Rocinha reaches 62 times].",
+    "HowMany": "How many of us are likely to have caught the coronavirus so far?",
+    "Lecturership": "Adjunct lecturership for CHI Lab DPhil student Rahul Arora.",
+    "HomeTests": "Cheap, Daily Home Tests Are The First Step To Containing The Pandemic",
+    "Webinar": "SeroTracker COVID-19 Journey: HIMSS Canadian Prairies Chapter Webinar",
+    "AlumniAndStudents": "The Serotracker: Alumni and students develop tool to track Covid-19 spread",
+    "InfectionRate": "Study on the global coronavirus infection rate: the number of unreported cases",
+    "McKinseyHealthcare": "McKinsey on healthcare: 2020 year in review",
+    "JouleRecipients": "Joule announces 2020 Innovation grant recipients",
+    "JouleInnovation": "SeroTracker: Joule innovation grant recipient",
+    "WhenEnd": "When will the COVID-19 pandemic end?",
+    "JouleAnnounce": "Joule announces 2020 Innovation grant recipients"
+  },
   "IndustryReportTitles": {
     "AugustReport": "August Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "BloodBank": "SeroTracker Blood Bank Seroprevalence Preliminary Report",
     "JulyReport": "July Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "JuneReport": "June Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "LancetID": "Article (SeroTracker: a global SARS-CoV-2 seroprevalence dashboard)",
     "MayReport": "May Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "MedRxivPub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
     "OctoberReport": "October Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
     "PreliminaryReport": "Preliminary Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector"
+    "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "YearInReview2020": "SeroTracker 2020 Year in Review"
+  },
+  "ResearchArticleTitles": {
+    "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
+    "MedRxivPub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
+    "LancetID": "SeroTracker: a global SARS-CoV-2 seroprevalence dashboard"
   },
   "InitInfoModalText": {
     "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
@@ -221,6 +244,10 @@
   "NationalStudies": "National Studies",
   "NationalStudyDetails": "National study details",
   "NoData": "No Data",
+  "NoDataAnalyze": {
+    "PartOne":"No data is available for the filters you've specified.",
+    "PartTwo": "Please try a different filter combination."
+  },
   "NotReported": "Not Reported",
   "NumSeroprevalenceEstimates": "Number of Seroprevalence Estimates",
   "NumberEstimates": "Number of Estimates",
@@ -271,8 +298,9 @@
   "RegionalStudyDetails": "Regional study details",
   "RegulatoryApproval": "Regulatory Approval",
   "Report": "Report",
+  "Reports": "Reports",
   "ReportsAndArticles": "Reports & Articles",
-  "ResearchArticle": "Research Article",
+  "ResearchArticles": "Research Articles",
   "ResearchTeam": "Research Team",
   "RiskOfBias": "Risk of bias",
   "RiskOfBiasOptions": {
@@ -283,6 +311,7 @@
   },
   "SampleSize": "Sample Size",
   "Sampling": "Sampling",
+  "SamplingEndDate": "Sampling End Date",
   "SamplingDates": "Sampling dates",
   "SamplingMethod": "Sampling Method",
   "SchoolName": {
