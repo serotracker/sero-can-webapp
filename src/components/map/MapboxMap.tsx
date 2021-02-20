@@ -1,5 +1,6 @@
 //@ts-ignore
 import mapboxgl, { Layer, MapboxEvent, MapLayerMouseEvent, RasterLayer, Style } from "mapbox-gl";
+import generateSourceFromRecords from './GeoJsonGenerator'
 import './MapboxMap';
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { AppContext } from "../../context";
@@ -43,6 +44,25 @@ export default function MapBox() {
           addEsriLayersFromVectorSourceStyle(style, map);
         })
 
+        // When a click event occurs on a feature in the places layer, open a popup at the
+        // location of the feature, with description HTML from its properties.
+        map.on('click', 'study-pins', function (e : mapboxgl.MapMouseEvent & mapboxgl.EventData) {
+          var coordinates = e.features[0].geometry.coordinates.slice();
+          var description = e.features[0].properties.description;
+          
+          // Ensure that if the map is zoomed out such that multiple
+          // copies of the feature are visible, the popup appears
+          // over the copy being pointed to.
+          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+          }
+          
+          new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML("test")
+          .addTo(map);
+          });
+
         map.on('mousemove', 'Countries', function(e : any) {
           if (e.features.length > 0) {
           map.setFeatureState({
@@ -81,10 +101,43 @@ export default function MapBox() {
         }
         return { ...country, properties: { testsAdministered: null, geographicalName: null, numberOfStudies: null, localEstimate: null, nationalEstimate: null, regionalEstimate: null, sublocalEstimate: null } }
       })
+
       setMapRecords(countriesData);
-      var map = mapRef?.current;
     }
   }, [state.explore.estimateGradePrevalences, state.countries, state.language])
+
+  // Adds pins features to map
+  useEffect(() => {
+    const map = mapRef?.current;
+    if (state.explore.records.length > 0 && map !== null && map.getLayer('study-pins') === undefined) {
+      const src = generateSourceFromRecords(state.explore.records);
+      map.addSource('study-pins', src)
+      map.addLayer({
+        id: 'study-pins',
+        type: 'circle',
+        source: 'study-pins',
+        paint: {
+          'circle-color': ["match",
+            ["get", 'estimate_grade'],
+            "National", '#1485FF',
+            "Regional", '#FFD400',
+            "Local", '#FF2B35',
+            "Sublocal", '#FF3AB0',
+              /* default */ '#A0A0A0'
+          ],
+          'circle-radius': ["match",
+            ["get", 'estimate_grade'],
+            "National", 12,
+            "Regional", 10,
+            "Local", 7,
+            "Sublocal", 5,
+            /* default */ 10
+          ],
+          'circle-opacity': 0.6
+          }
+        });
+    }
+  },[state.explore.records])
 
   return (<div className="mapContainer w-100" ref={mapContainerRef}/>);
 }
