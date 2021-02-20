@@ -45,7 +45,7 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
   if (!country) {
     return "Not Reported";
   }
-  return `${city && city.length > 0 ? `${city.join(", ")}, ` : ""}${state && state.length > 0 ? `${state.join(", ")}, ` : ""}${country}`;
+  return `${city && city.length > 0 ? `${city?.join(", ")}, ` : ""}${state && state.length > 0 ? `${state?.join(", ")}, ` : ""}${country}`;
 }
 
 export const withLocaleUrl = (path: string) => {

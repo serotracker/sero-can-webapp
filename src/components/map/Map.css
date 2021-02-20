@@ -48,3 +48,7 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
 .map-wrapper {
   position: relative;
 }
+
+.pin-popup {
+  display: inline-block;
+}

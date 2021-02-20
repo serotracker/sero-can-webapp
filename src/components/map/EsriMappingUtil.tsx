@@ -10,8 +10,8 @@ async function prepare(url: string) {
   const api = new httpClient()
 
   let fetchedStyle = await api.getStyles(styleUrl);
-  fetchedStyle.sprite = url + "/resources/styles/../sprites/sprite";
-  fetchedStyle.glyphs = url + "/resources/styles/../fonts/{fontstack}/{range}.pbf";
+  fetchedStyle.sprite = url + "/resources/sprites/sprite";
+  fetchedStyle.glyphs = url + "/resources/fonts/{fontstack}/{range}.pbf";
   fetchedStyle.sources.esri = {
     type: 'vector',
     tiles: [url + "/tile/{z}/{y}/{x}.pbf"],
@@ -37,7 +37,13 @@ export async function getEsriVectorSourceStyle(url: string) {
           'case',
           ['boolean', ['feature-state', 'hasData'], false],
           "#97b1bd",
-          "#ffffff"
+          "#eb4034"
+        ],
+        'fill-opacity': [
+          'case',
+          ['boolean', ['feature-state', 'hasData'], false],
+          0.5,
+          0
         ]
       }
     }
@@ -50,9 +56,19 @@ export function addEsriLayersFromVectorSourceStyle(style: any, map: mapboxgl.Map
   const sourceLayerId = style?.layers[0]["source-layer"] as string;
 
   map.addSource(sourceLayerId, style.sources.esri);
-
-  style.layers.forEach((layer: any) => {
+  
+  if (sourceLayerId === "Countries"){
+    const layer = style?.layers[0]
     layer.source = sourceLayerId;
-    map.addLayer(layer);
+    map.addLayer(layer)//,"Boundaries/DISPUTED BORDERS AND AREAS/DISPUTED_BORDERS/J&K Line of Control; Ilemi Triangle; Abyei (SSD Claim); Abyei (SDN Claim)");
+  }
+  else{
+  style.layers.forEach((layer: any) => {
+    if (layer.source !== "DISPUTED_AREAS" && layer.source !== "DISPUTED_BORDERS")
+    {
+      layer.source = sourceLayerId;
+      map.addLayer(layer);
+    }
   });
+}
 }

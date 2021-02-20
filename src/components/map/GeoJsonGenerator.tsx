@@ -5,9 +5,10 @@ function recordsToGeoJsonFeatures(records: AirtableRecord[]): GeoJSON.Feature[] 
     return records.map((record) => {
         return {
             type: "Feature",
-            id: record.source_name ?? undefined,
+            id: record.source_id ?? undefined,
             properties: { // We can add any properties here to modify how we want to render the pin - helpful for WHO data
-                estimate_grade: record.estimate_grade
+                estimate_grade: record.estimate_grade,
+                source_id: record.source_id ?? undefined
             },
             geometry: {
                 type: "Point",

@@ -2,6 +2,7 @@ import { AirtableRecord } from "../types"
 
 export const testRecords: AirtableRecord[] = [
     {
+        source_id: '1',
         source_name: 'article1',
         source_type: 'source1',
         test_type: ['test1'],
@@ -20,6 +21,7 @@ export const testRecords: AirtableRecord[] = [
         estimate_grade: "National"
     },
     {
+        source_id: '2',
         source_name: 'article2',
         source_type: 'source2',
         test_type: ['test1'],
@@ -38,6 +40,7 @@ export const testRecords: AirtableRecord[] = [
         estimate_grade: "National"
     },
     {
+        source_id: '3',
         source_name: 'article3',
         source_type: 'source1',
         test_type: ['test1'],
@@ -56,6 +59,7 @@ export const testRecords: AirtableRecord[] = [
         estimate_grade: "National"
     },
     {
+        source_id: '4',
         source_name: 'article4',
         source_type: 'source1',
         test_type: ['test2'],
@@ -74,6 +78,7 @@ export const testRecords: AirtableRecord[] = [
         estimate_grade: "National"
     },
     {
+        source_id: '5',
         source_name: 'article1',
         source_type: 'source1',
         test_type: ['test1'],
@@ -92,6 +97,7 @@ export const testRecords: AirtableRecord[] = [
         estimate_grade: "National"
     },
     {
+        source_id: '6',
         source_name: 'article2',
         source_type: 'source2',
         test_type: ['test1'],
@@ -110,6 +116,7 @@ export const testRecords: AirtableRecord[] = [
         estimate_grade: "National"
     },
     {
+        source_id: '7',
         source_name: 'article3',
         source_type: 'source1',
         test_type: ['test1'],
@@ -128,6 +135,7 @@ export const testRecords: AirtableRecord[] = [
         estimate_grade: "National"
     },
     {
+        source_id: '8',
         source_name: 'article4',
         source_type: 'source1',
         test_type: ['test2'],

@@ -86,6 +86,14 @@ export default class httpClient {
         }
     }
 
+    async getRecordDetails(source_id : string) {
+        const response = await this.httpGet(`/data_provider/record_details/${source_id}`, true);
+        if (!response) {
+            return null;
+        }
+        return response;
+    }
+
     async getAllFilterOptions() {
         const response = await this.httpGet('/data_provider/filter_options', true);
         const options: Record<string, any> = {}
@@ -126,7 +134,7 @@ export default class httpClient {
         "sampling_start_date", "sampling_end_date", "url", "first_author", "source_type", "study_type", "test_type", "specimen_type",
         "isotypes_reported", "approving_regulator", "population_group", "lead_organization"];
 
-        const explore_columns = all_columns.slice(0, 16);
+        const explore_columns = ["source_id", "estimate_grade", "pin_latitude", "pin_longitude"];
 
         const date = filters['publish_date'] as Array<Date>
         const [startDate, endDate] = formatDates(date)
@@ -165,6 +173,7 @@ export default class httpClient {
                 sampling_start_date: item.sampling_start_date,
                 seroprevalence: item.serum_pos_prevalence,
                 sex: item.sex,
+                source_id: item.source_id,
                 source_name: item.source_name,
                 source_type: item.source_type,
                 specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],
