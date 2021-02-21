@@ -38,8 +38,7 @@ export default function Explore() {
             </div>
             <div className="col-8 p-0 flex">
               <Loader indeterminate active={state.explore.isLoading}></Loader>
-              <MapboxMap />
-              {/*<Map />*/}
+              <MapboxMap/>
             </div>
             <div className="col-2 p-0 flex">
               <RightSidebar page={PageStateEnum.explore} />

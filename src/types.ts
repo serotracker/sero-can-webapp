@@ -111,6 +111,10 @@ export type EstimateGradePrevalence = {
     sublocalEstimate?: RegionalPrevalenceEstimate
 }
 
+export interface EstimateGradePrevalenceFeature extends EstimateGradePrevalence {
+    hasData: true
+}
+
 export type RegionalPrevalenceEstimate = {
     maxEstimate: number;
     minEstimate: number;

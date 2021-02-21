@@ -3,7 +3,7 @@ import { AirtableRecord } from "../../types";
 import Translate from '../../utils/translate/translateService';
 import { getGeography, getPossibleNullDateString } from '../../utils/utils';
 
-export default function StudyPin(record: AirtableRecord) {
+export default function StudyPopup(record: AirtableRecord) {
     return (<React.Fragment>
         <div className="popup-title">
             {Translate(`${record.estimate_grade}StudyDetails`)}
