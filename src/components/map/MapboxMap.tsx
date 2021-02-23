@@ -7,7 +7,6 @@ import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "co
 import generateSourceFromRecords from "./GeoJsonGenerator";
 import StudyPopup from "components/map/StudyPopup";
 import CountryPopup from 'components/map/CountryPopup'
-import { createAltPopup } from "../../utils/mapUtils"
 import "components/map/Map.css";
 import "components/map/MapboxMap.css";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -47,16 +46,46 @@ function mapOnLoad(map: mapboxgl.Map, api : httpClient, language: LanguageType) 
     }
   });
 
-  map.on("mousemove", "Countries", function (e: any) {
-    if (e.features.length > 0) {
-      map.setFeatureState({source: "Countries", sourceLayer: "Countries", id: e.features[0].id,},{ hover: true,});
-      new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
-        .setLngLat(e.lngLat)
-        .setHTML(ReactDOMServer.renderToString(createAltPopup(e.features[0], language)))
-        .setMaxWidth("300px")
-        .addTo(map);
+  let countryPop = new mapboxgl.Popup({ offset: 5, className: "pin-popup", closeButton: false });
+  let countryCode : string | undefined = undefined;
+
+  // Connect mouse movement events
+  map.on("mouseenter", "Countries", function (e : any) {
+    if (e.features[0].state.hasData)
+    {
+      countryPop
+      .setLngLat(e.lngLat)
+      .trackPointer()
+      .setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], language)))
+      //.setMaxWidth("300px")
+      .addTo(map);
     }
   });
+
+  map.on("mouseleave", "Countries", function (e : any) {
+    if (countryPop.isOpen())
+    {
+      countryPop.remove()
+    }
+  });
+
+  map.on("mousemove", "Countries", function (e : any) {
+    if (e.features.length > 0 && e.features[0].id !== countryCode) {
+      if (e.features[0].state.hasData) {
+        countryPop.setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], language)))
+        if(!countryPop.isOpen())
+        {
+          countryPop.addTo(map);
+        }
+      }
+      else
+      {
+        countryPop.remove()
+      }
+
+        countryCode = e.features[0].id
+      }
+    });
 
   // When a click event occurs on a feature in the places layer, open a popup at the
   // location of the feature, with description HTML from its properties.
@@ -121,7 +150,7 @@ const MapboxGLMap = () : any => {
             {
               hasData: true,
               testsAdministered: country.testsAdministered,
-              geographicalName: country.testsAdministered,
+              geographicalName: country.geographicalName,
               numberOfStudies: country.numberOfStudies,
               localEstimate: country.localEstimate,
               nationalEstimate: country.nationalEstimate,
