@@ -1,5 +1,5 @@
 import ReactDOMServer from "react-dom/server";
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "context";
 import { EstimateGradePrevalence, LanguageType } from "types";
 import mapboxgl from "mapbox-gl";
@@ -8,6 +8,8 @@ import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "co
 import generateSourceFromRecords from "./GeoJsonGenerator";
 import StudyPopup from "components/map/StudyPopup";
 import CountryPopup from 'components/map/CountryPopup'
+import Legend from  "components/map/Legend"
+import MapConfig from "components/map/MapConfig"
 import "components/map/Map.css";
 import "components/map/MapboxMap.css";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -19,14 +21,7 @@ const WHO_BASEMAP =
 const WHO_COUNTRY_VECTORTILES =
   "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer";
 
-function mapOnLoad(map: mapboxgl.Map, api : httpClient, language: LanguageType) {
-  map.on("styleimagemissing", (e: any) => {
-    console.log("loading missing image: " + e.id);
-    map.loadImage("http://placekitten.com/50/50", (error: any, image: any) => {
-      if (error) throw error;
-      if (!map.hasImage(e.id)) map.addImage(e.id, image);
-    });
-  });
+function mapOnLoad(map: mapboxgl.Map, api : httpClient, language : LanguageType) {
 
   getEsriVectorSourceStyle(WHO_COUNTRY_VECTORTILES).then((style) => {
     addEsriLayersFromVectorSourceStyle(style, map);
@@ -107,38 +102,34 @@ function mapOnLoad(map: mapboxgl.Map, api : httpClient, language: LanguageType) 
   });
 }
 
-
-
 const MapboxGLMap = () : any => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [state] = useContext(AppContext);
   const api = new httpClient();
-  const mapContainer = useRef<mapboxgl.Map>(null);
+  const [mapRef, setMap] = useState<mapboxgl.Map | undefined>(undefined);
 
   // Creates map
   useEffect(() => {
     getEsriVectorSourceStyle(WHO_BASEMAP).then((baseMapStyle) => {
       const map = new mapboxgl.Map({
         //@ts-ignore
-        container: mapContainerRef.current,
+        container: mapContainerRef.current, 
         style: baseMapStyle,
         center: [-80, 45],
         zoom: 5,
       });
 
-      //@ts-ignore
-      mapContainer.current = map;
       map.on("load", () => mapOnLoad(map, api, state.language));
+      setMap(map);
     });
-  }, [state.language]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [state.language]);
 
   // Add Country highlighting to map
   useEffect(() => {
-    if (state.explore.estimateGradePrevalences.length > 0) {
+    if (state.explore.estimateGradePrevalences.length > 0 && mapRef) {
       state.explore.estimateGradePrevalences.forEach((country: EstimateGradePrevalence) => {
-        if (country && country.testsAdministered) {
-          //@ts-ignore
-          mapContainer.current.setFeatureState(
+        if (country && country.testsAdministered && mapRef) {
+          mapRef.setFeatureState(
             {
               source: "Countries",
               sourceLayer: "Countries",
@@ -158,52 +149,30 @@ const MapboxGLMap = () : any => {
         }
       });
     }
-  }, [state.explore.estimateGradePrevalences, state.language]);
+  }, [mapRef, state.explore.estimateGradePrevalences, state.language]);
 
   // Adds pins features to map
   useEffect(() => {
-    const map = mapContainer?.current;
-    if (state.explore.records.length > 0 && map !== null && map.getLayer("study-pins") === undefined) {
+    if (mapRef && state.explore.records.length > 0 && mapRef && mapRef.getLayer("study-pins") === undefined) {
       const src = generateSourceFromRecords(state.explore.records);
-      map.addSource("study-pins", src);
-      map.addLayer({
+      mapRef.addSource("study-pins", src);
+      mapRef.addLayer({
         id: "study-pins",
         type: "circle",
         source: "study-pins",
-        paint: {
-          "circle-color": [
-            "match",
-            ["get", "estimate_grade"],
-            "National",
-            "#1485FF",
-            "Regional",
-            "#FFD400",
-            "Local",
-            "#FF2B35",
-            "Sublocal",
-            "#FF3AB0",
-            /* default */ "#A0A0A0",
-          ],
-          "circle-radius": [
-            "match",
-            ["get", "estimate_grade"],
-            "National",
-            12,
-            "Regional",
-            10,
-            "Local",
-            7,
-            "Sublocal",
-            5,
-            /* default */ 10,
-          ],
-          "circle-opacity": 0.6,
-        },
+        paint: MapConfig.Studies
       });
     }
-  }, [state.explore.records]);
+    else if (mapRef && mapRef.getLayer("study-pins"))
+    {
+      mapRef.setLayoutProperty("study-pins", 'visibility', state.showEstimatePins ? 'visible' : 'none');
+    }
+  }, [mapRef, state.explore.records, state.showEstimatePins]);
 
-  return <div className="mapContainer w-100" ref={mapContainerRef} />;
+  //@ts-ignore
+  return <div className="mapContainer w-100" ref={el => (mapContainerRef.current = el)}>
+    <Legend/>
+  </div>;
 }
 
 export default MapboxGLMap;

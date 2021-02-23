@@ -1,5 +1,6 @@
 import mapboxgl from "mapbox-gl";
 import httpClient from "../../httpClient";
+import MapConfig from "components/map/MapConfig"
 
 // Params: url - to an esri vector tile service
 // Returns: Modified style object with attributes for Mapbox GL JS compatability 
@@ -31,21 +32,7 @@ export async function getEsriVectorSourceStyle(url: string) {
     const l = style.layers[0] as mapboxgl.Layer;
     if (l.id === "Countries") {
       source.promoteId = { "Countries": "CODE" }
-      l.paint = {
-        'fill-outline-color' : "#455a64",
-        'fill-color': [
-          'case',
-          ['boolean', ['feature-state', 'hasData'], false],
-          "#97b1bd",
-          "#eb4034"
-        ],
-        'fill-opacity': [
-          'case',
-          ['boolean', ['feature-state', 'hasData'], false],
-          0.5,
-          0
-        ]
-      }
+      l.paint = MapConfig.Countries
     }
 
     return style
@@ -60,7 +47,7 @@ export function addEsriLayersFromVectorSourceStyle(style: any, map: mapboxgl.Map
   if (sourceLayerId === "Countries"){
     const layer = style?.layers[0]
     layer.source = sourceLayerId;
-    map.addLayer(layer)//,"Boundaries/DISPUTED BORDERS AND AREAS/DISPUTED_BORDERS/J&K Line of Control; Ilemi Triangle; Abyei (SSD Claim); Abyei (SDN Claim)");
+    map.addLayer(layer)
   }
   else{
   style.layers.forEach((layer: any) => {

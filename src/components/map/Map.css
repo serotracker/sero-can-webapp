@@ -20,11 +20,6 @@ body {
   color: #777;
 }
 
-div.map.leaflet-container.leaflet-touch.leaflet-retina.leaflet-fade-anim {
-  /*border: 5px solid red;*/
-  z-index: 1;
-}
-
 div.slide-pane__content {
   /*border: 5px solid black;*/
   z-index: 100;

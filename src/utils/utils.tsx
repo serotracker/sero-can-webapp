@@ -46,18 +46,11 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
     return "Not Reported";
   }
 
-  function renderOutGeography(geo : string[] | null | undefined){
-
-    if (!geo)
-    {
+  function renderOutGeography(geo: string[] | null | undefined) {
+    if (!geo) {
       return ""
     }
-    else if (typeof geo === "string")
-    {
-      return geo
-    }
-    else if (geo.length > 1)
-    {
+    else if (geo.length > 1 && typeof geo !== "string") {
       return geo?.join(", ");
     }
 
