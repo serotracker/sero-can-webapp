@@ -32,13 +32,16 @@ function mapOnLoad(map: mapboxgl.Map, api : httpClient, language: LanguageType) 
     addEsriLayersFromVectorSourceStyle(style, map);
     var styleJson = map.getStyle();
 
-    //@ts-ignore
-    for (let layer of styleJson.layers) {
-      //@ts-ignore
-      const t = layer['source-layer'];
-      if (t === "DISPUTED_AREAS") {
-        map.moveLayer('Countries', layer.id); // HACK for now, moves countries layer behind border once loaded.
-        break;
+
+    if (styleJson && styleJson.layers)
+    {
+      for (let layer of styleJson.layers) {
+        //@ts-ignore
+        const t = layer['source-layer'];
+        if (t === "DISPUTED_AREAS") {
+          map.moveLayer('Countries', layer.id); // HACK for now, moves countries layer behind border once loaded.
+          break;
+        }
       }
     }
   });
@@ -82,8 +85,6 @@ function mapOnLoad(map: mapboxgl.Map, api : httpClient, language: LanguageType) 
       }
     });
 
-  // When a click event occurs on a feature in the places layer, open a popup at the
-  // location of the feature, with description HTML from its properties.
   map.on("click", "study-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
     const source_id = e.features[0].properties.source_id;
 
@@ -98,7 +99,6 @@ function mapOnLoad(map: mapboxgl.Map, api : httpClient, language: LanguageType) 
     });
   });
 
-  // Connect mouse movement events
   map.on("mouseenter", "study-pins", function () {
     map.getCanvas().style.cursor = "pointer";
   });
