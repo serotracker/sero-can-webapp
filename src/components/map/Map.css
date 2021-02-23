@@ -47,3 +47,8 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
 .pin-popup {
   display: inline-block;
 }
+
+.country-popup{
+  display: inline-block;
+  width: 250px;
+}

@@ -8,30 +8,26 @@ import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "co
 import generateSourceFromRecords from "./GeoJsonGenerator";
 import StudyPopup from "components/map/StudyPopup";
 import CountryPopup from 'components/map/CountryPopup'
-import Legend from  "components/map/Legend"
+import Legend from "components/map/Legend"
 import MapConfig from "components/map/MapConfig"
 import "components/map/Map.css";
 import "components/map/MapboxMap.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-mapboxgl.accessToken = "pk.eyJ1Ijoic2Vyb3RyYWNrZXIiLCJhIjoiY2tha2d4bTdmMDJ3dzJ3azFqbnphdWlzZSJ9.IutISibpBV33t_7ybaCNTg";
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY as string;
 
 const WHO_BASEMAP =
   "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer";
 const WHO_COUNTRY_VECTORTILES =
   "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer";
 
-function mapOnLoad(map: mapboxgl.Map, api : httpClient, language : LanguageType) {
+function mapOnLoad(map: mapboxgl.Map, api: httpClient, language: LanguageType) {
 
   getEsriVectorSourceStyle(WHO_COUNTRY_VECTORTILES).then((style) => {
     addEsriLayersFromVectorSourceStyle(style, map);
-    var styleJson = map.getStyle();
-
-
-    if (styleJson && styleJson.layers)
-    {
+    const styleJson: any = map.getStyle();
+    if (styleJson && styleJson.layers) {
       for (let layer of styleJson.layers) {
-        //@ts-ignore
         const t = layer['source-layer'];
         if (t === "DISPUTED_AREAS") {
           map.moveLayer('Countries', layer.id); // HACK for now, moves countries layer behind border once loaded.
@@ -42,54 +38,51 @@ function mapOnLoad(map: mapboxgl.Map, api : httpClient, language : LanguageType)
   });
 
   let countryPop = new mapboxgl.Popup({ offset: 5, className: "pin-popup", closeButton: false });
-  let countryCode : string | undefined = undefined;
+
+  let countryCode: string | undefined = undefined;
 
   // Connect mouse movement events
-  map.on("mouseenter", "Countries", function (e : any) {
-    if (e.features[0].state.hasData)
-    {
-      countryPop
-      .setLngLat(e.lngLat)
-      .trackPointer()
-      .setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], language)))
-      .addTo(map);
+  map.on("mouseenter", "Countries", function (e: any) {
+    if (e.features[0].state.hasData) {
+      countryPop.setLngLat(e.lngLat)
+        .trackPointer()
+        .setMaxWidth("250px")
+        .setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], language)))
+        .addTo(map);
     }
   });
 
-  map.on("mouseleave", "Countries", function (e : any) {
-    if (countryPop.isOpen())
-    {
+  map.on("mouseleave", "Countries", function (e: any) {
+    if (countryPop.isOpen()) {
       countryPop.remove()
     }
   });
 
-  map.on("mousemove", "Countries", function (e : any) {
+  map.on("mousemove", "Countries", function (e: any) {
     if (e.features.length > 0 && e.features[0].id !== countryCode) {
       if (e.features[0].state.hasData) {
         countryPop.setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], language)))
-        if(!countryPop.isOpen())
-        {
-          countryPop.addTo(map);
+        if (!countryPop.isOpen()) {
+          countryPop.addTo(map)
         }
       }
-      else
-      {
+      else {
         countryPop.remove()
       }
-        countryCode = e.features[0].id
-      }
-    });
+      countryCode = e.features[0].id
+    }
+  });
 
   map.on("click", "study-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
     const source_id = e.features[0].properties.source_id;
 
     api.getRecordDetails(source_id).then((record) => {
-      if (record !== null){
+      if (record !== null) {
         new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
-        .setLngLat(e.lngLat)
-        .setHTML(ReactDOMServer.renderToString(StudyPopup(record)))
-        .setMaxWidth("300px")
-        .addTo(map);
+          .setLngLat(e.lngLat)
+          .setHTML(ReactDOMServer.renderToString(StudyPopup(record)))
+          .setMaxWidth("300px")
+          .addTo(map);
       }
     });
   });
@@ -102,7 +95,7 @@ function mapOnLoad(map: mapboxgl.Map, api : httpClient, language : LanguageType)
   });
 }
 
-const MapboxGLMap = () : any => {
+const MapboxGLMap = (): any => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [state] = useContext(AppContext);
   const api = new httpClient();
@@ -110,19 +103,21 @@ const MapboxGLMap = () : any => {
 
   // Creates map
   useEffect(() => {
-    getEsriVectorSourceStyle(WHO_BASEMAP).then((baseMapStyle) => {
-      const map = new mapboxgl.Map({
-        //@ts-ignore
-        container: mapContainerRef.current, 
-        style: baseMapStyle,
-        center: [-80, 45],
-        zoom: 5,
-      });
+    if (!mapRef) {
+      getEsriVectorSourceStyle(WHO_BASEMAP).then((baseMapStyle) => {
+        const map = new mapboxgl.Map({
+          //@ts-ignore
+          container: mapContainerRef.current,
+          style: baseMapStyle,
+          center: [-80, 45],
+          zoom: 5,
+        });
 
-      map.on("load", () => mapOnLoad(map, api, state.language));
-      setMap(map);
-    });
-  }, [state.language]);
+        map.on("load", () => mapOnLoad(map, api, state.language));
+        setMap(map);
+      });
+    }
+  });
 
   // Add Country highlighting to map
   useEffect(() => {
@@ -163,15 +158,14 @@ const MapboxGLMap = () : any => {
         paint: MapConfig.Studies
       });
     }
-    else if (mapRef && mapRef.getLayer("study-pins"))
-    {
+    else if (mapRef && mapRef.getLayer("study-pins")) {
       mapRef.setLayoutProperty("study-pins", 'visibility', state.showEstimatePins ? 'visible' : 'none');
     }
   }, [mapRef, state.explore.records, state.showEstimatePins]);
 
   //@ts-ignore
   return <div className="mapContainer w-100" ref={el => (mapContainerRef.current = el)}>
-    <Legend/>
+    <Legend />
   </div>;
 }
 
