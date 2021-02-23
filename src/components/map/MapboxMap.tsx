@@ -1,6 +1,7 @@
 import ReactDOMServer from "react-dom/server";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { AppContext } from "../../context";
+import React, { useContext, useEffect, useRef } from "react";
+import { AppContext } from "context";
+import { EstimateGradePrevalence, LanguageType } from "types";
 import mapboxgl from "mapbox-gl";
 import httpClient from "httpClient";
 import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "components/map/EsriMappingUtil";
@@ -10,7 +11,6 @@ import CountryPopup from 'components/map/CountryPopup'
 import "components/map/Map.css";
 import "components/map/MapboxMap.css";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { EstimateGradePrevalence, LanguageType } from "types";
 
 mapboxgl.accessToken = "pk.eyJ1Ijoic2Vyb3RyYWNrZXIiLCJhIjoiY2tha2d4bTdmMDJ3dzJ3azFqbnphdWlzZSJ9.IutISibpBV33t_7ybaCNTg";
 
@@ -18,9 +18,6 @@ const WHO_BASEMAP =
   "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer";
 const WHO_COUNTRY_VECTORTILES =
   "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer";
-const WHO_DISPUTED_GEOGRAPHY =
-  "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_Disputed_Areas_and_Borders_VTP/VectorTileServer";
-
 
 function mapOnLoad(map: mapboxgl.Map, api : httpClient, language: LanguageType) {
   map.on("styleimagemissing", (e: any) => {
@@ -57,7 +54,6 @@ function mapOnLoad(map: mapboxgl.Map, api : httpClient, language: LanguageType) 
       .setLngLat(e.lngLat)
       .trackPointer()
       .setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], language)))
-      //.setMaxWidth("300px")
       .addTo(map);
     }
   });
@@ -82,7 +78,6 @@ function mapOnLoad(map: mapboxgl.Map, api : httpClient, language: LanguageType) 
       {
         countryPop.remove()
       }
-
         countryCode = e.features[0].id
       }
     });
@@ -93,11 +88,13 @@ function mapOnLoad(map: mapboxgl.Map, api : httpClient, language: LanguageType) 
     const source_id = e.features[0].properties.source_id;
 
     api.getRecordDetails(source_id).then((record) => {
-      new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
+      if (record !== null){
+        new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
         .setLngLat(e.lngLat)
         .setHTML(ReactDOMServer.renderToString(StudyPopup(record)))
         .setMaxWidth("300px")
         .addTo(map);
+      }
     });
   });
 

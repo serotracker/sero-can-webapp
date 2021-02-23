@@ -45,7 +45,26 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
   if (!country) {
     return "Not Reported";
   }
-  return `${city && city.length > 0 ? `${city?.join(", ")}, ` : ""}${state && state.length > 0 ? `${state?.join(", ")}, ` : ""}${country}`;
+
+  function renderOutGeography(geo : string[] | null | undefined){
+
+    if (!geo)
+    {
+      return ""
+    }
+    else if (typeof geo === "string")
+    {
+      return geo
+    }
+    else if (geo.length > 1)
+    {
+      return geo?.join(", ");
+    }
+
+    return geo
+  }
+
+  return `${renderOutGeography(city)} ${renderOutGeography(state)} ${country}`;
 }
 
 export const withLocaleUrl = (path: string) => {

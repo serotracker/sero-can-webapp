@@ -91,7 +91,37 @@ export default class httpClient {
         if (!response) {
             return null;
         }
-        return response;
+
+        const record: AirtableRecord = {
+            age: response.age,
+            approving_regulator: response.approving_regulator,
+            city: response.city,
+            country: response.country,
+            denominator: response.denominator_value,
+            estimate_grade: response.estimate_grade,
+            first_author: response.first_author,
+            isotypes_reported: response.isotypes_reported,
+            lead_org: response.lead_org,
+            overall_risk_of_bias: response.overall_risk_of_bias,
+            pin_latitude: response.pin_latitude,
+            pin_longitude: response.pin_longitude,
+            pin_region_type: response.pin_region_type,
+            population_group: response.population_group,
+            sampling_end_date: response.sampling_end_date,
+            sampling_start_date: response.sampling_start_date,
+            seroprevalence: response.serum_pos_prevalence,
+            sex: response.sex,
+            source_id: response.source_id,
+            source_name: response.source_name,
+            source_type: response.source_type,
+            specimen_type: Array.isArray(response.specimen_type) ? response.specimen_type : [response.specimen_type],
+            state: response.state,
+            study_type: response.study_type,
+            test_type: response.study_type,
+            url: response.url
+        };
+        
+        return record;
     }
 
     async getAllFilterOptions() {
