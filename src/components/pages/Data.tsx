@@ -7,7 +7,7 @@ import { getEmptyFilters } from "../../context";
 import httpClient from "../../httpClient";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 import Translate from "../../utils/translate/translateService";
-import StudiesTable from "../shared/StudiesTable";
+import StudiesTable from "../shared/references/StudiesTable";
 import './static.css';
 import MaintenanceModal from "../shared/MaintenanceModal";
 
