@@ -34,14 +34,12 @@ export const updateFilters = async (
   const api = new httpClient()
   // Update current records when called
   const [records,
-    estimateGradePrevalences, reAggregatedRecords] = await
+    estimateGradePrevalences] = await
       Promise.all([
         api.getAirtableRecords(updatedFilters, exploreIsOpen),
-        api.getEstimateGrades(updatedFilters),
-        page === "analyze" ? api.postMetaAnalysis(updatedFilters, aggregationFactor) : Promise.resolve()
+        api.getEstimateGrades(updatedFilters)
       ]);
  
-  const metaAnalyzedRecords = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
   dispatch({
     type: 'GET_AIRTABLE_RECORDS',
     payload: { pageStateEnum: page, records }
@@ -50,16 +48,6 @@ export const updateFilters = async (
     type: 'UPDATE_ESTIMATE_PREVALENCES',
     payload: { pageStateEnum: page, estimateGradePrevalences }
   });
-
-  if (page === "analyze") {
-    dispatch({
-      type: "UPDATE_META_ANALYSIS",
-      payload: {
-        pageStateEnum: page,
-        metaAnalyzedRecords
-      }
-    })
-  }
 
   dispatch({
     type: "CHANGE_LOADING",
@@ -83,14 +71,10 @@ export const initializeData = async (dispatch: any, filters: Filters, exploreIsO
   })
   
   const [records,
-    reAggregatedRecords,
     estimateGradePrevalences] = await Promise
       .all([api.getAirtableRecords(filters, exploreIsOpen),
-      api.postMetaAnalysis(filters, AggregationFactor.country),
       api.getEstimateGrades(filters)]);
 
-
-  const metaAnalyzedRecords = _.sortBy(reAggregatedRecords, 'seroprevalence').reverse();
   dispatch({
     type: 'GET_AIRTABLE_RECORDS',
     payload: { pageStateEnum: page, records }
@@ -99,14 +83,6 @@ export const initializeData = async (dispatch: any, filters: Filters, exploreIsO
     type: 'UPDATE_ESTIMATE_PREVALENCES',
     payload: { pageStateEnum: page, estimateGradePrevalences }
   });
-
-  dispatch({
-    type: "UPDATE_META_ANALYSIS",
-    payload: {
-      pageStateEnum: page,
-      metaAnalyzedRecords
-    }
-  })
 
   dispatch({
     type: "CHANGE_LOADING",

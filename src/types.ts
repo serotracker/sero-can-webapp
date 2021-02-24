@@ -66,6 +66,9 @@ export enum LanguageType {
 }
 
 export enum PageStateEnum {
+    // TODO: replace analyze with data here
+    // once our data page uses filters
+    // Analyze can now be deprecated fully bc of Tableau
     analyze = "analyze",
     explore = "explore"
 }

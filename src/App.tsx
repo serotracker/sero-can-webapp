@@ -25,7 +25,6 @@ function App() {
   useEffect(() => {
     const api = new httpClient()
     initializeData(dispatch, explore.filters, true, PageStateEnum.explore)
-    initializeData(dispatch, analyze.filters, false, PageStateEnum.analyze)
     const allFilterOptions = async () => {
       const { options, updatedAt, maxDate, minDate } = await api.getAllFilterOptions();
       dispatch({
