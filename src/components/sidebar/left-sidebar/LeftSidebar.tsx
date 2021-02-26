@@ -5,8 +5,8 @@ import Translate from "../../../utils/translate/translateService";
 import TotalStats from "./TotalStats";
 import HealthAgencyLogo from '../../../assets/images/public-health-agency.png';
 import UcalgaryLogo from '../../../assets/images/University-Of-Calgary-Logo.png';
+import WhoLogo from "assets/images/WHO_LOGO.png"
 import { AppContext } from "../../../context";
-import { LanguageType } from "../../../types";
 
 interface SideBarProps {
   page: string
@@ -48,6 +48,14 @@ export default function LeftSidebar({ page }: SideBarProps) {
         <a href="https://cumming.ucalgary.ca/centres/centre-health-informatics" className="d-block mt-3 mx-auto" target="__blank" rel="noopener noreferrer">
           <img src={UcalgaryLogo} className="d-block mx-auto" alt="Centre for Health Informatics" height="22"></img>
         </a>
+        <a href="https://www.who.int/" className="d-block mt-3 mx-auto" target="__blank" rel="noopener noreferrer">
+          <img src={WhoLogo} className="d-block mx-auto" alt="Centre for Health Informatics" height="50"></img>
+        </a>
+        <p className="d-block mx-3">
+          <small>
+          {Translate('WhoDisclaimerSmall')}
+          </small>
+        </p>
       </div>
     </div>
   )

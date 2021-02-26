@@ -36,7 +36,7 @@ const MapboxGLMap = (): any => {
   const [state] = useContext(AppContext);
   const [map, setMap] = useState<mapboxgl.Map | undefined>(undefined);
 
-  // Creates map
+  // Creates map, only runs once
   useEffect(() => {
     (async () => {
       const baseMapStyle = await getEsriVectorSourceStyle(WHO_BASEMAP);
@@ -58,7 +58,9 @@ const MapboxGLMap = (): any => {
     return () => map?.remove();
   },[]);
 
+  // Adds country data to map and binds pin behaviour with map popups
   Countries(map, state.explore.estimateGradePrevalences);
+  // Adds pins to map and binds pin behaviour with map popups
   StudyPins(map, state.explore.records, state.showEstimatePins);
 
   return (

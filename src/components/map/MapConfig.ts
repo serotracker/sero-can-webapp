@@ -1,4 +1,4 @@
-export const Symbology = {
+export const MapSymbology = {
     StudyFeature: {
         National: {
             Color: '#094180',
@@ -42,44 +42,44 @@ const MapConfig = {
           "match",
           ["get", "estimate_grade"],
           "National",
-          Symbology.StudyFeature.National.Color,
+          MapSymbology.StudyFeature.National.Color,
           "Regional",
-          Symbology.StudyFeature.Regional.Color,
+          MapSymbology.StudyFeature.Regional.Color,
           "Local",
-          Symbology.StudyFeature.Local.Color,
+          MapSymbology.StudyFeature.Local.Color,
           "Sublocal",
-          Symbology.StudyFeature.Sublocal.Color,
-          Symbology.StudyFeature.Default.Color,
+          MapSymbology.StudyFeature.Sublocal.Color,
+          MapSymbology.StudyFeature.Default.Color,
         ],
         "circle-radius": [
           "match",
           ["get", "estimate_grade"],
           "National",
-          Symbology.StudyFeature.National.Size,
+          MapSymbology.StudyFeature.National.Size,
           "Regional",
-          Symbology.StudyFeature.Regional.Size,
+          MapSymbology.StudyFeature.Regional.Size,
           "Local",
-          Symbology.StudyFeature.Local.Size,
+          MapSymbology.StudyFeature.Local.Size,
           "Sublocal",
-          Symbology.StudyFeature.Sublocal.Size,
-          Symbology.StudyFeature.Default.Size,
+          MapSymbology.StudyFeature.Sublocal.Size,
+          MapSymbology.StudyFeature.Default.Size,
         ],
         "circle-opacity": 0.6,
       } as mapboxgl.CirclePaint,
 
       Countries : {
-        'fill-outline-color' : Symbology.Border.Color,
+        'fill-outline-color' : MapSymbology.Border.Color,
         'fill-color': [
           'case',
           ['boolean', ['feature-state', 'hasData'], false],
-          Symbology.CountryFeature.HasData.Color,
-          Symbology.CountryFeature.Default.Color
+          MapSymbology.CountryFeature.HasData.Color,
+          MapSymbology.CountryFeature.Default.Color
         ],
         'fill-opacity': [
           'case',
           ['boolean', ['feature-state', 'hasData'], false],
-          Symbology.CountryFeature.HasData.Opacity,
-          Symbology.CountryFeature.Default.Opacity
+          MapSymbology.CountryFeature.HasData.Opacity,
+          MapSymbology.CountryFeature.Default.Opacity
         ]
       }
 }

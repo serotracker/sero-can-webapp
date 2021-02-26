@@ -14,7 +14,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[], sho
   const [api] = useState(new httpClient());
 
   useEffect(() => {
-    if (map && records.length > 0 && map && map.getLayer("study-pins") === undefined) {
+    if (map && records.length > 0 && map.getLayer("study-pins") === undefined) {
       const src = generateSourceFromRecords(records);
       map.addSource("study-pins", src);
       map.addLayer({

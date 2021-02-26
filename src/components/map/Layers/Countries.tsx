@@ -5,6 +5,7 @@ import { EstimateGradePrevalence } from "types";
 import mapboxgl from "mapbox-gl";
 import CountryPopup from 'components/map/Popups/CountryPopup'
 
+// Maps estimate grade prevalence data to a match ISO3 code in the countries feature layer
 function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
     estimateGradePrevalences.forEach((country: EstimateGradePrevalence) => {
         if (country && country.testsAdministered && country.alpha3Code) {
@@ -29,8 +30,9 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
     });
 }
 
-function UpdateCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
-    var onlyIso3: (string | null)[] = estimateGradePrevalences.map((c) => { return c.alpha3Code })
+// Filters out Country features based on their existance within the new estimate grade prevalences
+function FilterCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
+    const onlyIso3: (string | null)[] = estimateGradePrevalences.map((c) => { return c.alpha3Code })
 
     if (map.getLayer("Countries") && map.isSourceLoaded('Countries')) {
         map?.setFilter('Countries',
@@ -57,8 +59,9 @@ const Countries = (map: mapboxgl.Map | undefined, estimateGradePrevalences: Esti
     const [state] = useContext(AppContext);
     const [popup, setPopup] = useState<mapboxgl.Popup | undefined>(undefined);
 
+    // If estimates are updated, waits until map is loaded then maps estimate data to country features
     useEffect(() => {
-        if (estimateGradePrevalences.length > 0 && map && map.getSource('Countries')) {
+        if (estimateGradePrevalences.length >= 0 && map && map.getSource('Countries')) {
             SetCountryEstimates(map, estimateGradePrevalences);
         }
         else if (map) {
@@ -70,22 +73,24 @@ const Countries = (map: mapboxgl.Map | undefined, estimateGradePrevalences: Esti
         }
     }, [estimateGradePrevalences, map]);
 
+    // If estimates are updated, waits until map is loaded then filters country features
     useEffect(() => {
         if (estimateGradePrevalences.length > 0 && map) {
-            UpdateCountryEstimates(map, estimateGradePrevalences)
+            FilterCountryEstimates(map, estimateGradePrevalences)
         }
     }, [estimateGradePrevalences, map]);
 
+    // wait until map is loaded then creates and binds popup to map events
     useEffect(() => {
         if (map && popup === undefined) {
-            const countryPop = new mapboxgl.Popup({ offset: 5, className: "pin-popup", closeButton: false });
+            const countryPop = new mapboxgl.Popup({ offset: 25, className: "pin-popup", closeButton: false });
 
             map.on("mouseenter", "Countries", function (e: any) {
                 if (e.features[0].state.hasData) {
                     countryPop.setMaxWidth("250px")
                         .setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], state.language)))
                         .setLngLat(e.lngLat)
-                        .trackPointer()
+                        //.trackPointer()
                         .addTo(map);
                 }
             });
@@ -99,13 +104,15 @@ const Countries = (map: mapboxgl.Map | undefined, estimateGradePrevalences: Esti
 
             map.on("mousemove", "Countries", function (e: any) {
                 if (e.features[0].state.hasData && countryPop.isOpen()) {
-                    countryPop.setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], state.language)))
+                    countryPop
+                    .setLngLat(e.lngLat)
+                    .setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], state.language)))
                 }
             });
 
             setPopup(countryPop);
         }
-    }, [map, state.language])
+    }, [map, state.language, popup])
 
     return;
 }
