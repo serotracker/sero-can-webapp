@@ -1,5 +1,5 @@
 import mapboxgl from "mapbox-gl";
-import httpClient from "../../httpClient";
+import httpClient from "../httpClient";
 import MapConfig from "components/map/MapConfig"
 
 // Params: url - to an esri vector tile service

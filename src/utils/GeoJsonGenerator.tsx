@@ -1,4 +1,4 @@
-import { AirtableRecord } from "../../types";
+import { AirtableRecord } from "../types";
 
 // Please refer to GeoJSON spec rfc7946 if adding addiontal members: https://tools.ietf.org/html/rfc7946#section-3.1.1
 function recordsToGeoJsonFeatures(records: AirtableRecord[]): GeoJSON.Feature[] {

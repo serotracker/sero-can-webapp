@@ -1,7 +1,7 @@
 import React from "react";
-import { AirtableRecord } from "../../types";
-import Translate from '../../utils/translate/translateService';
-import { getGeography, getPossibleNullDateString } from '../../utils/utils';
+import { AirtableRecord } from "types";
+import Translate from 'utils/translate/translateService';
+import { getGeography, getPossibleNullDateString } from 'utils/utils';
 
 export default function StudyPopup(record: AirtableRecord) {
     return (<React.Fragment>
