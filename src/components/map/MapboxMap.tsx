@@ -95,7 +95,7 @@ function mapOnLoad(map: mapboxgl.Map, api: httpClient, language: LanguageType) {
   });
 }
 
-function onCountriesLoad(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[])
+function UpdateCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[])
 {
   var features = map.querySourceFeatures('Countries', {
     sourceLayer: 'Countries',
@@ -138,65 +138,78 @@ function onCountriesLoad(map: mapboxgl.Map, estimateGradePrevalences: EstimateGr
 const MapboxGLMap = (): any => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [state] = useContext(AppContext);
-  const api = new httpClient();
-  const [mapRef, setMap] = useState<mapboxgl.Map | undefined>(undefined);
+  const [api, setApi] = useState(new httpClient());
+  const [map, setMap] = useState<mapboxgl.Map | undefined>(undefined);
 
   // Creates map
   useEffect(() => {
-    if (!mapRef) {
-      getEsriVectorSourceStyle(WHO_BASEMAP).then((baseMapStyle) => {
-        const map = new mapboxgl.Map({
-          //@ts-ignore
-          container: mapContainerRef.current,
-          style: baseMapStyle,
-          center: [0, 30],
-          zoom: 1,
-        });
-
-        map.on("load", () => {
-          mapOnLoad(map, api, state.language)
-
-          setMap(map);
-        });
+    getEsriVectorSourceStyle(WHO_BASEMAP).then((baseMapStyle) => {
+      const m = new mapboxgl.Map({
+        //@ts-ignore
+        container: mapContainerRef.current,
+        style: baseMapStyle,
+        center: [0, 30],
+        zoom: 1,
       });
-    }
+
+      m.on("load", () => {
+        mapOnLoad(m, api, state.language)
+        setMap(m);
+      });
+    });
+
+    return () => map?.remove();
   },[]);
 
   // Add Country highlighting to map
   useEffect(() => {
-    if (state.explore.estimateGradePrevalences.length > 0 && mapRef) {
-
-      if (mapRef.getSource('Countries'))
+    if (state.explore.estimateGradePrevalences.length > 0 && map) {
+      if (map.getSource('Countries'))
       {
-        onCountriesLoad(mapRef, state.explore.estimateGradePrevalences)
+        UpdateCountryEstimates(map, state.explore.estimateGradePrevalences)
       }
       else
       {
-        mapRef.on('styledata', function(e : mapboxgl.MapSourceDataEvent) {
-          if (mapRef.getSource('Countries')) { 
-              onCountriesLoad(mapRef, state.explore.estimateGradePrevalences)
+        map.on('styledata', function() {
+          if (map.getSource('Countries')) { 
+              UpdateCountryEstimates(map, state.explore.estimateGradePrevalences)
             }
         });
       }
     }
-  }, [mapRef, state.explore.estimateGradePrevalences, state.language]);
+  }, [map, state.explore.estimateGradePrevalences]);
 
   // Adds pins features to map
   useEffect(() => {
-    if (mapRef && state.explore.records.length > 0 && mapRef && mapRef.getLayer("study-pins") === undefined) {
+    if (map && state.explore.records.length > 0 && map && map.getLayer("study-pins") === undefined) {
       const src = generateSourceFromRecords(state.explore.records);
-      mapRef.addSource("study-pins", src);
-      mapRef.addLayer({
+      map.addSource("study-pins", src);
+      map.addLayer({
         id: "study-pins",
         type: "circle",
         source: "study-pins",
         paint: MapConfig.Studies
       });
     }
-    else if (mapRef && mapRef.getLayer("study-pins")) {
-      mapRef.setLayoutProperty("study-pins", 'visibility', state.showEstimatePins ? 'visible' : 'none');
+    else if (map && map.getLayer("study-pins")) {
+      map.setLayoutProperty("study-pins", 'visibility', state.showEstimatePins ? 'visible' : 'none');
     }
-  }, [mapRef, state.explore.records, state.showEstimatePins]);
+
+    var onlyGuid : (string | null)[] = state.explore.records.map((r)=> {
+      var guid = r.source_id
+      return guid 
+    })
+
+    map?.setFilter('study-pins', 
+    ["in",
+    ['get', 'source_id'],
+    ["literal", onlyGuid]
+    ]);
+
+    var features = map?.querySourceFeatures('study-pins', {
+      sourceLayer: 'study-pins',
+      });
+  }, [map, state.explore.records, state.showEstimatePins]);
 
   //@ts-ignore
   return <div className="mapContainer w-100" ref={el => (mapContainerRef.current = el)}>
