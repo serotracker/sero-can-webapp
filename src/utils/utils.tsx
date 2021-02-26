@@ -48,16 +48,17 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
 
   function renderOutGeography(geo: string[] | null | undefined) {
     if (!geo) {
-      return ""
+      return undefined
     }
     else if (geo.length > 1 && typeof geo !== "string") {
       return geo?.join(", ");
     }
-
     return geo
   }
 
-  return `${renderOutGeography(city)} ${renderOutGeography(state)} ${country}`;
+  const geographyNames = [renderOutGeography(city), renderOutGeography(state), country]
+
+  return geographyNames.join(", ");
 }
 
 export const withLocaleUrl = (path: string) => {

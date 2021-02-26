@@ -95,6 +95,46 @@ function mapOnLoad(map: mapboxgl.Map, api: httpClient, language: LanguageType) {
   });
 }
 
+function onCountriesLoad(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[])
+{
+  var features = map.querySourceFeatures('Countries', {
+    sourceLayer: 'Countries',
+    });
+  
+  features.forEach((f)=>{
+    map.setFeatureState({
+      source: 'Countries',
+      sourceLayer: "Countries",
+      id: f.id,
+      },
+      {
+        hasData: false
+      });
+  })
+
+  estimateGradePrevalences.forEach((country: EstimateGradePrevalence) => {
+    if (country && country.testsAdministered && country.alpha3Code) {
+      map.setFeatureState(
+        {
+          source: "Countries",
+          sourceLayer: "Countries",
+          id: country.alpha3Code,
+        },
+        {
+          hasData: true,
+          testsAdministered: country.testsAdministered,
+          geographicalName: country.geographicalName,
+          numberOfStudies: country.numberOfStudies,
+          localEstimate: country.localEstimate,
+          nationalEstimate: country.nationalEstimate,
+          regionalEstimate: country.regionalEstimate,
+          sublocalEstimate: country.sublocalEstimate,
+        }
+      );
+    }
+  });
+}
+
 const MapboxGLMap = (): any => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [state] = useContext(AppContext);
@@ -109,40 +149,35 @@ const MapboxGLMap = (): any => {
           //@ts-ignore
           container: mapContainerRef.current,
           style: baseMapStyle,
-          center: [-80, 45],
-          zoom: 5,
+          center: [0, 30],
+          zoom: 1,
         });
 
-        map.on("load", () => mapOnLoad(map, api, state.language));
-        setMap(map);
+        map.on("load", () => {
+          mapOnLoad(map, api, state.language)
+
+          setMap(map);
+        });
       });
     }
-  });
+  },[]);
 
   // Add Country highlighting to map
   useEffect(() => {
     if (state.explore.estimateGradePrevalences.length > 0 && mapRef) {
-      state.explore.estimateGradePrevalences.forEach((country: EstimateGradePrevalence) => {
-        if (country && country.testsAdministered && mapRef) {
-          mapRef.setFeatureState(
-            {
-              source: "Countries",
-              sourceLayer: "Countries",
-              id: country.alpha3Code,
-            },
-            {
-              hasData: true,
-              testsAdministered: country.testsAdministered,
-              geographicalName: country.geographicalName,
-              numberOfStudies: country.numberOfStudies,
-              localEstimate: country.localEstimate,
-              nationalEstimate: country.nationalEstimate,
-              regionalEstimate: country.regionalEstimate,
-              sublocalEstimate: country.sublocalEstimate,
+
+      if (mapRef.getSource('Countries'))
+      {
+        onCountriesLoad(mapRef, state.explore.estimateGradePrevalences)
+      }
+      else
+      {
+        mapRef.on('styledata', function(e : mapboxgl.MapSourceDataEvent) {
+          if (mapRef.getSource('Countries')) { 
+              onCountriesLoad(mapRef, state.explore.estimateGradePrevalences)
             }
-          );
-        }
-      });
+        });
+      }
     }
   }, [mapRef, state.explore.estimateGradePrevalences, state.language]);
 
