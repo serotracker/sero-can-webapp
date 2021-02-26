@@ -13,6 +13,7 @@ import MapConfig from "components/map/MapConfig"
 import "components/map/Map.css";
 import "components/map/MapboxMap.css";
 import "mapbox-gl/dist/mapbox-gl.css";
+import Countries from "components/map/Layers/Countries"
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY as string;
 
@@ -95,46 +96,6 @@ function mapOnLoad(map: mapboxgl.Map, api: httpClient, language: LanguageType) {
   });
 }
 
-function UpdateCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[])
-{
-  var features = map.querySourceFeatures('Countries', {
-    sourceLayer: 'Countries',
-    });
-  
-  features.forEach((f)=>{
-    map.setFeatureState({
-      source: 'Countries',
-      sourceLayer: "Countries",
-      id: f.id,
-      },
-      {
-        hasData: false
-      });
-  })
-
-  estimateGradePrevalences.forEach((country: EstimateGradePrevalence) => {
-    if (country && country.testsAdministered && country.alpha3Code) {
-      map.setFeatureState(
-        {
-          source: "Countries",
-          sourceLayer: "Countries",
-          id: country.alpha3Code,
-        },
-        {
-          hasData: true,
-          testsAdministered: country.testsAdministered,
-          geographicalName: country.geographicalName,
-          numberOfStudies: country.numberOfStudies,
-          localEstimate: country.localEstimate,
-          nationalEstimate: country.nationalEstimate,
-          regionalEstimate: country.regionalEstimate,
-          sublocalEstimate: country.sublocalEstimate,
-        }
-      );
-    }
-  });
-}
-
 const MapboxGLMap = (): any => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [state] = useContext(AppContext);
@@ -161,23 +122,7 @@ const MapboxGLMap = (): any => {
     return () => map?.remove();
   },[]);
 
-  // Add Country highlighting to map
-  useEffect(() => {
-    if (state.explore.estimateGradePrevalences.length > 0 && map) {
-      if (map.getSource('Countries'))
-      {
-        UpdateCountryEstimates(map, state.explore.estimateGradePrevalences)
-      }
-      else
-      {
-        map.on('styledata', function() {
-          if (map.getSource('Countries')) { 
-              UpdateCountryEstimates(map, state.explore.estimateGradePrevalences)
-            }
-        });
-      }
-    }
-  }, [map, state.explore.estimateGradePrevalences]);
+  Countries(map, state.explore.estimateGradePrevalences);
 
   // Adds pins features to map
   useEffect(() => {
