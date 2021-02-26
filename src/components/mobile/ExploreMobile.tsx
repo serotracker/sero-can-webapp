@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, {  useState } from "react";
 import { Menu, Segment, Sidebar } from "semantic-ui-react";
 import { PageStateEnum } from "../../types";
-import Map from '../map/Map';
+import MapboxMap from "components/map/MapboxMap"
 import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
 import TotalStats from "../sidebar/left-sidebar/TotalStats";
 import Datepicker from "../sidebar/right-sidebar/datepicker/Datepicker";
@@ -66,7 +66,7 @@ export default function ExploreMobile() {
             size={"lg"} />
         </Sidebar>
         <Sidebar.Pusher className="fill flex">
-          <Map />
+          <MapboxMap />
           {/* Icons */}
           <div className="icon-container"
             style={{ top: 10, right: 15 }}>

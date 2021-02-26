@@ -1,17 +1,13 @@
 import React, { useContext } from "react";
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
-import { colors } from "../../utils/mapUtils";
 import { AppContext } from "../../context";
 import "./Legend.css";
 import Translate from "../../utils/translate/translateService";
-
-import NationalPinIcon from "../../assets/icons/national_pin.png";
-import RegionalPinIcon from "../../assets/icons/regional_pin.png";
-import LocalPinIcon from "../../assets/icons/local_pin.png";
+import { MapSymbology } from "components/map/MapConfig"
 
 interface LegendProps {
-  buckets: number[]
+  
 }
 
 export default function Legend(props: LegendProps) {
@@ -29,19 +25,19 @@ export default function Legend(props: LegendProps) {
           <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("StudyPins")}</p>
         </div>
         <div className="legend-item">
-          <i className="block"><img src={NationalPinIcon} alt="national pin icon" style={{ width: "14px", height: "20px"}}/></i>
+          <i className="block" style={{ background: MapSymbology.StudyFeature.National.Color }}></i>
           <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("NationalStudies")}</p>
         </div>
         <div className="legend-item">
-          <i className="block"><img src={RegionalPinIcon} alt="regional pin icon" style={{ width: "14px", height: "20px"}}/></i>
+          <i className="block" style={{ background: MapSymbology.StudyFeature.Regional.Color }}></i>
           <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("RegionalStudies")}</p>
         </div>
         <div className="legend-item">
-          <i className="block"><img src={LocalPinIcon} alt="local pin icon" style={{ width: "14px", height: "20px"}}/></i>
+          <i className="block" style={{ background: MapSymbology.StudyFeature.Local.Color }}></i>
           <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("LocalStudies")}</p>
         </div>
         <div className="legend-item">
-          <i className="block" style={{ background: colors[6] }}></i>
+          <i className="block" style={{ background: MapSymbology.CountryFeature.HasData.Color }}></i>
           <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("CountryEstimatesExist")}</p>
         </div>
       </div>
