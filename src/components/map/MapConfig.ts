@@ -68,7 +68,7 @@ const MapConfig = {
       } as mapboxgl.CirclePaint,
 
       Countries : {
-        'fill-outline-color' : MapSymbology.Border.Color,
+        //'fill-outline-color' : MapSymbology.Border.Color,
         'fill-color': [
           'case',
           ['boolean', ['feature-state', 'hasData'], false],
