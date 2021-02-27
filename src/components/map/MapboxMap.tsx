@@ -8,6 +8,10 @@ import StudyPins from "components/map/Layers/StudyPins"
 import "components/map/MapboxMap.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
+
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY as string;
 
 const WHO_BASEMAP =

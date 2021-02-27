@@ -61,7 +61,7 @@ const Countries = (map: mapboxgl.Map | undefined, estimateGradePrevalences: Esti
 
     // If estimates are updated, waits until map is loaded then maps estimate data to country features
     useEffect(() => {
-        if (estimateGradePrevalences.length >= 0 && map && map.getSource('Countries')) {
+        if (estimateGradePrevalences.length > 0 && map && map.getSource('Countries')) {
             SetCountryEstimates(map, estimateGradePrevalences);
         }
         else if (map) {
