@@ -36,6 +36,11 @@ export const MapSymbology = {
     }
 }
 
+export const MapUrlResource = {
+    WHO_BASEMAP : "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer",
+    WHO_COUNTRY_VECTORTILES : "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer"
+}
+
 const MapConfig = {
     Studies: {
         "circle-color": [
@@ -68,7 +73,6 @@ const MapConfig = {
       } as mapboxgl.CirclePaint,
 
       Countries : {
-        //'fill-outline-color' : MapSymbology.Border.Color,
         'fill-color': [
           'case',
           ['boolean', ['feature-state', 'hasData'], false],

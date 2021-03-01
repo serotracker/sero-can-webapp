@@ -4,6 +4,7 @@ import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "ut
 import Legend from "components/map/Legend";
 import Countries from "components/map/Layers/Countries";
 import StudyPins from "components/map/Layers/StudyPins";
+import { MapUrlResource } from 'components/map/MapConfig'
 // @ts-ignore
 // eslint-disable-next-line
 import mapboxgl from '!mapbox-gl';
@@ -16,13 +17,8 @@ mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worke
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY as string;
 
-const WHO_BASEMAP =
-  "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer";
-const WHO_COUNTRY_VECTORTILES =
-  "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer";
-
 function mapOnLoad(map: mapboxgl.Map) {
-  getEsriVectorSourceStyle(WHO_COUNTRY_VECTORTILES).then((style: mapboxgl.Style) => {
+  getEsriVectorSourceStyle(MapUrlResource.WHO_COUNTRY_VECTORTILES).then((style: mapboxgl.Style) => {
     addEsriLayersFromVectorSourceStyle(style, map);
     const styleJson: any = map.getStyle();
     if (styleJson && styleJson.layers) {
@@ -45,7 +41,7 @@ const MapboxGLMap = (): any => {
   // Creates map, only runs once
   useEffect(() => {
     (async () => {
-      const baseMapStyle = await getEsriVectorSourceStyle(WHO_BASEMAP);
+      const baseMapStyle = await getEsriVectorSourceStyle(MapUrlResource.WHO_BASEMAP);
 
       const m = new mapboxgl.Map({
         //@ts-ignore

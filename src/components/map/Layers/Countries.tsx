@@ -43,7 +43,7 @@ function FilterCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Est
     }
     else { // If countries has not been loaded, wait until it's source has finished.
         map.on('sourcedata', function (e: any) {
-            if (e.sourceId == 'Countries' && map.isSourceLoaded('Countries')) {
+            if (e.sourceId === 'Countries' && map.isSourceLoaded('Countries')) {
                 map?.setFilter('Countries',
                     ["in",
                         ["get", 'CODE'],
@@ -66,7 +66,7 @@ const Countries = (map: mapboxgl.Map | undefined, estimateGradePrevalences: Esti
         }
         else if (map) {
             map.on('sourcedata', function (e: any) {
-                if (e.sourceId == 'Countries' && map.isSourceLoaded('Countries')) {
+                if (e.sourceId === 'Countries' && map.isSourceLoaded('Countries')) {
                     SetCountryEstimates(map, estimateGradePrevalences);
                 }
             });

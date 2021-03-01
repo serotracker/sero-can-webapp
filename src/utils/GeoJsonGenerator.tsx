@@ -2,7 +2,10 @@ import { AirtableRecord } from "../types";
 
 // Please refer to GeoJSON spec rfc7946 if adding addiontal members: https://tools.ietf.org/html/rfc7946#section-3.1.1
 function recordsToGeoJsonFeatures(records: AirtableRecord[]): GeoJSON.Feature[] {
-    return records.map((record) => {
+    return records.flatMap((record) => {
+        if (!record.pin_latitude && !record.pin_longitude){
+            return [];
+        }
         return {
             type: "Feature",
             id: record.source_id ?? undefined,
