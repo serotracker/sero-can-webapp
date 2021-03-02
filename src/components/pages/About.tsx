@@ -371,13 +371,6 @@ export default function About() {
             "judy.chen@mail.mcgill.ca"
           )}
           {renderBioBlock(
-            "Sean D'Mello",
-            [Translate("UniversityOf", null, { NAME: "Waterloo" })],
-            "https://www.linkedin.com/in/dmellosean/",
-            "sean.dmello@uwaterloo.ca",
-            "https://twitter.com/SeanDMello1"
-          )}
-          {renderBioBlock(
             "Mercedes Yanes",
             [Translate("BlankUniversity", null, { NAME: "McGill" })],
             "https://www.linkedin.com/in/mercedes-yanes-lane-64b25a19b",
@@ -482,6 +475,13 @@ export default function About() {
             [],
             null,
             "natalieaduarte@gmail.com"
+          )}
+          {renderBioBlock(
+            "Sean D'Mello",
+            [Translate("UniversityOf", null, { NAME: "Waterloo" })],
+            "https://www.linkedin.com/in/dmellosean/",
+            "sean.dmello@uwaterloo.ca",
+            "https://twitter.com/SeanDMello1"
           )}
         </div>
         <h2 className="team-name-text">
