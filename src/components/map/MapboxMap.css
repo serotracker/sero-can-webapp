@@ -10,6 +10,7 @@
   flex: 1 1;
   position: relative;
 }
+
 body {
   margin: 0px;
 }
@@ -29,22 +30,18 @@ body {
 }
 
 div.slide-pane__content {
-  /*border: 5px solid black;*/
   z-index: 100;
 }
 
 div.ReactModal__Content.ReactModal__Content--after-open.slide-pane.slide-pane_from_right.some-custom-class {
-  /*border: 5px solid orange;*/
   z-index: 100;
 }
 
 div.slide-pane__header {
-  /*border: 5px solid orange;*/
   z-index: 100;
 }
 
 div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some-custom-overlay-class {
-  /*border: 5px solid blue;*/
   z-index: 100;
 }
 
@@ -52,11 +49,14 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
   position: relative;
 }
 
-.pin-popup {
-  display: inline-block;
-}
-
-.country-popup{
-  display: inline-block;
-  width: 250px;
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-center .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip, 
+.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip{
+    display:none !important;
 }

@@ -60,7 +60,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[], sho
         map.getCanvas().style.cursor = "";
       });
     }
-  }, [map, state.language])
+  }, [map, state.language, api])
 
   return;
 }
