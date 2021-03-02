@@ -1,19 +1,17 @@
-import React, { useContext } from "react";
-import "../sidebar.css";
+import React from "react";
 import AnalysisMethods from "./AnalysisMethods";
-import Translate from "../../../utils/translate/translateService";
+import Translate from "utils/translate/translateService";
 import TotalStats from "./TotalStats";
-import HealthAgencyLogo from '../../../assets/images/public-health-agency.png';
-import UcalgaryLogo from '../../../assets/images/University-Of-Calgary-Logo.png';
-import WhoLogo from "assets/images/WHO_LOGO.png"
-import { AppContext } from "../../../context";
+import HealthAgencyLogo from 'assets/images/public-health-agency.png';
+import UcalgaryLogo from 'assets/images/University-Of-Calgary-Logo.png';
+import WhoLogo from "components/shared/WhoLogo"
+import "../sidebar.css";
 
 interface SideBarProps {
   page: string
 }
 
 export default function LeftSidebar({ page }: SideBarProps) {
-  const [state, dispatch] = useContext(AppContext);
 
   const ExploreText = () => (
     <div className="analysis-methods">
@@ -48,6 +46,14 @@ export default function LeftSidebar({ page }: SideBarProps) {
         <a href="https://cumming.ucalgary.ca/centres/centre-health-informatics" className="d-block mt-3 mx-auto" target="__blank" rel="noopener noreferrer">
           <img src={UcalgaryLogo} className="d-block mx-auto" alt="Centre for Health Informatics" height="22"></img>
         </a>
+        <a href="https://www.who.int/" className="d-block mt-3 mx-auto" target="__blank" rel="noopener noreferrer">
+          <WhoLogo className="d-block mx-auto" height="50"/>
+        </a>
+        <p className="d-block mx-3 mt-3">
+          <small>
+          {Translate('WhoSerotrackAndPartnersDisclaimerSmall')}
+          </small>
+        </p>
       </div>
     </div>
   )

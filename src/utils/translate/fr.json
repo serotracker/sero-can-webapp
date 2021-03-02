@@ -131,7 +131,6 @@
     "DemographicsTooltip": "Filtrer les variables démographiques, y compris le groupe de population, le sexe et le groupe d'âge.",
     "Details": "Détails",
     "DevelopmentTeam": "Équipe de développement",
-    "DisclaimerBody": "Les noms des emplacements apparaissant sur le site Web correspondent aux désignations officielles de simplemaps.com. Le contenu du site n’exprime aucune opinion de la part de l’équipe de SeroTracker, de ses membres et des organisations auxquelles ceux-ci sont affiliés, ou du Groupe de travail sur l’immunité face à la COVID-19 en ce qui concerne la situation juridique d’un pays, d’un territoire ou de ses autorités. Nous ne garantissons pas l’absence d’erreur au sein des frontières, des noms géographiques et des données connexes s’affichant sur les cartes ou dans les listes, les tableaux, les documents et les bases de données du site Web. L’emploi de ces renseignements ne constitue par ailleurs pas un cautionnement officiel par l’équipe de SeroTracker, ses membres et les organisations auxquelles ceux-ci sont affiliés, ou le Groupe de travail sur l’immunité face à la COVID-19.",
     "DisclaimerFooter": "* Les représentants de SeroTracker sont listés sur le site Web de l’entreprise.",
     "DisclaimerList1": "Le présent site Web et son contenu, y compris toute donnée, carte et analyse (« site Web »), est la propriété intellectuelle de SeroTracker (2020, tous droits réservés). Le site Web est offert exclusivement pour un usage à but non lucratif à des fins de santé, d’éducation et de recherche. Le présent site Web ne constitue pas des conseils médicaux.",
     "DisclaimerList2": "L’utilisation du présent site Web par des organismes à but lucratif ou à une fin lucrative sans le consentement écrit explicite d’un représentant* de SeroTracker est strictement interdite. La redistribution du site Web ou de ses données sous-jacentes sans le consentement écrit explicite d’un représentant* de SeroTracker est également strictement interdite.",
@@ -422,6 +421,8 @@
     "ViewFile": "Consulter le fichier",
     "ViewHere": "Consulter ici",
     "Welcome": "Bienvenue à SeroTracker",
-    "WhoDisclaimerSmall": "",
-    "WhoDisclaimer": ""
+    "WhoSerotrackAndPartnersDisclaimerSmall": "",
+    "WhoSerotrackAndPartnersDisclaimer1": "",
+    "WhoSerotrackAndPartnersDisclaimer2": "",
+    "WhoSerotrackAndPartnersDisclaimer3": ""
 }
