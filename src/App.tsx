@@ -16,6 +16,7 @@ import httpClient from "./httpClient";
 import { LanguageType, PageStateEnum } from "./types";
 import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
+import {ANALYZE_URL, CANADIAN_EXPLORE_URL} from "./constants";
 
 function App() {
   const [{ language, explore, analyze }, dispatch] = useContext(AppContext);
@@ -95,9 +96,6 @@ function App() {
 
   const history = useHistory()
   listenForUrlLanguage(history.location.pathname);
-
-  const ANALYZE_URL = "https://public.tableau.com/views/SeroTrackerExp_16121485899730/Analyze?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"
-  const CANADIAN_EXPLORE_URL = "https://public.tableau.com/views/SeroTrackerExp_16121485899730/Explore?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"
 
   return (
     <div className="App">
