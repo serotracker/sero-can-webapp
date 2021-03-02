@@ -1,0 +1,62 @@
+.mapContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.map {
+  flex: 1 1;
+  position: relative;
+}
+
+body {
+  margin: 0px;
+}
+
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.info h4 {
+  margin: 0 0 5px;
+  color: #777;
+}
+
+div.slide-pane__content {
+  z-index: 100;
+}
+
+div.ReactModal__Content.ReactModal__Content--after-open.slide-pane.slide-pane_from_right.some-custom-class {
+  z-index: 100;
+}
+
+div.slide-pane__header {
+  z-index: 100;
+}
+
+div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some-custom-overlay-class {
+  z-index: 100;
+}
+
+.map-wrapper {
+  position: relative;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-center .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip, 
+.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip{
+    display:none !important;
+}

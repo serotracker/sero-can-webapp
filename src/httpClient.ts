@@ -44,6 +44,58 @@ export default class httpClient {
         }
     }
 
+    async getStyles(url: string) {
+
+        const res = await fetch(url);
+        if (res.status !== 200) {
+            const error_msg = res.json();
+            console.error(error_msg);
+            return;
+        }
+        else {
+            const response_json = await res.json();
+            return response_json;
+        }
+    }
+
+    async getRecordDetails(source_id : string) {
+        const response = await this.httpGet(`/data_provider/record_details/${source_id}`, true);
+        if (!response) {
+            return null;
+        }
+
+        const record: AirtableRecord = {
+            age: response.age,
+            approving_regulator: response.approving_regulator,
+            city: response.city,
+            country: response.country,
+            denominator: response.denominator_value,
+            estimate_grade: response.estimate_grade,
+            first_author: response.first_author,
+            isotypes_reported: response.isotypes_reported,
+            lead_org: response.lead_org,
+            overall_risk_of_bias: response.overall_risk_of_bias,
+            pin_latitude: response.pin_latitude,
+            pin_longitude: response.pin_longitude,
+            pin_region_type: response.pin_region_type,
+            population_group: response.population_group,
+            sampling_end_date: response.sampling_end_date,
+            sampling_start_date: response.sampling_start_date,
+            seroprevalence: response.serum_pos_prevalence,
+            sex: response.sex,
+            source_id: response.source_id,
+            source_name: response.source_name,
+            source_type: response.source_type,
+            specimen_type: Array.isArray(response.specimen_type) ? response.specimen_type : [response.specimen_type],
+            state: response.state,
+            study_type: response.study_type,
+            test_type: response.study_type,
+            url: response.url
+        };
+        
+        return record;
+    }
+
     async getAllFilterOptions() {
         const response = await this.httpGet('/data_provider/filter_options', true);
         const options: Record<string, any> = {}
@@ -84,7 +136,7 @@ export default class httpClient {
         "sampling_start_date", "sampling_end_date", "url", "first_author", "source_type", "study_type", "test_type", "specimen_type",
         "isotypes_reported", "approving_regulator", "population_group", "lead_organization"];
 
-        const explore_columns = all_columns.slice(0, 16);
+        const explore_columns = ["source_id", "estimate_grade", "pin_latitude", "pin_longitude"];
 
         const date = filters['publish_date'] as Array<Date>
         const [startDate, endDate] = formatDates(date)
@@ -123,6 +175,7 @@ export default class httpClient {
                 sampling_start_date: item.sampling_start_date,
                 seroprevalence: item.serum_pos_prevalence,
                 sex: item.sex,
+                source_id: item.source_id,
                 source_name: item.source_name,
                 source_type: item.source_type,
                 specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],

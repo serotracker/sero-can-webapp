@@ -1,4 +1,6 @@
+import React from "react";
 import { format, parseISO, formatISO, add } from "date-fns";
+import Translate from 'utils/translate/translateService';
 import { LanguageType } from "../types";
 
 let language = LanguageType.english;
@@ -22,30 +24,41 @@ export const formatDates = (dates: Array<Date> | null) => {
 
 export const getPossibleNullString = (nullString: string | number | null | undefined) => {
   if (nullString === null || nullString === undefined) {
-    return "Not Reported"
+    return Translate("Not Reported")
   }
   return nullString
 }
 
 export const getPossibleNullDateString = (nullString: string | null | undefined) => {
   if (nullString === null || nullString === undefined) {
-    return "Not Reported"
+    return Translate("Not Reported")
   }
   return format(parseISO(nullString), "yyyy/MM/dd")
 }
 
 export const getPossibleNullStringArray = (nullString: string[] | null | undefined) => {
   if (nullString === null || nullString === undefined) {
-    return "Not Reported"
+    return Translate("Not Reported")
   }
   return nullString.join(", ")
 }
 
 export const getGeography = (city: string[] | null | undefined, state: string[] | null | undefined, country: string | null) => {
   if (!country) {
-    return "Not Reported";
+    return Translate("Not Reported");
   }
-  return `${city && city.length > 0 ? `${city.join(", ")}, ` : ""}${state && state.length > 0 ? `${state.join(", ")}, ` : ""}${country}`;
+
+  function renderOutGeography(geo: string[] | null | undefined) {
+    if (!geo || geo.length === 0) {
+      return undefined
+    }
+    else if (geo.length > 1 && typeof geo !== "string") {
+      return geo?.join(", ");
+    }
+    return geo
+  }
+
+  return  [renderOutGeography(city), renderOutGeography(state), country].filter(Boolean).map((str)=>{return (<React.Fragment>{str}<br/></React.Fragment>)})
 }
 
 export const withLocaleUrl = (path: string) => {

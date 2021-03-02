@@ -5,8 +5,8 @@ import Translate from "../../../utils/translate/translateService";
 import TotalStats from "./TotalStats";
 import HealthAgencyLogo from '../../../assets/images/public-health-agency.png';
 import UcalgaryLogo from '../../../assets/images/University-Of-Calgary-Logo.png';
+import WhoLogo from "assets/images/WHO_LOGO.png"
 import { AppContext } from "../../../context";
-import { LanguageType } from "../../../types";
 
 interface SideBarProps {
   page: string
