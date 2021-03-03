@@ -125,7 +125,7 @@ export default function Filters({ page }: FilterProps) {
               <SectionHeader header_text={Translate('Geography')} tooltip_text={Translate('GeographyTooltip')}/>
             </div>
             <div>
-              {buildFilterDropdown('country', Translate('Country'))}
+              {buildFilterDropdown('country', Translate('CountriesAndAreas'))}
             </div>
             <div>
               {buildFilterDropdown('estimate_grade', Translate('EstimateGrade'))}
