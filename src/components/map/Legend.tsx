@@ -7,7 +7,7 @@ import Translate from "../../utils/translate/translateService";
 import { MapSymbology } from "components/map/MapConfig"
 
 interface LegendProps {
-  
+  layers: string[]
 }
 
 export default function Legend(props: LegendProps) {

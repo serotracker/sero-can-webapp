@@ -47,8 +47,10 @@ const MapboxGLMap = (): any => {
         //@ts-ignore
         container: mapContainerRef.current,
         style: baseMapStyle,
-        center: [0, 30],
-        zoom: 1,
+        center: [10, 30],
+        zoom: 2,
+        attributionControl: false,
+        antialias: true// enables MSAA antialiasing, to help make dotted line WHO borders more visible
       });
 
       m.on("load", () => {
@@ -68,7 +70,7 @@ const MapboxGLMap = (): any => {
   return (
     //@ts-ignore
     <div className="mapContainer w-100" ref={(el) => (mapContainerRef.current = el)}>
-      <Legend />
+      <Legend layers={state.MapLayers}/>
     </div>
   );
 };

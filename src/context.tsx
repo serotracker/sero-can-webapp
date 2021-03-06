@@ -82,7 +82,8 @@ const initialState: State = {
   showCookieBanner: false,
   showAnalyzePopup: true,
   countries : [],
-  showEstimatePins: true
+  showEstimatePins: true,
+  MapLayers: []
 };
 
 const reducer = (state: State, action: Record<string, any>): State => {
