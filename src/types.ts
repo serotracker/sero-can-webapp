@@ -154,8 +154,8 @@ export type PostRecordsBody = {
         specimen_type: String[],
         estimate_grade: String[]
     },
-    start_date: Date | null,
-    end_date: Date | null,
+    sampling_start_date: Date | null,
+    sampling_end_date: Date | null,
     sorting_key: String,
     reverse: Boolean,
     per_page: Number,

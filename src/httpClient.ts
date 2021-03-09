@@ -142,8 +142,8 @@ export default class httpClient {
         const [startDate, endDate] = formatDates(date)
         const reqBody = {
             filters: reqBodyFilters,
-            start_date: startDate,
-            end_date: endDate,
+            sampling_start_date: startDate,
+            sampling_end_date: endDate,
             sorting_key: sorting_key,
             reverse: reverse,
             per_page: null,
@@ -202,8 +202,8 @@ export default class httpClient {
         const date = filters['publish_date']        
         const [startDate, endDate] = formatDates(date)
         const reqBody = {
-            start_date: startDate,
-            end_date: endDate,
+            sampling_start_date: startDate,
+            sampling_end_date: endDate,
             filters: reqBodyFilters
         }
 
@@ -261,8 +261,8 @@ export default class httpClient {
         delete reqBodyFilters['publish_date'];
         const [startDate, endDate] = formatDates(date)
         const reqBody = {
-            start_date: startDate,
-            end_date: endDate,
+            sampling_start_date: startDate,
+            sampling_end_date: endDate,
             filters: reqBodyFilters,
             aggregation_variable,
             meta_analysis_technique,
