@@ -56,6 +56,10 @@
   width: 14.2857%;
 }
 
+.circleBase {
+  border-radius: 50%;
+}
+
 h4.legend-title:hover {
   position: relative;
 }

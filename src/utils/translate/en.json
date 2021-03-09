@@ -116,7 +116,8 @@
   "Countries": "Countries",
   "CountriesIncluded": "Countries Included",
   "CountriesAndAreas": "Countries and Areas",
-  "CountryEstimatesExist": "Countries and areas with Seroprevalence Estimates",
+  "CountryEstimatesExist": "Seroprevalence Estimates",
+  "CountryEstimatesNotExist": "No Seroprevalence Estimates",
   "CountryOptions": {
     "England": "England",
     "Iran": "Iran",

@@ -60,3 +60,7 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
 .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip{
     display:none !important;
 }
+
+.disable-popup {
+  display:none !important;
+}

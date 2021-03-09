@@ -7,10 +7,9 @@ import StudyPins from "components/map/Layers/StudyPins";
 import { MapUrlResource } from 'components/map/MapConfig'
 // @ts-ignore
 // eslint-disable-next-line
-import mapboxgl from '!mapbox-gl';
+import mapboxgl, { Style } from '!mapbox-gl';
 import "components/map/MapboxMap.css";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { State } from "types";
 
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -21,28 +20,26 @@ mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY as string;
 function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>) {
   getEsriVectorSourceStyle(MapUrlResource.WHO_COUNTRY_VECTORTILES).then((style: mapboxgl.Style) => {
     addEsriLayersFromVectorSourceStyle(style, map);
-    const styleJson: any = map.getStyle();
+    const styleJson: Style = map.getStyle();
+    let CountryPolygonsMoved = false;
     if (styleJson && styleJson.layers) {
-      for (let layer of styleJson.layers) {
-        const t = layer["source-layer"];
-        if (t === "DISPUTED_AREAS") {
-          map.moveLayer("Countries", layer.id); // HACK for now, moves countries layer behind border once loaded.
-          break;
+      for (let layer of styleJson.layers as any) {
+        const source = layer["source-layer"];
+        if (source === "DISPUTED_AREAS") {
+          if (!CountryPolygonsMoved)
+          {
+            map.moveLayer("Countries", layer.id); // HACK for now, moves countries layer behind border once loaded.
+          }
+
+          map.on("mouseenter", layer.id, function (e: any) {
+            dispatch({ type: 'HIDE_COUNTRY_HOVER' })
+          });
+          map.on("mouseleave", layer.id, function (e: any) {
+            dispatch({ type: 'SHOW_COUNTRY_HOVER' })
+          });
         }
       }
     }
-
-    map.on("mousemove", "Boundaries/DISPUTED BORDERS AND AREAS/DISPUTED_AREAS/Aksai Chin_1", function (e: any) {
-      if (e.features[0].state.hasData) {
-        dispatch({ type: 'SHOW_COUNTRY_HOVER' })
-      }
-    });
-
-    map.on("mousemove", "DISPUTED_AREAS", function (e: any) {
-      if (e.features[0].state.hasData) {
-        dispatch({ type: 'SHOW_COUNTRY_HOVER' })
-      }
-    });
   });
 }
 

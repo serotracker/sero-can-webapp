@@ -17,24 +17,28 @@ export default function Legend() {
     <div className={isMobileDeviceOrTablet ? "info flex legend-mobile center-item" : "info flex legend center-item"}>
       <div className="flex legend-container" key={Math.random()}>
         <div className="legend-item cursor" onClick={clickEstimatePinsCheckbox}>
-          <i className="block"><input className="checkbox" type="checkbox" checked={state.showEstimatePins} /></i>
-          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("StudyPins")}</p>
+          <i className="circleBase"><input className="checkbox" type="checkbox" checked={state.showEstimatePins} /></i>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("StudyPins")}</p>
         </div>
         <div className="legend-item">
-          <i className="block" style={{ background: MapSymbology.StudyFeature.National.Color }}></i>
-          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("NationalStudies")}</p>
+          <i className="circleBase" style={{ background: MapSymbology.StudyFeature.National.Color }}></i>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("NationalStudies")}</p>
         </div>
         <div className="legend-item">
-          <i className="block" style={{ background: MapSymbology.StudyFeature.Regional.Color }}></i>
-          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("RegionalStudies")}</p>
+          <i className="circleBase" style={{ background: MapSymbology.StudyFeature.Regional.Color }}></i>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("RegionalStudies")}</p>
         </div>
         <div className="legend-item">
-          <i className="block" style={{ background: MapSymbology.StudyFeature.Local.Color }}></i>
-          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("LocalStudies")}</p>
+          <i className="circleBase" style={{ background: MapSymbology.StudyFeature.Local.Color }}></i>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("LocalStudies")}</p>
         </div>
         <div className="legend-item">
-          <i className="block" style={{ background: MapSymbology.CountryFeature.HasData.Color }}></i>
-          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-2"}>{Translate("CountryEstimatesExist")}</p>
+          <i className="block" style={{ background: MapSymbology.CountryFeature.HasData.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("CountryEstimatesExist")}</p>
+        </div>
+        <div className="legend-item">
+          <i className="block" style={{ background: MapSymbology.CountryFeature.Default.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("CountryEstimatesNotExist")}</p>
         </div>
       </div>
     </div>
