@@ -6,3 +6,5 @@ export const mapZIndex = {
     DisputedAreasAndBorders: 70,
     Labels: 800
 }
+
+export const ANALYZE_URL = "https://public.tableau.com/views/SeroTrackerAnalyse/GlobalAnalyse?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"

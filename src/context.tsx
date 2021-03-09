@@ -59,6 +59,9 @@ const initialState: State = {
     metaAnalyzedRecords: [],
     isLoading: false
   },
+  // TODO: replace this with an obj
+  // representing the data page once
+  // we put filters there
   analyze: {
     filters: getDefaultFilters(),
     records: [],
@@ -153,6 +156,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
       pageState.filters[filterType as FilterType] = new Set(filterValue);
       return newState;
     };
+    // Note: deprecated but leaving here in case we ever need again
     case "UPDATE_META_ANALYSIS": {
       const { pageStateEnum, metaAnalyzedRecords } = action.payload;
       const newState = { ...state };

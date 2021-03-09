@@ -39,6 +39,7 @@
     "react-slick": "^0.28.0",
     "recharts": "^1.8.5",
     "semantic-ui-react": "^0.88.2",
+    "tableau-react-embed": "^1.1.0",
     "typescript": "^3.8.3",
     "worker-loader": "^3.0.8"
   },

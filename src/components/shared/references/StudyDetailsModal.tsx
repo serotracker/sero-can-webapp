@@ -4,14 +4,14 @@ import {
   getPossibleNullDateString,
   getPossibleNullStringArray,
   getGeography
-} from "../../utils/utils";
+} from "../../../utils/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Button, Modal } from "semantic-ui-react";
-import { AirtableRecord } from "../../types";
-import Translate from "../../utils/translate/translateService";
+import { AirtableRecord } from "../../../types";
+import Translate from "../../../utils/translate/translateService";
 import "./StudyDetailsModal.css";
-import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
+import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 
 // TODO: Extract this into a modal service 
 
