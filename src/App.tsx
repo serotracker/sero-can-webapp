@@ -16,10 +16,10 @@ import httpClient from "./httpClient";
 import { LanguageType, PageStateEnum } from "./types";
 import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
-import {ANALYZE_URL, CANADIAN_EXPLORE_URL} from "./constants";
+import { ANALYZE_URL } from "./constants";
 
 function App() {
-  const [{ language, explore, analyze }, dispatch] = useContext(AppContext);
+  const [{ language, explore }, dispatch] = useContext(AppContext);
   setLanguageType(language);
 
   // General call that happens once at the start of everything.
@@ -135,17 +135,8 @@ function App() {
         <Route path="/:language/Insights">
           <Insights />
         </Route>
-        <Route path="/:language/Canada">
-          <TableauEmbed
-            url={CANADIAN_EXPLORE_URL}
-            options={{
-              width: "80vw",
-              height: "1000px"
-            }}
-          />
-        </Route>
         <Redirect exact from="/" to={`/${language}/Explore`} />
-        {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Insights", "Canada"].map(route =>
+        {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Insights"].map(route =>
           <Redirect from={`/${route}`} to={`${language}/${route}`}></Redirect>)}
       </Switch>
     </div>
