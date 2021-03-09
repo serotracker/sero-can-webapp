@@ -40,6 +40,10 @@ export default function Legend() {
           <i className="block" style={{ background: MapSymbology.CountryFeature.Default.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
           <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("CountryEstimatesNotExist")}</p>
         </div>
+        <div className="legend-item">
+          <i className="block" style={{ background: MapSymbology.CountryFeature.Disputed.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("Not Applicable")}</p>
+        </div>
       </div>
     </div>
   )
