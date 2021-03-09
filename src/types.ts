@@ -85,7 +85,7 @@ export type State = {
     showAnalyzePopup: boolean,
     countries: any,
     showEstimatePins: boolean,
-    MapLayers: any
+    showCountryHover: boolean,
 };
 
 export type StartDates = {

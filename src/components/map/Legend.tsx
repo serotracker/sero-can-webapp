@@ -6,11 +6,7 @@ import "./Legend.css";
 import Translate from "../../utils/translate/translateService";
 import { MapSymbology } from "components/map/MapConfig"
 
-interface LegendProps {
-  layers: string[]
-}
-
-export default function Legend(props: LegendProps) {
+export default function Legend() {
   const [state, dispatch] = useContext(AppContext);
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
   const clickEstimatePinsCheckbox = (e: React.MouseEvent<HTMLElement>) => {

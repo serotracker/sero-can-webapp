@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState, Dispatch } from "react";
 import { AppContext } from "context";
 import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "utils/EsriMappingUtil";
 import Legend from "components/map/Legend";
@@ -10,6 +10,7 @@ import { MapUrlResource } from 'components/map/MapConfig'
 import mapboxgl from '!mapbox-gl';
 import "components/map/MapboxMap.css";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { State } from "types";
 
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -17,7 +18,7 @@ mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worke
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY as string;
 
-function mapOnLoad(map: mapboxgl.Map) {
+function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>) {
   getEsriVectorSourceStyle(MapUrlResource.WHO_COUNTRY_VECTORTILES).then((style: mapboxgl.Style) => {
     addEsriLayersFromVectorSourceStyle(style, map);
     const styleJson: any = map.getStyle();
@@ -30,12 +31,24 @@ function mapOnLoad(map: mapboxgl.Map) {
         }
       }
     }
+
+    map.on("mousemove", "Boundaries/DISPUTED BORDERS AND AREAS/DISPUTED_AREAS/Aksai Chin_1", function (e: any) {
+      if (e.features[0].state.hasData) {
+        dispatch({ type: 'SHOW_COUNTRY_HOVER' })
+      }
+    });
+
+    map.on("mousemove", "DISPUTED_AREAS", function (e: any) {
+      if (e.features[0].state.hasData) {
+        dispatch({ type: 'SHOW_COUNTRY_HOVER' })
+      }
+    });
   });
 }
 
 const MapboxGLMap = (): any => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
-  const [state] = useContext(AppContext);
+  const [state, dispatch] = useContext(AppContext);
   const [map, setMap] = useState<mapboxgl.Map | undefined>(undefined);
 
   // Creates map, only runs once
@@ -54,7 +67,7 @@ const MapboxGLMap = (): any => {
       });
 
       m.on("load", () => {
-        mapOnLoad(m);
+        mapOnLoad(m, dispatch);
         setMap(m);
       });
     })();
@@ -70,7 +83,7 @@ const MapboxGLMap = (): any => {
   return (
     //@ts-ignore
     <div className="mapContainer w-100" ref={(el) => (mapContainerRef.current = el)}>
-      <Legend layers={state.MapLayers}/>
+      <Legend/>
     </div>
   );
 };
