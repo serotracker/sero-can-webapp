@@ -42,7 +42,7 @@ export default function Legend() {
         </div>
         <div className="legend-item">
           <i className="block" style={{ background: MapSymbology.CountryFeature.Disputed.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
-          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("Not Applicable")}</p>
+          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("NotApplicable")}</p>
         </div>
       </div>
     </div>
