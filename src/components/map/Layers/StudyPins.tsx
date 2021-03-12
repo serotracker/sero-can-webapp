@@ -26,15 +26,15 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[], sho
     }
     else if (map && map.getLayer("study-pins")) {
       map.setLayoutProperty("study-pins", 'visibility', showEstimatePins ? 'visible' : 'none');
-    }
 
-    var onlyGuid: (string | null)[] = records.map((r) => { return r.source_id })
+      var onlyGuid: (string | null)[] = records.map((r) => { return r.source_id })
 
     map?.setFilter('study-pins',
       ["in",
         ['get', 'source_id'],
         ["literal", onlyGuid]
       ]);
+    }
   }, [map, records, showEstimatePins]);
 
   useEffect(() => {

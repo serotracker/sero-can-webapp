@@ -85,11 +85,22 @@ const initialState: State = {
   showCookieBanner: false,
   showAnalyzePopup: true,
   countries : [],
-  showEstimatePins: true
+  showEstimatePins: true,
+  showCountryHover:true,
 };
 
 const reducer = (state: State, action: Record<string, any>): State => {
   switch (action.type) {
+    case "SHOW_COUNTRY_HOVER":
+      return {
+        ...state,
+        showCountryHover: true
+      };
+    case "HIDE_COUNTRY_HOVER":
+      return {
+        ...state,
+        showCountryHover: false
+      };
     case "TOGGLE_ESTIMATE_PINS":
       return {
         ...state,

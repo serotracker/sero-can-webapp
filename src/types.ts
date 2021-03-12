@@ -87,7 +87,8 @@ export type State = {
     showCookieBanner: boolean,
     showAnalyzePopup: boolean,
     countries: any,
-    showEstimatePins: boolean
+    showEstimatePins: boolean,
+    showCountryHover: boolean,
 };
 
 export type StartDates = {

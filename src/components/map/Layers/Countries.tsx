@@ -58,6 +58,7 @@ const Countries = (map: mapboxgl.Map | undefined, estimateGradePrevalences: Esti
 
     const [state] = useContext(AppContext);
     const [popup, setPopup] = useState<mapboxgl.Popup | undefined>(undefined);
+    const [currentFeatureId, setCurrentFeatureId] = useState<string | undefined>(undefined);
 
     // If estimates are updated, waits until map is loaded then maps estimate data to country features
     useEffect(() => {
@@ -103,16 +104,30 @@ const Countries = (map: mapboxgl.Map | undefined, estimateGradePrevalences: Esti
             });
 
             map.on("mousemove", "Countries", function (e: any) {
-                if (e.features[0].state.hasData && countryPop.isOpen()) {
+                const f = e.features[0];
+                if (f.state.hasData && f.id !== currentFeatureId && countryPop.isOpen()) {
                     countryPop
                     .setLngLat(e.lngLat)
                     .setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], state.language)))
+                    setCurrentFeatureId(f.id);
                 }
             });
 
             setPopup(countryPop);
         }
-    }, [map, state.language, popup])
+    }, [map, state.language, popup, currentFeatureId])
+
+    useEffect(()=>{
+        if(popup !== undefined){
+            if (state.showCountryHover){
+                popup.removeClassName("disable-popup")
+            }
+            else
+            {
+                popup.addClassName("disable-popup")
+            }
+        }
+    }, [popup, state.showCountryHover])
 
     return;
 }
