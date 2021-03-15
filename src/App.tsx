@@ -116,7 +116,7 @@ function App() {
           url={ANALYZE_URL}
           options={{
             width: "80vw",
-            height: "3000px"
+            height: "3200px"
           }}
         />
         </Route>
