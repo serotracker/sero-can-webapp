@@ -169,6 +169,8 @@ export default class httpClient {
                 sampling_end_date: item.sampling_end_date,
                 sampling_start_date: item.sampling_start_date,
                 seroprevalence: item.serum_pos_prevalence,
+                sensitivity: item.sensitivity,
+                specificity: item.specificity,
                 sex: item.sex,
                 source_id: item.source_id,
                 source_name: item.source_name,
@@ -176,6 +178,7 @@ export default class httpClient {
                 specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],
                 state: item.state,
                 study_type: item.study_type,
+                summary: item.summary,
                 test_type: item.test_type,
                 test_manufacturer: item.test_manufacturer,
                 url: item.url
