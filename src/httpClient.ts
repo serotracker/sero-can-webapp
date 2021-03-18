@@ -129,18 +129,11 @@ export default class httpClient {
             }
         });
 
-        // TODO: Clean up these columns, probably with a column interface with a field indicating
-        // whether or not it should be on the explore page 
-        const all_columns = ["state", "city", "country", "age", "serum_pos_prevalence", "denominator_value", "population_group", 
-        "overall_risk_of_bias", "source_name", "estimate_grade", "pin_latitude", "pin_longitude", "pin_region_type", 
-        "sampling_start_date", "sampling_end_date", "url", "first_author", "source_type", "study_type", "test_type", "specimen_type",
-        "isotypes_reported", "approving_regulator", "population_group", "lead_organization"];
-
         const explore_columns = ["source_id", "estimate_grade", "pin_latitude", "pin_longitude"];
 
         const date = filters['publish_date'] as Array<Date>
         const [startDate, endDate] = formatDates(date)
-        const reqBody = {
+        const reqBody: Record<string, any> = {
             filters: reqBodyFilters,
             sampling_start_date: startDate,
             sampling_end_date: endDate,
@@ -148,8 +141,12 @@ export default class httpClient {
             reverse: reverse,
             per_page: null,
             page_index: null,
-            columns: only_explore_columns ? explore_columns : all_columns,
         }
+
+        if( only_explore_columns ){
+            reqBody.columns = explore_columns;
+        }
+
         const response = await this.httpPost('/data_provider/records', reqBody)
         if (!response) {
             return [];
