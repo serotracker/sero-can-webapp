@@ -58,7 +58,7 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
 
 
   const {
-    source_name, first_author, lead_org, publish_date, publisher, url,
+    source_name, first_author, lead_organization, publish_date, publisher, url,
     summary, study_type,
     population_group, age, city, state, country, sex,
     seroprevalence, overall_risk_of_bias: risk_of_bias, denominator,
@@ -98,7 +98,7 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
                   {source_name}
                 </a>
                 <div className="col-12 p-0 secondary-text">
-                  {getAuthorString(first_author, lead_org)}
+                  {getAuthorString(first_author, lead_organization)}
                 </div>
                 <div className="col-12 p-0 tertiary-text">
                   {getPublishString(publish_date, publisher)}

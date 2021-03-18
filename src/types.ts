@@ -2,7 +2,7 @@
 export type AirtableRecord = {
     source_id: string | null,
     source_name: string | null,
-    lead_org?: string | null,
+    lead_organization?: string | null,
     first_author?: string | null,
     source_type: string | null,
     test_type: string | null,
