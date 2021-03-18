@@ -59,6 +59,7 @@ export default class httpClient {
     }
 
     responseToRecord(item: Record<string, any>){
+        // TODO: find a less verbose way to map an http response to a typescript object
         const record: AirtableRecord = {
             age: item.age,
             city: item.city,
