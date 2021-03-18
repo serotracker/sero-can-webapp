@@ -66,7 +66,6 @@ export default class httpClient {
 
         const record: AirtableRecord = {
             age: response.age,
-            approving_regulator: response.approving_regulator,
             city: response.city,
             country: response.country,
             denominator: response.denominator_value,
@@ -155,7 +154,6 @@ export default class httpClient {
             // Convert response to AirtableRecord type
             const record: AirtableRecord = {
                 age: item.age,
-                approving_regulator: item.approving_regulator,
                 city: item.city,
                 country: item.country,
                 denominator: item.denominator_value,
@@ -178,7 +176,8 @@ export default class httpClient {
                 specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],
                 state: item.state,
                 study_type: item.study_type,
-                test_type: item.study_type,
+                test_type: item.test_type,
+                test_manufacturer: item.test_manufacturer,
                 url: item.url
             };
 

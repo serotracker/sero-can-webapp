@@ -56,13 +56,14 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
     return null
   }
 
+
   const {
     source_name, first_author, lead_org, publish_date, publisher, url,
     summary, study_type,
     population_group, age, city, state, country, sex,
     seroprevalence, overall_risk_of_bias: risk_of_bias, denominator,
     sampling_method, sampling_end_date, sampling_start_date,
-    test_type, sensitivity, specificity, isotypes_reported, manufacturer, approving_regulator
+    test_type, sensitivity, specificity, isotypes_reported, test_manufacturer
   } = props.record
   return (
     <Modal
@@ -184,12 +185,12 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
                 <div className="col-6 p-0">
                   <div className="col-12 p-0 secondary-text">
                     <div>
-                      <span className="secondary-title">{Translate('Manufacturer')}: </span>{getPossibleNullString(manufacturer)}
+                      <span className="secondary-title">{Translate('Manufacturers')}: </span>{getPossibleNullStringArray(test_manufacturer)}
                     </div>
                   </div>
                   <div className="col-12 p-0 secondary-text">
                     <div>
-                      <span className="secondary-title">{Translate('TestUsed')}: </span>{getPossibleNullStringArray(test_type)}
+                      <span className="secondary-title">{Translate('TestUsed')}: </span>{getPossibleNullString(test_type)}
                     </div>
                   </div>
                   <div className="col-12 p-0 secondary-text">
@@ -207,11 +208,6 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
                   <div className="col-12 p-0 secondary-text">
                     <div>
                       <span className="secondary-title">{Translate('Sensitivity')}: </span>{sensitivity ? `${(sensitivity * 100).toFixed(2)}%` : "Not Reported"}
-                    </div>
-                  </div>
-                  <div className="col-126 p-0 secondary-text">
-                    <div>
-                      <span className="secondary-title">{Translate('RegulatoryApproval')}: </span>{getPossibleNullString(approving_regulator)}
                     </div>
                   </div>
                 </div>
