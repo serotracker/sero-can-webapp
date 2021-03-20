@@ -114,6 +114,7 @@ function App() {
         <Route path="/:language/Analyze">
           <TableauEmbed
             url={ANALYZE_URL}
+            key="AnalyzeTableau"
             options={{
               width: "80vw",
               height: "3200px"
@@ -123,6 +124,7 @@ function App() {
         <Route path="/:language/Canada">
           <TableauEmbed
             url={CANADA_URL}
+            key="CanadianTableau"
             options={{
               width: "80vw",
               height: "4100px"
