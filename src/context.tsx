@@ -129,13 +129,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
       pageState.filters[filterType as FilterType] = new Set(filterValue);
       return newState;
     }
-    // Note: deprecated but leaving here in case we ever need again
-    case "UPDATE_META_ANALYSIS": {
-      const { pageStateEnum } = action.payload;
-      const newState = { ...state };
-      const pageState = newState[pageStateEnum as keyof State] as PageState;
-      return newState;
-    }
+
     case "MAX_MIN_DATES":
       const { minDate, maxDate } = action.payload;
       return {
