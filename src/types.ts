@@ -1,14 +1,13 @@
 export type AirtableRecord = {
   source_id: string | null;
   source_name: string | null;
-  lead_org?: string | null;
+  lead_organization?: string | null;
   first_author?: string | null;
   source_type: string | null;
-  test_type: string[] | null;
+  test_type: string | null;
   specimen_type: string[] | null;
   isotypes_reported: string[] | null;
-  manufacturer?: string | null;
-  approving_regulator?: string | null;
+  test_manufacturer?: string[] | null;
   sensitivity?: number | null;
   specificity?: number | null;
   country: string | null;
