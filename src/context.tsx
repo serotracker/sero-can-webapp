@@ -12,8 +12,8 @@ export const AppContext = createContext(
   {} as [State, Dispatch<Record<string, any>>]
 );
 
-const minDate = new Date(2019, 1, 1, 1);
-const maxDate = new Date();
+const initialMinDate = new Date(2019, 1, 1, 1);
+const initialMaxDate = new Date();
 
 export function getEmptyFilters(): Filters {
   return {
@@ -26,7 +26,7 @@ export function getEmptyFilters(): Filters {
     overall_risk_of_bias: new Set(),
     isotypes_reported: new Set(),
     specimen_type: new Set(),
-    publish_date: new Set([minDate, maxDate]),
+    publish_date: new Set([initialMinDate, initialMaxDate]),
     estimate_grade: new Set(),
   };
 }
@@ -50,8 +50,8 @@ const initialState: State = {
   },
   calendarStartDates: {
     // Important, the fact that we use an hour here tells us that we are using a default value
-    minDate,
-    maxDate,
+    minDate: initialMinDate,
+    maxDate: initialMaxDate,
   },
   language: LanguageType.english,
   updatedAt: "",
