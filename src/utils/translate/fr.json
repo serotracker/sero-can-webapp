@@ -125,12 +125,12 @@
   },
   "CPPInvestmentBoard": "Office d'investissement du RPC",
   "Dashboard": "Tableau de bord",
-  "DashboardSOP": "Dashboard SOP",
   "Data": "Données",
   "DatabaseUptoDateTo": "Base de données à jour pour",
-  "DataDictionary": {
-    "DataDictionaryParagraphOne": "Pour plus d'informations et de contexte sur nos données, veuillez s'il vous plait consulter notre",
-    "DataDictionaryParagraphTwo": "et"
+  "DataDictionary": "Dictionnaire de Données",
+  "DataDictionaryContent": {
+    "DataDictionaryContentParagraphOne": "Pour plus d'informations et de contexte sur nos données, veuillez s'il vous plait consulter notre",
+    "DataDictionaryContentParagraphTwo": "et"
   },
   "DateRange": "Plage de données",
   "DateRangeTooltip": "Des études Filtrer par leurs dates de fin d'échantillonnage.",

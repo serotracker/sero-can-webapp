@@ -126,12 +126,12 @@
     "UnitedStates": "United States"
   },
   "Dashboard": "Dashboard",
-  "DashboardSOP": "Dashboard SOP",
   "Data": "Data",
   "DatabaseUptoDateTo": "Database Up to Date To",
-  "DataDictionary": {
-    "DataDictionaryParagraphOne": "For more information and context about our data, please take a look at our",
-    "DataDictionaryParagraphTwo": "and"
+  "DataDictionary": "Data Dictionary",
+  "DataDictionaryContent": {
+    "DataDictionaryContentParagraphOne": "For more information and context about our data, please take a look at our",
+    "DataDictionaryContentParagraphTwo": "and"
   },
   "DateRange": "Date Range",
   "DateRangeTooltip": "Filter studies by their sampling end dates.",

@@ -101,10 +101,12 @@ export default function Data() {
           <h1>{Translate("OurData")}</h1>
           <p>{Translate("OurDataText", ["Text"])}</p>
           <p>
-            {Translate("DataDictionary", ["DataDictionaryParagraphOne"], null, [
-              false,
-              true,
-            ])}
+            {Translate(
+              "DataDictionaryContent",
+              ["DataDictionaryContentParagraphOne"],
+              null,
+              [false, true]
+            )}
             <a
               rel="noopener noreferrer"
               onClick={() => clickLink("Manuscript Appendix")}
@@ -113,17 +115,19 @@ export default function Data() {
             >
               {Translate("ManuscriptAppendix", null, null, [false, true])}
             </a>
-            {Translate("DataDictionary", ["DataDictionaryParagraphTwo"], null, [
-              false,
-              true,
-            ])}
+            {Translate(
+              "DataDictionaryContent",
+              ["DataDictionaryContentParagraphTwo"],
+              null,
+              [false, true]
+            )}
             <a
               rel="noopener noreferrer"
-              onClick={() => clickLink("Dashboard SOP")}
+              onClick={() => clickLink("Data Dictionary")}
               target="_blank"
               href="https://docs.google.com/spreadsheets/d/1KQbp5T9Cq_HnNpmBTWY1iKs6Etu1-qJcnhdJ5eyw7N8/edit?usp=sharing"
             >
-              {Translate("DashboardSOP")}
+              {Translate("DataDictionary")}
             </a>
             .
           </p>
