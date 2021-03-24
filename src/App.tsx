@@ -115,9 +115,13 @@ function App() {
           <TableauEmbed
             url={ANALYZE_URL}
             key="AnalyzeTableau"
-            options={{
+            desktopOptions={{
               width: "80vw",
               height: "3200px"
+            }}
+            mobileOptions={{
+              width: "90vw",
+              height: "2900px"
             }}
           />
         </Route>
@@ -125,9 +129,13 @@ function App() {
           <TableauEmbed
             url={CANADA_URL}
             key="CanadianTableau"
-            options={{
+            desktopOptions={{
               width: "80vw",
               height: "4100px"
+            }}
+            mobileOptions={{
+              width: "90vw",
+              height: "2800px"
             }}
           />
         </Route>
