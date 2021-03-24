@@ -16,7 +16,7 @@ import httpClient from "./httpClient";
 import { LanguageType, PageStateEnum } from "./types";
 import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
-import { ANALYZE_URL } from "./constants";
+import { ANALYZE_URL, CANADA_URL } from "./constants";
 
 function App() {
   const [{ language, explore }, dispatch] = useContext(AppContext);
@@ -112,13 +112,32 @@ function App() {
           <Redirect to="/:language/Explore" />
         </Route>
         <Route path="/:language/Analyze">
-        <TableauEmbed
-          url={ANALYZE_URL}
-          options={{
-            width: "80vw",
-            height: "3000px"
-          }}
-        />
+          <TableauEmbed
+            url={ANALYZE_URL}
+            key="AnalyzeTableau"
+            desktopOptions={{
+              width: "80vw",
+              height: "3200px"
+            }}
+            mobileOptions={{
+              width: "90vw",
+              height: "2900px"
+            }}
+          />
+        </Route>
+        <Route path="/:language/Canada">
+          <TableauEmbed
+            url={CANADA_URL}
+            key="CanadianTableau"
+            desktopOptions={{
+              width: "80vw",
+              height: "4100px"
+            }}
+            mobileOptions={{
+              width: "90vw",
+              height: "2800px"
+            }}
+          />
         </Route>
         <Route path="/:language/Data">
           <Data />
@@ -136,7 +155,7 @@ function App() {
           <Insights />
         </Route>
         <Redirect exact from="/" to={`/${language}/Explore`} />
-        {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Insights"].map(route =>
+        {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Insights", "Canada"].map(route =>
           <Redirect from={`/${route}`} to={`${language}/${route}`}></Redirect>)}
       </Switch>
     </div>

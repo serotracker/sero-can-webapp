@@ -8,3 +8,4 @@ export const mapZIndex = {
 }
 
 export const ANALYZE_URL = "https://public.tableau.com/views/SeroTrackerAnalyse/GlobalAnalyse?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"
+export const CANADA_URL = "https://public.tableau.com/views/SeroTrackerAnalyse/Canadiandetail?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"
