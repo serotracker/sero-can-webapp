@@ -162,6 +162,7 @@ function App() {
           <NotFoundPage/>
         </Route>
       </Switch>
+      <NavBar />
     </div>
   );
 }
