@@ -127,11 +127,12 @@
   "Dashboard": "Tableau de bord",
   "Data": "Données",
   "DatabaseUptoDateTo": "Base de données à jour pour",
-  "DataDictionary": "Dictionnaire de Données",
+  "DataDictionary": "dictionnaire de données",
   "DataDictionaryContent": {
     "DataDictionaryContentParagraphOne": "Pour plus d'informations et de contexte sur nos données, veuillez s'il vous plait consulter notre",
     "DataDictionaryContentParagraphTwo": "et"
   },
+  "DataDownload": "Pour télécharger une liste de toutes les études de notre base de données et des estimations sommaires de la séroprévalence, veuillez s’il vous plait cliquer sur le lien «Télécharger CSV» en bas à droite de cette page. Si vous avez besoin de données supplémentaires ou d’informations sur ces données pour effectuer votre analyse, n’hésitez pas de contacter",
   "DateRange": "Plage de données",
   "DateRangeTooltip": "Des études Filtrer par leurs dates de fin d'échantillonnage.",
   "Demographics": "Données démographiques",
@@ -234,7 +235,10 @@
   "Location": "Lieu",
   "Manufacturers": "Fabricants",
   "ManuscriptAndPreprint": "Manuscrit et préimpression",
-  "ManuscriptAppendix": "Manuscript Appendix",
+  "ManuscriptAppendix": {
+    "ManuscriptAppendixParagraphOne": "méthodes complètes",
+    "ManuscriptAppendixParagraphTwo": "(de l’annexe à notre revue systématique complète et méta-analyse des enquêtes sérologiques SARS-CoV-2)"
+  },
   "Media": "Médias",
   "Methods": "Méthodes",
   "MethodsText": {
@@ -344,6 +348,7 @@
   },
   "Serosurveys": "Sérosondages",
   "SerosurveysReportingPrevalence": "Prévalence de signalement des sérosondages",
+  "SeroTrackerTeam": "l’équipe SeroTracker",
   "Settings": "Paramètres",
   "Sex": "Sexe",
   "SexOptions": {

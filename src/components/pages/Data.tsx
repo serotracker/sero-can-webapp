@@ -113,8 +113,19 @@ export default function Data() {
               target="_blank"
               href="https://drive.google.com/file/d/1d8-U0NgjVBTDzdj3rbAYfZyYVp0HRhgj/view?usp=sharing"
             >
-              {Translate("ManuscriptAppendix", null, null, [false, true])}
+              {Translate(
+                "ManuscriptAppendix",
+                ["ManuscriptAppendixParagraphOne"],
+                null,
+                [false, true]
+              )}
             </a>
+            {Translate(
+              "ManuscriptAppendix",
+              ["ManuscriptAppendixParagraphTwo"],
+              null,
+              [false, true]
+            )}
             {Translate(
               "DataDictionaryContent",
               ["DataDictionaryContentParagraphTwo"],
@@ -130,6 +141,10 @@ export default function Data() {
               {Translate("DataDictionary")}
             </a>
             .
+          </p>
+          <p>
+            {Translate("DataDownload", null, null, [false, true])}
+            <Link to="/About">{Translate("SeroTrackerTeam")}</Link>.
           </p>
         </div>
 

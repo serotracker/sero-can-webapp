@@ -128,11 +128,12 @@
   "Dashboard": "Dashboard",
   "Data": "Data",
   "DatabaseUptoDateTo": "Database Up to Date To",
-  "DataDictionary": "Data Dictionary",
+  "DataDictionary": "data dictionary",
   "DataDictionaryContent": {
     "DataDictionaryContentParagraphOne": "For more information and context about our data, please take a look at our",
     "DataDictionaryContentParagraphTwo": "and"
   },
+  "DataDownload": "To download a list of all studies in our database and summary seroprevalence estimates, please click the 'Download CSV' link on the bottom right of this page. If you require additional data or information about this data to conduct your analysis, please do not hesitate to contact the",
   "DateRange": "Date Range",
   "DateRangeTooltip": "Filter studies by their sampling end dates.",
   "Demographics": "Demographics",
@@ -237,7 +238,10 @@
   "Location": "Location",
   "Manufacturers": "Manufacturers",
   "ManuscriptAndPreprint": "Manuscript and Preprint",
-  "ManuscriptAppendix": "Manuscript Appendix",
+  "ManuscriptAppendix": {
+    "ManuscriptAppendixParagraphOne": "full methods",
+    "ManuscriptAppendixParagraphTwo": "(from the appendix to our full systematic review and meta-analysis of SARS-CoV-2 serosurveys)"
+  },
   "Media": "Media",
   "Methods": "Methods",
   "MethodsText": {
@@ -341,6 +345,7 @@
   },
   "Serosurveys": "Serosurveys",
   "SerosurveysReportingPrevalence": "Serosurveys Reporting Prevalence",
+  "SeroTrackerTeam": "SeroTracker team",
   "Settings": "Settings",
   "Sex": "Sex",
   "SexOptions": {
