@@ -112,6 +112,13 @@
 .not-found-header {
     font-size: 128px;
     margin: 0px;
+    line-height: 1.4;
+}
+
+.not-found-subheader {
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 8px;
 }
 
 .ui.button.not-found-button {

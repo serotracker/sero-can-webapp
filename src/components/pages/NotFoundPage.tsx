@@ -19,13 +19,13 @@ export default function NotFoundPage(){
     <div className="page col-12">
       <div className="center-container">
         <FontAwesomeIcon icon={faBiohazard} size="6x" />
-        <h1 className="not-found-header">404</h1>
-        <h1>Page Not Found</h1>
-        <p>Uh oh, we couldn't find the page you're looking for! Please try another URL or visit our homepage to get back on track.</p>
+        <p className="not-found-header">404</p>
+        <p className="not-found-subheader">{Translate("NotFound", ["PartOne"])}</p>
+        <p>{Translate("NotFound", ["PartTwo"])}</p>
         <Button 
           className="not-found-button"
           onClick={() => history.push('/en/Explore')}>
-            Visit Homepage
+            {Translate("NotFound", ["HomepageButton"])}
         </Button>
       </div>
     </div>
