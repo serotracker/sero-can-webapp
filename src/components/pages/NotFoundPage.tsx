@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBiohazard } from "@fortawesome/free-solid-svg-icons";
 import { Button } from 'semantic-ui-react'
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../context";
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import Translate from "../../utils/translate/translateService";
@@ -15,6 +16,8 @@ export default function NotFoundPage(){
 
   const history = useHistory();
 
+  const [{ language }, _] = useContext(AppContext);
+
   return (
     <div className="page col-12">
       <div className="center-container">
@@ -24,7 +27,7 @@ export default function NotFoundPage(){
         <p>{Translate("NotFound", ["PartTwo"])}</p>
         <Button 
           className="not-found-button"
-          onClick={() => history.push('/en/Explore')}>
+          onClick={() => history.push(`/${language}/Explore`)}>
             {Translate("NotFound", ["HomepageButton"])}
         </Button>
       </div>
