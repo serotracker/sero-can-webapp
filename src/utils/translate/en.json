@@ -128,6 +128,12 @@
   "Dashboard": "Dashboard",
   "Data": "Data",
   "DatabaseUptoDateTo": "Database Up to Date To",
+  "DataDictionary": "data dictionary",
+  "DataDictionaryContent": {
+    "DataDictionaryContentParagraphOne": "For more information and context about our data, please take a look at our",
+    "DataDictionaryContentParagraphTwo": "and"
+  },
+  "DataDownload": "To download a list of all studies in our database and summary seroprevalence estimates, please click the 'Download CSV' link on the bottom right of this page. If you require additional data or information about this data to conduct your analysis, please do not hesitate to contact the",
   "DateRange": "Date Range",
   "DateRangeTooltip": "Filter studies by their sampling end dates.",
   "Demographics": "Demographics",
@@ -232,7 +238,11 @@
   "Location": "Location",
   "Manufacturers": "Manufacturers",
   "ManuscriptAndPreprint": "Manuscript and Preprint",
-  "Media" : "Media" ,
+  "ManuscriptAppendix": {
+    "ManuscriptAppendixParagraphOne": "full methods",
+    "ManuscriptAppendixParagraphTwo": "(from the appendix to our full systematic review and meta-analysis of SARS-CoV-2 serosurveys)"
+  },
+  "Media": "Media",
   "Methods": "Methods",
   "MethodsText": {
     "FirstParagraph": "SeroTracker provides a systematic synthesis of SARS-CoV-2 serosurveillance projects globally. We screened peer-reviewed articles, preprints, government reports, and media articles to identify the prevalence estimates reported below. Our data is updated with all new reports of seroprevalence findings that were captured in our search.",
@@ -247,7 +257,7 @@
   "NationalStudyDetails": "National study details",
   "NoData": "No Data",
   "NoDataAnalyze": {
-    "PartOne":"No data is available for the filters you've specified.",
+    "PartOne": "No data is available for the filters you've specified.",
     "PartTwo": "Please try a different filter combination."
   },
   "NotReported": "Not Reported",
@@ -335,6 +345,7 @@
   },
   "Serosurveys": "Serosurveys",
   "SerosurveysReportingPrevalence": "Serosurveys Reporting Prevalence",
+  "SeroTrackerTeam": "SeroTracker team",
   "Settings": "Settings",
   "Sex": "Sex",
   "SexOptions": {
