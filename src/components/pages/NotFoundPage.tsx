@@ -8,6 +8,7 @@ import { mobileDeviceOrTabletWidth } from "../../constants";
 import Translate from "../../utils/translate/translateService";
 import "./static.css";
 import { useHistory } from 'react-router-dom';
+import BrokenAb from '../../assets/images/BrokenAb.gif'
 
 export default function NotFoundPage(){
   const isMobileDeviceOrTablet = useMediaQuery({
@@ -21,8 +22,7 @@ export default function NotFoundPage(){
   return (
     <div className="page col-12">
       <div className="center-container">
-        <FontAwesomeIcon icon={faBiohazard} size="6x" />
-        <p className="not-found-header">404</p>
+        <img src={BrokenAb} height={"30%"} alt="" />
         <p className="not-found-subheader">{Translate("NotFound", ["PartOne"])}</p>
         <p>{Translate("NotFound", ["PartTwo"])}</p>
         <Button 
