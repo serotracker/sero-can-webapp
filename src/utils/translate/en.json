@@ -262,8 +262,8 @@
   },
   "NotFound": {
     "PartOne": "Page Not Found",
-    "PartTwo": "Uh oh, we couldn't find the page you're looking for! Please try another URL or visit our homepage to get back on track.",
-    "HomepageButton": "Visit Homepage"
+    "PartTwo": "Uh oh, we couldn't find the page you're looking for! Please try another URL or visit our Explore page to get back on track.",
+    "Button": "Visit Explore Page"
   },
   "NotReported": "Not Reported",
   "NumSeroprevalenceEstimates": "Number of Seroprevalence Estimates",

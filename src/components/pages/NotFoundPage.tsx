@@ -28,7 +28,7 @@ export default function NotFoundPage(){
         <Button 
           className="not-found-button"
           onClick={() => history.push(`/${language}/Explore`)}>
-            {Translate("NotFound", ["HomepageButton"])}
+            {Translate("NotFound", ["Button"])}
         </Button>
       </div>
     </div>
