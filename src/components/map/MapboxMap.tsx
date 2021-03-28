@@ -75,7 +75,7 @@ const MapboxGLMap = (): any => {
   // Adds country data to map and binds pin behaviour with map popups
   Countries(map, state.explore.estimateGradePrevalences);
   // Adds pins to map and binds pin behaviour with map popups
-  StudyPins(map, state.explore.records, state.showEstimatePins);
+  StudyPins(map, state.explore.records);
 
   return (
     //@ts-ignore

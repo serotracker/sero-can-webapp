@@ -1,16 +1,7 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import {
-  AggregationFactor,
-  Filters,
-  FilterType,
-  LanguageType,
-  PageState,
-  State,
-} from "./types";
+import { AggregationFactor, Filters, FilterType, LanguageType, PageState, State } from "./types";
 
-export const AppContext = createContext(
-  {} as [State, Dispatch<Record<string, any>>]
-);
+export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
 const initialMinDate = new Date(2019, 1, 1, 1);
 const initialMaxDate = new Date();
@@ -40,6 +31,11 @@ const initialState: State = {
     records: [],
     estimateGradePrevalences: [],
     isLoading: false,
+    legendLayers: {
+      National: true,
+      Regional: true,
+      Local: true,
+    },
   },
   // TODO: replace this with an obj
   // representing the data page once
@@ -57,7 +53,6 @@ const initialState: State = {
   updatedAt: "",
   showCookieBanner: false,
   countries: [],
-  showEstimatePins: true,
   showCountryHover: true,
 };
 
@@ -72,11 +67,6 @@ const reducer = (state: State, action: Record<string, any>): State => {
       return {
         ...state,
         showCountryHover: false,
-      };
-    case "TOGGLE_ESTIMATE_PINS":
-      return {
-        ...state,
-        showEstimatePins: !state.showEstimatePins,
       };
     case "CLOSE_COOKIE_BANNER":
       return {
@@ -156,6 +146,32 @@ const reducer = (state: State, action: Record<string, any>): State => {
           exploreIsOpen: action.payload,
         },
       };
+    case "SHOW_LEGEND_LAYER": {
+      const layer: string = action.payload;
+      return {
+        ...state,
+        explore: {
+          ...state.explore,
+          legendLayers: {
+            ...state.explore.legendLayers,
+            [layer]: true,
+          },
+        },
+      };
+    }
+    case "HIDE_LEGEND_LAYER": {
+      const layer: string = action.payload;
+      return {
+        ...state,
+        explore: {
+          ...state.explore,
+          legendLayers: {
+            ...state.explore.legendLayers,
+            [layer]: false,
+          },
+        },
+      };
+    }
     default:
       return state;
   }
@@ -164,9 +180,5 @@ const reducer = (state: State, action: Record<string, any>): State => {
 export const AppContextProvider = (props: Record<string, any>) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  return (
-    <AppContext.Provider value={[state, dispatch]}>
-      {props.children}
-    </AppContext.Provider>
-  );
+  return <AppContext.Provider value={[state, dispatch]}>{props.children}</AppContext.Provider>;
 };

@@ -9,28 +9,36 @@ import { MapSymbology } from "components/map/MapConfig"
 export default function Legend() {
   const [state, dispatch] = useContext(AppContext);
   const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth })
-  const clickEstimatePinsCheckbox = (e: React.MouseEvent<HTMLElement>) => {
-    dispatch({ type: 'TOGGLE_ESTIMATE_PINS' })
+  const handleLegendToggle = (e: React.MouseEvent<HTMLElement>) => {
+    const layerName: string = e.currentTarget.id
+    
+    if (state.explore.legendLayers[layerName] === true)
+    {
+
+    }
+    dispatch({
+      type: 'SHOW_LEGEND_LAYER',
+      payload: countriesJson
+    });
   }
 
   return (
     <div className={isMobileDeviceOrTablet ? "info flex legend-mobile center-item" : "info flex legend center-item"}>
       <div className="flex legend-container" key={Math.random()}>
-        <div className="legend-item cursor" onClick={clickEstimatePinsCheckbox}>
-          <i className="circleBase"><input className="checkbox" type="checkbox" checked={state.showEstimatePins} /></i>
-          <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("StudyPins")}</p>
-        </div>
-        <div className="legend-item">
+        <div className="legend-item" id="National" onClick={handleLegendToggle}>
           <i className="circleBase" style={{ background: MapSymbology.StudyFeature.National.Color }}></i>
           <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("NationalStudies")}</p>
+          <input className="checkbox" type="checkbox" checked={state.explore.legendLayers.National} />
         </div>
-        <div className="legend-item">
+        <div className="legend-item" id="Regional" onClick={handleLegendToggle}>
           <i className="circleBase" style={{ background: MapSymbology.StudyFeature.Regional.Color }}></i>
           <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("RegionalStudies")}</p>
+          <input className="checkbox" type="checkbox" checked={state.explore.legendLayers.Regional} />
         </div>
-        <div className="legend-item">
+        <div className="legend-item" id="Local" onClick={handleLegendToggle}>
           <i className="circleBase" style={{ background: MapSymbology.StudyFeature.Local.Color }}></i>
           <p className={isMobileDeviceOrTablet ? "mobile-text px-2" : "px-1"}>{Translate("LocalStudies")}</p>
+          <input className="checkbox" type="checkbox" checked={state.explore.legendLayers.Local} />
         </div>
         <div className="legend-item">
           <i className="block" style={{ background: MapSymbology.CountryFeature.HasData.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
