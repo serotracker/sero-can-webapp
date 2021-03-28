@@ -266,9 +266,9 @@
   "RegionalStudies": "Études régionale",
   "LocalStudies": "Études locale",
   "NotFound": {
-    "PartOne": "Page Not Found",
-    "PartTwo": "Uh oh, we couldn't find the page you're looking for! Please try another URL or visit our homepage to get back on track.",
-    "HomepageButton": "Visit Homepage"
+    "PartOne": "Page Non Trouvée",
+    "PartTwo": "Nous n'avons pas trouvé la page Web que vous cherchez.  Veuillez essayer un autre lien ou visiter notre page «Explorer».",
+    "Button": "Visiter Notre Page «Explorer»"
   },
   "NotReported": "Non signalée",
   "BestSeroprevalenceEstimate": "Meilleure estimation de la séroprévalence",
