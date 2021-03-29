@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
+import NotFoundPage from './components/pages/NotFoundPage';
 import CookiePolicy from "./components/pages/CookiePolicy";
 import Explore from "./components/pages/Dashboard/Explore";
 import Data from './components/pages/Data';
@@ -157,6 +158,9 @@ function App() {
         <Redirect exact from="/" to={`/${language}/Explore`} />
         {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Insights", "Canada"].map(route =>
           <Redirect from={`/${route}`} to={`${language}/${route}`}></Redirect>)}
+        <Route>
+          <NotFoundPage/>
+        </Route>
       </Switch>
     </div>
   );

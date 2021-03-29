@@ -265,6 +265,11 @@
   "NationalStudies": "Études nationale",
   "RegionalStudies": "Études régionale",
   "LocalStudies": "Études locale",
+  "NotFound": {
+    "PartOne": "Page Non Trouvée",
+    "PartTwo": "Nous n'avons pas trouvé la page Web que vous cherchez.  Veuillez essayer un autre lien ou visiter notre page «Explorer».",
+    "Button": "Visiter Notre Page «Explorer»"
+  },
   "NotReported": "Non signalée",
   "BestSeroprevalenceEstimate": "Meilleure estimation de la séroprévalence",
   "NumberEstimates": "Nombre d'estimations",

@@ -260,6 +260,11 @@
     "PartOne": "No data is available for the filters you've specified.",
     "PartTwo": "Please try a different filter combination."
   },
+  "NotFound": {
+    "PartOne": "Page Not Found",
+    "PartTwo": "Uh oh, we couldn't find the page you're looking for! Please try another URL or visit our Explore page to get back on track.",
+    "Button": "Visit Explore Page"
+  },
   "NotReported": "Not Reported",
   "NumSeroprevalenceEstimates": "Number of Seroprevalence Estimates",
   "NumberEstimates": "Number of Estimates",

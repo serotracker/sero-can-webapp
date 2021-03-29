@@ -98,3 +98,30 @@
 .twitter {
     color: #1aa4dd
 }
+
+.center-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+    display: flex;
+    height: 100%;
+    width: 100%; 
+    padding-bottom: 10%;
+}
+
+.not-found-header {
+    font-size: 128px;
+    margin: 0px;
+    line-height: 1.4;
+}
+
+.not-found-subheader {
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.ui.button.not-found-button {
+    background-color: #455a64;
+    color: white;
+}
