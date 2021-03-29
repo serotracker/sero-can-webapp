@@ -146,28 +146,38 @@ const reducer = (state: State, action: Record<string, any>): State => {
           exploreIsOpen: action.payload,
         },
       };
-    case "SHOW_LEGEND_LAYER": {
-      const layer: string = action.payload;
+    case "TOGGLE_NATIONAL_PIN_LAYER": {
       return {
         ...state,
         explore: {
           ...state.explore,
           legendLayers: {
             ...state.explore.legendLayers,
-            [layer]: true,
+              National: !state.explore.legendLayers.National,
           },
         },
       };
     }
-    case "HIDE_LEGEND_LAYER": {
-      const layer: string = action.payload;
+    case "TOGGLE_REGIONAL_PIN_LAYER": {
       return {
         ...state,
         explore: {
           ...state.explore,
           legendLayers: {
             ...state.explore.legendLayers,
-            [layer]: false,
+              Regional: !state.explore.legendLayers.Regional,
+          },
+        },
+      };
+    }
+    case "TOGGLE_LOCAL_PIN_LAYER": {
+      return {
+        ...state,
+        explore: {
+          ...state.explore,
+          legendLayers: {
+            ...state.explore.legendLayers,
+              Local: !state.explore.legendLayers.Local,
           },
         },
       };
