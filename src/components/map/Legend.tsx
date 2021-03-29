@@ -30,17 +30,17 @@ export default function Legend() {
         <div className="legend-item" id="National" onClick={handleLegendToggle}>
           <i className="circleBase" style={{ background: MapSymbology.StudyFeature.National.Color }}></i>
           <p>{Translate("NationalStudies")}</p>
-          <input className="checkbox" type="checkbox" checked={state.explore.legendLayers.National} />
+          <input className="checkbox" type="checkbox" checked={state.explore.legendLayers.National} readOnly/>
         </div>
         <div className="legend-item" id="Regional" onClick={handleLegendToggle}>
           <i className="circleBase" style={{ background: MapSymbology.StudyFeature.Regional.Color }}></i>
           <p>{Translate("RegionalStudies")}</p>
-          <input className="checkbox" type="checkbox" checked={state.explore.legendLayers.Regional} />
+          <input className="checkbox" type="checkbox" checked={state.explore.legendLayers.Regional} readOnly/>
         </div>
         <div className="legend-item" id="Local" onClick={handleLegendToggle}>
           <i className="circleBase" style={{ background: MapSymbology.StudyFeature.Local.Color }}></i>
           <p>{Translate("LocalStudies")}</p>
-          <input className="checkbox" type="checkbox" checked={state.explore.legendLayers.Local} />
+          <input className="checkbox" type="checkbox" checked={state.explore.legendLayers.Local} readOnly/>
         </div>
         <div className="legend-item">
           <i className="block" style={{ background: MapSymbology.CountryFeature.HasData.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
