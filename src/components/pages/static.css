@@ -3,30 +3,33 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    overflow-y: auto;
-    /* accounts for header and footer */
-    height: calc(100% - 100px);
-}
-
-.policy-container {
-    flex-direction: column;
-    display: flex;    
 }
 
 .policy-iframe {
     border: none;
-    border-left: 2px solid grey
+    border-left: 2px solid grey;
+    width: 100%;
+    height: calc(100vh - 130px);
+    display: block;
+}
+
+.terms {
+    min-height: calc(100% - 130px);
 }
 
 .dashboard {
     /* accounts for header and footer */
-    max-height: calc(100% - 100px);
-    height: 100%;
+    height: calc(100% - 130px);
+    max-height: calc(100% - 130px);
     overflow-y: hidden;
 }
 
 .static-content {
     width: 60%;
+}
+
+.static-mobile {
+    width: 95%;
 }
 
 .reference-table {

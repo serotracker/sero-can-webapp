@@ -2,7 +2,7 @@
     flex: 1 1 auto;
     flex-direction: column;
     flex-wrap: nowrap;
-    overflow-y: hidden;  
+    overflow-y: auto;  
     height: 100vh; /* Fallback for browsers that do not support Custom Properties */
     height: calc(var(--vh, 1vh) * 100);
 }
@@ -20,6 +20,34 @@
     height: 50px;
     border-bottom: 2px solid #64767e;
     z-index: 10000;
+}
+
+.App-footer {
+    display: flex;
+    background-color: #455a64;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 80px;
+    border-top: 2px solid #64767e;
+    z-index: 10000;
+}
+
+.footer-link {
+    color: white !important;
+}
+
+.footer-link:hover {
+    font-weight: 700;
+}
+
+.App-footer-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1em;
+    color: white;
 }
 
 .App-tabs {
