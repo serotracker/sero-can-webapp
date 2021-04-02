@@ -171,6 +171,12 @@
   "Filter": "Filter",
   "FilterTooltip": "Filter the SeroTracker dataset based on geography, study, demographics, and test. Only studies matching all of the listed filters will be included.",
   "For": "For",
+  "Footer": {
+    "CiteAs": "Cite as: ",
+    "LastUpdated": "Database Last Updated",
+    "LancetInfDis": "Lancet Inf Dis",
+    "Article": "article"
+  },
   "French": "Français",
   "GeneralTerms": "General Terms",
   "Geographies": "Geographies",

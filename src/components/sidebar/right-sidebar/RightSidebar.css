@@ -5,8 +5,7 @@
 .filters-container {
     overflow-y: auto;
     overflow-x: hidden;
-    border-bottom: 2px solid #C4C4C4;
-    height: calc(100vh - 130px);
+    height: calc(100vh - 100px);
 }
 .react-datepicker-wrapper {
     flex: 1 1;
