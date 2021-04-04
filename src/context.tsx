@@ -153,7 +153,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
           ...state.explore,
           legendLayers: {
             ...state.explore.legendLayers,
-              National: !state.explore.legendLayers.National,
+            National: !state.explore.legendLayers.National,
           },
         },
       };
@@ -165,7 +165,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
           ...state.explore,
           legendLayers: {
             ...state.explore.legendLayers,
-              Regional: !state.explore.legendLayers.Regional,
+            Regional: !state.explore.legendLayers.Regional,
           },
         },
       };
@@ -177,7 +177,7 @@ const reducer = (state: State, action: Record<string, any>): State => {
           ...state.explore,
           legendLayers: {
             ...state.explore.legendLayers,
-              Local: !state.explore.legendLayers.Local,
+            Local: !state.explore.legendLayers.Local,
           },
         },
       };
@@ -190,5 +190,9 @@ const reducer = (state: State, action: Record<string, any>): State => {
 export const AppContextProvider = (props: Record<string, any>) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  return <AppContext.Provider value={[state, dispatch]}>{props.children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={[state, dispatch]}>
+      {props.children}
+    </AppContext.Provider>
+  );
 };
