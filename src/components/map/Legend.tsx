@@ -24,35 +24,33 @@ export default function Legend() {
   };
 
   return (
-    <div className="info flex legend center-item">
-      <div className="flex legend-container" key={Math.random()}>
-        <div className="legend-item mb-2" id="National" onClick={handleLegendToggle}>
-          <i className="circleBase" style={{ background: MapSymbology.StudyFeature.National.Color }}></i>
-          <p>{Translate("NationalStudies")}</p>
-          <input className="ui checkbox" type="checkbox" checked={state.explore.legendLayers.National} readOnly/>
-        </div>
-        <div className="legend-item mb-2" id="Regional" onClick={handleLegendToggle}>
-          <i className="circleBase" style={{ background: MapSymbology.StudyFeature.Regional.Color }}></i>
-          <p>{Translate("RegionalStudies")}</p>
-          <input className="ui checkbox" type="checkbox" checked={state.explore.legendLayers.Regional} readOnly/>
-        </div>
-        <div className="legend-item mb-2" id="Local" onClick={handleLegendToggle}>
-          <i className="circleBase" style={{ background: MapSymbology.StudyFeature.Local.Color }}></i>
-          <p>{Translate("LocalStudies")}</p>
-          <input className="ui checkbox" type="checkbox" checked={state.explore.legendLayers.Local} readOnly/>
-        </div>
-        <div className="legend-item mb-2">
-          <i className="block" style={{ background: MapSymbology.CountryFeature.HasData.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
-          <p>{Translate("CountryEstimatesExist")}</p>
-        </div>
-        <div className="legend-item mb-2">
-          <i className="block" style={{ background: MapSymbology.CountryFeature.Default.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
-          <p>{Translate("CountryEstimatesNotExist")}</p>
-        </div>
-        <div className="legend-item">
-          <i className="block" style={{ background: MapSymbology.CountryFeature.Disputed.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
-          <p>{Translate("NotApplicable")}</p>
-        </div>
+    <div className="flex legend-container mx-3 px-2" key={Math.random()}>
+      <div className="legend-item mb-2" id="National" onClick={handleLegendToggle}>
+        <i className="circleBase legend-icon" style={{ background: MapSymbology.StudyFeature.National.Color }}></i>
+        <label>{Translate("NationalStudies")}</label>
+        <input className="ui checkbox" type="checkbox" checked={state.explore.legendLayers.National} readOnly />
+      </div>
+      <div className="legend-item mb-2" id="Regional" onClick={handleLegendToggle}>
+        <i className="circleBase legend-icon" style={{ background: MapSymbology.StudyFeature.Regional.Color }}></i>
+        <label>{Translate("RegionalStudies")}</label>
+        <input className="ui checkbox" type="checkbox" checked={state.explore.legendLayers.Regional} readOnly />
+      </div>
+      <div className="legend-item mb-2" id="Local" onClick={handleLegendToggle}>
+        <i className="circleBase legend-icon" style={{ background: MapSymbology.StudyFeature.Local.Color }}></i>
+        <label>{Translate("LocalStudies")}</label>
+        <input className="ui checkbox" type="checkbox" checked={state.explore.legendLayers.Local} readOnly />
+      </div>
+      <div className="legend-item mb-2">
+        <i className="block legend-icon" style={{ background: MapSymbology.CountryFeature.HasData.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
+        <label>{Translate("CountryEstimatesExist")}</label>
+      </div>
+      <div className="legend-item mb-2">
+        <i className="block legend-icon" style={{ background: MapSymbology.CountryFeature.Default.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
+        <label>{Translate("CountryEstimatesNotExist")}</label>
+      </div>
+      <div className="legend-item">
+        <i className="block legend-icon" style={{ background: MapSymbology.CountryFeature.Disputed.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
+        <label>{Translate("NotApplicable")}</label>
       </div>
     </div>
   )

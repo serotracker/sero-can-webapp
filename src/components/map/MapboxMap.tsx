@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef, useState, Dispatch } from "react";
 import { AppContext } from "context";
 import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "utils/EsriMappingUtil";
-import Legend from "components/map/Legend";
 import Countries from "components/map/Layers/Countries";
 import StudyPins from "components/map/Layers/StudyPins";
 import { MapUrlResource } from 'components/map/MapConfig'
@@ -79,9 +78,7 @@ const MapboxGLMap = (): any => {
 
   return (
     //@ts-ignore
-    <div className="mapContainer w-100" ref={(el) => (mapContainerRef.current = el)}>
-      <Legend/>
-    </div>
+    <div className="mapContainer w-100" ref={(el) => (mapContainerRef.current = el)}></div>
   );
 };
 
