@@ -171,8 +171,8 @@
   "FilterTooltip": "Filtrer le fichier de données SeroTracker selon l'emplacement géographique, l'étude, les données démographiques et le type de test. Seules les études correspondant aux filtres sélectionnés seront choisies.",
   "For": "Pour",
   "Footer": {
-    "CiteAs": "Cite as: ",
-    "LastUpdated": "Database Last Updated",
+    "CiteAs": "Citez ceci comme: ",
+    "LastUpdated": "Dernière mise à jour de la base de données",
     "LancetInfDis": "Lancet Inf Dis",
     "Article": "article"
   },

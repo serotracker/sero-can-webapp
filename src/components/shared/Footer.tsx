@@ -1,9 +1,6 @@
-import { faFileAlt, faGlobeAmericas, faUsers, faTable, faChartBar } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, } from 'react'
 import { useMediaQuery } from 'react-responsive'
-import { Link, useHistory, useLocation } from 'react-router-dom'
-import MultiColorIcon from '../../assets/images/colored-icon.svg'
+import { Link } from 'react-router-dom'
 import { mobileDeviceOrTabletWidth } from '../../constants'
 import Translate from '../../utils/translate/translateService'
 import { AppContext } from "../../context"
@@ -11,10 +8,6 @@ import { withLocaleUrl } from "../../utils/utils";
 
 export const Footer = () => {
   const [{updatedAt}] = useContext(AppContext);
-
-  const getTabClass = (tabName: string) => {
-    return 'regular col-auto h-100 flex center-item';
-  }
 
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
 
