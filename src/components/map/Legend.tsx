@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import { useMediaQuery } from "react-responsive";
-import { mobileDeviceOrTabletWidth } from "../../constants";
 import { AppContext } from "../../context";
 import "./Legend.css";
 import Translate from "../../utils/translate/translateService";
@@ -24,7 +22,7 @@ export default function Legend() {
   };
 
   return (
-    <div className="flex legend-container mx-3 px-2" key={Math.random()}>
+    <div className="flex legend-container" key={Math.random()}>
       <div className="legend-item mb-2" id="National" onClick={handleLegendToggle}>
         <i className="circleBase legend-icon" style={{ background: MapSymbology.StudyFeature.National.Color }}></i>
         <label>{Translate("NationalStudies")}</label>

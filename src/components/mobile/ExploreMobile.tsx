@@ -79,7 +79,7 @@ export default function ExploreMobile() {
           visible={showLegend}
           width='wide'
         >
-          <div style={{marginTop: 45}}>
+          <div className="mx-3 px-2" style={{marginTop: 45}}>
             <Legend/>
           </div>
           <FontAwesomeIcon
