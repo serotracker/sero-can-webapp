@@ -11,6 +11,7 @@ import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import TermsOfUse from "./components/pages/TermsOfUse";
 import { CookieBanner } from "./components/shared/CookieBanner";
 import { NavBar } from "./components/shared/NavBar";
+import { Footer } from "./components/shared/Footer";
 import TableauEmbed from "./components/shared/TableauEmbed";
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
@@ -162,6 +163,7 @@ function App() {
           <NotFoundPage/>
         </Route>
       </Switch>
+      <Footer />
     </div>
   );
 }

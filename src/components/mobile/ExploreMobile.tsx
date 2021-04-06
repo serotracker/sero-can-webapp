@@ -8,7 +8,6 @@ import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
 import TotalStats from "../sidebar/left-sidebar/TotalStats";
 import Datepicker from "../sidebar/right-sidebar/datepicker/Datepicker";
 import Filters from "../sidebar/right-sidebar/Filters";
-import LastUpdated from "../sidebar/right-sidebar/LastUpdated";
 
 
 export default function ExploreMobile() {
@@ -35,7 +34,6 @@ export default function ExploreMobile() {
         >
         <Filters page={PageStateEnum.explore}/>
         <Datepicker page={PageStateEnum.explore}/>
-          <LastUpdated />
           <FontAwesomeIcon
             icon={faTimes}
             onClick={() => handleFilterToggle(false, false)}

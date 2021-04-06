@@ -30,7 +30,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
   )
 
   return (
-    <div className="sidebar-container flex">
+    <div className="sidebar-container flex left-sidebar">
       <TotalStats page={page} />
       {page === "explore" ? (
         <ExploreText />
