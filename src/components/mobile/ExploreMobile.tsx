@@ -15,12 +15,10 @@ import Legend from "components/map/Legend";
 export default function ExploreMobile() {
   const [showMobileFilters, setShowFilters] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
-  const [showLegend, setShowLegend] = useState(false);
 
-  const handleFilterToggle = (showMobile: boolean, showSummary: boolean, showLegend: boolean) => {
+  const handleFilterToggle = (showMobile: boolean, showSummary: boolean) => {
     setShowFilters(showMobile);
     setShowSummary(showSummary);
-    setShowLegend(showLegend);
   }
 
   return (
@@ -42,7 +40,7 @@ export default function ExploreMobile() {
           <LastUpdated />
           <FontAwesomeIcon
             icon={faTimes}
-            onClick={() => handleFilterToggle(false, false, false)}
+            onClick={() => handleFilterToggle(false, false)}
             className={'icon'}
             color={'#455a64'}
             style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
@@ -63,41 +61,23 @@ export default function ExploreMobile() {
           <AnalysisMethods />
           <FontAwesomeIcon
             icon={faTimes}
-            onClick={() => handleFilterToggle(false, false, false)}
-            className={'icon'}
-            color={'#455a64'}
-            style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
-            size={"lg"} />
-        </Sidebar>
-        <Sidebar
-          as={Menu}
-          animation='overlay'
-          icon='labeled'
-          className="col-10 p-0"
-          vertical
-          direction="left"
-          visible={showLegend}
-          width='wide'
-        >
-          <div className="mx-3 px-2" style={{marginTop: 45}}>
-            <Legend/>
-          </div>
-          <FontAwesomeIcon
-            icon={faTimes}
-            onClick={() => handleFilterToggle(false, false, false)}
+            onClick={() => handleFilterToggle(false, false)}
             className={'icon'}
             color={'#455a64'}
             style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
             size={"lg"} />
         </Sidebar>
         <Sidebar.Pusher className="fill flex">
+          <div className="info flex legend center-item">
+            <Legend/>
+          </div>
           <MapboxMap />
           {/* Icons */}
           <div className="icon-container"
             style={{ top: 10, right: 15 }}>
             <FontAwesomeIcon
               icon={faFilter}
-              onClick={() => handleFilterToggle(!showMobileFilters, false, false)}
+              onClick={() => handleFilterToggle(!showMobileFilters, false)}
               className={'icon'}
               color={'#455a64'}
               size={"2x"} />
@@ -106,19 +86,10 @@ export default function ExploreMobile() {
             style={{ top: 10, right: 58 }}>
             <FontAwesomeIcon
               icon={faBars}
-              onClick={() => handleFilterToggle(false, !showSummary, false)}
+              onClick={() => handleFilterToggle(false, !showSummary)}
               className={'icon'}
               color={'#455a64'}
               size={"2x"} />
-          </div>
-          <div className="icon-container" style={{ top: 10, right: 98 }}>
-            <FontAwesomeIcon
-              icon={faListAlt}
-              onClick={() => handleFilterToggle(false, false, !showLegend)}
-              className={"icon"}
-              color={"#455a64"}
-              size={"2x"}
-            />
           </div>
         </Sidebar.Pusher>
       </Sidebar.Pushable>
