@@ -20,11 +20,8 @@ export default function CookiePolicy() {
   }, []);
 
   return (
-    <div className="col-12 page">
-      <div className={isMobileDeviceOrTablet ? "pb-2 policy-container flex fill" : "policy-container static-content pb-2 flex fill"}>
-        <h1 className="col-12 p-0 fit">
-          {Translate('CookiePolicy')}
-        </h1>
+    <div className="col-12 page fill">
+      <div className={isMobileDeviceOrTablet ? "static-mobile" : "static-content"}>
         <iframe title="CookiePolicy" className="fill policy-iframe" src="https://app.termly.io/embed/terms-of-use/4cfb8f90-983a-40b4-bea2-2cdd373f14b5"></iframe>
       </div>
     </div>

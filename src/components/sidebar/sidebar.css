@@ -1,6 +1,13 @@
 .sidebar-container {
-  border: 1px solid #C7C7C7;
   border-top: none;
   overflow-y: auto;
   display: block;
+}
+
+.left-sidebar {
+  border-right: 1px solid #888888;
+}
+
+.right-sidebar {
+  border-left: 1px solid #888888;
 }

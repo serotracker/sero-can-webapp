@@ -171,6 +171,12 @@
   "Filter": "Filter",
   "FilterTooltip": "Filter the SeroTracker dataset based on geography, study, demographics, and test. Only studies matching all of the listed filters will be included.",
   "For": "For",
+  "Footer": {
+    "CiteAs": "Cite as: ",
+    "LastUpdated": "Database Last Updated",
+    "LancetInfDis": "Lancet Inf Dis",
+    "Article": "article"
+  },
   "French": "Français",
   "GeneralTerms": "General Terms",
   "Geographies": "Geographies",
@@ -259,6 +265,11 @@
   "NoDataAnalyze": {
     "PartOne": "No data is available for the filters you've specified.",
     "PartTwo": "Please try a different filter combination."
+  },
+  "NotFound": {
+    "PartOne": "Page Not Found",
+    "PartTwo": "Uh oh, we couldn't find the page you're looking for! Please try another URL or visit our Explore page to get back on track.",
+    "Button": "Visit Explore Page"
   },
   "NotReported": "Not Reported",
   "NumSeroprevalenceEstimates": "Number of Seroprevalence Estimates",

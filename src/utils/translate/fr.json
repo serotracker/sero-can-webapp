@@ -170,6 +170,12 @@
   "Filter": "Filtrer",
   "FilterTooltip": "Filtrer le fichier de données SeroTracker selon l'emplacement géographique, l'étude, les données démographiques et le type de test. Seules les études correspondant aux filtres sélectionnés seront choisies.",
   "For": "Pour",
+  "Footer": {
+    "CiteAs": "Citez ceci comme: ",
+    "LastUpdated": "Dernière mise à jour de la base de données",
+    "LancetInfDis": "Lancet Inf Dis",
+    "Article": "article"
+  },
   "French": "français",
   "GeneralTerms": "Conditions générales",
   "Geographies": "Géographies",
@@ -265,6 +271,11 @@
   "NationalStudies": "Études nationale",
   "RegionalStudies": "Études régionale",
   "LocalStudies": "Études locale",
+  "NotFound": {
+    "PartOne": "Page Non Trouvée",
+    "PartTwo": "Nous n'avons pas trouvé la page Web que vous cherchez.  Veuillez essayer un autre lien ou visiter notre page «Explorer».",
+    "Button": "Visiter Notre Page «Explorer»"
+  },
   "NotReported": "Non signalée",
   "BestSeroprevalenceEstimate": "Meilleure estimation de la séroprévalence",
   "NumberEstimates": "Nombre d'estimations",
