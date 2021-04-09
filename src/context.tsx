@@ -1,16 +1,7 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import {
-  AggregationFactor,
-  Filters,
-  FilterType,
-  LanguageType,
-  PageState,
-  State,
-} from "./types";
+import { AggregationFactor, Filters, FilterType, LanguageType, PageState, State } from "./types";
 
-export const AppContext = createContext(
-  {} as [State, Dispatch<Record<string, any>>]
-);
+export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
 const initialMinDate = new Date(2019, 1, 1, 1);
 const initialMaxDate = new Date();
@@ -40,6 +31,11 @@ const initialState: State = {
     records: [],
     estimateGradePrevalences: [],
     isLoading: false,
+    legendLayers: {
+      National: true,
+      Regional: true,
+      Local: true,
+    },
   },
   // TODO: replace this with an obj
   // representing the data page once
@@ -57,7 +53,6 @@ const initialState: State = {
   updatedAt: "",
   showCookieBanner: false,
   countries: [],
-  showEstimatePins: true,
   showCountryHover: true,
 };
 
@@ -72,11 +67,6 @@ const reducer = (state: State, action: Record<string, any>): State => {
       return {
         ...state,
         showCountryHover: false,
-      };
-    case "TOGGLE_ESTIMATE_PINS":
-      return {
-        ...state,
-        showEstimatePins: !state.showEstimatePins,
       };
     case "CLOSE_COOKIE_BANNER":
       return {
@@ -156,6 +146,42 @@ const reducer = (state: State, action: Record<string, any>): State => {
           exploreIsOpen: action.payload,
         },
       };
+    case "TOGGLE_NATIONAL_PIN_LAYER": {
+      return {
+        ...state,
+        explore: {
+          ...state.explore,
+          legendLayers: {
+            ...state.explore.legendLayers,
+            National: !state.explore.legendLayers.National,
+          },
+        },
+      };
+    }
+    case "TOGGLE_REGIONAL_PIN_LAYER": {
+      return {
+        ...state,
+        explore: {
+          ...state.explore,
+          legendLayers: {
+            ...state.explore.legendLayers,
+            Regional: !state.explore.legendLayers.Regional,
+          },
+        },
+      };
+    }
+    case "TOGGLE_LOCAL_PIN_LAYER": {
+      return {
+        ...state,
+        explore: {
+          ...state.explore,
+          legendLayers: {
+            ...state.explore.legendLayers,
+            Local: !state.explore.legendLayers.Local,
+          },
+        },
+      };
+    }
     default:
       return state;
   }

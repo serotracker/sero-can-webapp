@@ -9,6 +9,7 @@ import MobileComponents from '../../mobile/ExploreMobile';
 import MaintenanceModal from "../../shared/MaintenanceModal";
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
+import Legend from "components/map/Legend";
 
 export default function Explore() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
@@ -38,6 +39,9 @@ export default function Explore() {
             </div>
             <div className="col-8 p-0 flex">
               <Loader indeterminate active={state.explore.isLoading}></Loader>
+              <div className="info flex legend center-item">
+                <Legend/>
+              </div>
               <MapboxMap/>
             </div>
             <div className="col-2 p-0 flex">

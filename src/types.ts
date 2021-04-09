@@ -90,7 +90,6 @@ export type State = {
   language: LanguageType;
   showCookieBanner: boolean;
   countries: any;
-  showEstimatePins: boolean;
   showCountryHover: boolean;
 };
 
@@ -99,11 +98,24 @@ export type StartDates = {
   maxDate: Date;
 };
 
+export type LegendLayersEnum = {
+  National: "National",
+  Regional: "Regional",
+  Local: "Local",
+}
+
+export type LegendLayers = {
+  National: boolean;
+  Regional: boolean;
+  Local: boolean;
+}
+
 export type PageState = {
   filters: Filters;
   records: AirtableRecord[];
   isLoading: boolean;
   estimateGradePrevalences: EstimateGradePrevalence[];
+  legendLayers: LegendLayers;
 };
 
 export type EstimateGradePrevalence = {
