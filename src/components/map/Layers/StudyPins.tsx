@@ -42,6 +42,14 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[], sho
       map.on("click", "study-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
         const source_id = e.features[0].properties.source_id;
 
+        map.setFeatureState({
+          source: 'study-pins',
+          sourceLayer: 'study-pins',
+          id: source_id,
+          }, {
+          hover: true
+          });
+
         api.getRecordDetails(source_id).then((record) => {
           if (record !== null) {
             new mapboxgl.Popup({ offset: 5, className: "pin-popup" })

@@ -73,6 +73,12 @@ const MapConfig = {
           MapSymbology.StudyFeature.Sublocal.Size,
           MapSymbology.StudyFeature.Default.Size,
         ],
+        'circle-blur': [
+            'case',
+            ['boolean', ['feature-state', 'isSelected'], false],
+            0.5,
+            0
+        ],
         "circle-opacity": 0.6,
       } as mapboxgl.CirclePaint,
 
