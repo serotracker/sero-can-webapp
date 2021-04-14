@@ -8,7 +8,7 @@ import mapboxgl from "mapbox-gl";
 import generateSourceFromRecords from "utils/GeoJsonGenerator";
 import MapConfig from "components/map/MapConfig"
 
-const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[], showEstimatePins: boolean) => {
+const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => {
 
   const [state] = useContext(AppContext);
   const [api] = useState(new httpClient());
@@ -25,7 +25,6 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[], sho
       });
     }
     else if (map && map.getLayer("study-pins")) {
-      map.setLayoutProperty("study-pins", 'visibility', showEstimatePins ? 'visible' : 'none');
 
       var onlyGuid: (string | null)[] = records.map((r) => { return r.source_id })
 
@@ -35,7 +34,23 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[], sho
         ["literal", onlyGuid]
       ]);
     }
-  }, [map, records, showEstimatePins]);
+  }, [map, records]);
+
+  useEffect(() => {
+    if (map) {
+      map?.setFilter('study-pins',
+      [
+        "match",
+        ["get", "estimate_grade"],
+        "National", state.explore.legendLayers.National,
+        "Regional", state.explore.legendLayers.Regional,
+        "Local", state.explore.legendLayers.Local,
+        "Sublocal", state.explore.legendLayers.Local,
+        false,
+      ]
+      );
+    }
+  }, [map, state.explore.legendLayers]);
 
   useEffect(() => {
     if (map) {

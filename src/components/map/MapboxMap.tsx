@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef, useState, Dispatch } from "react";
 import { AppContext } from "context";
 import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "utils/EsriMappingUtil";
-import Legend from "components/map/Legend";
 import Countries from "components/map/Layers/Countries";
 import StudyPins from "components/map/Layers/StudyPins";
 import { MapUrlResource } from 'components/map/MapConfig'
@@ -75,13 +74,11 @@ const MapboxGLMap = (): any => {
   // Adds country data to map and binds pin behaviour with map popups
   Countries(map, state.explore.estimateGradePrevalences);
   // Adds pins to map and binds pin behaviour with map popups
-  StudyPins(map, state.explore.records, state.showEstimatePins);
+  StudyPins(map, state.explore.records);
 
   return (
     //@ts-ignore
-    <div className="mapContainer w-100" ref={(el) => (mapContainerRef.current = el)}>
-      <Legend/>
-    </div>
+    <div className="mapContainer w-100" ref={(el) => (mapContainerRef.current = el)}></div>
   );
 };
 
