@@ -4,6 +4,7 @@ import StudyPopup from "components/map/Popups/StudyPopup";
 import { AppContext } from "context";
 import { AirtableRecord } from "types";
 import httpClient from "httpClient";
+import usePrevious from "utils/usePrevious"
 import mapboxgl from "mapbox-gl";
 import generateSourceFromRecords from "utils/GeoJsonGenerator";
 import MapConfig from "components/map/MapConfig"
@@ -12,6 +13,8 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
 
   const [state] = useContext(AppContext);
   const [api] = useState(new httpClient());
+  const [selectedPinId, setSelectedPinId] = useState<string | undefined>(undefined);
+  const prevSelectedPinId = usePrevious(selectedPinId)
 
   useEffect(() => {
     if (map && records.length > 0 && map.getLayer("study-pins") === undefined) {
@@ -57,13 +60,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
       map.on("click", "study-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
         const source_id = e.features[0].properties.source_id;
 
-        map.setFeatureState({
-          source: 'study-pins',
-          sourceLayer: 'study-pins',
-          id: source_id,
-          }, {
-          hover: true
-          });
+        setSelectedPinId(source_id);
 
         api.getRecordDetails(source_id).then((record) => {
           if (record !== null) {
@@ -84,6 +81,33 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
       });
     }
   }, [map, state.language, api])
+
+
+  useEffect(() => {
+    if (map) {
+      if (prevSelectedPinId) {
+        map.setFeatureState(
+          {
+            source: "study-pins",
+            id: prevSelectedPinId,
+          },
+          {
+            isSelected: false,
+          }
+        );
+      }
+
+      map.setFeatureState(
+        {
+          source: "study-pins",
+          id: selectedPinId,
+        },
+        {
+          isSelected: true,
+        }
+      );
+    }
+  }, [map, selectedPinId, prevSelectedPinId]);
 
   return;
 }

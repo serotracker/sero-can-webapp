@@ -8,7 +8,7 @@ function recordsToGeoJsonFeatures(records: AirtableRecord[]): GeoJSON.Feature[] 
         }
         return {
             type: "Feature",
-            id: record.source_id ?? undefined,
+            //id: record.source_id ?? undefined,
             properties: { // We can add any properties here to modify how we want to render the pin - helpful for WHO data
                 estimate_grade: record.estimate_grade,
                 source_id: record.source_id ?? undefined
@@ -22,11 +22,13 @@ function recordsToGeoJsonFeatures(records: AirtableRecord[]): GeoJSON.Feature[] 
 }
 
 export default function generateSourceFromRecords(records: AirtableRecord[]): mapboxgl.GeoJSONSourceRaw {
+    const f = recordsToGeoJsonFeatures(records);
     const source = {
         type: "geojson",
+        promoteId: 'source_id',
         data: {
             type: "FeatureCollection",
-            features: recordsToGeoJsonFeatures(records),
+            features: f,
         },
     } as mapboxgl.GeoJSONSourceRaw;
 

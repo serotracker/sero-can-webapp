@@ -73,10 +73,11 @@ const MapConfig = {
           MapSymbology.StudyFeature.Sublocal.Size,
           MapSymbology.StudyFeature.Default.Size,
         ],
-        'circle-blur': [
+        'circle-stroke-width': 2,
+        'circle-stroke-opacity': [
             'case',
             ['boolean', ['feature-state', 'isSelected'], false],
-            0.5,
+            1,
             0
         ],
         "circle-opacity": 0.6,
