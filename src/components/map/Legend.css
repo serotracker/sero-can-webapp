@@ -1,40 +1,41 @@
 .legend {
-  color: #555;
-  text-align: center;
-  line-height: 18px;
-  max-width: 50vw;
+  font-size: 12px;
+  line-height: 12px;
   position: absolute;
-  top: 2vh;
-  /* left: calc(50% - 25vw); */
+  bottom: 1vw;
   right: 1vw;
-  z-index: 500;
-}
-
-.legend p {
-  text-align: start;
-  padding-left: 2em !important;
-  font-size: 14px;
-}
-
-.legend-mobile {
-  color: #555;
-  text-align: center;
-  line-height: 18px;
-  width: 96%;
-  position: absolute;
-  bottom: 10px;
-  left: 2%;
   z-index: 500;
 }
 
 .legend-container { 
   flex-direction: column;
   align-items: left;
+  padding: 5px;
 }
 
 .legend-item {
   display: flex;
-  padding: 0.5em 0;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.2em;
+}
+
+label {
+  margin: 0;
+  padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.legend-icon {
+  margin-right: 3%;
+  flex-shrink: 0 !important;
+  height: 15px !important;
+  width: 15px !important;
+}
+
+.checkbox {
+  margin-left: auto;
 }
 
 .mobile-text {
@@ -54,6 +55,10 @@
 
 .bin {
   width: 14.2857%;
+}
+
+.circleBase {
+  border-radius: 50%;
 }
 
 h4.legend-title:hover {

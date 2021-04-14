@@ -16,7 +16,6 @@ body {
 }
 
 .info {
-  padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
   background: white;
   background: rgba(255, 255, 255, 0.8);
@@ -59,4 +58,8 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
 .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip, 
 .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip{
     display:none !important;
+}
+
+.disable-popup {
+  display:none !important;
 }

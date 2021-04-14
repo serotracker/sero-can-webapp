@@ -3,28 +3,33 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    overflow-y: auto;
-    height: 95vh;
-}
-
-.policy-container {
-    flex-direction: column;
-    display: flex;    
 }
 
 .policy-iframe {
     border: none;
-    border-left: 2px solid grey
+    border-left: 2px solid grey;
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: block;
+}
+
+.terms {
+    min-height: calc(100% - 100px);
 }
 
 .dashboard {
-    max-height: calc(100% - 50px);
-    height: 100%;
+    /* accounts for header and footer */
+    height: calc(100% - 100px);
+    max-height: calc(100% - 100px);
     overflow-y: hidden;
 }
 
 .static-content {
     width: 60%;
+}
+
+.static-mobile {
+    width: 95%;
 }
 
 .reference-table {
@@ -97,4 +102,31 @@
 
 .twitter {
     color: #1aa4dd
+}
+
+.center-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+    display: flex;
+    height: 100%;
+    width: 100%; 
+    padding-bottom: 10%;
+}
+
+.not-found-header {
+    font-size: 128px;
+    margin: 0px;
+    line-height: 1.4;
+}
+
+.not-found-subheader {
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.ui.button.not-found-button {
+    background-color: #455a64;
+    color: white;
 }

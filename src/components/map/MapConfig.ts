@@ -26,6 +26,10 @@ export const MapSymbology = {
             Color: '#97b1bd',
             Opacity: 0.5 
         },
+        Disputed: {
+            Color: '#E1E1E1',
+            Opacity: 1 
+        },
         Default: {
             Color: '#FFFFFF',
             Opacity: 0 

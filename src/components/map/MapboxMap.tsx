@@ -1,13 +1,12 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState, Dispatch } from "react";
 import { AppContext } from "context";
 import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "utils/EsriMappingUtil";
-import Legend from "components/map/Legend";
 import Countries from "components/map/Layers/Countries";
 import StudyPins from "components/map/Layers/StudyPins";
 import { MapUrlResource } from 'components/map/MapConfig'
 // @ts-ignore
 // eslint-disable-next-line
-import mapboxgl from '!mapbox-gl';
+import mapboxgl, { Style } from '!mapbox-gl';
 import "components/map/MapboxMap.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -17,16 +16,26 @@ mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worke
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY as string;
 
-function mapOnLoad(map: mapboxgl.Map) {
+function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>) {
   getEsriVectorSourceStyle(MapUrlResource.WHO_COUNTRY_VECTORTILES).then((style: mapboxgl.Style) => {
     addEsriLayersFromVectorSourceStyle(style, map);
-    const styleJson: any = map.getStyle();
+    const styleJson: Style = map.getStyle();
+    let CountryPolygonsMoved = false;
     if (styleJson && styleJson.layers) {
-      for (let layer of styleJson.layers) {
-        const t = layer["source-layer"];
-        if (t === "DISPUTED_AREAS") {
-          map.moveLayer("Countries", layer.id); // HACK for now, moves countries layer behind border once loaded.
-          break;
+      for (let layer of styleJson.layers as any) {
+        const source = layer["source-layer"];
+        if (source === "DISPUTED_AREAS") {
+          if (!CountryPolygonsMoved)
+          {
+            map.moveLayer("Countries", layer.id); // HACK for now, moves countries layer behind border once loaded.
+          }
+
+          map.on("mouseenter", layer.id, function (e: any) {
+            dispatch({ type: 'HIDE_COUNTRY_HOVER' })
+          });
+          map.on("mouseleave", layer.id, function (e: any) {
+            dispatch({ type: 'SHOW_COUNTRY_HOVER' })
+          });
         }
       }
     }
@@ -35,7 +44,7 @@ function mapOnLoad(map: mapboxgl.Map) {
 
 const MapboxGLMap = (): any => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
-  const [state] = useContext(AppContext);
+  const [state, dispatch] = useContext(AppContext);
   const [map, setMap] = useState<mapboxgl.Map | undefined>(undefined);
 
   // Creates map, only runs once
@@ -47,12 +56,14 @@ const MapboxGLMap = (): any => {
         //@ts-ignore
         container: mapContainerRef.current,
         style: baseMapStyle,
-        center: [0, 30],
-        zoom: 1,
+        center: [10, 30],
+        zoom: 2,
+        attributionControl: false,
+        antialias: true// enables MSAA antialiasing, to help make dotted line WHO borders more visible
       });
 
       m.on("load", () => {
-        mapOnLoad(m);
+        mapOnLoad(m, dispatch);
         setMap(m);
       });
     })();
@@ -63,13 +74,11 @@ const MapboxGLMap = (): any => {
   // Adds country data to map and binds pin behaviour with map popups
   Countries(map, state.explore.estimateGradePrevalences);
   // Adds pins to map and binds pin behaviour with map popups
-  StudyPins(map, state.explore.records, state.showEstimatePins);
+  StudyPins(map, state.explore.records);
 
   return (
     //@ts-ignore
-    <div className="mapContainer w-100" ref={(el) => (mapContainerRef.current = el)}>
-      <Legend />
-    </div>
+    <div className="mapContainer w-100" ref={(el) => (mapContainerRef.current = el)}></div>
   );
 };
 

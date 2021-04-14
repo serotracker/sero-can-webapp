@@ -122,17 +122,6 @@ export default function Filters({ page }: FilterProps) {
         <div className="col-10 col align-items-center p-0">
           <div className="pb-1">
             <div>
-              <SectionHeader header_text={Translate('Geography')} tooltip_text={Translate('GeographyTooltip')}/>
-            </div>
-            <div>
-              {buildFilterDropdown('country', Translate('Country'))}
-            </div>
-            <div>
-              {buildFilterDropdown('estimate_grade', Translate('EstimateGrade'))}
-            </div>
-          </div>
-          <div className="pb-1">
-            <div>
               {
                 <SectionHeader 
                   header_text={Translate('StudyInformation')} 

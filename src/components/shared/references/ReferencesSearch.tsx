@@ -1,8 +1,8 @@
 import _ from 'lodash'
 import React from 'react'
 import { Search } from 'semantic-ui-react'
-import { AirtableRecord } from '../../types';
-import Translate from "../../utils/translate/translateService";
+import { AirtableRecord } from '../../../types';
+import Translate from "../../../utils/translate/translateService";
                                                         
 const initialState = {
   loading: false,

@@ -71,7 +71,7 @@ export default function About() {
   }
   return (
     <div className="page col-12">
-      <div className={isMobileDeviceOrTablet ? "pb-2" : "static-content pb-2"}>
+      <div className={isMobileDeviceOrTablet ? "pb-2 static-mobile" : "static-content pb-2"}>
         <h1>{Translate("AboutSeroTracker")}</h1>
         <p>
           {Translate("AboutPage", ["AboutSection", "PartOne"])}

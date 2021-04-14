@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import './App.css';
 import About from './components/pages/About';
+import NotFoundPage from './components/pages/NotFoundPage';
 import CookiePolicy from "./components/pages/CookiePolicy";
-import Analyze from "./components/pages/Dashboard/Analyze";
 import Explore from "./components/pages/Dashboard/Explore";
 import Data from './components/pages/Data';
 import Insights from "./components/pages/insights/Insights";
@@ -11,21 +11,23 @@ import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import TermsOfUse from "./components/pages/TermsOfUse";
 import { CookieBanner } from "./components/shared/CookieBanner";
 import { NavBar } from "./components/shared/NavBar";
+import { Footer } from "./components/shared/Footer";
+import TableauEmbed from "./components/shared/TableauEmbed";
 import { AppContext } from "./context";
 import httpClient from "./httpClient";
 import { LanguageType, PageStateEnum } from "./types";
 import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
+import { ANALYZE_URL, CANADA_URL } from "./constants";
 
 function App() {
-  const [{ language, explore, analyze }, dispatch] = useContext(AppContext);
+  const [{ language, explore }, dispatch] = useContext(AppContext);
   setLanguageType(language);
 
   // General call that happens once at the start of everything.
   useEffect(() => {
     const api = new httpClient()
     initializeData(dispatch, explore.filters, true, PageStateEnum.explore)
-    initializeData(dispatch, analyze.filters, false, PageStateEnum.analyze)
     const allFilterOptions = async () => {
       const { options, updatedAt, maxDate, minDate } = await api.getAllFilterOptions();
       dispatch({
@@ -95,7 +97,7 @@ function App() {
   }
 
   const history = useHistory()
-  listenForUrlLanguage(history.location.pathname)
+  listenForUrlLanguage(history.location.pathname);
 
   return (
     <div className="App">
@@ -112,7 +114,32 @@ function App() {
           <Redirect to="/:language/Explore" />
         </Route>
         <Route path="/:language/Analyze">
-          <Analyze />
+          <TableauEmbed
+            url={ANALYZE_URL}
+            key="AnalyzeTableau"
+            desktopOptions={{
+              width: "80vw",
+              height: "3200px"
+            }}
+            mobileOptions={{
+              width: "90vw",
+              height: "2900px"
+            }}
+          />
+        </Route>
+        <Route path="/:language/Canada">
+          <TableauEmbed
+            url={CANADA_URL}
+            key="CanadianTableau"
+            desktopOptions={{
+              width: "80vw",
+              height: "4100px"
+            }}
+            mobileOptions={{
+              width: "90vw",
+              height: "2800px"
+            }}
+          />
         </Route>
         <Route path="/:language/Data">
           <Data />
@@ -130,9 +157,13 @@ function App() {
           <Insights />
         </Route>
         <Redirect exact from="/" to={`/${language}/Explore`} />
-        {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Insights"].map(route =>
+        {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Insights", "Canada"].map(route =>
           <Redirect from={`/${route}`} to={`${language}/${route}`}></Redirect>)}
+        <Route>
+          <NotFoundPage/>
+        </Route>
       </Switch>
+      <Footer />
     </div>
   );
 }
