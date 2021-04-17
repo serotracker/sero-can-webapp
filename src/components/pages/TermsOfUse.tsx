@@ -8,16 +8,16 @@ export default function TermsOfUse() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
 
   return (
-    <div className="col-12 page">
-      <div className={isMobileDeviceOrTablet ? "pb-2 policy-container flex fill" : "policy-container static-content pb-2 flex fill"}>
-        <h1 className="col-12 p-0 fit">
+    <div className="col-12 page fill terms pb-2">
+      <div className={isMobileDeviceOrTablet ? "static-mobile" : "static-content"}>
+        <h1 className="col-12 p-0">
           {Translate('TermsOfUse')}
         </h1>
-        <div className="col-12 p-0 fit">
+        <div className="col-12 p-0">
           {Translate('DisclaimerBody')}
         </div>
 
-        <h3 className="col-12 p-0 fit">
+        <h3 className="col-12 p-0">
           {Translate('DisclaimerListHeader')}
         </h3>
         <ol>

@@ -3,10 +3,13 @@ import React from "react";
 // The tableau JS API does not have good typescript support
 import TableauReport from 'tableau-react-embed';
 import '../pages/static.css';
+import { useMediaQuery } from "react-responsive";
+import { mobileDeviceOrTabletWidth } from "../../constants";
 
 interface TableauEmbedProps {
     url: string,
-    options?: Record<string, string>
+    mobileOptions?: Record<string, string>,
+    desktopOptions?: Record<string, string>
 }
 
 export default function TableauEmbed(props: TableauEmbedProps) {
@@ -18,12 +21,21 @@ export default function TableauEmbed(props: TableauEmbedProps) {
     //     height: "100%"
     // }
 
+    const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth });
+    let options = {}
+    if(isMobileDeviceOrTablet){
+        options = props.mobileOptions ? props.mobileOptions : {}
+    }
+    else{
+        options = props.desktopOptions ? props.desktopOptions : {}
+    }
+
     return (
         <>
             <div className="col-12 page pb-5 pt-5">
                 <TableauReport
                     url={props.url}
-                    options={props.options ? props.options : {}} 
+                    options={options} 
                 />
             </div>
         </>

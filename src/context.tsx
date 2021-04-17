@@ -1,8 +1,10 @@
 import React, { createContext, Dispatch, useReducer } from "react";
 import { AggregationFactor, Filters, FilterType, LanguageType, PageState, State } from "./types";
-import Translate from "./utils/translate/translateService";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
+
+const initialMinDate = new Date(2019, 1, 1, 1);
+const initialMaxDate = new Date();
 
 export function getEmptyFilters(): Filters {
   return {
@@ -15,78 +17,43 @@ export function getEmptyFilters(): Filters {
     overall_risk_of_bias: new Set(),
     isotypes_reported: new Set(),
     specimen_type: new Set(),
-    publish_date: new Set([new Date(2019, 1, 1, 1), new Date()]),
-    estimate_grade: new Set()
-  }
-}
-
-export function getDefaultFilters(): Filters {
-  return {
-    source_type: new Set([
-      Translate('SourceTypeOptions', ['Preprint']),
-      Translate('SourceTypeOptions', ['Publication']),
-      Translate('SourceTypeOptions', ['InstitutionalReport'])
-    ]),
-    test_type: new Set(),
-    country: new Set(),
-    population_group: new Set([
-      Translate('PopulationGroupOptions', ['GeneralPopulation']),
-      Translate('PopulationGroupOptions', ['BloodDonors']),
-      Translate('PopulationGroupOptions', ['ResidualSera']),
-    ]),
-    sex: new Set(),
-    age: new Set(),
-    overall_risk_of_bias: new Set(),
-    isotypes_reported: new Set(),
-    specimen_type: new Set(),
-    publish_date: new Set([new Date(2019, 1, 1, 1), new Date()]),
-    estimate_grade: new Set([
-      Translate('EstimateGradeOptions', ['National']),
-      Translate('EstimateGradeOptions', ['Regional']),
-    ])
-  }
+    publish_date: new Set([initialMinDate, initialMaxDate]),
+    estimate_grade: new Set(),
+  };
 }
 
 // Note: filters = elements that user has chosen to filter by
 // filter_options = all the elements that users could filter by
 const initialState: State = {
-  healthcheck: '',
   chartAggregationFactor: AggregationFactor.country,
   explore: {
     filters: getEmptyFilters(),
     records: [],
     estimateGradePrevalences: [],
-    metaAnalyzedRecords: [],
-    isLoading: false
+    isLoading: false,
+    legendLayers: {
+      National: true,
+      Regional: true,
+      Local: true,
+    },
   },
   // TODO: replace this with an obj
   // representing the data page once
   // we put filters there
-  analyze: {
-    filters: getDefaultFilters(),
-    records: [],
-    estimateGradePrevalences: [],
-    metaAnalyzedRecords: [],
-    isLoading: false
-  },
   allFilterOptions: getEmptyFilters(),
   dataPageState: {
     exploreIsOpen: true,
-    showStudiesModal: false,
-    routingOccurred: false
   },
   calendarStartDates: {
     // Important, the fact that we use an hour here tells us that we are using a default value
-    minDate: new Date(2019, 1, 1, 1),
-    maxDate: new Date()
+    minDate: initialMinDate,
+    maxDate: initialMaxDate,
   },
   language: LanguageType.english,
-  updatedAt: '',
+  updatedAt: "",
   showCookieBanner: false,
-  showAnalyzePopup: true,
-  countries : [],
-  showEstimatePins: true,
-  showCountryHover:true,
+  countries: [],
+  showCountryHover: true,
 };
 
 const reducer = (state: State, action: Record<string, any>): State => {
@@ -94,37 +61,22 @@ const reducer = (state: State, action: Record<string, any>): State => {
     case "SHOW_COUNTRY_HOVER":
       return {
         ...state,
-        showCountryHover: true
+        showCountryHover: true,
       };
     case "HIDE_COUNTRY_HOVER":
       return {
         ...state,
-        showCountryHover: false
-      };
-    case "TOGGLE_ESTIMATE_PINS":
-      return {
-        ...state,
-        showEstimatePins: !state.showEstimatePins
+        showCountryHover: false,
       };
     case "CLOSE_COOKIE_BANNER":
       return {
         ...state,
-        showCookieBanner: false
+        showCookieBanner: false,
       };
     case "OPEN_COOKIE_BANNER":
       return {
         ...state,
-        showCookieBanner: true
-      };
-    case "OPEN_ANALYZE_POPUP":
-      return {
-        ...state,
-        showAnalyzePopup: true
-      };
-    case "CLOSE_ANALYZE_POPUP":
-      return {
-        ...state,
-        showAnalyzePopup: false
+        showCookieBanner: true,
       };
     case "UPDATE_ESTIMATE_PREVALENCES": {
       const { pageStateEnum, estimateGradePrevalences } = action.payload;
@@ -132,21 +84,21 @@ const reducer = (state: State, action: Record<string, any>): State => {
       const pageState = newState[pageStateEnum as keyof State] as PageState;
       pageState.estimateGradePrevalences = estimateGradePrevalences;
       return newState;
-    };
+    }
     case "UPDATE_COUNTRIES_JSON":
       return {
         ...state,
-        countries: action.payload
+        countries: action.payload,
       };
     case "SELECT_LANGUAGE":
       return {
         ...state,
-        language: action.payload
+        language: action.payload,
       };
     case "GET_ALL_FILTER_OPTIONS":
       return {
         ...state,
-        allFilterOptions: action.payload
+        allFilterOptions: action.payload,
       };
     case "GET_AIRTABLE_RECORDS": {
       const { pageStateEnum, records } = action.payload;
@@ -154,11 +106,11 @@ const reducer = (state: State, action: Record<string, any>): State => {
       const pageState = newState[pageStateEnum as keyof State] as PageState;
       pageState.records = records;
       return newState;
-    };
+    }
     case "UPDATED_AT":
       return {
         ...state,
-        updatedAt: action.payload
+        updatedAt: action.payload,
       };
     case "UPDATE_FILTER": {
       const { pageStateEnum, filterType, filterValue } = action.payload;
@@ -166,22 +118,15 @@ const reducer = (state: State, action: Record<string, any>): State => {
       const pageState = newState[pageStateEnum as keyof State] as PageState;
       pageState.filters[filterType as FilterType] = new Set(filterValue);
       return newState;
-    };
-    // Note: deprecated but leaving here in case we ever need again
-    case "UPDATE_META_ANALYSIS": {
-      const { pageStateEnum, metaAnalyzedRecords } = action.payload;
-      const newState = { ...state };
-      const pageState = newState[pageStateEnum as keyof State] as PageState;
-      pageState.metaAnalyzedRecords = metaAnalyzedRecords;
-      return newState;
-    };
+    }
+
     case "MAX_MIN_DATES":
       const { minDate, maxDate } = action.payload;
       return {
         ...state,
         calendarStartDates: {
           minDate,
-          maxDate
+          maxDate,
         },
       };
     case "CHANGE_LOADING": {
@@ -190,22 +135,63 @@ const reducer = (state: State, action: Record<string, any>): State => {
       const pageState = newState[pageStateEnum as keyof State] as PageState;
       pageState.isLoading = isLoading;
       return newState;
-    };
+    }
     case "UPDATE_AGGREGATION_FACTOR":
       return { ...state, chartAggregationFactor: action.payload };
     case "UPDATE_EXPLORE_IS_OPEN":
-      return { ...state, dataPageState: { ...state.dataPageState, exploreIsOpen: action.payload } };
+      return {
+        ...state,
+        dataPageState: {
+          ...state.dataPageState,
+          exploreIsOpen: action.payload,
+        },
+      };
+    case "TOGGLE_NATIONAL_PIN_LAYER": {
+      return {
+        ...state,
+        explore: {
+          ...state.explore,
+          legendLayers: {
+            ...state.explore.legendLayers,
+            National: !state.explore.legendLayers.National,
+          },
+        },
+      };
+    }
+    case "TOGGLE_REGIONAL_PIN_LAYER": {
+      return {
+        ...state,
+        explore: {
+          ...state.explore,
+          legendLayers: {
+            ...state.explore.legendLayers,
+            Regional: !state.explore.legendLayers.Regional,
+          },
+        },
+      };
+    }
+    case "TOGGLE_LOCAL_PIN_LAYER": {
+      return {
+        ...state,
+        explore: {
+          ...state.explore,
+          legendLayers: {
+            ...state.explore.legendLayers,
+            Local: !state.explore.legendLayers.Local,
+          },
+        },
+      };
+    }
     default:
-      return state
-  };
+      return state;
+  }
 };
 
 export const AppContextProvider = (props: Record<string, any>) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <AppContext.Provider
-      value={[state, dispatch]}>
+    <AppContext.Provider value={[state, dispatch]}>
       {props.children}
     </AppContext.Provider>
   );

@@ -58,40 +58,50 @@ export default class httpClient {
         }
     }
 
+    responseToRecord(item: Record<string, any>){
+        // TODO: find a less verbose way to map an http response to a typescript object
+        const record: AirtableRecord = {
+            age: item.age,
+            city: item.city,
+            country: item.country,
+            denominator: item.denominator_value,
+            estimate_grade: item.estimate_grade,
+            first_author: item.first_author,
+            isotypes_reported: item.isotypes_reported,
+            lead_organization: item.lead_organization,
+            overall_risk_of_bias: item.overall_risk_of_bias,
+            pin_latitude: item.pin_latitude,
+            pin_longitude: item.pin_longitude,
+            pin_region_type: item.pin_region_type,
+            population_group: item.population_group,
+            sampling_end_date: item.sampling_end_date,
+            sampling_start_date: item.sampling_start_date,
+            seroprevalence: item.serum_pos_prevalence,
+            sensitivity: item.sensitivity,
+            specificity: item.specificity,
+            sex: item.sex,
+            source_id: item.source_id,
+            source_name: item.source_name,
+            source_type: item.source_type,
+            specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],
+            state: item.state,
+            study_type: item.study_type,
+            summary: item.summary,
+            test_type: item.test_type,
+            test_manufacturer: item.test_manufacturer,
+            url: item.url
+        };
+
+        return record
+    }
+
     async getRecordDetails(source_id : string) {
         const response = await this.httpGet(`/data_provider/record_details/${source_id}`, true);
         if (!response) {
             return null;
         }
 
-        const record: AirtableRecord = {
-            age: response.age,
-            approving_regulator: response.approving_regulator,
-            city: response.city,
-            country: response.country,
-            denominator: response.denominator_value,
-            estimate_grade: response.estimate_grade,
-            first_author: response.first_author,
-            isotypes_reported: response.isotypes_reported,
-            lead_org: response.lead_org,
-            overall_risk_of_bias: response.overall_risk_of_bias,
-            pin_latitude: response.pin_latitude,
-            pin_longitude: response.pin_longitude,
-            pin_region_type: response.pin_region_type,
-            population_group: response.population_group,
-            sampling_end_date: response.sampling_end_date,
-            sampling_start_date: response.sampling_start_date,
-            seroprevalence: response.serum_pos_prevalence,
-            sex: response.sex,
-            source_id: response.source_id,
-            source_name: response.source_name,
-            source_type: response.source_type,
-            specimen_type: Array.isArray(response.specimen_type) ? response.specimen_type : [response.specimen_type],
-            state: response.state,
-            study_type: response.study_type,
-            test_type: response.study_type,
-            url: response.url
-        };
+        const record: AirtableRecord = this.responseToRecord(response);
         
         return record;
     }
@@ -129,18 +139,11 @@ export default class httpClient {
             }
         });
 
-        // TODO: Clean up these columns, probably with a column interface with a field indicating
-        // whether or not it should be on the explore page 
-        const all_columns = ["state", "city", "country", "age", "serum_pos_prevalence", "denominator_value", "population_group", 
-        "overall_risk_of_bias", "source_name", "estimate_grade", "pin_latitude", "pin_longitude", "pin_region_type", 
-        "sampling_start_date", "sampling_end_date", "url", "first_author", "source_type", "study_type", "test_type", "specimen_type",
-        "isotypes_reported", "approving_regulator", "population_group", "lead_organization"];
-
         const explore_columns = ["source_id", "estimate_grade", "pin_latitude", "pin_longitude"];
 
         const date = filters['publish_date'] as Array<Date>
         const [startDate, endDate] = formatDates(date)
-        const reqBody = {
+        const reqBody: Record<string, any> = {
             filters: reqBodyFilters,
             sampling_start_date: startDate,
             sampling_end_date: endDate,
@@ -148,43 +151,19 @@ export default class httpClient {
             reverse: reverse,
             per_page: null,
             page_index: null,
-            columns: only_explore_columns ? explore_columns : all_columns,
         }
+
+        if( only_explore_columns ){
+            reqBody.columns = explore_columns;
+        }
+
         const response = await this.httpPost('/data_provider/records', reqBody)
         if (!response) {
             return [];
         }
         const filtered_records = response.map((item: Record<string, any>) => {
             // Convert response to AirtableRecord type
-            const record: AirtableRecord = {
-                age: item.age,
-                approving_regulator: item.approving_regulator,
-                city: item.city,
-                country: item.country,
-                denominator: item.denominator_value,
-                estimate_grade: item.estimate_grade,
-                first_author: item.first_author,
-                isotypes_reported: item.isotypes_reported,
-                lead_org: item.lead_org,
-                overall_risk_of_bias: item.overall_risk_of_bias,
-                pin_latitude: item.pin_latitude,
-                pin_longitude: item.pin_longitude,
-                pin_region_type: item.pin_region_type,
-                population_group: item.population_group,
-                sampling_end_date: item.sampling_end_date,
-                sampling_start_date: item.sampling_start_date,
-                seroprevalence: item.serum_pos_prevalence,
-                sex: item.sex,
-                source_id: item.source_id,
-                source_name: item.source_name,
-                source_type: item.source_type,
-                specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],
-                state: item.state,
-                study_type: item.study_type,
-                test_type: item.study_type,
-                url: item.url
-            };
-
+            const record: AirtableRecord = this.responseToRecord(item);
             return record;
         });
         // Remove timestamp from updated at string

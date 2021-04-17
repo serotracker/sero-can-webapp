@@ -1,4 +1,4 @@
-import { faBars, faFilter, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faFilter, faTimes} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, {  useState } from "react";
 import { Menu, Segment, Sidebar } from "semantic-ui-react";
@@ -8,12 +8,15 @@ import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
 import TotalStats from "../sidebar/left-sidebar/TotalStats";
 import Datepicker from "../sidebar/right-sidebar/datepicker/Datepicker";
 import Filters from "../sidebar/right-sidebar/Filters";
-import LastUpdated from "../sidebar/right-sidebar/LastUpdated";
+import Legend from "components/map/Legend";
+import Translate from "utils/translate/translateService";
+import WhoLogo from "components/shared/WhoLogo"
 
 
 export default function ExploreMobile() {
   const [showMobileFilters, setShowFilters] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
+
   const handleFilterToggle = (showMobile: boolean, showSummary: boolean) => {
     setShowFilters(showMobile);
     setShowSummary(showSummary);
@@ -35,7 +38,6 @@ export default function ExploreMobile() {
         >
         <Filters page={PageStateEnum.explore}/>
         <Datepicker page={PageStateEnum.explore}/>
-          <LastUpdated />
           <FontAwesomeIcon
             icon={faTimes}
             onClick={() => handleFilterToggle(false, false)}
@@ -64,8 +66,19 @@ export default function ExploreMobile() {
             color={'#455a64'}
             style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
             size={"lg"} />
+            <a href="https://www.who.int/" className="d-block mt-3 mx-auto" target="__blank" rel="noopener noreferrer">
+          <WhoLogo className="d-block mx-auto" height="50"/>
+        </a>
+        <p className="d-block mx-3 mt-3">
+          <small>
+          {Translate('WhoSerotrackAndPartnersDisclaimerSmall')}
+          </small>
+        </p>
         </Sidebar>
         <Sidebar.Pusher className="fill flex">
+          <div className="info flex legend center-item">
+            <Legend/>
+          </div>
           <MapboxMap />
           {/* Icons */}
           <div className="icon-container"
