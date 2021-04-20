@@ -47,7 +47,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
           <img src={UcalgaryLogo} className="d-block mx-auto" alt="Centre for Health Informatics" height="30"></img>
         </a>
         <a href="https://www.who.int/" className="d-block mt-3 mx-auto" target="__blank" rel="noopener noreferrer">
-          <WhoLogo className="d-block mx-auto" height="50"/>
+          <WhoLogo className="d-block mx-auto" height="40"/>
         </a>
         <p className="d-block mx-3 mt-3">
           <small>

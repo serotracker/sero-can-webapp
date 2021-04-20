@@ -13,7 +13,12 @@
       "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide.",
       "PublicHealthAgency": "Public Health Agency of Canada",
       "SupportedBy": "SeroTracker is supported by the",
-      "ThroughThe": "through the"
+      "ThroughThe": "through the",
+      "WHO1": "SeroTracker is working with the",
+      "WorldHealthOrganization": "World Health Organization",
+      "WHO2": "to visualize and synthesize results from the",
+      "UnityStudies": "Unity seroprevalence studies"
+      
     },
     "ContactSection": {
       "BulletPointFive": {
@@ -114,7 +119,7 @@
   "CookiePolicy": "Cookie Policy",
   "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
   "Countries": "Countries",
-  "CountriesIncluded": "Countries Included",
+  "CountriesIncluded": "Countries and Territories Included",
   "CountriesAndAreas": "Countries and Areas",
   "CountryEstimatesExist": "Seroprevalence Estimates",
   "CountryEstimatesNotExist": "No Seroprevalence Estimates",

@@ -128,12 +128,13 @@ export default function About() {
           </a>
         </p>
         <p>
-          {Translate("AboutPage", ["AboutSection", "MappingTheExtent"], null, [true, false])}
-          <a
-            onClick={() => selectLink("Serological Hub")}
-            href="https://www.covid19immunitytaskforce.ca/research/global-serological-knowledge-hub/"
-          >
-            {Translate("AboutPage", ["AboutSection", "GlobalSerologicalKnowledgeHub"], null, [true, false])}
+          {Translate("AboutPage", ["AboutSection", "WHO1"])}
+          <a onClick={() => selectLink("WorldHealthOrganization")} href="https://www.who.int/">
+            {Translate("AboutPage", ["AboutSection", "WorldHealthOrganization"], null, [true, true])}
+          </a>
+          {Translate("AboutPage", ["AboutSection", "WHO2"])}
+          <a onClick={() => selectLink("UnityStudies")} href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations">
+            {Translate("AboutPage", ["AboutSection", "UnityStudies"], null, [true, false])}
           </a>
           .
         </p>
