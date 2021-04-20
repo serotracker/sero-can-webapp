@@ -13,7 +13,12 @@
       "PartTwo": "SeroTracker est un centre de connaissances qui traque et synthétise les résultats des efforts de sérosurveillance du SRAS-CoV-2 à travers le monde.",
       "PublicHealthAgency": "l'Agence de la santé publique du Canada",
       "SupportedBy": "SeroTracker dispose du soutien de",
-      "ThroughThe": "à travers le"
+      "ThroughThe": "à travers le",
+      "WHO1": "",
+      "WorldHealthOrganization": "",
+      "WHO2": "",
+      "UnityStudies": ""
+      
     },
     "ContactSection": {
       "BulletPointFive": {
@@ -446,6 +451,8 @@
   "ViewFile": "Consulter le fichier",
   "ViewHere": "Consulter ici",
   "Welcome": "Bienvenue à SeroTracker",
-  "WhoDisclaimerSmall": "",
-  "WhoDisclaimer": ""
+  "WhoSerotrackAndPartnersDisclaimerSmall": "",
+  "WhoSerotrackAndPartnersDisclaimer1": "",
+  "WhoSerotrackAndPartnersDisclaimer2": "",
+  "WhoSerotrackAndPartnersDisclaimer3": ""
 }

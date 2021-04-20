@@ -14,7 +14,9 @@ export default function TermsOfUse() {
           {Translate('TermsOfUse')}
         </h1>
         <div className="col-12 p-0">
-          {Translate('DisclaimerBody')}
+          <p>{Translate('WhoSerotrackAndPartnersDisclaimer1')}</p>
+          <p>{Translate('WhoSerotrackAndPartnersDisclaimer2')}</p>
+          <p>{Translate('WhoSerotrackAndPartnersDisclaimer3')}</p>
         </div>
 
         <h3 className="col-12 p-0">
