@@ -43,7 +43,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
         id: "study-pins",
         type: "circle",
         source: "study-pins",
-        paint: MapConfig.Studies
+        paint: MapConfig.Studies as mapboxgl.CirclePaint
       });
     }
     else if (map && map.getLayer("study-pins")) {
