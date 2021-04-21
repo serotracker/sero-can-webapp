@@ -73,14 +73,19 @@ const MapConfig = {
           MapSymbology.StudyFeature.Sublocal.Size,
           MapSymbology.StudyFeature.Default.Size,
         ],
-        'circle-stroke-width': 2,
+        'circle-stroke-width': 1,
         'circle-stroke-opacity': [
             'case',
             ['boolean', ['feature-state', 'isSelected'], false],
             1,
             0
         ],
-        "circle-opacity": 0.6,
+        'circle-opacity': [
+            'case',
+            ['boolean', ['feature-state', 'isBlurred'], false],
+            0.2,
+            0.6
+        ]
       } as mapboxgl.CirclePaint,
 
       Countries : {

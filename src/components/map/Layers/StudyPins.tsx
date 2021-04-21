@@ -9,6 +9,25 @@ import mapboxgl from "mapbox-gl";
 import generateSourceFromRecords from "utils/GeoJsonGenerator";
 import MapConfig from "components/map/MapConfig"
 
+const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
+  var features = map.querySourceFeatures('study-pins', {
+    sourceLayer: 'study-pins'
+    });
+  
+  features.forEach(x => {
+    const isBlurred = (selectedPinId === x?.id || selectedPinId === undefined) ? false : true
+    map.setFeatureState(
+      {
+        source: "study-pins",
+        id: x?.id,
+      },
+      {
+        isBlurred: isBlurred,
+      }
+    );
+  })
+}
+
 const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => {
 
   const [state] = useContext(AppContext);
@@ -57,10 +76,13 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
 
   useEffect(() => {
     if (map) {
+      let pinCoords: mapboxgl.Point | undefined = undefined;
       map.on("click", "study-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
         const source_id = e.features[0].properties.source_id;
 
         setSelectedPinId(source_id);
+        pinCoords = e.point;
+        togglePinBlur(map, source_id);
 
         api.getRecordDetails(source_id).then((record) => {
           if (record !== null) {
@@ -73,6 +95,14 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
         });
       });
 
+      map.on('click', function(e) {
+        if (e.point !== pinCoords)
+        {
+          setSelectedPinId(undefined);
+          togglePinBlur(map);
+        }
+      });
+
       map.on("mouseenter", "study-pins", function () {
         map.getCanvas().style.cursor = "pointer";
       });
@@ -82,6 +112,32 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
     }
   }, [map, state.language, api])
 
+
+  useEffect(() => {
+    if (map) {
+      if (prevSelectedPinId) {
+        map.setFeatureState(
+          {
+            source: "study-pins",
+            id: prevSelectedPinId,
+          },
+          {
+            isSelected: false,
+          }
+        );
+      }
+
+      map.setFeatureState(
+        {
+          source: "study-pins",
+          id: selectedPinId,
+        },
+        {
+          isSelected: true,
+        }
+      );
+    }
+  }, [map, selectedPinId, prevSelectedPinId]);
 
   useEffect(() => {
     if (map) {
