@@ -56,7 +56,7 @@
       "FirstSentence": "The seroprevalence shown for each country or factor is calculated by ",
       "SecondSentence": "all seroprevalence estimates that match the filters you specify."
     },
-    "SecondParagraph": "Default filters: national and regional estimates, in the general population and blood donors. ",
+    "SecondParagraph": "Default filters: Country/Territory-Wide Studies and regional estimates, in the general population and blood donors. ",
     "ThirdParagraph": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high Risk of bias.",
     "Title": "Analysis Methods",
     "Tooltip": "The aggregation technique used is fixed-effects, inverse-variance-weighted meta-analysis of prevalence, with the Freeman-Tukey double arcsin transform used to stabilize variance. Records over sample size MIN_DENOMINATOR considered."
@@ -162,7 +162,7 @@
   "EstimateGradeOptions": {
     "Hyperlocal": "Hyperlocal",
     "Local": "Local",
-    "National": "National",
+    "National": "Country/Territory-Wide Studies",
     "Regional": "Regional"
   },
   "EstimateRange": "Estimate Range",
@@ -226,7 +226,7 @@
   "InitInfoModalText": {
     "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
     "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high Risk of bias. You can explore the source literature in depth on the references card at the bottom of this page.",
-    "PartTwo": "Our dashboard aggregates seroprevalence estimates in each country. By default, these aggregated estimates include national and regional seroprevalence estimates of the general population or blood donors, and excludes estimates presented only in the news."
+    "PartTwo": "Our dashboard aggregates seroprevalence estimates in each country. By default, these aggregated estimates include Country/Territory-Wide Studies and regional seroprevalence estimates of the general population or blood donors, and excludes estimates presented only in the news."
   },
   "Insights": "Insights",
   "Isotypes": "Isotypes",
@@ -261,10 +261,10 @@
   },
   "N": "N",
   "Name": "Name",
-  "NationalEstimateRange": "National Estimate Range",
-  "NationalEstimates": "National Estimates",
-  "NationalStudies": "National Studies",
-  "NationalStudyDetails": "National study details",
+  "NationalEstimateRange": "Country/Territory-Wide Studies Estimate Range",
+  "NationalEstimates": "Country/Territory-Wide Studies Estimates",
+  "NationalStudies": "Country/Territory-Wide Studies Studies",
+  "NationalStudyDetails": "Country/Territory-Wide Studies study details",
   "NoData": "No Data",
   "NoDataAnalyze": {
     "PartOne": "No data is available for the filters you've specified.",
