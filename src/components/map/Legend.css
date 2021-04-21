@@ -28,7 +28,7 @@ label {
 }
 
 .legend-icon {
-  margin-right: 3%;
+  margin-right: 3px;
   flex-shrink: 0 !important;
   height: 15px !important;
   width: 15px !important;
