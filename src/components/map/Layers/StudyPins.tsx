@@ -10,7 +10,7 @@ import generateSourceFromRecords from "utils/GeoJsonGenerator";
 import MapConfig from "components/map/MapConfig"
 
 const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
-  var features = map.querySourceFeatures('study-pins', {
+  const features = map.querySourceFeatures('study-pins', {
     sourceLayer: 'study-pins'
     });
   
@@ -111,33 +111,6 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
       });
     }
   }, [map, state.language, api])
-
-
-  useEffect(() => {
-    if (map) {
-      if (prevSelectedPinId) {
-        map.setFeatureState(
-          {
-            source: "study-pins",
-            id: prevSelectedPinId,
-          },
-          {
-            isSelected: false,
-          }
-        );
-      }
-
-      map.setFeatureState(
-        {
-          source: "study-pins",
-          id: selectedPinId,
-        },
-        {
-          isSelected: true,
-        }
-      );
-    }
-  }, [map, selectedPinId, prevSelectedPinId]);
 
   useEffect(() => {
     if (map) {
