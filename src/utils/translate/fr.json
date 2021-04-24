@@ -127,10 +127,10 @@
   "Dashboard": "Tableau de bord",
   "Data": "Données",
   "DatabaseUptoDateTo": "Base de données à jour pour",
-  "DataDictionary": "dictionnaire de données",
-  "DataDictionaryContent": {
-    "DataDictionaryContentParagraphOne": "Pour plus d'informations et de contexte sur nos données, veuillez s'il vous plait consulter notre",
-    "DataDictionaryContentParagraphTwo": "et"
+  "DataDictionary": "Dictionnaire de données",
+  "DataDictionaryText": {
+    "FirstParagraph": "Pour plus d'informations et de contexte sur nos données, veuillez s'il vous plait consulter notre",
+    "SecondParagraph": "et"
   },
   "DataDownload": "Pour télécharger une liste de toutes les études de notre base de données et des estimations sommaires de la séroprévalence, veuillez s’il vous plait cliquer sur le lien «Télécharger CSV» en bas à droite de cette page. Si vous avez besoin de données supplémentaires ou d’informations sur ces données pour effectuer votre analyse, n’hésitez pas de contacter",
   "DateRange": "Plage de données",
@@ -241,17 +241,11 @@
   "Location": "Lieu",
   "Manufacturers": "Fabricants",
   "ManuscriptAndPreprint": "Manuscrit et préimpression",
-  "ManuscriptAppendix": {
-    "ManuscriptAppendixParagraphOne": "méthodes complètes",
-    "ManuscriptAppendixParagraphTwo": "(de l’annexe à notre revue systématique complète et méta-analyse des enquêtes sérologiques SARS-CoV-2)"
+  "ManuscriptAppendixText": {
+    "FirstParagraph": "méthodes complètes",
+    "SecondParagraph": "(de l’annexe à notre revue systématique complète et méta-analyse des enquêtes sérologiques SARS-CoV-2)"
   },
   "Media": "Médias",
-  "Methods": "Méthodes",
-  "MethodsText": {
-    "FirstParagraph": "SeroTracker assure une synthèse systématique mondiale de projets de sérosurveillance du SRAS-CoV-2. Nous filtrons les articles scientifiques, les préimpressions, les rapports gouvernementaux et les articles parus dans les médias afin d'identifier les estimations de prévalence indiquées ci-dessous. Nous mettons à jour nos données avec tous les rapports de séroprévalence que nous avons pu trouver dans nos recherches.",
-    "SecondParagraphPartOne": "Vous pouvez consulter la totalité de nos méthodes",
-    "SecondParagraphPartTwo": "Pour soumettre une étude de séroprévalence du SRAS-CoV-2 que nous n'avions pas encore incluse ci-dessous, veuillez utiliser"
-  },
   "N": "N",
   "Name": "Nom",
   "NationalEstimateRange": "Plage d'estimation nationale",
@@ -286,6 +280,7 @@
     "PointTwo": "décrivent des études qui n'ont pas encore signalé d'estimations de séroprévalence",
     "Text": "Le tableau ci-dessous décrit nos résultats, y compris des informations détaillées pour chaque étude, chaque estimation de prévalence et les risques de partialité associés."
   },
+  "OurProtocol": "Our protocol",
   "OurTeam": "Notre équipe",
   "OverallRiskOfBias": "Risque général de partialité",
   "Paper": "Article",
@@ -411,6 +406,7 @@
   "StudyType": "Type d'étude",
   "SublocalEstimateRange": "Plage d'estimation sous-locale",
   "SublocalEstimates": "Estimations sous-locales",
+  "SubmitASource": "Submit a source",
   "Summary": "Résumé",
   "SummaryStatistics": "Statistiques sommaires",
   "TeamLead": "Responsables d'équipes",
@@ -446,6 +442,11 @@
   "ViewFile": "Consulter le fichier",
   "ViewHere": "Consulter ici",
   "Welcome": "Bienvenue à SeroTracker",
+  "WhatWeDo": "What we do",
+  "WhatWeDoText": {
+    "FirstParagraph": "Chez SeroTracker, nous collectons les données publiées et non publiées de séroprévalence pour informer une revue systématique et méta-analyse du SRAS-CoV-2 au niveau mondial. Les données sont collectées pour l’estimation primaire pour chaque source et certains sous-groupes pertinents. Nos méthodes complètes sont accessibles dans le protocole. ",
+    "SecondParagraph": "Nous produisons les données pour l’usage académique et publique sur notre site Web. Notre objectif est de mettre à jour nos données chaque semaine. Pour l’information supplémentaire en addition du sommaire général qui suit, s'il vous plaît consultez nos méthodes complètes, accessible dans le protocole de SeroTracker. "
+  },
   "WhoDisclaimerSmall": "",
   "WhoDisclaimer": ""
 }
