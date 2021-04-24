@@ -136,10 +136,10 @@
   "Dashboard": "Dashboard",
   "Data": "Data",
   "DatabaseUptoDateTo": "Database Up to Date To",
-  "DataDictionary": "data dictionary",
-  "DataDictionaryContent": {
-    "DataDictionaryContentParagraphOne": "For more information and context about our data, please take a look at our",
-    "DataDictionaryContentParagraphTwo": "and"
+  "DataDictionary": "Data dictionary",
+  "DataDictionaryText": {
+    "FirstParagraph": "For more information and context about our data, please take a look at our",
+    "SecondParagraph": "and"
   },
   "DataDownload": "To download a list of all studies in our database and summary seroprevalence estimates, please click the 'Download CSV' link on the bottom right of this page. If you require additional data or information about this data to conduct your analysis, please do not hesitate to contact the",
   "DateRange": "Date Range",
@@ -255,17 +255,11 @@
   "Location": "Location",
   "Manufacturers": "Manufacturers",
   "ManuscriptAndPreprint": "Manuscript and Preprint",
-  "ManuscriptAppendix": {
-    "ManuscriptAppendixParagraphOne": "full methods",
-    "ManuscriptAppendixParagraphTwo": "(from the appendix to our full systematic review and meta-analysis of SARS-CoV-2 serosurveys)"
+  "ManuscriptAppendixText": {
+    "FirstParagraph": "full methods",
+    "SecondParagraph": "(from the appendix to our full systematic review and meta-analysis of SARS-CoV-2 serosurveys)"
   },
   "Media": "Media",
-  "Methods": "Methods",
-  "MethodsText": {
-    "FirstParagraph": "SeroTracker provides a systematic synthesis of SARS-CoV-2 serosurveillance projects globally. We screened peer-reviewed articles, preprints, government reports, and media articles to identify the prevalence estimates reported below. Our data is updated with all new reports of seroprevalence findings that were captured in our search.",
-    "SecondParagraphPartOne": "You can view our full methods",
-    "SecondParagraphPartTwo": "To submit a SARS-CoV-2 seroprevalence study that we have not yet captured below, use"
-  },
   "N": "N",
   "Name": "Name",
   "NationalEstimateRange": "Country/Territory-Wide Estimate Range",
@@ -290,6 +284,7 @@
     "PointTwo": "describes studies that have not yet reported seroprevalence estimates",
     "Text": "The table below describes our findings, including detailed information about each study, each prevalence estimate, and the associated Risk of bias."
   },
+  "OurProtocol": "Our protocol",
   "OurTeam": "Our Team",
   "OverallRiskOfBias": "Overall Risk of bias",
   "Paper": "Paper",
@@ -422,6 +417,7 @@
   "SublocalEstimateRange": "Sublocal Estimate Range",
   "SublocalEstimates": "Sublocal Estimates",
   "SublocalStudyDetails": "Sublocal Study Details",
+  "SubmitASource": "Submit a source",
   "Summary": "Summary",
   "SummaryStatistics": "Summary Statistics",
   "TeamLead": "Team Leads",
@@ -456,6 +452,13 @@
   "ViewFile": "View File",
   "ViewHere": "View Here",
   "Welcome": "Welcome to SeroTracker",
+  "WhatWeDo": "What we do",
+  "WhatWeDoText": {
+    "FirstParagraph": "At SeroTracker, we collect data and information on SARS-CoV-2 seroprevalence studies by conducting a live systematic review and meta-analysis of published and unpublished data on  seroprevalence. Data is extracted for each source's primary estimate and certain relevant subgroups. Full methods are available in our protocol.",
+    "SecondParagraph": "We produce data for both academic and public use on our dashboard. We aim to update our dashboard weekly. For further information beyond the following high-level summary, please see our study protocol and supplementary methods for a detailed explanation of our research processes."
+  },
+  "WhoDisclaimerSmall": "The designations employed and the presentation of the material available on this platform does not imply the expression of any opinion whatsoever on the part of WHO concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries. Dotted and dashed lines on maps represent approximate border lines for which there may not yet be full agreement.",
+  "WhoDisclaimer": "Disclaimer: the designations employed and the presentation of the material available on this platform does not imply the expression of any opinion whatsoever on the part of WHO concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries. Dotted and dashed lines on maps represent approximate border lines for which there may not yet be full agreement. The mention of specific companies or of certain manufacturers’ products in materials available on this platform does not imply that they are endorsed or recommended by WHO in preference to others of a similar nature that are not mentioned. Errors and omissions excepted, the names of proprietary products are distinguished by initial capital letters. By listing materials on this platform does not mean that WHO endorses or recommends those publications or sites, or has verified the content contained within them. The platform has been created without warranty of any kind, either expressed or implied by WHO. The responsibility for the interpretation and use of publications and materials available on this platform lies with the reader. In no event shall WHO be liable for damages arising from its use.",
   "WhoSerotrackAndPartnersDisclaimerSmall": "The designations employed and the presentation of the material available on this platform does not imply the expression of any opinion whatsoever on the part of WHO, SeroTracker, or SeroTracker's partners concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries. Dotted and dashed lines on maps represent approximate border lines for which there may not yet be full agreement.",
   "WhoSerotrackAndPartnersDisclaimer1": "The designations employed and the presentation of the material available on this platform does not imply the expression of any opinion whatsoever on the part of WHO, SeroTracker, or SeroTracker's partners concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries. Dotted and dashed lines on maps represent approximate border lines for which there may not yet be full agreement. ",
   "WhoSerotrackAndPartnersDisclaimer2": "The mention of specific companies or of certain manufacturers’ products in materials available on this platform does not imply that they are endorsed or recommended by WHO, SeroTracker, or SeroTracker's partners in preference to others of a similar nature that are not mentioned. Errors and omissions excepted, the names of proprietary products are distinguished by initial capital letters. By listing materials on this platform does not mean that WHO, SeroTracker, or SeroTracker's partners endorse or recommend those publications or sites, or has verified the content contained within them. ",

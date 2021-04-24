@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
-import { Loader, Segment } from "semantic-ui-react";
+import { Loader, Segment, Button } from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../constants";
 import { getEmptyFilters } from "../../context";
 import httpClient from "../../httpClient";
@@ -46,33 +46,23 @@ export default function Data() {
     <>
       <div className="col-12 page">
         <div className={isMobileDeviceOrTablet ? "" : "static-content"}>
-          <h1>{Translate("Methods")}</h1>
-          <p>{Translate("MethodsText", ["FirstParagraph"])}</p>
-          <p>
-            {Translate("MethodsText", ["SecondParagraphPartOne"])}
-            <a
-              target="_blank"
-              onClick={() => clickLink("Methods")}
-              rel="noopener noreferrer"
-              href="https://docs.google.com/document/d/1NYpszkr-u__aZspFDFa_fa4VBzjAAAAxNxM1rZ1txWU/edit?usp=sharing"
-            >
-              {Translate("Here", null, null, [true, false]).toLocaleLowerCase()}
-              .
-            </a>
-            {Translate("MethodsText", ["SecondParagraphPartTwo"], null, [
-              true,
-              false,
-            ])}
-            <a
-              rel="noopener noreferrer"
-              onClick={() => clickLink("Study Submission")}
-              target="_blank"
-              href="https://forms.gle/XWHQ7QPjQnzQMXSz8"
-            >
-              {Translate("ThisForm", null, null, [true, false]).toLowerCase()}
-            </a>
-            .
-          </p>
+          <h1>{Translate("WhatWeDo")}</h1>
+          <p>{Translate("WhatWeDoText", ["FirstParagraph"])}</p>
+          <p>{Translate("WhatWeDoText", ["SecondParagraph"])}</p>
+          <br />
+          <Button color="blue" size="big">
+            {Translate("OurProtocol")}
+          </Button>
+          <Button color="blue" size="big">
+            {Translate("DataDictionary")}
+          </Button>
+          <Button color="blue" size="big">
+            {Translate("DownloadCsv")}
+          </Button>
+          <Button color="blue" size="big">
+            {Translate("SubmitASource")}
+          </Button>
+
           <h1>{Translate("ManuscriptAndPreprint")}</h1>
           <p>
             {Translate("PaperText", null, null, [false, true])}
@@ -101,37 +91,29 @@ export default function Data() {
           <h1>{Translate("OurData")}</h1>
           <p>{Translate("OurDataText", ["Text"])}</p>
           <p>
-            {Translate(
-              "DataDictionaryContent",
-              ["DataDictionaryContentParagraphOne"],
-              null,
-              [false, true]
-            )}
+            {Translate("DataDictionaryText", ["FirstParagraph"], null, [
+              false,
+              true,
+            ])}
             <a
               rel="noopener noreferrer"
               onClick={() => clickLink("Manuscript Appendix")}
               target="_blank"
               href="https://drive.google.com/file/d/1d8-U0NgjVBTDzdj3rbAYfZyYVp0HRhgj/view?usp=sharing"
             >
-              {Translate(
-                "ManuscriptAppendix",
-                ["ManuscriptAppendixParagraphOne"],
-                null,
-                [false, true]
-              )}
+              {Translate("ManuscriptAppendixText", ["FirstParagraph"], null, [
+                false,
+                true,
+              ])}
             </a>
-            {Translate(
-              "ManuscriptAppendix",
-              ["ManuscriptAppendixParagraphTwo"],
-              null,
-              [false, true]
-            )}
-            {Translate(
-              "DataDictionaryContent",
-              ["DataDictionaryContentParagraphTwo"],
-              null,
-              [false, true]
-            )}
+            {Translate("ManuscriptAppendixText", ["SecondParagraph"], null, [
+              false,
+              true,
+            ])}
+            {Translate("DataDictionaryText", ["SecondParagraph"], null, [
+              false,
+              true,
+            ])}
             <a
               rel="noopener noreferrer"
               onClick={() => clickLink("Data Dictionary")}
