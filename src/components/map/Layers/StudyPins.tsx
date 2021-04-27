@@ -76,25 +76,34 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
 
   useEffect(() => {
     if (map) {
-      let pinCoords: mapboxgl.Point | undefined = undefined;
-      map.on("click", "study-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
-        const source_id = e.features[0].properties.source_id;
+      let pinPopup: mapboxgl.Popup | undefined = undefined;
 
-        setSelectedPinId(source_id);
-        pinCoords = e.point;
-        togglePinBlur(map, source_id);
+      map.on("click", "study-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
+
+        if (pinPopup !== undefined)
+        {
+          pinPopup.remove()
+        }
+        const source_id = e.features[0].properties.source_id;
 
         api.getRecordDetails(source_id).then((record) => {
           if (record !== null) {
-            new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
+            setSelectedPinId(source_id);
+            togglePinBlur(map, source_id);
+            pinPopup = new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
               .setLngLat(e.lngLat)
               .setHTML(ReactDOMServer.renderToString(StudyPopup(record)))
               .setMaxWidth("300px")
               .addTo(map);
+            pinPopup.on("close",()=>{
+              setSelectedPinId(undefined);
+              togglePinBlur(map);
+            })
           }
         });
       });
 
+      /*
       map.on('click', function(e) {
         if (e.point !== pinCoords)
         {
@@ -102,6 +111,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
           togglePinBlur(map);
         }
       });
+      */
 
       map.on("mouseenter", "study-pins", function () {
         map.getCanvas().style.cursor = "pointer";
