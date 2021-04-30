@@ -1,14 +1,22 @@
 ## [serotracker.com](https://serotracker.com/)
 
-### Github Pages Deployment
-Deployment of static assets for the application occurs on each push to master. The full configuration can be viewed [here](.github/workflows/deploy-gh-pages.yml). 
+### Github Pages/Heroku Deployment
+Deployment of static assets for the application occurs as follows:
+- Each push to `master` triggers a deployment to GitHub Pages. The GH action used is: `JamesIves/github-pages-deploy-action@releases/v3`
+- Each push to `staging` triggers a deployment to Heroku. The GH action used is: `akhileshns/heroku-deploy@v3.0.4`
+
+The full configurations can be viewed [here](.github/workflows). 
+
 
 ### Continuous Integration
 The following commands with GitHub Actions:  
 ```
 npm install
-npm run build
+npm run build  
+
+npm test
 ```  
+The CI configuration can be viewed [here](https://github.com/serotracker/sero-can-webapp/blob/master/.github/workflows/ci.yml).  
 Job results can be viewed [here](https://github.com/serotracker/sero-can-webapp/actions?query=workflow%3ACI).  
   
 ___
