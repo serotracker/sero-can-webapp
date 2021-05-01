@@ -11,6 +11,10 @@
   position: relative;
 }
 
+.map:focus {
+  outline:0;
+}
+
 body {
   margin: 0px;
 }
@@ -48,6 +52,11 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
   position: relative;
 }
 
+.pin-popup {
+  outline: none;
+}
+
+/*
 .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-center .mapboxgl-popup-tip,
@@ -59,6 +68,7 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
 .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip{
     display:none !important;
 }
+*/
 
 .disable-popup {
   display:none !important;

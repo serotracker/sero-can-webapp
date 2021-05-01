@@ -58,8 +58,10 @@ const MapboxGLMap = (): any => {
         style: baseMapStyle,
         center: [10, 30],
         zoom: 2,
+        minZoom: 2,
+        maxZoom: 14,
         attributionControl: false,
-        antialias: true// enables MSAA antialiasing, to help make dotted line WHO borders more visible
+        doubleClickZoom: false
       });
 
       m.on("load", () => {

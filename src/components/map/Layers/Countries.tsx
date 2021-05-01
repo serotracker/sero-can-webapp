@@ -4,6 +4,7 @@ import ReactDOMServer from "react-dom/server";
 import { EstimateGradePrevalence } from "types";
 import mapboxgl from "mapbox-gl";
 import CountryPopup from 'components/map/Popups/CountryPopup'
+import { getFeatureBoundingBox } from "utils/EsriMappingUtil";
 
 // Maps estimate grade prevalence data to a match ISO3 code in the countries feature layer
 function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
@@ -58,7 +59,6 @@ const Countries = (map: mapboxgl.Map | undefined, estimateGradePrevalences: Esti
 
     const [state] = useContext(AppContext);
     const [popup, setPopup] = useState<mapboxgl.Popup | undefined>(undefined);
-    const [currentFeatureId, setCurrentFeatureId] = useState<string | undefined>(undefined);
 
     // If estimates are updated, waits until map is loaded then maps estimate data to country features
     useEffect(() => {
@@ -84,50 +84,41 @@ const Countries = (map: mapboxgl.Map | undefined, estimateGradePrevalences: Esti
     // wait until map is loaded then creates and binds popup to map events
     useEffect(() => {
         if (map && popup === undefined) {
-            const countryPop = new mapboxgl.Popup({ offset: 25, className: "pin-popup", closeButton: false });
-
-            map.on("mouseenter", "Countries", function (e: any) {
-                if (e.features[0].state.hasData) {
-                    countryPop.setMaxWidth("250px")
-                        .setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], state.language)))
-                        .setLngLat(e.lngLat)
-                        //.trackPointer()
-                        .addTo(map);
-                }
+            const countryPop = new mapboxgl.Popup({
+              offset: 25,
+              className: "pin-popup",
+              closeOnClick: true,
+              closeButton: true,
+              //closeOnMove: true,
+              anchor: 'top-left'
             });
 
-            map.on("mouseleave", "Countries", function (e: any) {
-                if (countryPop.isOpen()) {
+            setPopup(countryPop)
+
+            map.on('click', 'Countries', function (e: any) {
+                
+                if (map.queryRenderedFeatures(e.point).filter((f) => f.source === "study-pins").length === 0) {
                     countryPop
-                    .remove()
-                }
+                      .setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], state.language)))
+                      .setLngLat(e.lngLat)
+                      .addTo(map);
+
+                      /*
+                    const bb = getFeatureBoundingBox(e.features[0])
+                    if(bb){
+                        map.fitBounds(
+                        [
+                            [bb.getWest(), bb.getSouth()],
+                            [bb.getEast(), bb.getNorth()],
+                        ],
+                        { padding: { top: 15, bottom: 15, left: 15, right: 15 }}
+                        );
+                    }
+                    */
+                  }
             });
-
-            map.on("mousemove", "Countries", function (e: any) {
-                const f = e.features[0];
-                if (f.state.hasData && f.id !== currentFeatureId && countryPop.isOpen()) {
-                    countryPop
-                    .setLngLat(e.lngLat)
-                    .setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], state.language)))
-                    setCurrentFeatureId(f.id);
-                }
-            });
-
-            setPopup(countryPop);
         }
-    }, [map, state.language, popup, currentFeatureId])
-
-    useEffect(()=>{
-        if(popup !== undefined){
-            if (state.showCountryHover){
-                popup.removeClassName("disable-popup")
-            }
-            else
-            {
-                popup.addClassName("disable-popup")
-            }
-        }
-    }, [popup, state.showCountryHover])
+    }, [map, state.language, popup])
 
     return;
 }

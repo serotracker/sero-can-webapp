@@ -90,7 +90,6 @@ export type State = {
   language: LanguageType;
   showCookieBanner: boolean;
   countries: any;
-  showCountryHover: boolean;
 };
 
 export type StartDates = {

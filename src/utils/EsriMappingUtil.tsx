@@ -1,4 +1,4 @@
-import mapboxgl from "mapbox-gl";
+import mapboxgl, { LngLat } from "mapbox-gl";
 import httpClient from "../httpClient";
 import MapConfig from "components/map/MapConfig"
 
@@ -59,3 +59,41 @@ export function addEsriLayersFromVectorSourceStyle(style: any, map: mapboxgl.Map
   });
 }
 }
+
+function getBoundingBox(coordinates: any[]) {
+  let bbox: any = {
+    xMin: undefined,
+    xMax: undefined,
+    yMin: undefined,
+    yMax: undefined,
+  }
+
+  coordinates.forEach((c)=>{
+    const longitude = c[0];
+    const latitude = c[1];
+    bbox.xMin = bbox.xMin < longitude ? bbox.xMin : longitude;
+    bbox.xMax = bbox.xMax > longitude ? bbox.xMax : longitude;
+    bbox.yMin = bbox.yMin < latitude ? bbox.yMin : latitude;
+    bbox.yMax = bbox.yMax > latitude ? bbox.yMax : latitude;
+  })
+  return bbox;
+}
+
+export function getFeatureBoundingBox(feature: GeoJSON.Feature): mapboxgl.LngLatBounds | undefined {
+  let extent = undefined
+  
+  if(feature.geometry.type === 'Polygon')
+  {
+    extent = getBoundingBox(feature.geometry.coordinates[0]);
+  }
+  else if (feature.geometry.type === 'MultiPolygon')
+  {
+    extent = getBoundingBox(feature.geometry.coordinates[0][0]);
+  }
+
+  return extent ? new mapboxgl.LngLatBounds(
+    new mapboxgl.LngLat(extent.xMin, extent.yMin),
+    new mapboxgl.LngLat(extent.xMax, extent.yMax)
+    ) : undefined;
+}
+
