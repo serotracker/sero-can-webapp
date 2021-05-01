@@ -35,7 +35,7 @@
     "react-multi-carousel": "^2.6.1",
     "react-responsive": "^8.0.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^4.0.3",
     "react-slick": "^0.28.0",
     "recharts": "^1.8.5",
     "semantic-ui-react": "^0.88.2",

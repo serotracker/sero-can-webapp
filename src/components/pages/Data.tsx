@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
-import { Loader, Segment, Button } from "semantic-ui-react";
+import { Loader, Segment, Button, Accordion, Icon } from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../constants";
 import { getEmptyFilters } from "../../context";
 import httpClient from "../../httpClient";
@@ -10,6 +10,91 @@ import Translate from "../../utils/translate/translateService";
 import StudiesTable from "../shared/references/StudiesTable";
 import "./static.css";
 import MaintenanceModal from "../shared/MaintenanceModal";
+
+function DataButtons() {
+  const buttonLabels = [
+    "OurProtocol",
+    "DataDictionary",
+    "DownloadCsv",
+    "SubmitASource",
+  ];
+  const buttons = buttonLabels.map((buttonLabel) => (
+    <Button color="blue" size="large">
+      {Translate(buttonLabel)}
+    </Button>
+  ));
+
+  return <div>{buttons}</div>;
+}
+
+function DataDropdowns() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const dropdownContents = [
+    {
+      title: "Where does our data come from?",
+      content:
+        "We collect data from published peer reviewed research articles, preprints, reports, and media (unpublished grey literature). The sources included in our dashboard to date are in the table below.",
+    },
+    {
+      title: "How do we collect our data?",
+      content:
+        "We conduct regular searches of several databases including Medline, EMBASE, Web of Science, and Europe PMC and targeted google searches. In addition, anyone can submit sources for us to screen and include in our review using this form.",
+    },
+    {
+      title: "How do we extract our data from our sources?",
+      content:
+        "We have an extensive research team trained in health sciences and epidemiology who manually review articles and records seroprevalence estimates into AirTable, our database managing software. The processes and rules we follow to extract data is available in our study protocol document and AirTable data dictionary.",
+    },
+    {
+      title: "How does our data show up on the map?",
+      content:
+        "Data inputted into Airtable is automatically run through a software pipeline that cleans it and computes additional information (e.g. a study’s geographic coordinates). The outputs of the pipeline are then stored in a separate database, which is queried by serotracker.com to serve the Explore tab.",
+    },
+    {
+      title: "Can I download SeroTracker's data for my own analysis?",
+      content:
+        "Yes, our data is open-source and free for anyone to use. You can download our complete .csv file here. You will first be asked to fill out a form indicating your role, affiliation (if relevant), and type of research you’re conducting - This helps us create datasets that are most useful to you.",
+    },
+    {
+      title: "Do I need to be an AirTable user to use your data?",
+      content:
+        "No. Although our data is presented in an AirTable file, you can export this easily to Excel or other formats.",
+    },
+    {
+      title: "How do I interpret the variables in your data set?",
+      content:
+        "Please see our Data Dictionary for explanations of our variables, data types, and descriptions as well as insight into how our data is collected by our research team. It is structured to help interpret our downloadable data set.",
+    },
+    {
+      title: "How has your data been used by others or researchers?",
+      content:
+        "SeroTracker data is used by many public health professionals and health agencies such as the World Health Organization and Public Health Agency of Canada, among others. The ‘Insights’ tab has links to internal reports, publications we have produced, and features of SeroTracker data and work in the media. Our most recent publication analyzes global seroprevalence from January - December, 2020.",
+    },
+  ];
+  const handleClick = (e: any, titleProps: any) => {
+    const { index } = titleProps;
+    const newIndex = activeIndex === index ? -1 : index;
+    setActiveIndex(newIndex);
+  };
+
+  const dropdownContentsAccordion = dropdownContents.map(
+    (dropdownContent) => {}
+  );
+
+  <Accordion styled>
+    <Accordion.Title active={activeIndex === 0} index={0} onClick={handleClick}>
+      <Icon name="dropdown" />
+      What is a dog?
+    </Accordion.Title>
+    <Accordion.Content active={activeIndex === 0}>
+      A dog is a type of domesticated animal. Known for its loyalty and
+      faithfulness, it can be found as a welcome guest in many households across
+      the world.
+    </Accordion.Content>
+  </Accordion>;
+
+  return <div></div>;
+}
 
 export default function Data() {
   const isMobileDeviceOrTablet = useMediaQuery({
@@ -50,19 +135,8 @@ export default function Data() {
           <p>{Translate("WhatWeDoText", ["FirstParagraph"])}</p>
           <p>{Translate("WhatWeDoText", ["SecondParagraph"])}</p>
           <br />
-          <Button color="blue" size="big">
-            {Translate("OurProtocol")}
-          </Button>
-          <Button color="blue" size="big">
-            {Translate("DataDictionary")}
-          </Button>
-          <Button color="blue" size="big">
-            {Translate("DownloadCsv")}
-          </Button>
-          <Button color="blue" size="big">
-            {Translate("SubmitASource")}
-          </Button>
-
+          <DataButtons />
+          <DataDropdowns />
           <h1>{Translate("ManuscriptAndPreprint")}</h1>
           <p>
             {Translate("PaperText", null, null, [false, true])}
