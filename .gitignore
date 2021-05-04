@@ -23,4 +23,9 @@ yarn-debug.log*
 yarn-error.log*
 ./src/react-app-env.d.ts
 
+# code editor
 .vscode/
+
+#.env
+.env
+load-dotenv.sh
