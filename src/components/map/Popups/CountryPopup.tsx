@@ -1,7 +1,9 @@
 import React from "react";
 import { RegionalPrevalenceEstimate } from "types";
 import { LanguageType } from "types";
+import { Button } from 'semantic-ui-react'
 import Translate, { getCountryName } from 'utils/translate/translateService';
+//import { Link, useHistory } from 'react-router-dom'
 
 const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimate, title: string) => {
   const minString = `${(regionalEstimate.minEstimate * 100).toFixed(2)}%`
@@ -32,13 +34,18 @@ const CountryPopup = (country : any, language : LanguageType) => {
     addRegion(properties.sublocalEstimate, Translate('SublocalEstimates'));
 
     return (
-      <div className="col-12 p-0 flex column country-popup" >
+      <div className="col-12 p-0 flex column country-popup popup-content" >
         <div className="fit popup-title">{getCountryName(properties.geographicalName, language, "CountryOptions")}</div>
         <div className="flex column fit popup-heading">
           <div className="fit popup-text">{Translate("TestsAdministered")}: <b>{properties?.testsAdministered}</b></div>
           <div className="fit popup-text">{Translate('NumSeroprevalenceEstimates')}: <b>{properties?.numberOfStudies}</b></div>
         </div>
         {regions.map((o) => createPopupGeographySection(o.Region, o.Name))}
+        <Button 
+          className="not-found-button mt-2"
+          onClick={() => console.log("")}>
+          View 
+        </Button>
       </div>)
   };
 

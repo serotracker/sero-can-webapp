@@ -95,6 +95,10 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
               .setHTML(ReactDOMServer.renderToString(StudyPopup(record)))
               .setMaxWidth("300px")
               .addTo(map);
+            map.flyTo({
+              center: e.lngLat,
+              speed: 0.2,
+              });
             pinPopup.on("close",()=>{
               setSelectedPinId(undefined);
               togglePinBlur(map);
@@ -102,16 +106,6 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
           }
         });
       });
-
-      /*
-      map.on('click', function(e) {
-        if (e.point !== pinCoords)
-        {
-          setSelectedPinId(undefined);
-          togglePinBlur(map);
-        }
-      });
-      */
 
       map.on("mouseenter", "study-pins", function () {
         map.getCanvas().style.cursor = "pointer";
