@@ -93,11 +93,3 @@ export default function Translate(
     return `No translation for string ${text}`;
   }
 }
-
-export const getLength = (text: string) => {
-  const translationDictionary: Json =
-    language === LanguageType.english ? (English as Json) : (French as Json);
-  return translationDictionary[text]
-    ? Object.keys(translationDictionary[text]).length
-    : 0;
-};
