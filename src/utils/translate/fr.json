@@ -106,6 +106,7 @@
     }
   },
   "BlankUniversity": "Université de NOM",
+  "ChangeLog": "Change Log",
   "ChangeSettings": "Modifier les paramètres",
   "CoDirector": "Codirecteur",
   "ContactUs": "Nous contacter",
@@ -148,6 +149,40 @@
   "DisclaimerList5": "Toute utilisation inexacte ou à des fins publicitaires ou commerciales des noms, des logos, des marques de commerce ou de l’habillage commercial de SeroTracker ou du Groupe de travail sur l’immunité face à la COVID-19 est strictement interdite, sauf avec le consentement écrit explicite d’un représentant* de SeroTracker. ",
   "DisclaimerList6": "Les présentes conditions d’utilisation sont sujettes à modification. En utilisant le site Web, vous reconnaissez que vous acceptez ces conditions et leurs éventuelles modifications",
   "DisclaimerListHeader": "Conditions d’utilisation du site Web:",
+  "DropdownQuestions": {
+    "Question1": {
+      "Question": "Where does our data come from?",
+      "Answer": "We collect data from published peer reviewed research articles, preprints, reports, and media (unpublished grey literature). The sources included in our dashboard to date are in the table below."
+    },
+    "Question2": {
+      "Question": "How do we collect our data?",
+      "Answer": "We conduct regular searches of several databases including Medline, EMBASE, Web of Science, and Europe PMC and targeted google searches. In addition, anyone can submit sources for us to screen and include in our review using this form."
+    },
+    "Question3": {
+      "Question": "How do we extract our data from our sources?",
+      "Answer": "We have an extensive research team trained in health sciences and epidemiology who manually review articles and records seroprevalence estimates into AirTable, our database managing software. The processes and rules we follow to extract data is available in our study protocol document and AirTable data dictionary."
+    },
+    "Question4": {
+      "Question": "How does our data show up on the map?",
+      "Answer": "Data inputted into Airtable is automatically run through a software pipeline that cleans it and computes additional information (e.g. a study’s geographic coordinates). The outputs of the pipeline are then stored in a separate database, which is queried by serotracker.com to serve the Explore tab."
+    },
+    "Question5": {
+      "Question": "Can I download SeroTracker's data for my own analysis?",
+      "Answer": "Yes, our data is open-source and free for anyone to use. You can download our complete .csv file here. You will first be asked to fill out a form indicating your role, affiliation (if relevant), and type of research you’re conducting - This helps us create datasets that are most useful to you."
+    },
+    "Question6": {
+      "Question": "Do I need to be an AirTable user to use your data?",
+      "Answer": "No. Although our data is presented in an AirTable file, you can export this easily to Excel or other formats."
+    },
+    "Question7": {
+      "Question": "How do I interpret the variables in your data set?",
+      "Answer": "Please see our Data Dictionary for explanations of our variables, data types, and descriptions as well as insight into how our data is collected by our research team. It is structured to help interpret our downloadable data set."
+    },
+    "Question8": {
+      "Question": "How has your data been used by others or researchers?",
+      "Answer": "SeroTracker data is used by many public health professionals and health agencies such as the World Health Organization and Public Health Agency of Canada, among others. The ‘Insights’ tab has links to internal reports, publications we have produced, and features of SeroTracker data and work in the media. Our most recent publication analyzes global seroprevalence from January - December, 2020."
+    }
+  },
   "DownloadCsv": "Télécharger CSV",
   "EconomicsTeam": "Équipe économique",
   "EndDate": "Date de fin",
@@ -280,7 +315,7 @@
     "PointTwo": "décrivent des études qui n'ont pas encore signalé d'estimations de séroprévalence",
     "Text": "Le tableau ci-dessous décrit nos résultats, y compris des informations détaillées pour chaque étude, chaque estimation de prévalence et les risques de partialité associés."
   },
-  "OurProtocol": "Our protocol",
+  "OurProtocol": "Notre protocole",
   "OurTeam": "Notre équipe",
   "OverallRiskOfBias": "Risque général de partialité",
   "Paper": "Article",
@@ -406,7 +441,7 @@
   "StudyType": "Type d'étude",
   "SublocalEstimateRange": "Plage d'estimation sous-locale",
   "SublocalEstimates": "Estimations sous-locales",
-  "SubmitASource": "Submit a source",
+  "SubmitASource": "Soumettre un article",
   "Summary": "Résumé",
   "SummaryStatistics": "Statistiques sommaires",
   "TeamLead": "Responsables d'équipes",
@@ -442,7 +477,7 @@
   "ViewFile": "Consulter le fichier",
   "ViewHere": "Consulter ici",
   "Welcome": "Bienvenue à SeroTracker",
-  "WhatWeDo": "What we do",
+  "WhatWeDo": "Ce que nous faisons",
   "WhatWeDoText": {
     "FirstParagraph": "Chez SeroTracker, nous collectons les données publiées et non publiées de séroprévalence pour informer une revue systématique et méta-analyse du SRAS-CoV-2 au niveau mondial. Les données sont collectées pour l’estimation primaire pour chaque source et certains sous-groupes pertinents. Nos méthodes complètes sont accessibles dans le protocole. ",
     "SecondParagraph": "Nous produisons les données pour l’usage académique et publique sur notre site Web. Notre objectif est de mettre à jour nos données chaque semaine. Pour l’information supplémentaire en addition du sommaire général qui suit, s'il vous plaît consultez nos méthodes complètes, accessible dans le protocole de SeroTracker. "

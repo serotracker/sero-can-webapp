@@ -17,9 +17,10 @@ function DataButtons() {
     "DataDictionary",
     "DownloadCsv",
     "SubmitASource",
+    "ChangeLog",
   ];
   const buttons = buttonLabels.map((buttonLabel) => (
-    <Button color="blue" size="large">
+    <Button color="blue" size="large" className="mb-5">
       {Translate(buttonLabel)}
     </Button>
   ));
@@ -29,71 +30,31 @@ function DataButtons() {
 
 function DataDropdowns() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const dropdownContents = [
-    {
-      title: "Where does our data come from?",
-      content:
-        "We collect data from published peer reviewed research articles, preprints, reports, and media (unpublished grey literature). The sources included in our dashboard to date are in the table below.",
-    },
-    {
-      title: "How do we collect our data?",
-      content:
-        "We conduct regular searches of several databases including Medline, EMBASE, Web of Science, and Europe PMC and targeted google searches. In addition, anyone can submit sources for us to screen and include in our review using this form.",
-    },
-    {
-      title: "How do we extract our data from our sources?",
-      content:
-        "We have an extensive research team trained in health sciences and epidemiology who manually review articles and records seroprevalence estimates into AirTable, our database managing software. The processes and rules we follow to extract data is available in our study protocol document and AirTable data dictionary.",
-    },
-    {
-      title: "How does our data show up on the map?",
-      content:
-        "Data inputted into Airtable is automatically run through a software pipeline that cleans it and computes additional information (e.g. a study’s geographic coordinates). The outputs of the pipeline are then stored in a separate database, which is queried by serotracker.com to serve the Explore tab.",
-    },
-    {
-      title: "Can I download SeroTracker's data for my own analysis?",
-      content:
-        "Yes, our data is open-source and free for anyone to use. You can download our complete .csv file here. You will first be asked to fill out a form indicating your role, affiliation (if relevant), and type of research you’re conducting - This helps us create datasets that are most useful to you.",
-    },
-    {
-      title: "Do I need to be an AirTable user to use your data?",
-      content:
-        "No. Although our data is presented in an AirTable file, you can export this easily to Excel or other formats.",
-    },
-    {
-      title: "How do I interpret the variables in your data set?",
-      content:
-        "Please see our Data Dictionary for explanations of our variables, data types, and descriptions as well as insight into how our data is collected by our research team. It is structured to help interpret our downloadable data set.",
-    },
-    {
-      title: "How has your data been used by others or researchers?",
-      content:
-        "SeroTracker data is used by many public health professionals and health agencies such as the World Health Organization and Public Health Agency of Canada, among others. The ‘Insights’ tab has links to internal reports, publications we have produced, and features of SeroTracker data and work in the media. Our most recent publication analyzes global seroprevalence from January - December, 2020.",
-    },
-  ];
   const handleClick = (e: any, titleProps: any) => {
     const { index } = titleProps;
     const newIndex = activeIndex === index ? -1 : index;
     setActiveIndex(newIndex);
   };
-
-  const dropdownContentsAccordion = dropdownContents.map(
-    (dropdownContent) => {}
-  );
-
-  <Accordion styled>
-    <Accordion.Title active={activeIndex === 0} index={0} onClick={handleClick}>
-      <Icon name="dropdown" />
-      What is a dog?
-    </Accordion.Title>
-    <Accordion.Content active={activeIndex === 0}>
-      A dog is a type of domesticated animal. Known for its loyalty and
-      faithfulness, it can be found as a welcome guest in many households across
-      the world.
-    </Accordion.Content>
-  </Accordion>;
-
-  return <div></div>;
+  let dropdownContent = [];
+  // 8 is the number of data dropdown questions
+  for (let i = 0; i < 8; ++i) {
+    dropdownContent.push(
+      <Accordion fluid styled>
+        <Accordion.Title
+          active={activeIndex === i}
+          index={i}
+          onClick={handleClick}
+        >
+          <Icon name="dropdown" />
+          {Translate("DropdownQuestions", [`Question${i + 1}`, "Question"])}
+        </Accordion.Title>
+        <Accordion.Content active={activeIndex === i}>
+          {Translate("DropdownQuestions", [`Question${i + 1}`, "Answer"])}
+        </Accordion.Content>
+      </Accordion>
+    );
+  }
+  return <div>{dropdownContent}</div>;
 }
 
 export default function Data() {
