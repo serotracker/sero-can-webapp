@@ -13,7 +13,7 @@ import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../constants";
 import { getEmptyFilters } from "../../context";
 import httpClient from "../../httpClient";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
-import Translate, { getLength } from "../../utils/translate/translateService";
+import Translate from "../../utils/translate/translateService";
 import StudiesTable from "../shared/references/StudiesTable";
 import "./static.css";
 import MaintenanceModal from "../shared/MaintenanceModal";
@@ -42,26 +42,22 @@ function DataDropdowns() {
     const newIndex = activeIndex === index ? -1 : index;
     setActiveIndex(newIndex);
   };
-  let dropdownContent = [];
-  for (let i = 0; i < getLength("DropdownQuestions"); ++i) {
-    dropdownContent.push(
-      <Accordion key={i} fluid styled>
+  const dropdownContent = Object.entries(Translate("DropdownQuestions")).map(
+    (dropdownQuestion: any, index) => (
+      <Accordion key={index} fluid styled>
         <Accordion.Title
-          active={activeIndex === i}
-          index={i}
+          active={activeIndex === index}
+          index={index}
           onClick={handleClick}
         >
-          <Icon name="dropdown" />{" "}
-          {Translate("DropdownQuestions", [`Question${i + 1}`, "Question"])}
+          <Icon name="dropdown" /> {dropdownQuestion[1]["Question"]}
         </Accordion.Title>
-        <Accordion.Content active={activeIndex === i}>
-          <p>
-            {Translate("DropdownQuestions", [`Question${i + 1}`, "Answer"])}
-          </p>
+        <Accordion.Content active={activeIndex === index}>
+          <p>{dropdownQuestion[1]["Answer"]}</p>
         </Accordion.Content>
       </Accordion>
-    );
-  }
+    )
+  );
   return <div className="mb-5">{dropdownContent}</div>;
 }
 
