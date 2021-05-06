@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
-import {
-  Loader,
-  Segment,
-  Button,
-  Accordion,
-  Icon,
-  Container,
-} from "semantic-ui-react";
+import { Loader, Segment, Button, Accordion, Icon } from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../constants";
 import { getEmptyFilters } from "../../context";
 import httpClient from "../../httpClient";
@@ -54,7 +47,7 @@ function DataButtons() {
     },
   ];
   const buttons = buttonLabels.map((buttonLabel, index) => (
-    <Button key={index} color="blue" size="large" className="mb-5">
+    <Button key={index} color="blue" size="large" className="mb-2 mr-2">
       <a
         onClick={() => clickLink(buttonLabel.label)}
         target="_blank"
@@ -66,7 +59,7 @@ function DataButtons() {
     </Button>
   ));
 
-  return <Container>{buttons}</Container>;
+  return <div>{buttons}</div>;
 }
 
 function DataDropdowns() {
@@ -92,7 +85,7 @@ function DataDropdowns() {
       </Accordion>
     )
   );
-  return <div className="mb-5">{dropdownContent}</div>;
+  return <div>{dropdownContent}</div>;
 }
 
 export default function Data() {
@@ -125,11 +118,12 @@ export default function Data() {
           <h1>{Translate("WhatWeDo")}</h1>
           <p>{Translate("WhatWeDoText", ["FirstParagraph"])}</p>
           <p>{Translate("WhatWeDoText", ["SecondParagraph"])}</p>
-          <br />
+          <br></br>
           <DataButtons />
+          <br></br>
           <DataDropdowns />
         </div>
-
+        <br></br>
         <div
           className={
             isMobileDeviceOrTablet ? "pb-3 pt-3" : "pb-3 pt-3 reference-table"
