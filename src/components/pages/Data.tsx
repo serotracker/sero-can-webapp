@@ -111,6 +111,11 @@ export default function Data() {
     setAllRecords(res);
   };
 
+  const iframeStyle = {
+    background: "transparent",
+    border: "1px solid #ccc",
+  };
+
   return (
     <>
       <div className="col-12 page">
@@ -131,10 +136,15 @@ export default function Data() {
         >
           <Segment>
             <Loader indeterminate active={isLoading} />
-            <StudiesTable
-              dataRecords={allRecords}
-              showAllStudies={false}
-            ></StudiesTable>
+            <iframe
+              title="References Table"
+              className="airtable-embed"
+              src="https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=cyan&viewControls=on"
+              frameBorder="0"
+              width="100%"
+              height="533"
+              style={iframeStyle}
+            ></iframe>
           </Segment>
         </div>
 
