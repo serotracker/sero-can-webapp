@@ -151,36 +151,36 @@
   "DisclaimerListHeader": "Conditions d’utilisation du site Web:",
   "DropdownQuestions": {
     "Question1": {
-      "Question": "Where does our data come from?",
-      "Answer": "We collect data from published peer reviewed research articles, preprints, reports, and media (unpublished grey literature). The sources included in our dashboard to date are in the table below."
+      "Question": "D'où viennent nos données?",
+      "Answer": "Nous collectons les données à partir des articles évalués par les pairs (peer reviewed), les prépublications, les comptes rendus, et les nouvelles non-publiées. "
     },
     "Question2": {
-      "Question": "How do we collect our data?",
-      "Answer": "We conduct regular searches of several databases including Medline, EMBASE, Web of Science, and Europe PMC and targeted google searches. In addition, anyone can submit sources for us to screen and include in our review using this form."
+      "Question": "Comment SeroTracker recueille-t-il des données? ",
+      "Answer": "Nous effectuons des recherches habituelles sur Google et sur des bases de données telles que Medline, EMBASE, Web of Science, et Europe PMC. De plus, nous acceptons des soumissions d'études, en utilisant ce document."
     },
     "Question3": {
-      "Question": "How do we extract our data from our sources?",
-      "Answer": "We have an extensive research team trained in health sciences and epidemiology who manually review articles and records seroprevalence estimates into AirTable, our database managing software. The processes and rules we follow to extract data is available in our study protocol document and AirTable data dictionary."
+      "Question": "Comment SeroTracker extrait-t-il des données de ses sources? ",
+      "Answer": "Nous avons une équipe de chercheurs qui ont une formation en sciences de la santé et en épidémiologie. Les membres de notre 'équipe révisent les études et enregistrent manuellement les valeurs de séroprévalence dans nos base de données sur AirTable, notre logiciel de gestion. Les processus et les règles que nous suivons chez SeroTracker pour extraire les données sont disponibles dans le protocole et le document dictionnaire des données."
     },
     "Question4": {
-      "Question": "How does our data show up on the map?",
-      "Answer": "Data inputted into Airtable is automatically run through a software pipeline that cleans it and computes additional information (e.g. a study’s geographic coordinates). The outputs of the pipeline are then stored in a separate database, which is queried by serotracker.com to serve the Explore tab."
+      "Question": "Comment les données sont-elles visualisées sur la carte interactive?",
+      "Answer": "Les données qui sont sur AirTable sont exécutées automatiquement à travers une pipeline de logiciels. Les données sont vérifiées et les informations supplémentaires (telles que l’emplacement géographique de l'étude) sont ajoutées. Ces nouvelles données sont retenues dans un logiciel séparé - utilisé par le page Explore."
     },
     "Question5": {
-      "Question": "Can I download SeroTracker's data for my own analysis?",
-      "Answer": "Yes, our data is open-source and free for anyone to use. You can download our complete .csv file here. You will first be asked to fill out a form indicating your role, affiliation (if relevant), and type of research you’re conducting - This helps us create datasets that are most useful to you."
+      "Question": "Est-ce que je peux utiliser les données de SeroTracker pour effectuer ma propre analyse? ",
+      "Answer": "Absolument! Notre base de données est gratuite pour tout le monde. Vous pouvez télécharger notre document .csv complet ici. Avant de vous fournier ces données, nous vous demandons de compléter un questionnaire avec votre rôle, votre affiliation académique (si pertinent), et le type de recherche que vous faites. Cette information nous aide beaucoup à créer les données les plus utiles pour vous."
     },
     "Question6": {
-      "Question": "Do I need to be an AirTable user to use your data?",
-      "Answer": "No. Although our data is presented in an AirTable file, you can export this easily to Excel or other formats."
+      "Question": "Est-ce que je dois être un utilisateur de AirTable pour utiliser vos données? ",
+      "Answer": "Non. Bien que nos données soient présentées dans un format AirTable, vous pouvez facilement le transformer en format Excel ou en autres formats. "
     },
     "Question7": {
-      "Question": "How do I interpret the variables in your data set?",
-      "Answer": "Please see our Data Dictionary for explanations of our variables, data types, and descriptions as well as insight into how our data is collected by our research team. It is structured to help interpret our downloadable data set."
+      "Question": "Comment est-ce que les variables doivent être interprétées?",
+      "Answer": "Veuillez consulter notre dictionnaire de données pour les explications de nos variables, types des données, et descriptions. Il possède aussi de l’information à propos de notre collection de données. Le document est structuré de manière  à faciliter la compréhension de notre base des données. "
     },
     "Question8": {
-      "Question": "How has your data been used by others or researchers?",
-      "Answer": "SeroTracker data is used by many public health professionals and health agencies such as the World Health Organization and Public Health Agency of Canada, among others. The ‘Insights’ tab has links to internal reports, publications we have produced, and features of SeroTracker data and work in the media. Our most recent publication analyzes global seroprevalence from January - December, 2020."
+      "Question": "Comment vos données ont-elles été utilisées par les autres?",
+      "Answer": "Les données de SeroTracker sont utilisées par beaucoup de professionnels de la santé publique et par les agences de santé telles que l’Organisation Mondial de la Santé, et l’Agence de la Santé Publique du Canada.. Dans la section Perspectives de notre site Web, vous pouvez accéder aux rapports, aux articles académiques, et aux nouvelles/médias avec SeroTracker. "
     }
   },
   "DownloadCsv": "Télécharger CSV",
