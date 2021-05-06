@@ -133,9 +133,13 @@
 .ui.blue.button {
   background-color: #4d9fff;
   color: #fff;
+  border-radius: 0;
 }
 
-.grey {
-  background-color: #c4c4c4;
-  color: #c4c4c4;
+.ui.accordion .title:not(.ui) {
+  font-size: 20px;
+}
+
+.container {
+  padding: 0;
 }
