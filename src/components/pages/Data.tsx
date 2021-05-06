@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
-import { Loader, Segment, Button, Accordion, Icon } from "semantic-ui-react";
+import { Segment, Button, Accordion, Icon } from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../constants";
-import { getEmptyFilters } from "../../context";
-import httpClient from "../../httpClient";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 import Translate from "../../utils/translate/translateService";
-import StudiesTable from "../shared/references/StudiesTable";
 import "./static.css";
 import MaintenanceModal from "../shared/MaintenanceModal";
 
@@ -92,24 +89,6 @@ export default function Data() {
   const isMobileDeviceOrTablet = useMediaQuery({
     maxDeviceWidth: mobileDeviceOrTabletWidth,
   });
-  const [allRecords, setAllRecords] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // note: using IIFE here so that we can
-    // have async/await behaviour in useEffect
-    (async () => {
-      await getAllRecords();
-      setIsLoading(false);
-    })();
-  }, []);
-
-  const getAllRecords = async () => {
-    const api = new httpClient();
-    // TODO: Figure out a better place to put this so we don't keep updating this either
-    const res = await api.getAirtableRecords(getEmptyFilters());
-    setAllRecords(res);
-  };
 
   const iframeStyle = {
     background: "transparent",
@@ -135,7 +114,6 @@ export default function Data() {
           }
         >
           <Segment>
-            <Loader indeterminate active={isLoading} />
             <iframe
               title="References Table"
               className="airtable-embed"
