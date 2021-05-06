@@ -18,17 +18,51 @@ import StudiesTable from "../shared/references/StudiesTable";
 import "./static.css";
 import MaintenanceModal from "../shared/MaintenanceModal";
 
+const clickLink = (link: string) => {
+  sendAnalyticsEvent({
+    category: "Data Link Click",
+    action: "click",
+    label: link,
+  });
+};
+
 function DataButtons() {
   const buttonLabels = [
-    "OurProtocol",
-    "DataDictionary",
-    "DownloadCsv",
-    "SubmitASource",
-    "ChangeLog",
+    {
+      label: "OurProtocol",
+      link:
+        "https://docs.google.com/document/d/1NYpszkr-u__aZspFDFa_fa4VBzjAAAAxNxM1rZ1txWU/edit",
+    },
+    {
+      label: "DataDictionary",
+      link:
+        "https://docs.google.com/spreadsheets/d/1KQbp5T9Cq_HnNpmBTWY1iKs6Etu1-qJcnhdJ5eyw7N8/edit?usp=sharing",
+    },
+    {
+      label: "DownloadCsv",
+      link:
+        "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform",
+    },
+    {
+      label: "SubmitASource",
+      link:
+        "https://docs.google.com/forms/d/e/1FAIpQLSdvNJReektutfMT-5bOTjfnvaY_pMAy8mImpQBAW-3v7_B2Bg/viewform",
+    },
+    {
+      label: "ChangeLog",
+      link: "https://airtable.com/shrxpAlF6v0LeRYkA",
+    },
   ];
-  const buttons = buttonLabels.map((buttonLabel) => (
-    <Button key={buttonLabel} color="blue" size="large" className="mb-5">
-      {Translate(buttonLabel)}
+  const buttons = buttonLabels.map((buttonLabel, index) => (
+    <Button key={index} color="blue" size="large" className="mb-5">
+      <a
+        onClick={() => clickLink(buttonLabel.label)}
+        target="_blank"
+        rel="noreferrer"
+        href={buttonLabel.link}
+      >
+        <p className="button-text"> {Translate(buttonLabel.label)}</p>
+      </a>
     </Button>
   ));
 
@@ -36,7 +70,7 @@ function DataButtons() {
 }
 
 function DataDropdowns() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const handleClick = (e: any, titleProps: any) => {
     const { index } = titleProps;
     const newIndex = activeIndex === index ? -1 : index;
@@ -76,14 +110,6 @@ export default function Data() {
       setIsLoading(false);
     })();
   }, []);
-
-  const clickLink = (link: string) => {
-    sendAnalyticsEvent({
-      category: "Data Link Click",
-      action: "click",
-      label: link,
-    });
-  };
 
   const getAllRecords = async () => {
     const api = new httpClient();

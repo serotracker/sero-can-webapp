@@ -143,3 +143,7 @@
 .container {
   padding: 0;
 }
+
+.button-text {
+  color: white;
+}
