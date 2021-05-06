@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
-import { Loader, Segment, Button, Accordion, Icon } from "semantic-ui-react";
+import {
+  Loader,
+  Segment,
+  Button,
+  Accordion,
+  Icon,
+  Container,
+} from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../constants";
 import { getEmptyFilters } from "../../context";
 import httpClient from "../../httpClient";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
-import Translate from "../../utils/translate/translateService";
+import Translate, { getLength } from "../../utils/translate/translateService";
 import StudiesTable from "../shared/references/StudiesTable";
 import "./static.css";
 import MaintenanceModal from "../shared/MaintenanceModal";
@@ -20,12 +27,12 @@ function DataButtons() {
     "ChangeLog",
   ];
   const buttons = buttonLabels.map((buttonLabel) => (
-    <Button color="blue" size="large" className="mb-5">
+    <Button key={buttonLabel} color="blue" size="large" className="mb-5">
       {Translate(buttonLabel)}
     </Button>
   ));
 
-  return <div>{buttons}</div>;
+  return <Container>{buttons}</Container>;
 }
 
 function DataDropdowns() {
@@ -36,25 +43,26 @@ function DataDropdowns() {
     setActiveIndex(newIndex);
   };
   let dropdownContent = [];
-  // 8 is the number of data dropdown questions
-  for (let i = 0; i < 8; ++i) {
+  for (let i = 0; i < getLength("DropdownQuestions"); ++i) {
     dropdownContent.push(
-      <Accordion fluid styled>
+      <Accordion key={i} fluid styled>
         <Accordion.Title
           active={activeIndex === i}
           index={i}
           onClick={handleClick}
         >
-          <Icon name="dropdown" />
+          <Icon name="dropdown" />{" "}
           {Translate("DropdownQuestions", [`Question${i + 1}`, "Question"])}
         </Accordion.Title>
         <Accordion.Content active={activeIndex === i}>
-          {Translate("DropdownQuestions", [`Question${i + 1}`, "Answer"])}
+          <p>
+            {Translate("DropdownQuestions", [`Question${i + 1}`, "Answer"])}
+          </p>
         </Accordion.Content>
       </Accordion>
     );
   }
-  return <div>{dropdownContent}</div>;
+  return <div className="mb-5">{dropdownContent}</div>;
 }
 
 export default function Data() {
@@ -98,71 +106,6 @@ export default function Data() {
           <br />
           <DataButtons />
           <DataDropdowns />
-          <h1>{Translate("ManuscriptAndPreprint")}</h1>
-          <p>
-            {Translate("PaperText", null, null, [false, true])}
-            <a
-              target="_blank"
-              onClick={() => clickLink("MedRXIV")}
-              rel="noopener noreferrer"
-              href="https://www.medrxiv.org/content/10.1101/2020.05.10.20097451v1"
-            >
-              medRxiv
-            </a>
-            .
-          </p>
-          <p>
-            {Translate("PaperTextTwo", null, null, [false, true])}
-            <a
-              target="_blank"
-              onClick={() => clickLink("LancetID")}
-              rel="noopener noreferrer"
-              href="https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30631-9/fulltext#%20"
-            >
-              <i>{Translate("LancetID")}</i>
-            </a>
-            .
-          </p>
-          <h1>{Translate("OurData")}</h1>
-          <p>{Translate("OurDataText", ["Text"])}</p>
-          <p>
-            {Translate("DataDictionaryText", ["FirstParagraph"], null, [
-              false,
-              true,
-            ])}
-            <a
-              rel="noopener noreferrer"
-              onClick={() => clickLink("Manuscript Appendix")}
-              target="_blank"
-              href="https://drive.google.com/file/d/1d8-U0NgjVBTDzdj3rbAYfZyYVp0HRhgj/view?usp=sharing"
-            >
-              {Translate("ManuscriptAppendixText", ["FirstParagraph"], null, [
-                false,
-                true,
-              ])}
-            </a>
-            {Translate("ManuscriptAppendixText", ["SecondParagraph"], null, [
-              false,
-              true,
-            ])}
-            {Translate("DataDictionaryText", ["SecondParagraph"], null, [
-              false,
-              true,
-            ])}
-            <a
-              rel="noopener noreferrer"
-              onClick={() => clickLink("Data Dictionary")}
-              target="_blank"
-              href="https://docs.google.com/spreadsheets/d/1KQbp5T9Cq_HnNpmBTWY1iKs6Etu1-qJcnhdJ5eyw7N8/edit?usp=sharing"
-            >
-              {Translate("DataDictionary")}
-            </a>
-            .
-          </p>
-          <p>
-            {Translate("DataDownload", null, null, [false, true])}
-            <Link to="/About">{Translate("SeroTrackerTeam")}</Link>.
-          </p>
         </div>
 
         <div
