@@ -362,6 +362,7 @@
   "Publication": "Publication",
   "Published": "Publié",
   "References": "Références",
+  "ReferencesTable": "Table de Références",
   "RegionalEstimateRange": "Plage d'estimation régionale",
   "RegionalEstimates": "Estimations régionales",
   "RegulatoryApproval": "Autorisation réglementaire",
@@ -488,7 +489,7 @@
   "ViewFile": "Consulter le fichier",
   "ViewHere": "Consulter ici",
   "Welcome": "Bienvenue à SeroTracker",
-  "WhatWeDo": "Ce que nous faisons",
+  "WhatWeDo": "Ce Que Nous Faisons",
   "WhatWeDoText": {
     "FirstParagraph": "Chez SeroTracker, nous collectons les données publiées et non publiées de séroprévalence pour informer une revue systématique et méta-analyse du SRAS-CoV-2 au niveau mondial. Les données sont collectées pour l’estimation primaire pour chaque source et certains sous-groupes pertinents. Nos méthodes complètes sont accessibles dans le protocole. ",
     "SecondParagraph": "Nous produisons les données pour l’usage académique et publique sur notre site Web. Notre objectif est de mettre à jour nos données chaque semaine. Pour l’information supplémentaire en addition du sommaire général qui suit, s'il vous plaît consultez nos méthodes complètes, accessible dans le protocole de SeroTracker. "
