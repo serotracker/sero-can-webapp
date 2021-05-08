@@ -92,7 +92,7 @@ export default function Data() {
 
   const iframeStyle = {
     background: "transparent",
-    border: "1px solid #ccc",
+    border: "0px",
   };
 
   return (
@@ -106,8 +106,9 @@ export default function Data() {
           <DataButtons />
           <br></br>
           <DataDropdowns />
+          <br></br>
+          <h1 className="mb-0">{Translate("ReferencesTable")}</h1>
         </div>
-        <br></br>
         <div
           className={
             isMobileDeviceOrTablet ? "pb-3 pt-3" : "pb-3 pt-3 reference-table"
@@ -116,7 +117,6 @@ export default function Data() {
           <Segment>
             <iframe
               title="References Table"
-              className="airtable-embed"
               src="https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=cyan&viewControls=on"
               frameBorder="0"
               width="100%"

@@ -157,7 +157,7 @@
     },
     "Question2": {
       "Question": "How do we collect our data?",
-      "Answer": "We conduct regular searches of several databases including Medline, EMBASE, Web of Science, and Europe PMC and targeted google searches. In addition, anyone can submit sources for us to screen and include in our review using this form."
+      "Answer": "We conduct regular searches of several databases including Medline, EMBASE, Web of Science, and Europe PMC and targeted Google searches. In addition, anyone can submit sources for us to screen and include in our review using this form."
     },
     "Question3": {
       "Question": "How do we extract our data from our sources?",
@@ -345,6 +345,7 @@
   "Publication": "Publication",
   "Published": "Published",
   "References": "References",
+  "ReferencesTable": "References Table",
   "RegionalEstimateRange": "Regional Estimate Range",
   "RegionalEstimates": "Regional Estimates",
   "RegionalStudies": "Regional Studies",
@@ -477,7 +478,7 @@
   "ViewFile": "View File",
   "ViewHere": "View Here",
   "Welcome": "Welcome to SeroTracker",
-  "WhatWeDo": "What we do",
+  "WhatWeDo": "What We Do",
   "WhatWeDoText": {
     "FirstParagraph": "At SeroTracker, we collect data and information on SARS-CoV-2 seroprevalence studies by conducting a live systematic review and meta-analysis of published and unpublished data on  seroprevalence. Data is extracted for each source's primary estimate and certain relevant subgroups. Full methods are available in our protocol.",
     "SecondParagraph": "We produce data for both academic and public use on our dashboard. We aim to update our dashboard weekly. For further information beyond the following high-level summary, please see our study protocol and supplementary methods for a detailed explanation of our research processes."

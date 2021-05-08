@@ -32,7 +32,7 @@
 }
 
 .reference-table {
-  width: 80%;
+  width: 60%;
 }
 
 .static-content li {
@@ -131,9 +131,12 @@
 }
 
 .ui.blue.button {
-  background-color: #4d9fff;
+  background-color: #455a64;
   color: #fff;
-  border-radius: 0;
+}
+
+.ui.blue.button:hover {
+  background-color: black;
 }
 
 .ui.accordion .title:not(.ui) {
