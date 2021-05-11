@@ -19,7 +19,7 @@ export default function MaintenanceModal(props: MaintenanceModalProps) {
           closeOnDimmerClick={false}
           open={isOpen}
         >
-          <Modal.Header>{Translate(headerText)} {Translate('TemporaryMaintenance')}</Modal.Header>
+          <Modal.Header>{Translate('TemporaryMaintenance')}</Modal.Header>
           <Modal.Content>
             <p>{Translate('TemporaryMaintenanceDescription')}</p>
           </Modal.Content>
