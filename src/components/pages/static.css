@@ -29,10 +29,6 @@
   width: 95%;
 }
 
-.reference-table {
-  width: 60%;
-}
-
 .static-content li {
   margin-top: 6px;
   margin-bottom: 6px;
@@ -143,4 +139,8 @@
 
 .button-text {
   color: white;
+}
+
+.no-space {
+  display: inline;
 }

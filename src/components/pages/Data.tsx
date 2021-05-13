@@ -20,27 +20,23 @@ function DataButtons() {
   const buttonLabels = [
     {
       label: "OurProtocol",
-      link:
-        "https://docs.google.com/document/d/1NYpszkr-u__aZspFDFa_fa4VBzjAAAAxNxM1rZ1txWU/edit",
+      link: "https://docs.google.com/document/d/1NYpszkr-u__aZspFDFa_fa4VBzjAAAAxNxM1rZ1txWU/edit",
     },
     {
       label: "DataDictionary",
-      link:
-        "https://docs.google.com/spreadsheets/d/1KQbp5T9Cq_HnNpmBTWY1iKs6Etu1-qJcnhdJ5eyw7N8/edit?usp=sharing",
-    },
-    {
-      label: "DownloadCsv",
-      link:
-        "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform",
-    },
-    {
-      label: "SubmitASource",
-      link:
-        "https://docs.google.com/forms/d/e/1FAIpQLSdvNJReektutfMT-5bOTjfnvaY_pMAy8mImpQBAW-3v7_B2Bg/viewform",
+      link: "https://docs.google.com/spreadsheets/d/1KQbp5T9Cq_HnNpmBTWY1iKs6Etu1-qJcnhdJ5eyw7N8/edit?usp=sharing",
     },
     {
       label: "ChangeLog",
       link: "https://airtable.com/shrxpAlF6v0LeRYkA",
+    },
+    {
+      label: "DownloadCsv",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform",
+    },
+    {
+      label: "SubmitASource",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSdvNJReektutfMT-5bOTjfnvaY_pMAy8mImpQBAW-3v7_B2Bg/viewform",
     },
   ];
   const buttons = buttonLabels.map((buttonLabel, index) => (
@@ -77,7 +73,29 @@ function DataDropdowns() {
           <Icon name="dropdown" /> {dropdownQuestion[1]["Question"]}
         </Accordion.Title>
         <Accordion.Content active={activeIndex === index}>
-          <p>{dropdownQuestion[1]["Answer"]}</p>
+          {dropdownQuestion[1]["Links"] ? (
+            <div>
+              {Object.entries(dropdownQuestion[1]["Answer"]).map(
+                (answer, index) => (
+                  <p className="no-space">
+                    {" "}
+                    {answer[1]}{" "}
+                    <a
+                      href={`${
+                        dropdownQuestion[1]["Links"][`Link${index + 1}`]
+                      }`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {dropdownQuestion[1]["LinkTexts"][`LinkText${index + 1}`]}
+                    </a>
+                  </p>
+                )
+              )}
+            </div>
+          ) : (
+            <p>{dropdownQuestion[1]["Answer"]}</p>
+          )}
         </Accordion.Content>
       </Accordion>
     )
@@ -98,8 +116,12 @@ export default function Data() {
   return (
     <>
       <div className="col-12 page">
-        <div className={isMobileDeviceOrTablet ? "" : "static-content"}>
-          <h1>{Translate("WhatWeDo")}</h1>
+        <div
+          className={
+            isMobileDeviceOrTablet ? "static-mobile" : "static-content"
+          }
+        >
+          <h1>{Translate("OurData")}</h1>
           <p>{Translate("WhatWeDoText", ["FirstParagraph"])}</p>
           <p>{Translate("WhatWeDoText", ["SecondParagraph"])}</p>
           <br></br>
@@ -111,7 +133,9 @@ export default function Data() {
         </div>
         <div
           className={
-            isMobileDeviceOrTablet ? "pb-3 pt-3" : "pb-3 pt-3 reference-table"
+            isMobileDeviceOrTablet
+              ? "pb-3 pt-3 static-mobile"
+              : "pb-3 pt-3 static-content"
           }
         >
           <Segment>
