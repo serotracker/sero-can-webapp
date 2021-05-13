@@ -163,7 +163,7 @@
       "Answer": "We collect data from published peer reviewed research articles, preprints, reports, and media (unpublished grey literature). The sources included in our dashboard to date are in the table below."
     },
     "Question2": {
-      "Question": "How does SeroTracker collect our data?",
+      "Question": "How does SeroTracker collect their data?",
       "Answer": "We conduct regular searches of several databases including Medline, EMBASE, Web of Science, and Europe PMC and targeted google searches. In addition, anyone can submit sources for us to screen and include in our review using the Submit a source button above."
     },
     "Question3": {
@@ -179,11 +179,11 @@
       "Answer": "Yes, our data is open-source and free for anyone to use. You can download our complete .csv file using the Download CSV button above. You will first be asked to fill out a form indicating your role, affiliation (if relevant), and type of research you’re conducting - This helps us create datasets that are most useful to you. "
     },
     "Question6": {
-      "Question": "Do I need to be an AirTable user to use your data?",
+      "Question": "Do I need to be an AirTable user to use SeroTracker's data?",
       "Answer": "No. Although our data is presented in an AirTable file, you can export this easily to Excel or other formats."
     },
     "Question7": {
-      "Question": "How do I interpret the variables in your data set?",
+      "Question": "How do I interpret the variables in SeroTracker's data set?",
       "Answer": "Please see our Data Dictionary (using the button above) for explanations of our variables, data types, and descriptions as well as insight into how our data is collected by our research team. It is structured to help interpret our downloadable data set. "
     },
     "Question8": {
