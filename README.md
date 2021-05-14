@@ -19,7 +19,7 @@ As mentioned above, there are three staging instances. Their corresponding links
 |-----------|---------------------------------------------|
 | staging-1 | http://serotracker-staging-1.herokuapp.com  |
 | staging-2 | http://serotracker-staging-2.herokuapp.com  |
-| staging-3 | http://serotracker-staging-1.herokuapp.com  |
+| staging-3 | http://serotracker-staging-3.herokuapp.com  |
 
 
 ### Continuous Integration
