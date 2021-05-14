@@ -15,10 +15,10 @@
       "SupportedBy": "SeroTracker dispose du soutien de",
       "ThroughThe": "à travers le",
       "WHO1": "SeroTracker travaille avec",
-      "WorldHealthOrganization": "l’Organisation mondiale de la santé",
-      "WHO2": "de la santé pour visualiser et synthétiser les résultats des études de",
+      "WorldHealthOrganization": "l’Organisation Mondiale de la Santé",
+      "WHO2": "pour visualiser et synthétiser les résultats des études de",
       "UnityStudies": "séroprévalence Unity.",
-      "WHO3": "SeroTracker et l’Organisation mondiale de la santé remercions le Ministère Fédéral Allemand de la Santé (BMG) Recherche et Développement COVID-19 pour le financement pour soutenir cet effort"
+      "WHO3": "SeroTracker et l’Organisation Mondiale de la Santé remercions le Ministère Fédéral Allemand de la Santé (BMG) Recherche et Développement COVID-19 pour le financement pour soutenir cet effort"
       
     },
     "ContactSection": {
@@ -103,7 +103,7 @@
       "PartTwo": "Professeur adjoint, Université McGill"
     },
     "Tim": {
-      "PartOne": "Directeur, École de santé des populations et de santé mondiale, Université McGill",
+      "PartOne": "Directeur, École de santé des populations et de santé Mondiale, Université McGill",
       "PartTwo": "Directeur général, Groupe de travail sur l’immunité face à la COVID-19"
     },
     "Tyler": {
@@ -254,7 +254,7 @@
   "Media": "Médias",
   "Methods": "Méthodes",
   "MethodsText": {
-    "FirstParagraph": "SeroTracker assure une synthèse systématique mondiale de projets de sérosurveillance du SRAS-CoV-2. Nous filtrons les articles scientifiques, les préimpressions, les rapports gouvernementaux et les articles parus dans les médias afin d'identifier les estimations de prévalence indiquées ci-dessous. Nous mettons à jour nos données avec tous les rapports de séroprévalence que nous avons pu trouver dans nos recherches.",
+    "FirstParagraph": "SeroTracker assure une synthèse systématique Mondiale de projets de sérosurveillance du SRAS-CoV-2. Nous filtrons les articles scientifiques, les préimpressions, les rapports gouvernementaux et les articles parus dans les médias afin d'identifier les estimations de prévalence indiquées ci-dessous. Nous mettons à jour nos données avec tous les rapports de séroprévalence que nous avons pu trouver dans nos recherches.",
     "SecondParagraphPartOne": "Vous pouvez consulter la totalité de nos méthodes",
     "SecondParagraphPartTwo": "Pour soumettre une étude de séroprévalence du SRAS-CoV-2 que nous n'avions pas encore incluse ci-dessous, veuillez utiliser"
   },
