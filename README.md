@@ -3,7 +3,15 @@
 ### Github Pages/Heroku Deployment
 Deployment of static assets for the application occurs as follows:
 - Each push to `master` triggers a deployment to GitHub Pages. The GH action used is: `JamesIves/github-pages-deploy-action@releases/v3`
-- Each push to `staging` triggers a deployment to Heroku. The GH action used is: `akhileshns/heroku-deploy@v3.0.4`
+- Each push to `staging-1`, `staging-2`, and `staging-3` triggers a deployment to Heroku. The GH action used is: `akhileshns/heroku-deploy@v3.0.4`
+  
+As mentioned above, there are three staging instances. Their corresponding links are outlined in the table below.
+
+| Instance  | Link                                        |
+|-----------|---------------------------------------------|
+| staging-1 | http://serotracker-staging-1.herokuapp.com |
+| staging-2 | http://serotracker-staging-2.herokuapp.com  |
+| staging-3 | http://serotracker-staging-1.herokuapp.com  |
 
 The full configurations can be viewed [here](.github/workflows). 
 
