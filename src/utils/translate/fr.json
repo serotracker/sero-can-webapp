@@ -14,10 +14,11 @@
       "PublicHealthAgency": "l'Agence de la santé publique du Canada",
       "SupportedBy": "SeroTracker dispose du soutien de",
       "ThroughThe": "à travers le",
-      "WHO1": "",
-      "WorldHealthOrganization": "",
-      "WHO2": "",
-      "UnityStudies": ""
+      "WHO1": "SeroTracker travaille avec",
+      "WorldHealthOrganization": "l’Organisation mondiale de la santé",
+      "WHO2": "de la santé pour visualiser et synthétiser les résultats des études de",
+      "UnityStudies": "séroprévalence Unity.",
+      "WHO3": "SeroTracker et l’Organisation mondiale de la santé remercions le Ministère Fédéral Allemand de la Santé (BMG) Recherche et Développement COVID-19 pour le financement pour soutenir cet effort"
       
     },
     "ContactSection": {
