@@ -136,7 +136,7 @@ export default function About() {
           <a onClick={() => selectLink("UnityStudies")} href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations">
             {Translate("AboutPage", ["AboutSection", "UnityStudies"], null, [true, false])}
           </a>
-          .
+          {Translate("AboutPage", ["AboutSection", "WHO3"], null, [true, true])}
         </p>
         <p>
           <a onClick={() => selectLink("Mapbox")} href="https://www.mapbox.com/">
