@@ -4,16 +4,22 @@
 Deployment of static assets for the application occurs as follows:
 - Each push to `master` triggers a deployment to GitHub Pages. The GH action used is: `JamesIves/github-pages-deploy-action@releases/v3`
 - Each push to `staging-1`, `staging-2`, and `staging-3` triggers a deployment to Heroku. The GH action used is: `akhileshns/heroku-deploy@v3.0.4`
-  
+
+The full configurations can be viewed [here](.github/workflows).   
+
+#### Adding Secrets
+Refer to [_creating encrypted secrets for a repository_](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository).
+After adding secrets, they can be accessed in a deployment configuration in the following manner: `${{ secrets.<SECRET_NAME> }}`. 
+For example, see how the Mapbox API key is referenced [here](https://github.com/serotracker/sero-can-webapp/blob/master/.github/workflows/deploy-gh-pages.yml#L25).
+
+#### Staging Deployment  
 As mentioned above, there are three staging instances. Their corresponding links are outlined in the table below.
 
 | Instance  | Link                                        |
 |-----------|---------------------------------------------|
-| staging-1 | http://serotracker-staging-1.herokuapp.com |
+| staging-1 | http://serotracker-staging-1.herokuapp.com  |
 | staging-2 | http://serotracker-staging-2.herokuapp.com  |
 | staging-3 | http://serotracker-staging-1.herokuapp.com  |
-
-The full configurations can be viewed [here](.github/workflows). 
 
 
 ### Continuous Integration
