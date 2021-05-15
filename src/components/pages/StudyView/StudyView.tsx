@@ -10,7 +10,8 @@ import StudyViewConfig from "StudyViewConfig";
 export default function StudyView() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   const [state, dispatch] = useContext(AppContext);
-  const url = StudyViewConfig.Country.CAN.Url;
+  //@ts-ignore
+  const url = StudyViewConfig.Country.find(x => x.iso3 === 'CAN').tableauUrl
 
   return (
     <>

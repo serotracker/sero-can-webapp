@@ -11,7 +11,7 @@ const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimat
   const regionString = minString === maxString ? minString : `${minString} - ${maxString}`;
 
   return (
-    <div key={Math.random()} className={"flex fit column popup-heading"}>
+    <div key={Math.random()} className={"flex fit column popup-heading mt-2"}>
       <div key={Math.random()} className="popup-heading pt-1">{title}</div>
       <div key={Math.random()} className="col-12 p-0 popup-text">{Translate('EstimateRange')}: <b>{regionString}</b></div>
       <div key={Math.random()} className="col-12 p-0 popup-text">{Translate('NumberEstimates')}: <b>{regionalEstimate.numEstimates}</b></div>
@@ -19,7 +19,7 @@ const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimat
   )
 }
 
-const CountryPopup = (country : any, language : LanguageType) => {
+const CountryPopup = (country : any, language : LanguageType, onDetailsClick: any) => {
 
   const properties = country?.state
 
@@ -41,11 +41,14 @@ const CountryPopup = (country : any, language : LanguageType) => {
           <div className="fit popup-text">{Translate('NumSeroprevalenceEstimates')}: <b>{properties?.numberOfStudies}</b></div>
         </div>
         {regions.map((o) => createPopupGeographySection(o.Region, o.Name))}
-        <Button 
+        {onDetailsClick ? <Button 
           className="not-found-button mt-2"
-          onClick={() => console.log("")}>
-          View 
-        </Button>
+          onClick={()=>{
+            onDetailsClick()
+          }}>
+          View Details
+        </Button> : ""}
+
       </div>)
   };
 

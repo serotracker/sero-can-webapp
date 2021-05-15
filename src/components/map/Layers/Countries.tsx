@@ -4,17 +4,19 @@ import ReactDOMServer from "react-dom/server";
 import { EstimateGradePrevalence } from "types";
 import mapboxgl from "mapbox-gl";
 import CountryPopup from 'components/map/Popups/CountryPopup'
-import StudyViewConfig from 'StudyViewConfig'
+import StudyViewConfig from '../../../StudyViewConfig'
+import { useHistory } from 'react-router-dom';
 //import { getFeatureBoundingBox } from "utils/EsriMappingUtil";
 
 // Maps estimate grade prevalence data to a match ISO3 code in the countries feature layer
 function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
     estimateGradePrevalences.forEach((country: EstimateGradePrevalence) => {
         if (country && country.testsAdministered && country.alpha3Code) {
-            
-            if (StudyViewConfig.Country[country.alpha3Code] !== null){
 
-            }
+            let studyConfig : any = StudyViewConfig.Country.find(x => x.iso3 === country.alpha3Code)
+
+            StudyViewConfig.Country.hasOwnProperty(country.alpha3Code)
+
             map.setFeatureState(
                 {
                     source: "Countries",
@@ -30,6 +32,7 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
                     nationalEstimate: country.nationalEstimate,
                     regionalEstimate: country.regionalEstimate,
                     sublocalEstimate: country.sublocalEstimate,
+                    studyConfig: studyConfig
                 }
             );
         }
@@ -64,6 +67,7 @@ const Countries = (map: mapboxgl.Map | undefined, estimateGradePrevalences: Esti
 
     const [state] = useContext(AppContext);
     const [popup, setPopup] = useState<mapboxgl.Popup | undefined>(undefined);
+    const history = useHistory();
 
     // If estimates are updated, waits until map is loaded then maps estimate data to country features
     useEffect(() => {
@@ -103,14 +107,19 @@ const Countries = (map: mapboxgl.Map | undefined, estimateGradePrevalences: Esti
             map.on('click', 'Countries', function (e: any) {
                 
                 if (map.queryRenderedFeatures(e.point).filter((f) => f.source === "study-pins").length === 0) {
+                    const country = e.features[0];
                     countryPop
-                      .setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], state.language)))
+                      .setHTML(ReactDOMServer.renderToString(
+                          CountryPopup(
+                            country, 
+                            state.language, 
+                            country.state?.studyConfig ? (() => history.push(`/${state.language}/${country.state.studyConfig.viewUrl}`)) : null )))
                       .setLngLat(e.lngLat)
                       .addTo(map);
                   }
             });
         }
-    }, [map, state.language, popup])
+    }, [map, state.language, popup, history])
 
     return;
 }
