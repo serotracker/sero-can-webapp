@@ -11,9 +11,9 @@
 | VS Code | 6.13.4 | https://code.visualstudio.com/ | Code IDE, not required but popular choice for this project |
 
 #### Starting Application Locally
-First, the the following environment variables, `REACT_APP_MAPBOX_API_KEY` and `REACT_APP_ROUTE` must be set. Talk to a team member to get the keys.
+First, the following environment variables, `REACT_APP_MAPBOX_API_KEY` and `REACT_APP_ROUTE` must be set. Talk to a team member to get the keys.
 
-Then install Npm packages:
+Second, install npm packages:
 ```bash
 npm install
 ```
