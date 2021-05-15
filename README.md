@@ -45,60 +45,23 @@ We can set launch configurations in VS Code for an improved development experien
 }
 ```
 
-### Github Pages/Heroku Deployment
-Deployment of static assets for the application occurs as follows:
-- Each push to `master` triggers a deployment to GitHub Pages. The GH action used is: `JamesIves/github-pages-deploy-action@releases/v3`
-- Each push to `staging-1`, `staging-2`, and `staging-3` triggers a deployment to Heroku. The GH action used is: `akhileshns/heroku-deploy@v3.0.4`
 
-The full configurations can be viewed [here](.github/workflows).   
+### Github Pages Deployment
 
-#### Adding Secrets
-Refer to [_creating encrypted secrets for a repository_](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository).
-After adding secrets, they can be accessed in a deployment configuration in the following manner: `${{ secrets.<SECRET_NAME> }}`. 
-For example, see how the Mapbox API key is referenced [here](https://github.com/serotracker/sero-can-webapp/blob/master/.github/workflows/deploy-gh-pages.yml#L25).
+Deployment of static assets for the application occurs on each push to master. The full configuration can be viewed [here](.github/workflows/deploy-gh-pages.yml).
 
-#### Staging Deployment  
-As mentioned above, there are three staging instances. Their corresponding links are outlined in the table below.
-
-| Instance  | Link                                        |
-|-----------|---------------------------------------------|
-| staging-1 | http://serotracker-staging-1.herokuapp.com  |
-| staging-2 | http://serotracker-staging-2.herokuapp.com  |
-| staging-3 | http://serotracker-staging-3.herokuapp.com  |
-
+  
 
 ### Continuous Integration
-The following commands with GitHub Actions:  
-```
+
+The following commands with GitHub Actions:
+
+```bash
+
 npm install
-npm run build  
 
-npm test
-```  
-The CI configuration can be viewed [here](https://github.com/serotracker/sero-can-webapp/blob/master/.github/workflows/ci.yml).  
-Job results can be viewed [here](https://github.com/serotracker/sero-can-webapp/actions?query=workflow%3ACI).  
-  
-___
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+npm run build
 
-### Available Scripts
+```
 
-In the project directory, you can run:
-
-#### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-#### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-#### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Job results can be viewed [here](https://github.com/serotracker/sero-can-webapp/actions?query=workflow%3ACI).
