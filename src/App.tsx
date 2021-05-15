@@ -19,6 +19,7 @@ import { LanguageType, PageStateEnum } from "./types";
 import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
 import { ANALYZE_URL, CANADA_URL } from "./constants";
+import StudyView from "components/pages/StudyView/StudyView"
 
 function App() {
   const [{ language, explore }, dispatch] = useContext(AppContext);
@@ -128,18 +129,7 @@ function App() {
           />
         </Route>
         <Route path="/:language/Canada">
-          <TableauEmbed
-            url={CANADA_URL}
-            key="CanadianTableau"
-            desktopOptions={{
-              width: "80vw",
-              height: "4100px"
-            }}
-            mobileOptions={{
-              width: "90vw",
-              height: "2800px"
-            }}
-          />
+          <StudyView />
         </Route>
         <Route path="/:language/Data">
           <Data />
