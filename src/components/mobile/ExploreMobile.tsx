@@ -9,6 +9,8 @@ import TotalStats from "../sidebar/left-sidebar/TotalStats";
 import Datepicker from "../sidebar/right-sidebar/datepicker/Datepicker";
 import Filters from "../sidebar/right-sidebar/Filters";
 import Legend from "components/map/Legend";
+import Translate from "utils/translate/translateService";
+import WhoLogo from "components/shared/WhoLogo"
 
 
 export default function ExploreMobile() {
@@ -64,6 +66,14 @@ export default function ExploreMobile() {
             color={'#455a64'}
             style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
             size={"lg"} />
+            <a href="https://www.who.int/" className="d-block mt-3 mx-auto" target="__blank" rel="noopener noreferrer">
+          <WhoLogo className="d-block mx-auto" height="50"/>
+        </a>
+        <p className="d-block mx-3 mt-3">
+          <small>
+          {Translate('WhoSerotrackAndPartnersDisclaimerSmall')}
+          </small>
+        </p>
         </Sidebar>
         <Sidebar.Pusher className="fill flex">
           <div className="info flex legend center-item">
