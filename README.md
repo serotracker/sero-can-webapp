@@ -19,7 +19,7 @@ npm install
 ```
 *Note: This needs to be run when you initially setup the repository and when packages are updated/added/removed.*
 
-Finally, to start the local server, use:
+Third, to start the local server, use:
 ```bash
 npm start
 ```
