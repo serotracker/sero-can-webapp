@@ -4,12 +4,17 @@ import ReactDOMServer from "react-dom/server";
 import { EstimateGradePrevalence } from "types";
 import mapboxgl from "mapbox-gl";
 import CountryPopup from 'components/map/Popups/CountryPopup'
-import { getFeatureBoundingBox } from "utils/EsriMappingUtil";
+import StudyViewConfig from 'StudyViewConfig'
+//import { getFeatureBoundingBox } from "utils/EsriMappingUtil";
 
 // Maps estimate grade prevalence data to a match ISO3 code in the countries feature layer
 function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
     estimateGradePrevalences.forEach((country: EstimateGradePrevalence) => {
         if (country && country.testsAdministered && country.alpha3Code) {
+            
+            if (StudyViewConfig.Country[country.alpha3Code] !== null){
+
+            }
             map.setFeatureState(
                 {
                     source: "Countries",
@@ -102,19 +107,6 @@ const Countries = (map: mapboxgl.Map | undefined, estimateGradePrevalences: Esti
                       .setHTML(ReactDOMServer.renderToString(CountryPopup(e.features[0], state.language)))
                       .setLngLat(e.lngLat)
                       .addTo(map);
-
-                      /*
-                    const bb = getFeatureBoundingBox(e.features[0])
-                    if(bb){
-                        map.fitBounds(
-                        [
-                            [bb.getWest(), bb.getSouth()],
-                            [bb.getEast(), bb.getNorth()],
-                        ],
-                        { padding: { top: 15, bottom: 15, left: 15, right: 15 }}
-                        );
-                    }
-                    */
                   }
             });
         }
