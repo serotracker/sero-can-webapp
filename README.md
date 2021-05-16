@@ -46,23 +46,6 @@ We can set launch configurations in VS Code for an improved development experien
 ```
 
 
-### Github Pages Deployment
-
-Deployment of static assets for the application occurs on each push to master. The full configuration can be viewed [here](.github/workflows/deploy-gh-pages.yml).
-
-  
-
-### Continuous Integration
-
-The following commands with GitHub Actions:
-
-```bash
-
-npm install
-
-npm run build
-
-```
 ### Github Pages/Heroku Deployment
 Deployment of static assets for the application occurs as follows:
 - Each push to `master` triggers a deployment to GitHub Pages. The GH action used is: `JamesIves/github-pages-deploy-action@releases/v3`
