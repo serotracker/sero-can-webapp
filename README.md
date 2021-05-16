@@ -54,9 +54,15 @@ Deployment of static assets for the application occurs as follows:
 The full configurations can be viewed [here](.github/workflows).   
 
 #### Adding Secrets
+##### GitHub
 Refer to [_creating encrypted secrets for a repository_](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository).
-After adding secrets, they can be accessed in a deployment configuration in the following manner: `${{ secrets.<SECRET_NAME> }}`. 
+After adding secrets, they can be accessed in a deployment configuration in the following manner: `${{ secrets.<SECRET_NAME> }}`.
 For example, see how the Mapbox API key is referenced [here](https://github.com/serotracker/sero-can-webapp/blob/master/.github/workflows/deploy-gh-pages.yml#L25).
+
+##### Heroku
+Secrets are added via the Heroku Dashboard. Message Austin to get access to the account.
+Refer to this [article](https://devcenter.heroku.com/articles/config-vars#using-the-heroku-dashboard) to add secrets via the Dashboard.
+
 
 #### Staging Deployment  
 As mentioned above, there are three staging instances. Their corresponding links are outlined in the table below.
