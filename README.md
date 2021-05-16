@@ -60,7 +60,7 @@ After adding secrets, they can be accessed in a deployment configuration in the 
 For example, see how the Mapbox API key is referenced [here](https://github.com/serotracker/sero-can-webapp/blob/master/.github/workflows/deploy-gh-pages.yml#L25).
 
 ##### Heroku
-Secrets are added via the Heroku Dashboard. Message Austin to get access to the account.
+Secrets are added via the Heroku Dashboard. Message Austin to get access to the account.  
 Refer to this [article](https://devcenter.heroku.com/articles/config-vars#using-the-heroku-dashboard) to add secrets via the Dashboard.
 
 
