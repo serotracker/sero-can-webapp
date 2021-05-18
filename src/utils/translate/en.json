@@ -65,7 +65,8 @@
   "Analyze": "Analyze",
   "Article": "Article",
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
-  "BestSeroprevalenceEstimate": "Best Seroprevalence Estimate",
+  "BestSeroprevalenceEstimate": "Best seroprevalence estimate",
+  "VaccineRolloutStatus": "Vaccine availability during study",
   "Biographies": {
     "BruceM": {
       "PartOne": "Associate Scientific Director (Strategy), COVID-19 Immunity Task Force",
@@ -292,7 +293,7 @@
   "PaperTextTwo": "More information about our dashboard can be found in",
   "PlannedSerosurveys": "Planned Serosurveys",
   "Population": "Population",
-  "PopulationGroup": "Population Group",
+  "PopulationGroup": "Population group",
   "PopulationGroupOptions": {
     "All": "All",
     "BloodDonors": "Blood donors",
@@ -404,7 +405,7 @@
     "FirstParagraph": "Filter on study details, including source type (publication, preprint, news, or report) and study status (ongoing, completed).",
     "SecondParagraph": "Risk of bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates."
   },
-  "StudyName": "Study Name",
+  "StudyName": "Study name",
   "StudyPins": "Show Study Pins",
   "StudySize": "Study Size",
   "StudyStatus": "Study Status",

@@ -284,6 +284,7 @@
   },
   "NotReported": "Non signalée",
   "BestSeroprevalenceEstimate": "Meilleure estimation de la séroprévalence",
+  "VaccineRolloutStatus": "Circulation des vaccins pendant l'étude",
   "NumberEstimates": "Nombre d'estimations",
   "NumSeroprevalenceEstimates": "Nombre d'estimations de séroprévalence",
   "OurData": "Nos données",
