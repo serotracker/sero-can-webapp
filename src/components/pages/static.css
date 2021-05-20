@@ -125,16 +125,18 @@
 }
 
 .ui.blue.button {
-  background-color: #455a64;
+  background-color: #55a6ba;
   color: #fff;
 }
 
 .ui.blue.button:hover {
-  background-color: black;
+  background-color: #4d95a7;
 }
 
 .ui.accordion .title:not(.ui) {
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #212121;
 }
 
 .button-text {

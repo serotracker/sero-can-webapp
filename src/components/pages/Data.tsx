@@ -85,6 +85,7 @@ function DataDropdowns() {
         active={activeIndex === index}
         index={index}
         onClick={handleClick}
+        className="accordion-title"
       >
         <Icon name="dropdown" /> {dropdownQuestion[1]["Question"]}
       </Accordion.Title>
@@ -129,7 +130,9 @@ export default function Data() {
             isMobileDeviceOrTablet ? "static-mobile" : "static-content"
           }
         >
-          <h1>{Translate("OurData")}</h1>
+          <h1 className={isMobileDeviceOrTablet ? "pt-3" : "pt-0"}>
+            {Translate("OurData")}
+          </h1>
           <p>{Translate("WhatWeDoText", ["FirstParagraph"])}</p>
           <p>{Translate("WhatWeDoText", ["SecondParagraph"])}</p>
           <br></br>
