@@ -19,7 +19,6 @@
       "WHO2": "to visualize and synthesize results from the",
       "UnityStudies": "Unity seroprevalence studies.",
       "WHO3": "SeroTracker and the World Health Organization are grateful for German Federal Ministry of Health (BMG) COVID-19 Research and Development funding to support this effort."
-      
     },
     "ContactSection": {
       "BulletPointFive": {
@@ -120,7 +119,10 @@
   "CookiePolicy": "Cookie Policy",
   "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
   "Countries": "Countries",
-  "CountriesIncluded": "Countries and Territories Included",
+  "CountriesIncluded": {
+    "PartOne": "In",
+    "PartTwo": "Countries and Territories"
+  },
   "CountriesAndAreas": "Countries and Areas",
   "CountryEstimatesExist": "Seroprevalence Estimates",
   "CountryEstimatesNotExist": "No Seroprevalence Estimates",
@@ -170,7 +172,7 @@
   "ExecutiveDirector": "Executive Director",
   "Explore": "Explore",
   "ExploreBlurb": {
-    "FirstParagraph": "We are conducting a systematic review of SARS-CoV-2 serosurveys globally and our findings are visualized on this dashboard.",
+    "FirstParagraph": "SeroTracker is a dashboard and data platform for SARS-CoV-2 serosurveys. Antibodies against SARS-CoV-2, the virus that causes COVID-19, indicate previous infection or vaccination. We are conducting an ongoing systematic review to track serosurveys (antibody testing-based surveillance efforts) around the world, visualizing findings on this dashboard.",
     "SecondParagraph": "You can configure the data displayed using the “Filter” toolbar on the right, and view the full list of studies we are tracking on the “Data” page."
   },
   "Filter": "Filter",
@@ -178,7 +180,7 @@
   "For": "For",
   "Footer": {
     "CiteAs": "Cite as: ",
-    "LastUpdated": "Database Last Updated",
+    "LastUpdated": "Database up to date to",
     "LancetInfDis": "Lancet Inf Dis",
     "Article": "article"
   },
@@ -188,6 +190,10 @@
   "Geography": "Geography",
   "GeographyTooltip": "Select countries of interest.",
   "Here": "Here",
+  "IncludingParticipants": {
+    "PartOne": "Including",
+    "PartTwo": "Participants"
+  },
   "IndustryMediaTitles": {
     "UnderstandingVirus": "Understanding the Virus and Its Unanswered Questions",
     "KnowledgeHub": "Knowledge hub developed to track SARS-CoV antibody studies",
@@ -277,7 +283,7 @@
     "Button": "Visit Explore Page"
   },
   "NotReported": "Not Reported",
-  "NumSeroprevalenceEstimates": "Number of Seroprevalence Estimates",
+  "NumSeroprevalenceStudies": "Number of Seroprevalence Studies",
   "NumberEstimates": "Number of Estimates",
   "OurData": "Our Data",
   "OurDataText": {
@@ -441,7 +447,6 @@
     "SolidPhaseImmunochromatography": "Solid phase immunochromatography"
   },
   "TestUsed": "Test Used",
-  "TestsAdministered": "Antibody Tests Administered",
   "ThisForm": "This form",
   "Today": "Today",
   "TotalEstimates": "Total Estimates",
