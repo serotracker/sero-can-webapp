@@ -50,6 +50,14 @@ export const setLanguageType = (newLanguage: LanguageType) => {
   language = newLanguage;
 };
 
+/**
+ * Used to translate JSON based on language and return a string
+ * @param text
+ * @param specifier
+ * @param substitution
+ * @param addSpaces
+ * @returns string
+ */
 export default function Translate(
   text: string,
   specifier: string[] | null = null,
@@ -91,5 +99,21 @@ export default function Translate(
     return translatedString as string;
   } catch (e) {
     return `No translation for string ${text}`;
+  }
+}
+
+/**
+ * Used to translate JSON based on language and return an object
+ * @param text
+ * @returns object
+ */
+export function TranslateObject(text: string): object {
+  const translationDictionary: Json =
+    language === LanguageType.english ? (English as Json) : (French as Json);
+
+  try {
+    return translationDictionary[text] as object;
+  } catch (e) {
+    return { error: `No translation object for string ${text}` };
   }
 }

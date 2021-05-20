@@ -1,12 +1,26 @@
 import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
-import { Segment, Button, Accordion, Icon } from "semantic-ui-react";
+import {
+  Segment,
+  Button,
+  Accordion,
+  Icon,
+  AccordionTitleProps,
+} from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../constants";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
-import Translate from "../../utils/translate/translateService";
+import Translate, {
+  TranslateObject,
+} from "../../utils/translate/translateService";
 import "./static.css";
 import MaintenanceModal from "../shared/MaintenanceModal";
+interface DropdownQuestion {
+  Question: string;
+  Answer: string | object;
+  Links?: { [index: string]: string };
+  LinkTexts?: { [index: string]: string };
+}
 
 const clickLink = (link: string) => {
   sendAnalyticsEvent({
@@ -57,49 +71,48 @@ function DataButtons() {
 
 function DataDropdowns() {
   const [activeIndex, setActiveIndex] = useState(-1);
-  const handleClick = (e: any, titleProps: any) => {
-    const { index } = titleProps;
+  const handleClick = (e: any, data: AccordionTitleProps) => {
+    const { index } = data;
     const newIndex = activeIndex === index ? -1 : index;
-    setActiveIndex(newIndex);
+    setActiveIndex(newIndex as number);
   };
-  const dropdownContent = Object.entries(Translate("DropdownQuestions")).map(
-    (dropdownQuestion: any, index) => (
-      <Accordion key={index} fluid styled>
-        <Accordion.Title
-          active={activeIndex === index}
-          index={index}
-          onClick={handleClick}
-        >
-          <Icon name="dropdown" /> {dropdownQuestion[1]["Question"]}
-        </Accordion.Title>
-        <Accordion.Content active={activeIndex === index}>
-          {dropdownQuestion[1]["Links"] ? (
-            <div>
-              {Object.entries(dropdownQuestion[1]["Answer"]).map(
-                (answer, index) => (
-                  <p className="no-space">
-                    {" "}
-                    {answer[1]}{" "}
-                    <a
-                      href={`${
-                        dropdownQuestion[1]["Links"][`Link${index + 1}`]
-                      }`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {dropdownQuestion[1]["LinkTexts"][`LinkText${index + 1}`]}
-                    </a>
-                  </p>
-                )
-              )}
-            </div>
-          ) : (
-            <p>{dropdownQuestion[1]["Answer"]}</p>
-          )}
-        </Accordion.Content>
-      </Accordion>
-    )
-  );
+
+  const dropdownContent = Object.entries(
+    TranslateObject("DropdownQuestions")
+  ).map((dropdownQuestion: [string, DropdownQuestion], index: number) => (
+    <Accordion key={index} fluid styled>
+      <Accordion.Title
+        active={activeIndex === index}
+        index={index}
+        onClick={handleClick}
+      >
+        <Icon name="dropdown" /> {dropdownQuestion[1]["Question"]}
+      </Accordion.Title>
+      <Accordion.Content active={activeIndex === index}>
+        {dropdownQuestion[1]["Links"] ? (
+          <div>
+            {Object.entries(dropdownQuestion[1]["Answer"]).map(
+              (answer, index) => (
+                <p className="no-space">
+                  {" "}
+                  {answer[1]}{" "}
+                  <a
+                    href={dropdownQuestion[1]["Links"]?.[`Link${index + 1}`]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {dropdownQuestion[1]["LinkTexts"]?.[`LinkText${index + 1}`]}
+                  </a>
+                </p>
+              )
+            )}
+          </div>
+        ) : (
+          <p>{dropdownQuestion[1]["Answer"]}</p>
+        )}
+      </Accordion.Content>
+    </Accordion>
+  ));
   return <div>{dropdownContent}</div>;
 }
 
@@ -107,11 +120,6 @@ export default function Data() {
   const isMobileDeviceOrTablet = useMediaQuery({
     maxDeviceWidth: mobileDeviceOrTabletWidth,
   });
-
-  const iframeStyle = {
-    background: "transparent",
-    border: "0px",
-  };
 
   return (
     <>
@@ -142,10 +150,7 @@ export default function Data() {
             <iframe
               title="References Table"
               src="https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=cyan&viewControls=on"
-              frameBorder="0"
-              width="100%"
-              height="533"
-              style={iframeStyle}
+              className="iframe-style"
             ></iframe>
           </Segment>
         </div>

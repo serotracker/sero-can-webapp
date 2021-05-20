@@ -141,6 +141,13 @@
   color: white;
 }
 
+.iframe-style {
+  background: transparent;
+  border: 0px;
+  width: 100%;
+  height: 533px;
+}
+
 .no-space {
   display: inline;
 }
