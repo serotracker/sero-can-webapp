@@ -171,7 +171,7 @@
       "Answer": "We have an extensive research team trained in health sciences and epidemiology who manually review articles and records seroprevalence estimates into AirTable, our database managing software. The processes and rules we follow to extract data is available in our study protocol document and AirTable data dictionary."
     },
     "Question4": {
-      "Question": "What data shows up on the map?",
+      "Question": "How does SeroTracker’s data show up on the map?",
       "Answer": "Data inputted into Airtable is automatically run through a software pipeline that cleans it and computes additional information (e.g. a study’s geographic coordinates). The outputs of the pipeline are then stored in a separate database, which is queried by serotracker.com to serve the Explore tab."
     },
     "Question5": {
