@@ -118,7 +118,7 @@
   "CookiePolicyBody": "Nous utilisons des fichiers témoins pour nous permettre de livrer une meilleure expérience d'utilisation et nous ne collectons jamais de données personnelles. En utilisant notre site Internet, vous confirmez que vous avez lu et accepté nos ",
   "Countries": "Pays",
   "CountriesIncluded": {
-    "PartOne": "Dans",
+    "PartOne": "dans",
     "PartTwo": "pays et territories"
   },
   "CountriesAndAreas": "Pays et régions",
@@ -191,7 +191,7 @@
   "GeographyTooltip": "Sélectionner les pays concernés.",
   "Here": "Ici",
   "IncludingParticipants": {
-    "PartOne": "Dont",
+    "PartOne": "dont",
     "PartTwo": "participants"
   },
   "IndustryMediaTitles": {
@@ -291,7 +291,6 @@
   "NotReported": "Non signalée",
   "BestSeroprevalenceEstimate": "Meilleure estimation de la séroprévalence",
   "NumberEstimates": "Nombre d'estimations",
-  "NumSeroprevalenceStudies": "Nombre d'études de séroprévalence",
   "OurData": "Nos données",
   "OurDataText": {
     "PointOne": "saisissent la totalité des études indiquant des estimations de prévalence",
@@ -363,6 +362,7 @@
   "SeroprevalenceBy": "Séroprévalence par",
   "SeroPrevalenceByCountry": "Estimations cumulatives de séroprévalence dans différents pays",
   "SeroprevalenceScale": "Échelle de séroprévalence",
+  "SeroprevalenceStudies": "etudes de séroprévalence",
   "SeroprevalenceScaleTooltip": "Créé à partir de la transformation par logit de la valeur maximale afin de déterminer les 'coffres'",
   "SeroprevalenceTooltip": {
     "FirstParagraph": "Prévalence d'anticorps contre le SRAS-CoV-2, cumulée dans les filtres que vous avez sélectionnés.",

@@ -120,8 +120,8 @@
   "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
   "Countries": "Countries",
   "CountriesIncluded": {
-    "PartOne": "In",
-    "PartTwo": "Countries and Territories"
+    "PartOne": "in",
+    "PartTwo": "countries and territories"
   },
   "CountriesAndAreas": "Countries and Areas",
   "CountryEstimatesExist": "Seroprevalence Estimates",
@@ -191,8 +191,8 @@
   "GeographyTooltip": "Select countries of interest.",
   "Here": "Here",
   "IncludingParticipants": {
-    "PartOne": "Including",
-    "PartTwo": "Participants"
+    "PartOne": "including",
+    "PartTwo": "participants"
   },
   "IndustryMediaTitles": {
     "UnderstandingVirus": "Understanding the Virus and Its Unanswered Questions",
@@ -283,7 +283,6 @@
     "Button": "Visit Explore Page"
   },
   "NotReported": "Not Reported",
-  "NumSeroprevalenceStudies": "Number of Seroprevalence Studies",
   "NumberEstimates": "Number of Estimates",
   "OurData": "Our Data",
   "OurDataText": {
@@ -360,6 +359,7 @@
   "SeroprevalenceBy": "Seroprevalence by",
   "SeroprevalenceScale": "Seroprevalence Scale",
   "SeroprevalenceScaleTooltip": "Made from the logit transform of the maximum value to determine the 'bins'",
+  "SeroprevalenceStudies": "seroprevalence studies",
   "SeroprevalenceTooltip": {
     "FirstParagraph": "Prevalence of antibodies against SARS-CoV-2, aggregated within the filters you have selected.",
     "SecondParagraph": "NB: This should not be interpreted as a representative estimate of seroprevalence in the region of interest, especially if the aggregated studies have biased samples.",
