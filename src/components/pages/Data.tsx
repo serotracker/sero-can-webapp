@@ -152,8 +152,12 @@ export default function Data() {
           <Segment>
             <iframe
               title="References Table"
-              src="https://airtable.com/embed/shraXWPJ9Yu7ybowM?backgroundColor=cyan&viewControls=on"
               className="iframe-style"
+              src={
+                isMobileDeviceOrTablet
+                  ? "https://airtable.com/embed/shrtuN7F8x4bdkdDA?backgroundColor=cyan&layout=card&viewControls=on"
+                  : "https://airtable.com/embed/shrtuN7F8x4bdkdDA?backgroundColor=cyan&viewControls=on"
+              }
             ></iframe>
           </Segment>
         </div>
