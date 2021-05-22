@@ -19,7 +19,7 @@ import { LanguageType, PageStateEnum } from "./types";
 import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
 import { ANALYZE_URL, CANADA_URL } from "./constants";
-import StudyView from "components/pages/StudyView/StudyView"
+import Studies from "components/pages/Studies/Studies";
 
 function App() {
   const [{ language, explore }, dispatch] = useContext(AppContext);
@@ -128,8 +128,8 @@ function App() {
             }}
           />
         </Route>
-        <Route path="/:language/Canada">
-          <StudyView />
+        <Route path="/:language/Studies/:name">
+          <Studies />
         </Route>
         <Route path="/:language/Data">
           <Data />

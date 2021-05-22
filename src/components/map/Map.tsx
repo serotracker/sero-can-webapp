@@ -6,7 +6,11 @@ import MapboxMap from "../map/MapboxMap";
 import "components/map/MapboxMap.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-const Map = (): any => {
+interface MapProps {
+  mapConfig?: any
+}
+
+const Map = ( {mapConfig}: MapProps): any => {
   const [state] = useContext(AppContext);
 
   return (
@@ -15,7 +19,7 @@ const Map = (): any => {
       <div className="info flex legend center-item">
         <Legend />
       </div>
-      <MapboxMap />
+      <MapboxMap mapConfig={mapConfig} />
     </>
   );
 };

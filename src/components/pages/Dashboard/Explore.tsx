@@ -9,6 +9,13 @@ import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
 import Map from "components/map/Map";
 
+const EXPLORE_MAP_CONFIG = {
+  center: [10, 30],
+  zoom: 2,
+  minZoom: 2,
+  maxZoom: 14,
+}
+
 export default function Explore() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   const [_, dispatch] = useContext(AppContext);
@@ -36,7 +43,7 @@ export default function Explore() {
               <LeftSidebar page={PageStateEnum.explore} />
             </div>
             <div className="col-8 p-0 flex">
-              <Map />
+              <Map mapConfig={EXPLORE_MAP_CONFIG}/>
             </div>
             <div className="col-2 p-0 flex">
               <RightSidebar page={PageStateEnum.explore} />

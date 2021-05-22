@@ -40,12 +40,21 @@ export const MapSymbology = {
     }
 }
 
-export const MapUrlResource = {
+export const MapResources = {
     WHO_BASEMAP : "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer",
     WHO_COUNTRY_VECTORTILES : "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer"
 }
 
-const MapConfig = {
+export const DefaultMapboxMapOptions = {
+    center: [10, 30],
+    zoom: 2,
+    minZoom: 2,
+    maxZoom: 14,
+    attributionControl: false,
+    doubleClickZoom: false
+}
+
+export const Expressions = {
     Studies: {
         "circle-color": [
           "match",
@@ -103,5 +112,3 @@ const MapConfig = {
         ]
       }
 }
-
-export default MapConfig;

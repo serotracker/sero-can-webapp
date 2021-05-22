@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useRef, useState, Dispatch } from "react";
 import { AppContext } from "context";
-import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "utils/EsriMappingUtil";
+import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "utils/MappingUtil";
 import Countries from "components/map/Layers/Countries";
 import StudyPins from "components/map/Layers/StudyPins";
-import { MapUrlResource } from 'components/map/MapConfig'
+import { MapResources, DefaultMapboxMapOptions } from 'components/map/MapConfig'
 // @ts-ignore
 // eslint-disable-next-line
 import mapboxgl, { Style } from '!mapbox-gl';
@@ -17,7 +17,7 @@ mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worke
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY as string;
 
 function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>) {
-  getEsriVectorSourceStyle(MapUrlResource.WHO_COUNTRY_VECTORTILES).then((style: mapboxgl.Style) => {
+  getEsriVectorSourceStyle(MapResources.WHO_COUNTRY_VECTORTILES).then((style: mapboxgl.Style) => {
     addEsriLayersFromVectorSourceStyle(style, map);
     const styleJson: Style = map.getStyle();
     let CountryPolygonsMoved = false;
@@ -42,7 +42,11 @@ function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>) {
   });
 }
 
-const MapboxGLMap = (): any => {
+interface MapboxMapProps {
+  mapConfig?: any
+}
+
+const MapboxMap = ( {mapConfig}: MapboxMapProps ): any => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [state, dispatch] = useContext(AppContext);
   const [map, setMap] = useState<mapboxgl.Map | undefined>(undefined);
@@ -50,19 +54,18 @@ const MapboxGLMap = (): any => {
   // Creates map, only runs once
   useEffect(() => {
     (async () => {
-      const baseMapStyle = await getEsriVectorSourceStyle(MapUrlResource.WHO_BASEMAP);
+      const baseMapStyle = await getEsriVectorSourceStyle(MapResources.WHO_BASEMAP);
 
-      const m = new mapboxgl.Map({
-        //@ts-ignore
-        container: mapContainerRef.current,
-        style: baseMapStyle,
-        center: [10, 30],
-        zoom: 2,
-        minZoom: 2,
-        maxZoom: 14,
-        attributionControl: false,
-        doubleClickZoom: false
-      });
+      const options = { // Merges options together to configure map
+        ...{
+          container: mapContainerRef.current,
+          style: baseMapStyle,
+        },
+        ...DefaultMapboxMapOptions,
+        ...mapConfig,
+      };
+
+      const m = new mapboxgl.Map(options);
 
       m.on("load", () => {
         mapOnLoad(m, dispatch);
@@ -84,4 +87,4 @@ const MapboxGLMap = (): any => {
   );
 };
 
-export default MapboxGLMap;
+export default MapboxMap;

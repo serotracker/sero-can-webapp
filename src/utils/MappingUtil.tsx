@@ -1,6 +1,6 @@
 import mapboxgl, { LngLat } from "mapbox-gl";
 import httpClient from "../httpClient";
-import MapConfig from "components/map/MapConfig"
+import { Expressions } from "components/map/MapConfig"
 
 // Params: url - to an esri vector tile service
 // Returns: Modified style object with attributes for Mapbox GL JS compatability 
@@ -32,7 +32,7 @@ export async function getEsriVectorSourceStyle(url: string) {
     const l = style.layers[0] as mapboxgl.Layer;
     if (l.id === "Countries") {
       source.promoteId = { "Countries": "CODE" }
-      l.paint = MapConfig.Countries
+      l.paint = Expressions.Countries
     }
 
     return style

@@ -7,7 +7,7 @@ import httpClient from "httpClient";
 import usePrevious from "utils/usePrevious"
 import mapboxgl from "mapbox-gl";
 import generateSourceFromRecords from "utils/GeoJsonGenerator";
-import MapConfig from "components/map/MapConfig"
+import {Expressions} from "components/map/MapConfig"
 
 const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
   const features = map.querySourceFeatures('study-pins', {
@@ -43,7 +43,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
         id: "study-pins",
         type: "circle",
         source: "study-pins",
-        paint: MapConfig.Studies as mapboxgl.CirclePaint
+        paint: Expressions.Studies as mapboxgl.CirclePaint
       });
     }
     else if (map && map.getLayer("study-pins")) {
