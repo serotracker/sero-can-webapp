@@ -285,6 +285,10 @@
   "Paper": "Paper",
   "PaperText": "Our first manuscript, describing lessons from serosurveys up to May 1, can be found on",
   "PaperTextTwo": "More information about our dashboard can be found in",
+  "Partnerships": "Partnerships",
+  "PartnershipsList": {
+    "Canada": "Canada (CITF)"
+  },
   "PlannedSerosurveys": "Planned Serosurveys",
   "Population": "Population",
   "PopulationGroup": "Population Group",
