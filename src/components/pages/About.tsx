@@ -5,6 +5,7 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 import Translate from "../../utils/translate/translateService";
+import WhoLogo from "components/shared/WhoLogo";
 import "./static.css";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 import HealthAgencyLogo from "../../assets/images/public-health-agency.png";
@@ -51,22 +52,12 @@ export default function About() {
           );
         })}
         {linkedIn ? (
-          <a
-            href={linkedIn}
-            onClick={() => selectItem("LinkedIn", name)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={linkedIn} onClick={() => selectItem("LinkedIn", name)} target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon icon={faLinkedin} className="mr-2 linked-in" />
           </a>
         ) : null}
         {twitter ? (
-          <a
-            href={twitter}
-            onClick={() => selectItem("Twitter", name)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={twitter} onClick={() => selectItem("Twitter", name)} target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon icon={faTwitter} className="mr-2 twitter" />
           </a>
         ) : null}
@@ -84,12 +75,7 @@ export default function About() {
         <h1>{Translate("AboutSeroTracker")}</h1>
         <p>
           {Translate("AboutPage", ["AboutSection", "PartOne"])}
-          <b>
-            {Translate("AboutPage", ["AboutSection", "PartTwo"], null, [
-              true,
-              false,
-            ])}
-          </b>
+          <b>{Translate("AboutPage", ["AboutSection", "PartTwo"], null, [true, false])}</b>
         </p>
         <p>
           <a
@@ -110,11 +96,7 @@ export default function About() {
             target="__blank"
             rel="noopener noreferrer"
           >
-            <img
-              src={HealthAgencyLogo}
-              alt="Public Health Agency Logo"
-              height="45"
-            ></img>
+            <img src={HealthAgencyLogo} alt="Public Health Agency Logo" height="45"></img>
           </a>
           <a
             href="https://cumming.ucalgary.ca/centres/centre-health-informatics"
@@ -122,74 +104,42 @@ export default function About() {
             target="__blank"
             rel="noopener noreferrer"
           >
-            <img
-              src={UcalgaryLogo}
-              alt="Centre for Health Informatics"
-              height="40"
-            ></img>
+            <img src={UcalgaryLogo} alt="Centre for Health Informatics" height="40"></img>
+          </a>
+          <a href="https://www.who.int/" className="px-2" target="__blank" rel="noopener noreferrer">
+            <WhoLogo height="50"/>
           </a>
         </p>
         <p>
           {Translate("AboutPage", ["AboutSection", "SupportedBy"])}
-          <a
-            onClick={() => selectLink("Public Health Agency")}
-            href="https://www.canada.ca/en/public-health.html"
-          >
-            {Translate(
-              "AboutPage",
-              ["AboutSection", "PublicHealthAgency"],
-              null,
-              [true, true]
-            )}
+          <a onClick={() => selectLink("Public Health Agency")} href="https://www.canada.ca/en/public-health.html">
+            {Translate("AboutPage", ["AboutSection", "PublicHealthAgency"], null, [true, true])}
           </a>
           {Translate("AboutPage", ["AboutSection", "ThroughThe"])}
-          <a
-            onClick={() => selectLink("ITF Website")}
-            href="https://www.covid19immunitytaskforce.ca/"
-          >
-            {Translate(
-              "AboutPage",
-              ["AboutSection", "Covid19ImmunityTaskForce"],
-              null,
-              [true, true]
-            )}
+          <a onClick={() => selectLink("ITF Website")} href="https://www.covid19immunitytaskforce.ca/">
+            {Translate("AboutPage", ["AboutSection", "Covid19ImmunityTaskForce"], null, [true, true])}
           </a>
           {Translate("AboutPage", ["AboutSection", "HostedAt"])}
           <a
             onClick={() => selectLink("Centre for Health Informatics")}
             href="https://cumming.ucalgary.ca/centres/centre-health-informatics"
           >
-            {Translate(
-              "AboutPage",
-              ["AboutSection", "HealthInformatics"],
-              null,
-              [true, true]
-            )}
+            {Translate("AboutPage", ["AboutSection", "HealthInformatics"], null, [true, true])}
           </a>
         </p>
         <p>
-          {Translate("AboutPage", ["AboutSection", "MappingTheExtent"], null, [
-            true,
-            false,
-          ])}
-          <a
-            onClick={() => selectLink("Serological Hub")}
-            href="https://www.covid19immunitytaskforce.ca/research/global-serological-knowledge-hub/"
-          >
-            {Translate(
-              "AboutPage",
-              ["AboutSection", "GlobalSerologicalKnowledgeHub"],
-              null,
-              [true, false]
-            )}
+          {Translate("AboutPage", ["AboutSection", "WHO1"])}
+          <a onClick={() => selectLink("WorldHealthOrganization")} href="https://www.who.int/">
+            {Translate("AboutPage", ["AboutSection", "WorldHealthOrganization"], null, [true, true])}
           </a>
-          .
+          {Translate("AboutPage", ["AboutSection", "WHO2"])}
+          <a onClick={() => selectLink("UnityStudies")} href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations">
+            {Translate("AboutPage", ["AboutSection", "UnityStudies"], null, [true, false])}
+          </a>
+          {Translate("AboutPage", ["AboutSection", "WHO3"], null, [true, true])}
         </p>
         <p>
-          <a
-            onClick={() => selectLink("Mapbox")}
-            href="https://www.mapbox.com/"
-          >
+          <a onClick={() => selectLink("Mapbox")} href="https://www.mapbox.com/">
             Mapbox
           </a>{" "}
           {Translate("AboutPage", ["Mapbox"])}
@@ -197,65 +147,19 @@ export default function About() {
         <h2>{Translate("ContactUs")}</h2>
         <div>
           <p>
-            {Translate(
-              "AboutPage",
-              ["ContactSection", "BulletPointOne", "PartOne"],
-              null,
-              [true, true]
-            )}
-            <a href="mailto:rahul.arora@balliol.ox.ac.uk">
-              rahul.arora@balliol.ox.ac.uk
-            </a>
-            {Translate(
-              "AboutPage",
-              ["ContactSection", "BulletPointOne", "PartTwo"],
-              null,
-              [true, true]
-            )}
-            <a href="mailto:tingting.yan@mail.utoronto.ca">
-              tingting.yan@mail.utoronto.ca
-            </a>
-            .
-            {Translate(
-              "AboutPage",
-              ["ContactSection", "BulletPointOne", "PartThree"],
-              null,
-              [true, true]
-            )}
-            <a href="mailto:media@covid19immunitytaskforce.ca">
-              media@covid19immunitytaskforce.ca
-            </a>
-            {Translate(
-              "AboutPage",
-              ["ContactSection", "BulletPointOne", "PartFour"],
-              null,
-              [true, true]
-            )}
-            <a href="mailto:kelly.johnston2@ucalgary.ca">
-              kelly.johnston2@ucalgary.ca
-            </a>
-            .
+            {Translate("AboutPage", ["ContactSection", "BulletPointOne", "PartOne"], null, [true, true])}
+            <a href="mailto:rahul.arora@balliol.ox.ac.uk">rahul.arora@balliol.ox.ac.uk</a>
+            {Translate("AboutPage", ["ContactSection", "BulletPointOne", "PartTwo"], null, [true, true])}
+            <a href="mailto:tingting.yan@mail.utoronto.ca">tingting.yan@mail.utoronto.ca</a>.
+            {Translate("AboutPage", ["ContactSection", "BulletPointOne", "PartThree"], null, [true, true])}
+            <a href="mailto:media@covid19immunitytaskforce.ca">media@covid19immunitytaskforce.ca</a>
+            {Translate("AboutPage", ["ContactSection", "BulletPointOne", "PartFour"], null, [true, true])}
+            <a href="mailto:kelly.johnston2@ucalgary.ca">kelly.johnston2@ucalgary.ca</a>.
           </p>
           <p>
-            {Translate("AboutPage", [
-              "ContactSection",
-              "BulletPointFive",
-              "PartOne",
-            ])}
-            <b>
-              {Translate(
-                "AboutPage",
-                ["ContactSection", "BulletPointFive", "PartTwo"],
-                null,
-                [true, false]
-              )}
-            </b>
-            {Translate(
-              "AboutPage",
-              ["ContactSection", "BulletPointFive", "PartThree"],
-              null,
-              [true, true]
-            )}
+            {Translate("AboutPage", ["ContactSection", "BulletPointFive", "PartOne"])}
+            <b>{Translate("AboutPage", ["ContactSection", "BulletPointFive", "PartTwo"], null, [true, false])}</b>
+            {Translate("AboutPage", ["ContactSection", "BulletPointFive", "PartThree"], null, [true, true])}
             <a
               onClick={() => selectLink("Form Open")}
               rel="noopener noreferrer"
@@ -272,10 +176,7 @@ export default function About() {
         <div className="bio-grid-container">
           {renderBioBlock(
             "Rahul Arora",
-            [
-              Translate("UniversityOf", null, { NAME: "Oxford" }),
-              Translate("UniversityOf", null, { NAME: "Calgary" }),
-            ],
+            [Translate("UniversityOf", null, { NAME: "Oxford" }), Translate("UniversityOf", null, { NAME: "Calgary" })],
             "https://www.linkedin.com/in/rahularorayyc/",
             "rahularoradfs@gmail.com"
           )}
@@ -291,20 +192,14 @@ export default function About() {
         <div className="bio-grid-container">
           {renderBioBlock(
             "Niklas Bobrovitz ",
-            [
-              Translate("UniversityOf", null, { NAME: "Oxford" }),
-              Translate("UniversityOf", null, { NAME: "Toronto" }),
-            ],
+            [Translate("UniversityOf", null, { NAME: "Oxford" }), Translate("UniversityOf", null, { NAME: "Toronto" })],
             "https://www.linkedin.com/in/nik-bobrovitz-19a117179/",
             "niklas.bobrovitz@mail.utoronto.ca",
             "https://twitter.com/nikbobrovitz"
           )}
           {renderBioBlock(
             "Emily Boucher",
-            [
-              Translate("SchoolName", ["Cumming"]),
-              Translate("UniversityOf", null, { NAME: "Calgary" }),
-            ],
+            [Translate("SchoolName", ["Cumming"]), Translate("UniversityOf", null, { NAME: "Calgary" })],
             null,
             "emily.boucher@ucalgary.ca"
           )}
@@ -414,10 +309,7 @@ export default function About() {
           )}
           {renderBioBlock(
             "Ewan May",
-            [
-              Translate("SchoolName", ["Schulich"]),
-              Translate("UniversityOf", null, { NAME: "Calgary" }),
-            ],
+            [Translate("SchoolName", ["Schulich"]), Translate("UniversityOf", null, { NAME: "Calgary" })],
             "https://www.linkedin.com/in/ewan-may",
             "ewan.may@ucalgary.ca"
           )}
@@ -453,9 +345,7 @@ export default function About() {
             "noel.loo.188@gmail.com"
           )}
         </div>
-        <h2 className="team-name-text">
-          {Translate("PrivateSectorMonitoringTeam")}
-        </h2>
+        <h2 className="team-name-text">{Translate("PrivateSectorMonitoringTeam")}</h2>
         <div className="bio-grid-container">
           {renderBioBlock(
             "Nathan Duarte",
@@ -470,12 +360,7 @@ export default function About() {
             null,
             "abhinav.arunpillai@ucalgary.ca"
           )}
-          {renderBioBlock(
-            "Natalie Duarte",
-            [],
-            null,
-            "natalieaduarte@gmail.com"
-          )}
+          {renderBioBlock("Natalie Duarte", [], null, "natalieaduarte@gmail.com")}
           {renderBioBlock(
             "Sean D'Mello",
             [Translate("UniversityOf", null, { NAME: "Waterloo" })],
@@ -484,9 +369,7 @@ export default function About() {
             "https://twitter.com/SeanDMello1"
           )}
         </div>
-        <h2 className="team-name-text">
-          {Translate("ScientificAdvisorsAndCollaborators")}
-        </h2>
+        <h2 className="team-name-text">{Translate("ScientificAdvisorsAndCollaborators")}</h2>
         <div className="bio-grid-container">
           {renderBioBlock("Tim Evans", [
             Translate("Biographies", ["Tim", "PartOne"]),

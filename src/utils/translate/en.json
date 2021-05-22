@@ -13,7 +13,12 @@
       "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide.",
       "PublicHealthAgency": "Public Health Agency of Canada",
       "SupportedBy": "SeroTracker is supported by the",
-      "ThroughThe": "through the"
+      "ThroughThe": "through the",
+      "WHO1": "SeroTracker is working with the",
+      "WorldHealthOrganization": "World Health Organization",
+      "WHO2": "to visualize and synthesize results from the",
+      "UnityStudies": "Unity seroprevalence studies.",
+      "WHO3": "SeroTracker and the World Health Organization are grateful for German Federal Ministry of Health (BMG) COVID-19 Research and Development funding to support this effort."
     },
     "ContactSection": {
       "BulletPointFive": {
@@ -51,7 +56,7 @@
       "FirstSentence": "The seroprevalence shown for each country or factor is calculated by ",
       "SecondSentence": "all seroprevalence estimates that match the filters you specify."
     },
-    "SecondParagraph": "Default filters: national and regional estimates, in the general population and blood donors. ",
+    "SecondParagraph": "Default filters: Country/Territory-Wide and regional estimates, in the general population and blood donors. ",
     "ThirdParagraph": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high Risk of bias.",
     "Title": "Analysis Methods",
     "Tooltip": "The aggregation technique used is fixed-effects, inverse-variance-weighted meta-analysis of prevalence, with the Freeman-Tukey double arcsin transform used to stabilize variance. Records over sample size MIN_DENOMINATOR considered."
@@ -107,6 +112,7 @@
     }
   },
   "BlankUniversity": "NAME University",
+  "ChangeLog": "Change log",
   "CPPInvestmentBoard": "CPP Investment Board",
   "ChangeSettings": "Change Settings",
   "CoDirector": "Co-Director",
@@ -114,7 +120,10 @@
   "CookiePolicy": "Cookie Policy",
   "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
   "Countries": "Countries",
-  "CountriesIncluded": "Countries Included",
+  "CountriesIncluded": {
+    "PartOne": "in",
+    "PartTwo": "countries and territories"
+  },
   "CountriesAndAreas": "Countries and Areas",
   "CountryEstimatesExist": "Seroprevalence Estimates",
   "CountryEstimatesNotExist": "No Seroprevalence Estimates",
@@ -128,10 +137,10 @@
   "Dashboard": "Dashboard",
   "Data": "Data",
   "DatabaseUptoDateTo": "Database Up to Date To",
-  "DataDictionary": "data dictionary",
-  "DataDictionaryContent": {
-    "DataDictionaryContentParagraphOne": "For more information and context about our data, please take a look at our",
-    "DataDictionaryContentParagraphTwo": "and"
+  "DataDictionary": "Data dictionary",
+  "DataDictionaryText": {
+    "FirstParagraph": "For more information and context about our data, please take a look at our",
+    "SecondParagraph": "and"
   },
   "DataDownload": "To download a list of all studies in our database and summary seroprevalence estimates, please click the 'Download CSV' link on the bottom right of this page. If you require additional data or information about this data to conduct your analysis, please do not hesitate to contact the",
   "DateRange": "Date Range",
@@ -140,7 +149,6 @@
   "DemographicsTooltip": "Filter on demographic variables, including population group, sex, and age group.",
   "Details": "Details",
   "DevelopmentTeam": "Development Team",
-  "DisclaimerBody": "The names of locations included on the Website correspond with the official designations used by the simplemaps.com . The presentation of material therein does not imply the expression of any opinion whatsoever on the part of the SeroTracker team, the SeroTracker team members or their affiliated institutions, or The COVID-19 Immunity Task Force concerning the legal status of any country, area or territory or of its authorities. The depiction and use of boundaries, geographic names and related data shown on maps and included in lists, tables, documents, and databases on this website are not warranted to be error free nor do they necessarily imply official endorsement or acceptance by the SeroTracker team, the SeroTracker team members or their affiliated institutions, or The COVID-19 Immunity Task Force.",
   "DisclaimerFooter": " *The representatives of SeroTracker are listed on the SeroTracker website. ",
   "DisclaimerList1": "This website and its contents herein, including all data, mapping, and analysis (“Website”), copyright 2020 SeroTracker, all rights reserved, is provided solely for non-profit public health, educational, and academic research purposes. You should not rely on this Website for medical advice or guidance. ",
   "DisclaimerList2": "Use of the Website by commercial parties and/or in commerce without explicit written permission by a representative* of SeroTracker is strictly prohibited. Redistribution of the Website or the aggregated data set underlying the Website without explicit written permission by a representative* of SeroTracker is also strictly prohibited.",
@@ -149,6 +157,49 @@
   "DisclaimerList5": "Any use of the SeroTracker or The COVID-19 Immunity Task Force names, logos, trademarks, and/or trade dress in a factually inaccurate manner or for marketing, promotional or commercial purposes without explicit written permission by a representative* of SeroTracker is strictly prohibited. ",
   "DisclaimerList6": "These terms and conditions are subject to change. Your use of the Website constitutes your acceptance of these terms and conditions and any future modifications thereof.",
   "DisclaimerListHeader": "Terms and Conditions of Website Use:",
+  "DropdownQuestions": {
+    "Question1": {
+      "Question": "Where does SeroTracker's data come from?",
+      "Answer": "We collect data from published peer reviewed research articles, preprints, reports, and media (unpublished grey literature). The sources included in our dashboard to date are in the table below."
+    },
+    "Question2": {
+      "Question": "How does SeroTracker collect their data?",
+      "Answer": "We conduct regular searches of several databases including Medline, EMBASE, Web of Science, and Europe PMC and targeted google searches. In addition, anyone can submit sources for us to screen and include in our review using the Submit a source button above."
+    },
+    "Question3": {
+      "Question": "How does SeroTracker extract data from their sources?",
+      "Answer": "We have an extensive research team trained in health sciences and epidemiology who manually review articles and records seroprevalence estimates into AirTable, our database managing software. The processes and rules we follow to extract data is available in our study protocol document and AirTable data dictionary."
+    },
+    "Question4": {
+      "Question": "How does SeroTracker’s data show up on the map?",
+      "Answer": "Data inputted into Airtable is automatically run through a software pipeline that cleans it and computes additional information (e.g. a study’s geographic coordinates). The outputs of the pipeline are then stored in a separate database, which is queried by serotracker.com to serve the Explore tab."
+    },
+    "Question5": {
+      "Question": "Can I download SeroTracker's data for my own analysis?",
+      "Answer": "Yes, our data is open-source and free for anyone to use. You can download our complete .csv file using the Download CSV button above. You will first be asked to fill out a form indicating your role, affiliation (if relevant), and type of research you’re conducting - This helps us create datasets that are most useful to you. "
+    },
+    "Question6": {
+      "Question": "Do I need to be an AirTable user to use SeroTracker's data?",
+      "Answer": "No. Although our data is presented in an AirTable file, you can export this easily to Excel or other formats."
+    },
+    "Question7": {
+      "Question": "How do I interpret the variables in SeroTracker's data set?",
+      "Answer": "Please see our Data Dictionary (using the button above) for explanations of our variables, data types, and descriptions as well as insight into how our data is collected by our research team. It is structured to help interpret our downloadable data set. "
+    },
+    "Question8": {
+      "Question": "How has SeroTracker's data been used by others or researchers?",
+      "Answer": {
+        "Part1": "SeroTracker data is used by many public health professionals and health agencies such as the World Health Organization and Public Health Agency of Canada, among others. The ‘Insights’ tab has links to internal reports, publications we have produced, and features of SeroTracker data and work in the media. Our most recent",
+        "Part2": "analyzes global seroprevalence from January - December, 2020."
+      },
+      "Links": {
+        "Link1": "https://www.medrxiv.org/content/10.1101/2020.11.17.20233460v2"
+      },
+      "LinkTexts": {
+        "LinkText1": "publication"
+      }
+    }
+  },
   "DownloadCsv": "Download CSV",
   "EconomicsTeam": "Economics Team",
   "EndDate": "End Date",
@@ -158,14 +209,14 @@
   "EstimateGradeOptions": {
     "Hyperlocal": "Hyperlocal",
     "Local": "Local",
-    "National": "National",
+    "National": "Country/Territory-Wide",
     "Regional": "Regional"
   },
   "EstimateRange": "Estimate Range",
   "ExecutiveDirector": "Executive Director",
   "Explore": "Explore",
   "ExploreBlurb": {
-    "FirstParagraph": "We are conducting a systematic review of SARS-CoV-2 serosurveys globally and our findings are visualized on this dashboard.",
+    "FirstParagraph": "SeroTracker is a dashboard and data platform for SARS-CoV-2 serosurveys. Antibodies against SARS-CoV-2, the virus that causes COVID-19, indicate previous infection or vaccination. We are conducting an ongoing systematic review to track serosurveys (antibody testing-based surveillance efforts) around the world, visualizing findings on this dashboard.",
     "SecondParagraph": "You can configure the data displayed using the “Filter” toolbar on the right, and view the full list of studies we are tracking on the “Data” page."
   },
   "Filter": "Filter",
@@ -173,7 +224,7 @@
   "For": "For",
   "Footer": {
     "CiteAs": "Cite as: ",
-    "LastUpdated": "Database Last Updated",
+    "LastUpdated": "Database up to date to",
     "LancetInfDis": "Lancet Inf Dis",
     "Article": "article"
   },
@@ -183,6 +234,10 @@
   "Geography": "Geography",
   "GeographyTooltip": "Select countries of interest.",
   "Here": "Here",
+  "IncludingParticipants": {
+    "PartOne": "including",
+    "PartTwo": "participants"
+  },
   "IndustryMediaTitles": {
     "UnderstandingVirus": "Understanding the Virus and Its Unanswered Questions",
     "KnowledgeHub": "Knowledge hub developed to track SARS-CoV antibody studies",
@@ -222,7 +277,7 @@
   "InitInfoModalText": {
     "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
     "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high Risk of bias. You can explore the source literature in depth on the references card at the bottom of this page.",
-    "PartTwo": "Our dashboard aggregates seroprevalence estimates in each country. By default, these aggregated estimates include national and regional seroprevalence estimates of the general population or blood donors, and excludes estimates presented only in the news."
+    "PartTwo": "Our dashboard aggregates seroprevalence estimates in each country. By default, these aggregated estimates include Country/Territory-Wide and regional seroprevalence estimates of the general population or blood donors, and excludes estimates presented only in the news."
   },
   "Insights": "Insights",
   "Isotypes": "Isotypes",
@@ -244,23 +299,17 @@
   "Location": "Location",
   "Manufacturers": "Manufacturers",
   "ManuscriptAndPreprint": "Manuscript and Preprint",
-  "ManuscriptAppendix": {
-    "ManuscriptAppendixParagraphOne": "full methods",
-    "ManuscriptAppendixParagraphTwo": "(from the appendix to our full systematic review and meta-analysis of SARS-CoV-2 serosurveys)"
+  "ManuscriptAppendixText": {
+    "FirstParagraph": "full methods",
+    "SecondParagraph": "(from the appendix to our full systematic review and meta-analysis of SARS-CoV-2 serosurveys)"
   },
   "Media": "Media",
-  "Methods": "Methods",
-  "MethodsText": {
-    "FirstParagraph": "SeroTracker provides a systematic synthesis of SARS-CoV-2 serosurveillance projects globally. We screened peer-reviewed articles, preprints, government reports, and media articles to identify the prevalence estimates reported below. Our data is updated with all new reports of seroprevalence findings that were captured in our search.",
-    "SecondParagraphPartOne": "You can view our full methods",
-    "SecondParagraphPartTwo": "To submit a SARS-CoV-2 seroprevalence study that we have not yet captured below, use"
-  },
   "N": "N",
   "Name": "Name",
-  "NationalEstimateRange": "National Estimate Range",
-  "NationalEstimates": "National Estimates",
-  "NationalStudies": "National Studies",
-  "NationalStudyDetails": "National study details",
+  "NationalEstimateRange": "Country/Territory-Wide Estimate Range",
+  "NationalEstimates": "Country/Territory-Wide Estimates",
+  "NationalStudies": "Country/Territory-Wide Studies",
+  "NationalStudyDetails": "Country/Territory-Wide study details",
   "NoData": "No Data",
   "NoDataAnalyze": {
     "PartOne": "No data is available for the filters you've specified.",
@@ -272,7 +321,6 @@
     "Button": "Visit Explore Page"
   },
   "NotReported": "Not Reported",
-  "NumSeroprevalenceEstimates": "Number of Seroprevalence Estimates",
   "NumberEstimates": "Number of Estimates",
   "OurData": "Our Data",
   "OurDataText": {
@@ -280,6 +328,7 @@
     "PointTwo": "describes studies that have not yet reported seroprevalence estimates",
     "Text": "The table below describes our findings, including detailed information about each study, each prevalence estimate, and the associated Risk of bias."
   },
+  "OurProtocol": "Our protocol",
   "OurTeam": "Our Team",
   "OverallRiskOfBias": "Overall Risk of bias",
   "Paper": "Paper",
@@ -319,6 +368,7 @@
   "Publication": "Publication",
   "Published": "Published",
   "References": "References",
+  "ReferencesTable": "References Table",
   "RegionalEstimateRange": "Regional Estimate Range",
   "RegionalEstimates": "Regional Estimates",
   "RegionalStudies": "Regional Studies",
@@ -353,6 +403,7 @@
   "SeroprevalenceBy": "Seroprevalence by",
   "SeroprevalenceScale": "Seroprevalence Scale",
   "SeroprevalenceScaleTooltip": "Made from the logit transform of the maximum value to determine the 'bins'",
+  "SeroprevalenceStudies": "seroprevalence studies",
   "SeroprevalenceTooltip": {
     "FirstParagraph": "Prevalence of antibodies against SARS-CoV-2, aggregated within the filters you have selected.",
     "SecondParagraph": "NB: This should not be interpreted as a representative estimate of seroprevalence in the region of interest, especially if the aggregated studies have biased samples.",
@@ -415,6 +466,7 @@
   "SublocalEstimateRange": "Sublocal Estimate Range",
   "SublocalEstimates": "Sublocal Estimates",
   "SublocalStudyDetails": "Sublocal Study Details",
+  "SubmitASource": "Submit a source",
   "Summary": "Summary",
   "SummaryStatistics": "Summary Statistics",
   "TeamLead": "Team Leads",
@@ -440,7 +492,6 @@
     "SolidPhaseImmunochromatography": "Solid phase immunochromatography"
   },
   "TestUsed": "Test Used",
-  "TestsAdministered": "Antibody Tests Administered",
   "ThisForm": "This form",
   "Today": "Today",
   "TotalEstimates": "Total Estimates",
@@ -450,6 +501,14 @@
   "ViewFile": "View File",
   "ViewHere": "View Here",
   "Welcome": "Welcome to SeroTracker",
+  "WhatWeDoText": {
+    "FirstParagraph": "At SeroTracker, we collect data and information on SARS-CoV-2 seroprevalence studies by conducting a live systematic review and meta-analysis of published and unpublished data on  seroprevalence. Data is extracted for each source's primary estimate and certain relevant subgroups. Full methods are available in our protocol.",
+    "SecondParagraph": "We produce data for both academic and public use on our dashboard. We aim to update our dashboard weekly. For further information beyond the following high-level summary, please see our study protocol and supplementary methods for a detailed explanation of our research processes."
+  },
   "WhoDisclaimerSmall": "The designations employed and the presentation of the material available on this platform does not imply the expression of any opinion whatsoever on the part of WHO concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries. Dotted and dashed lines on maps represent approximate border lines for which there may not yet be full agreement.",
-  "WhoDisclaimer": "Disclaimer: the designations employed and the presentation of the material available on this platform does not imply the expression of any opinion whatsoever on the part of WHO concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries. Dotted and dashed lines on maps represent approximate border lines for which there may not yet be full agreement. The mention of specific companies or of certain manufacturers’ products in materials available on this platform does not imply that they are endorsed or recommended by WHO in preference to others of a similar nature that are not mentioned. Errors and omissions excepted, the names of proprietary products are distinguished by initial capital letters. By listing materials on this platform does not mean that WHO endorses or recommends those publications or sites, or has verified the content contained within them. The platform has been created without warranty of any kind, either expressed or implied by WHO. The responsibility for the interpretation and use of publications and materials available on this platform lies with the reader. In no event shall WHO be liable for damages arising from its use."
+  "WhoDisclaimer": "Disclaimer: the designations employed and the presentation of the material available on this platform does not imply the expression of any opinion whatsoever on the part of WHO concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries. Dotted and dashed lines on maps represent approximate border lines for which there may not yet be full agreement. The mention of specific companies or of certain manufacturers’ products in materials available on this platform does not imply that they are endorsed or recommended by WHO in preference to others of a similar nature that are not mentioned. Errors and omissions excepted, the names of proprietary products are distinguished by initial capital letters. By listing materials on this platform does not mean that WHO endorses or recommends those publications or sites, or has verified the content contained within them. The platform has been created without warranty of any kind, either expressed or implied by WHO. The responsibility for the interpretation and use of publications and materials available on this platform lies with the reader. In no event shall WHO be liable for damages arising from its use.",
+  "WhoSerotrackAndPartnersDisclaimerSmall": "The designations employed and the presentation of the material available on this platform does not imply the expression of any opinion whatsoever on the part of WHO, SeroTracker, or SeroTracker's partners concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries. Dotted and dashed lines on maps represent approximate border lines for which there may not yet be full agreement.",
+  "WhoSerotrackAndPartnersDisclaimer1": "The designations employed and the presentation of the material available on this platform does not imply the expression of any opinion whatsoever on the part of WHO, SeroTracker, or SeroTracker's partners concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries. Dotted and dashed lines on maps represent approximate border lines for which there may not yet be full agreement. ",
+  "WhoSerotrackAndPartnersDisclaimer2": "The mention of specific companies or of certain manufacturers’ products in materials available on this platform does not imply that they are endorsed or recommended by WHO, SeroTracker, or SeroTracker's partners in preference to others of a similar nature that are not mentioned. Errors and omissions excepted, the names of proprietary products are distinguished by initial capital letters. By listing materials on this platform does not mean that WHO, SeroTracker, or SeroTracker's partners endorse or recommend those publications or sites, or has verified the content contained within them. ",
+  "WhoSerotrackAndPartnersDisclaimer3": "The platform has been created without warranty of any kind, either expressed or implied by WHO, SeroTracker, or SeroTracker's partners. The responsibility for the interpretation and use of publications and materials available on this platform lies with the reader. In no event shall WHO, SeroTracker, or SeroTracker's partners be liable for damages arising from its use."
 }

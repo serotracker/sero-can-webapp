@@ -29,7 +29,7 @@ export default function Studies() {
             </div>
             <TableauEmbed
               url={config.tableauUrl}
-              key={config.tableauUrl}
+              key={config.tableauKey}
               desktopOptions={{
                 width: "80vw",
                 height: "4100px",

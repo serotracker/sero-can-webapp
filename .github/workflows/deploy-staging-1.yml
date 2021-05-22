@@ -1,0 +1,17 @@
+name: Deploy to Staging-1
+on:
+  push:
+    branches:
+      - staging-1
+
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.0.4
+        with:
+          heroku_api_key: ${{secrets.NEW_HEROKU_API_KEY}}
+          heroku_app_name: "serotracker-staging-1"
+          heroku_email: "can.serosurveillance.dev@gmail.com"

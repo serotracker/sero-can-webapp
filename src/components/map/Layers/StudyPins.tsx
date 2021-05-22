@@ -36,25 +36,21 @@ const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => 
   const prevSelectedPinId = usePrevious(selectedPinId)
 
   useEffect(() => {
-    if (map && records.length > 0 && map.getLayer("study-pins") === undefined) {
+    if(map){
       const src = generateSourceFromRecords(records);
-      map.addSource("study-pins", src);
-      map.addLayer({
-        id: "study-pins",
-        type: "circle",
-        source: "study-pins",
-        paint: Expressions.Studies as mapboxgl.CirclePaint
-      });
-    }
-    else if (map && map.getLayer("study-pins")) {
-
-      var onlyGuid: (string | null)[] = records.map((r) => { return r.source_id })
-
-    map?.setFilter('study-pins',
-      ["in",
-        ['get', 'source_id'],
-        ["literal", onlyGuid]
-      ]);
+      if(map.getLayer("study-pins") === undefined){
+        map.addSource("study-pins", src);
+        map.addLayer({
+          id: "study-pins",
+          type: "circle",
+          source: "study-pins",
+          paint: Expressions.Studies as mapboxgl.CirclePaint
+        });
+      }
+      else{
+        const studyPinsSource = map.getSource("study-pins") as any;
+        studyPinsSource.setData(src.data);
+      }
     }
   }, [map, records]);
 

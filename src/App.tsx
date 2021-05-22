@@ -18,7 +18,7 @@ import httpClient from "./httpClient";
 import { LanguageType, PageStateEnum } from "./types";
 import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
-import { ANALYZE_URL, CANADA_URL } from "./constants";
+import { ANALYZE_URLS, CANADA_URLS } from "./constants";
 import Studies from "components/pages/Studies/Studies";
 
 function App() {
@@ -116,8 +116,8 @@ function App() {
         </Route>
         <Route path="/:language/Analyze">
           <TableauEmbed
-            url={ANALYZE_URL}
-            key="AnalyzeTableau"
+            url={ANALYZE_URLS}
+            key={`AnalyzeTableau${language}`}
             desktopOptions={{
               width: "80vw",
               height: "3200px"
