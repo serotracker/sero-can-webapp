@@ -8,6 +8,9 @@ import MaintenanceModal from "../../shared/MaintenanceModal";
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
 import Map from "components/map/Map";
+import { Loader } from "semantic-ui-react";
+import Legend from "components/map/Legend";
+import MapboxMap from "components/map/MapboxMap";
 
 const EXPLORE_MAP_CONFIG = {
   center: [10, 30],
@@ -19,6 +22,7 @@ const EXPLORE_MAP_CONFIG = {
 export default function Explore() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   const [_, dispatch] = useContext(AppContext);
+  const [state] = useContext(AppContext);
 
   useEffect(() => {
     dispatch({
@@ -43,7 +47,11 @@ export default function Explore() {
               <LeftSidebar page={PageStateEnum.explore} />
             </div>
             <div className="col-8 p-0 flex">
-              <Map mapConfig={EXPLORE_MAP_CONFIG}/>
+              <Loader indeterminate active={state.explore.isLoading}></Loader>
+              <div className="info flex legend center-item">
+                <Legend />
+              </div>
+              <MapboxMap/>
             </div>
             <div className="col-2 p-0 flex">
               <RightSidebar page={PageStateEnum.explore} />

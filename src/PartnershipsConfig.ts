@@ -1,11 +1,12 @@
-import { CANADA_URLS } from "./constants";
-
 const PartnershipsConfig = {
     Country: [
         {
             iso3: 'CAN',
             tableauKey: "CanadianTableau",
-            tableauUrl: CANADA_URLS,
+            tableauUrl: {
+                "en": "https://public.tableau.com/views/SeroTrackerAnalyse/Canadiandetail?:language=en&:display_count=y&publish=yes&:origin=viz_share_link",
+                "fr": "https://public.tableau.com/views/Canada-FR/Canadiandetail?:language=fr&:display_count=y&publish=yes&:origin=viz_share_link"
+            },
             routeName: "Canada",
             mapboxMapOptions: {
                 bounds: [

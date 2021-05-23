@@ -8,19 +8,20 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 interface MapProps {
   mapConfig?: any
+  className?: any
 }
 
-const Map = ( {mapConfig}: MapProps): any => {
+const Map = ( {mapConfig, className}: MapProps): any => {
   const [state] = useContext(AppContext);
 
   return (
-    <>
+    <div className={"w-100 h-100"}>
       <Loader indeterminate active={state.explore.isLoading}></Loader>
       <div className="info flex legend center-item">
         <Legend />
       </div>
       <MapboxMap mapConfig={mapConfig} />
-    </>
+    </div>
   );
 };
 

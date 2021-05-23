@@ -18,7 +18,7 @@ import httpClient from "./httpClient";
 import { LanguageType, PageStateEnum } from "./types";
 import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
-import { ANALYZE_URLS, CANADA_URLS } from "./constants";
+import { ANALYZE_URLS } from "./constants";
 import Studies from "components/pages/Studies/Studies";
 
 function App() {

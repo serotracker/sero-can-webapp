@@ -411,6 +411,7 @@
   },
   "Serosurveys": "Serosurveys",
   "SerosurveysReportingPrevalence": "Serosurveys Reporting Prevalence",
+  "SeroprevalenceEstimatesInRegion": "Seroprevalence estimates in NAME by their geographic area",
   "SeroTrackerTeam": "SeroTracker team",
   "Settings": "Settings",
   "Sex": "Sex",
@@ -438,6 +439,10 @@
   },
   "StartDate": "Start Date",
   "Status": "Status",
+  "StudiesView": {
+    "MapNote1": "The map displays estimates for all geographic based estimates. Pins are arranged around the center of their geographic location(s).",
+    "MapNote2": "Case and death counts (at the midpoint in study sampling) are taken at a national level from WEBSITE (subsource: coronavirus.jhu.edu)"
+  },
   "StudiesPerPage": "Studies per page",
   "Study": "Study",
   "StudyDetailsAuthorString": {
