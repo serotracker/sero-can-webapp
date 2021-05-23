@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react"
 import ReactDOMServer from "react-dom/server";
 import StudyPopup from "components/map/Popups/StudyPopup";
 import { AppContext } from "context";
-import { AirtableRecord } from "types";
+import { AirtableRecord, StudyPinsMapConfig } from "types";
 import httpClient from "httpClient";
 import usePrevious from "utils/usePrevious"
 import mapboxgl from "mapbox-gl";
@@ -28,7 +28,7 @@ const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
   })
 }
 
-const StudyPins = (map: mapboxgl.Map | undefined, records: AirtableRecord[]) => {
+const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig) => {
 
   const [state] = useContext(AppContext);
   const [api] = useState(new httpClient());

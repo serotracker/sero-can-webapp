@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react"
 import { AppContext } from "context";
 import ReactDOMServer from "react-dom/server";
-import { EstimateGradePrevalence } from "types";
+import { EstimateGradePrevalence, CountriesMapConfig } from "types";
 import mapboxgl from "mapbox-gl";
 import CountryPopup from 'components/map/Popups/CountryPopup'
 import PartnershipsConfig from '../../../PartnershipsConfig'
@@ -70,7 +70,7 @@ function FilterCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Est
     }
 }
 
-const Countries = (map: mapboxgl.Map | undefined, estimateGradePrevalences: EstimateGradePrevalence[]) => {
+const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences}: CountriesMapConfig) => {
 
     const [state] = useContext(AppContext);
     const [popup, setPopup] = useState<mapboxgl.Popup | undefined>(undefined);

@@ -7,22 +7,13 @@ import MobileComponents from "../../mobile/ExploreMobile";
 import MaintenanceModal from "../../shared/MaintenanceModal";
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
-import Map from "components/map/Map";
 import { Loader } from "semantic-ui-react";
 import Legend from "components/map/Legend";
 import MapboxMap from "components/map/MapboxMap";
 
-const EXPLORE_MAP_CONFIG = {
-  center: [10, 30],
-  zoom: 2,
-  minZoom: 2,
-  maxZoom: 14,
-}
-
 export default function Explore() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
-  const [_, dispatch] = useContext(AppContext);
-  const [state] = useContext(AppContext);
+  const [state, dispatch] = useContext(AppContext);
 
   useEffect(() => {
     dispatch({
@@ -51,7 +42,14 @@ export default function Explore() {
               <div className="info flex legend center-item">
                 <Legend />
               </div>
-              <MapboxMap/>
+              <MapboxMap 
+              countriesConfig={{
+                estimateGradePrevalences: state.explore.estimateGradePrevalences
+              }} 
+              studyPinsConfig={{
+                records: state.explore.records
+              }}
+              />
             </div>
             <div className="col-2 p-0 flex">
               <RightSidebar page={PageStateEnum.explore} />

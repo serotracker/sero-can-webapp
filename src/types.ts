@@ -117,6 +117,14 @@ export type PageState = {
   legendLayers: LegendLayers;
 };
 
+export type CountriesMapConfig = {
+  estimateGradePrevalences: EstimateGradePrevalence[];
+}
+
+export type StudyPinsMapConfig = {
+  records: AirtableRecord[];
+}
+
 export type EstimateGradePrevalence = {
   testsAdministered: number;
   geographicalName: string;

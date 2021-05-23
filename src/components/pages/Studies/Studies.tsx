@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../../constants";
@@ -10,6 +10,7 @@ import Translate, { getCountryName } from "utils/translate/translateService";
 import { Loader } from "semantic-ui-react";
 import Legend from "components/map/Legend";
 import MapboxMap from "components/map/MapboxMap";
+import httpClient from 'httpClient'
 
 export default function Studies() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
@@ -33,13 +34,19 @@ export default function Studies() {
               <div style={{ height: "70vh" }} className="row">
                 <div className="col-10">
                   <Loader indeterminate active={state.explore.isLoading}></Loader>
-                  <MapboxMap mapConfig={config.mapboxMapOptions} />
+                  <MapboxMap
+                    mapConfig={config.mapboxMapOptions}
+                    countriesConfig={{
+                      estimateGradePrevalences: [],
+                    }}
+                    studyPinsConfig={{
+                      records: [],
+                    }}
+                  />
                 </div>
                 <div className="col-2">
                   <Legend />
-                  <div className="mt-5">
-                    {Translate("StudiesView", ["MapNote1"])}
-                  </div>
+                  <div className="mt-5">{Translate("StudiesView", ["MapNote1"])}</div>
                   <div className="mt-3">
                     {Translate("StudiesView", ["MapNote2"], {
                       WEBSITE: "ourworldindata.org",

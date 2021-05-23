@@ -171,6 +171,38 @@ export default class httpClient {
         return filtered_records;
     }
 
+    //wip
+    async getAirtableRecordsForCountry(country: string) {
+        const reqBodyFilters: Record<string, string[]> = {}
+
+
+        const explore_columns = ["source_id", "estimate_grade", "pin_latitude", "pin_longitude"];
+
+        const [startDate, endDate] = formatDates(null)
+        const reqBody: Record<string, any> = {
+            filters: reqBodyFilters,
+            sampling_start_date: startDate,
+            sampling_end_date: endDate,
+            per_page: null,
+            page_index: null,
+            include_subgeography_estimates: true,
+            columns: explore_columns
+        }
+
+        const response = await this.httpPost('/data_provider/records', reqBody)
+        if (!response) {
+            return [];
+        }
+        const filtered_records = response.map((item: Record<string, any>) => {
+            // Convert response to AirtableRecord type
+            const record: AirtableRecord = this.responseToRecord(item);
+            return record;
+        });
+        // Remove timestamp from updated at string
+
+        return filtered_records;
+    }
+
     async getEstimateGrades(filters: Filters) {
         const reqBodyFilters: Record<string, string[]> = {}
         Object.keys(filters).forEach((o: string) => {

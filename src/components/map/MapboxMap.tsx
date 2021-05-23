@@ -4,6 +4,7 @@ import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "ut
 import Countries from "components/map/Layers/Countries";
 import StudyPins from "components/map/Layers/StudyPins";
 import { MapResources, DefaultMapboxMapOptions } from 'components/map/MapConfig'
+import { CountriesMapConfig, StudyPinsMapConfig } from "types";
 // @ts-ignore
 // eslint-disable-next-line
 import mapboxgl, { Style } from '!mapbox-gl';
@@ -44,9 +45,11 @@ function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>) {
 
 interface MapboxMapProps {
   mapConfig?: any
+  countriesConfig: CountriesMapConfig,
+  studyPinsConfig: StudyPinsMapConfig
 }
 
-const MapboxMap = ( {mapConfig}: MapboxMapProps ): any => {
+const MapboxMap = ( {mapConfig, countriesConfig, studyPinsConfig}: MapboxMapProps ): any => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [state, dispatch] = useContext(AppContext);
   const [map, setMap] = useState<mapboxgl.Map | undefined>(undefined);
@@ -77,9 +80,9 @@ const MapboxMap = ( {mapConfig}: MapboxMapProps ): any => {
   }, []);
 
   // Adds country data to map and binds pin behaviour with map popups
-  Countries(map, state.explore.estimateGradePrevalences);
+  Countries(map, countriesConfig);
   // Adds pins to map and binds pin behaviour with map popups
-  StudyPins(map, state.explore.records);
+  StudyPins(map, studyPinsConfig);
 
   return (
     //@ts-ignore
