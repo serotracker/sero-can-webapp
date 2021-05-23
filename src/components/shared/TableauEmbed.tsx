@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 // @ts-ignore
 // The tableau JS API does not have good typescript support
 import TableauReport from 'tableau-react-embed';
 import '../pages/static.css';
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
+import { LanguageType } from "../../types";
+import { AppContext } from "../../context";
 
 interface TableauEmbedProps {
-    url: string,
+    url: { [key in LanguageType]?: string },
     mobileOptions?: Record<string, string>,
     desktopOptions?: Record<string, string>
 }
 
 export default function TableauEmbed(props: TableauEmbedProps) {
+    const [{ language }, dispatch] = useContext(AppContext);
+
     // All other vizCreate options are supported here, too
     // They are listed here: 
     // https://onlinehelp.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api_ref.htm#ref_head_9
@@ -34,7 +38,7 @@ export default function TableauEmbed(props: TableauEmbedProps) {
         <>
             <div className="col-12 page pb-5 pt-5">
                 <TableauReport
-                    url={props.url}
+                    url={language in props.url ? props.url[language] : props.url["en"]}
                     options={options} 
                 />
             </div>
