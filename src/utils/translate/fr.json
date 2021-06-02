@@ -329,6 +329,7 @@
   "NotReported": "Non signalée",
   "BestSeroprevalenceEstimate": "Meilleure estimation de la séroprévalence",
   "NumberEstimates": "Nombre d'estimations",
+  "NumSeroprevalenceEstimates": "Nombre d'estimations de séroprévalence",
   "OurData": "Nos données",
   "OurDataText": {
     "PointOne": "saisissent la totalité des études indiquant des estimations de prévalence",
@@ -473,6 +474,7 @@
   "TestDetails": "Détails des tests",
   "TestInformation": "Informations sur les tests",
   "TestInformationTooltip": "Trier par détail de test, y compris le type d'examen et l'isotype d'anticorps.",
+  "TestsAdministered": "Tests d'anticorps administrés",
   "TestType": "Type de test",
   "TestTypeOptions": {
     "ChemiluminescenceImmunoassay": "Immunodosage en chimiluminescence",

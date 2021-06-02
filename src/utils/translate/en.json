@@ -322,6 +322,7 @@
   },
   "NotReported": "Not Reported",
   "NumberEstimates": "Number of Estimates",
+  "NumSeroprevalenceEstimates": "Number of Seroprevalence Estimates",
   "OurData": "Our Data",
   "OurDataText": {
     "PointOne": "captures all studies reporting prevalence estimates",
@@ -472,6 +473,7 @@
   "TestDetails": "Test Details",
   "TestInformation": "Test Information",
   "TestInformationTooltip": "Filter on test details, including assay type and antibody isotype.",
+  "TestsAdministered": "Antibody Tests Administered",
   "TestType": "Test Type",
   "TestTypeOptions": {
     "ChemiluminescenceImmunoassay": "Chemiluminescence Immunoassay",
