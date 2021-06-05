@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import { AirtableRecord } from "types";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../../constants";
 import { AppContext } from "../../../context";
 import MaintenanceModal from "../../shared/MaintenanceModal";
@@ -15,8 +16,18 @@ import httpClient from 'httpClient'
 export default function Studies() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   const [state] = useContext(AppContext);
+  const [records, setRecords] = useState<AirtableRecord[]>([]);
   const { name } = useParams<{ name: string }>();
   const config = PartnershipsConfig.Country.find((x) => x.routeName === name);
+
+  useEffect(() => {
+    const api = new httpClient();
+    const getStudiesRecords = async () => {
+      const records = await api.getAirtableRecordsForCountry({country: [config?.routeName]});
+      setRecords(records);
+    }
+    getStudiesRecords()
+  }, [config])
 
   return (
     <>
@@ -40,7 +51,7 @@ export default function Studies() {
                       estimateGradePrevalences: [],
                     }}
                     studyPinsConfig={{
-                      records: [],
+                      records: records,
                     }}
                   />
                 </div>

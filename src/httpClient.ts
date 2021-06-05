@@ -1,4 +1,4 @@
-import { AggregatedRecord, AggregationFactor, AirtableRecord, Filters, FilterType } from "./types";
+import { AggregatedRecord, AggregationFactor, AirtableRecord, Filters, FilterType, StudiesFilters } from "./types";
 import { formatDates } from "./utils/utils";
 import {parseISO, format } from "date-fns";
 
@@ -172,27 +172,18 @@ export default class httpClient {
     }
 
     //wip
-    async getAirtableRecordsForCountry(country: string) {
-        const reqBodyFilters: Record<string, string[]> = {}
+    async getAirtableRecordsForCountry(filters: StudiesFilters) {
 
-
-        const explore_columns = ["source_id", "estimate_grade", "pin_latitude", "pin_longitude"];
-
-        const [startDate, endDate] = formatDates(null)
         const reqBody: Record<string, any> = {
-            filters: reqBodyFilters,
-            sampling_start_date: startDate,
-            sampling_end_date: endDate,
-            per_page: null,
-            page_index: null,
+            filters: filters,
             include_subgeography_estimates: true,
-            columns: explore_columns
         }
 
         const response = await this.httpPost('/data_provider/records', reqBody)
         if (!response) {
             return [];
         }
+
         const filtered_records = response.map((item: Record<string, any>) => {
             // Convert response to AirtableRecord type
             const record: AirtableRecord = this.responseToRecord(item);

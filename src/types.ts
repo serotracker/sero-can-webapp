@@ -57,6 +57,10 @@ export type Filters = {
   estimate_grade: any;
 };
 
+export type StudiesFilters = {
+  country: any;
+};
+
 export type FilterType =
   | "country"
   | "population_group"
