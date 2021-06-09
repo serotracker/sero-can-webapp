@@ -3,7 +3,6 @@ import { RegionalPrevalenceEstimate } from "types";
 import { LanguageType } from "types";
 import { Button } from 'semantic-ui-react'
 import Translate, { getCountryName } from 'utils/translate/translateService';
-//import { Link, useHistory } from 'react-router-dom'
 
 const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimate, title: string) => {
   const minString = `${(regionalEstimate.minEstimate * 100).toFixed(2)}%`

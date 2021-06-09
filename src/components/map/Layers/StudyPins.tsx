@@ -93,7 +93,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
               .addTo(map);
             map.flyTo({
               center: e.lngLat,
-              speed: 0.2,
+              speed: 0.1,
               });
             pinPopup.on("close",()=>{
               setSelectedPinId(undefined);

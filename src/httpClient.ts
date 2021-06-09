@@ -171,7 +171,6 @@ export default class httpClient {
         return filtered_records;
     }
 
-    //wip
     async getAirtableRecordsForCountry(filters: StudiesFilters) {
 
         const reqBody: Record<string, any> = {
@@ -185,11 +184,8 @@ export default class httpClient {
         }
 
         const filtered_records = response.map((item: Record<string, any>) => {
-            // Convert response to AirtableRecord type
-            const record: AirtableRecord = this.responseToRecord(item);
-            return record;
+            return this.responseToRecord(item) as AirtableRecord;
         });
-        // Remove timestamp from updated at string
 
         return filtered_records;
     }

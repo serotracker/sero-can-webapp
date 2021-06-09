@@ -51,8 +51,8 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
 function FilterCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
     const onlyIso3: (string | null)[] = estimateGradePrevalences.map((c) => { return c.alpha3Code })
 
-    if (map.getLayer("Countries") && map.isSourceLoaded('Countries')) {
-        map?.setFilter('Countries',
+    if (map.getLayer(COUNTRY_LAYER_ID) && map.isSourceLoaded(COUNTRY_LAYER_ID)) {
+        map?.setFilter(COUNTRY_LAYER_ID,
             ["in",
                 ["get", 'CODE'],
                 ["literal", onlyIso3]
@@ -60,8 +60,8 @@ function FilterCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Est
     }
     else { // If countries has not been loaded, wait until it's source has finished.
         map.on('sourcedata', function (e: any) {
-            if (e.sourceId === 'Countries' && map.isSourceLoaded('Countries')) {
-                map?.setFilter('Countries',
+            if (e.sourceId === COUNTRY_LAYER_ID && map.isSourceLoaded(COUNTRY_LAYER_ID)) {
+                map?.setFilter(COUNTRY_LAYER_ID,
                     ["in",
                         ["get", 'CODE'],
                         ["literal", onlyIso3]
@@ -80,12 +80,12 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences}: Co
 
     // If estimates are updated, waits until map is loaded then maps estimate data to country features
     useEffect(() => {
-        if (map?.getSource('Countries') && estimateGradePrevalences.length > 0) {
+        if (map?.getSource(COUNTRY_LAYER_ID) && estimateGradePrevalences.length > 0) {
             SetCountryEstimates(map, estimateGradePrevalences);
         }
         else if (map) {
             map.on('sourcedata', function (e: any) {
-                if (e.sourceId === 'Countries' && map.isSourceLoaded('Countries')) {
+                if (e.sourceId === COUNTRY_LAYER_ID && map.isSourceLoaded(COUNTRY_LAYER_ID)) {
                     SetCountryEstimates(map, estimateGradePrevalences);
                 }
             });
@@ -101,13 +101,12 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences}: Co
               className: "pin-popup",
               closeOnClick: true,
               closeButton: true,
-              //closeOnMove: true,
               anchor: 'top-left'
             });
 
             setPopup(countryPop)
 
-            map.on('click', 'Countries', function(e: any) {
+            map.on('click', COUNTRY_LAYER_ID, function(e: any) {
                 
                 if (map.queryRenderedFeatures(e.point).filter((f) => f.source === "study-pins").length === 0) {
                     const country = e.features[0];
@@ -126,7 +125,7 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences}: Co
 
     useEffect(() => {
         if (map) {
-            map.on('mousemove', 'Countries', function(e: any){
+            map.on('mousemove', COUNTRY_LAYER_ID, function(e: any){
                 if(e.features && e.features.length > 0 && e.features[0].state.hasData) {
                     if (highlight !== undefined){
                         map.setFeatureState(
@@ -142,8 +141,7 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences}: Co
                     setHighlight(e.features[0].id)
                 }
             })
-
-            map.on('mouseleave', 'Countries', function(e: any){
+            map.on('mouseleave', COUNTRY_LAYER_ID, function(){
                 if (highlight !== undefined){
                     map.setFeatureState(
                         { source: COUNTRY_LAYER_ID, sourceLayer: COUNTRY_LAYER_ID, id: highlight },
