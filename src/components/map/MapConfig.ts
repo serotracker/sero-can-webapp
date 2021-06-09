@@ -22,6 +22,9 @@ export const MapSymbology = {
         }
     },
     CountryFeature: {
+        IsHighlighted: {
+            Color: '#b0c8d4'
+        },
         HasData: {
             Color: '#97b1bd',
             Opacity: 0.5 
@@ -100,8 +103,8 @@ export const Expressions = {
       Countries : {
         'fill-color': [
           'case',
-          ['boolean', ['feature-state', 'hasData'], false],
-          MapSymbology.CountryFeature.HasData.Color,
+          ['boolean', ['feature-state', 'isHighlighted'], true], MapSymbology.CountryFeature.IsHighlighted.Color,
+          ['boolean', ['feature-state', 'hasData'], true], MapSymbology.CountryFeature.HasData.Color,
           MapSymbology.CountryFeature.Default.Color
         ],
         'fill-opacity': [

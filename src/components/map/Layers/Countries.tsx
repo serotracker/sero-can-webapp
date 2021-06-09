@@ -32,6 +32,7 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
                 },
                 {
                     hasData: true,
+                    isHighlighted: false,
                     testsAdministered: country.testsAdministered,
                     geographicalName: country.geographicalName,
                     numberOfStudies: country.numberOfStudies,
@@ -74,6 +75,7 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences}: Co
 
     const [state] = useContext(AppContext);
     const [popup, setPopup] = useState<mapboxgl.Popup | undefined>(undefined);
+    const [highlight, setHighlight] = useState<string | undefined>(undefined);
     const history = useHistory();
 
     // If estimates are updated, waits until map is loaded then maps estimate data to country features
@@ -105,7 +107,7 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences}: Co
 
             setPopup(countryPop)
 
-            map.on('click', 'Countries', function (e: any) {
+            map.on('click', 'Countries', function(e: any) {
                 
                 if (map.queryRenderedFeatures(e.point).filter((f) => f.source === "study-pins").length === 0) {
                     const country = e.features[0];
@@ -121,6 +123,37 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences}: Co
             });
         }
     }, [map, state.language, popup, history])
+
+    useEffect(() => {
+        if (map) {
+            map.on('mousemove', 'Countries', function(e: any){
+                if(e.features && e.features.length > 0 && e.features[0].state.hasData) {
+                    if (highlight !== undefined){
+                        map.setFeatureState(
+                            { source: COUNTRY_LAYER_ID, sourceLayer: COUNTRY_LAYER_ID, id: highlight },
+                            { isHighlighted: false }
+                        );
+                    }
+                    
+                    map.setFeatureState(
+                        { source: COUNTRY_LAYER_ID, sourceLayer: COUNTRY_LAYER_ID, id: e.features[0].id },
+                        { isHighlighted: true }
+                    );
+                    setHighlight(e.features[0].id)
+                }
+            })
+
+            map.on('mouseleave', 'Countries', function(e: any){
+                if (highlight !== undefined){
+                    map.setFeatureState(
+                        { source: COUNTRY_LAYER_ID, sourceLayer: COUNTRY_LAYER_ID, id: highlight },
+                        { isHighlighted: false }
+                    );
+                }
+                setHighlight(undefined)
+            })
+        }
+    }, [map, highlight])
 
     return;
 }
