@@ -122,7 +122,8 @@ export type PageState = {
 };
 
 export type CountriesMapConfig = {
-  estimateGradePrevalences: EstimateGradePrevalence[];
+  estimateGradePrevalences?: EstimateGradePrevalence[];
+  countryFocus?: string;
 }
 
 export type StudyPinsMapConfig = {

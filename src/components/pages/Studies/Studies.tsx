@@ -48,7 +48,7 @@ export default function Studies() {
                   <MapboxMap
                     mapConfig={config.mapboxMapOptions}
                     countriesConfig={{
-                      estimateGradePrevalences: [],
+                      countryFocus: config.iso3
                     }}
                     studyPinsConfig={{
                       records: records,

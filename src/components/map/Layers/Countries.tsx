@@ -47,6 +47,24 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
     });
 }
 
+function SetStudiesMode(map: mapboxgl.Map, iso3Name: string) {
+    map.removeFeatureState({
+        source: COUNTRY_LAYER_ID,
+        sourceLayer: COUNTRY_LAYER_ID
+        });
+
+    map.setFeatureState(
+        {
+            source: COUNTRY_LAYER_ID,
+            sourceLayer: COUNTRY_LAYER_ID,
+            id: iso3Name,
+        },
+        {
+            isHighlighted: true
+        }
+    );
+}
+
 // Filters out Country features based on their existance within the new estimate grade prevalences
 function FilterCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
     const onlyIso3: (string | null)[] = estimateGradePrevalences.map((c) => { return c.alpha3Code })
@@ -71,7 +89,7 @@ function FilterCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Est
     }
 }
 
-const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences}: CountriesMapConfig) => {
+const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, countryFocus}: CountriesMapConfig) => {
 
     const [state] = useContext(AppContext);
     const [popup, setPopup] = useState<mapboxgl.Popup | undefined>(undefined);
@@ -83,19 +101,34 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences}: Co
 
         if (map)
         {
-            if (map?.getSource(COUNTRY_LAYER_ID) === undefined) 
+            if(estimateGradePrevalences)
             {
-                map.once('sourcedata', function (e: any) {
-                    if (e.sourceId === COUNTRY_LAYER_ID && map.isSourceLoaded(COUNTRY_LAYER_ID)) {
-                        SetCountryEstimates(map, estimateGradePrevalences);
-                    }
-                });
+                if (map?.getSource(COUNTRY_LAYER_ID) === undefined) 
+                {
+                    map.once('sourcedata', function (e: any) {
+                        if (e.sourceId === COUNTRY_LAYER_ID) {
+                            SetCountryEstimates(map, estimateGradePrevalences);
+                        }
+                        else
+                        {
+                            map.once('sourcedata', function (e: any) {
+                                if (e.sourceId === COUNTRY_LAYER_ID) {
+                                    SetCountryEstimates(map, estimateGradePrevalences);
+                                }
+                            });
+                        }
+                    });
+                }
+                else {
+                    SetCountryEstimates(map, estimateGradePrevalences);
+                }
             }
-            else {
-                SetCountryEstimates(map, estimateGradePrevalences);
+            else if(countryFocus)
+            {
+                SetStudiesMode(map, countryFocus);
             }
         }
-    }, [map, estimateGradePrevalences]);
+    }, [map, estimateGradePrevalences, countryFocus]);
 
 
     // wait until map is loaded then creates and binds popup to map events
