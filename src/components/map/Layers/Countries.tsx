@@ -80,15 +80,20 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences}: Co
 
     // If estimates are updated, waits until map is loaded then maps estimate data to country features
     useEffect(() => {
-        if (map?.getSource(COUNTRY_LAYER_ID) && estimateGradePrevalences.length > 0) {
-            SetCountryEstimates(map, estimateGradePrevalences);
-        }
-        else if (map) {
-            map.on('sourcedata', function (e: any) {
-                if (e.sourceId === COUNTRY_LAYER_ID && map.isSourceLoaded(COUNTRY_LAYER_ID)) {
-                    SetCountryEstimates(map, estimateGradePrevalences);
-                }
-            });
+
+        if (map)
+        {
+            if (map?.getSource(COUNTRY_LAYER_ID) === undefined) 
+            {
+                map.once('sourcedata', function (e: any) {
+                    if (e.sourceId === COUNTRY_LAYER_ID && map.isSourceLoaded(COUNTRY_LAYER_ID)) {
+                        SetCountryEstimates(map, estimateGradePrevalences);
+                    }
+                });
+            }
+            else {
+                SetCountryEstimates(map, estimateGradePrevalences);
+            }
         }
     }, [map, estimateGradePrevalences]);
 
