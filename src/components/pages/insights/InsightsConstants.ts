@@ -10,6 +10,7 @@ import PreprintUpdate from '../../../assets/images/IndustryUpdatePre_2020.png'
 import BloodBank from '../../../assets/images/SeroTrackerBloodBank_July_2020.png'
 import MedRxiv from '../../../assets/images/Prepublication.png'
 import LancetId from '../../../assets/images/LancetIDArticle.png'
+import InsuringTheEconomy from '../../../assets/images/InsuringTheEconomy.png'
 
 import { InsightsCardProps } from "./InsightsCard";
 
@@ -41,6 +42,13 @@ const listOfReports: InsightsCardProps[] = [
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['AugustReport'],
         url: "https://drive.google.com/file/d/1m7BlfUKCYs32_D1jnFUEQHPr3Qjg5Eyt/view?usp=sharing"
+    },
+    {           
+        date: "August 20, 2020",
+        img: InsuringTheEconomy,
+        titleKey1: 'IndustryReportTitles',
+        titleKey2: ['InsuringTheEconomy'],
+        url: "https://drive.google.com/file/d/1kEl6xv54yPGoDXZoPq9h2q4SqYnL2OU-/view?usp=sharing"
     },
     {           
         date: "August 7, 2020",
