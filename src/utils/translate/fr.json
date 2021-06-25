@@ -272,7 +272,7 @@
   },
   "ResearchArticleTitles": {
     "PrePrint": "Leçons d'un examen rapide et systématique du début des SRAS-CoV-2 enquêtes sérologiques",
-    "MedRxivPub": "Séroprévalence globale du SRAS-CoV-2 anticorps: une revue systématique et méta-analyse",
+    "MedRxivPub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse",
     "LancetID": "SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2"
   },
   "InitInfoModalText": {
@@ -303,7 +303,7 @@
     "SecondParagraph": "(de l’annexe à notre revue systématique complète et méta-analyse des enquêtes sérologiques SARS-CoV-2)"
   },
   "Media": "Médias",
-  "MediaMentions": "Media Mentions",
+  "MediaMentions": "Mentions dans les médias",
   "Months": {
     "January": "janvier",
     "February": "février",
