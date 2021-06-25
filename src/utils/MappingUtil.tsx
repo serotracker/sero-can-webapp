@@ -71,10 +71,10 @@ function getBoundingBox(coordinates: any[]) {
   coordinates.forEach((c)=>{
     const longitude = c[0];
     const latitude = c[1];
-    bbox.xMin = bbox.xMin < longitude ? bbox.xMin : longitude;
-    bbox.xMax = bbox.xMax > longitude ? bbox.xMax : longitude;
-    bbox.yMin = bbox.yMin < latitude ? bbox.yMin : latitude;
-    bbox.yMax = bbox.yMax > latitude ? bbox.yMax : latitude;
+    bbox.xMin = Math.min(bbox.xMin, longitude);
+    bbox.xMax = Math.max(bbox.xMax, longitude);
+    bbox.yMin = Math.min(bbox.yMin , latitude);
+    bbox.yMax = Math.max(bbox.yMax , latitude);
   })
   return bbox;
 }
