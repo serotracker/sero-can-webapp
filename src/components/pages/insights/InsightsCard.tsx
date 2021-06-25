@@ -1,8 +1,10 @@
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, {useContext} from "react";
 import Translate from "../../../utils/translate/translateService";
 import { Card } from "semantic-ui-react";
+import { AppContext } from "../../../context";
+import { LanguageType } from "../../../types";
 
 export interface InsightsCardProps {
   date: string,
@@ -14,6 +16,8 @@ export interface InsightsCardProps {
 }
 
 export function InsightsCard(props: InsightsCardProps) {
+  const [state] = useContext(AppContext);
+  const splitDate = props.date.split(" ");
   return (
     <div className="py-4 px-2">
       <Card className={props.img ? "insights-card" : "insights-card-no-img"}> 
@@ -46,7 +50,7 @@ export function InsightsCard(props: InsightsCardProps) {
             </a>
           </div>
           <div className="insights-card-date">
-            {props.date}
+            {state.language === LanguageType.english ? props.date : `${splitDate[1].substring(0, splitDate[1].length - 1)} ${Translate("Months", [splitDate[0]])} ${splitDate[2]}`}
           </div>
         </Card.Content>
       </Card>

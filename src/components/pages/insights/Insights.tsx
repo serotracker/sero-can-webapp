@@ -14,7 +14,7 @@ export default function Insights() {
     <div className="col-12 page pb-6">
       <div className={isMobileDeviceOrTablet ? "pb-2 policy-container" : "policy-container static-content"}>
         <h1 className="col-12 p-0 fit">
-          {Translate('Insights')}
+          {Translate('Publications')}
         </h1>
         <h3 className="normal">
           {Translate('ResearchArticles')}
@@ -25,7 +25,7 @@ export default function Insights() {
         </h3>
         { getCarouselOfInsightCards("reports") }
         <h3 className="normal">
-          {Translate('Media')}
+          {Translate('MediaMentions')}
         </h3>
         { getCarouselOfInsightCards("media") }
       </div>

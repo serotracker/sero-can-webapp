@@ -82,7 +82,7 @@ export const NavBar = () => {
           <Link to={withLocaleUrl("Insights")}>
             {isMobileDeviceOrTablet ?
               <FontAwesomeIcon icon={faFileAlt} size="lg" /> :
-              Translate('Insights')}
+              Translate('Publications')}
           </Link>
         </div>
         <div className={getTabClass('/About')}>
