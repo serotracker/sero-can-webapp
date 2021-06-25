@@ -18,7 +18,7 @@ const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimat
   )
 }
 
-const CountryPopup = (country : any, language : LanguageType, onDetailsClick: any) => {
+const CountryPopup = (country : any, language : LanguageType, onDetailsClick?: any) => {
 
   const properties = country?.state
 
@@ -40,14 +40,10 @@ const CountryPopup = (country : any, language : LanguageType, onDetailsClick: an
           <div className="fit popup-text">{Translate('NumSeroprevalenceEstimates')}: <b>{properties?.numberOfStudies}</b></div>
         </div>
         {regions.map((o) => createPopupGeographySection(o.Region, o.Name))}
-        {onDetailsClick ? <Button 
-          className="not-found-button mt-2"
-          onClick={()=>{
-            onDetailsClick()
-          }}>
-          View Details
+        {onDetailsClick ? 
+        <Button className="not-found-button mt-2" onClick={()=>{ onDetailsClick()}}>
+          {Translate("ViewPartnership")}
         </Button> : ""}
-
       </div>)
   };
 

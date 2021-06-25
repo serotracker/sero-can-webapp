@@ -126,8 +126,7 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
                       .setHTML(ReactDOMServer.renderToString(
                           CountryPopup(
                             country, 
-                            state.language, 
-                            country.state?.studyConfig ? (() => history.push(`/${state.language}/${country.state.studyConfig.viewUrl}`)) : undefined )))
+                            state.language)))
                       .setLngLat(e.lngLat)
                       .addTo(map);
                   }
