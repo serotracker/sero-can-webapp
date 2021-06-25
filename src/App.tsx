@@ -128,7 +128,7 @@ function App() {
             }}
           />
         </Route>
-        <Route path="/:language/Studies/:name">
+        <Route path="/:language/Partnerships/:name">
           <Studies />
         </Route>
         <Route path="/:language/Data">

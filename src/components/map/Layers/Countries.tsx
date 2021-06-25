@@ -20,9 +20,7 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
     estimateGradePrevalences.forEach((country: EstimateGradePrevalence) => {
         if (country && country.testsAdministered && country.alpha3Code) {
 
-            let partnershipConfig: any = PartnershipsConfig.Country.find(x => x.iso3 === country.alpha3Code)
-
-            //PartnershipsConfig.Country.hasOwnProperty(country.alpha3Code)
+            const partnershipConfig = PartnershipsConfig.find(x => x.iso3 === country.alpha3Code)
 
             map.setFeatureState(
                 {
@@ -63,30 +61,6 @@ function SetStudiesMode(map: mapboxgl.Map, iso3Name: string) {
             isHighlighted: true
         }
     );
-}
-
-// Filters out Country features based on their existance within the new estimate grade prevalences
-function FilterCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
-    const onlyIso3: (string | null)[] = estimateGradePrevalences.map((c) => { return c.alpha3Code })
-
-    if (map.getLayer(COUNTRY_LAYER_ID) && map.isSourceLoaded(COUNTRY_LAYER_ID)) {
-        map?.setFilter(COUNTRY_LAYER_ID,
-            ["in",
-                ["get", 'CODE'],
-                ["literal", onlyIso3]
-            ]);
-    }
-    else { // If countries has not been loaded, wait until it's source has finished.
-        map.on('sourcedata', function (e: any) {
-            if (e.sourceId === COUNTRY_LAYER_ID && map.isSourceLoaded(COUNTRY_LAYER_ID)) {
-                map?.setFilter(COUNTRY_LAYER_ID,
-                    ["in",
-                        ["get", 'CODE'],
-                        ["literal", onlyIso3]
-                    ]);
-            }
-        });
-    }
 }
 
 const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, countryFocus}: CountriesMapConfig) => {
@@ -134,7 +108,7 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
     // wait until map is loaded then creates and binds popup to map events
     useEffect(() => {
         if (map && popup === undefined) {
-            const countryPop = new mapboxgl.Popup({
+            const countryPopup = new mapboxgl.Popup({
               offset: 25,
               className: "pin-popup",
               closeOnClick: true,
@@ -142,18 +116,18 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
               anchor: 'top-left'
             });
 
-            setPopup(countryPop)
+            setPopup(countryPopup)
 
             map.on('click', COUNTRY_LAYER_ID, function(e: any) {
                 
                 if (map.queryRenderedFeatures(e.point).filter((f) => f.source === "study-pins").length === 0) {
                     const country = e.features[0];
-                    countryPop
+                    countryPopup
                       .setHTML(ReactDOMServer.renderToString(
                           CountryPopup(
                             country, 
                             state.language, 
-                            country.state?.studyConfig ? (() => history.push(`/${state.language}/${country.state.studyConfig.viewUrl}`)) : null )))
+                            country.state?.studyConfig ? (() => history.push(`/${state.language}/${country.state.studyConfig.viewUrl}`)) : undefined )))
                       .setLngLat(e.lngLat)
                       .addTo(map);
                   }

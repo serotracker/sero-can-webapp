@@ -1,3 +1,5 @@
+import mapboxgl from "mapbox-gl";
+
 export const MapSymbology = {
     StudyFeature: {
         National: {
@@ -54,7 +56,7 @@ export const DefaultMapboxMapOptions = {
     minZoom: 2,
     maxZoom: 14,
     attributionControl: false,
-    doubleClickZoom: false
+    doubleClickZoom: false,
 }
 
 export const Expressions = {

@@ -59,7 +59,7 @@ const MapboxMap = ( {mapConfig, countriesConfig, studyPinsConfig}: MapboxMapProp
     (async () => {
       const baseMapStyle = await getEsriVectorSourceStyle(MapResources.WHO_BASEMAP);
 
-      const options = { // Merges options together to configure map
+      const mergedOptions = { // Merges options together to configure map
         ...{
           container: mapContainerRef.current,
           style: baseMapStyle,
@@ -68,7 +68,7 @@ const MapboxMap = ( {mapConfig, countriesConfig, studyPinsConfig}: MapboxMapProp
         ...mapConfig,
       };
 
-      const m = new mapboxgl.Map(options);
+      const m = new mapboxgl.Map(mergedOptions);
 
       m.on("load", () => {
         mapOnLoad(m, dispatch);

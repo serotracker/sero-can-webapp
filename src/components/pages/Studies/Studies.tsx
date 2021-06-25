@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
-import { useMediaQuery } from "react-responsive";
 import { AirtableRecord } from "types";
-import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../../constants";
+import { isMaintenanceMode } from "../../../constants";
 import { AppContext } from "../../../context";
 import MaintenanceModal from "../../shared/MaintenanceModal";
 import TableauEmbed from "components/shared/TableauEmbed";
@@ -14,11 +13,10 @@ import MapboxMap from "components/map/MapboxMap";
 import httpClient from 'httpClient'
 
 export default function Studies() {
-  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   const [state] = useContext(AppContext);
   const [records, setRecords] = useState<AirtableRecord[]>([]);
   const { name } = useParams<{ name: string }>();
-  const config = PartnershipsConfig.Country.find((x) => x.routeName === name);
+  const config = PartnershipsConfig.find(x => x.routeName === name);
 
   useEffect(() => {
     const api = new httpClient();
@@ -84,7 +82,7 @@ export default function Studies() {
           <MaintenanceModal isOpen={isMaintenanceMode} headerText={""} />
         </>
       ) : (
-        <Redirect to="/ " />
+        <Redirect to="/404" />
       )}
     </>
   );
