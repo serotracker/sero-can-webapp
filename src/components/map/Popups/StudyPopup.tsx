@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from 'semantic-ui-react'
 import { AirtableRecord } from "types";
 import Translate from 'utils/translate/translateService';
 import { getGeography, getPossibleNullDateString } from 'utils/utils';
@@ -32,6 +33,12 @@ export default function StudyPopup(record: AirtableRecord) {
         <div className="popup-text">
             {getGeography(record.city, record.state, record.country)}
         </div>
+        <div className="popup-heading">
+            {Translate("PopulationGroup")}
+        </div>
+        <div className="popup-text">
+            {record.population_group ? `${record.population_group}` : Translate("NotReported")}
+        </div>
         {(record.sampling_start_date && record.sampling_end_date) && (
             <>
                 <div className="popup-heading">
@@ -49,22 +56,16 @@ export default function StudyPopup(record: AirtableRecord) {
             {record.seroprevalence ? `${(record.seroprevalence * 100).toFixed(1)}%` : "N/A"}
         </div>
         <div className="popup-heading">
-            {Translate("VaccineRolloutStatus")}
-        </div>
-        <div className="popup-text">
-            {(record.vaccination_policy == 0) ? "No vaccines available" : (record.vaccination_policy == 1 || record.vaccination_policy == 2 || record.vaccination_policy == 3) ? "Vaccines available to certain groups" : "Vaccines available to broader population"}
-        </div>
-        <div className="popup-heading">
             {Translate("N")}
         </div>
         <div className="popup-text">
             {`${record.denominator}`}
         </div>
         <div className="popup-heading">
-            {Translate("PopulationGroup")}
+            {Translate("VaccineRolloutStatus")}
         </div>
         <div className="popup-text">
-            {record.population_group ? `${record.population_group}` : Translate("NotReported")}
+            {(record.vaccination_policy == 0) ? "Vaccines unavailable" : (record.vaccination_policy == 1 || record.vaccination_policy == 2 || record.vaccination_policy == 3) ? "Vaccines available to certain groups" : "Vaccines available to broader population"}
         </div>
         <div className="popup-heading">
             {Translate("RiskOfBias")}
