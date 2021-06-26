@@ -19,9 +19,6 @@ export interface PublicationsCardProps {
 
 export function PublicationsCard(props: PublicationsCardProps) {
   const [state] = useContext(AppContext);
-  console.log(props.day);
-  console.log(props.month);
-  console.log(props.year);
   return (
     <div className="py-4 px-2">
       <Card className={props.img ? "publications-card" : "publications-card-no-img"}> 
