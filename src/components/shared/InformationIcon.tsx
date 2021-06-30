@@ -14,7 +14,6 @@ interface InformationIconProps {
   popupSize?: "mini" | "tiny" | "small" | "large" | "huge";
 }
 
-
 export default function InformationIcon(props: InformationIconProps) {
   const { color, size, tooltip, tooltipHeader, offset, position, popupSize = "small" } = props;
   

@@ -66,6 +66,9 @@
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
   "BestSeroprevalenceEstimate": "Best seroprevalence estimate",
   "VaccineRolloutStatus": "Vaccine availability during study",
+  "VaccinationPolicyLow": "Vaccines unavailable",
+  "VaccinationPolicyMed": "Vaccines available to certain groups",
+  "VaccinationPolicyHigh": "Vaccines available to broader population",
   "Biographies": {
     "BruceM": {
       "PartOne": "Associate Scientific Director (Strategy), COVID-19 Immunity Task Force",
