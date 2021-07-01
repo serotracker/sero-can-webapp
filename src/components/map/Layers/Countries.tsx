@@ -50,7 +50,6 @@ function SetStudiesMode(map: mapboxgl.Map, iso3Name: string) {
         source: COUNTRY_LAYER_ID,
         sourceLayer: COUNTRY_LAYER_ID
         });
-
     map.setFeatureState(
         {
             source: COUNTRY_LAYER_ID,
@@ -77,21 +76,10 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
         {
             if(estimateGradePrevalences)
             {
-                if (map?.getSource(COUNTRY_LAYER_ID) === undefined) 
+                const sourceLoaded = map.getSource(COUNTRY_LAYER_ID) !== undefined
+                if (!sourceLoaded) 
                 {
-                    map.once('sourcedata', function (e: any) {
-                        if (e.sourceId === COUNTRY_LAYER_ID) {
-                            SetCountryEstimates(map, estimateGradePrevalences);
-                        }
-                        else
-                        {
-                            map.once('sourcedata', function (e: any) {
-                                if (e.sourceId === COUNTRY_LAYER_ID) {
-                                    SetCountryEstimates(map, estimateGradePrevalences);
-                                }
-                            });
-                        }
-                    });
+                    map.on('styledata', ()=>SetCountryEstimates(map, estimateGradePrevalences));
                 }
                 else {
                     SetCountryEstimates(map, estimateGradePrevalences);
@@ -143,7 +131,7 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
                             { source: COUNTRY_LAYER_ID, sourceLayer: COUNTRY_LAYER_ID, id: highlight },
                             { isHighlighted: false }
                         );
-                    }
+                    }    
                     
                     map.setFeatureState(
                         { source: COUNTRY_LAYER_ID, sourceLayer: COUNTRY_LAYER_ID, id: e.features[0].id },
