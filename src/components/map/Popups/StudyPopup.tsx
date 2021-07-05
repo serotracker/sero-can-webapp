@@ -20,6 +20,12 @@ export default function StudyPopup(record: AirtableRecord) {
         <div className="popup-text">
             {getGeography(record.city, record.state, record.country)}
         </div>
+        <div className="popup-heading">
+            {Translate("PopulationGroup")}
+        </div>
+        <div className="popup-text">
+            {record.population_group ?? Translate("NotReported")}
+        </div>
         {(record.sampling_start_date && record.sampling_end_date) && (
             <>
                 <div className="popup-heading">
@@ -43,10 +49,10 @@ export default function StudyPopup(record: AirtableRecord) {
             {`${record.denominator}`}
         </div>
         <div className="popup-heading">
-            {Translate("PopulationGroup")}
+            {Translate("VaccineRolloutStatus")}
         </div>
         <div className="popup-text">
-            {record.population_group ? `${record.population_group}` : Translate("NotReported")}
+            {(record.vaccination_policy == 0) ? Translate("VaccinationPolicyLow") : (record.vaccination_policy == 1 || record.vaccination_policy == 2 || record.vaccination_policy == 3) ? Translate("VaccinationPolicyMed") : Translate("VaccinationPolicy")}
         </div>
         <div className="popup-heading">
             {Translate("RiskOfBias")}
