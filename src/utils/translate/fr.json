@@ -256,7 +256,8 @@
     "JouleRecipients": "Joule announces 2020 Innovation grant recipients",
     "JouleInnovation": "SeroTracker: Joule innovation grant recipient",
     "WhenEnd": "When will the COVID-19 pandemic end?",
-    "JouleAnnounce": "Joule announces 2020 Innovation grant recipients"
+    "JouleAnnounce": "Joule announces 2020 Innovation grant recipients",
+    "StillVulnerable": "La population mondiale toujours vulnérable à la COVID-19"
   },
   "IndustryReportTitles": {
     "AugustReport": "Rapport d'Août - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
@@ -268,12 +269,14 @@
     "PreliminaryReport": "Rapport préliminaire - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
     "SeptemberReport": "Rapport de Septembre - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
     "YearInReview2020": "Bilan de l’année 2020 de SeroTracker",
-    "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie"
+    "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie",
+    "InventoryEvidenceSynthesis": "Inventaire des meilleures synthèses de preuves"
   },
   "ResearchArticleTitles": {
     "PrePrint": "Leçons d'un examen rapide et systématique du début des SRAS-CoV-2 enquêtes sérologiques",
     "MedRxivPub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse",
-    "LancetID": "SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2"
+    "LancetID": "SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2",
+    "PlosOnePub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse"
   },
   "InitInfoModalText": {
     "PartOne": "Bienvenue dans l'onglet Analyse de SeroTracker ! Nous menons un examen systématique des sérosondages du SRAS-CoV-2 et nous utilisons les données provenant de cet examen afin de constituer ce tableau de bord.",
