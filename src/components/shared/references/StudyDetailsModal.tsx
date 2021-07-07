@@ -61,7 +61,7 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
     source_name, first_author, lead_organization, publish_date, publisher, url,
     summary, study_type,
     population_group, age, city, state, country, sex,
-    seroprevalence, overall_risk_of_bias: risk_of_bias, denominator,
+    serum_pos_prevalence, overall_risk_of_bias: risk_of_bias, denominator,
     sampling_method, sampling_end_date, sampling_start_date,
     test_type, sensitivity, specificity, isotypes_reported, test_manufacturer
   } = props.record
@@ -147,7 +147,7 @@ export default function StudyDetailsModal(props: StudyDetailsModalProps) {
               <div className="col-12 p-0 section-title">{Translate('Prevalence').toUpperCase()}</div>
               <div className="col-12 px-2 py-1 flex section-container modal-text-container">
                 <div className="col-12 p-0 secondary-text">
-                  <span className="secondary-title">{Translate('Estimate')}: </span>{seroprevalence ? (seroprevalence * 100).toFixed(2) : "Not Reported"}%
+                  <span className="secondary-title">{Translate('Estimate')}: </span>{serum_pos_prevalence ? (serum_pos_prevalence * 100).toFixed(2) : "Not Reported"}%
                 </div>
                 <div className="col-12 p-0 secondary-text">
                   <span className="secondary-title">{Translate('StudySize')}: </span>{getPossibleNullString(denominator)}

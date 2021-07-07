@@ -40,7 +40,7 @@ export default function StudyPopup(record: AirtableRecord) {
             {Translate("BestSeroprevalenceEstimate")}
         </div>
         <div className="popup-text">
-            {record.seroprevalence ? `${(record.seroprevalence * 100).toFixed(1)}%` : "N/A"}
+            {record.serum_pos_prevalence ? `${(record.serum_pos_prevalence * 100).toFixed(1)}%` : "N/A"}
         </div>
         <div className="popup-heading">
             {Translate("N")}
