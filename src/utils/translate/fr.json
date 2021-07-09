@@ -267,11 +267,12 @@
     "OctoberReport": "Rapport d'Octobre - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
     "PreliminaryReport": "Rapport préliminaire - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
     "SeptemberReport": "Rapport de Septembre - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "YearInReview2020": "Bilan de l’année 2020 de SeroTracker"
+    "YearInReview2020": "Bilan de l’année 2020 de SeroTracker",
+    "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie"
   },
   "ResearchArticleTitles": {
     "PrePrint": "Leçons d'un examen rapide et systématique du début des SRAS-CoV-2 enquêtes sérologiques",
-    "MedRxivPub": "Séroprévalence globale du SRAS-CoV-2 anticorps: une revue systématique et méta-analyse",
+    "MedRxivPub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse",
     "LancetID": "SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2"
   },
   "InitInfoModalText": {
@@ -302,6 +303,21 @@
     "SecondParagraph": "(de l’annexe à notre revue systématique complète et méta-analyse des enquêtes sérologiques SARS-CoV-2)"
   },
   "Media": "Médias",
+  "MediaMentions": "Mentions dans les médias",
+  "Months": {
+    "January": "janvier",
+    "February": "février",
+    "March": "mars",
+    "April": "avril",
+    "May": "mai",
+    "June": "juin",
+    "July": "juillet",
+    "August": "août",
+    "September": "septembre",
+    "October": "octobre",
+    "November": "novembre",
+    "December": "décembre"
+  },
   "N": "N",
   "Name": "Nom",
   "NationalEstimateRange": "Plage d'estimation nationale",
@@ -328,7 +344,12 @@
   },
   "NotReported": "Non signalée",
   "BestSeroprevalenceEstimate": "Meilleure estimation de la séroprévalence",
+  "VaccineRolloutStatus": "Circulation des vaccins pendant l'étude",
+  "VaccinationPolicyLow": "Vaccins indisponibles",
+  "VaccinationPolicyMed": "Vaccins disponibles pour certains groupes",
+  "VaccinationPolicyHigh": "Vaccins disponibles pour la population entière",
   "NumberEstimates": "Nombre d'estimations",
+  "NumSeroprevalenceEstimates": "Nombre d'estimations de séroprévalence",
   "OurData": "Nos données",
   "OurDataText": {
     "PointOne": "saisissent la totalité des études indiquant des estimations de prévalence",
@@ -369,6 +390,7 @@
   "PrivacyPolicy": "Politique de confidentialité",
   "PrivateSectorMonitoringTeam": "Équipe de suivi du secteur privé",
   "Publication": "Publication",
+  "Publications": "Publications",
   "Published": "Publié",
   "References": "Références",
   "ReferencesTable": "Table de références",
@@ -473,6 +495,7 @@
   "TestDetails": "Détails des tests",
   "TestInformation": "Informations sur les tests",
   "TestInformationTooltip": "Trier par détail de test, y compris le type d'examen et l'isotype d'anticorps.",
+  "TestsAdministered": "Tests d'anticorps administrés",
   "TestType": "Type de test",
   "TestTypeOptions": {
     "ChemiluminescenceImmunoassay": "Immunodosage en chimiluminescence",

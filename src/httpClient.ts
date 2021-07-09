@@ -58,51 +58,12 @@ export default class httpClient {
         }
     }
 
-    responseToRecord(item: Record<string, any>){
-        // TODO: find a less verbose way to map an http response to a typescript object
-        const record: AirtableRecord = {
-            age: item.age,
-            city: item.city,
-            country: item.country,
-            denominator: item.denominator_value,
-            estimate_grade: item.estimate_grade,
-            first_author: item.first_author,
-            isotypes_reported: item.isotypes_reported,
-            lead_organization: item.lead_organization,
-            overall_risk_of_bias: item.overall_risk_of_bias,
-            pin_latitude: item.pin_latitude,
-            pin_longitude: item.pin_longitude,
-            pin_region_type: item.pin_region_type,
-            population_group: item.population_group,
-            sampling_end_date: item.sampling_end_date,
-            sampling_start_date: item.sampling_start_date,
-            seroprevalence: item.serum_pos_prevalence,
-            sensitivity: item.sensitivity,
-            specificity: item.specificity,
-            sex: item.sex,
-            source_id: item.source_id,
-            source_name: item.source_name,
-            source_type: item.source_type,
-            specimen_type: Array.isArray(item.specimen_type) ? item.specimen_type : [item.specimen_type],
-            state: item.state,
-            study_type: item.study_type,
-            summary: item.summary,
-            test_type: item.test_type,
-            test_manufacturer: item.test_manufacturer,
-            url: item.url
-        };
-
-        return record
-    }
-
     async getRecordDetails(source_id : string) {
         const response = await this.httpGet(`/data_provider/record_details/${source_id}`, true);
         if (!response) {
             return null;
         }
-
-        const record: AirtableRecord = this.responseToRecord(response);
-        
+        const record: AirtableRecord = response as AirtableRecord;
         return record;
     }
 
@@ -163,7 +124,7 @@ export default class httpClient {
         }
         const filtered_records = response.map((item: Record<string, any>) => {
             // Convert response to AirtableRecord type
-            const record: AirtableRecord = this.responseToRecord(item);
+            const record: AirtableRecord = item as AirtableRecord;
             return record;
         });
         // Remove timestamp from updated at string

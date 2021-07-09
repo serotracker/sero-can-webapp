@@ -64,7 +64,11 @@
   "Analyze": "Analyze",
   "Article": "Article",
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
-  "BestSeroprevalenceEstimate": "Best Seroprevalence Estimate",
+  "BestSeroprevalenceEstimate": "Best seroprevalence estimate",
+  "VaccineRolloutStatus": "Vaccine availability during study",
+  "VaccinationPolicyLow": "Vaccines unavailable",
+  "VaccinationPolicyMed": "Vaccines available to certain groups",
+  "VaccinationPolicyHigh": "Vaccines available to broader population",
   "Biographies": {
     "BruceM": {
       "PartOne": "Associate Scientific Director (Strategy), COVID-19 Immunity Task Force",
@@ -267,7 +271,8 @@
     "OctoberReport": "October Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "PreliminaryReport": "Preliminary Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "YearInReview2020": "SeroTracker 2020 Year in Review"
+    "YearInReview2020": "SeroTracker 2020 Year in Review",
+    "InsuringTheEconomy": "Insuring the Economy Against a Second Pandemic Wave"
   },
   "ResearchArticleTitles": {
     "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
@@ -304,6 +309,21 @@
     "SecondParagraph": "(from the appendix to our full systematic review and meta-analysis of SARS-CoV-2 serosurveys)"
   },
   "Media": "Media",
+  "MediaMentions": "Media Mentions",
+  "Months": {
+    "January": "January",
+    "February": "February",
+    "March": "March",
+    "April": "April",
+    "May": "May",
+    "June": "June",
+    "July": "July",
+    "August": "August",
+    "September": "September",
+    "October": "October",
+    "November": "November",
+    "December": "December"
+  },
   "N": "N",
   "Name": "Name",
   "NationalEstimateRange": "Country/Territory-Wide Estimate Range",
@@ -322,6 +342,7 @@
   },
   "NotReported": "Not Reported",
   "NumberEstimates": "Number of Estimates",
+  "NumSeroprevalenceEstimates": "Number of Seroprevalence Estimates",
   "OurData": "Our Data",
   "OurDataText": {
     "PointOne": "captures all studies reporting prevalence estimates",
@@ -340,7 +361,7 @@
   },
   "PlannedSerosurveys": "Planned Serosurveys",
   "Population": "Population",
-  "PopulationGroup": "Population Group",
+  "PopulationGroup": "Population group",
   "PopulationGroupOptions": {
     "All": "All",
     "BloodDonors": "Blood donors",
@@ -366,6 +387,7 @@
   "PrivacyPolicy": "Privacy Policy",
   "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
   "Publication": "Publication",
+  "Publications": "Publications",
   "Published": "Published",
   "References": "References",
   "ReferencesTable": "References Table",
@@ -459,7 +481,7 @@
     "FirstParagraph": "Filter on study details, including source type (publication, preprint, news, or report) and study status (ongoing, completed).",
     "SecondParagraph": "Risk of bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates."
   },
-  "StudyName": "Study Name",
+  "StudyName": "Study name",
   "StudyPins": "Show Study Pins",
   "StudySize": "Study Size",
   "StudyStatus": "Study Status",
@@ -481,6 +503,7 @@
   "TestDetails": "Test Details",
   "TestInformation": "Test Information",
   "TestInformationTooltip": "Filter on test details, including assay type and antibody isotype.",
+  "TestsAdministered": "Antibody Tests Administered",
   "TestType": "Test Type",
   "TestTypeOptions": {
     "ChemiluminescenceImmunoassay": "Chemiluminescence Immunoassay",
