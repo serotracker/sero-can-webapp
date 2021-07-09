@@ -12,7 +12,7 @@ import Legend from "components/map/Legend";
 import MapboxMap from "components/map/MapboxMap";
 import httpClient from 'httpClient'
 
-export default function Studies() {
+export default function Partnerships() {
   const [state] = useContext(AppContext);
   const [records, setRecords] = useState<AirtableRecord[]>([]);
   const { name } = useParams<{ name: string }>();
@@ -20,11 +20,11 @@ export default function Studies() {
 
   useEffect(() => {
     const api = new httpClient();
-    const getStudiesRecords = async () => {
+    const getPartnershipsRecords = async () => {
       const records = await api.getAirtableRecordsForCountry({country: [config?.routeName]});
       setRecords(records);
     }
-    getStudiesRecords()
+    getPartnershipsRecords()
   }, [config])
 
   return (
@@ -55,9 +55,9 @@ export default function Studies() {
                 </div>
                 <div className="col-2">
                   <Legend />
-                  <div className="mt-5">{Translate("StudiesView", ["MapNote1"])}</div>
+                  <div className="mt-5">{Translate("PartnershipsView", ["MapNote1"])}</div>
                   <div className="mt-3">
-                    {Translate("StudiesView", ["MapNote2"], {
+                    {Translate("PartnershipsView", ["MapNote2"], {
                       WEBSITE: "ourworldindata.org",
                     })}
                   </div>

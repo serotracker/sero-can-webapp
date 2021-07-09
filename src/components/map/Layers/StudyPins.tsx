@@ -16,15 +16,18 @@ const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
   
   features.forEach(x => {
     const isBlurred = (selectedPinId === x?.id || selectedPinId === undefined) ? false : true
-    map.setFeatureState(
-      {
-        source: "study-pins",
-        id: x?.id,
-      },
-      {
-        isBlurred: isBlurred,
-      }
-    );
+    if (x && x.id)
+    {
+      map.setFeatureState(
+        {
+          source: "study-pins",
+          id: x.id,
+        },
+        {
+          isBlurred: isBlurred,
+        }
+      );
+    }
   })
 }
 
@@ -126,15 +129,18 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
         );
       }
 
-      map.setFeatureState(
-        {
-          source: "study-pins",
-          id: selectedPinId,
-        },
-        {
-          isSelected: true,
-        }
-      );
+      if(selectedPinId)
+      {
+        map.setFeatureState(
+          {
+            source: "study-pins",
+            id: selectedPinId,
+          },
+          {
+            isSelected: true,
+          }
+        );
+      }
     }
   }, [map, selectedPinId, prevSelectedPinId]);
 

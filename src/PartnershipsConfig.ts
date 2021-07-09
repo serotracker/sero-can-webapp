@@ -14,10 +14,12 @@ const PartnershipsConfig: Partnership[] = [
                     [-140.99, 41.67], // Southwest coordinates
                     [-52.64, 83.23] // Northeast coordinates
                 ],
+                /*
                 maxBounds: [
                     [-147, 37], // Southwest coordinates
                     [-48, 86] // Northeast coordinates
                 ]
+                */
             }
         }
     ]

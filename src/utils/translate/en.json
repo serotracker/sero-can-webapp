@@ -439,7 +439,7 @@
   },
   "StartDate": "Start Date",
   "Status": "Status",
-  "StudiesView": {
+  "PartnershipsView": {
     "MapNote1": "The map displays estimates for all geographic based estimates. Pins are arranged around the center of their geographic location(s).",
     "MapNote2": "Case and death counts (at the midpoint in study sampling) are taken at a national level from WEBSITE (subsource: coronavirus.jhu.edu)"
   },
