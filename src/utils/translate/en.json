@@ -64,7 +64,11 @@
   "Analyze": "Analyze",
   "Article": "Article",
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
-  "BestSeroprevalenceEstimate": "Best Seroprevalence Estimate",
+  "BestSeroprevalenceEstimate": "Best seroprevalence estimate",
+  "VaccineRolloutStatus": "Vaccine availability during study",
+  "VaccinationPolicyLow": "Vaccines unavailable",
+  "VaccinationPolicyMed": "Vaccines available to certain groups",
+  "VaccinationPolicyHigh": "Vaccines available to broader population",
   "Biographies": {
     "BruceM": {
       "PartOne": "Associate Scientific Director (Strategy), COVID-19 Immunity Task Force",
@@ -305,6 +309,21 @@
     "SecondParagraph": "(from the appendix to our full systematic review and meta-analysis of SARS-CoV-2 serosurveys)"
   },
   "Media": "Media",
+  "MediaMentions": "Media Mentions",
+  "Months": {
+    "January": "January",
+    "February": "February",
+    "March": "March",
+    "April": "April",
+    "May": "May",
+    "June": "June",
+    "July": "July",
+    "August": "August",
+    "September": "September",
+    "October": "October",
+    "November": "November",
+    "December": "December"
+  },
   "N": "N",
   "Name": "Name",
   "NationalEstimateRange": "Country/Territory-Wide Estimate Range",
@@ -336,9 +355,13 @@
   "Paper": "Paper",
   "PaperText": "Our first manuscript, describing lessons from serosurveys up to May 1, can be found on",
   "PaperTextTwo": "More information about our dashboard can be found in",
+  "Partnerships": "Partnerships",
+  "PartnershipsList": {
+    "Canada": "Canada (CITF)"
+  },
   "PlannedSerosurveys": "Planned Serosurveys",
   "Population": "Population",
-  "PopulationGroup": "Population Group",
+  "PopulationGroup": "Population group",
   "PopulationGroupOptions": {
     "All": "All",
     "BloodDonors": "Blood donors",
@@ -364,6 +387,7 @@
   "PrivacyPolicy": "Privacy Policy",
   "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
   "Publication": "Publication",
+  "Publications": "Publications",
   "Published": "Published",
   "References": "References",
   "ReferencesTable": "References Table",
@@ -409,6 +433,7 @@
   },
   "Serosurveys": "Serosurveys",
   "SerosurveysReportingPrevalence": "Serosurveys Reporting Prevalence",
+  "SeroprevalenceEstimatesInRegion": "Seroprevalence estimates in NAME by their geographic area",
   "SeroTrackerTeam": "SeroTracker team",
   "Settings": "Settings",
   "Sex": "Sex",
@@ -436,6 +461,10 @@
   },
   "StartDate": "Start Date",
   "Status": "Status",
+  "PartnershipsView": {
+    "MapNote1": "The map displays estimates for all geographic based estimates. Pins are arranged around the center of their geographic location(s).",
+    "MapNote2": "Case and death counts (at the midpoint in study sampling) are taken at a national level from WEBSITE (subsource: coronavirus.jhu.edu)"
+  },
   "StudiesPerPage": "Studies per page",
   "Study": "Study",
   "StudyDetailsAuthorString": {
@@ -452,7 +481,7 @@
     "FirstParagraph": "Filter on study details, including source type (publication, preprint, news, or report) and study status (ongoing, completed).",
     "SecondParagraph": "Risk of bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates."
   },
-  "StudyName": "Study Name",
+  "StudyName": "Study name",
   "StudyPins": "Show Study Pins",
   "StudySize": "Study Size",
   "StudyStatus": "Study Status",
@@ -497,6 +526,7 @@
   "TotalTests": "Total Tests",
   "UniversityOf": "University of NAME",
   "UseOfData": "Use of this data is governed by SeroTracker's",
+  "ViewPartnership": "View Partnership",
   "ViewFile": "View File",
   "ViewHere": "View Here",
   "Welcome": "Welcome to SeroTracker",

@@ -16,6 +16,7 @@ interface InformationIconProps {
 
 export default function InformationIcon(props: InformationIconProps) {
   const { color, size, tooltip, tooltipHeader, offset, position, popupSize = "small" } = props;
+  
   return (
     <div className="px-2">
       <Popup

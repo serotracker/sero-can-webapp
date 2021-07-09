@@ -2,35 +2,36 @@ export type AirtableRecord = {
   source_id: string | null;
   source_name: string | null;
   lead_organization?: string | null;
-  first_author?: string | null;
+  first_author: string | null;
   source_type: string | null;
   test_type: string | null;
   specimen_type: string[] | null;
   isotypes_reported: string[] | null;
-  test_manufacturer?: string[] | null;
-  sensitivity?: number | null;
-  specificity?: number | null;
+  test_manufacturer: string[] | null;
+  sensitivity: number | null;
+  specificity: number | null;
   country: string | null;
-  state?: string[] | null;
-  city?: string[] | null;
+  state: string[] | null;
+  city: string[] | null;
   population_group: string | null;
   sex: string | null;
   age: string | null;
   denominator: number | null;
-  seroprevalence: number | null;
-  publish_date?: string[] | string | null;
-  publisher?: string | null;
+  serum_pos_prevalence: number | null;
+  publish_date: string[] | string | null;
+  publisher: string | null;
   overall_risk_of_bias: string | null;
   pin_latitude: number;
   pin_longitude: number;
   pin_region_type: string | null;
-  study_type?: string | null;
-  sampling_method?: string | null;
-  sampling_start_date?: string | null;
-  sampling_end_date?: string | null;
-  summary?: string | null;
-  url?: string | null;
+  study_type: string | null;
+  sampling_method: string | null;
+  sampling_start_date: string | null;
+  sampling_end_date: string | null;
+  summary: string | null;
+  url: string | null;
   estimate_grade: string | null;
+  vaccination_policy: number | null;
 };
 
 export type AggregatedRecord = {
@@ -55,6 +56,10 @@ export type Filters = {
   specimen_type: any;
   publish_date: any;
   estimate_grade: any;
+};
+
+export type StudiesFilters = {
+  country: any;
 };
 
 export type FilterType =
@@ -90,7 +95,6 @@ export type State = {
   language: LanguageType;
   showCookieBanner: boolean;
   countries: any;
-  showCountryHover: boolean;
 };
 
 export type StartDates = {
@@ -118,6 +122,15 @@ export type PageState = {
   legendLayers: LegendLayers;
 };
 
+export type CountriesMapConfig = {
+  estimateGradePrevalences?: EstimateGradePrevalence[];
+  countryFocus?: string;
+}
+
+export type StudyPinsMapConfig = {
+  records: AirtableRecord[];
+}
+
 export type EstimateGradePrevalence = {
   testsAdministered: number;
   geographicalName: string;
@@ -133,6 +146,31 @@ export type RegionalPrevalenceEstimate = {
   maxEstimate: number;
   minEstimate: number;
   numEstimates: number;
+};
+
+export type Partnerships = { 
+  [key: string]: Partnership 
+};
+
+export type Partnership = {
+  iso3: string;
+  routeName: string,
+  tableauKey: string;
+  tableauUrl: { [language: string]: string }
+  mapboxMapOptions: any
+};
+
+export type PartnershipMapOptions = {
+/**
+ * Bounds represent the initial extent of the map by 2 coordinates
+ * The first coordinate is the Southwest extent
+ * The second coordinate is the Northeast extent
+ */
+  bounds?: [[number, number],[number, number]],
+  /**
+ * maxBounds represents the hard limit to map extent, users cannot move past these
+ */
+  maxBounds?: [[number, number],[number, number]],
 };
 
 export enum AggregationFactor {
