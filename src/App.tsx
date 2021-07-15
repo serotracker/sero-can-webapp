@@ -133,7 +133,7 @@ function App() {
             key={`CanadianTableau${language}`}
             desktopOptions={{
               width: "80vw",
-              height: "4100px"
+              height: "5050px"
             }}
             mobileOptions={{
               width: "90vw",

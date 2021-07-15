@@ -16,7 +16,7 @@ export type AirtableRecord = {
   population_group: string | null;
   sex: string | null;
   age: string | null;
-  denominator: number | null;
+  denominator_value: number | null;
   serum_pos_prevalence: number | null;
   publish_date: string[] | string | null;
   publisher: string | null;

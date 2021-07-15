@@ -46,7 +46,7 @@ export default function StudyPopup(record: AirtableRecord) {
             {Translate("N")}
         </div>
         <div className="popup-text">
-            {`${record.denominator}`}
+            {`${record.denominator_value}`}
         </div>
         <div className="popup-heading">
             {Translate("VaccineRolloutStatus")}
