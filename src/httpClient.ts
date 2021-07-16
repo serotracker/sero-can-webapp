@@ -145,7 +145,7 @@ export default class httpClient {
         }
 
         const filtered_records = response.map((item: Record<string, any>) => {
-            return this.responseToRecord(item) as AirtableRecord;
+            return item as AirtableRecord;
         });
 
         return filtered_records;

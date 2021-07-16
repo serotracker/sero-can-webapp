@@ -45,25 +45,32 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
     });
 }
 
-function SetStudiesMode(map: mapboxgl.Map, iso3Name: string) {
+function SetMapData(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[], countryFocus: any) {
 
-    // this will remove the state from all features on the map, as its easier then only removing highlighted countries
-    // may need to rework this if we plan to persist some feature state in the future
-    map.removeFeatureState({
-        source: COUNTRY_LAYER_ID,
-        sourceLayer: COUNTRY_LAYER_ID
-        });
-        map.setFeatureState(
+    SetCountryEstimates(map, estimateGradePrevalences);
+
+    if(countryFocus) // Shades following countries dark
+    {
+        const fa = map.querySourceFeatures(COUNTRY_LAYER_ID, 
             {
-                source: COUNTRY_LAYER_ID,
-                sourceLayer: COUNTRY_LAYER_ID,
-                id: iso3Name,
-            },
+            sourceLayer: COUNTRY_LAYER_ID
+            });
+
+        fa.forEach(f => { //filter((f) => Object.keys(f.state).length > 0)\
+            if (f.id !== countryFocus)
             {
-                isHighlighted: true
+                map.setFeatureState({
+                source: f.source,
+                sourceLayer: f.sourceLayer,
+                id: f.id,
+                }, 
+                {
+                    Shaded: true
+                });
             }
-        );
+        })
     }
+}
 
 const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, countryFocus}: CountriesMapConfig) => {
 
@@ -81,15 +88,11 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
             {
                 if (!map.getSource(COUNTRY_LAYER_ID)) 
                 {
-                    map.on('styledata', ()=>SetCountryEstimates(map, estimateGradePrevalences));
+                    map.on('styledata', ()=>SetMapData(map, estimateGradePrevalences, countryFocus));
                 }
                 else {
-                    SetCountryEstimates(map, estimateGradePrevalences);
+                    SetMapData(map, estimateGradePrevalences, countryFocus);
                 }
-            }
-            else if(countryFocus)
-            {
-                SetStudiesMode(map, countryFocus);
             }
         }
     }, [map, estimateGradePrevalences, countryFocus]);
