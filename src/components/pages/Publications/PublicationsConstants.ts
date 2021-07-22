@@ -128,15 +128,6 @@ const listOfResearchArticles: PublicationsCardProps[] = [
         titleKey2: ['PlosOnePub'],
         url: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0252617"
     },
-    {
-        day: "18",
-        month: "November",
-        year: "2020",
-        img: MedRxivPub,
-        titleKey1: 'ResearchArticleTitles',
-        titleKey2: ['MedRxivPub'],
-        url: "https://www.medrxiv.org/content/10.1101/2020.11.17.20233460v2"
-    },
     {           
         day: "14",
         month: "August",
