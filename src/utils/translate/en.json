@@ -260,7 +260,8 @@
     "JouleRecipients": "Joule announces 2020 Innovation grant recipients",
     "JouleInnovation": "SeroTracker: Joule innovation grant recipient",
     "WhenEnd": "When will the COVID-19 pandemic end?",
-    "JouleAnnounce": "Joule announces 2020 Innovation grant recipients"
+    "JouleAnnounce": "Joule announces 2020 Innovation grant recipients",
+    "StillVulnerable": "The world's population is still vulnerable to COVID-19"
   },
   "IndustryReportTitles": {
     "AugustReport": "August Report - COVID-19 Screening & Testing in Canada’s Private Sector",
@@ -272,12 +273,14 @@
     "PreliminaryReport": "Preliminary Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "YearInReview2020": "SeroTracker 2020 Year in Review",
-    "InsuringTheEconomy": "Insuring the Economy Against a Second Pandemic Wave"
+    "InsuringTheEconomy": "Insuring the Economy Against a Second Pandemic Wave",
+    "InventoryEvidenceSynthesis": "Inventory of Best Evidence Synthesis"
   },
   "ResearchArticleTitles": {
     "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
     "MedRxivPub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
-    "LancetID": "SeroTracker: a global SARS-CoV-2 seroprevalence dashboard"
+    "LancetID": "SeroTracker: a global SARS-CoV-2 seroprevalence dashboard",
+    "PlosOnePub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis"
   },
   "InitInfoModalText": {
     "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
