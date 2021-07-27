@@ -438,7 +438,8 @@
     "Male": "Male",
     "Unspecified": "Unspecified"
   },
-  "ShowUnityStudies": "Show WHO Unity-aligned studies",
+  "UnityStudiesOnly": "WHO Unity only",
+  "UnityStudiesOnlyLong": "Show WHO Unity-aligned studies only",
   "Source": "Source",
   "SourceType": "Source Type",
   "SourceTypeOptions": {

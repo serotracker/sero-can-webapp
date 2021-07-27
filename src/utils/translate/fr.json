@@ -442,7 +442,8 @@
     "Male": "Homme",
     "Unspecified": "Non précisé"
   },
-  "ShowUnityStudies": "Montrer les études Unité-aligné",
+  "UnityStudiesOnly": "L'OMS-UNITY seulement",
+  "UnityStudiesOnlyLong": "Afficher seulement des études alignées avec l'OMS-UNITY",
   "Source": "Source",
   "SourceType": "Type de source",
   "SourceTypeOptions": {

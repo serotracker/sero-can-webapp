@@ -89,9 +89,9 @@ export default function Filters({ page }: FilterProps) {
     )
   }
 
-  const buildFilterCheckbox = (filter_type: FilterType, label: string) => {
+  const buildFilterCheckbox = (filter_type: FilterType, label: string, title?: string) => {
     return(
-      <div className="checkbox-item pb-3" id="National" onClick={async (e: React.MouseEvent<HTMLElement>) => {
+      <div title={title ? title: label} className="checkbox-item pb-3" id="National" onClick={async (e: React.MouseEvent<HTMLElement>) => {
         await addFilter(
           !pageState.filters[filter_type], 
           filter_type
@@ -149,7 +149,7 @@ export default function Filters({ page }: FilterProps) {
               }
             </div>
             <div>
-              {buildFilterCheckbox('unity_aligned_only', Translate('ShowUnityStudies'))}
+              {buildFilterCheckbox('unity_aligned_only', Translate('UnityStudiesOnly'), Translate('UnityStudiesOnlyLong'))}
             </div>
             <div>
               {buildFilterDropdown('source_type', Translate('SourceType'))}
