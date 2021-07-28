@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
-import { AirtableRecord, EstimateGradePrevalence } from "types";
+import { AirtableRecord, EstimateGradePrevalence, Partnership, State } from "types";
 import { isMaintenanceMode } from "../../../constants";
 import { useMediaQuery } from 'react-responsive'
 import { AppContext } from "../../../context";
@@ -12,7 +12,52 @@ import Translate, { getCountryName } from "utils/translate/translateService";
 import { Loader } from "semantic-ui-react";
 import Legend from "components/map/Legend";
 import MapboxMap from "components/map/MapboxMap";
-import httpClient from 'httpClient'
+import httpClient from 'httpClient';
+
+const desktopMap = (config: Partnership, state: State, estimateGradePrevalence: EstimateGradePrevalence | undefined, records: AirtableRecord[]) => {
+  return (
+    <div style={{ height: "70vh" }} className="row">
+    <div className="col-10">
+      <Loader indeterminate active={state.explore.isLoading}></Loader>
+      <MapboxMap
+        mapConfig={config.mapboxMapOptions}
+        countriesConfig={{
+          estimateGradePrevalences: estimateGradePrevalence ? [estimateGradePrevalence] : undefined,
+          countryFocus: config?.iso3
+        }}
+        studyPinsConfig={{
+          records: records
+        }}
+      />
+    </div>
+    <div className="col-2">
+      <Legend hideLayers/>
+      <div className="mt-5">{Translate("PartnershipsView", ["MapNote1"])}</div>
+      <div className="mt-3">
+        {Translate("PartnershipsView", ["MapNote2"], {
+          WEBSITE: "ourworldindata.org",
+        })}
+      </div>
+    </div>
+  </div>)
+}
+
+const mobileMap = (config: Partnership, state: State, estimateGradePrevalence: EstimateGradePrevalence | undefined, records: AirtableRecord[]) => {
+  return (
+  <div style={{ height: "50vh" }} className="row">
+  <Loader indeterminate active={state.explore.isLoading}></Loader>
+  <MapboxMap
+    mapConfig={config.mapboxMapOptions}
+    countriesConfig={{
+      estimateGradePrevalences: estimateGradePrevalence ? [estimateGradePrevalence] : undefined,
+      countryFocus: config?.iso3
+    }}
+    studyPinsConfig={{
+      records: records
+    }}
+  />
+</div>)
+}
 
 export default function Partnerships() {
   const [state] = useContext(AppContext);
@@ -49,45 +94,7 @@ export default function Partnerships() {
                   })}
                 </h3>
               </div>
-              { isMobileDeviceOrTablet ? 
-              <div style={{ height: "50vh" }} className="row">
-                    <Loader indeterminate active={state.explore.isLoading}></Loader>
-                    <MapboxMap
-                      mapConfig={config.mapboxMapOptions}
-                      countriesConfig={{
-                        estimateGradePrevalences: estimateGradePrevalence ? [estimateGradePrevalence] : undefined,
-                        countryFocus: config?.iso3
-                      }}
-                      studyPinsConfig={{
-                        records: records
-                      }}
-                    />
-                </div> : 
-                <div style={{ height: "70vh" }} className="row">
-                <div className="col-10">
-                  <Loader indeterminate active={state.explore.isLoading}></Loader>
-                  <MapboxMap
-                    mapConfig={config.mapboxMapOptions}
-                    countriesConfig={{
-                      estimateGradePrevalences: estimateGradePrevalence ? [estimateGradePrevalence] : undefined,
-                      countryFocus: config?.iso3
-                    }}
-                    studyPinsConfig={{
-                      records: records
-                    }}
-                  />
-                </div>
-                <div className="col-2">
-                  <Legend hideLayers/>
-                  <div className="mt-5">{Translate("PartnershipsView", ["MapNote1"])}</div>
-                  <div className="mt-3">
-                    {Translate("PartnershipsView", ["MapNote2"], {
-                      WEBSITE: "ourworldindata.org",
-                    })}
-                  </div>
-                </div>
-              </div>}
-              
+              { isMobileDeviceOrTablet ?  mobileMap(config, state, estimateGradePrevalence, records) : desktopMap(config, state, estimateGradePrevalence, records) }
               <div className="row">
                 <TableauEmbed
                   url={config.tableauUrl}
