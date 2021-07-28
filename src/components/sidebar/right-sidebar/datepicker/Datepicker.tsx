@@ -8,6 +8,11 @@ import { updateFilters } from "../../../../utils/stateUpdateUtils";
 import Translate from "../../../../utils/translate/translateService";
 import SectionHeader from "../SectionHeader";
 import {enUS, fr} from 'date-fns/locale'
+import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
+import DateSlider from "./DateSlider";
+
+
+
 
 interface DatepickerProps {
   page: string
@@ -16,17 +21,26 @@ interface DatepickerProps {
 export default function Datepicker({ page }: DatepickerProps) {
   const [state, dispatch] = useContext(AppContext);
   const pageState = state[page as keyof State] as PageState;
-  const [filterStartDate, filterEndDate] = Array.from(pageState.filters.publish_date);
+  const [filterStartDate, filterEndDate]: Date[] = Array.from(pageState.filters.publish_date);
   const [startDate, setStartDate] = useState<Date>(filterStartDate);
   const [endDate, setEndDate] = useState<Date>(filterEndDate);
   const minDate = state.calendarStartDates.minDate;
   const maxDate = state.calendarStartDates.maxDate;
+  const [sliderMax, setSliderMax] = useState<number>((maxDate.getTime()-minDate.getTime())/86400000);
+  const [values, setValues] = useState<Date[]>([startDate, endDate]);
 
+  useEffect(() => {
+    setSliderMax((maxDate.getTime()-minDate.getTime())/86400000);
+  }, [maxDate, minDate])
 
   useEffect(() => {
     registerLocale("en", enUS)
     registerLocale("fr", fr)
   }, [])
+
+  useEffect(() => {
+    setValues([startDate, endDate]);
+  }, [startDate, endDate])
 
   useEffect(() => {
     if(startDate < minDate) setStartDate(minDate);
@@ -67,6 +81,11 @@ export default function Datepicker({ page }: DatepickerProps) {
     </div>
   )
 
+  const handleSliderChange = (min: number, max: number) => {
+
+  }
+
+
   return (
     <div className="row justify-content-center">
       <div className="col-10 col align-items-center p-0">
@@ -74,6 +93,7 @@ export default function Datepicker({ page }: DatepickerProps) {
           <div>
             <SectionHeader header_text={Translate('DateRange')} tooltip_text={Translate('DateRangeTooltip')} />
           </div>
+          <DateSlider max={sliderMax} min={0} onChange={datePickerChanged} values={values} minDate={minDate}/>
           <div>
             <DatePicker
                 className="col-12 p-0 date-picker"
@@ -125,7 +145,6 @@ export default function Datepicker({ page }: DatepickerProps) {
             />
           </div>
         </div>
-        <div className="pb-1"></div>
       </div>
     </div>
   )
