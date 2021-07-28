@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
-import { AirtableRecord } from "types";
+import { AirtableRecord, EstimateGradePrevalence } from "types";
 import { isMaintenanceMode } from "../../../constants";
 import { AppContext } from "../../../context";
 import MaintenanceModal from "../../shared/MaintenanceModal";
@@ -15,24 +15,31 @@ import httpClient from 'httpClient'
 export default function Partnerships() {
   const [state] = useContext(AppContext);
   const [records, setRecords] = useState<AirtableRecord[]>([]);
+  const [estimateGradePrevalence, setEstimateGradePrevalence] = useState<EstimateGradePrevalence | undefined>();
   const { name } = useParams<{ name: string }>();
   const config = PartnershipsConfig.find(x => x.routeName === name);
 
   useEffect(() => {
     const api = new httpClient();
     const getPartnershipsRecords = async () => {
-      const records = await api.getAirtableRecordsForCountry({country: [config?.routeName]});
-      setRecords(records);
+      setRecords(await api.getAirtableRecordsForCountry({country: [config?.routeName]}));
     }
     getPartnershipsRecords()
-  }, [config])
+    setEstimateGradePrevalence(state.explore.estimateGradePrevalences.find(x => x.alpha3Code === config?.iso3));
+  }, [config, state.explore.estimateGradePrevalences])
 
   return (
     <>
       {config !== undefined ? (
         <>
-          <div className="col-12 page">
+          <div className="col-12 page pb-6">
             <div className="col-10">
+              <h1 className="mt-5">
+                {Translate("PartnershipsPageTitle", [config?.routeName])}
+              </h1>
+              <p>
+                {Translate("PartnershipsPageDescription", [config?.routeName])}
+              </p>
               <div className="mt-5 mb-1">
                 <h3>
                   {Translate("SeroprevalenceEstimatesInRegion", null, {
@@ -46,15 +53,16 @@ export default function Partnerships() {
                   <MapboxMap
                     mapConfig={config.mapboxMapOptions}
                     countriesConfig={{
-                      countryFocus: config.iso3
+                      estimateGradePrevalences: estimateGradePrevalence ? [estimateGradePrevalence] : undefined,
+                      countryFocus: config?.iso3
                     }}
                     studyPinsConfig={{
-                      records: records,
+                      records: records
                     }}
                   />
                 </div>
                 <div className="col-2">
-                  <Legend />
+                  <Legend hideLayers/>
                   <div className="mt-5">{Translate("PartnershipsView", ["MapNote1"])}</div>
                   <div className="mt-3">
                     {Translate("PartnershipsView", ["MapNote2"], {

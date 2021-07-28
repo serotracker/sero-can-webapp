@@ -68,7 +68,7 @@ const MapboxMap = ( {mapConfig, countriesConfig, studyPinsConfig}: MapboxMapProp
         ...mapConfig,
       };
 
-      const m = new mapboxgl.Map(mergedOptions);
+      const m = new mapboxgl.Map(mergedOptions).addControl(new mapboxgl.NavigationControl());
 
       m.on("load", () => {
         mapOnLoad(m, dispatch);

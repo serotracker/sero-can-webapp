@@ -4,7 +4,11 @@ import "./Legend.css";
 import Translate from "../../utils/translate/translateService";
 import { MapSymbology } from "components/map/MapConfig"
 
-export default function Legend() {
+interface LegendProps {
+  hideLayers?: boolean
+}
+
+export default function Legend({hideLayers}: LegendProps) {
   const [state, dispatch] = useContext(AppContext);
   const handleLegendToggle = (e: React.MouseEvent<HTMLElement>) => {
     const layerName: string = e.currentTarget.id;
@@ -38,6 +42,8 @@ export default function Legend() {
         <label>{Translate("LocalStudies")}</label>
         <input className="ui checkbox" type="checkbox" checked={state.explore.legendLayers.Local} readOnly />
       </div>
+      { hideLayers ? null : 
+      <>
       <div className="legend-item">
         <i className="block legend-icon" style={{ background: MapSymbology.CountryFeature.HasData.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
         <label>{Translate("CountryEstimatesExist")}</label>
@@ -50,6 +56,8 @@ export default function Legend() {
         <i className="block legend-icon" style={{ background: MapSymbology.CountryFeature.Disputed.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
         <label>{Translate("NotApplicable")}</label>
       </div>
+      </>
+      }
     </div>
   )
 }

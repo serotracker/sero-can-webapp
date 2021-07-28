@@ -45,25 +45,9 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
     });
 }
 
-function SetStudiesMode(map: mapboxgl.Map, iso3Name: string) {
-
-    // this will remove the state from all features on the map, as its easier then only removing highlighted countries
-    // may need to rework this if we plan to persist some feature state in the future
-    map.removeFeatureState({
-        source: COUNTRY_LAYER_ID,
-        sourceLayer: COUNTRY_LAYER_ID
-        });
-        map.setFeatureState(
-            {
-                source: COUNTRY_LAYER_ID,
-                sourceLayer: COUNTRY_LAYER_ID,
-                id: iso3Name,
-            },
-            {
-                isHighlighted: true
-            }
-        );
-    }
+function SetMapData(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
+    SetCountryEstimates(map, estimateGradePrevalences);
+}
 
 const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, countryFocus}: CountriesMapConfig) => {
 
@@ -81,15 +65,11 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
             {
                 if (!map.getSource(COUNTRY_LAYER_ID)) 
                 {
-                    map.on('styledata', ()=>SetCountryEstimates(map, estimateGradePrevalences));
+                    map.on('styledata', ()=>SetMapData(map, estimateGradePrevalences));
                 }
                 else {
-                    SetCountryEstimates(map, estimateGradePrevalences);
+                    SetMapData(map, estimateGradePrevalences);
                 }
-            }
-            else if(countryFocus)
-            {
-                SetStudiesMode(map, countryFocus);
             }
         }
     }, [map, estimateGradePrevalences, countryFocus]);
