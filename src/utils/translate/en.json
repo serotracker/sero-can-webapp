@@ -363,7 +363,11 @@
     "Canada": "Canada - Covid-19 Immunity Task Force"
   },
   "PartnershipsPageDescription": {
-    "Canada": "SeroTracker is financially supported by the Public Health Agency of Canada through the COVID-19 Immunity Task Force (CITF). The CITF has funded numerous high calibre serosurveys amongst other research which you can learn about here. This page showcases the data from Canadian serosurveys, and modeling based on these data."
+    "Canada": "SeroTracker is financially supported by the Public Health Agency of Canada through the COVID-19 Immunity Working Group (CITF). CITF has funded many high-calibre serological surveys among other research that you can learn more about on their website. This page presents data from Canadian serological surveys and the modelling based on these data."
+  },
+  "PartnershipsView": {
+    "MapNote1": "The map displays estimates for all geographic based estimates. Pins are arranged around the center of their geographic location(s).",
+    "MapNote2": "Case and death counts (at the midpoint in study sampling) are taken at a national level from WEBSITE (subsource: coronavirus.jhu.edu)"
   },
   "PlannedSerosurveys": "Planned Serosurveys",
   "Population": "Population",
@@ -467,10 +471,6 @@
   },
   "StartDate": "Start Date",
   "Status": "Status",
-  "PartnershipsView": {
-    "MapNote1": "The map displays estimates for all geographic based estimates. Pins are arranged around the center of their geographic location(s).",
-    "MapNote2": "Case and death counts (at the midpoint in study sampling) are taken at a national level from WEBSITE (subsource: coronavirus.jhu.edu)"
-  },
   "StudiesPerPage": "Studies per page",
   "Study": "Study",
   "StudyDetailsAuthorString": {

@@ -32,16 +32,14 @@ export default function Partnerships() {
     <>
       {config !== undefined ? (
         <>
-          <div className="col-12 page">
+          <div className="col-12 page pb-6">
             <div className="col-10">
-            <div className="mt-5 mb-1">
-                <h3>
-                Covid-19 Immunity Task Force
-                </h3>
-                <p>
-                  Blah blah words go here describing the studies/partnership details to explain to the user what they're looking at.
-                </p>
-              </div>
+              <h1 className="mt-5">
+                {Translate("PartnershipsPageTitle", [config?.routeName])}
+              </h1>
+              <p>
+                {Translate("PartnershipsPageDescription", [config?.routeName])}
+              </p>
               <div className="mt-5 mb-1">
                 <h3>
                   {Translate("SeroprevalenceEstimatesInRegion", null, {
