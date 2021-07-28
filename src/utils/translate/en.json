@@ -260,7 +260,8 @@
     "JouleRecipients": "Joule announces 2020 Innovation grant recipients",
     "JouleInnovation": "SeroTracker: Joule innovation grant recipient",
     "WhenEnd": "When will the COVID-19 pandemic end?",
-    "JouleAnnounce": "Joule announces 2020 Innovation grant recipients"
+    "JouleAnnounce": "Joule announces 2020 Innovation grant recipients",
+    "StillVulnerable": "The world's population is still vulnerable to COVID-19"
   },
   "IndustryReportTitles": {
     "AugustReport": "August Report - COVID-19 Screening & Testing in Canada’s Private Sector",
@@ -272,12 +273,14 @@
     "PreliminaryReport": "Preliminary Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector",
     "YearInReview2020": "SeroTracker 2020 Year in Review",
-    "InsuringTheEconomy": "Insuring the Economy Against a Second Pandemic Wave"
+    "InsuringTheEconomy": "Insuring the Economy Against a Second Pandemic Wave",
+    "InventoryEvidenceSynthesis": "Inventory of Best Evidence Synthesis"
   },
   "ResearchArticleTitles": {
     "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
     "MedRxivPub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
-    "LancetID": "SeroTracker: a global SARS-CoV-2 seroprevalence dashboard"
+    "LancetID": "SeroTracker: a global SARS-CoV-2 seroprevalence dashboard",
+    "PlosOnePub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis"
   },
   "InitInfoModalText": {
     "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
@@ -453,6 +456,8 @@
     "Male": "Male",
     "Unspecified": "Unspecified"
   },
+  "UnityStudiesOnly": "WHO Unity only",
+  "UnityStudiesOnlyLong": "Show WHO Unity-aligned studies only",
   "Source": "Source",
   "SourceType": "Source Type",
   "SourceTypeOptions": {
@@ -484,8 +489,17 @@
   },
   "StudyInformation": "Study Information",
   "StudyInformationTooltip": {
-    "FirstParagraph": "Filter on study details, including source type (publication, preprint, news, or report) and study status (ongoing, completed).",
-    "SecondParagraph": "Risk of bias: Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates."
+    "FirstParagraph": "Filter on study details, including source type (publication, preprint, news, or report), study status (ongoing, completed), and alignment with the WHO Unity protocol.",
+    "SecondParagraph": {
+      "PartOne": "Risk of bias:",
+      "PartTwo": "Reflects the extent to which the true prevalence may be different from the estimated prevalence. Estimated by SeroTracker reviewers based on the Joanna Briggs Institute critical appraisal tool for prevalence estimates."
+    },
+    "ThirdParagraph": {
+      "PartOne": "WHO Unity protocol:",
+      "PartTwo": "The WHO developed several standardized generic protocols for robust investigations for COVID-19:",
+      "PartThree": "the Unity studies.",
+      "PartFour": "SeroTracker is collaborating with the WHO to support and visualize studies aligned with the population-based seroepidemiological Unity protocol."
+    }
   },
   "StudyName": "Study name",
   "StudyPins": "Show Study Pins",

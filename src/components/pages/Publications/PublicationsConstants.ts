@@ -11,10 +11,21 @@ import BloodBank from '../../../assets/images/SeroTrackerBloodBank_July_2020.png
 import MedRxiv from '../../../assets/images/Prepublication.png'
 import LancetId from '../../../assets/images/LancetIDArticle.png'
 import InsuringTheEconomy from '../../../assets/images/InsuringTheEconomy.png'
+import PlosOnePub from '../../../assets/images/PlosOnePub.png'
+import InventoryEvidenceSynthesis from '../../../assets/images/InventoryEvidenceSynthesis.png'
 
 import { PublicationsCardProps } from "./PublicationsCard";
 
 const listOfReports: PublicationsCardProps[] = [
+    {
+        day: "29",
+        month: "June",
+        year: "2021",
+        img: InventoryEvidenceSynthesis,
+        titleKey1: 'IndustryReportTitles',
+        titleKey2: ['InventoryEvidenceSynthesis'],
+        url: "https://www.mcmasterforum.org/networks/covid-end/resources-to-support-decision-makers/Inventory-of-best-evidence-syntheses/public-health-measures",
+    },
     {
         day: "15",
         month: "January",
@@ -109,13 +120,13 @@ const listOfReports: PublicationsCardProps[] = [
 
 const listOfResearchArticles: PublicationsCardProps[] = [
     {
-        day: "18",
-        month: "November",
-        year: "2020",
-        img: MedRxivPub,
+        day: "23",
+        month: "June",
+        year: "2021",
+        img: PlosOnePub,
         titleKey1: 'ResearchArticleTitles',
-        titleKey2: ['MedRxivPub'],
-        url: "https://www.medrxiv.org/content/10.1101/2020.11.17.20233460v2"
+        titleKey2: ['PlosOnePub'],
+        url: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0252617"
     },
     {           
         day: "14",
@@ -138,6 +149,14 @@ const listOfResearchArticles: PublicationsCardProps[] = [
 ]
 
 const listOfMediaPublicationsProps: PublicationsCardProps[] = [
+    {
+        day: "25",
+        month: "June",
+        year: "2021",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['StillVulnerable'],
+        url: "https://www.journaldequebec.com/2021/06/25/la-population-mondiale-toujours-vulnerable-a-la-covid-19",
+    },
     {
         day: "23",
         month: "January",
