@@ -362,6 +362,20 @@
   "Paper": "Article",
   "PaperText": "Vous trouverez notre premier manuscrit décrivant les enseignements des sérosondages jusqu'au 1er mai sur",
   "PaperTextTwo": "Pour plus d'informations sur notre tableau de bord, consultez",
+  "Partnerships": "Partnerships",
+  "PartnershipsList": {
+    "Canada": "Canada (GTIC)"
+  },
+  "PartnershipsPageTitle": {
+    "Canada": "Canada - Groupe de travail sur l'immunité contre le Covid-19"
+  },
+  "PartnershipsPageDescription": {
+    "Canada": "SeroTracker est soutenu financièrement par l'Agence de la santé publique du Canada par le biais du Groupe de travail sur l’immunité face à la COVID-19 (GTIC). Le GTIC a financé de nombreuses enquêtes sérologiques de haut calibre parmi d'autres recherches sur lesquelles vous pouvez en apprendre davantage sur leur site Web. Cette page présente les données des enquêtes sérologiques canadiennes et la modélisation basée sur ces données."
+  },
+  "PartnershipsView": {
+    "MapNote1": "La carte affiche des estimations pour toutes les estimations géographiques. Les épingles sont disposées autour du centre de leur(s) emplacement(s) géographique(s).",
+    "MapNote2": "Le nombre de cas et de décès (au milieu de l'échantillonnage de l'étude) est tiré au niveau national du SITE WEB (sous-source : coronavirus.jhu.edu)"
+  },
   "PlannedSerosurveys": "Sérosondages planifiés",
   "Population": "Population",
   "PopulationGroup": "Groupe de population",
@@ -433,6 +447,7 @@
   },
   "Serosurveys": "Sérosondages",
   "SerosurveysReportingPrevalence": "Prévalence de signalement des sérosondages",
+  "SeroprevalenceEstimatesInRegion": "Estimations de la séroprévalence dans NAME par zone géographique",
   "SeroTrackerTeam": "l’équipe SeroTracker",
   "Settings": "Paramètres",
   "Sex": "Sexe",
@@ -518,6 +533,7 @@
   "TotalTests": "Total des tests",
   "UniversityOf": "Université de NAME",
   "UseOfData": "L'utilisation de ces données est régie par SeroTracker de",
+  "ViewPartnership": "Voir le partenariat",
   "ViewFile": "Consulter le fichier",
   "ViewHere": "Consulter ici",
   "Welcome": "Bienvenue à SeroTracker",

@@ -34,6 +34,14 @@ export default function Partnerships() {
         <>
           <div className="col-12 page">
             <div className="col-10">
+            <div className="mt-5 mb-1">
+                <h3>
+                Covid-19 Immunity Task Force
+                </h3>
+                <p>
+                  Blah blah words go here describing the studies/partnership details to explain to the user what they're looking at.
+                </p>
+              </div>
               <div className="mt-5 mb-1">
                 <h3>
                   {Translate("SeroprevalenceEstimatesInRegion", null, {

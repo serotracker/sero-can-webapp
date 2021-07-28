@@ -35,6 +35,9 @@ export const MapSymbology = {
             Color: '#E1E1E1',
             Opacity: 1 
         },
+        Shaded: {
+            Color: '#707070',
+        },
         Default: {
             Color: '#FFFFFF',
             Opacity: 0 
@@ -111,8 +114,7 @@ export const Expressions = {
         ],
         'fill-opacity': [
           'case',
-          ['boolean', ['feature-state', 'hasData'], false], MapSymbology.CountryFeature.HasData.Opacity,
-          //['boolean', ['feature-state', 'Shaded'], true], MapSymbology.CountryFeature.HasData.Opacity,
+          ['boolean', ['feature-state', 'hasData'], false], MapSymbology.CountryFeature.HasData.Opacity,  
           MapSymbology.CountryFeature.Default.Opacity
         ]
       }

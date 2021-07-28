@@ -45,31 +45,8 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
     });
 }
 
-function SetMapData(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[], countryFocus: any) {
-
+function SetMapData(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
     SetCountryEstimates(map, estimateGradePrevalences);
-
-    if(countryFocus) // Shades following countries dark
-    {
-        const fa = map.querySourceFeatures(COUNTRY_LAYER_ID, 
-            {
-            sourceLayer: COUNTRY_LAYER_ID
-            });
-
-        fa.forEach(f => { //filter((f) => Object.keys(f.state).length > 0)\
-            if (f.id !== countryFocus)
-            {
-                map.setFeatureState({
-                source: f.source,
-                sourceLayer: f.sourceLayer,
-                id: f.id,
-                }, 
-                {
-                    Shaded: true
-                });
-            }
-        })
-    }
 }
 
 const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, countryFocus}: CountriesMapConfig) => {
@@ -88,10 +65,10 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
             {
                 if (!map.getSource(COUNTRY_LAYER_ID)) 
                 {
-                    map.on('styledata', ()=>SetMapData(map, estimateGradePrevalences, countryFocus));
+                    map.on('styledata', ()=>SetMapData(map, estimateGradePrevalences));
                 }
                 else {
-                    SetMapData(map, estimateGradePrevalences, countryFocus);
+                    SetMapData(map, estimateGradePrevalences);
                 }
             }
         }
