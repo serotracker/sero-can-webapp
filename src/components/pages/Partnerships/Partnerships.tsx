@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { AirtableRecord, EstimateGradePrevalence } from "types";
 import { isMaintenanceMode } from "../../../constants";
+import { useMediaQuery } from 'react-responsive'
 import { AppContext } from "../../../context";
 import MaintenanceModal from "../../shared/MaintenanceModal";
+import { mobileDeviceOrTabletWidth } from '../../../constants'
 import TableauEmbed from "components/shared/TableauEmbed";
 import PartnershipsConfig from "PartnershipsConfig";
 import Translate, { getCountryName } from "utils/translate/translateService";
@@ -27,7 +29,7 @@ export default function Partnerships() {
     getPartnershipsRecords()
     setEstimateGradePrevalence(state.explore.estimateGradePrevalences.find(x => x.alpha3Code === config?.iso3));
   }, [config, state.explore.estimateGradePrevalences])
-
+  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
   return (
     <>
       {config !== undefined ? (
@@ -47,7 +49,21 @@ export default function Partnerships() {
                   })}
                 </h3>
               </div>
-              <div style={{ height: "70vh" }} className="row">
+              { isMobileDeviceOrTablet ? 
+              <div style={{ height: "50vh" }} className="row">
+                    <Loader indeterminate active={state.explore.isLoading}></Loader>
+                    <MapboxMap
+                      mapConfig={config.mapboxMapOptions}
+                      countriesConfig={{
+                        estimateGradePrevalences: estimateGradePrevalence ? [estimateGradePrevalence] : undefined,
+                        countryFocus: config?.iso3
+                      }}
+                      studyPinsConfig={{
+                        records: records
+                      }}
+                    />
+                </div> : 
+                <div style={{ height: "70vh" }} className="row">
                 <div className="col-10">
                   <Loader indeterminate active={state.explore.isLoading}></Loader>
                   <MapboxMap
@@ -70,7 +86,8 @@ export default function Partnerships() {
                     })}
                   </div>
                 </div>
-              </div>
+              </div>}
+              
               <div className="row">
                 <TableauEmbed
                   url={config.tableauUrl}
