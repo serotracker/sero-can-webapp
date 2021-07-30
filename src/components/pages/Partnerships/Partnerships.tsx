@@ -101,11 +101,11 @@ export default function Partnerships() {
                   key={config.tableauKey}
                   desktopOptions={{
                     width: "83vw",
-                    height: "4100px",
+                    height: "6000px",
                   }}
                   mobileOptions={{
                     width: "90vw",
-                    height: "2800px",
+                    height: "3000px",
                   }}
                 />
               </div>
