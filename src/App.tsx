@@ -119,8 +119,8 @@ function App() {
             url={ANALYZE_URLS}
             key={`AnalyzeTableau${language}`}
             desktopOptions={{
-              width: "80vw",
-              height: "3200px"
+              width: "82vw",
+              height: "4030px"
             }}
             mobileOptions={{
               width: "90vw",
