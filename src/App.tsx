@@ -13,11 +13,13 @@ import { CookieBanner } from "./components/shared/CookieBanner";
 import { NavBar } from "./components/shared/NavBar";
 import { Footer } from "./components/shared/Footer";
 import TableauEmbed from "./components/shared/TableauEmbed";
-import { AppContext, getEmptyFilters } from "./context";
+import { AppContext } from "./context";
 import httpClient from "./httpClient";
 import { LanguageType, PageStateEnum } from "./types";
+import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
-import { ANALYZE_URLS, CANADA_URLS } from "./constants";
+import { ANALYZE_URLS } from "./constants";
+import Partnerships from "components/pages/Partnerships/Partnerships";
 
 function App() {
   const [{ language, explore }, dispatch] = useContext(AppContext);
@@ -25,7 +27,8 @@ function App() {
 
   // General call that happens once at the start of everything.
   useEffect(() => {
-    const api = new httpClient();
+    const api = new httpClient()
+    initializeData(dispatch, explore.filters, PageStateEnum.explore)
     const allFilterOptions = async () => {
       const { options, updatedAt, maxDate, minDate } = await api.getAllFilterOptions();
       dispatch({
@@ -125,19 +128,8 @@ function App() {
             }}
           />
         </Route>
-        <Route path="/:language/Canada">
-          <TableauEmbed
-            url={CANADA_URLS}
-            key={`CanadianTableau${language}`}
-            desktopOptions={{
-              width: "80vw",
-              height: "5050px"
-            }}
-            mobileOptions={{
-              width: "90vw",
-              height: "2800px"
-            }}
-          />
+        <Route path="/:language/Partnerships/:name">
+          <Partnerships />
         </Route>
         <Route path="/:language/Data">
           <Data />
@@ -153,13 +145,6 @@ function App() {
         </Route>
         <Route path="/:language/Publications">
           <Publications />
-        </Route>
-        <Route path="/:language/Unity">
-          <Explore initialFilters={(() => {
-            let initialFilters = getEmptyFilters();
-            initialFilters.unity_aligned_only = true;
-            return initialFilters;
-          })()}/>
         </Route>
         <Redirect exact from="/" to={`/${language}/Explore`} />
         {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Publications", "Canada"].map(route =>

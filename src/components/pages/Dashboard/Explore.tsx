@@ -51,7 +51,14 @@ export default function Explore(props: ExploreProps) {
               <div className="info flex legend center-item">
                 <Legend/>
               </div>
-              <MapboxMap/>
+              <MapboxMap 
+              countriesConfig={{
+                estimateGradePrevalences: state.explore.estimateGradePrevalences
+              }} 
+              studyPinsConfig={{
+                records: state.explore.records
+              }}
+              />
             </div>
             <div className="col-2 p-0 flex">
               <RightSidebar page={PageStateEnum.explore} />

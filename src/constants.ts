@@ -12,5 +12,5 @@ export const ANALYZE_URLS = {
 }
 export const CANADA_URLS = {
     "en": "https://public.tableau.com/views/CanadaianDetail/Canadiandetail?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link",
-    "fr": "https://public.tableau.com/views/Canada-FR/Canadiandetail?:language=fr&:display_count=y&publish=yes&:origin=viz_share_link"
+    "fr": "https://public.tableau.com/views/Canada-FR/CanadianchartsFR?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
 }

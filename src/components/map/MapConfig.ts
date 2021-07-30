@@ -1,3 +1,5 @@
+import mapboxgl from "mapbox-gl";
+
 export const MapSymbology = {
     StudyFeature: {
         National: {
@@ -22,6 +24,9 @@ export const MapSymbology = {
         }
     },
     CountryFeature: {
+        IsHighlighted: {
+            Color: '#b0c8d4'
+        },
         HasData: {
             Color: '#97b1bd',
             Opacity: 0.5 
@@ -29,6 +34,9 @@ export const MapSymbology = {
         Disputed: {
             Color: '#E1E1E1',
             Opacity: 1 
+        },
+        Shaded: {
+            Color: '#707070',
         },
         Default: {
             Color: '#FFFFFF',
@@ -40,12 +48,21 @@ export const MapSymbology = {
     }
 }
 
-export const MapUrlResource = {
+export const MapResources = {
     WHO_BASEMAP : "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer",
     WHO_COUNTRY_VECTORTILES : "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer"
 }
 
-const MapConfig = {
+export const DefaultMapboxMapOptions = {
+    center: [10, 30],
+    zoom: 2,
+    minZoom: 2,
+    maxZoom: 14,
+    attributionControl: false,
+    doubleClickZoom: false,
+}
+
+export const Expressions = {
     Studies: {
         "circle-color": [
           "match",
@@ -91,17 +108,14 @@ const MapConfig = {
       Countries : {
         'fill-color': [
           'case',
-          ['boolean', ['feature-state', 'hasData'], false],
-          MapSymbology.CountryFeature.HasData.Color,
+          ['boolean', ['feature-state', 'isHighlighted'], true], MapSymbology.CountryFeature.IsHighlighted.Color,
+          ['boolean', ['feature-state', 'hasData'], true], MapSymbology.CountryFeature.HasData.Color,
           MapSymbology.CountryFeature.Default.Color
         ],
         'fill-opacity': [
           'case',
-          ['boolean', ['feature-state', 'hasData'], false],
-          MapSymbology.CountryFeature.HasData.Opacity,
+          ['boolean', ['feature-state', 'hasData'], false], MapSymbology.CountryFeature.HasData.Opacity,  
           MapSymbology.CountryFeature.Default.Opacity
         ]
       }
 }
-
-export default MapConfig;
