@@ -39,6 +39,7 @@
     height: 0;
     width: 100%;
     outline: none;
+    left: 0;
 }
 
 .thumb-left {
