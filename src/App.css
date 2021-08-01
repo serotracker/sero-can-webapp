@@ -226,9 +226,9 @@
     z-index: 3000;
     background-color: white;
     border-radius: 3px;
-    top: 10px;
-    right: 20px;
-    box-shadow: 0 0 3px 0 #000000;
+    box-shadow: 0 3px 3px 0 #646464;
+    height: 30px;
+    width: 30px;
 }
 
 .icon {
@@ -263,6 +263,16 @@
 
 .modal-content {
     border: none
+}
+
+.nav__item--active a{
+    font-weight: 500;
+    color: white;
+}
+
+.nav__item a{
+    font-weight: 400;
+    color: lightgrey;
 }
 
 .checkbox {
