@@ -2,8 +2,8 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import './DateSlider.css';
 
 interface DSprops {
-    min: number;
-    max: number;
+    min: number; //minimum possible value for slider
+    max: number; //maximum possible value for slider
     values: Date[];
     minDate: Date;
     onChange: Function;
@@ -12,10 +12,10 @@ interface DSprops {
 export default function DateSlider(props: DSprops){
 
     const {min, max, minDate} = props;
-    const [values, setValues] = useState<number[]>([(props.values[0].getTime() - minDate.getTime())/86400000,
+    const [sliderThumbValues, setSliderThumbValues] = useState<number[]>([(props.values[0].getTime() - minDate.getTime())/86400000,
         (props.values[1].getTime() - minDate.getTime())/86400000])
-    const [minVal, setMinVal] = useState(values[0]);
-    const [maxVal, setMaxVal] = useState(values[1]);
+    const [leftThumbVal, setLeftThumbVal] = useState(sliderThumbValues[0]);
+    const [rightThumbVal, setRightThumbVal] = useState(sliderThumbValues[1]);
     const minValRef = useRef(min);
     const maxValRef = useRef(max);
     const range = useRef<HTMLDivElement>(null);
@@ -26,31 +26,29 @@ export default function DateSlider(props: DSprops){
     );
 
     useEffect(() => {
-      setMinVal(values[0]);
-      setMaxVal(values[1]);
-    }, [values])
+      setLeftThumbVal(sliderThumbValues[0]);
+      setRightThumbVal(sliderThumbValues[1]);
+    }, [sliderThumbValues])
 
     useEffect(() => {
-        const minPercent = getPercent(minVal);
-        const maxPercent = getPercent(maxVal);
-        console.log(minPercent, maxPercent);
+        const minPercent = getPercent(leftThumbVal);
+        const maxPercent = getPercent(rightThumbVal);
         if (range.current) {
             range.current.style.left = `${minPercent}%`;
             range.current.style.width = `${maxPercent - minPercent}%`;
         }
-    }, [minVal, getPercent]);
+    }, [leftThumbVal, getPercent]);
 
     useEffect(() => {
-        const minPercent = getPercent(minVal);
-        const maxPercent = getPercent(maxVal);
-        console.log(minPercent, maxPercent);
+        const minPercent = getPercent(leftThumbVal);
+        const maxPercent = getPercent(rightThumbVal);
         if (range.current) {
             range.current.style.width = `${maxPercent - minPercent}%`;
         }
-    }, [maxVal, getPercent]);
+    }, [rightThumbVal, getPercent]);
 
     useEffect(() => {
-        setValues([(props.values[0].getTime() - minDate.getTime())/86400000,
+        setSliderThumbValues([(props.values[0].getTime() - minDate.getTime())/86400000,
             (props.values[1].getTime() - minDate.getTime())/86400000]);
     }, [props.values[0], props.values[1]])
 
@@ -64,33 +62,33 @@ export default function DateSlider(props: DSprops){
 
     return(
         <div className={"slider-container"}>
-            <input className={"thumb thumb-left"} type={"range"} value={minVal} min={min} max={max}
+            <input className={"thumb thumb-left"} type={"range"} value={leftThumbVal} min={min} max={max}
                    onChange={event => {
-                       const value = Math.min(Number(event.target.value), maxVal - 1);
-                       setMinVal(value);
+                       const value = Math.min(Number(event.target.value), rightThumbVal - 1);
+                       setLeftThumbVal(value);
                        minValRef.current = value;
                    }}
                    onMouseUp={() => {
-                       props.onChange(true, toDateSinceMinDate(minVal));
+                       props.onChange(true, toDateSinceMinDate(leftThumbVal));
                    }}
 
-                   style={{ zIndex: (minVal > max - 100 ? 5 : 3)}}
+                   style={{ zIndex: (leftThumbVal > max - 100 ? 5 : 3)}}
             />
-            <input className={"thumb thumb-right"} type={"range"} value={maxVal} min={min} max={max}
+            <input className={"thumb thumb-right"} type={"range"} value={rightThumbVal} min={min} max={max}
                    onChange={event => {
-                       const value = Math.max(Number(event.target.value), minVal + 1);
-                       setMaxVal(value);
+                       const value = Math.max(Number(event.target.value), leftThumbVal + 1);
+                       setRightThumbVal(value);
                        maxValRef.current = value;
                    }}
                    onMouseUp={() => {
-                       props.onChange(false, toDateSinceMinDate(maxVal))
+                       props.onChange(false, toDateSinceMinDate(rightThumbVal))
                    }}
             />
             <div className="slider">
                 <div className="slider-track" />
                 <div className="slider-range" ref={range} />
-                <div className={"slider-left-value"}>{toDateString(toDateSinceMinDate(minVal))}</div>
-                <div className={"slider-right-value"}>{toDateString(toDateSinceMinDate(maxVal))}</div>
+                <div className={"slider-left-value"}>{toDateString(toDateSinceMinDate(leftThumbVal))}</div>
+                <div className={"slider-right-value"}>{toDateString(toDateSinceMinDate(rightThumbVal))}</div>
             </div>
         </div>
     )
