@@ -158,6 +158,22 @@ const listOfMediaPublicationsProps: PublicationsCardProps[] = [
         url: "https://www.journaldequebec.com/2021/06/25/la-population-mondiale-toujours-vulnerable-a-la-covid-19",
     },
     {
+        day: "25",
+        month: "May",
+        year: "2021",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['NYTIndia'],
+        url: "https://www.nytimes.com/interactive/2021/05/25/world/asia/india-covid-death-estimates.html",
+    },
+    {
+        day: "13",
+        month: "May",
+        year: "2021",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['EconomistDeathToll'],
+        url: "https://www.economist.com/graphic-detail/2021/05/13/how-we-estimated-the-true-death-toll-of-the-pandemic",
+    },
+    {
         day: "23",
         month: "January",
         year: "2021",
