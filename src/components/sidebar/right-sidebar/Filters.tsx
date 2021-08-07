@@ -17,6 +17,11 @@ interface FilterProps {
   page: string
 }
 
+interface PopulationGroupFilterOption {
+  english: string,
+  french: string
+}
+
 export default function Filters({ page }: FilterProps) {
   const [state, dispatch] = useContext(AppContext);
   const pageState = state[page as keyof State] as PageState;
@@ -39,12 +44,15 @@ export default function Filters({ page }: FilterProps) {
         });
         break;
       default:
-        options.forEach((o: string | string[]) => {
+        options.forEach((o: string | PopulationGroupFilterOption) => {
+          // This code block will be deprecated once as this becomes the standardized filter option logic
           if (filter_type === "population_group") {
+            o = o as PopulationGroupFilterOption;
+            const optionString = state.language === LanguageType.english ? o.english : o.french;
             formatted_options.push({
-              key: state.language === LanguageType.english ? o[0] : o[1],
-              text: state.language === LanguageType.english ? o[0] : o[1],
-              value: state.language === LanguageType.english ? o[0] : o[1]
+              key: optionString,
+              text: optionString,
+              value: optionString
             })
           } else {
             const translatedString = Translate(jsonObjectString, [toPascalCase(o as string)]);
