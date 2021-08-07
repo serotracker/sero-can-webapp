@@ -22,6 +22,29 @@
     z-index: 10000;
 }
 
+.nav__item--active a{
+    font-weight: 500;
+    color: white;
+}
+
+.nav__item a{
+    font-weight: 400;
+    color: lightgrey;
+}
+
+.nav__item--accordion {
+    font-weight: 400 !important;
+    color: lightgrey;
+}
+
+.dropdown__icon{
+    transform: rotate(270deg) !important;
+}
+
+.dropdown__icon--active{
+    transform: rotate(180deg) !important;
+}
+
 .App-footer {
     display: flex;
     background-color: white;
@@ -211,7 +234,6 @@
 }
 
 .popup-header {
-    font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-size: 1.40em;
     line-height: 1.2;
     margin-bottom: 0.25em;
@@ -263,16 +285,6 @@
 
 .modal-content {
     border: none
-}
-
-.nav__item--active a{
-    font-weight: 500;
-    color: white;
-}
-
-.nav__item a{
-    font-weight: 400;
-    color: lightgrey;
 }
 
 .checkbox {

@@ -7,15 +7,23 @@ import { AppContext } from '../../context'
 import { LanguageType } from '../../types'
 import Translate from '../../utils/translate/translateService'
 import { withLocaleUrl } from '../../utils/utils'
-import PartnershipsDropDown from './PartnershipsDropDown'
-import { Dropdown } from "semantic-ui-react";
+import PartnershipsConfig from "PartnershipsConfig";
+import { Dropdown, Accordion, Icon } from "semantic-ui-react";
 
 export const NavBar = () => {
   const [tab, setTab] = useState("");
   const [state, dispatch] = useContext(AppContext);
+  const [ activeIndex, setIndex ] = useState(0);
 
   const getTabClass = (tabName: string) => {
     return tab.includes(tabName) ? 'nav__item--active col-auto h-100 flex center-item' : 'nav__item col-auto h-100 flex center-item';
+  }
+
+  const handleClick = (e: any, titleProps: any) => {
+    const { index } = titleProps
+    const newIndex = activeIndex === index ? -1 : index
+
+    setIndex(newIndex)
   }
 
   const usePageViews = () => {
@@ -54,13 +62,14 @@ export const NavBar = () => {
           <div className="col-auto px-2" >SeroTracker</div>
         </Link>
       </div>
-      { isMobileDeviceOrTablet ? mobileNav() : desktopNav(isMobileDeviceOrTablet,getTabClass, changeLanguages, state.language) }
+      { isMobileDeviceOrTablet ? mobileNav(activeIndex, handleClick) : desktopNav( getTabClass, changeLanguages, state.language) }
     </header >
   )
 }
 
-const mobileNav = () => {
-  return (<Dropdown icon='bars' direction='left'>
+const mobileNav = (activeIndex: number, handleClick: any) => {
+  return (
+  <Dropdown icon='bars' direction='left' simple>
   <Dropdown.Menu>
     <Dropdown.Item>
       <Link to={withLocaleUrl("Explore")}>
@@ -88,14 +97,25 @@ const mobileNav = () => {
       </Link>
     </Dropdown.Item>
     <Dropdown.Item>
-      <PartnershipsDropDown />
+      <Accordion fluid>
+          <Accordion.Title
+            active={activeIndex === 0}
+            index={0}
+            onClick={handleClick}
+            className={'nav__item--accordion flex center-item py-0'}
+          >
+            <Icon name='dropdown' className={`mr-2 ${activeIndex === 0 ? 'dropdown__icon' : 'dropdown__icon--active'} `}/>
+            <p>{Translate("Partnerships")}</p>
+          </Accordion.Title>
+          {renderPartnershipsAccordianContent(activeIndex)}
+        </Accordion>
     </Dropdown.Item>
   </Dropdown.Menu>
 </Dropdown>)
 }
 
-const desktopNav = (isMobileDeviceOrTablet: boolean, getTabClass: any, changeLanguages:any, language: any) => {
-  return (<div className={`App-tabs col-auto space-evenly p-0 ${isMobileDeviceOrTablet ? 'fill' : ''}`}>
+const desktopNav = ( getTabClass: any, changeLanguages:any, language: any) => {
+  return (<div className={`App-tabs col-auto space-evenly p-0`}>
   <div className={getTabClass('/Explore')}>
     <Link to={withLocaleUrl("Explore")}>
       {Translate('Explore')}
@@ -121,15 +141,33 @@ const desktopNav = (isMobileDeviceOrTablet: boolean, getTabClass: any, changeLan
       {Translate('About')}
     </Link>
   </div>
-  <div className={getTabClass('/Partnerships')}>
-    <PartnershipsDropDown />
+  <div className={'nav__item col-auto h-100 flex center-item'}>
+    <Dropdown text={Translate("Partnerships")}>
+      {renderPartnershipsDropDownMenu()}
+    </Dropdown>
   </div>
   <div className={getTabClass('/Language') + " cursor"} onClick={() => changeLanguages()}>
     <div>
-      {language === LanguageType.english ?
-        (isMobileDeviceOrTablet ? "Fr" : "Français") :
-        (isMobileDeviceOrTablet ? "En" : "English")}
+      {language === LanguageType.english ? "Fr" : "En" }
     </div>
   </div>
 </div>)
 }
+
+const renderPartnershipsDropDownMenu = () => (
+  <Dropdown.Menu>{
+    PartnershipsConfig.map( p => (
+      <Dropdown.Item>
+        <Link to={withLocaleUrl(`Partnerships/${p.routeName}`)}>{Translate("PartnershipsList", [p.routeName])}</Link>
+      </Dropdown.Item>
+    ))}
+  </Dropdown.Menu>)
+
+const renderPartnershipsAccordianContent = (activeIndex: number) => (
+    <Accordion.Content active={activeIndex === 0}>
+      {PartnershipsConfig.map( p => (
+        <p>
+          <Link to={withLocaleUrl(`Partnerships/${p.routeName}`)}>{Translate("PartnershipsList", [p.routeName])}</Link>
+        </p>
+      ))}
+    </Accordion.Content>)

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import PartnershipsConfig from "PartnershipsConfig";
 import { Dropdown } from "semantic-ui-react";
 import Translate from "utils/translate/translateService";
@@ -7,24 +7,23 @@ import { withLocaleUrl } from "../../utils/utils";
 
 export default function PartnershipsDropDown() {
 
-  const dropDownItemsRef = useRef([
-    // Add more items to this array if we have more partnerships
-    generateDropdownItem(PartnershipsConfig[0])
-  ])
-
+  const renderPartnerships = () => {
+    return PartnershipsConfig.map( p => (
+        <Dropdown.Item>
+          <Link to={withLocaleUrl(`Partnerships/${p.routeName}`)}>{Translate("PartnershipsList", [p.routeName])}</Link>
+        </Dropdown.Item>
+      ))
+  };
 
   return (
-    <Dropdown text={Translate("Partnerships")} pointing className="dropdown">
-      <Dropdown.Menu>{dropDownItemsRef.current}</Dropdown.Menu>
+    <Dropdown text={Translate("Partnerships")} className="dropdown">
+      <Dropdown.Menu>{
+        PartnershipsConfig.map( p => (
+          <Dropdown.Item>
+            <Link to={withLocaleUrl(`Partnerships/${p.routeName}`)}>{Translate("PartnershipsList", [p.routeName])}</Link>
+          </Dropdown.Item>
+        ))}
+      </Dropdown.Menu>
     </Dropdown>
-  );
-}
-
-function generateDropdownItem(studyConfig: any) {
-  const label = Translate("PartnershipsList", [studyConfig.routeName]);
-  return (
-    <Dropdown.Item>
-      <Link to={withLocaleUrl(`Partnerships/${studyConfig.routeName}`)}>{label}</Link>
-    </Dropdown.Item>
   );
 }
