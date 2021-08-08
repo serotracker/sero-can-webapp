@@ -55,7 +55,41 @@
 
 Footer {
     background-color: $sero-dark-blue;
+    font-size: 16px;
+    font-weight: 300;
     color: white !important;
+}
+
+Footer h3{
+    font-weight: 600;
+}
+
+Footer a{
+    color: white;
+}
+
+.a-f {
+    &__visible {
+        height: 50px;
+    }
+}
+
+.download-data-btn.ui.button {
+    background-color: $stone-cold-steve-austin;
+    a {
+        font-weight: normal;
+        color: white;
+    }
+}
+
+.sponsers-pill {
+    padding: 1em;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.whoDisclaimer {
+    font-size: 11px;
 }
 
 .App-footer {
@@ -87,16 +121,16 @@ Footer {
     }
 }
 
-.updated-date-string {
-    font-weight: 550;
-}
-
 .cite-link {
     color: #55A6BA;
 }
 
 .italics{
     font-style: italic;
+}
+
+.bold-text {
+    font-weight: bold;
 }
 
 .left-item {
