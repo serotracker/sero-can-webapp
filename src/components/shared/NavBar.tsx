@@ -55,16 +55,21 @@ export const NavBar = () => {
   usePageViews()
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
   return (
-    <header className="App-header col-12 px-sm-2">
-      <div className="App-title col-auto py-3 px-0 flex left">
-        <Link to={withLocaleUrl("Explore")} className="flex">
-          <img src={MultiColorIcon} width={23} height={23} alt="" />
-          <div className="col-auto px-2" >SeroTracker</div>
-        </Link>
-      </div>
+    <header className="App-header col-12 px-3">
+      <AppTitle />
       { isMobileDeviceOrTablet ? mobileNav(activeIndex, handleClick) : desktopNav( getTabClass, changeLanguages, state.language) }
     </header >
   )
+}
+
+const AppTitle = () => {
+  return (
+  <div className="App-title col-auto py-3 px-0 flex left">
+    <Link to={withLocaleUrl("Explore")} className="flex align-items-center">
+      <img src={MultiColorIcon} width={23} height={23} alt="" />
+      <div className="col-auto px-2 align-middle" >SeroTracker</div>
+    </Link>
+  </div>)
 }
 
 const mobileNav = (activeIndex: number, handleClick: any) => {
@@ -146,9 +151,12 @@ const desktopNav = ( getTabClass: any, changeLanguages:any, language: any) => {
       {renderPartnershipsDropDownMenu()}
     </Dropdown>
   </div>
+  <div className={'col-auto h-100 pl-4 pr-0'}>
+    |
+  </div>
   <div className={getTabClass('/Language') + " cursor"} onClick={() => changeLanguages()}>
     <div>
-      {language === LanguageType.english ? "Fr" : "En" }
+      {language === LanguageType.english ? "FR" : "EN" }
     </div>
   </div>
 </div>)
