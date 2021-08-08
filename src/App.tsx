@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import './App.scss';
+import 'sass/app.scss';
 import About from './components/pages/About';
 import NotFoundPage from './components/pages/NotFoundPage';
 import CookiePolicy from "./components/pages/CookiePolicy";

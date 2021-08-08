@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal } from "semantic-ui-react";
-import './shared.scss';
+import 'sass/components/shared.scss';
 import Translate from "../../utils/translate/translateService";
 
 interface MaintenanceModalProps {
