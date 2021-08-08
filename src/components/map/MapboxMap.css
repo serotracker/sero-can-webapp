@@ -20,7 +20,7 @@ body {
 }
 
 .info {
-  font: 14px/16px Arial, Helvetica, sans-serif;
+  font: 14px/16px;
   background: white;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -57,27 +57,12 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
 }
 
 .popup-content {
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   background: #fff;
   font-style: normal;
   text-align: start;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-      "Droid Sans", "Helvetica Neue", sans-serif;
 }
-
-/*
-.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-center .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-left .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-right .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip, 
-.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip{
-    display:none !important;
-}
-*/
 
 .disable-popup {
   display:none !important;

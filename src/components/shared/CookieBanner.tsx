@@ -4,7 +4,7 @@ import { Button } from 'semantic-ui-react'
 import { AppContext } from '../../context'
 import Translate from '../../utils/translate/translateService'
 import { withLocaleUrl } from '../../utils/utils'
-import "./shared.scss"
+import "sass/components/shared.scss"
 
 export const CookieBanner = () => {
   const [state, dispatch] = useContext(AppContext)

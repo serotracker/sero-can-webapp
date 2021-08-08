@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .App {
     flex: 1 1 auto;
     flex-direction: column;
@@ -8,59 +10,78 @@
 }
 
 .App-header {
-    background-color: #455a64;
+    background-color: $sero-dark-blue;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     font-size: 1.25;
     flex: 1 1;
-    color: white;
+    color: lightgrey;
     font-weight: 300;
     height: 50px;
-    border-bottom: 2px solid #64767e;
     z-index: 10000;
+}
+
+.nav__item--active a{
+    font-weight: 500;
+    color: white;
+}
+
+.nav__item a{
+    font-weight: 400;
+    color: lightgrey;
+}
+
+.nav__item--accordion {
+    font-weight: 400 !important;
+    color: lightgrey;
+}
+
+.dropdown__icon{
+    transform: rotate(270deg) !important;
+}
+
+.dropdown__icon--active{
+    transform: rotate(180deg) !important;
+}
+
+Footer {
+    background-color: $sero-dark-blue;
+    color: white !important;
 }
 
 .App-footer {
     display: flex;
-    background-color: white;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     height: 50px;
-    border-top: 1px solid #888888;
     z-index: 10000;
-}
 
-.App-footer-mob {
-    display: flex;
-    background-color: white;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 50px;
-    border-top: 1px solid #888888;
-    z-index: 10000;
+    &--mobile {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    &__item {
+        font-size: 1em;
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+
+    &__link {
+        color: white;
+        &:hover {
+            font-weight: 600;
+            color: white;
+        }
+    }
 }
 
 .updated-date-string {
     font-weight: 550;
-}
-
-.footer-link {
-    color: #212121 !important;
-}
-
-.footer-link:hover {
-    font-weight: 700;
-}
-
-.App-footer-item {
-    font-size: 1em;
-    color: #212121;
-    display: flex;
-    align-items: center;
 }
 
 .cite-link {
@@ -186,12 +207,14 @@
 
 .App-title > a {
     color: white;
-    font-size: 1.625em;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    font-weight: 200;
     cursor: pointer;
 }
 
 .regular a, .regular div {
-    font-weight: 400;
+    font-weight: 200;
     color: lightgrey;
 }
 
@@ -211,7 +234,6 @@
 }
 
 .popup-header {
-    font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-size: 1.40em;
     line-height: 1.2;
     margin-bottom: 0.25em;
@@ -226,9 +248,9 @@
     z-index: 3000;
     background-color: white;
     border-radius: 3px;
-    top: 10px;
-    right: 20px;
-    box-shadow: 0 0 3px 0 #000000;
+    box-shadow: 0 3px 3px 0 #646464;
+    height: 30px;
+    width: 30px;
 }
 
 .icon {

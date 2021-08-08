@@ -239,24 +239,27 @@
     "PartTwo": "participants"
   },
   "IndustryMediaTitles": {
-    "UnderstandingVirus": "Understanding the Virus and Its Unanswered Questions",
-    "KnowledgeHub": "Knowledge hub developed to track SARS-CoV antibody studies",
-    "GlobalLaunch": "Global launch of SeroTracker: a COVID-19 antibody testing hub, in partnership with Canada's COVID-19 Immunity Task Force",
-    "StudentsBuild": "Students build online dashboard to track COVID-19 antibody studies",
-    "NewlyLaunched": "Newly launched SeroTracker will monitor global antibody testing efforts",
-    "VeteranDoctor": "What if there is no COVID-19 vaccine? A veteran doctor of the HIV/AIDS crisis provides alternatives",
-    "CovidRadar": "Covid Radar: taxa de subnotificação de casos de covid-19 na Rocinha chega a 62 vezes [COVID-19 underreporting rate in Rocinha reaches 62 times].",
-    "HowMany": "How many of us are likely to have caught the coronavirus so far?",
-    "Lecturership": "Adjunct lecturership for CHI Lab DPhil student Rahul Arora.",
-    "HomeTests": "Cheap, Daily Home Tests Are The First Step To Containing The Pandemic",
-    "Webinar": "SeroTracker COVID-19 Journey: HIMSS Canadian Prairies Chapter Webinar",
-    "AlumniAndStudents": "The Serotracker: Alumni and students develop tool to track Covid-19 spread",
-    "InfectionRate": "Study on the global coronavirus infection rate: the number of unreported cases",
-    "McKinseyHealthcare": "McKinsey on healthcare: 2020 year in review",
-    "JouleRecipients": "Joule announces 2020 Innovation grant recipients",
-    "JouleInnovation": "SeroTracker: Joule innovation grant recipient",
-    "WhenEnd": "When will the COVID-19 pandemic end?",
-    "JouleAnnounce": "Joule announces 2020 Innovation grant recipients"
+    "UnderstandingVirus": "Comprendre le virus et ses questions sans réponse",
+    "KnowledgeHub": "Un centre de connaissances développé afin de suivre les études sur les anticorps anti-SRAS-CoV",
+    "GlobalLaunch": "Lancement mondial de SeroTracker : un portail de tests d'anticorps contre la COVID-19, en partenariat avec le groupe de travail sur l'immunité face à la COVID-19 du Canada",
+    "StudentsBuild": "Les étudiants créent un tableau de bord en ligne pour suivre les études sur les anticorps contre la COVID-19",
+    "NewlyLaunched": "SeroTracker, récemment lancé, surveillera les efforts mondiaux de dépistage des anticorps",
+    "VeteranDoctor": "Et s'il n'y a pas de vaccin contre la COVID-19 ? Un médecin vétéran de la crise du VIH/SIDA propose des alternatives",
+    "CovidRadar": "Covid Radar: taxa de subnotificação de casos de covid-19 na Rocinha chega a 62 vezes [Le taux de sous-déclaration de la COVID-19 à Rocinha atteint 62 fois].",
+    "HowMany": "Combien d'entre nous sont susceptibles d'avoir attrapé le coronavirus jusqu'à présent?",
+    "Lecturership": "Poste de chargé de cours auxiliaire pour l'étudiant en doctorat du CHI Lab, Rahul Arora",
+    "HomeTests": "Des tests bon marché, à domicile et quotidiens sont la première étape pour contenir la pandémie",
+    "Webinar": "«SeroTracker COVID-19 Journey»: Webinaire HIMSS de la section des Prairies canadiennes",
+    "AlumniAndStudents": "Le «Serotracker» : les anciens élèves et les étudiants développent un outil pour suivre la propagation de la COVID-19",
+    "InfectionRate": "Étude sur le taux mondial d'infection par le coronavirus : le nombre de cas non déclarés",
+    "McKinseyHealthcare": "McKinsey sur les soins de santé : bilan de l'année 2020",
+    "JouleRecipients": "Joule annonce les lauréats des bourses «Innovation» 2020",
+    "JouleInnovation": "SeroTracker : bénéficiaire de la bourse «Innovation» de Joule",
+    "WhenEnd": "Quand la pandémie de COVID-19 prendra-t-elle fin?",
+    "JouleAnnounce": "Joule annonce les lauréats des bourses «Innovation» 2020",
+    "StillVulnerable": "La population mondiale toujours vulnérable à la COVID-19",
+    "NYTIndia": "Quelle pourrait être la vraie ampleur de la propagation de Covid en Inde?",
+    "EconomistDeathToll": "Comment avons-nous estimé le véritable nombre de morts de la pandémie?"
   },
   "IndustryReportTitles": {
     "AugustReport": "Rapport d'Août - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
@@ -268,12 +271,14 @@
     "PreliminaryReport": "Rapport préliminaire - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
     "SeptemberReport": "Rapport de Septembre - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
     "YearInReview2020": "Bilan de l’année 2020 de SeroTracker",
-    "InsuringTheEconomy": "Insuring the Economy Against a Second Pandemic Wave"
+    "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie",
+    "InventoryEvidenceSynthesis": "Inventaire des meilleures synthèses de preuves"
   },
   "ResearchArticleTitles": {
     "PrePrint": "Leçons d'un examen rapide et systématique du début des SRAS-CoV-2 enquêtes sérologiques",
-    "MedRxivPub": "Séroprévalence globale du SRAS-CoV-2 anticorps: une revue systématique et méta-analyse",
-    "LancetID": "SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2"
+    "MedRxivPub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse",
+    "LancetID": "SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2",
+    "PlosOnePub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse"
   },
   "InitInfoModalText": {
     "PartOne": "Bienvenue dans l'onglet Analyse de SeroTracker ! Nous menons un examen systématique des sérosondages du SRAS-CoV-2 et nous utilisons les données provenant de cet examen afin de constituer ce tableau de bord.",
@@ -303,6 +308,21 @@
     "SecondParagraph": "(de l’annexe à notre revue systématique complète et méta-analyse des enquêtes sérologiques SARS-CoV-2)"
   },
   "Media": "Médias",
+  "MediaMentions": "Mentions dans les médias",
+  "Months": {
+    "January": "janvier",
+    "February": "février",
+    "March": "mars",
+    "April": "avril",
+    "May": "mai",
+    "June": "juin",
+    "July": "juillet",
+    "August": "août",
+    "September": "septembre",
+    "October": "octobre",
+    "November": "novembre",
+    "December": "décembre"
+  },
   "N": "N",
   "Name": "Nom",
   "NationalEstimateRange": "Plage d'estimation nationale",
@@ -329,6 +349,10 @@
   },
   "NotReported": "Non signalée",
   "BestSeroprevalenceEstimate": "Meilleure estimation de la séroprévalence",
+  "VaccineRolloutStatus": "Circulation des vaccins pendant l'étude",
+  "VaccinationPolicyLow": "Vaccins indisponibles",
+  "VaccinationPolicyMed": "Vaccins disponibles pour certains groupes",
+  "VaccinationPolicyHigh": "Vaccins disponibles pour la population entière",
   "NumberEstimates": "Nombre d'estimations",
   "NumSeroprevalenceEstimates": "Nombre d'estimations de séroprévalence",
   "OurData": "Nos données",
@@ -351,10 +375,10 @@
     "Canada": "Canada - Groupe de travail sur l'immunité contre le Covid-19"
   },
   "PartnershipsPageDescription": {
-    "Canada": "SeroTracker est soutenu financièrement par l'Agence de la santé publique du Canada par le biais du Groupe de travail sur l’immunité face à la COVID-19 (GTIC). Le GTIC a financé de nombreuses enquêtes sérologiques de haut calibre parmi d'autres recherches sur lesquelles vous pouvez en apprendre davantage sur leur site Web. Cette page présente les données des enquêtes sérologiques canadiennes et la modélisation basée sur ces données."
+    "Canada": "SeroTracker est soutenu financièrement par l'Agence de la santé publique du Canada par le biais du Groupe de travail sur l’immunité face à la COVID-19 (GTIC). Le GTIC a financé de nombreuses enquêtes sérologiques de haut calibre parmi d'autres recherches sur lesquelles vous pouvez en apprendre davantage sur leur site Web. (https://www.covid19immunitytaskforce.ca/) Cette page présente les données des enquêtes sérologiques canadiennes et la modélisation basée sur ces données."
   },
   "PartnershipsView": {
-    "MapNote1": "La carte affiche des estimations pour toutes les estimations géographiques. Les épingles sont disposées autour du centre de leur(s) emplacement(s) géographique(s).",
+    "MapNote1": "La carte affiche des estimations pour toutes les estimations géographiques (y compris les sous-estimations rapportées, par exemple les estimations régionales provinciales rapportées dans une étude nationale). Les épingles sont disposées autour du centre de leur(s) emplacement(s) géographique(s).",
     "MapNote2": "Le nombre de cas et de décès (au milieu de l'échantillonnage de l'étude) est tiré au niveau national du SITE WEB (sous-source : coronavirus.jhu.edu)"
   },
   "PlannedSerosurveys": "Sérosondages planifiés",
@@ -385,6 +409,7 @@
   "PrivacyPolicy": "Politique de confidentialité",
   "PrivateSectorMonitoringTeam": "Équipe de suivi du secteur privé",
   "Publication": "Publication",
+  "Publications": "Publications",
   "Published": "Publié",
   "References": "Références",
   "ReferencesTable": "Table de références",
@@ -437,6 +462,8 @@
     "Male": "Homme",
     "Unspecified": "Non précisé"
   },
+  "UnityStudiesOnly": "L'OMS-UNITY seulement",
+  "UnityStudiesOnlyLong": "Afficher seulement des études alignées avec l'OMS-UNITY",
   "Source": "Source",
   "SourceType": "Type de source",
   "SourceTypeOptions": {
@@ -468,8 +495,17 @@
   },
   "StudyInformation": "Informations sur l'étude",
   "StudyInformationTooltip": {
-    "FirstParagraph": "Trier selon les détails d'étude, y compris le type de source (publication, préimpression, actualité ou rapport) et l'état de l'étude (en cours, complétée).",
-    "SecondParagraph": "Risque de partialité: Reflète la mesure dans laquelle la prévalence réelle peut être différente de la prévalence estimée par les examinateurs de SeroTracker en fonction de l’outil d’evaluation critique de l’Institut Joanna Briggs"
+    "FirstParagraph": "Trier selon les détails d'étude, y compris le type de source (publication, préimpression, actualité ou rapport), l'état de l'étude (en cours, complétée), et l'alignement avec le protocole Unité.",
+    "SecondParagraph": {
+      "PartOne": "Risque de partialité:",
+      "PartTwo": "Reflète la mesure dans laquelle la prévalence réelle peut être différente de la prévalence estimée par les examinateurs de SeroTracker en fonction de l’outil d’evaluation critique de l’Institut Joanna Briggs."
+    },
+    "ThirdParagraph": {
+      "PartOne": "Le protocole Unité de l’OMS:",
+      "PartTwo": "L’OMS a developpé plusieurs protocoles standardisés pour les enquêtes sur la COVID-19:",
+      "PartThree": "Les études Unité.",
+      "PartFour": "SéroTracker travaille avec l’OMS pour soutenir et visualiser les études séro-épidémiologique sur les populations alignées avec le protocole Unité."
+    }
   },
   "StudySize": "Taille de l'étude",
   "StudyStatus": "État de l'étude",

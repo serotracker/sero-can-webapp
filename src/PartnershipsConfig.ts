@@ -6,8 +6,8 @@ const PartnershipsConfig: Partnership[] = [
             routeName: "Canada",
             tableauKey: "CanadianTableau",
             tableauUrl: {
-                "en": "https://public.tableau.com/views/SeroTrackerAnalyse/Canadiandetail?:language=en&:display_count=y&publish=yes&:origin=viz_share_link",
-                "fr": "https://public.tableau.com/views/Canada-FR/Canadiandetail?:language=fr&:display_count=y&publish=yes&:origin=viz_share_link"
+                "en": "https://public.tableau.com/views/Canada-EN/Canadiancharts?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link",
+                "fr": "https://public.tableau.com/views/Canada-FR/CanadianchartsFR?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
             },
             mapboxMapOptions: {
                 bounds: [

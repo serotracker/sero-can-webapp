@@ -161,7 +161,7 @@ export default function StudiesTable(props: StudiesTableProps) {
                             const {
                                 source_name, source_type, url,
                                 country, state, city,
-                                denominator,
+                                denominator_value,
                                 sex, age, population_group,
                                 serum_pos_prevalence,
                                 sampling_end_date,
@@ -175,7 +175,7 @@ export default function StudiesTable(props: StudiesTableProps) {
                                     </Table.Cell>
                                     <Table.Cell className={`flex p-1 ${props.smallView ? "col-6" : "col-sm-12 col-lg-2"}`}>{getGeography(city, state, country)}</Table.Cell>
                                     <Table.Cell className={`flex p-1 ${props.smallView ? "col-6" : "col-sm-12 col-lg-2"}`}>{getPopulation(sex, age, population_group)}</Table.Cell>
-                                    <Table.Cell className={`flex p-1 ${props.smallView ? "col-6" : "col-sm-12 col-lg-1"}`}>{denominator ? denominator : "Not Reported"}</Table.Cell>
+                                    <Table.Cell className={`flex p-1 ${props.smallView ? "col-6" : "col-sm-12 col-lg-1"}`}>{denominator_value ? denominator_value : "Not Reported"}</Table.Cell>
                                     <Table.Cell className={`flex p-1 ${props.smallView ? "col-6" : "col-sm-12 col-lg-1"}`}>{serum_pos_prevalence ? `${(serum_pos_prevalence * 100).toFixed(2)}%` : "Not Reported"}</Table.Cell>
                                     <Table.Cell className={`flex p-1 ${props.smallView ? "col-6" : "col-sm-12 col-lg-1"}`}>{risk_of_bias ? risk_of_bias : "Not Reported"}</Table.Cell>
                                     <Table.Cell className={`flex p-1 ${props.smallView ? "col-6" : "col-sm-12 col-lg-2"}`}>{getPossibleNullDateString(sampling_end_date)}</Table.Cell>

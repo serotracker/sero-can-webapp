@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import './App.css';
+import 'sass/app.scss';
 import About from './components/pages/About';
 import NotFoundPage from './components/pages/NotFoundPage';
 import CookiePolicy from "./components/pages/CookiePolicy";
@@ -13,7 +13,7 @@ import { CookieBanner } from "./components/shared/CookieBanner";
 import { NavBar } from "./components/shared/NavBar";
 import { Footer } from "./components/shared/Footer";
 import TableauEmbed from "./components/shared/TableauEmbed";
-import { AppContext } from "./context";
+import { AppContext, getEmptyFilters } from "./context";
 import httpClient from "./httpClient";
 import { LanguageType, PageStateEnum } from "./types";
 import { initializeData } from "./utils/stateUpdateUtils";
@@ -28,7 +28,7 @@ function App() {
   // General call that happens once at the start of everything.
   useEffect(() => {
     const api = new httpClient()
-    initializeData(dispatch, explore.filters, true, PageStateEnum.explore)
+    initializeData(dispatch, explore.filters, PageStateEnum.explore)
     const allFilterOptions = async () => {
       const { options, updatedAt, maxDate, minDate } = await api.getAllFilterOptions();
       dispatch({
@@ -119,8 +119,8 @@ function App() {
             url={ANALYZE_URLS}
             key={`AnalyzeTableau${language}`}
             desktopOptions={{
-              width: "80vw",
-              height: "3200px"
+              width: "82vw",
+              height: "4030px"
             }}
             mobileOptions={{
               width: "90vw",
@@ -145,6 +145,13 @@ function App() {
         </Route>
         <Route path="/:language/Publications">
           <Publications />
+        </Route>
+        <Route path="/:language/Unity">
+          <Explore initialFilters={(() => {
+            let initialFilters = getEmptyFilters();
+            initialFilters.unity_aligned_only = true;
+            return initialFilters;
+          })()}/>
         </Route>
         <Redirect exact from="/" to={`/${language}/Explore`} />
         {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Publications", "Canada"].map(route =>
