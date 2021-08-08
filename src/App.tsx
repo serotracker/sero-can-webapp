@@ -13,7 +13,7 @@ import { CookieBanner } from "./components/shared/CookieBanner";
 import { NavBar } from "./components/shared/NavBar";
 import { Footer } from "./components/shared/Footer";
 import TableauEmbed from "./components/shared/TableauEmbed";
-import { AppContext } from "./context";
+import { AppContext, getEmptyFilters } from "./context";
 import httpClient from "./httpClient";
 import { LanguageType, PageStateEnum } from "./types";
 import { initializeData } from "./utils/stateUpdateUtils";
@@ -145,6 +145,13 @@ function App() {
         </Route>
         <Route path="/:language/Publications">
           <Publications />
+        </Route>
+        <Route path="/:language/Unity">
+          <Explore initialFilters={(() => {
+            let initialFilters = getEmptyFilters();
+            initialFilters.unity_aligned_only = true;
+            return initialFilters;
+          })()}/>
         </Route>
         <Redirect exact from="/" to={`/${language}/Explore`} />
         {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Publications", "Canada"].map(route =>
