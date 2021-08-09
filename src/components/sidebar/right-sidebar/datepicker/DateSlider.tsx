@@ -2,8 +2,8 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import './DateSlider.css';
 
 interface DSprops {
-    min: number; //minimum possible value for slider
-    max: number; //maximum possible value for slider
+    minPossibleValue: number; //minimum possible value for slider
+    maxPossibleValue: number; //maximum possible value for slider
     values: Date[];
     minDate: Date;
     onChange: Function;
@@ -12,20 +12,20 @@ interface DSprops {
 export default function DateSlider(props: DSprops){
 
     const milliSecondsPerDay = 86400000;
-    const {min, max, minDate} = props;
+    const {minPossibleValue, maxPossibleValue, minDate} = props;
     const [sliderThumbValues, setSliderThumbValues] = useState<number[]>([(props.values[0].getTime() - minDate.getTime())/milliSecondsPerDay,
         (props.values[1].getTime() - minDate.getTime())/milliSecondsPerDay])
     const [leftThumbVal, setLeftThumbVal] = useState(sliderThumbValues[0]);
     const [rightThumbVal, setRightThumbVal] = useState(sliderThumbValues[1]);
-    const minValRef = useRef(min);
-    const maxValRef = useRef(max);
+    const minValRef = useRef(minPossibleValue);
+    const maxValRef = useRef(maxPossibleValue);
     const range = useRef<HTMLDivElement>(null);
     /*const getPercent = useCallback(
         (value: number) => Math.round(((value - min) / (max - min)) * 100),
         [min, max]
     );*/
 
-    const getPercent = (value: number) => Math.round(((value - min) / (max - min)) * 100)
+    const getPercent = (value: number) => Math.round(((value - minPossibleValue) / (maxPossibleValue - minPossibleValue)) * 100)
 
     useEffect(() => {
       setLeftThumbVal(sliderThumbValues[0]);
@@ -64,7 +64,7 @@ export default function DateSlider(props: DSprops){
 
     return(
         <div className={"slider-container"}>
-            <input className={"thumb thumb-left"} type={"range"} value={leftThumbVal} min={min} max={max}
+            <input className={"thumb thumb-left"} type={"range"} value={leftThumbVal} min={minPossibleValue} max={maxPossibleValue}
                    onChange={event => {
                        const value = Math.min(Number(event.target.value), rightThumbVal - 1);
                        setLeftThumbVal(value);
@@ -74,9 +74,9 @@ export default function DateSlider(props: DSprops){
                        props.onChange(true, toDateSinceMinDate(leftThumbVal));
                    }}
 
-                   style={{ zIndex: (leftThumbVal > max - 100 ? 5 : 3)}}
+                   style={{ zIndex: (leftThumbVal > maxPossibleValue - 100 ? 5 : 3)}}
             />
-            <input className={"thumb thumb-right"} type={"range"} value={rightThumbVal} min={min} max={max}
+            <input className={"thumb thumb-right"} type={"range"} value={rightThumbVal} min={minPossibleValue} max={maxPossibleValue}
                    onChange={event => {
                        const value = Math.max(Number(event.target.value), leftThumbVal + 1);
                        setRightThumbVal(value);

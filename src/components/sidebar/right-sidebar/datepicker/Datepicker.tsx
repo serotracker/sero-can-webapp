@@ -8,11 +8,7 @@ import { updateFilters } from "../../../../utils/stateUpdateUtils";
 import Translate from "../../../../utils/translate/translateService";
 import SectionHeader from "../SectionHeader";
 import {enUS, fr} from 'date-fns/locale'
-import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
 import DateSlider from "./DateSlider";
-
-
-
 
 interface DatepickerProps {
   page: string
@@ -34,8 +30,8 @@ export default function Datepicker({ page }: DatepickerProps) {
     setSliderRange((latestPublicationDate.getTime()-earliestPublicationDate.getTime())/millisecondsPerDay);
     //although it is not possible for a suer to cause the below problem that I am checking for,
     // there does come an issue that if a user waits for the whole page to load, then the chosen date is earlier than the earliest possible date
-    if(chosenStartDate < earliestPublicationDate) setChosenStartDate(earliestPublicationDate);
-    if(chosenEndDate > latestPublicationDate) setChosenEndDate(latestPublicationDate);
+    setChosenStartDate(earliestPublicationDate);
+    setChosenEndDate(latestPublicationDate);
   }, [latestPublicationDate, earliestPublicationDate])
 
   useEffect(() => {
@@ -88,7 +84,7 @@ export default function Datepicker({ page }: DatepickerProps) {
           <div>
             <SectionHeader header_text={Translate('DateRange')} tooltip_text={Translate('DateRangeTooltip')} />
           </div>
-          <DateSlider max={sliderRange} min={0} onChange={datePickerChanged} values={sliderThumbValues} minDate={earliestPublicationDate}/>
+          <DateSlider maxPossibleValue={sliderRange} minPossibleValue={0} onChange={datePickerChanged} values={sliderThumbValues} minDate={earliestPublicationDate}/>
           <div>
             <DatePicker
                 selected={chosenStartDate}
