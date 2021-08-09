@@ -11,19 +11,21 @@ interface DSprops {
 
 export default function DateSlider(props: DSprops){
 
+    const milliSecondsPerDay = 86400000;
     const {min, max, minDate} = props;
-    const [sliderThumbValues, setSliderThumbValues] = useState<number[]>([(props.values[0].getTime() - minDate.getTime())/86400000,
-        (props.values[1].getTime() - minDate.getTime())/86400000])
+    const [sliderThumbValues, setSliderThumbValues] = useState<number[]>([(props.values[0].getTime() - minDate.getTime())/milliSecondsPerDay,
+        (props.values[1].getTime() - minDate.getTime())/milliSecondsPerDay])
     const [leftThumbVal, setLeftThumbVal] = useState(sliderThumbValues[0]);
     const [rightThumbVal, setRightThumbVal] = useState(sliderThumbValues[1]);
     const minValRef = useRef(min);
     const maxValRef = useRef(max);
     const range = useRef<HTMLDivElement>(null);
-
-    const getPercent = useCallback(
+    /*const getPercent = useCallback(
         (value: number) => Math.round(((value - min) / (max - min)) * 100),
         [min, max]
-    );
+    );*/
+
+    const getPercent = (value: number) => Math.round(((value - min) / (max - min)) * 100)
 
     useEffect(() => {
       setLeftThumbVal(sliderThumbValues[0]);
@@ -35,7 +37,7 @@ export default function DateSlider(props: DSprops){
         const maxPercent = getPercent(rightThumbVal);
         if (range.current) {
             range.current.style.left = `${minPercent}%`;
-            range.current.style.width = `${maxPercent - minPercent}%`;
+            range.current.style.width = maxPercent - minPercent < 100 ? `${maxPercent - minPercent}%` : "100%";
         }
     }, [leftThumbVal, getPercent]);
 
@@ -43,17 +45,17 @@ export default function DateSlider(props: DSprops){
         const minPercent = getPercent(leftThumbVal);
         const maxPercent = getPercent(rightThumbVal);
         if (range.current) {
-            range.current.style.width = `${maxPercent - minPercent}%`;
+            range.current.style.width = maxPercent - minPercent < 100 ? `${maxPercent - minPercent}%` : "100%";
         }
     }, [rightThumbVal, getPercent]);
 
     useEffect(() => {
-        setSliderThumbValues([(props.values[0].getTime() - minDate.getTime())/86400000,
-            (props.values[1].getTime() - minDate.getTime())/86400000]);
+        setSliderThumbValues([(props.values[0].getTime() - minDate.getTime())/milliSecondsPerDay,
+            (props.values[1].getTime() - minDate.getTime())/milliSecondsPerDay]);
     }, [props.values[0], props.values[1]])
 
     const toDateSinceMinDate = (val: number) => {
-        return new Date(minDate.getTime() + (val*86400000));
+        return new Date(minDate.getTime() + (val*milliSecondsPerDay));
     }
 
     const toDateString = (date: Date) => {

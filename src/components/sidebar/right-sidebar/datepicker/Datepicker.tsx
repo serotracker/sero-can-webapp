@@ -32,6 +32,10 @@ export default function Datepicker({ page }: DatepickerProps) {
 
   useEffect(() => {
     setSliderRange((latestPublicationDate.getTime()-earliestPublicationDate.getTime())/millisecondsPerDay);
+    //although it is not possible for a suer to cause the below problem that I am checking for,
+    // there does come an issue that if a user waits for the whole page to load, then the chosen date is earlier than the earliest possible date
+    if(chosenStartDate < earliestPublicationDate) setChosenStartDate(earliestPublicationDate);
+    if(chosenEndDate > latestPublicationDate) setChosenEndDate(latestPublicationDate);
   }, [latestPublicationDate, earliestPublicationDate])
 
   useEffect(() => {
