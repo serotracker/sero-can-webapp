@@ -91,11 +91,10 @@ export default function Datepicker({ page }: DatepickerProps) {
           <DateSlider max={sliderRange} min={0} onChange={datePickerChanged} values={sliderThumbValues} minDate={earliestPublicationDate}/>
           <div>
             <DatePicker
-                className="col-12 p-0 date-picker"
                 selected={chosenStartDate}
                 onChange={() => { }}
                 onSelect={(date: Date) => datePickerChanged(true, date)}
-                dateFormatCalendar={"MMM yyyy"}
+                dateFormatCalendar={"MMMM yyyy "}
                 dateFormat="yyyy/MM/dd"
                 minDate={earliestPublicationDate}
                 maxDate={chosenEndDate}
@@ -110,12 +109,10 @@ export default function Datepicker({ page }: DatepickerProps) {
                 shouldCloseOnSelect={false}
                 dropdownMode="select"
                 todayButton="Today"
-
             />
           </div>
           <div>
             <DatePicker
-                className="col-12 p-0 date-picker"
                 selected={chosenEndDate}
                 onChange={() => { }}
                 onSelect={(date: Date) => datePickerChanged(false, date)}
@@ -134,7 +131,6 @@ export default function Datepicker({ page }: DatepickerProps) {
                 shouldCloseOnSelect={false}
                 dropdownMode="select"
                 todayButton="Today"
-
             />
           </div>
         </div>
