@@ -30,3 +30,5 @@ yarn-error.log*
 # DO NOT COMMIT SECRETS
 .env
 load-dotenv.sh
+
+.idea/
