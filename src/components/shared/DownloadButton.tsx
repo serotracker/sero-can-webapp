@@ -3,12 +3,22 @@ import Translate from "../../utils/translate/translateService";
 import { sendAnalyticsEvent } from '../../utils/analyticsUtils';
 import { Button } from "semantic-ui-react";
 
-export default function AirtableDownloadButton() {
+interface DownloadButtonProps {
+    buttonLabelKey?: string;
+    downloadLink?: string;
+    formLink?: string;
+    buttonSize?: "mini" | "tiny" | "small" | "large" | "huge";
+    buttonColour?: any;
+  }
+
+export default function DownloadButton(props: DownloadButtonProps) {
     const [letDownload, setLetDownload] = useState(false);
 
-    const buttonLabelKey = "DownloadCsv";
-    const downloadLink = "https://airtable.com/shraXWPJ9Yu7ybowM/tbljN2mhRVfSlZv2d?backgroundColor=blue&viewControls=on";
-    const formLink = "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform"
+    const { buttonLabelKey = "DownloadCsv", 
+            downloadLink = "https://airtable.com/shraXWPJ9Yu7ybowM/tbljN2mhRVfSlZv2d?backgroundColor=blue&viewControls=on",
+            formLink = "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform",
+            buttonSize = "large",
+            buttonColour = "blue" } = props;
     
     useEffect(() => {
         const doneSurvey = localStorage.getItem("DownloadFormCompleted");
@@ -32,7 +42,7 @@ export default function AirtableDownloadButton() {
     }
     
     return (
-        <Button key={buttonLabelKey} color="blue" size="large" className="mb-2 mr-2">
+        <Button key={buttonLabelKey} color={buttonColour} size={buttonSize} className="mb-2 mr-2">
             <a
                 onClick={() => clickButton()}
                 target="_blank"

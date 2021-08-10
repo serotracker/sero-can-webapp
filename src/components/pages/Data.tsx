@@ -15,7 +15,7 @@ import Translate, {
 } from "../../utils/translate/translateService";
 import "./static.css";
 import MaintenanceModal from "../shared/MaintenanceModal";
-import AirtableDownloadButton from "../shared/AirtableDownloadButton";
+import DownloadButton from "../shared/DownloadButton";
 interface DropdownQuestion {
   Question: string;
   Answer: string | object;
@@ -66,7 +66,7 @@ function DataButtons() {
   return(
     <div>
       {buttons}
-      <AirtableDownloadButton />
+      <DownloadButton />
     </div>
   );
 }

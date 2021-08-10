@@ -4,23 +4,13 @@ import Translate from "utils/translate/translateService";
 import TotalStats from "./TotalStats";
 import HealthAgencyLogo from 'assets/images/public-health-agency.png';
 import UcalgaryLogo from 'assets/images/University-Of-Calgary-Logo.png';
-import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import WhoLogo from "components/shared/WhoLogo";
-import AirtableDownloadButton from "components/shared/AirtableDownloadButton";
-import { Button } from "semantic-ui-react";
+import DownloadButton from "components/shared/DownloadButton";
 import "../sidebar.css";
 
 interface SideBarProps {
   page: string
 }
-
-const clickLink = (link: string) => {
-  sendAnalyticsEvent({
-    category: "Data Link Click",
-    action: "click",
-    label: link,
-  });
-};
 
 export default function LeftSidebar({ page }: SideBarProps) {
 
@@ -33,7 +23,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
         {Translate('ExploreBlurb', ['FirstParagraph'])}
       </p>
       <div className="d-flex justify-content-center">
-        <AirtableDownloadButton />
+        <DownloadButton />
       </div>
     </div>
   )
