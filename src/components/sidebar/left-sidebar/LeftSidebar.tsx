@@ -5,7 +5,8 @@ import TotalStats from "./TotalStats";
 import HealthAgencyLogo from 'assets/images/public-health-agency.png';
 import UcalgaryLogo from 'assets/images/University-Of-Calgary-Logo.png';
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
-import WhoLogo from "components/shared/WhoLogo"
+import WhoLogo from "components/shared/WhoLogo";
+import AirtableDownloadButton from "components/shared/AirtableDownloadButton";
 import { Button } from "semantic-ui-react";
 import "../sidebar.css";
 
@@ -32,16 +33,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
         {Translate('ExploreBlurb', ['FirstParagraph'])}
       </p>
       <div className="d-flex justify-content-center">
-        <Button color="blue" size="large" className="mx-auto">
-          <a
-            onClick={() => clickLink("DownloadCsv")}
-            target="_blank"
-            rel="noreferrer"
-            href={"https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform"}
-          >
-            <p className="button-text"> {Translate("DownloadCsv")}</p>
-          </a>
-        </Button>
+        <AirtableDownloadButton />
       </div>
     </div>
   )

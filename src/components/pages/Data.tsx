@@ -15,6 +15,7 @@ import Translate, {
 } from "../../utils/translate/translateService";
 import "./static.css";
 import MaintenanceModal from "../shared/MaintenanceModal";
+import AirtableDownloadButton from "../shared/AirtableDownloadButton";
 interface DropdownQuestion {
   Question: string;
   Answer: string | object;
@@ -45,10 +46,6 @@ function DataButtons() {
       link: "https://airtable.com/shrxpAlF6v0LeRYkA",
     },
     {
-      label: "DownloadCsv",
-      link: "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform",
-    },
-    {
       label: "SubmitASource",
       link: "https://docs.google.com/forms/d/e/1FAIpQLSdvNJReektutfMT-5bOTjfnvaY_pMAy8mImpQBAW-3v7_B2Bg/viewform",
     },
@@ -66,7 +63,12 @@ function DataButtons() {
     </Button>
   ));
 
-  return <div>{buttons}</div>;
+  return(
+    <div>
+      {buttons}
+      <AirtableDownloadButton />
+    </div>
+  );
 }
 
 function DataDropdowns() {
