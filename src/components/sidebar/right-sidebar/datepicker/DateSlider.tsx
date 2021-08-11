@@ -6,24 +6,20 @@ interface DSprops {
     maxPossibleValue: number; //maximum possible value for slider
     values: Date[];
     minDate: Date;
-    onChange: Function;
+    onMouseUp: Function;
 }
 
-export default function DateSlider(props: DSprops){
+export default function DateSlider({minPossibleValue, maxPossibleValue, minDate, values, onMouseUp}: DSprops){
 
     const milliSecondsPerDay = 86400000;
-    const {minPossibleValue, maxPossibleValue, minDate} = props;
-    const [sliderThumbValues, setSliderThumbValues] = useState<number[]>([(props.values[0].getTime() - minDate.getTime())/milliSecondsPerDay,
-        (props.values[1].getTime() - minDate.getTime())/milliSecondsPerDay])
+
+    const [sliderThumbValues, setSliderThumbValues] = useState<number[]>([(values[0].getTime() - minDate.getTime())/milliSecondsPerDay,
+        (values[1].getTime() - minDate.getTime())/milliSecondsPerDay])
     const [leftThumbVal, setLeftThumbVal] = useState(sliderThumbValues[0]);
     const [rightThumbVal, setRightThumbVal] = useState(sliderThumbValues[1]);
     const minValRef = useRef(minPossibleValue);
     const maxValRef = useRef(maxPossibleValue);
     const range = useRef<HTMLDivElement>(null);
-    /*const getPercent = useCallback(
-        (value: number) => Math.round(((value - min) / (max - min)) * 100),
-        [min, max]
-    );*/
 
     const getPercent = (value: number) => Math.round(((value - minPossibleValue) / (maxPossibleValue - minPossibleValue)) * 100)
 
@@ -50,9 +46,9 @@ export default function DateSlider(props: DSprops){
     }, [rightThumbVal, getPercent]);
 
     useEffect(() => {
-        setSliderThumbValues([(props.values[0].getTime() - minDate.getTime())/milliSecondsPerDay,
-            (props.values[1].getTime() - minDate.getTime())/milliSecondsPerDay]);
-    }, [props.values[0], props.values[1]])
+        setSliderThumbValues([(values[0].getTime() - minDate.getTime())/milliSecondsPerDay,
+            (values[1].getTime() - minDate.getTime())/milliSecondsPerDay]);
+    }, [values[0], values[1]])
 
     const toDateSinceMinDate = (val: number) => {
         return new Date(minDate.getTime() + (val*milliSecondsPerDay));
@@ -71,7 +67,7 @@ export default function DateSlider(props: DSprops){
                        minValRef.current = value;
                    }}
                    onMouseUp={() => {
-                       props.onChange(true, toDateSinceMinDate(leftThumbVal));
+                       onMouseUp(true, toDateSinceMinDate(leftThumbVal));
                    }}
 
                    style={{ zIndex: (leftThumbVal > maxPossibleValue - 100 ? 5 : 3)}}
@@ -83,7 +79,7 @@ export default function DateSlider(props: DSprops){
                        maxValRef.current = value;
                    }}
                    onMouseUp={() => {
-                       props.onChange(false, toDateSinceMinDate(rightThumbVal))
+                       onMouseUp(false, toDateSinceMinDate(rightThumbVal))
                    }}
             />
             <div className="slider">
