@@ -46,7 +46,10 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
 }
 
 function SetMapData(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
+    if(map.getSource(COUNTRY_LAYER_ID))
+    {
     SetCountryEstimates(map, estimateGradePrevalences);
+    }
 }
 
 const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, countryFocus}: CountriesMapConfig) => {
