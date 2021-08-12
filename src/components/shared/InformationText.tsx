@@ -1,7 +1,7 @@
 import React from "react";
 import { Popup } from "semantic-ui-react";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
-import './shared.scss';
+import 'sass/components/shared.scss';
 
 interface InformationTextProps {
   position?: "top left" | "top right" | "bottom right" | "bottom left" | "right center" | "left center" | "top center" | "bottom center" | undefined,

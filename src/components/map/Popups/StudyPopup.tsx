@@ -4,7 +4,7 @@ import Translate from 'utils/translate/translateService';
 import { getGeography, getPossibleNullDateString } from 'utils/utils';
 
 export default function StudyPopup(record: AirtableRecord) {
-    return (<React.Fragment>
+    return (<div className="popup-content" >
         <div className="popup-title">
             {Translate(`${record.estimate_grade}StudyDetails`)}
         </div>
@@ -60,5 +60,5 @@ export default function StudyPopup(record: AirtableRecord) {
         <div className="popup-text">
             {`${record.overall_risk_of_bias}`}
         </div>
-    </React.Fragment>)
+    </div>)
 }

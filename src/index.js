@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import './index.css';
+import 'sass/index.scss';
 import * as serviceWorker from './serviceWorker';
 import { AppContextProvider } from './context'
 import {Router} from 'react-router-dom';

@@ -1,8 +1,8 @@
-import { faBars, faFilter, faTimes} from "@fortawesome/free-solid-svg-icons";
+import { faTimes} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, {  useState, useContext } from "react";
 import { AppContext } from "context";
-import { Menu, Segment, Sidebar } from "semantic-ui-react";
+import { Menu, Segment, Sidebar, Icon } from "semantic-ui-react";
 import { PageStateEnum } from "../../types";
 import MapboxMap from "components/map/MapboxMap"
 import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
@@ -90,23 +90,21 @@ export default function ExploreMobile() {
               }}
               />
           {/* Icons */}
-          <div className="icon-container"
-            style={{ top: 10, right: 15 }}>
-            <FontAwesomeIcon
-              icon={faFilter}
-              onClick={() => handleFilterToggle(!showMobileFilters, false)}
-              className={'icon'}
-              color={'#455a64'}
-              size={"2x"} />
+          <div className="icon-container info-btn">
+             <Icon 
+             name='filter'
+             size='large'
+             className='ml-1 mt-1'
+             onClick={() => handleFilterToggle(!showMobileFilters, false)}
+             />
           </div>
-          <div className="icon-container"
-            style={{ top: 10, right: 58 }}>
-            <FontAwesomeIcon
-              icon={faBars}
-              onClick={() => handleFilterToggle(false, !showSummary)}
-              className={'icon'}
-              color={'#455a64'}
-              size={"2x"} />
+          <div className="icon-container filter-btn">
+          <Icon 
+             name='question circle'
+             size='large'
+             className='ml-1 mt-1'
+             onClick={() => handleFilterToggle(false, !showSummary)}
+             />
           </div>
         </Sidebar.Pusher>
       </Sidebar.Pushable>

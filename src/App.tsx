@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import './App.css';
+import 'sass/app.scss';
 import About from './components/pages/About';
 import NotFoundPage from './components/pages/NotFoundPage';
 import CookiePolicy from "./components/pages/CookiePolicy";
@@ -10,7 +10,7 @@ import Publications from "./components/pages/Publications/Publications";
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import TermsOfUse from "./components/pages/TermsOfUse";
 import { CookieBanner } from "./components/shared/CookieBanner";
-import { NavBar } from "./components/shared/NavBar";
+import { Header } from "./components/shared/Header";
 import { Footer } from "./components/shared/Footer";
 import TableauEmbed from "./components/shared/TableauEmbed";
 import { AppContext, getEmptyFilters } from "./context";
@@ -102,7 +102,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <Header />
       <CookieBanner />
       <Switch>
         <Route path="/:language/About">
