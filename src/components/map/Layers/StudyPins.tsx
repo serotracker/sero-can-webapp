@@ -2,12 +2,13 @@ import { useState, useEffect, useContext } from "react"
 import ReactDOMServer from "react-dom/server";
 import StudyPopup from "components/map/Popups/StudyPopup";
 import { AppContext } from "context";
-import { AirtableRecord, StudyPinsMapConfig } from "types";
+import { StudyPinsMapConfig } from "types";
 import httpClient from "httpClient";
 import usePrevious from "utils/usePrevious"
 import mapboxgl from "mapbox-gl";
 import generateSourceFromRecords from "utils/GeoJsonGenerator";
 import {Expressions} from "components/map/MapConfig"
+import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 
 const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
   const features = map.querySourceFeatures('study-pins', {
@@ -98,6 +99,11 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
               curve: 0.5,
               speed: 0.5,
               });
+            sendAnalyticsEvent({
+              category: "Study pin popup",
+              action: "open",
+              label: source_id,
+            });
             pinPopup.on("close",()=>{
               setSelectedPinId(undefined);
               togglePinBlur(map);

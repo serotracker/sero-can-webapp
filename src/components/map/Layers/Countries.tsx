@@ -6,6 +6,7 @@ import mapboxgl from "mapbox-gl";
 import CountryPopup from 'components/map/Popups/CountryPopup'
 import PartnershipsConfig from '../../../PartnershipsConfig'
 import { useHistory } from 'react-router-dom';
+import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 
 const COUNTRY_LAYER_ID = 'Countries';
 
@@ -92,7 +93,6 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
             setPopup(countryPopup)
 
             map.on('click', COUNTRY_LAYER_ID, function(e: any) {
-                
                 if (map.queryRenderedFeatures(e.point).filter((f) => f.source === "study-pins").length === 0) {
                     const country = e.features[0];
                     countryPopup
@@ -102,7 +102,12 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
                             state.language)))
                       .setLngLat(e.lngLat)
                       .addTo(map);
-                  }
+                    sendAnalyticsEvent({
+                        category: "Country popup",
+                        action: "open",
+                        label: e.features[0].id,
+                    });
+                }
             });
         }
     }, [map, state.language, popup, history])

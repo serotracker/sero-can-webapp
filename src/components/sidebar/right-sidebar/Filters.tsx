@@ -9,7 +9,6 @@ import Translate, { getCountryName } from "../../../utils/translate/translateSer
 import InformationIcon from "../../shared/InformationIcon";
 import SectionHeader from "./SectionHeader";
 import Datepicker from "./datepicker/Datepicker";
-import { Link } from "react-router-dom";
 import "./Filters.css";
 import { LanguageType } from "../../../types";
 
@@ -101,17 +100,6 @@ export default function Filters({ page }: FilterProps) {
 
   const buildFilterCheckbox = (filter_type: FilterType, label: string, title?: string, link?: string) => {
     return(
-<<<<<<< HEAD
-        <div title={title ? title: label} className="checkbox-item pb-3" id="National">
-          <input className="ui checkbox" type="checkbox" checked={pageState.filters[filter_type] as boolean} onClick={async (e: React.MouseEvent<HTMLElement>) => {
-          await addFilter(
-            !pageState.filters[filter_type], 
-            filter_type
-          )
-        }}/>
-          {link ? <label><a target="_blank" rel="noreferrer" href={link}>{label}</a></label> : <label>{label}</label>}
-        </div>
-=======
       <div title={title ? title: label} className="checkbox-item pb-3" id="National" onClick={async (e: React.MouseEvent<HTMLElement>) => {
         await addFilter(
           !filters[filter_type], 
@@ -122,7 +110,6 @@ export default function Filters({ page }: FilterProps) {
         <input className="ui checkbox" type="checkbox" checked={filters[filter_type] as boolean} readOnly />
         <label>{label}</label>
       </div>
->>>>>>> Refactor filters on google analytics
     )
   }
 
