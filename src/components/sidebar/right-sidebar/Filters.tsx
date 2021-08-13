@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType, PageState, State } from '../../../types';
-import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
+import { sendFiltersAnalyticsEvent } from "../../../utils/analyticsUtils";
 import { updateFilters } from "../../../utils/stateUpdateUtils";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
 import Translate, { getCountryName } from "../../../utils/translate/translateService";
@@ -24,7 +24,7 @@ interface PopulationGroupFilterOption {
 
 export default function Filters({ page }: FilterProps) {
   const [state, dispatch] = useContext(AppContext);
-  const pageState = state[page as keyof State] as PageState;
+  const filters = (state[page as keyof State] as PageState).filters;
 
   const formatOptions = (options: any, filter_type: FilterType) => {
     if (!options) {
@@ -72,7 +72,7 @@ export default function Filters({ page }: FilterProps) {
   const addFilter = async (data: any, filterType: FilterType) => {
     await updateFilters(
       dispatch,
-      pageState.filters,
+      filters,
       filterType,
       data,
       page)
@@ -91,17 +91,9 @@ export default function Filters({ page }: FilterProps) {
           options={formatOptions(state.allFilterOptions[filter_type], filter_type)}
           onChange={async (e: any, data: any) => {
             await addFilter(data.value, filter_type)
-            sendAnalyticsEvent({
-              /** Typically the object that was interacted with (e.g. 'Video') */
-              category: 'Filter',
-              /** The type of interaction (e.g. 'play') */
-              action: 'selection',
-              /** Useful for categorizing events (e.g. 'Fall Campaign') */
-              label: `${filter_type.toString()} - ${data.value}`
-              /** A numeric value associated with the event (e.g. 42) */
-            })
+            sendFiltersAnalyticsEvent(filters)
           }}
-          defaultValue={pageState.filters[filter_type] as string[]}
+          defaultValue={filters[filter_type] as string[]}
         />
       </div>
     )
@@ -109,6 +101,7 @@ export default function Filters({ page }: FilterProps) {
 
   const buildFilterCheckbox = (filter_type: FilterType, label: string, title?: string, link?: string) => {
     return(
+<<<<<<< HEAD
         <div title={title ? title: label} className="checkbox-item pb-3" id="National">
           <input className="ui checkbox" type="checkbox" checked={pageState.filters[filter_type] as boolean} onClick={async (e: React.MouseEvent<HTMLElement>) => {
           await addFilter(
@@ -118,6 +111,18 @@ export default function Filters({ page }: FilterProps) {
         }}/>
           {link ? <label><a target="_blank" rel="noreferrer" href={link}>{label}</a></label> : <label>{label}</label>}
         </div>
+=======
+      <div title={title ? title: label} className="checkbox-item pb-3" id="National" onClick={async (e: React.MouseEvent<HTMLElement>) => {
+        await addFilter(
+          !filters[filter_type], 
+          filter_type
+        )
+        sendFiltersAnalyticsEvent(filters)
+      }}>
+        <input className="ui checkbox" type="checkbox" checked={filters[filter_type] as boolean} readOnly />
+        <label>{label}</label>
+      </div>
+>>>>>>> Refactor filters on google analytics
     )
   }
 

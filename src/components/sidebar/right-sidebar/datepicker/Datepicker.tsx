@@ -9,6 +9,7 @@ import Translate from "../../../../utils/translate/translateService";
 import SectionHeader from "../SectionHeader";
 import {enUS, fr} from 'date-fns/locale'
 import DateSlider from "./DateSlider";
+import { sendFiltersAnalyticsEvent } from "../../../../utils/analyticsUtils";
 
 interface DatepickerProps {
   page: string
@@ -16,8 +17,8 @@ interface DatepickerProps {
 
 export default function Datepicker({ page }: DatepickerProps) {
   const [state, dispatch] = useContext(AppContext);
-  const pageState = state[page as keyof State] as PageState;
-  const [filterStartDate, filterEndDate]: Date[] = Array.from(pageState.filters.publish_date);
+  const filters = (state[page as keyof State] as PageState).filters;
+  const [filterStartDate, filterEndDate]: Date[] = Array.from(filters.publish_date);
   const [chosenStartDate, setChosenStartDate] = useState<Date>(filterStartDate);
   const [chosenEndDate, setChosenEndDate] = useState<Date>(filterEndDate);
   const earliestPublicationDate = state.calendarStartDates.minDate;
@@ -55,10 +56,11 @@ export default function Datepicker({ page }: DatepickerProps) {
       setChosenEndDate(date);
     }
     await updateFilters(dispatch,
-      pageState.filters,
+      filters,
       "publish_date" as FilterType,
       newDates,
       page)
+    sendFiltersAnalyticsEvent(filters)
   }
 
   const CustomInput = ({ value, onClick, text }: any) => (

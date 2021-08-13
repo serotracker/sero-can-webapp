@@ -11,7 +11,7 @@ import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
 import Legend from "components/map/Legend";
 import { initializeData } from "../../../utils/stateUpdateUtils";
-import httpClient from "../../../httpClient";
+import { sendFiltersAnalyticsEvent } from "../../../utils/analyticsUtils";
 
 interface ExploreProps {
   initialFilters?: Filters;
@@ -31,8 +31,8 @@ export default function Explore(props: ExploreProps) {
           pageStateEnum: PageStateEnum.explore
         }
       });
+      sendFiltersAnalyticsEvent(props.initialFilters)
     }
-    const api = new httpClient();
     initializeData(dispatch, state.explore.filters, PageStateEnum.explore)
     // We only want this to run once so we pass no dependencies. Do not remove this
     // eslint-disable-next-line react-hooks/exhaustive-deps
