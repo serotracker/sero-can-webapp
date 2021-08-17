@@ -5,6 +5,7 @@ import { mobileDeviceOrTabletWidth } from '../../constants'
 import Translate from '../../utils/translate/translateService'
 import { AppContext } from "../../context"
 import { withLocaleUrl } from "../../utils/utils";
+import { NumberDateToWordDate } from '../../utils/utils'
 
 import WhoLogo from "components/shared/WhoLogo";
 import HealthAgencyLogo from 'assets/images/public-health-agency.png';
@@ -65,7 +66,7 @@ export const Footer = () => {
     <footer className={'container-fluid mx-0'}>
       <div className="row justify-content-between a-f__visible d-flex align-items-center text-center">
         <div className="col-2">
-          {Translate("Footer", ["LastUpdated"])}: <b>{updatedAt}</b>
+          <UpdatedAt updatedAt={updatedAt}/>
         </div>
         <div className="col-2">
             <Citation/>
@@ -97,13 +98,30 @@ export const Footer = () => {
   )
 }
 
+const renderUpdateDate = (updatedAt: string) => {
+  return NumberDateToWordDate(updatedAt)
+}
+
+type UpdatedAtProps = {
+  updatedAt: string;
+}
+
+const UpdatedAt = ({updatedAt}: UpdatedAtProps) => {
+  // only renders 'last updated' when we have a valid date
+  return updatedAt ? (
+  <span className='footer-small-text'>
+    {Translate("Footer", ["LastUpdated"])}: <b>{renderUpdateDate(updatedAt)}</b>
+  </span>
+  ): null
+}
+
 const Citation = () => (
-  <React.Fragment>
+  <span className='footer-small-text'>
     {Translate("Footer", ["CiteAs"])}
     <a href={lancetId} target="__blank" rel="noopener noreferrer" className="cite-link">
       <i>{Translate("Footer", ["LancetInfDis"])}</i> {Translate("Footer", ["Article"])}
     </a> 
-  </React.Fragment>
+  </span>
 )
 
 const WhoDisclaimer = () => (

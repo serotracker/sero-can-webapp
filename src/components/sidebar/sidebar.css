@@ -1,13 +1,13 @@
 .sidebar-container {
-  border-top: none;
+  border: none;
   overflow-y: auto;
   display: block;
+  padding: 5%;
+  border: 1px solid rgba(34,36,38,.15);
+  border-radius: .28571429rem;
 }
 
 .left-sidebar {
-  border-right: 1px solid #888888;
-}
-
-.right-sidebar {
-  border-left: 1px solid #888888;
+  font-size: 1.25em;
+  line-height: 21px;
 }

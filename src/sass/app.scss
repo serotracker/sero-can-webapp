@@ -68,6 +68,10 @@ Footer a{
     color: white;
 }
 
+.footer-small-text {
+    font-size: 12px;
+}
+
 .a-f {
     &__visible {
         height: 50px;
@@ -249,7 +253,7 @@ Footer a{
 .App-title > a {
     color: white;
     font-family: 'Roboto', sans-serif;
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: 200;
     cursor: pointer;
 }

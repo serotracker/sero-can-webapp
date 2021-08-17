@@ -221,8 +221,8 @@
   "ExecutiveDirector": "Executive Director",
   "Explore": "Explore",
   "ExploreBlurb": {
-    "FirstParagraph": "SeroTracker is a dashboard and data platform for SARS-CoV-2 serosurveys. Antibodies against SARS-CoV-2, the virus that causes COVID-19, indicate previous infection or vaccination. We are conducting an ongoing systematic review to track serosurveys (antibody testing-based surveillance efforts) around the world, visualizing findings on this dashboard.",
-    "SecondParagraph": "You can configure the data displayed using the “Filter” toolbar on the right, and view the full list of studies we are tracking on the “Data” page."
+    "FirstParagraph": "SeroTracker is a dashboard and data platform for SARS-CoV-2 serosurveys. Antibodies against SARS-CoV-2, the virus that causes COVID-19, indicate previous infection or vaccination.",
+    "SecondParagraph": "We are conducting an ongoing systematic review to track serosurveys (antibody testing-based surveillance efforts) around the world, visualizing findings on this dashboard."
   },
   "Filter": "Filter",
   "FilterTooltip": "Filter the SeroTracker dataset based on geography, study, demographics, and test. Only studies matching all of the listed filters will be included.",

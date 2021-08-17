@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Link, useHistory, useLocation } from 'react-router-dom'
-import MultiColorIcon from '../../assets/images/colored-icon.svg'
+import Img from 'assets/images/SerotrackerLogo.svg'
 import { mobileDeviceOrTabletWidth } from '../../constants'
 import { AppContext } from '../../context'
 import { LanguageType } from '../../types'
@@ -59,9 +59,9 @@ export const Header = () => {
 
 const AppTitle = () => {
   return (
-  <div className="App-title col-auto py-3 px-0 flex left">
+  <div className="App-title col-auto py-3 px-0">
     <Link to={withLocaleUrl("Explore")} className="flex align-items-center">
-      <img src={MultiColorIcon} width={23} height={23} alt="" />
+      <img src={Img} width={23} height={23} alt="" />
       <div className="col-auto px-2 align-middle" >SeroTracker</div>
     </Link>
   </div>)

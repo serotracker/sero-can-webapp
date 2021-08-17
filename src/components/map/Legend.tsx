@@ -29,17 +29,17 @@ export default function Legend({hideLayers}: LegendProps) {
     <div className="flex legend-container" key={Math.random()}>
       <div className="legend-item" id="National" onClick={handleLegendToggle}>
         <i className="circleBase legend-icon" style={{ background: MapSymbology.StudyFeature.National.Color }}></i>
-        <label>{Translate("NationalStudies")}</label>
+        <label className='legend-label'>{Translate("NationalStudies")}</label>
         <input className="ui checkbox legend-checkbox" type="checkbox" checked={state.explore.legendLayers.National} readOnly />
       </div>
       <div className="legend-item" id="Regional" onClick={handleLegendToggle}>
         <i className="circleBase legend-icon" style={{ background: MapSymbology.StudyFeature.Regional.Color }}></i>
-        <label>{Translate("RegionalStudies")}</label>
+        <label className='legend-label'>{Translate("RegionalStudies")}</label>
         <input className="ui checkbox legend-checkbox" type="checkbox" checked={state.explore.legendLayers.Regional} readOnly />
       </div>
       <div className="legend-item mb-1" id="Local" onClick={handleLegendToggle}>
         <i className="circleBase legend-icon" style={{ background: MapSymbology.StudyFeature.Local.Color }}></i>
-        <label>{Translate("LocalStudies")}</label>
+        <label className='legend-label'>{Translate("LocalStudies")}</label>
         <input className="ui checkbox legend-checkbox" type="checkbox" checked={state.explore.legendLayers.Local} readOnly />
       </div>
       { hideLayers ? null : 
