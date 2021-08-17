@@ -8,6 +8,7 @@ import { updateFilters } from "../../../../utils/stateUpdateUtils";
 import Translate from "../../../../utils/translate/translateService";
 import SectionHeader from "../SectionHeader";
 import {enUS, fr} from 'date-fns/locale'
+import DateSlider from "./DateSlider";
 
 interface DatepickerProps {
   page: string
@@ -16,25 +17,42 @@ interface DatepickerProps {
 export default function Datepicker({ page }: DatepickerProps) {
   const [state, dispatch] = useContext(AppContext);
   const pageState = state[page as keyof State] as PageState;
-  const [filterStartDate, filterEndDate] = pageState.filters.publish_date;
-  const [startDate, setStartDate] = useState(filterStartDate);
-  const [endDate, setEndDate] = useState(filterEndDate);
+  const [filterStartDate, filterEndDate]: Date[] = Array.from(pageState.filters.publish_date);
+  const [chosenStartDate, setChosenStartDate] = useState<Date>(filterStartDate);
+  const [chosenEndDate, setChosenEndDate] = useState<Date>(filterEndDate);
+  const earliestPublicationDate = state.calendarStartDates.minDate;
+  const latestPublicationDate = state.calendarStartDates.maxDate;
+  const millisecondsPerDay = 86400000;
+  const [sliderRange, setSliderRange] = useState<number>((latestPublicationDate.getTime()-earliestPublicationDate.getTime())/millisecondsPerDay); //in days
+  const [sliderThumbValues, setSliderThumbValues] = useState<Date[]>([chosenStartDate, chosenEndDate]);
+
+  useEffect(() => {
+    setSliderRange((latestPublicationDate.getTime()-earliestPublicationDate.getTime())/millisecondsPerDay);
+    //although it is not possible for a suer to cause the below problem that I am checking for,
+    // there does come an issue that if a user waits for the whole page to load, then the chosen date is earlier than the earliest possible date
+    setChosenStartDate(earliestPublicationDate);
+    setChosenEndDate(latestPublicationDate);
+  }, [latestPublicationDate, earliestPublicationDate])
 
   useEffect(() => {
     registerLocale("en", enUS)
     registerLocale("fr", fr)
   }, [])
 
+  useEffect(() => {
+    setSliderThumbValues([chosenStartDate, chosenEndDate]);
+  }, [chosenStartDate, chosenEndDate])
+
   const datePickerChanged = async (isStart: Boolean, date: Date) => {
-    const newDates = [startDate, endDate];
-    newDates[0] = isStart ? date : startDate;
-    newDates[1] = !isStart ? date : endDate;
+    const newDates = [chosenStartDate, chosenEndDate];
+    newDates[0] = isStart ? date : chosenStartDate;
+    newDates[1] = !isStart ? date : chosenEndDate;
 
     if (isStart) {
-      setStartDate(date);
+      setChosenStartDate(date);
     }
     else {
-      setEndDate(date);
+      setChosenEndDate(date);
     }
     await updateFilters(dispatch,
       pageState.filters,
@@ -66,46 +84,52 @@ export default function Datepicker({ page }: DatepickerProps) {
           <div>
             <SectionHeader header_text={Translate('DateRange')} tooltip_text={Translate('DateRangeTooltip')} />
           </div>
+          <DateSlider maxPossibleValue={sliderRange} minPossibleValue={0} onMouseUp={datePickerChanged} values={sliderThumbValues} minDate={earliestPublicationDate}/>
           <div>
             <DatePicker
-              dateFormat="yyyy/MM/dd"
-              selected={startDate}
-              minDate={state.calendarStartDates.minDate}
-              maxDate={endDate}
-              customInput={<CustomInput value={startDate} text={Translate("StartDate")} onClick={onclick} />}
-              closeOnScroll={true}
-              locale={state.language}
-              onChange={() => { }}
-              withPortal
-              showMonthDropdown
-              showYearDropdown
-              shouldCloseOnSelect={false}
-              dropdownMode="select"
-              onSelect={(date: Date) => datePickerChanged(true, date)}
+                selected={chosenStartDate}
+                onChange={() => { }}
+                onSelect={(date: Date) => datePickerChanged(true, date)}
+                dateFormatCalendar={"MMMM yyyy "}
+                dateFormat="yyyy/MM/dd"
+                minDate={earliestPublicationDate}
+                maxDate={chosenEndDate}
+                showYearDropdown
+                yearDropdownItemNumber={5}
+                scrollableYearDropdown
+                showMonthDropdown
+                locale={state.language}
+                customInput={<CustomInput value={chosenStartDate} text={Translate("StartDate")} onClick={onclick} />}
+                withPortal
+                closeOnScroll={true}
+                shouldCloseOnSelect={false}
+                dropdownMode="select"
+                todayButton="Today"
             />
           </div>
           <div>
             <DatePicker
-            dateFormat="yyyy/MM/dd"
-              className="col-12 p-0 date-picker"
-              selected={endDate}
-              locale={state.language}
-              onSelect={(date: Date) => datePickerChanged(false, date)}
-              customInput={<CustomInput value={startDate} text={Translate("EndDate")} onClick={onclick} />}
-              minDate={startDate}
-              maxDate={state.calendarStartDates.maxDate}
-              onChange={() => { }}
-              withPortal
-              showMonthDropdown
-              closeOnScroll={true}
-              shouldCloseOnSelect={false}
-              showYearDropdown
-              todayButton="Today"
-              dropdownMode="select"
+                selected={chosenEndDate}
+                onChange={() => { }}
+                onSelect={(date: Date) => datePickerChanged(false, date)}
+                dateFormat="yyyy/MM/dd"
+                dateFormatCalendar={"MMM yyyy"}
+                minDate={chosenStartDate}
+                maxDate={latestPublicationDate}
+                showYearDropdown
+                yearDropdownItemNumber={5}
+                scrollableYearDropdown
+                showMonthDropdown
+                locale={state.language}
+                customInput={<CustomInput value={chosenEndDate} text={Translate("EndDate")} onClick={onclick} />}
+                withPortal
+                closeOnScroll={true}
+                shouldCloseOnSelect={false}
+                dropdownMode="select"
+                todayButton="Today"
             />
           </div>
         </div>
-        <div className="pb-1"></div>
       </div>
     </div>
   )

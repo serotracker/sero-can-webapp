@@ -90,7 +90,7 @@ export default function ExploreMobile() {
               }}
               />
           {/* Icons */}
-          <div className="icon-container" style={{ top: 10, left: 10 }}>
+          <div className="icon-container info-btn">
              <Icon 
              name='filter'
              size='large'
@@ -98,7 +98,7 @@ export default function ExploreMobile() {
              onClick={() => handleFilterToggle(!showMobileFilters, false)}
              />
           </div>
-          <div className="icon-container" style={{ top: 45, left: 10 }}>
+          <div className="icon-container filter-btn">
           <Icon 
              name='question circle'
              size='large'

@@ -10,7 +10,7 @@ import Publications from "./components/pages/Publications/Publications";
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import TermsOfUse from "./components/pages/TermsOfUse";
 import { CookieBanner } from "./components/shared/CookieBanner";
-import { NavBar } from "./components/shared/NavBar";
+import { Header } from "./components/shared/Header";
 import { Footer } from "./components/shared/Footer";
 import TableauEmbed from "./components/shared/TableauEmbed";
 import { AppContext, getEmptyFilters } from "./context";
@@ -102,7 +102,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <Header />
       <CookieBanner />
       <Switch>
         <Route path="/:language/About">

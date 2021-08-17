@@ -46,7 +46,10 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
 }
 
 function SetMapData(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
+    if(map.getSource(COUNTRY_LAYER_ID))
+    {
     SetCountryEstimates(map, estimateGradePrevalences);
+    }
 }
 
 const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, countryFocus}: CountriesMapConfig) => {
@@ -115,11 +118,11 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
                         );
                     }    
                     
+                    setHighlight(e.features[0].id)
                     map.setFeatureState(
                         { source: COUNTRY_LAYER_ID, sourceLayer: COUNTRY_LAYER_ID, id: e.features[0].id },
                         { isHighlighted: true }
                     );
-                    setHighlight(e.features[0].id)
                 }
             })
             map.on('mouseleave', COUNTRY_LAYER_ID, function(){

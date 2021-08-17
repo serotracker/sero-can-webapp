@@ -11,7 +11,7 @@ export default function Publications() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
 
   return (
-    <div className="col-12 page pb-6">
+    <div className="col-12 page pb-4">
       <div className={isMobileDeviceOrTablet ? "pb-2 policy-container" : "policy-container static-content"}>
         <h1 className="col-12 p-0 fit">
           {Translate('Publications')}
@@ -66,7 +66,7 @@ export type PublicationsType = 'articles' | 'reports' | 'media';
 
 const getCarouselOfPublicationsCards = (type: PublicationsType) => {
   return (
-    <div className="slider-container">
+    <div className="publications-slider-container">
       <Slider 
         {...sliderSettings}
       >
