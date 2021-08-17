@@ -3,6 +3,7 @@ import { AppContext } from "../../context";
 import "./Legend.css";
 import Translate from "../../utils/translate/translateService";
 import { MapSymbology } from "components/map/MapConfig"
+import { Checkbox } from 'semantic-ui-react'
 
 interface LegendProps {
   hideLayers?: boolean
@@ -30,17 +31,17 @@ export default function Legend({hideLayers}: LegendProps) {
       <div className="legend-item" id="National" onClick={handleLegendToggle}>
         <i className="circleBase legend-icon" style={{ background: MapSymbology.StudyFeature.National.Color }}></i>
         <label className='legend-label'>{Translate("NationalStudies")}</label>
-        <input className="ui checkbox legend-checkbox" type="checkbox" checked={state.explore.legendLayers.National} readOnly />
+        <Checkbox className="legend-checkbox" checked={state.explore.legendLayers.National}/>
       </div>
       <div className="legend-item" id="Regional" onClick={handleLegendToggle}>
         <i className="circleBase legend-icon" style={{ background: MapSymbology.StudyFeature.Regional.Color }}></i>
         <label className='legend-label'>{Translate("RegionalStudies")}</label>
-        <input className="ui checkbox legend-checkbox" type="checkbox" checked={state.explore.legendLayers.Regional} readOnly />
+        <Checkbox className="legend-checkbox" checked={state.explore.legendLayers.Regional}/>
       </div>
       <div className="legend-item mb-1" id="Local" onClick={handleLegendToggle}>
         <i className="circleBase legend-icon" style={{ background: MapSymbology.StudyFeature.Local.Color }}></i>
         <label className='legend-label'>{Translate("LocalStudies")}</label>
-        <input className="ui checkbox legend-checkbox" type="checkbox" checked={state.explore.legendLayers.Local} readOnly />
+        <Checkbox className="legend-checkbox" checked={state.explore.legendLayers.Local}/>
       </div>
       { hideLayers ? null : 
       <>

@@ -118,11 +118,11 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
                         );
                     }    
                     
+                    setHighlight(e.features[0].id)
                     map.setFeatureState(
                         { source: COUNTRY_LAYER_ID, sourceLayer: COUNTRY_LAYER_ID, id: e.features[0].id },
                         { isHighlighted: true }
                     );
-                    setHighlight(e.features[0].id)
                 }
             })
             map.on('mouseleave', COUNTRY_LAYER_ID, function(){
