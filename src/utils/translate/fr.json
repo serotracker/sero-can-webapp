@@ -280,6 +280,12 @@
     "LancetID": "SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2",
     "PlosOnePub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse"
   },
+  "BiblioDigestTitles": {
+    "August": "August Monthly Literature Update Report",
+    "July": "July Monthly Literature Update Report",
+    "June": "June Monthly Literature Update Report"
+  },
+  "BiblioDigests": "Monthly Literature Update Reports",
   "InitInfoModalText": {
     "PartOne": "Bienvenue dans l'onglet Analyse de SeroTracker ! Nous menons un examen systématique des sérosondages du SRAS-CoV-2 et nous utilisons les données provenant de cet examen afin de constituer ce tableau de bord.",
     "PartThree": "Ces estimations agrégées doivent être interprétées avec prudence, surtout si les études concernées ne comprennent pas d'échantillons représentatifs ou si elles présentent un risque élevé de partialité. Vous pouvez consulter les publications d'origine plus en profondeur grâce à la liste de références en bas de page.",
@@ -417,7 +423,7 @@
   "RegionalEstimates": "Estimations régionales",
   "RegulatoryApproval": "Autorisation réglementaire",
   "Report": "Rapport",
-  "Reports": "Rapports",
+  "PrivateSectorReports": "Rapports du secteur privé",
   "ReportsAndArticles": "Rapports et articles",
   "ResearchArticles": "Articles de recherche",
   "ResearchTeam": "Équipe de recherche",

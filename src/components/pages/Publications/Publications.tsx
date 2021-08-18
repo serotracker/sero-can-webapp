@@ -21,7 +21,11 @@ export default function Publications() {
         </h3>
         { getCarouselOfPublicationsCards("articles") }
         <h3 className="normal">
-          {Translate('Reports')}
+          {Translate('BiblioDigests')}
+        </h3>
+        { getCarouselOfPublicationsCards("biblioDigests") }
+        <h3 className="normal">
+          {Translate('PrivateSectorReports')}
         </h3>
         { getCarouselOfPublicationsCards("reports") }
         <h3 className="normal">
@@ -62,7 +66,7 @@ const sliderSettings = {
   ]
 };
 
-export type PublicationsType = 'articles' | 'reports' | 'media';
+export type PublicationsType = 'articles' | 'reports' | 'media' | 'biblioDigests';
 
 const getCarouselOfPublicationsCards = (type: PublicationsType) => {
   return (
