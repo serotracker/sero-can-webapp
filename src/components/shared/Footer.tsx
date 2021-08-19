@@ -2,6 +2,7 @@ import React, { useContext, } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link';
+import { Divider } from 'semantic-ui-react'
 import { mobileDeviceOrTabletWidth } from '../../constants'
 import Translate from '../../utils/translate/translateService'
 import { AppContext } from "../../context"
@@ -44,10 +45,16 @@ export const Footer = () => {
           <WhoDisclaimer/>
         </div>
       </div>
-      <div className="row justify-content-center mt-5 pb-5">
-        <div className="col-3">
-          <Link className="px-1" to={withLocaleUrl("PrivacyPolicy")}>{Translate('PrivacyPolicy')}</Link>  |
-          <Link className="px-1" to={withLocaleUrl("CookiePolicy")}>{Translate('CookiePolicy')}</Link>  |
+      <div className="row justify-content-center mt-5 pb-5 text-center">
+        <div className="col-1">
+          <Link className="px-1" to={withLocaleUrl("PrivacyPolicy")}>{Translate('PrivacyPolicy')}</Link>
+        </div>
+        |
+        <div className="col-1">
+          <Link className="px-1" to={withLocaleUrl("CookiePolicy")}>{Translate('CookiePolicy')}</Link>
+        </div>
+        |
+        <div className="col-1">
           <Link className="px-1" to={withLocaleUrl("TermsOfUse")}>{Translate('TermsOfUse')}</Link>
         </div>
       </div>

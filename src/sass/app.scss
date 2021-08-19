@@ -24,13 +24,21 @@
 }
 
 .nav__item--active a{
-    font-weight: 500;
-    color: white;
+    font-weight: 500 !important;
+    color: white !important;
 }
 
 .nav__item a{
-    font-weight: 400;
-    color: lightgrey;
+    color: lightgrey !important;
+}
+
+a {
+    color: lightgrey !important;
+}
+
+a:hover {
+    color: white !important;
+    text-decoration: none;
 }
 
 .nav__item--accordion {
