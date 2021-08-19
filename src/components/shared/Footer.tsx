@@ -20,9 +20,12 @@ export const Footer = () => {
 
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
 
-  return (
-    <footer className={'container-fluid mx-0'}>
-      <div className="row justify-content-between a-f__visible d-flex align-items-center text-center">
+  return isMobileDeviceOrTablet ? renderMobileFooter(updatedAt) : renderDesktopFooter(updatedAt)
+}
+
+const renderDesktopFooter = (updatedAt: string) => (
+  <footer className={'container-fluid mx-0'}>
+      <div className="footer-visible-section row justify-content-between d-flex align-items-center text-center">
         <div className="col-2">
           <UpdatedAt updatedAt={updatedAt}/>
         </div>
@@ -59,8 +62,37 @@ export const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+)
+
+const renderMobileFooter = (updatedAt: string) => (
+  <footer className={'container-fluid mx-0'}>
+      <div className="footer-visible-section row justify-content-around d-flex align-items-center text-center">
+          <UpdatedAt updatedAt={updatedAt}/>
+          <Citation/>
+      </div>
+      <div className="row justify-content-center mt-5">
+        <div className="col-8">
+          <div className="row sponsers-pill d-flex align-items-center">
+            <Sponsers/>
+          </div>
+          <WhoDisclaimer/>
+        </div>
+      </div>
+      <div className="row justify-content-center mt-5 pb-5 text-center">
+        <div>
+          <Link className="px-1" to={withLocaleUrl("PrivacyPolicy")}>{Translate('PrivacyPolicy')}</Link>
+        </div>
+        |
+        <div>
+          <Link className="px-1" to={withLocaleUrl("CookiePolicy")}>{Translate('CookiePolicy')}</Link>
+        </div>
+        |
+        <div>
+          <Link className="px-1" to={withLocaleUrl("TermsOfUse")}>{Translate('TermsOfUse')}</Link>
+        </div>
+      </div>
+    </footer>
+)
 
 const renderUpdateDate = (updatedAt: string) => {
   return NumberDateToWordDate(updatedAt)

@@ -80,16 +80,13 @@ Footer a{
     font-size: 12px;
 }
 
-.a-f {
-    &__visible {
-        height: 50px;
-    }
+.footer-visible-section {
+    height: 50px;
 }
 
 .download-data-btn.ui.button {
     background-color: $stone-cold-steve-austin;
     a {
-        font-weight: normal;
         color: white;
     }
 }
@@ -346,7 +343,7 @@ Footer a{
 }
 
 .dropdown a {
-    color: #333333;
+    color: #333333 !important;
 }
 
 .info-btn {
