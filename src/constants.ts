@@ -42,7 +42,6 @@ export const PAGE_HASHES = {
         References: "References"
     },
     [PAGES.Publications]: {
-        WeeklyUpdates: "WeeklyUpdates",
         ResearchArticles: "ResearchArticles",
         Reports: "Reports",
         MediaMentions: "MediaMentions"
