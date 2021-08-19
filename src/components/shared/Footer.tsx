@@ -122,7 +122,7 @@ const PageLinks = () => (
           {
           Object.keys(PAGE_HASHES[page]).map(h => (
           <HashLink to={`${withLocaleUrl(page)}#${h}`} className="row mt-2">
-            {h}
+            {Translate(h)}
           </HashLink>))
           }
         </div>)})

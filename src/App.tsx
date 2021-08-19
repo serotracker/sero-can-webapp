@@ -12,13 +12,12 @@ import TermsOfUse from "./components/pages/TermsOfUse";
 import { CookieBanner } from "./components/shared/CookieBanner";
 import { Header } from "./components/shared/Header";
 import { Footer } from "./components/shared/Footer";
-import TableauEmbed from "./components/shared/TableauEmbed";
+import Analyze from "./components/pages/Analyze"
 import { AppContext, getEmptyFilters } from "./context";
 import httpClient from "./httpClient";
 import { LanguageType, PageStateEnum } from "./types";
 import { initializeData } from "./utils/stateUpdateUtils";
 import { setLanguageType } from "./utils/translate/translateService";
-import { ANALYZE_URLS } from "./constants";
 import Partnerships from "components/pages/Partnerships/Partnerships";
 
 function App() {
@@ -115,18 +114,7 @@ function App() {
           <Redirect to="/:language/Explore" />
         </Route>
         <Route path="/:language/Analyze">
-          <TableauEmbed
-            url={ANALYZE_URLS}
-            key={`AnalyzeTableau${language}`}
-            desktopOptions={{
-              width: "82vw",
-              height: "4030px"
-            }}
-            mobileOptions={{
-              width: "90vw",
-              height: "2900px"
-            }}
-          />
+          <Analyze />
         </Route>
         <Route path="/:language/Partnerships/:name">
           <Partnerships />

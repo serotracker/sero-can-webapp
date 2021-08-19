@@ -39,6 +39,7 @@
   "AboutSeroTracker": "About SeroTracker",
   "Accept": "Accept",
   "AcceptCookies": "Accept Cookies",
+  "AdditionalGraphs": "Additional Graphs",
   "Age": "Age",
   "AgeGroup": "Age Group",
   "AgeOptions": {
@@ -116,6 +117,8 @@
     }
   },
   "BlankUniversity": "NAME University",
+  "ByCountry": "By Country",
+  "ByPopulation": "By Population",
   "ChangeLog": "Change log",
   "CPPInvestmentBoard": "CPP Investment Board",
   "ChangeSettings": "Change Settings",
@@ -234,6 +237,7 @@
     "Article": "article"
   },
   "French": "Français",
+  "FAQ": "Frequently Asked Questions",
   "GeneralTerms": "General Terms",
   "Geographies": "Geographies",
   "Geography": "Geography",
@@ -314,6 +318,7 @@
     "FirstParagraph": "full methods",
     "SecondParagraph": "(from the appendix to our full systematic review and meta-analysis of SARS-CoV-2 serosurveys)"
   },
+  "Map": "Map",
   "Media": "Media",
   "MediaMentions": "Media Mentions",
   "Months": {
@@ -516,7 +521,7 @@
   "SublocalEstimateRange": "Sublocal Estimate Range",
   "SublocalEstimates": "Sublocal Estimates",
   "SublocalStudyDetails": "Sublocal Study Details",
-  "SubmitASource": "Submit a source",
+  "SubmitSource": "Submit source",
   "Summary": "Summary",
   "SummaryStatistics": "Summary Statistics",
   "TeamLead": "Team Leads",

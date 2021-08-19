@@ -1,18 +1,10 @@
 import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
-import {
-  Segment,
-  Button,
-  Accordion,
-  Icon,
-  AccordionTitleProps,
-} from "semantic-ui-react";
+import { Segment, Button, Accordion, Icon, AccordionTitleProps } from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth, PAGE_HASHES } from "../../constants";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
-import Translate, {
-  TranslateObject,
-} from "../../utils/translate/translateService";
+import Translate, { TranslateObject } from "../../utils/translate/translateService";
 import "./static.css";
 import MaintenanceModal from "../shared/MaintenanceModal";
 import DownloadButton from "../shared/DownloadButton";
@@ -32,7 +24,7 @@ const clickLink = (link: string) => {
 };
 
 function DataButtons() {
-  const buttonLabels = [
+  const dataButtons: { label: string; link: string; id?: string }[] = [
     {
       label: "OurProtocol",
       link: "https://docs.google.com/document/d/1NYpszkr-u__aZspFDFa_fa4VBzjAAAAxNxM1rZ1txWU/edit",
@@ -40,33 +32,33 @@ function DataButtons() {
     {
       label: "DataDictionary",
       link: "https://docs.google.com/spreadsheets/d/1KQbp5T9Cq_HnNpmBTWY1iKs6Etu1-qJcnhdJ5eyw7N8/edit?usp=sharing",
+      id: PAGE_HASHES.Data.DataDictionary,
     },
     {
       label: "ChangeLog",
       link: "https://airtable.com/shrxpAlF6v0LeRYkA",
+      id: PAGE_HASHES.Data.ChangeLog,
     },
     {
-      label: "SubmitASource",
+      label: "SubmitSource",
       link: "https://docs.google.com/forms/d/e/1FAIpQLSdvNJReektutfMT-5bOTjfnvaY_pMAy8mImpQBAW-3v7_B2Bg/viewform",
+      id: PAGE_HASHES.Data.SubmitSource,
     },
   ];
-  const buttons = buttonLabels.map((buttonLabel, index) => (
-    <Button key={index} color="blue" size="large" className="mb-2 mr-2">
-      <a
-        onClick={() => clickLink(buttonLabel.label)}
-        target="_blank"
-        rel="noreferrer"
-        href={buttonLabel.link}
-      >
-        <p className="button-text"> {Translate(buttonLabel.label)}</p>
+  const buttons = dataButtons.map((b, index) => (
+    <Button key={index} color="blue" size="large" className="mb-2 mr-2" id={b?.id}>
+      <a onClick={() => clickLink(b.label)} target="_blank" rel="noopener noreferrer" href={b.link}>
+        <p className="button-text"> {Translate(b.label)}</p>
       </a>
     </Button>
   ));
 
-  return(
+  return (
     <div>
       {buttons}
-      <DownloadButton />
+      <span id={PAGE_HASHES.Data.DownloadData}>
+        <DownloadButton />
+      </span>
     </div>
   );
 }
@@ -79,23 +71,16 @@ function DataDropdowns() {
     setActiveIndex(newIndex as number);
   };
 
-  const dropdownContent = Object.entries(
-    TranslateObject("DropdownQuestions")
-  ).map((dropdownQuestion: [string, DropdownQuestion], index: number) => (
-    <Accordion key={index} fluid styled>
-      <Accordion.Title
-        active={activeIndex === index}
-        index={index}
-        onClick={handleClick}
-        className="accordion-title"
-      >
-        <Icon name="dropdown" /> {dropdownQuestion[1]["Question"]}
-      </Accordion.Title>
-      <Accordion.Content active={activeIndex === index}>
-        {dropdownQuestion[1]["Links"] ? (
-          <div>
-            {Object.entries(dropdownQuestion[1]["Answer"]).map(
-              (answer, index) => (
+  const dropdownContent = Object.entries(TranslateObject("DropdownQuestions")).map(
+    (dropdownQuestion: [string, DropdownQuestion], index: number) => (
+      <Accordion key={index} fluid styled>
+        <Accordion.Title active={activeIndex === index} index={index} onClick={handleClick} className="accordion-title">
+          <Icon name="dropdown" /> {dropdownQuestion[1]["Question"]}
+        </Accordion.Title>
+        <Accordion.Content active={activeIndex === index}>
+          {dropdownQuestion[1]["Links"] ? (
+            <div>
+              {Object.entries(dropdownQuestion[1]["Answer"]).map((answer, index) => (
                 <p className="no-space">
                   {" "}
                   {answer[1]}{" "}
@@ -107,15 +92,15 @@ function DataDropdowns() {
                     {dropdownQuestion[1]["LinkTexts"]?.[`LinkText${index + 1}`]}
                   </a>
                 </p>
-              )
-            )}
-          </div>
-        ) : (
-          <p>{dropdownQuestion[1]["Answer"]}</p>
-        )}
-      </Accordion.Content>
-    </Accordion>
-  ));
+              ))}
+            </div>
+          ) : (
+            <p>{dropdownQuestion[1]["Answer"]}</p>
+          )}
+        </Accordion.Content>
+      </Accordion>
+    )
+  );
   return <div>{dropdownContent}</div>;
 }
 
@@ -126,52 +111,37 @@ export default function Data() {
 
   return (
     <>
-      <div className="col-12 page">
-        <div
-          className={
-            isMobileDeviceOrTablet ? "static-mobile" : "static-content"
-          }
-        >
-          <h1 id={PAGE_HASHES.Data.DownloadData} className={isMobileDeviceOrTablet ? "pt-3" : "pt-0"}>
-            {Translate("OurData")}
-          </h1>
-          <p>{Translate("WhatWeDoText", ["FirstParagraph"])}</p>
-          <p>{Translate("WhatWeDoText", ["SecondParagraph"])}</p>
-          <br></br>
-          <DataButtons />
-          <br></br>
-          <DataDropdowns />
-          <br></br>
-          <h1 id={PAGE_HASHES.Data.References} className="mb-0">{Translate("ReferencesTable")}</h1>
-        </div>
-        <div
-          className={
-            isMobileDeviceOrTablet
-              ? "pb-3 pt-3 static-mobile"
-              : "pb-3 pt-3 static-content"
-          }
-        >
-          <Segment>
-            <iframe
-              title="References Table"
-              className="iframe-style"
-              src={
-                isMobileDeviceOrTablet
-                  ? "https://airtable.com/embed/shrtuN7F8x4bdkdDA?backgroundColor=cyan&layout=card&viewControls=on"
-                  : "https://airtable.com/embed/shrtuN7F8x4bdkdDA?backgroundColor=cyan&viewControls=on"
-              }
-            ></iframe>
-          </Segment>
-        </div>
+      <div className="col-12 page pb-5">
+        <div className={isMobileDeviceOrTablet ? "static-mobile py-2" : "static-content py-2"}>
+          <div className={isMobileDeviceOrTablet ? "pt-3" : "pt-0"}>
+            <h1>{Translate("OurData")}</h1>
+            <p>{Translate("WhatWeDoText", ["FirstParagraph"])}</p>
+            <p>{Translate("WhatWeDoText", ["SecondParagraph"])}</p>
+            <DataButtons />
+          </div>
 
-        <div
-          className={isMobileDeviceOrTablet ? "pb-5" : "static-content pb-5"}
-        >
-          <div className="d-flex d-flex justify-content-center">
-            <span>{Translate("UseOfData", null, null, [false, true])}</span>
-            <Link className="px-1" to="/TermsOfUse">
-              {Translate("TermsOfUse")}
-            </Link>
+          <div className={isMobileDeviceOrTablet ? "pt-3" : "pt-0"} id={PAGE_HASHES.Data.FAQ}>
+            <h1 >{Translate("FAQ")}</h1>
+            <DataDropdowns />
+          </div>
+
+          <div className={isMobileDeviceOrTablet ? "pb-3 pt-3" : "pt-0 pb-0"} id={PAGE_HASHES.Data.References}>
+            <h1>{Translate("ReferencesTable")}</h1>
+            <p>
+              <span>{Translate("UseOfData", null, null, [false, true])}</span>
+              <Link to="/TermsOfUse">{Translate("TermsOfUse")}</Link>.
+            </p>
+            <Segment>
+              <iframe
+                title="References Table"
+                className="iframe-style"
+                src={
+                  isMobileDeviceOrTablet
+                    ? "https://airtable.com/embed/shrtuN7F8x4bdkdDA?backgroundColor=cyan&layout=card&viewControls=on"
+                    : "https://airtable.com/embed/shrtuN7F8x4bdkdDA?backgroundColor=cyan&viewControls=on"
+                }
+              ></iframe>
+            </Segment>
           </div>
         </div>
       </div>

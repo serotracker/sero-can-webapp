@@ -38,7 +38,7 @@ export const PAGE_HASHES = {
         FAQ: "FAQ",
         SubmitSource: "SubmitSource",
         ChangeLog: "ChangeLog",
-        DataDictionar: "DataDictionary",
+        DataDictionary: "DataDictionary",
         References: "References"
     },
     [PAGES.Publications]: {
