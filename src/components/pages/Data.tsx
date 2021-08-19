@@ -8,7 +8,7 @@ import {
   Icon,
   AccordionTitleProps,
 } from "semantic-ui-react";
-import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../constants";
+import { isMaintenanceMode, mobileDeviceOrTabletWidth, PAGE_HASHES } from "../../constants";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 import Translate, {
   TranslateObject,
@@ -132,7 +132,7 @@ export default function Data() {
             isMobileDeviceOrTablet ? "static-mobile" : "static-content"
           }
         >
-          <h1 className={isMobileDeviceOrTablet ? "pt-3" : "pt-0"}>
+          <h1 id={PAGE_HASHES.Data.DownloadData} className={isMobileDeviceOrTablet ? "pt-3" : "pt-0"}>
             {Translate("OurData")}
           </h1>
           <p>{Translate("WhatWeDoText", ["FirstParagraph"])}</p>
@@ -142,7 +142,7 @@ export default function Data() {
           <br></br>
           <DataDropdowns />
           <br></br>
-          <h1 className="mb-0">{Translate("ReferencesTable")}</h1>
+          <h1 id={PAGE_HASHES.Data.References} className="mb-0">{Translate("ReferencesTable")}</h1>
         </div>
         <div
           className={

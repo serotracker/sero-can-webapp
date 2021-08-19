@@ -1,61 +1,18 @@
 import React, { useContext, } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link';
 import { mobileDeviceOrTabletWidth } from '../../constants'
 import Translate from '../../utils/translate/translateService'
 import { AppContext } from "../../context"
 import { withLocaleUrl } from "../../utils/utils";
 import { NumberDateToWordDate } from '../../utils/utils'
-
+import { PAGE_HASHES } from '../../constants'
 import WhoLogo from "components/shared/WhoLogo";
 import HealthAgencyLogo from 'assets/images/public-health-agency.png';
 import UcalgaryLogo from 'assets/images/University-Of-Calgary-Logo.png';
 
 const lancetId = "https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30631-9/fulltext#%20"
-
-const FooterLinks = [
-  {
-    Page: "Explore",
-    Anchors: [
-      "Map"
-    ]
-  },
-  {
-    Page: "Analyze",
-    Anchors: [
-      "ByCountry",
-      "ByPopulation",
-      "AdditionalGraphs"
-    ]
-  },
-  {
-    Page: "Data",
-    Anchors: [
-      "DownloadData",
-      "FAQ",
-      "SubmitSource",
-      "ChangeLog",
-      "DataDictionary",
-      "References"
-    ]
-  },
-  {
-    Page: "Publications",
-    Anchors: [
-      "WeeklyUpdates",
-      "ResearchArticles",
-      "Reports",
-      "MediaMentions"
-    ]
-  },
-  {
-    Page: "About",
-    Anchors: [
-      "Team",
-      "Contact"
-    ]
-  }
-]
 
 export const Footer = () => {
   const [{updatedAt}] = useContext(AppContext);
@@ -129,7 +86,7 @@ const WhoDisclaimer = () => (
     {Translate('WhoSerotrackAndPartnersDisclaimerSmall')}
   </small>
 )
-
+// to={withLocaleUrl(`${page}`)}
 const Sponsers = () => (
   <React.Fragment>
     <div className="col">
@@ -158,15 +115,15 @@ const Sponsers = () => (
 const PageLinks = () => (
   <React.Fragment>
     {
-      FooterLinks.map(p => {
+      Object.keys(PAGE_HASHES).map((page) => {
         return(
         <div className="col">
-          <h3 className="row">{Translate(p.Page)}</h3>
+          <h3 className="row">{Translate(page)}</h3>
           {
-          p.Anchors.map(a => (
-          <Link to={withLocaleUrl(p.Page)} className="row mt-2">
-            {a}
-          </Link>))
+          Object.keys(PAGE_HASHES[page]).map(h => (
+          <HashLink to={`${withLocaleUrl(page)}#${h}`} className="row mt-2">
+            {h}
+          </HashLink>))
           }
         </div>)})
     }
