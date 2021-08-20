@@ -262,14 +262,14 @@
     "EconomistDeathToll": "Comment avons-nous estimé le véritable nombre de morts de la pandémie?"
   },
   "IndustryReportTitles": {
-    "AugustReport": "Rapport d'Août - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
+    "AugustReport": "Le bulletin d'Août - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
     "BloodBank": "SeroTracker banque de sang séroprévalence Rapport préliminaire",
-    "JulyReport": "Rapport de Juillet - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "JuneReport": "Rapport de Juin - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "MayReport": "Rapport de mai - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "OctoberReport": "Rapport d'Octobre - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
-    "PreliminaryReport": "Rapport préliminaire - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "SeptemberReport": "Rapport de Septembre - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+    "JulyReport": "Le bulletin de Juillet - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+    "JuneReport": "Le bulletin de Juin - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+    "MayReport": "Le bulletin de mai - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+    "OctoberReport": "Le bulletin d'Octobre - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
+    "PreliminaryReport": "Le bulletin préliminaire - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+    "SeptemberReport": "Le bulletin de Septembre - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
     "YearInReview2020": "Bilan de l’année 2020 de SeroTracker",
     "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie",
     "InventoryEvidenceSynthesis": "Inventaire des meilleures synthèses de preuves"
@@ -280,6 +280,12 @@
     "LancetID": "SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2",
     "PlosOnePub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse"
   },
+  "BiblioDigestTitles": {
+    "August": "Le bulletin de mise à jour de la littérature d'août",
+    "July": "Le bulletin de mise à jour de la littérature de juillet",
+    "June": "Le bulletin de mise à jour de la littérature de juin"
+  },
+  "BiblioDigests": "Les bulletins de mise à jour de la littérature",
   "InitInfoModalText": {
     "PartOne": "Bienvenue dans l'onglet Analyse de SeroTracker ! Nous menons un examen systématique des sérosondages du SRAS-CoV-2 et nous utilisons les données provenant de cet examen afin de constituer ce tableau de bord.",
     "PartThree": "Ces estimations agrégées doivent être interprétées avec prudence, surtout si les études concernées ne comprennent pas d'échantillons représentatifs ou si elles présentent un risque élevé de partialité. Vous pouvez consulter les publications d'origine plus en profondeur grâce à la liste de références en bas de page.",
@@ -417,7 +423,7 @@
   "RegionalEstimates": "Estimations régionales",
   "RegulatoryApproval": "Autorisation réglementaire",
   "Report": "Rapport",
-  "Reports": "Rapports",
+  "PrivateSectorReports": "Les bulletins du secteur privé",
   "ReportsAndArticles": "Rapports et articles",
   "ResearchArticles": "Articles de recherche",
   "ResearchTeam": "Équipe de recherche",
