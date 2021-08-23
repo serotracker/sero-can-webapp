@@ -120,7 +120,7 @@ function App() {
             key={`AnalyzeTableau${language}`}
             desktopOptions={{
               width: "82vw",
-              height: "4030px"
+              height: "5000px"
             }}
             mobileOptions={{
               width: "90vw",
