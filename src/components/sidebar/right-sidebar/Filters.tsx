@@ -9,6 +9,7 @@ import Translate, { getCountryName } from "../../../utils/translate/translateSer
 import InformationIcon from "../../shared/InformationIcon";
 import SectionHeader from "./SectionHeader";
 import Datepicker from "./datepicker/Datepicker";
+import { Link } from "react-router-dom";
 import "./Filters.css";
 
 interface FilterProps {
@@ -89,17 +90,17 @@ export default function Filters({ page }: FilterProps) {
     )
   }
 
-  const buildFilterCheckbox = (filter_type: FilterType, label: string, title?: string) => {
+  const buildFilterCheckbox = (filter_type: FilterType, label: string, title?: string, link?: string) => {
     return(
-      <div title={title ? title: label} className="checkbox-item pb-3" id="National" onClick={async (e: React.MouseEvent<HTMLElement>) => {
-        await addFilter(
-          !pageState.filters[filter_type], 
-          filter_type
-        )
-      }}>
-        <input className="ui checkbox" type="checkbox" checked={pageState.filters[filter_type] as boolean} readOnly />
-        <label>{label}</label>
-      </div>
+        <div title={title ? title: label} className="checkbox-item pb-3" id="National">
+          <input className="ui checkbox" type="checkbox" checked={pageState.filters[filter_type] as boolean} onClick={async (e: React.MouseEvent<HTMLElement>) => {
+          await addFilter(
+            !pageState.filters[filter_type], 
+            filter_type
+          )
+        }}/>
+          {link ? <label><a target="_blank" rel="noreferrer" href={link}>{label}</a></label> : <label>{label}</label>}
+        </div>
     )
   }
 
@@ -149,7 +150,7 @@ export default function Filters({ page }: FilterProps) {
               }
             </div>
             <div>
-              {buildFilterCheckbox('unity_aligned_only', Translate('UnityStudiesOnly'), Translate('UnityStudiesOnlyLong'))}
+              {buildFilterCheckbox('unity_aligned_only', Translate('UnityStudiesOnly'), Translate('UnityStudiesOnlyLong'), "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations")}
             </div>
             <div>
               {buildFilterDropdown('source_type', Translate('SourceType'))}
