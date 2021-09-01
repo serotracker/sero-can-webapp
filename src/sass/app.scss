@@ -32,10 +32,6 @@
     color: lightgrey !important;
 }
 
-a {
-    color: lightgrey !important;
-}
-
 a:hover {
     color: white !important;
     text-decoration: none;
@@ -66,6 +62,15 @@ Footer {
     font-size: 16px;
     font-weight: 300;
     color: white !important;
+
+    .updated-at-bold {
+        font-weight: 600;
+    }
+
+    a:hover {
+        color: white !important;
+        text-decoration: underline;
+    }
 }
 
 Footer h3{
@@ -74,10 +79,6 @@ Footer h3{
 
 Footer a{
     color: white;
-}
-
-.footer-small-text {
-    font-size: 12px;
 }
 
 .footer-visible-section {

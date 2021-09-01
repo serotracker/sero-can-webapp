@@ -7,7 +7,7 @@ export default function AnalysisMethods() {
     return (
         <div>
             <div className="section-title py-2 center">
-                {Translate("AnalysisMethods", ["Title"]).toUpperCase()}
+                {Translate("AnalysisMethods", ["Title"])}
             </div>
             <div>
                 <div>

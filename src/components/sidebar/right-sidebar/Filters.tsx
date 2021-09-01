@@ -107,7 +107,7 @@ export default function Filters({ page }: FilterProps) {
     <div className="col-12 p-0">
       <div className="py-3 center flex">
         <div className="section-title">
-          {Translate("Filter").toUpperCase()}
+          {Translate("Filter")}
         </div>
         <div className="tooltip-vert-adj">
           <InformationIcon
