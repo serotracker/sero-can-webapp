@@ -152,6 +152,7 @@ function App() {
             initialFilters.unity_aligned_only = true;
             return initialFilters;
           })()}/>
+          <span>{/*Temp hack to force page to rerender if already on explore*/}</span>
         </Route>
         <Redirect exact from="/" to={`/${language}/Explore`} />
         {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Publications", "Canada"].map(route =>
