@@ -25,10 +25,12 @@ yarn-error.log*
 
 # code editor
 .vscode/
+.idea/
 
 #.env
 # DO NOT COMMIT SECRETS
-.env
+.envwq
 load-dotenv.sh
 
 .idea/
+

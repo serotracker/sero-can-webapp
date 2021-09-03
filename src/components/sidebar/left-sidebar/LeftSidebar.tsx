@@ -4,7 +4,8 @@ import Translate from "utils/translate/translateService";
 import TotalStats from "./TotalStats";
 import HealthAgencyLogo from 'assets/images/public-health-agency.png';
 import UcalgaryLogo from 'assets/images/University-Of-Calgary-Logo.png';
-import WhoLogo from "components/shared/WhoLogo"
+import WhoLogo from "components/shared/WhoLogo";
+import DownloadButton from "components/shared/DownloadButton";
 import "../sidebar.css";
 
 interface SideBarProps {
@@ -21,9 +22,9 @@ export default function LeftSidebar({ page }: SideBarProps) {
       <p>
         {Translate('ExploreBlurb', ['FirstParagraph'])}
       </p>
-      <p>
-        {Translate('ExploreBlurb', ['SecondParagraph'])}
-      </p>
+      <div className="d-flex justify-content-center">
+        <DownloadButton />
+      </div>
     </div>
   )
 

@@ -1,7 +1,6 @@
 import YearInReview2020 from '../../../assets/images/YearInReview2020.png'
 import October2020Update from '../../../assets/images/October2020Update.png';
 import September2020Update from '../../../assets/images/September2020Update.png'
-import MedRxivPub from '../../../assets/images/MedRXIV.jpg'
 import July2020Update from '../../../assets/images/IndustryUpdateJuly_2020.png'
 import June2020Update from '../../../assets/images/IndustryUpdateJune_2020.png'
 import August2020Update from '../../../assets/images/August2020Update.png'
@@ -13,6 +12,9 @@ import LancetId from '../../../assets/images/LancetIDArticle.png'
 import InsuringTheEconomy from '../../../assets/images/InsuringTheEconomy.png'
 import PlosOnePub from '../../../assets/images/PlosOnePub.png'
 import InventoryEvidenceSynthesis from '../../../assets/images/InventoryEvidenceSynthesis.png'
+import AugustBiblioDigest from '../../../assets/images/AugustBiblioDigest.png'
+import JulyBiblioDigest from '../../../assets/images/JulyBiblioDigest.png'
+import JuneBiblioDigest from '../../../assets/images/JuneBiblioDigest.png'
 
 import { PublicationsCardProps } from "./PublicationsCard";
 
@@ -156,6 +158,22 @@ const listOfMediaPublicationsProps: PublicationsCardProps[] = [
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['StillVulnerable'],
         url: "https://www.journaldequebec.com/2021/06/25/la-population-mondiale-toujours-vulnerable-a-la-covid-19",
+    },
+    {
+        day: "25",
+        month: "May",
+        year: "2021",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['NYTIndia'],
+        url: "https://www.nytimes.com/interactive/2021/05/25/world/asia/india-covid-death-estimates.html",
+    },
+    {
+        day: "13",
+        month: "May",
+        year: "2021",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['EconomistDeathToll'],
+        url: "https://www.economist.com/graphic-detail/2021/05/13/how-we-estimated-the-true-death-toll-of-the-pandemic",
     },
     {
         day: "23",
@@ -302,14 +320,46 @@ const listOfMediaPublicationsProps: PublicationsCardProps[] = [
     }
 ]
 
+const listOfBiblioDigests: PublicationsCardProps[] = [
+    {
+        day: "6",
+        month: "August",
+        year: "2021",
+        img: AugustBiblioDigest,
+        titleKey1: 'BiblioDigestTitles',
+        titleKey2: ['August'],
+        url: "https://drive.google.com/file/d/1c7OWeVdGwL2Hix-RIHs8y-EZHdKGv8kV/view?usp=sharing"
+    },
+    {           
+        day: "9",
+        month: "July",
+        year: "2021",
+        img: JulyBiblioDigest,
+        titleKey1: "BiblioDigestTitles",
+        titleKey2: ['July'],
+        url: "https://drive.google.com/file/d/1u6mix47HTUwSLraj4eMcD1rvGj7N7Z4g/view?usp=sharing"
+    },
+    {           
+        day: "10",
+        month: "June",
+        year: "2021",
+        img: JuneBiblioDigest,
+        titleKey1: "BiblioDigestTitles",
+        titleKey2: ['June'],
+        url: "https://drive.google.com/file/d/1qxAa3xnqEQzFwsph75wI4_zBj84iJ2FZ/view?usp=sharing"
+    },
+]
+
 interface PublicationsInfoInterface {
     media: PublicationsCardProps[],
     articles: PublicationsCardProps[],
     reports: PublicationsCardProps[],
+    biblioDigests: PublicationsCardProps[]
 }
 
 export const PublicationsInfo: PublicationsInfoInterface = {
     media: listOfMediaPublicationsProps,
     articles: listOfResearchArticles,
-    reports: listOfReports
+    reports: listOfReports,
+    biblioDigests: listOfBiblioDigests
 }

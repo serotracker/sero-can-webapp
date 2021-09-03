@@ -32,7 +32,6 @@
 
 .publications-card-image-overlay {
   font-size: 20px;
-  font-family: "Roboto", sans-serif;
   font-weight: 400;
   color: white;
 }
@@ -71,6 +70,6 @@
 .slick-next:before { content: "›"; }
 
 // https://github.com/akiran/react-slick/issues/1571
-.slider-container {
+.publications-slider-container {
   max-width: 80vw;
 }

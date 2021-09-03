@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import './App.css';
+import 'sass/app.scss';
 import About from './components/pages/About';
 import NotFoundPage from './components/pages/NotFoundPage';
 import CookiePolicy from "./components/pages/CookiePolicy";
@@ -10,10 +10,10 @@ import Publications from "./components/pages/Publications/Publications";
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import TermsOfUse from "./components/pages/TermsOfUse";
 import { CookieBanner } from "./components/shared/CookieBanner";
-import { NavBar } from "./components/shared/NavBar";
+import { Header } from "./components/shared/Header";
 import { Footer } from "./components/shared/Footer";
 import TableauEmbed from "./components/shared/TableauEmbed";
-import { AppContext } from "./context";
+import { AppContext, getEmptyFilters } from "./context";
 import httpClient from "./httpClient";
 import { LanguageType, PageStateEnum } from "./types";
 import { initializeData } from "./utils/stateUpdateUtils";
@@ -102,7 +102,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <Header />
       <CookieBanner />
       <Switch>
         <Route path="/:language/About">
@@ -120,7 +120,7 @@ function App() {
             key={`AnalyzeTableau${language}`}
             desktopOptions={{
               width: "82vw",
-              height: "4030px"
+              height: "5000px"
             }}
             mobileOptions={{
               width: "90vw",
@@ -145,6 +145,14 @@ function App() {
         </Route>
         <Route path="/:language/Publications">
           <Publications />
+        </Route>
+        <Route path="/:language/Unity">
+          <Explore initialFilters={(() => {
+            let initialFilters = getEmptyFilters();
+            initialFilters.unity_aligned_only = true;
+            return initialFilters;
+          })()}/>
+          <span>{/*Temp hack to force page to rerender if already on explore*/}</span>
         </Route>
         <Redirect exact from="/" to={`/${language}/Explore`} />
         {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Publications", "Canada"].map(route =>
