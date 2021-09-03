@@ -6,6 +6,7 @@ import { PublicationsInfo } from "./PublicationsConstants";
 import './styles.scss';
 import Translate from "../../../utils/translate/translateService";
 import Slider from "react-slick";
+import {PublicationsItem} from "./PublicationsItem";
 
 export default function Publications() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
@@ -42,6 +43,8 @@ const sliderSettings = {
   infinite: true,
   arrows: true,
   speed: 500,
+  vertical: true,
+  verticalSwiping: true,
   slidesToShow: 3,
   slidesToScroll: 3,
   responsive: [
@@ -71,19 +74,18 @@ export type PublicationsType = 'articles' | 'reports' | 'media' | 'biblioDigests
 const getCarouselOfPublicationsCards = (type: PublicationsType) => {
   return (
     <div className="publications-slider-container">
-      <Slider 
-        {...sliderSettings}
-      >
+      <Slider {...sliderSettings}>
           {
             PublicationsInfo[type].map((publicationsProps, idx) => {
-              return <PublicationsCard
+              return <PublicationsItem
                 day={publicationsProps.day ?? ""}
                 month={publicationsProps.month}
                 year={publicationsProps.year}
                 img={publicationsProps.img}
                 titleKey1={publicationsProps.titleKey1}
                 titleKey2={publicationsProps.titleKey2}
-                url={publicationsProps.url} />
+                url={publicationsProps.url}
+                description={"missing"}/>
               })
           }
       </Slider>
