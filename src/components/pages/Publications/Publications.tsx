@@ -8,6 +8,8 @@ import Translate from "../../../utils/translate/translateService";
 import Slider from "react-slick";
 import {PublicationsItem} from "./PublicationsItem";
 
+export type PublicationsType = 'articles' | 'reports' | 'media' | 'biblioDigests';
+
 export default function Publications() {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
 
@@ -20,75 +22,69 @@ export default function Publications() {
         <h3 className="normal">
           {Translate('ResearchArticles')}
         </h3>
-        { getCarouselOfPublicationsCards("articles") }
+        { PublicationsInfo["articles"].map((publicationsProps) => {
+          return <PublicationsItem
+              day={publicationsProps.day ?? ""}
+              month={publicationsProps.month}
+              year={publicationsProps.year}
+              img={publicationsProps.img}
+              titleKey1={publicationsProps.titleKey1}
+              titleKey2={publicationsProps.titleKey2}
+              url={publicationsProps.url}
+              description={"missing"}/>
+        }) }
         <h3 className="normal">
           {Translate('BiblioDigests')}
         </h3>
-        { getCarouselOfPublicationsCards("biblioDigests") }
+        { PublicationsInfo["biblioDigests"].map((publicationsProps) => {
+          return <PublicationsItem
+              day={publicationsProps.day ?? ""}
+              month={publicationsProps.month}
+              year={publicationsProps.year}
+              img={publicationsProps.img}
+              titleKey1={publicationsProps.titleKey1}
+              titleKey2={publicationsProps.titleKey2}
+              url={publicationsProps.url}
+              description={"missing"}/>
+        }) }
         <h3 className="normal">
           {Translate('PrivateSectorReports')}
         </h3>
-        { getCarouselOfPublicationsCards("reports") }
+        { PublicationsInfo["reports"].map((publicationsProps) => {
+          return <PublicationsItem
+              day={publicationsProps.day ?? ""}
+              month={publicationsProps.month}
+              year={publicationsProps.year}
+              img={publicationsProps.img}
+              titleKey1={publicationsProps.titleKey1}
+              titleKey2={publicationsProps.titleKey2}
+              url={publicationsProps.url}
+              description={"missing"}/>
+        }) }
         <h3 className="normal">
           {Translate('MediaMentions')}
         </h3>
-        { getCarouselOfPublicationsCards("media") }
+        { getPublications("media") }
       </div>
     </div>
   )
 }
 
-const sliderSettings = {
-  dots: true,
-  infinite: true,
-  arrows: true,
-  speed: 500,
-  vertical: true,
-  verticalSwiping: true,
-  slidesToShow: 3,
-  slidesToScroll: 3,
-  responsive: [
-    {
-      breakpoint: 1048,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: true
-      }
-    }
-  ]
-};
 
-export type PublicationsType = 'articles' | 'reports' | 'media' | 'biblioDigests';
-
-const getCarouselOfPublicationsCards = (type: PublicationsType) => {
-  return (
-    <div className="publications-slider-container">
-      <Slider {...sliderSettings}>
-          {
-            PublicationsInfo[type].map((publicationsProps, idx) => {
-              return <PublicationsItem
-                day={publicationsProps.day ?? ""}
-                month={publicationsProps.month}
-                year={publicationsProps.year}
-                img={publicationsProps.img}
-                titleKey1={publicationsProps.titleKey1}
-                titleKey2={publicationsProps.titleKey2}
-                url={publicationsProps.url}
-                description={"missing"}/>
-              })
-          }
-      </Slider>
-    </div>
-  )
+function getPublications(type: PublicationsType) {
+  PublicationsInfo[type].map((publicationsProps) => {
+    return <PublicationsItem
+        day={publicationsProps.day ?? ""}
+        month={publicationsProps.month}
+        year={publicationsProps.year}
+        img={publicationsProps.img}
+        titleKey1={publicationsProps.titleKey1}
+        titleKey2={publicationsProps.titleKey2}
+        url={publicationsProps.url}
+        description={"missing"}/>
+  })
 }
+
+
+
+
