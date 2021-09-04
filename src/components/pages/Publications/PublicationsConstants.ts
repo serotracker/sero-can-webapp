@@ -37,33 +37,6 @@ const listOfReports: PublicationsCardProps[] = [
         titleKey2: ['YearInReview2020'],
         url: "https://drive.google.com/file/d/14u0GroEadFQ__Gdvoe104HI-y0LWDwSu/view?usp=sharing",
     },
-    {         
-        day: "13",
-        month: "November",
-        year: "2020",
-        img: October2020Update,
-        titleKey1: 'IndustryReportTitles',
-        titleKey2: ['OctoberReport'],
-        url: "https://drive.google.com/file/d/1aCgxzxv9J5Zvh4EVyI5REmSVgWLQ_Ip3/view?usp=sharing"
-    },
-    {           
-        day: "12",
-        month: "October",
-        year: "2020",
-        img: September2020Update,
-        titleKey1: 'IndustryReportTitles',
-        titleKey2: ['SeptemberReport'],
-        url: "https://drive.google.com/file/d/1CjMcs7UZzu4_E_QFJVYZdv0QhyfoNMAe/view?usp=sharing"
-    },
-    {           
-        day: "9",
-        month: "September",
-        year: "2020",
-        img: August2020Update,
-        titleKey1: 'IndustryReportTitles',
-        titleKey2: ['AugustReport'],
-        url: "https://drive.google.com/file/d/1m7BlfUKCYs32_D1jnFUEQHPr3Qjg5Eyt/view?usp=sharing"
-    },
     {           
         day: "20",
         month: "August",
@@ -74,15 +47,6 @@ const listOfReports: PublicationsCardProps[] = [
         url: "https://drive.google.com/file/d/1kEl6xv54yPGoDXZoPq9h2q4SqYnL2OU-/view?usp=sharing"
     },
     {           
-        day: "7",
-        month: "August",
-        year: "2020",
-        img: July2020Update,
-        titleKey1: 'IndustryReportTitles',
-        titleKey2: ['JulyReport'],
-        url: "https://drive.google.com/file/d/1Rx3i_Sy01suu-ZZYV7LRpo2KEclbXCNN/view?usp=sharing"
-    },
-    {           
         day: "22",
         month: "July",
         year: "2020",
@@ -90,24 +54,6 @@ const listOfReports: PublicationsCardProps[] = [
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['BloodBank'],
         url: "https://drive.google.com/file/d/1It2CzAwEfTcQ1zIC6z2fO7i7XEfmWfom/view?usp=sharing"
-    },
-    {           
-        day: "12",
-        month: "July",
-        year: "2020",
-        img: June2020Update,
-        titleKey1: 'IndustryReportTitles',
-        titleKey2: ['JuneReport'],
-        url: "https://drive.google.com/file/d/1HO--VWYdyEqd5Dc3xcZBwERXWDBjCfxN/view"
-    },
-    {           
-        day: "10",
-        month: "June",
-        year: "2020",
-        img: May2020Update,
-        titleKey1: 'IndustryReportTitles',
-        titleKey2: ['MayReport'],
-        url: "https://drive.google.com/file/d/16pCR-zh1UiWjQFhTDxW_2adSGuq0pCgz/view?usp=sharing"
     },
     {           
         day: "19",
@@ -350,16 +296,75 @@ const listOfBiblioDigests: PublicationsCardProps[] = [
     },
 ]
 
+const listOfMonthlyReports: PublicationsCardProps[] = [
+    {
+        day: "13",
+        month: "November",
+        year: "2020",
+        img: October2020Update,
+        titleKey1: 'IndustryReportTitles',
+        titleKey2: ['OctoberReport'],
+        url: "https://drive.google.com/file/d/1aCgxzxv9J5Zvh4EVyI5REmSVgWLQ_Ip3/view?usp=sharing"
+    },
+    {
+        day: "12",
+        month: "October",
+        year: "2020",
+        img: September2020Update,
+        titleKey1: 'IndustryReportTitles',
+        titleKey2: ['SeptemberReport'],
+        url: "https://drive.google.com/file/d/1CjMcs7UZzu4_E_QFJVYZdv0QhyfoNMAe/view?usp=sharing"
+    },
+    {
+        day: "9",
+        month: "September",
+        year: "2020",
+        img: August2020Update,
+        titleKey1: 'IndustryReportTitles',
+        titleKey2: ['AugustReport'],
+        url: "https://drive.google.com/file/d/1m7BlfUKCYs32_D1jnFUEQHPr3Qjg5Eyt/view?usp=sharing"
+    },
+    {
+        day: "7",
+        month: "August",
+        year: "2020",
+        img: July2020Update,
+        titleKey1: 'IndustryReportTitles',
+        titleKey2: ['JulyReport'],
+        url: "https://drive.google.com/file/d/1Rx3i_Sy01suu-ZZYV7LRpo2KEclbXCNN/view?usp=sharing"
+    },
+    {
+        day: "12",
+        month: "July",
+        year: "2020",
+        img: June2020Update,
+        titleKey1: 'IndustryReportTitles',
+        titleKey2: ['JuneReport'],
+        url: "https://drive.google.com/file/d/1HO--VWYdyEqd5Dc3xcZBwERXWDBjCfxN/view"
+    },
+    {
+        day: "10",
+        month: "June",
+        year: "2020",
+        img: May2020Update,
+        titleKey1: 'IndustryReportTitles',
+        titleKey2: ['MayReport'],
+        url: "https://drive.google.com/file/d/16pCR-zh1UiWjQFhTDxW_2adSGuq0pCgz/view?usp=sharing"
+    },
+]
+
 interface PublicationsInfoInterface {
     media: PublicationsCardProps[],
     articles: PublicationsCardProps[],
     reports: PublicationsCardProps[],
-    biblioDigests: PublicationsCardProps[]
+    biblioDigests: PublicationsCardProps[],
+    monthlyReports: PublicationsCardProps[]
 }
 
 export const PublicationsInfo: PublicationsInfoInterface = {
     media: listOfMediaPublicationsProps,
     articles: listOfResearchArticles,
     reports: listOfReports,
-    biblioDigests: listOfBiblioDigests
+    biblioDigests: listOfBiblioDigests,
+    monthlyReports: listOfMonthlyReports,
 }

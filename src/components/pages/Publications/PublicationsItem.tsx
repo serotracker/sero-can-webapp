@@ -13,7 +13,6 @@ export interface PublicationsCardProps {
     titleKey1: string,
     titleKey2: string[],
     description: string,
-    img?: string,
     url: string,
     italicize?: string
 }
