@@ -11,9 +11,15 @@ import SectionHeader from "./SectionHeader";
 import Datepicker from "./datepicker/Datepicker";
 import { Link } from "react-router-dom";
 import "./Filters.css";
+import { LanguageType } from "../../../types";
 
 interface FilterProps {
   page: string
+}
+
+interface PopulationGroupFilterOption {
+  english: string,
+  french: string
 }
 
 export default function Filters({ page }: FilterProps) {
@@ -38,15 +44,26 @@ export default function Filters({ page }: FilterProps) {
         });
         break;
       default:
-        options.forEach((o: string) => {
-          const translatedString = Translate(jsonObjectString, [toPascalCase(o)]);
-          const alternativeString = Translate(jsonObjectString, [o.replace(/ /g, '')]);
-          let text = !alternativeString && !translatedString ? o + "*" : (translatedString ? translatedString : alternativeString);
-          formatted_options.push({
-            key: o,
-            text: text,
-            value: o
-          })
+        options.forEach((o: string | PopulationGroupFilterOption) => {
+          // This code block will be deprecated once as this becomes the standardized filter option logic
+          if (filter_type === "population_group") {
+            o = o as PopulationGroupFilterOption;
+            const optionString = state.language === LanguageType.english ? o.english : o.french;
+            formatted_options.push({
+              key: optionString,
+              text: optionString,
+              value: optionString
+            })
+          } else {
+            const translatedString = Translate(jsonObjectString, [toPascalCase(o as string)]);
+            const alternativeString = Translate(jsonObjectString, [(o as string).replace(/ /g, '')]);
+            let text = !alternativeString && !translatedString ? o + "*" : (translatedString ? translatedString : alternativeString);
+            formatted_options.push({
+              key: o as string,
+              text: text,
+              value: o as string
+            })
+          }
         });
     };
     return formatted_options;
