@@ -6,25 +6,27 @@ import {Item, ItemContent} from "semantic-ui-react";
 import { AppContext } from "../../../context";
 import { LanguageType } from "../../../types";
 
-export interface PublicationsCardProps {
+export interface PublicationsItemProps {
     day?: string,
     month: string,
     year: string,
     titleKey1: string,
     titleKey2: string[],
-    description: string,
+    publicationName: string,
+    img?: string,
     url: string,
+    authors: string,
     italicize?: string
 }
 
-export function PublicationsItem(props: PublicationsCardProps) {
+export function PublicationsItem(props: PublicationsItemProps) {
     const [state] = useContext(AppContext);
     return (
         <div className="py-2 px-2">
             <Item className={"publication-item"}>
                 <Item.Content>
                     <Item.Meta>
-                        Publication Name
+                        {props.publicationName !== "" && props.publicationName}
                     </Item.Meta>
                     <Item.Header>
                         <a href={props.url} target="_blank" rel="noopener noreferrer" className="">
@@ -35,23 +37,14 @@ export function PublicationsItem(props: PublicationsCardProps) {
                         //Could potentially add a description in the hover state if we feel like we need it.
                     }
                     <Item.Meta>
-                        <div className='publication-meta'>
-                            <div>
-                                Authors:
-                            </div>
-                            <div>
-                                {state.language === LanguageType.english ? `${props.month } ${props.day ? props.day + "," : ""} ` : `${props.day} ${Translate("Months", [props.month])} `}
-                                {props.year}
-                            </div>
+                        <div>
+                            {Translate("Published")}: {state.language === LanguageType.english ? `${props.month } ${props.day ? props.day + "," : ""} ` : `${props.day} ${Translate("Months", [props.month])} `}
+                            {props.year}
+                        </div>
+                        <div>
+                            {props.authors !== "" && Translate("Authors") + props.authors}
                         </div>
                     </Item.Meta>
-                    {/*<div>
-                        Authors:
-                    </div>
-                    <div>
-                        Published: {state.language === LanguageType.english ? `${props.month } ${props.day ? props.day + "," : ""} ` : `${props.day} ${Translate("Months", [props.month])} `}
-                        {props.year}
-                    </div>*/}
                 </Item.Content>
             </Item>
         </div>

@@ -18,27 +18,27 @@ export default function Publications() {
                     {Translate('Publications')}
                 </h1>
                 <p>
-                    Learn more about SeroTracker’s impact in research articles, summaries, and media mentions.
+                    {Translate("PublicationDescriptions", ["Publications"])}
                 </p>
                 <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                     <p>
                         <a href={"#ResearchArticles"}>
-                            Research Articles
+                            {Translate("ResearchArticles")}
                         </a>
                     </p>
                     <p>
                         <a href={"#BiblioDigests"}>
-                            Literature Update Reports
+                            {Translate('BiblioDigests')}
                         </a>
                     </p>
                     <p>
                         <a href={"#PrivateSectorReports"}>
-                            Private Sector Reports
+                            {Translate('PrivateSectorReports')}
                         </a>
                     </p>
                     <p>
                         <a href={"#MediaMentions"}>
-                            Media Mentions
+                            {Translate('MediaMentions')}
                         </a>
                     </p>
                     <p>
@@ -52,28 +52,28 @@ export default function Publications() {
                     {Translate('ResearchArticles')}
                 </h2>
                 <p>
-                    Peer-reviewed research papers published by the SeroTracker team.
+                    {Translate("PublicationDescriptions", ["ResearchArticles"])}
                 </p>
                 {getPublications("articles")}
                 <h2 className="normal" id={"BiblioDigests"}>
                     {Translate('BiblioDigests')}
                 </h2>
                 <p>
-                    Monthly overviews and updates on trends in serosurvey literature and WHO-supplied metrics.
+                    {Translate("PublicationDescriptions", ["LiteratureUpdateReports"])}
                 </p>
                 {getPublications("biblioDigests")}
                 <h2 className="normal" id={"PrivateSectorReports"}>
                     {Translate('PrivateSectorReports')}
                 </h2>
                 <p>
-                    Updates on COVID-19 Screening & Testing in Canada’s Private Sector.
+                    {Translate("PublicationDescriptions", ["PrivateSectorReports"])}
                 </p>
                 {getPublications("reports")}
                 <h2 className="normal" id={"MediaMentions"}>
                     {Translate('MediaMentions')}
                 </h2>
                 <p>
-                    Worldwide media publications featuring SeroTracker.
+                    {Translate("PublicationDescriptions", ["MediaMentions"])}
                 </p>
                 {getPublications("media")}
                 <h2 className="normal" id={"MonthlyReports"}>
@@ -96,7 +96,8 @@ const getPublications = (type: PublicationsType) => {
                 titleKey1={publicationsProps.titleKey1}
                 titleKey2={publicationsProps.titleKey2}
                 url={publicationsProps.url}
-                description={"missing"}/>
+                authors={publicationsProps.authors}
+                publicationName={publicationsProps.publicationName}/>
         }))
 }
 

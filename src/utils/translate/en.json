@@ -63,6 +63,7 @@
   },
   "Analyze": "Analyze",
   "Article": "Article",
+  "Authors": "Authors",
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
   "BestSeroprevalenceEstimate": "Best seroprevalence estimate",
   "VaccineRolloutStatus": "Vaccine availability during study",
@@ -321,6 +322,7 @@
   },
   "Media": "Media",
   "MediaMentions": "Media Mentions",
+  "MonthlyReports": "Monthly Reports",
   "Months": {
     "January": "January",
     "February": "February",
@@ -408,6 +410,13 @@
   "PrivacyPolicy": "Privacy Policy",
   "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
   "Publication": "Publication",
+  "PublicationDescriptions": {
+    "Publications": "Learn more about SeroTracker’s impact in research articles, summaries, and media mentions.",
+    "ResearchArticles": "Peer-reviewed research papers published by the SeroTracker team.",
+    "LiteratureUpdateReports": "Monthly overviews and updates on trends in serosurvey literature and WHO-supplied metrics.",
+    "PrivateSectorReports": "Updates on COVID-19 Screening & Testing in Canada’s Private Sector.",
+    "MediaMentions": "Worldwide media publications featuring SeroTracker."
+  },
   "Publications": "Publications",
   "Published": "Published",
   "References": "References",

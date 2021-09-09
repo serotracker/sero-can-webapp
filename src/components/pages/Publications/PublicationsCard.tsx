@@ -12,8 +12,10 @@ export interface PublicationsCardProps {
   year: string,
   titleKey1: string,
   titleKey2: string[],
+  publicationName: string,
   img?: string,
   url: string,
+  authors: string,
   italicize?: string
 }
 
