@@ -23,11 +23,11 @@ export function PublicationsCard(props: PublicationsCardProps) {
   const [state] = useContext(AppContext);
   return (
     <div className="py-4 px-2">
-      <Card className={props.img ? "publications-card" : "publications-card-no-img"}> 
+      <Card className={"publications-card"}>
         {props.img && (
           <Card.Content>
             <div className="flex center-item publications-card-image mb-2">
-              <img src={props.img} alt="" className="fit publications-card-image"></img>
+              <img src={props.img} alt="" className="fit publications-card-image"/>
               <a href={props.url}
                 target="_blank"
                 rel="noopener noreferrer"

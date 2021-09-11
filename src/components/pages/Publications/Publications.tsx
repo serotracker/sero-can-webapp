@@ -5,6 +5,8 @@ import {PublicationsInfo} from "./PublicationsConstants";
 import './styles.scss';
 import Translate from "../../../utils/translate/translateService";
 import {PublicationsItem} from "./PublicationsItem";
+import Slider from "react-slick";
+import {PublicationsCard} from "./PublicationsCard";
 
 export type PublicationsType = 'articles' | 'reports' | 'media' | 'biblioDigests' | 'monthlyReports';
 
@@ -73,20 +75,12 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["PrivateSectorReports"])}
                 </p>
-                {PublicationsInfo["reports"].map((publicationsProps) => {
-                    return <a href={publicationsProps.url} target="_blank" rel="noopener noreferrer" className="">
-                        {publicationsProps.italicize ? <i>{publicationsProps.italicize}&nbsp;</i> : null}{Translate(publicationsProps.titleKey1, publicationsProps.titleKey2)}
-                    </a>
-                })}
+                {getLinksOfPublications("biblioDigests")}
 
                 <h2 className="normal" id={"MonthlyReports"}>
                     {"Monthly Reports"}
                 </h2>
-                {PublicationsInfo["monthlyReports"].map((publicationsProps) => {
-                    return <a href={publicationsProps.url} target="_blank" rel="noopener noreferrer" className="">
-                        {publicationsProps.italicize ? <i>{publicationsProps.italicize}&nbsp;</i> : null}{Translate(publicationsProps.titleKey1, publicationsProps.titleKey2)}
-                    </a>
-                })}
+                {getLinksOfPublications("monthlyReports")}
 
                 <h2 className="normal" id={"MediaMentions"}>
                     {Translate('MediaMentions')}
@@ -94,7 +88,7 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["MediaMentions"])}
                 </p>
-                {getPublications("media")}
+                {getCarouselOfPublicationsCards("media")}
             </div>
         </div>
     )
@@ -116,3 +110,61 @@ const getPublications = (type: PublicationsType) => {
         }))
 }
 
+const sliderSettings = {
+  dots: true,
+  infinite: true,
+  arrows: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  responsive: [
+    {
+      breakpoint: 1048,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    }
+  ]
+};
+
+const getLinksOfPublications = (type: PublicationsType) => {
+    return PublicationsInfo[type].map((publicationsProps) => {
+        return <a className={"py-2"} href={publicationsProps.url} target="_blank" rel="noopener noreferrer">
+            {publicationsProps.italicize ? <i>{publicationsProps.italicize}&nbsp;</i> : null}{Translate(publicationsProps.titleKey1, publicationsProps.titleKey2)}
+        </a>
+    })
+}
+
+const getCarouselOfPublicationsCards = (type: PublicationsType) => {
+  return (
+      <div className="publications-slider-container">
+        <Slider {...sliderSettings}>
+          {
+            PublicationsInfo[type].map((publicationsProps, idx) => {
+              return <PublicationsCard
+                  day={publicationsProps.day ?? ""}
+                  month={publicationsProps.month}
+                  year={publicationsProps.year}
+                  titleKey1={publicationsProps.titleKey1}
+                  titleKey2={publicationsProps.titleKey2}
+                  url={publicationsProps.url}
+                  authors={publicationsProps.authors}
+                  publicationName={publicationsProps.publicationName}/>
+            })
+          }
+        </Slider>
+      </div>
+  )
+}
