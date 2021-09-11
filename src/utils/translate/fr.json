@@ -263,14 +263,14 @@
     "EconomistDeathToll": "Comment avons-nous estimé le véritable nombre de morts de la pandémie?"
   },
   "IndustryReportTitles": {
-    "AugustReport": "Le bulletin d'Août - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
+    "AugustReport": "Le bulletin d'Août",
     "BloodBank": "SeroTracker banque de sang séroprévalence Rapport préliminaire",
-    "JulyReport": "Le bulletin de Juillet - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "JuneReport": "Le bulletin de Juin - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "MayReport": "Le bulletin de mai - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "OctoberReport": "Le bulletin d'Octobre - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
-    "PreliminaryReport": "Le bulletin préliminaire - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "SeptemberReport": "Le bulletin de Septembre - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+    "JulyReport": "Le bulletin de Juillet",
+    "JuneReport": "Le bulletin de Juin",
+    "MayReport": "Le bulletin de mai",
+    "OctoberReport": "Le bulletin d'Octobre",
+    "PreliminaryReport": "Le bulletin préliminaire",
+    "SeptemberReport": "Le bulletin de Septembre",
     "YearInReview2020": "Bilan de l’année 2020 de SeroTracker",
     "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie",
     "InventoryEvidenceSynthesis": "Inventaire des meilleures synthèses de preuves"
@@ -422,7 +422,8 @@
     "ResearchArticles": "Articles de recherche évalués par des pairs publiés par l'équipe SeroTracker.",
     "LiteratureUpdateReports": "Aperçus mensuels et mises à jour sur les tendances dans la littérature des enquêtes sérologiques et les paramètres fournis par l'OMS.",
     "PrivateSectorReports": " Mises à jour sur le dépistage et les tests COVID-19 dans le secteur privé au Canada.",
-    "MediaMentions": "Publications médiatiques mondiales mettant en vedette SeroTracker."
+    "MediaMentions": "Publications médiatiques mondiales mettant en vedette SeroTracker.",
+    "MonthlyReports": "Covid-19 Dépistage et d'essais dans le secteur privé du Canada"
   },
   "Publications": "Publications",
   "Published": "Publié",

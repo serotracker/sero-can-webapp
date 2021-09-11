@@ -367,7 +367,7 @@ const listOfMonthlyReports: PublicationsCardProps[] = [
         year: "2020",
         img: October2020Update,
         titleKey1: 'IndustryReportTitles',
-        titleKey2: ['OctoberReport'],
+        titleKey2: ["OctoberReport"],
         publicationName: "",
         authors: "",
         url: "https://drive.google.com/file/d/1aCgxzxv9J5Zvh4EVyI5REmSVgWLQ_Ip3/view?usp=sharing"

@@ -61,25 +61,28 @@ export default function Publications() {
                 </p>
                 {getPublications("articles")}
 
-                <h2 className="normal" id={"BiblioDigests"}>
-                    {Translate('BiblioDigests')}
-                </h2>
-                <p>
-                    {Translate("PublicationDescriptions", ["LiteratureUpdateReports"])}
-                </p>
-                {getPublications("biblioDigests")}
-
                 <h2 className="normal" id={"PrivateSectorReports"}>
                     {Translate('PrivateSectorReports')}
                 </h2>
                 <p>
                     {Translate("PublicationDescriptions", ["PrivateSectorReports"])}
                 </p>
+                {getPublications("reports")}
+
+                <h2 className="normal" id={"BiblioDigests"}>
+                    {Translate('BiblioDigests')}
+                </h2>
+                <p>
+                    {Translate("PublicationDescriptions", ["LiteratureUpdateReports"])}
+                </p>
                 {getLinksOfPublications("biblioDigests")}
 
                 <h2 className="normal" id={"MonthlyReports"}>
                     {"Monthly Reports"}
                 </h2>
+                <p>
+                    {Translate("PublicationDescriptions", ["MonthlyReports"])}
+                </p>
                 {getLinksOfPublications("monthlyReports")}
 
                 <h2 className="normal" id={"MediaMentions"}>
