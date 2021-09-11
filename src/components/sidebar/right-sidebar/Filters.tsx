@@ -57,7 +57,7 @@ export default function Filters({ page }: FilterProps) {
           } else {
             const translatedString = Translate(jsonObjectString, [toPascalCase(o as string)]);
             const alternativeString = Translate(jsonObjectString, [(o as string).replace(/ /g, '')]);
-            let text = !alternativeString && !translatedString ? o + "*" : (translatedString ? translatedString : alternativeString);
+            let text = !alternativeString && !translatedString ? o as string : (translatedString ? translatedString : alternativeString);
             formatted_options.push({
               key: o as string,
               text: text,
