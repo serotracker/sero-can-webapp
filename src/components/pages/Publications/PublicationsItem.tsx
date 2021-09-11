@@ -22,7 +22,7 @@ export interface PublicationsItemProps {
 export function PublicationsItem(props: PublicationsItemProps) {
     const [state] = useContext(AppContext);
     return (
-        <div className="py-2 px-2">
+        <div className="py-2">
             <Item className={"publication-item"}>
                 <Item.Content>
                     <Item.Meta>

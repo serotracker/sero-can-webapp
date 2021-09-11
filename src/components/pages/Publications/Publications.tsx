@@ -20,6 +20,7 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["Publications"])}
                 </p>
+
                 <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                     <p>
                         <a href={"#ResearchArticles"}>
@@ -47,7 +48,9 @@ export default function Publications() {
                         </a>
                     </p>
                 </div>
+
                 <hr style={{borderTop: "2px solid #bbb", width: "100%"}}/>
+
                 <h2 className="normal" id={"ResearchArticles"}>
                     {Translate('ResearchArticles')}
                 </h2>
@@ -55,6 +58,7 @@ export default function Publications() {
                     {Translate("PublicationDescriptions", ["ResearchArticles"])}
                 </p>
                 {getPublications("articles")}
+
                 <h2 className="normal" id={"BiblioDigests"}>
                     {Translate('BiblioDigests')}
                 </h2>
@@ -62,13 +66,28 @@ export default function Publications() {
                     {Translate("PublicationDescriptions", ["LiteratureUpdateReports"])}
                 </p>
                 {getPublications("biblioDigests")}
+
                 <h2 className="normal" id={"PrivateSectorReports"}>
                     {Translate('PrivateSectorReports')}
                 </h2>
                 <p>
                     {Translate("PublicationDescriptions", ["PrivateSectorReports"])}
                 </p>
-                {getPublications("reports")}
+                {PublicationsInfo["reports"].map((publicationsProps) => {
+                    return <a href={publicationsProps.url} target="_blank" rel="noopener noreferrer" className="">
+                        {publicationsProps.italicize ? <i>{publicationsProps.italicize}&nbsp;</i> : null}{Translate(publicationsProps.titleKey1, publicationsProps.titleKey2)}
+                    </a>
+                })}
+
+                <h2 className="normal" id={"MonthlyReports"}>
+                    {"Monthly Reports"}
+                </h2>
+                {PublicationsInfo["monthlyReports"].map((publicationsProps) => {
+                    return <a href={publicationsProps.url} target="_blank" rel="noopener noreferrer" className="">
+                        {publicationsProps.italicize ? <i>{publicationsProps.italicize}&nbsp;</i> : null}{Translate(publicationsProps.titleKey1, publicationsProps.titleKey2)}
+                    </a>
+                })}
+
                 <h2 className="normal" id={"MediaMentions"}>
                     {Translate('MediaMentions')}
                 </h2>
@@ -76,10 +95,6 @@ export default function Publications() {
                     {Translate("PublicationDescriptions", ["MediaMentions"])}
                 </p>
                 {getPublications("media")}
-                <h2 className="normal" id={"MonthlyReports"}>
-                    {"Monthly Reports"}
-                </h2>
-                {getPublications("monthlyReports")}
             </div>
         </div>
     )
