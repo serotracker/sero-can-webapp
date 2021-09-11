@@ -9,10 +9,17 @@ import Translate, { getCountryName } from "../../../utils/translate/translateSer
 import InformationIcon from "../../shared/InformationIcon";
 import SectionHeader from "./SectionHeader";
 import Datepicker from "./datepicker/Datepicker";
+import { Link } from "react-router-dom";
 import "./Filters.css";
+import { LanguageType } from "../../../types";
 
 interface FilterProps {
   page: string
+}
+
+interface PopulationGroupFilterOption {
+  english: string,
+  french: string
 }
 
 export default function Filters({ page }: FilterProps) {
@@ -37,15 +44,26 @@ export default function Filters({ page }: FilterProps) {
         });
         break;
       default:
-        options.forEach((o: string) => {
-          const translatedString = Translate(jsonObjectString, [toPascalCase(o)]);
-          const alternativeString = Translate(jsonObjectString, [o.replace(/ /g, '')]);
-          let text = !alternativeString && !translatedString ? o + "*" : (translatedString ? translatedString : alternativeString);
-          formatted_options.push({
-            key: o,
-            text: text,
-            value: o
-          })
+        options.forEach((o: string | PopulationGroupFilterOption) => {
+          // This code block will be deprecated once as this becomes the standardized filter option logic
+          if (filter_type === "population_group") {
+            o = o as PopulationGroupFilterOption;
+            const optionString = state.language === LanguageType.english ? o.english : o.french;
+            formatted_options.push({
+              key: optionString,
+              text: optionString,
+              value: optionString
+            })
+          } else {
+            const translatedString = Translate(jsonObjectString, [toPascalCase(o as string)]);
+            const alternativeString = Translate(jsonObjectString, [(o as string).replace(/ /g, '')]);
+            let text = !alternativeString && !translatedString ? o + "*" : (translatedString ? translatedString : alternativeString);
+            formatted_options.push({
+              key: o as string,
+              text: text,
+              value: o as string
+            })
+          }
         });
     };
     return formatted_options;
@@ -89,17 +107,17 @@ export default function Filters({ page }: FilterProps) {
     )
   }
 
-  const buildFilterCheckbox = (filter_type: FilterType, label: string, title?: string) => {
+  const buildFilterCheckbox = (filter_type: FilterType, label: string, title?: string, link?: string) => {
     return(
-      <div title={title ? title: label} className="checkbox-item pb-3" id="National" onClick={async (e: React.MouseEvent<HTMLElement>) => {
-        await addFilter(
-          !pageState.filters[filter_type], 
-          filter_type
-        )
-      }}>
-        <input className="ui checkbox" type="checkbox" checked={pageState.filters[filter_type] as boolean} readOnly />
-        <label>{label}</label>
-      </div>
+        <div title={title ? title: label} className="checkbox-item pb-3" id="National">
+          <input className="ui checkbox" type="checkbox" checked={pageState.filters[filter_type] as boolean} onClick={async (e: React.MouseEvent<HTMLElement>) => {
+          await addFilter(
+            !pageState.filters[filter_type], 
+            filter_type
+          )
+        }}/>
+          {link ? <label><a target="_blank" rel="noreferrer" href={link}>{label}</a></label> : <label>{label}</label>}
+        </div>
     )
   }
 
@@ -149,7 +167,7 @@ export default function Filters({ page }: FilterProps) {
               }
             </div>
             <div>
-              {buildFilterCheckbox('unity_aligned_only', Translate('UnityStudiesOnly'), Translate('UnityStudiesOnlyLong'))}
+              {buildFilterCheckbox('unity_aligned_only', Translate('UnityStudiesOnly'), Translate('UnityStudiesOnlyLong'), "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations")}
             </div>
             <div>
               {buildFilterDropdown('source_type', Translate('SourceType'))}

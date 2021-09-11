@@ -9,8 +9,8 @@
       "HealthInformatics": "University of Calgary's Centre for Health Informatics.",
       "HostedAt": "SeroTracker is also hosted at the",
       "MappingTheExtent": "The COVID-19 Immunity Task Force is mapping the extent of SARS-CoV-2 infection in Canada, and SeroTracker also provides content for their",
-      "PartOne": "As the acute phase of the COVID-19 pandemic passes its peak, many countries are accelerating their investments in serological (antibody) testing. Understanding population antibody patterns and potential immunity is of great interest to clinicians, public health officials, and policymakers alike.",
-      "PartTwo": "SeroTracker is a knowledge hub that tracks and synthesizes findings from SARS-CoV-2 serosurveillance efforts worldwide.",
+      "PartOne": "SeroTracker synthesizes findings from thousands of COVID-19 seroprevalence studies worldwide, providing a data platform and interactive dashboard for SARS-CoV-2 serosurveillance.",
+      "PartTwo": "Confirmed COVID-19 cases are just the tip of the iceberg - they undercount the true number of SARS-CoV-2 infections because many people have asymptomatic infections or lack access to diagnostic testing. In contrast, seroprevalence studies measure antibodies against SARS-CoV-2 in the population. Because people with these antibodies have been previously infected or vaccinated, these studies are crucial to understanding the true extent of the pandemic and in measuring population antibody levels.",
       "PublicHealthAgency": "Public Health Agency of Canada",
       "SupportedBy": "SeroTracker is supported by the",
       "ThroughThe": "through the",
@@ -290,6 +290,12 @@
     "LancetID": "SeroTracker: a global SARS-CoV-2 seroprevalence dashboard",
     "PlosOnePub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis"
   },
+  "BiblioDigestTitles": {
+    "August": "August Literature Update Report",
+    "July": "July Literature Update Report",
+    "June": "June Literature Update Report"
+  },
+  "BiblioDigests": "Literature Update Reports",
   "InitInfoModalText": {
     "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
     "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high Risk of bias. You can explore the source literature in depth on the references card at the bottom of this page.",
@@ -419,7 +425,7 @@
   "RegionalStudyDetails": "Regional study details",
   "RegulatoryApproval": "Regulatory Approval",
   "Report": "Report",
-  "Reports": "Reports",
+  "PrivateSectorReports": "Private Sector Reports",
   "ReportsAndArticles": "Reports & Articles",
   "ResearchArticles": "Research Articles",
   "ResearchTeam": "Research Team",
@@ -568,5 +574,6 @@
   "WhoSerotrackAndPartnersDisclaimerSmall": "The designations employed and the presentation of the material available on this platform does not imply the expression of any opinion whatsoever on the part of WHO, SeroTracker, or SeroTracker's partners concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries. Dotted and dashed lines on maps represent approximate border lines for which there may not yet be full agreement.",
   "WhoSerotrackAndPartnersDisclaimer1": "The designations employed and the presentation of the material available on this platform does not imply the expression of any opinion whatsoever on the part of WHO, SeroTracker, or SeroTracker's partners concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries. Dotted and dashed lines on maps represent approximate border lines for which there may not yet be full agreement. ",
   "WhoSerotrackAndPartnersDisclaimer2": "The mention of specific companies or of certain manufacturers’ products in materials available on this platform does not imply that they are endorsed or recommended by WHO, SeroTracker, or SeroTracker's partners in preference to others of a similar nature that are not mentioned. Errors and omissions excepted, the names of proprietary products are distinguished by initial capital letters. By listing materials on this platform does not mean that WHO, SeroTracker, or SeroTracker's partners endorse or recommend those publications or sites, or has verified the content contained within them. ",
-  "WhoSerotrackAndPartnersDisclaimer3": "The platform has been created without warranty of any kind, either expressed or implied by WHO, SeroTracker, or SeroTracker's partners. The responsibility for the interpretation and use of publications and materials available on this platform lies with the reader. In no event shall WHO, SeroTracker, or SeroTracker's partners be liable for damages arising from its use."
+  "WhoSerotrackAndPartnersDisclaimer3": "The platform has been created without warranty of any kind, either expressed or implied by WHO, SeroTracker, or SeroTracker's partners. The responsibility for the interpretation and use of publications and materials available on this platform lies with the reader. In no event shall WHO, SeroTracker, or SeroTracker's partners be liable for damages arising from its use.",
+  "WhoUnity": "WHO Unity"
 }

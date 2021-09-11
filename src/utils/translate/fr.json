@@ -9,8 +9,8 @@
       "HealthInformatics": "le Centre d'informatique de santé de l'Université de Calgary.",
       "HostedAt": "et est hébergé par",
       "MappingTheExtent": "Le Groupe de travail sur l’immunité face à la COVID-19 est la cartographie l'étendue de l'infection par le SRAS-CoV-2 au Canada et SeroTracker fournit également du contenu pour leur",
-      "PartOne": "À mesure que la phase aiguë de la pandémie de la COVID-19 dépasse son pic, de nombreux pays accélèrent leurs investissements dans les tests sérologiques (d'anticorps). La compréhension de modèles d'anticorps dans la population et d'une immunité potentielle sont des sujets d'un grand intérêt à la fois pour les cliniciens, les agents de la santé publique et les responsables politiques.",
-      "PartTwo": "SeroTracker est un centre de connaissances qui traque et synthétise les résultats des efforts de sérosurveillance du SRAS-CoV-2 à travers le monde.",
+      "PartOne": "SeroTracker synthétise les résultats de milliers d'études de séroprévalence de la COVID-19 dans le monde, fournissant une plate-forme de données et un tableau de bord interactif pour la sérosurveillance du SRAS-CoV-2.",
+      "PartTwo": "Les cas confirmés de la COVID-19 ne sont que la pointe de l'iceberg - ils sous-estiment le nombre réel d'infections au SRAS-CoV-2 car de nombreuses personnes ont des infections asymptomatiques ou n'ont pas accès aux tests diagnostiques. En revanche, les études de séroprévalence mesurent les anticorps contre le SRAS-CoV-2 dans la population. Étant donné que les personnes avec ces anticorps ont déjà été infectées ou vaccinées, ces études sont cruciales pour comprendre l'ampleur réelle de la pandémie et mesurer les niveaux d'anticorps dans la population.",
       "PublicHealthAgency": "l'Agence de la santé publique du Canada",
       "SupportedBy": "SeroTracker dispose du soutien de",
       "ThroughThe": "à travers le",
@@ -262,14 +262,14 @@
     "EconomistDeathToll": "Comment avons-nous estimé le véritable nombre de morts de la pandémie?"
   },
   "IndustryReportTitles": {
-    "AugustReport": "Rapport d'Août - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
+    "AugustReport": "Le bulletin d'Août - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
     "BloodBank": "SeroTracker banque de sang séroprévalence Rapport préliminaire",
-    "JulyReport": "Rapport de Juillet - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "JuneReport": "Rapport de Juin - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "MayReport": "Rapport de mai - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "OctoberReport": "Rapport d'Octobre - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
-    "PreliminaryReport": "Rapport préliminaire - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "SeptemberReport": "Rapport de Septembre - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+    "JulyReport": "Le bulletin de Juillet - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+    "JuneReport": "Le bulletin de Juin - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+    "MayReport": "Le bulletin de mai - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+    "OctoberReport": "Le bulletin d'Octobre - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
+    "PreliminaryReport": "Le bulletin préliminaire - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+    "SeptemberReport": "Le bulletin de Septembre - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
     "YearInReview2020": "Bilan de l’année 2020 de SeroTracker",
     "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie",
     "InventoryEvidenceSynthesis": "Inventaire des meilleures synthèses de preuves"
@@ -280,6 +280,12 @@
     "LancetID": "SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2",
     "PlosOnePub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse"
   },
+  "BiblioDigestTitles": {
+    "August": "Le bulletin de mise à jour de la littérature d'août",
+    "July": "Le bulletin de mise à jour de la littérature de juillet",
+    "June": "Le bulletin de mise à jour de la littérature de juin"
+  },
+  "BiblioDigests": "Les bulletins de mise à jour de la littérature",
   "InitInfoModalText": {
     "PartOne": "Bienvenue dans l'onglet Analyse de SeroTracker ! Nous menons un examen systématique des sérosondages du SRAS-CoV-2 et nous utilisons les données provenant de cet examen afin de constituer ce tableau de bord.",
     "PartThree": "Ces estimations agrégées doivent être interprétées avec prudence, surtout si les études concernées ne comprennent pas d'échantillons représentatifs ou si elles présentent un risque élevé de partialité. Vous pouvez consulter les publications d'origine plus en profondeur grâce à la liste de références en bas de page.",
@@ -417,7 +423,7 @@
   "RegionalEstimates": "Estimations régionales",
   "RegulatoryApproval": "Autorisation réglementaire",
   "Report": "Rapport",
-  "Reports": "Rapports",
+  "PrivateSectorReports": "Les bulletins du secteur privé",
   "ReportsAndArticles": "Rapports et articles",
   "ResearchArticles": "Articles de recherche",
   "ResearchTeam": "Équipe de recherche",
@@ -562,5 +568,6 @@
   "WhoSerotrackAndPartnersDisclaimerSmall": "Les appellations employées dans la présente publication et la présentation des données qui y figurent n’impliquent de la part de l’OMS, SeroTracker ou les partenaires de SeroTracker aucune prise de position quant au statut juridique des pays, territoires, villes ou zones, ou de leurs autorités, ni quant au tracé de leurs frontières ou limites. Les traits discontinus formés d’une succession de points ou de tirets sur les cartes représentent des frontières approximatives dont le tracé peut ne pas avoir fait l'objet d'un accord définitif.",
   "WhoSerotrackAndPartnersDisclaimer1": " Les appellations employées dans la présente publication et la présentation des données qui y figurent n’impliquent de la part de l’OMS aucune prise de position quant au statut juridique des pays, territoires, villes ou zones, ou de leurs autorités, ni quant au tracé de leurs frontières ou limites. Les traits discontinus formés d’une succession de points ou de tirets sur les cartes représentent des frontières approximatives dont le tracé peut ne pas avoir fait l'objet d'un accord définitif",
   "WhoSerotrackAndPartnersDisclaimer2": "La mention de certaines firmes ou de produits commerciaux dans le matériel publié sur cette plateforme ne signifie pas que ces firmes et ces produits commerciaux sont agréés ou recommandés par l’OMS, SeroTracker ou les partenaires de SeroTracker de préférence à d’autres de nature analogue qui ne sont pas mentionnés. Sauf erreur ou omission, une majuscule initiale indique qu’il s’agit d’un nom déposé. La mention de certains matériels dans cette plateforme ne signifie pas que ces matériels sont agréés ou recommandés par l’OMS, SeroTracker ou les partenaires de SeroTracker, ni que ces derniers ont vérifié les informations contenues dans ces matériels.",
-  "WhoSerotrackAndPartnersDisclaimer3": "La plateforme a été créée sans aucune garantie, expresse ou implicite de la part de l’OMS, SeroTracker ou les partenaires de SeroTracker. La responsabilité de l'interprétation et de l'utilisation dudit matériel incombe au lecteur. En aucun cas, l’OMS, SeroTracker ou les partenaires de SeroTracker ne sauraient être tenus responsables des préjudices subis du fait de son utilisation."
+  "WhoSerotrackAndPartnersDisclaimer3": "La plateforme a été créée sans aucune garantie, expresse ou implicite de la part de l’OMS, SeroTracker ou les partenaires de SeroTracker. La responsabilité de l'interprétation et de l'utilisation dudit matériel incombe au lecteur. En aucun cas, l’OMS, SeroTracker ou les partenaires de SeroTracker ne sauraient être tenus responsables des préjudices subis du fait de son utilisation.",
+  "WhoUnity": "L'OMS-UNITY"
 }

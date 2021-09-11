@@ -20,8 +20,12 @@ export default function Publications() {
           {Translate('ResearchArticles')}
         </h3>
         { getCarouselOfPublicationsCards("articles") }
+        <h3 className="normal">
+          {Translate('BiblioDigests')}
+        </h3>
+        { getCarouselOfPublicationsCards("biblioDigests") }
         <h3 className="normal" id={PAGE_HASHES.Publications.Reports}>
-          {Translate('Reports')}
+          {Translate('PrivateSectorReports')}
         </h3>
         { getCarouselOfPublicationsCards("reports") }
         <h3 className="normal" id={PAGE_HASHES.Publications.MediaMentions}>
@@ -62,7 +66,7 @@ const sliderSettings = {
   ]
 };
 
-export type PublicationsType = 'articles' | 'reports' | 'media';
+export type PublicationsType = 'articles' | 'reports' | 'media' | 'biblioDigests';
 
 const getCarouselOfPublicationsCards = (type: PublicationsType) => {
   return (

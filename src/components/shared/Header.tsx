@@ -167,6 +167,9 @@ const renderPartnershipsDropDownMenu = () => (
         <Link to={withLocaleUrl(`Partnerships/${p.routeName}`)}>{Translate("PartnershipsList", [p.routeName])}</Link>
       </Dropdown.Item>
     ))}
+      <Dropdown.Item>
+        <Link to={withLocaleUrl('Unity')}>{Translate("WhoUnity")}</Link>
+      </Dropdown.Item>
   </Dropdown.Menu>)
 
 const renderPartnershipsAccordianContent = (partnershipDrownDownActive: boolean) => (
@@ -176,4 +179,7 @@ const renderPartnershipsAccordianContent = (partnershipDrownDownActive: boolean)
           <Link to={withLocaleUrl(`Partnerships/${p.routeName}`)}>{Translate("PartnershipsList", [p.routeName])}</Link>
         </p>
       ))}
+      <p>
+        <Link to={withLocaleUrl('Unity')}>{Translate("WhoUnity")}</Link>
+      </p>
     </Accordion.Content>)
