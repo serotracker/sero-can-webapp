@@ -6,9 +6,9 @@ const MIN_DENOMINATOR = 100
 export default function AnalysisMethods() {
     return (
         <div>
-            <div className="section-title py-2 center">
+            <h3 className="py-2 center">
                 {Translate("AnalysisMethods", ["Title"])}
-            </div>
+            </h3>
             <div>
                 <div>
                     {Translate("AnalysisMethods", ["FirstParagraph", "FirstSentence"], null, [false, true])}

@@ -124,9 +124,9 @@ export default function Filters({ page }: FilterProps) {
   return (
     <div className="col-12 p-0">
       <div className="py-3 center flex">
-        <div className="section-title">
+        <h3>
           {Translate("Filter")}
-        </div>
+        </h3>
         <div className="tooltip-vert-adj">
           <InformationIcon
             offset={10}
