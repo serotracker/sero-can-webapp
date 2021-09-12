@@ -15,12 +15,12 @@ export default function Analyze() {
         url={ANALYZE_URLS}
         key={`AnalyzeTableau${language}`}
         desktopOptions={{
-            width: "82vw",
-            height: "4030px"
+          width: "82vw",
+          height: "5000px"
         }}
         mobileOptions={{
-            width: "90vw",
-            height: "2900px"
+          width: "90vw",
+          height: "2900px"
         }}
         />
         {/* These sections are for letting the hash links know where the different sections are inside the embed*/}
