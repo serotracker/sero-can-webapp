@@ -83,6 +83,7 @@ Footer a{
 
 .footer-visible-section {
     height: 50px;
+    white-space: nowrap;
 }
 
 .download-data-btn.ui.button {
@@ -96,6 +97,17 @@ Footer a{
     padding: 1em;
     background-color: white;
     border-radius: 10px;
+}
+
+.sponser-image {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    max-width: 120px;
+}
+
+.sponser-link {
+    display: inline-block;
 }
 
 .whoDisclaimer {

@@ -43,7 +43,7 @@ const renderDesktopFooter = (updatedAt: string) => (
       </div>
       <div className="row justify-content-center mt-5">
         <div className="col-8">
-          <div className="sponsers-pill d-flex align-items-center my-2">
+          <div className="sponsers-pill my-2">
             <Sponsers/>
           </div>
           <WhoDisclaimer/>
@@ -67,7 +67,7 @@ const renderMobileFooter = (updatedAt: string) => (
       </div>
       <div className="row justify-content-center mt-5">
         <div className="col-8">
-          <div className="row sponsers-pill d-flex align-items-center">
+          <div className="row sponsers-pill">
             <Sponsers/>
           </div>
           <WhoDisclaimer/>
@@ -107,7 +107,7 @@ const UpdatedAt = ({updatedAt}: UpdatedAtProps) => {
 }
 
 const Citation = () => (
-  <span>
+  <span className="text-right">
     {Translate("Footer", ["CiteAs"])}
     <a href={lancetId} target="__blank" rel="noopener noreferrer" className="cite-link">
       <i>{Translate("Footer", ["LancetInfDis"])}</i> {Translate("Footer", ["Article"])}
@@ -122,33 +122,23 @@ const WhoDisclaimer = () => (
 )
 // to={withLocaleUrl(`${page}`)}
 const Sponsers = () => (
-  <React.Fragment>
-    <div className="col">
-      <a href="https://www.covid19immunitytaskforce.ca/" target="__blank" rel="noopener noreferrer">
-        <img src="https://www.covid19immunitytaskforce.ca/wp-content/themes/pena-lite-child/CITF_logo_ENG.svg" className="d-block mx-auto" alt="COVID-19 Immunity Task Force Logo" height="33"></img>
-      </a>
-    </div>
-    <div className="col">
-      <a href="https://cumming.ucalgary.ca/centres/centre-health-informatics" target="__blank" rel="noopener noreferrer">
-        <img src={UcalgaryLogo} className="d-block mx-auto" alt="Centre for Health Informatics" height="36"></img>
-      </a>
-    </div>
-    <div className="col">
-      <a href="https://www.canada.ca/en/public-health.html/" target="__blank" rel="noopener noreferrer">
-        <img src={HealthAgencyLogo} className="d-block mx-auto" alt="Public Health Agency Logo" height="34"></img>
-      </a>
-    </div>
-    <div className="col">
-      <a href="https://www.who.int/" target="__blank" rel="noopener noreferrer">
-        <WhoLogo className="d-block mx-auto" height="38"/>
-      </a>
-    </div>
-    <div className="col">
-      <a href="https://joulecma.ca/" target="__blank" rel="noopener noreferrer">
-        <img src={AmcJoule} className="d-block mx-auto" alt="CMA Joule" height="32"></img>
-      </a>
-    </div>
-  </React.Fragment>
+  <div className="d-flex justify-content-around">
+    <a href="https://www.covid19immunitytaskforce.ca/" target="__blank" rel="noopener noreferrer" className="sponser-link">
+      <img src="https://www.covid19immunitytaskforce.ca/wp-content/themes/pena-lite-child/CITF_logo_ENG.svg" className="sponser-image" alt="COVID-19 Immunity Task Force Logo"></img>
+    </a>
+    <a href="https://cumming.ucalgary.ca/centres/centre-health-informatics" target="__blank" rel="noopener noreferrer" className="sponser-link">
+      <img src={UcalgaryLogo} className="sponser-image" alt="Centre for Health Informatics"></img>
+    </a>
+    <a href="https://www.canada.ca/en/public-health.html/" target="__blank" rel="noopener noreferrer" className="sponser-link">
+      <img src={HealthAgencyLogo} className="sponser-image" alt="Public Health Agency Logo"></img>
+    </a>
+    <a href="https://www.who.int/" target="__blank" rel="noopener noreferrer" className="sponser-link">
+      <WhoLogo className="sponser-image" />
+    </a>
+    <a href="https://joulecma.ca/" target="__blank" rel="noopener noreferrer" className="sponser-link">
+      <img src={AmcJoule} className="sponser-image" alt="CMA Joule"></img>
+    </a>
+  </div>
 )
 
 const PageLinks = () => (
