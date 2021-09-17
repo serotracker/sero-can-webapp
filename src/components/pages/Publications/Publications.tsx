@@ -23,28 +23,28 @@ export default function Publications() {
                     {Translate("PublicationDescriptions", ["Publications"])}
                 </p>
 
-                <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-                    <p>
+                <div className={"publication-menu"} style={{flexDirection: isMobileDeviceOrTablet ? "column" : "row"}}>
+                    <p className={"publication-menu-item"}>
                         <a href={"#ResearchArticles"}>
                             {Translate("ResearchArticles")}
                         </a>
                     </p>
-                    <p>
+                    <p className={"publication-menu-item"}>
                         <a href={"#BiblioDigests"}>
                             {Translate('BiblioDigests')}
                         </a>
                     </p>
-                    <p>
+                    <p className={"publication-menu-item"}>
                         <a href={"#PrivateSectorReports"}>
                             {Translate('PrivateSectorReports')}
                         </a>
                     </p>
-                    <p>
+                    <p className={"publication-menu-item"}>
                         <a href={"#MediaMentions"}>
                             {Translate('MediaMentions')}
                         </a>
                     </p>
-                    <p>
+                    <p className={"publication-menu-item"}>
                         <a href={"#MonthlyReports"}>
                             Monthly Reports
                         </a>
@@ -114,60 +114,63 @@ const getPublications = (type: PublicationsType) => {
 }
 
 const sliderSettings = {
-  dots: true,
-  infinite: true,
-  arrows: true,
-  speed: 500,
-  slidesToShow: 3,
-  slidesToScroll: 3,
-  responsive: [
-    {
-      breakpoint: 1048,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: true
-      }
-    }
-  ]
+    dots: true,
+    infinite: true,
+    arrows: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+        {
+            breakpoint: 1048,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                infinite: true,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true
+            }
+        }
+    ]
 };
 
 const getLinksOfPublications = (type: PublicationsType) => {
     return PublicationsInfo[type].map((publicationsProps) => {
         return <a className={"py-2"} href={publicationsProps.url} target="_blank" rel="noopener noreferrer">
-            {publicationsProps.italicize ? <i>{publicationsProps.italicize}&nbsp;</i> : null}{Translate(publicationsProps.titleKey1, publicationsProps.titleKey2)}
+            {publicationsProps.italicize ?
+                <i>{publicationsProps.italicize}&nbsp;</i> : null}{Translate(publicationsProps.titleKey1, publicationsProps.titleKey2)}
         </a>
     })
 }
 
 const getCarouselOfPublicationsCards = (type: PublicationsType) => {
-  return (
-      <div className="publications-slider-container">
-        <Slider {...sliderSettings}>
-          {
-            PublicationsInfo[type].map((publicationsProps, idx) => {
-              return <PublicationsCard
-                  day={publicationsProps.day ?? ""}
-                  month={publicationsProps.month}
-                  year={publicationsProps.year}
-                  titleKey1={publicationsProps.titleKey1}
-                  titleKey2={publicationsProps.titleKey2}
-                  url={publicationsProps.url}
-                  authors={publicationsProps.authors}
-                  publicationName={publicationsProps.publicationName}/>
-            })
-          }
-        </Slider>
-      </div>
-  )
+    return (
+        <div className="publications-slider-container pb-4">
+            <Slider {...sliderSettings}>
+                {
+                    PublicationsInfo[type].map((publicationsProps, idx) => {
+                        return <PublicationsCard
+                            day={publicationsProps.day ?? ""}
+                            month={publicationsProps.month}
+                            year={publicationsProps.year}
+                            titleKey1={publicationsProps.titleKey1}
+                            titleKey2={publicationsProps.titleKey2}
+                            url={publicationsProps.url}
+                            authors={publicationsProps.authors}
+                            publicationName={publicationsProps.publicationName}
+                            img={publicationsProps.img}
+                        />
+                    })
+                }
+            </Slider>
+        </div>
+    )
 }

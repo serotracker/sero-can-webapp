@@ -2,8 +2,8 @@
   width: 100%;
   border-radius: 5px;
   position:relative;
-  object-fit: cover;
-  height: 120px;
+  object-fit: contain;
+  height: 100px;
   align-items: flex-start;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .publications-card {
-  height: 220px;
+  height: 260px;
 }
 
 .publications-card-no-img {
@@ -72,6 +72,19 @@
 // https://github.com/akiran/react-slick/issues/1571
 .publications-slider-container {
   max-width: 80vw;
+  width: 100%;
+  align-self: center;
+}
+
+.publication-menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.publication-menu-item {
+  box-sizing: border-box;
+  padding: 0 0.5rem;
 }
 
 .publication-meta {
