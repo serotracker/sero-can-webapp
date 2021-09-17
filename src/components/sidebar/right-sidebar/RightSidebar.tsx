@@ -1,5 +1,5 @@
 import React from "react";
-import "../sidebar.css";
+import "../sidebar.scss";
 import Datepicker from "./datepicker/Datepicker";
 import Filters from "./Filters";
 import "./RightSidebar.css";

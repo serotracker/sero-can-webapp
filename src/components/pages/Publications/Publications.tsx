@@ -1,6 +1,6 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
-import { mobileDeviceOrTabletWidth } from "../../../constants";
+import { mobileDeviceOrTabletWidth, PAGE_HASHES } from "../../../constants";
 import { PublicationsCard } from "./PublicationsCard";
 import { PublicationsInfo } from "./PublicationsConstants";
 import './styles.scss';
@@ -16,7 +16,7 @@ export default function Publications() {
         <h1 className="col-12 p-0 fit">
           {Translate('Publications')}
         </h1>
-        <h3 className="normal">
+        <h3 className="normal" id={PAGE_HASHES.Publications.ResearchArticles}>
           {Translate('ResearchArticles')}
         </h3>
         { getCarouselOfPublicationsCards("articles") }
@@ -24,11 +24,11 @@ export default function Publications() {
           {Translate('BiblioDigests')}
         </h3>
         { getCarouselOfPublicationsCards("biblioDigests") }
-        <h3 className="normal">
+        <h3 className="normal" id={PAGE_HASHES.Publications.Reports}>
           {Translate('PrivateSectorReports')}
         </h3>
         { getCarouselOfPublicationsCards("reports") }
-        <h3 className="normal">
+        <h3 className="normal" id={PAGE_HASHES.Publications.MediaMentions}>
           {Translate('MediaMentions')}
         </h3>
         { getCarouselOfPublicationsCards("media") }

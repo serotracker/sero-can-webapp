@@ -3,7 +3,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useMediaQuery } from "react-responsive";
-import { mobileDeviceOrTabletWidth } from "../../constants";
+import { mobileDeviceOrTabletWidth, PAGE_HASHES } from "../../constants";
 import Translate from "../../utils/translate/translateService";
 import WhoLogo from "components/shared/WhoLogo";
 import "./static.css";
@@ -144,7 +144,7 @@ export default function About() {
           </a>{" "}
           {Translate("AboutPage", ["Mapbox"])}
         </p>
-        <h2>{Translate("ContactUs")}</h2>
+        <h2 id={PAGE_HASHES.About.Contact}>{Translate("ContactUs")}</h2>
         <div>
           <p>
             {Translate("AboutPage", ["ContactSection", "BulletPointOne", "PartOne"], null, [true, true])}
@@ -171,7 +171,7 @@ export default function About() {
             .
           </p>
         </div>
-        <h1>{Translate("OurTeam")}</h1>
+        <h1 id={PAGE_HASHES.About.Team}>{Translate("OurTeam")}</h1>
         <h2 className="team-name-text">{Translate("TeamLead")}</h2>
         <div className="bio-grid-container">
           {renderBioBlock(

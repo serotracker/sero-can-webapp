@@ -24,13 +24,17 @@
 }
 
 .nav__item--active a{
-    font-weight: 500;
-    color: white;
+    font-weight: 500 !important;
+    color: white !important;
 }
 
 .nav__item a{
-    font-weight: 400;
-    color: lightgrey;
+    color: lightgrey !important;
+}
+
+a:hover {
+    color: white !important;
+    text-decoration: none;
 }
 
 .nav__item--accordion {
@@ -55,7 +59,60 @@
 
 Footer {
     background-color: $sero-dark-blue;
+    font-size: 16px;
+    font-weight: 300;
     color: white !important;
+
+    .updated-at-bold {
+        font-weight: 600;
+    }
+
+    a:hover {
+        color: white !important;
+        text-decoration: underline;
+    }
+}
+
+Footer h3{
+    font-weight: 600;
+}
+
+Footer a{
+    color: white;
+}
+
+.footer-visible-section {
+    height: 50px;
+    white-space: nowrap;
+}
+
+.download-data-btn.ui.button {
+    background-color: $stone-cold-steve-austin;
+    a {
+        color: white;
+    }
+}
+
+.sponsers-pill {
+    padding: 1em;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.footer-image {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    max-width: 120px;
+}
+
+.footer-link {
+    display: inline-block;
+    height: 55px;
+}
+
+.whoDisclaimer {
+    font-size: 11px;
 }
 
 .App-footer {
@@ -87,16 +144,16 @@ Footer {
     }
 }
 
-.updated-date-string {
-    font-weight: 550;
-}
-
 .cite-link {
     color: #55A6BA;
 }
 
 .italics{
     font-style: italic;
+}
+
+.bold-text {
+    font-weight: bold;
 }
 
 .left-item {
@@ -213,9 +270,9 @@ Footer {
 }
 
 .App-title > a {
+    font-family: 'Roboto', sans-serif !important;
     color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.5em;
+    font-size: 1.7em;
     font-weight: 200;
     cursor: pointer;
 }
@@ -300,7 +357,7 @@ Footer {
 }
 
 .dropdown a {
-    color: #333333;
+    color: #333333 !important;
 }
 
 .info-btn {

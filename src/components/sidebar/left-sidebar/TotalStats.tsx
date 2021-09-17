@@ -34,9 +34,9 @@ export default function TotalStats({ page }: TotalStatsProps) {
 
   return (
     <div className="col-12 p-0 stats-container">
-      <div className="col-12 pb-2 pt-4 section-title center">
-        {Translate("SummaryStatistics").toUpperCase()}
-      </div>
+      <h3 className="col-12 mt-3 mb-2 center">
+        {Translate("SummaryStatistics")}
+      </h3>
       <div className="flex middle py-2">
         <div className="secondary-statistic">{numStudies}</div>
         <div className="secondary-statistic-title px-1 center">

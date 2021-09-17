@@ -2,8 +2,8 @@
   font-size: 12px;
   line-height: 12px;
   position: absolute;
-  bottom: 1vw;
-  right: 1vw;
+  bottom: 10px;
+  right: 10px;
   z-index: 500;
 }
 
@@ -36,6 +36,10 @@ label {
 
 .legend-checkbox {
   margin-left: auto;
+}
+
+.legend-label {
+  margin-right: 1em;
 }
 
 .mobile-text {

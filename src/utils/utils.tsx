@@ -64,3 +64,10 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
 export const withLocaleUrl = (path: string) => {
   return `/${language}/${path}`;
 }
+
+export const NumberDateToWordDate = (date_str: string) => {
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const [year, month, day] = date_str.split("/");
+  const monthStr = months[Number(month) - 1];
+  return `${Translate("Months", [monthStr])} ${day}, ${year}`
+}

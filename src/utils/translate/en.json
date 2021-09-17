@@ -39,6 +39,7 @@
   "AboutSeroTracker": "About SeroTracker",
   "Accept": "Accept",
   "AcceptCookies": "Accept Cookies",
+  "AdditionalGraphs": "Additional Graphs",
   "Age": "Age",
   "AgeGroup": "Age Group",
   "AgeOptions": {
@@ -116,6 +117,8 @@
     }
   },
   "BlankUniversity": "NAME University",
+  "ByCountry": "By Country",
+  "ByPopulation": "By Population",
   "ChangeLog": "Change log",
   "CPPInvestmentBoard": "CPP Investment Board",
   "ChangeSettings": "Change Settings",
@@ -140,7 +143,7 @@
   },
   "Dashboard": "Dashboard",
   "Data": "Data",
-  "DatabaseUptoDateTo": "Database Up to Date To",
+  "DatabaseUptoDateTo": "Last updated",
   "DataDictionary": "Data dictionary",
   "DataDictionaryText": {
     "FirstParagraph": "For more information and context about our data, please take a look at our",
@@ -205,6 +208,7 @@
     }
   },
   "DownloadCsv": "Download CSV",
+  "DownloadData": "Download Data",
   "EconomicsTeam": "Economics Team",
   "EndDate": "End Date",
   "English": "English",
@@ -220,19 +224,21 @@
   "ExecutiveDirector": "Executive Director",
   "Explore": "Explore",
   "ExploreBlurb": {
-    "FirstParagraph": "SeroTracker is a dashboard and data platform for SARS-CoV-2 serosurveys. Antibodies against SARS-CoV-2, the virus that causes COVID-19, indicate previous infection or vaccination. We are conducting an ongoing systematic review to track serosurveys (antibody testing-based surveillance efforts) around the world, visualizing findings on this dashboard.",
-    "SecondParagraph": "You can configure the data displayed using the “Filter” toolbar on the right, and view the full list of studies we are tracking on the “Data” page."
+    "FirstParagraph": "SeroTracker is a dashboard and data platform for SARS-CoV-2 serosurveys.",
+    "SecondParagraph": "We conduct an ongoing systematic review to track serosurveys (antibody testing-based surveillance efforts) around the world and visualize findings on this dashboard.",
+    "ThirdParagraph": "Antibodies against SARS-CoV-2, the virus that causes COVID-19, indicate previous infection or vaccination. "
   },
   "Filter": "Filter",
   "FilterTooltip": "Filter the SeroTracker dataset based on geography, study, demographics, and test. Only studies matching all of the listed filters will be included.",
   "For": "For",
   "Footer": {
     "CiteAs": "Cite as: ",
-    "LastUpdated": "Database up to date to",
+    "LastUpdated": "Last updated",
     "LancetInfDis": "Lancet Inf Dis",
     "Article": "article"
   },
   "French": "Français",
+  "FAQ": "Frequently Asked Questions",
   "GeneralTerms": "General Terms",
   "Geographies": "Geographies",
   "Geography": "Geography",
@@ -319,6 +325,7 @@
     "FirstParagraph": "full methods",
     "SecondParagraph": "(from the appendix to our full systematic review and meta-analysis of SARS-CoV-2 serosurveys)"
   },
+  "Map": "Map",
   "Media": "Media",
   "MediaMentions": "Media Mentions",
   "Months": {
@@ -521,7 +528,7 @@
   "SublocalEstimateRange": "Sublocal Estimate Range",
   "SublocalEstimates": "Sublocal Estimates",
   "SublocalStudyDetails": "Sublocal Study Details",
-  "SubmitASource": "Submit a source",
+  "SubmitSource": "Submit source",
   "Summary": "Summary",
   "SummaryStatistics": "Summary Statistics",
   "TeamLead": "Team Leads",

@@ -1,7 +1,7 @@
 import React , { useContext, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Loader } from "semantic-ui-react";
-import { isMaintenanceMode, mobileDeviceOrTabletWidth } from "../../../constants";
+import { isMaintenanceMode, mobileDeviceOrTabletWidth, PAGE_HASHES } from "../../../constants";
 import { AppContext } from "../../../context";
 import { PageStateEnum, Filters } from "../../../types";
 import MapboxMap from '../../map/MapboxMap';
@@ -46,7 +46,7 @@ export default function Explore(props: ExploreProps) {
             <div className="col-2 p-0 flex">
               <LeftSidebar page={PageStateEnum.explore} />
             </div>
-            <div className="col-8 p-0 flex">
+            <div className="col-8 p-0 flex" id={PAGE_HASHES.Explore.Map}>
               <Loader indeterminate active={state.explore.isLoading}></Loader>
               <div className="info flex legend center-item">
                 <Legend/>

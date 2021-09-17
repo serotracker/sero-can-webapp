@@ -35,13 +35,9 @@ export default function TableauEmbed(props: TableauEmbedProps) {
     }
 
     return (
-        <>
-            <div className="col-12 page pb-5 pt-5">
-                <TableauReport
-                    url={language in props.url ? props.url[language] : props.url["en"]}
-                    options={options} 
-                />
-            </div>
-        </>
+        <TableauReport id = "iframe"
+            url={language in props.url ? props.url[language] : props.url["en"]}
+            options={options} 
+        />
     )
 }

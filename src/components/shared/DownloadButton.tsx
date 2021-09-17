@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Translate from "../../utils/translate/translateService";
 import { sendAnalyticsEvent } from '../../utils/analyticsUtils';
 import { Button } from "semantic-ui-react";
-
+import { Icon } from 'semantic-ui-react';
 interface DownloadButtonProps {
     buttonLabelKey?: string;
     downloadLink?: string;
@@ -42,14 +42,20 @@ export default function DownloadButton(props: DownloadButtonProps) {
     }
     
     return (
-        <Button key={buttonLabelKey} color={buttonColour} size={buttonSize} className="mb-2 mr-2">
+        <Button key={buttonLabelKey} size={buttonSize} className="download-data-btn">
             <a
                 onClick={() => clickButton()}
                 target="_blank"
                 rel="noreferrer"
                 href={getButtonLink()}
+                className='d-flex align-items-center'
             >
-                <p className="button-text"> {Translate(buttonLabelKey)}</p>
+                <span className="button-text"> {Translate(buttonLabelKey)}</span>
+                <Icon 
+                name='download'
+                size='large'
+                className='ml-3'
+                />
             </a>
         </Button>
     );
