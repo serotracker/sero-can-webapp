@@ -2,7 +2,6 @@ import React, { useContext, } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link';
-import { Divider } from 'semantic-ui-react'
 import { mobileDeviceOrTabletWidth } from '../../constants'
 import Translate from '../../utils/translate/translateService'
 import { AppContext } from "../../context"
@@ -15,6 +14,10 @@ import UcalgaryLogo from 'assets/images/University-Of-Calgary-Logo.png';
 import AmcJoule from 'assets/images/amc-joule.png';
 
 const lancetId = "https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30631-9/fulltext#%20"
+
+type UpdatedAtProps = {
+  updatedAt: string;
+}
 
 export const Footer = () => {
   const [{updatedAt}] = useContext(AppContext);
@@ -93,10 +96,6 @@ const renderUpdateDate = (updatedAt: string) => {
   return NumberDateToWordDate(updatedAt)
 }
 
-type UpdatedAtProps = {
-  updatedAt: string;
-}
-
 const UpdatedAt = ({updatedAt}: UpdatedAtProps) => {
   // only renders 'last updated' when we have a valid date
   return updatedAt ? (
@@ -123,20 +122,20 @@ const WhoDisclaimer = () => (
 // to={withLocaleUrl(`${page}`)}
 const Sponsers = () => (
   <div className="d-flex justify-content-around">
-    <a href="https://www.covid19immunitytaskforce.ca/" target="__blank" rel="noopener noreferrer" className="sponser-link">
-      <img src="https://www.covid19immunitytaskforce.ca/wp-content/themes/pena-lite-child/CITF_logo_ENG.svg" className="sponser-image" alt="COVID-19 Immunity Task Force Logo"></img>
+    <a href="https://www.covid19immunitytaskforce.ca/" target="__blank" rel="noopener noreferrer" className="footer-link">
+      <img src="https://www.covid19immunitytaskforce.ca/wp-content/themes/pena-lite-child/CITF_logo_ENG.svg" className="footer-image" alt="COVID-19 Immunity Task Force Logo"></img>
     </a>
-    <a href="https://cumming.ucalgary.ca/centres/centre-health-informatics" target="__blank" rel="noopener noreferrer" className="sponser-link">
-      <img src={UcalgaryLogo} className="sponser-image" alt="Centre for Health Informatics"></img>
+    <a href="https://cumming.ucalgary.ca/centres/centre-health-informatics" target="__blank" rel="noopener noreferrer" className="footer-link">
+      <img src={UcalgaryLogo} className="footer-image" alt="Centre for Health Informatics"></img>
     </a>
-    <a href="https://www.canada.ca/en/public-health.html/" target="__blank" rel="noopener noreferrer" className="sponser-link">
-      <img src={HealthAgencyLogo} className="sponser-image" alt="Public Health Agency Logo"></img>
+    <a href="https://www.canada.ca/en/public-health.html/" target="__blank" rel="noopener noreferrer" className="footer-link">
+      <img src={HealthAgencyLogo} className="footer-image" alt="Public Health Agency Logo"></img>
     </a>
-    <a href="https://www.who.int/" target="__blank" rel="noopener noreferrer" className="sponser-link">
-      <WhoLogo className="sponser-image" />
+    <a href="https://www.who.int/" target="__blank" rel="noopener noreferrer" className="footer-link">
+      <WhoLogo className="footer-image" />
     </a>
-    <a href="https://joulecma.ca/" target="__blank" rel="noopener noreferrer" className="sponser-link">
-      <img src={AmcJoule} className="sponser-image" alt="CMA Joule"></img>
+    <a href="https://joulecma.ca/" target="__blank" rel="noopener noreferrer" className="footer-link">
+      <img src={AmcJoule} className="footer-image" alt="CMA Joule"></img>
     </a>
   </div>
 )
