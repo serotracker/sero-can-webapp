@@ -1,15 +1,14 @@
 import React from "react";
 import Translate from "../../../utils/translate/translateService";
 import InformationText from "../../shared/InformationText";
-import './AnalysisMethods.css';
 
 const MIN_DENOMINATOR = 100
 export default function AnalysisMethods() {
     return (
-        <div className="analysis-methods">
-            <div className="section-title py-2 center">
-                {Translate("AnalysisMethods", ["Title"]).toUpperCase()}
-            </div>
+        <div>
+            <h3 className="py-2 center">
+                {Translate("AnalysisMethods", ["Title"])}
+            </h3>
             <div>
                 <div>
                     {Translate("AnalysisMethods", ["FirstParagraph", "FirstSentence"], null, [false, true])}

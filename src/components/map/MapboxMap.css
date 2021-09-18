@@ -20,16 +20,9 @@ body {
 }
 
 .info {
-  font: 14px/16px;
-  background: white;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-}
-
-.info h4 {
-  margin: 0 0 5px;
-  color: #777;
+  border: 1px solid rgba(34,36,38,.15);
+  border-radius: 4px;
+  background: #fff;
 }
 
 div.slide-pane__content {

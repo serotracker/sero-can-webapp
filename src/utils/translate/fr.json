@@ -281,6 +281,7 @@
     "PlosOnePub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse"
   },
   "BiblioDigestTitles": {
+    "September": "Le bulletin de mise à jour de la littérature de septembre",
     "August": "Le bulletin de mise à jour de la littérature d'août",
     "July": "Le bulletin de mise à jour de la littérature de juillet",
     "June": "Le bulletin de mise à jour de la littérature de juin"
@@ -522,7 +523,7 @@
   "StudyType": "Type d'étude",
   "SublocalEstimateRange": "Plage d'estimation sous-locale",
   "SublocalEstimates": "Estimations sous-locales",
-  "SubmitASource": "Soumettre un article",
+  "SubmitSource": "Soumettre un article",
   "Summary": "Résumé",
   "SummaryStatistics": "Statistiques sommaires",
   "TeamLead": "Responsables d'équipes",

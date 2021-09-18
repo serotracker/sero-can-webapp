@@ -101,6 +101,14 @@ export type StartDates = {
   maxDate: Date;
 };
 
+export type NavHashes = { 
+  Explore: string[];
+  Analyze: string[];
+  Data: string[];
+  Publications: string[];
+  About: string[]; 
+}
+
 export type LegendLayersEnum = {
   National: "National",
   Regional: "Regional",
