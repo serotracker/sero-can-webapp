@@ -23,28 +23,28 @@ export default function Publications() {
                     {Translate("PublicationDescriptions", ["Publications"])}
                 </p>
                 <div className={"publication-menu"} style={{flexDirection: isMobileDeviceOrTablet ? "column" : "row"}}>
-                    <p className={"publication-menu-item"}>
-                        <a href={"#ResearchArticles"}>
+                    <p className={"pl-0 publication-menu-item"}>
+                        <a className={"publication-link"} href={"#ResearchArticles"}>
                             {Translate("ResearchArticles")}
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
-                        <a href={"#BiblioDigests"}>
+                        <a className={"publication-link"} href={"#BiblioDigests"}>
                             {Translate('BiblioDigests')}
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
-                        <a href={"#PrivateSectorReports"}>
+                        <a className={"publication-link"} href={"#PrivateSectorReports"}>
                             {Translate('PrivateSectorReports')}
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
-                        <a href={"#MediaMentions"}>
+                        <a className={"publication-link"} href={"#MediaMentions"}>
                             {Translate('MediaMentions')}
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
-                        <a href={"#MonthlyReports"}>
+                        <a className={"publication-link"} href={"#MonthlyReports"}>
                             Monthly Reports
                         </a>
                     </p>
@@ -52,25 +52,25 @@ export default function Publications() {
 
                 <hr style={{borderTop: "2px solid #bbb", width: "100%"}}/>
 
-                <h3 className="normal" id={PAGE_HASHES.Publications.ResearchArticles}>
+                <h2 className="normal" id={PAGE_HASHES.Publications.ResearchArticles}>
                     {Translate('ResearchArticles')}
-                </h3>
+                </h2>
                 <p>
                     {Translate("PublicationDescriptions", ["ResearchArticles"])}
                 </p>
                 {getPublications("articles")}
 
-                <h3 className="normal" id={PAGE_HASHES.Publications.Reports}>
+                <h2 className="normal" id={PAGE_HASHES.Publications.Reports}>
                     {Translate('PrivateSectorReports')}
-                </h3>
+                </h2>
                 <p>
                     {Translate("PublicationDescriptions", ["PrivateSectorReports"])}
                 </p>
                 {getPublications("reports")}
 
-                <h3 className="normal">
+                <h2 className="normal">
                     {Translate('BiblioDigests')}
-                </h3>
+                </h2>
                 <p>
                     {Translate("PublicationDescriptions", ["LiteratureUpdateReports"])}
                 </p>
@@ -84,9 +84,9 @@ export default function Publications() {
                 </p>
                 {getLinksOfPublications("monthlyReports")}
 
-                <h3 className="normal" id={PAGE_HASHES.Publications.MediaMentions}>
+                <h2 className="normal" id={PAGE_HASHES.Publications.MediaMentions}>
                     {Translate('MediaMentions')}
-                </h3>
+                </h2>
                 <p>
                     {Translate("PublicationDescriptions", ["MediaMentions"])}
                 </p>
@@ -143,7 +143,7 @@ const sliderSettings = {
 
 const getLinksOfPublications = (type: PublicationsType) => {
     return PublicationsInfo[type].map((publicationsProps) => {
-        return <a className={"py-2"} href={publicationsProps.url} target="_blank" rel="noopener noreferrer">
+        return <a className={"py-2 publication-link"} href={publicationsProps.url} target="_blank" rel="noopener noreferrer">
             {publicationsProps.italicize ?
                 <i>{publicationsProps.italicize}&nbsp;</i> : null}{Translate(publicationsProps.titleKey1, publicationsProps.titleKey2)}
         </a>

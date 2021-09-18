@@ -22,7 +22,7 @@
 }
 
 .publications-card {
-  height: 260px;
+  height: 280px;
 }
 
 .publications-card-no-img {
@@ -105,4 +105,12 @@
   /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);*/
 
   border-radius: 5px;
+}
+
+.publication-link{
+  color: #0066cc
+}
+
+.publication-link:hover {
+   color: #0000B8 !important;
 }

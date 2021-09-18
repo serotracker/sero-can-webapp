@@ -31,7 +31,7 @@ export function PublicationsCard(props: PublicationsCardProps) {
               <a href={props.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="overlay flex">
+                className="overlay flex publication-link">
                 <div className="publications-card-image-overlay flex fill center-item column">
                   <div>{Translate('ViewFile')}</div>
                   <div className="flex center-item">
@@ -47,8 +47,8 @@ export function PublicationsCard(props: PublicationsCardProps) {
           </Card.Content>
         )}
         <Card.Content>
-          <div className="publications-card-title pb-1">
-            <a href={props.url} target="_blank" rel="noopener noreferrer" className="">
+          <div className="publications-card-title m-0">
+            <a href={props.url} target="_blank" rel="noopener noreferrer" className="publication-link">
               {props.italicize ? <i>{props.italicize}&nbsp;</i> : null}{Translate(props.titleKey1, props.titleKey2)}
             </a>
           </div>
