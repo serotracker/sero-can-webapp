@@ -9,7 +9,6 @@ import Translate, { getCountryName } from "../../../utils/translate/translateSer
 import InformationIcon from "../../shared/InformationIcon";
 import SectionHeader from "./SectionHeader";
 import Datepicker from "./datepicker/Datepicker";
-import { Link } from "react-router-dom";
 import "./Filters.css";
 import { LanguageType } from "../../../types";
 
@@ -116,7 +115,7 @@ export default function Filters({ page }: FilterProps) {
             filter_type
           )
         }}/>
-          {link ? <label><a target="_blank" rel="noreferrer" href={link}>{label}</a></label> : <label>{label}</label>}
+          {link ? <label><a target="_blank" rel="noopener noreferrer" href={link}>{label}</a></label> : <label>{label}</label>}
         </div>
     )
   }

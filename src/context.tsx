@@ -1,12 +1,12 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import { AggregationFactor, Filters, FilterType, LanguageType, PageState, State } from "./types";
+import { AggregationFactor, FiltersConfig, FilterType, LanguageType, PageState, State } from "./types";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
 const initialMinDate = new Date(2019, 1, 1, 1);
 const initialMaxDate = new Date();
 
-export function getEmptyFilters(): Filters {
+export function getEmptyFilters(): FiltersConfig {
   return {
     source_type: [],
     test_type: [],

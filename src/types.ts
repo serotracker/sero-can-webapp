@@ -42,7 +42,7 @@ export type AggregatedRecord = {
   seroprevalence: number;
 };
 
-export type Filters = {
+export type FiltersConfig = {
   source_type: string[];
   test_type: string[];
   country: string[];
@@ -88,7 +88,7 @@ export enum PageStateEnum {
 export type State = {
   chartAggregationFactor: AggregationFactor;
   explore: PageState;
-  allFilterOptions: Filters;
+  allFilterOptions: FiltersConfig;
   updatedAt: string;
   calendarStartDates: StartDates;
   language: LanguageType;
@@ -122,7 +122,7 @@ export type LegendLayers = {
 }
 
 export type PageState = {
-  filters: Filters;
+  filters: FiltersConfig;
   records: AirtableRecord[];
   isLoading: boolean;
   estimateGradePrevalences: EstimateGradePrevalence[];

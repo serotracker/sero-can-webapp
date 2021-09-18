@@ -151,7 +151,7 @@ const desktopNav = ( getTabClass: any, changeLanguages:any, language: any) => {
       {renderPartnershipsDropDownMenu()}
     </Dropdown>
   </div>
-  <div className={'col-auto h-100 pl-4 pr-0'}>
+  <div className={'col-auto h-100 px-0'}>
     |
   </div>
   <div className={"nav__item col-auto h-100 flex center-item cursor"} onClick={() => changeLanguages()}>

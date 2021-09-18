@@ -32,7 +32,7 @@
     color: lightgrey !important;
 }
 
-a:hover {
+.nav__item a:hover {
     color: white !important;
     text-decoration: none;
 }
@@ -40,6 +40,12 @@ a:hover {
 .nav__item--accordion {
     font-weight: 400 !important;
     color: lightgrey;
+}
+
+.nav__item > .ui.dropdown {
+    display: flex;
+    align-items: center;
+    height: 19px;
 }
 
 .ui.accordion .title{
