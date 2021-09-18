@@ -99,6 +99,9 @@ function App() {
   const history = useHistory()
   listenForUrlLanguage(history.location.pathname);
 
+  let unityInitialFilters = getEmptyFilters();
+  unityInitialFilters.unity_aligned_only = true;
+
   return (
     <div className="App">
       <Header />
@@ -108,7 +111,7 @@ function App() {
           <About />
         </Route>
         <Route path="/:language/Explore">
-          <Explore />
+          <Explore key="Explore"/>
         </Route>
         <Route path="/:language/Dashboard">
           <Redirect to="/:language/Explore" />
@@ -135,12 +138,8 @@ function App() {
           <Publications />
         </Route>
         <Route path="/:language/Unity">
-          <Explore initialFilters={(() => {
-            let initialFilters = getEmptyFilters();
-            initialFilters.unity_aligned_only = true;
-            return initialFilters;
-          })()}/>
-          <span>{/*Temp hack to force page to rerender if already on explore*/}</span>
+          {/*Key added to differentiate Unity view from Explore view and force a rerender*/}
+          <Explore initialFilters={unityInitialFilters} key="Unity"/>
         </Route>
         <Redirect exact from="/" to={`/${language}/Explore`} />
         {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Publications", "Canada"].map(route =>

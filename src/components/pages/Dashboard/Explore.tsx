@@ -11,27 +11,30 @@ import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
 import Legend from "components/map/Legend";
 import { initializeData } from "../../../utils/stateUpdateUtils";
-import { sendFiltersAnalyticsEvent } from "../../../utils/analyticsUtils";
+import { sendFiltersAnalyticsEvent, sendUnityAnalyticsEvent } from "../../../utils/analyticsUtils";
 
 interface ExploreProps {
   initialFilters?: Filters;
 }
 
-export default function Explore(props: ExploreProps) {
+export default function Explore({initialFilters}: ExploreProps) {
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
   const [state, dispatch] = useContext(AppContext);
 
   // Apply initial input filters and get records
   useEffect(() => {
-    if(props.initialFilters){
+    if(initialFilters){
       dispatch({
         type: 'UPDATE_ALL_FILTERS',
         payload: {
-          newFilters: props.initialFilters,
+          newFilters: initialFilters,
           pageStateEnum: PageStateEnum.explore
         }
       });
-      sendFiltersAnalyticsEvent(props.initialFilters)
+      sendFiltersAnalyticsEvent(initialFilters);
+      if(initialFilters.unity_aligned_only){
+        sendUnityAnalyticsEvent();
+      }
     }
     initializeData(dispatch, state.explore.filters, PageStateEnum.explore)
     // We only want this to run once so we pass no dependencies. Do not remove this

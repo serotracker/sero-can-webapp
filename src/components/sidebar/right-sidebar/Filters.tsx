@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType, PageState, State } from '../../../types';
-import { sendFiltersAnalyticsEvent } from "../../../utils/analyticsUtils";
+import { sendFiltersAnalyticsEvent, sendUnityAnalyticsEvent } from "../../../utils/analyticsUtils";
 import { updateFilters } from "../../../utils/stateUpdateUtils";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
 import Translate, { getCountryName } from "../../../utils/translate/translateService";
@@ -106,6 +106,9 @@ export default function Filters({ page }: FilterProps) {
           filter_type
         )
         sendFiltersAnalyticsEvent(filters)
+        if(filter_type === "unity_aligned_only" && filters[filter_type]){
+          sendUnityAnalyticsEvent();
+        }
       }}>
         <input className="ui checkbox" type="checkbox" checked={filters[filter_type] as boolean} readOnly />
         <label>{label}</label>

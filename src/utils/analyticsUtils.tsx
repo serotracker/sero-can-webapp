@@ -11,8 +11,11 @@ const sendPageView: LocationListener = (location: Location): void => {
   ReactGA.pageview(location.pathname)
 }
 interface eventSenderProps {
+  /** Typically the object that was interacted with (e.g. 'Video') */
   category: string,
+  /** The type of interaction (e.g. 'play') */
   label: string,
+  /** Useful for categorizing events (e.g. 'Fall Campaign') */
   action: string
 }
 
@@ -41,20 +44,30 @@ export const sendFiltersAnalyticsEvent = (newFilters: Filters) => {
           labelString += `${key.toString()} - ${filterOptions.sort()};`
         }
       }
+      // Handle checkbox filters
+      // we only want to log that a checkbox filter was used 
+      // if it = true (i.e. it was applied)
       else if(filterOptions === true){
         labelString += `${key.toString()};`
       }
     });
     sendAnalyticsEvent({
-      /** Typically the object that was interacted with (e.g. 'Video') */
       category: 'Filter',
-      /** The type of interaction (e.g. 'play') */
       action: 'selection',
-      /** Useful for categorizing events (e.g. 'Fall Campaign') */
       label: labelString
-      /** A numeric value associated with the event (e.g. 42) */
     })
   }
+}
+
+// `sendFilterAnalyticsEvent` will overreport the number of times 
+// the Unity filter was applied (it gets called whenever any of the filters change)
+// so we need to track when the Unity filter was hit specifically through another event
+export const sendUnityAnalyticsEvent = () => {
+  sendAnalyticsEvent({
+    category: 'WHO Unity Filter',
+    action: 'checked',
+    label: ""
+  })
 }
 
 interface Props {

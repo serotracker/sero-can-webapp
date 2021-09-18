@@ -102,7 +102,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
             sendAnalyticsEvent({
               category: "Study pin popup",
               action: "open",
-              label: source_id,
+              label: `${source_id} - ${record.source_name}`,
             });
             pinPopup.on("close",()=>{
               setSelectedPinId(undefined);
