@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType, PageState, State } from '../../../types';
-import { sendFiltersAnalyticsEvent, sendUnityAnalyticsEvent } from "../../../utils/analyticsUtils";
+import { sendUnityAnalyticsEvent } from "../../../utils/analyticsUtils";
 import { updateFilters } from "../../../utils/stateUpdateUtils";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
 import Translate, { getCountryName } from "../../../utils/translate/translateService";
@@ -68,8 +68,8 @@ export default function Filters({ page }: FilterProps) {
     return formatted_options;
   }
 
-  const addFilter = async (data: any, filterType: FilterType) => {
-    await updateFilters(
+  const addFilter = (data: any, filterType: FilterType) => {
+    updateFilters(
       dispatch,
       filters,
       filterType,
@@ -88,9 +88,8 @@ export default function Filters({ page }: FilterProps) {
           clearable
           selection
           options={formatOptions(state.allFilterOptions[filter_type], filter_type)}
-          onChange={async (e: any, data: any) => {
-            await addFilter(data.value, filter_type)
-            sendFiltersAnalyticsEvent(filters)
+          onChange={(e: any, data: any) => {
+            addFilter(data.value, filter_type)
           }}
           defaultValue={filters[filter_type] as string[]}
         />
@@ -100,15 +99,14 @@ export default function Filters({ page }: FilterProps) {
 
   const buildFilterCheckbox = (filter_type: FilterType, label: string, title?: string, link?: string) => {
     return(
-      <div title={title ? title: label} className="checkbox-item pb-3" id="National" onClick={async (e: React.MouseEvent<HTMLElement>) => {
-        await addFilter(
-          !filters[filter_type], 
-          filter_type
-        )
-        sendFiltersAnalyticsEvent(filters)
+      <div title={title ? title: label} className="checkbox-item pb-3" id="National" onClick={(e: React.MouseEvent<HTMLElement>) => {
         if(filter_type === "unity_aligned_only" && filters[filter_type]){
           sendUnityAnalyticsEvent();
         }
+        addFilter(
+          !filters[filter_type], 
+          filter_type
+        )
       }}>
         <input className="ui checkbox" type="checkbox" checked={filters[filter_type] as boolean} readOnly />
         <label>{label}</label>

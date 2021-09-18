@@ -44,7 +44,7 @@ export default function Datepicker({ page }: DatepickerProps) {
     setSliderThumbValues([chosenStartDate, chosenEndDate]);
   }, [chosenStartDate, chosenEndDate])
 
-  const datePickerChanged = async (isStart: Boolean, date: Date) => {
+  const datePickerChanged = (isStart: Boolean, date: Date) => {
     const newDates = [chosenStartDate, chosenEndDate];
     newDates[0] = isStart ? date : chosenStartDate;
     newDates[1] = !isStart ? date : chosenEndDate;
@@ -55,12 +55,11 @@ export default function Datepicker({ page }: DatepickerProps) {
     else {
       setChosenEndDate(date);
     }
-    await updateFilters(dispatch,
+    updateFilters(dispatch,
       filters,
       "publish_date" as FilterType,
       newDates,
       page)
-    sendFiltersAnalyticsEvent(filters)
   }
 
   const CustomInput = ({ value, onClick, text }: any) => (

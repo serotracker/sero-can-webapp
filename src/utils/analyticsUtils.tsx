@@ -72,23 +72,14 @@ export const sendUnityAnalyticsEvent = () => {
 
 interface Props {
   children: JSX.Element;
-  trackingId: string;
 }
-const GAListener = ({ children, trackingId }: Props): JSX.Element => {
+const GAListener = ({ children }: Props): JSX.Element => {
   const isDev = process.env.NODE_ENV === "development";
   const history = useHistory()
   useEffect((): UnregisterCallback | void => {
-    ReactGA.initialize(trackingId,
-      {
-        titleCase: false,
-        debug: isDev,
-        gaOptions: {
-          cookieDomain: isDev ? 'none' : 'auto'
-        }
-      })
     sendPageView(history.location, 'REPLACE')
     return history.listen(sendPageView)
-  }, [history, isDev, trackingId])
+  }, [history, isDev])
 
   return children
 }
