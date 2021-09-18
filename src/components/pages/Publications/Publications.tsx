@@ -1,18 +1,18 @@
 import React from "react";
+
 import {useMediaQuery} from "react-responsive";
-import {mobileDeviceOrTabletWidth} from "../../../constants";
+import {mobileDeviceOrTabletWidth, PAGE_HASHES} from "../../../constants";
+import {PublicationsCard} from "./PublicationsCard";
 import {PublicationsInfo} from "./PublicationsConstants";
 import './styles.scss';
 import Translate from "../../../utils/translate/translateService";
 import {PublicationsItem} from "./PublicationsItem";
 import Slider from "react-slick";
-import {PublicationsCard} from "./PublicationsCard";
 
 export type PublicationsType = 'articles' | 'reports' | 'media' | 'biblioDigests' | 'monthlyReports';
 
 export default function Publications() {
     const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth})
-
     return (
         <div className="col-12 page pb-4">
             <div className={isMobileDeviceOrTablet ? "pb-2 policy-container" : "policy-container static-content"}>
@@ -22,7 +22,6 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["Publications"])}
                 </p>
-
                 <div className={"publication-menu"} style={{flexDirection: isMobileDeviceOrTablet ? "column" : "row"}}>
                     <p className={"publication-menu-item"}>
                         <a href={"#ResearchArticles"}>
@@ -53,25 +52,25 @@ export default function Publications() {
 
                 <hr style={{borderTop: "2px solid #bbb", width: "100%"}}/>
 
-                <h2 className="normal" id={"ResearchArticles"}>
+                <h3 className="normal" id={PAGE_HASHES.Publications.ResearchArticles}>
                     {Translate('ResearchArticles')}
-                </h2>
+                </h3>
                 <p>
                     {Translate("PublicationDescriptions", ["ResearchArticles"])}
                 </p>
                 {getPublications("articles")}
 
-                <h2 className="normal" id={"PrivateSectorReports"}>
+                <h3 className="normal" id={PAGE_HASHES.Publications.Reports}>
                     {Translate('PrivateSectorReports')}
-                </h2>
+                </h3>
                 <p>
                     {Translate("PublicationDescriptions", ["PrivateSectorReports"])}
                 </p>
                 {getPublications("reports")}
 
-                <h2 className="normal" id={"BiblioDigests"}>
+                <h3 className="normal">
                     {Translate('BiblioDigests')}
-                </h2>
+                </h3>
                 <p>
                     {Translate("PublicationDescriptions", ["LiteratureUpdateReports"])}
                 </p>
@@ -85,9 +84,9 @@ export default function Publications() {
                 </p>
                 {getLinksOfPublications("monthlyReports")}
 
-                <h2 className="normal" id={"MediaMentions"}>
+                <h3 className="normal" id={PAGE_HASHES.Publications.MediaMentions}>
                     {Translate('MediaMentions')}
-                </h2>
+                </h3>
                 <p>
                     {Translate("PublicationDescriptions", ["MediaMentions"])}
                 </p>

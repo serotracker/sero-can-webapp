@@ -12,6 +12,7 @@ import LancetId from '../../../assets/images/LancetIDArticle.png'
 import InsuringTheEconomy from '../../../assets/images/InsuringTheEconomy.png'
 import PlosOnePub from '../../../assets/images/PlosOnePub.png'
 import InventoryEvidenceSynthesis from '../../../assets/images/InventoryEvidenceSynthesis.png'
+import SeptemberBiblioDigest from '../../../assets/images/SeptemberBiblioDigest.png'
 import AugustBiblioDigest from '../../../assets/images/AugustBiblioDigest.png'
 import JulyBiblioDigest from '../../../assets/images/JulyBiblioDigest.png'
 import JuneBiblioDigest from '../../../assets/images/JuneBiblioDigest.png'
@@ -365,6 +366,17 @@ const listOfMediaPublicationsProps: PublicationsCardProps[] = [
 ]
 
 const listOfBiblioDigests: PublicationsCardProps[] = [
+    {
+        day: "3",
+        month: "September",
+        year: "2021",
+        img: SeptemberBiblioDigest,
+        titleKey1: 'BiblioDigestTitles',
+        titleKey2: ['September'],
+        publicationName: "",
+        authors: "",
+        url: "https://drive.google.com/file/d/16Bi6Si2Ph0wwCSkDR15l-gNYzB91aOei/view?usp=sharing"
+    },
     {
         day: "6",
         month: "August",

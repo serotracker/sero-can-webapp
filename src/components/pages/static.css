@@ -16,7 +16,7 @@
 }
 
 .dashboard {
-  max-height: calc(100% - 50px);
+  max-height: calc(100% - 100px);
   height: 100%;
   overflow-y: hidden;
 }
@@ -152,4 +152,27 @@
 
 .no-space {
   display: inline;
+}
+
+.policy-frame-desktop {
+  width: 60% !important;
+  height: 100%;
+  border: 0px;
+}
+
+.policy-frame-mobile {
+  width: 100% !important;
+  height: 100%;
+  border: 0px;
+}
+
+.policy-div-desktop {
+  height: 100%;
+  width: 100%; 
+  margin-left: 40vh !important;
+}
+
+.policy-div-mobile {
+  height: 100%;
+  width: 100%;
 }

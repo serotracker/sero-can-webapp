@@ -9,7 +9,7 @@ import WhoLogoFr from "assets/images/WHO-FR-C-H.png";
 
 interface WhoLogoProps {
     className?: string | undefined;
-    height: string;
+    height?: string;
 }
 
 const WhoLogo = (props :  WhoLogoProps) => {
