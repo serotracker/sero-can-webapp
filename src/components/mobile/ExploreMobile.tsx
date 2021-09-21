@@ -27,7 +27,6 @@ export default function ExploreMobile() {
   return (
     <div className="fill flex">
       <Sidebar.Pushable as={Segment} className="fill flex">
-        {/* Filters */}
         <Sidebar
           as={Menu}
           animation='overlay'

@@ -3,18 +3,18 @@ import { useMediaQuery } from "react-responsive";
 import { Loader } from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth, PAGE_HASHES } from "../../../constants";
 import { AppContext } from "../../../context";
-import { PageStateEnum, Filters } from "../../../types";
+import { PageStateEnum, FiltersConfig } from "../../../types";
 import MapboxMap from '../../map/MapboxMap';
 import MobileComponents from '../../mobile/ExploreMobile';
 import MaintenanceModal from "../../shared/MaintenanceModal";
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
-import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
+import Filters from "../../sidebar/right-sidebar/Filters";
 import Legend from "components/map/Legend";
 import { initializeData } from "../../../utils/stateUpdateUtils";
 import { sendFiltersAnalyticsEvent, sendUnityAnalyticsEvent } from "../../../utils/analyticsUtils";
 
 interface ExploreProps {
-  initialFilters?: Filters;
+  initialFilters?: FiltersConfig;
 }
 
 export default function Explore({initialFilters}: ExploreProps) {
@@ -63,8 +63,8 @@ export default function Explore({initialFilters}: ExploreProps) {
               }}
               />
             </div>
-            <div className="col-2 p-0 flex">
-              <RightSidebar page={PageStateEnum.explore} />
+            <div className="col-2 p-0 flex sidebar-container">
+              <Filters page={PageStateEnum.explore} />
             </div>
           </div>) :
           (

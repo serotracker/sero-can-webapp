@@ -1,4 +1,4 @@
-import { AggregatedRecord, AggregationFactor, AirtableRecord, Filters, FilterType, StudiesFilters } from "./types";
+import { AggregatedRecord, AggregationFactor, AirtableRecord, FiltersConfig, FilterType, StudiesFilters } from "./types";
 import { formatDates } from "./utils/utils";
 import {parseISO, format } from "date-fns";
 
@@ -96,7 +96,7 @@ export default class httpClient {
     }
 
 
-    preparePostBody(filters: Filters){
+    preparePostBody(filters: FiltersConfig){
         const reqBodyFilters = {...filters} as Record<string, any>;
         const date = filters.publish_date as Array<Date>;
         const unity_aligned_only = filters.unity_aligned_only;
@@ -114,7 +114,7 @@ export default class httpClient {
     }
 
     
-    async getAirtableRecords(filters: Filters,
+    async getAirtableRecords(filters: FiltersConfig,
         only_explore_columns: Boolean=false) {
         const reqBody: Record<string, any> = this.preparePostBody(filters);
 
@@ -155,7 +155,7 @@ export default class httpClient {
         return filtered_records;
     }
 
-    async getEstimateGrades(filters: Filters) {
+    async getEstimateGrades(filters: FiltersConfig) {
         const reqBody: Record<string, any> = this.preparePostBody(filters);
 
         const response = await this.httpPost('/data_provider/country_seroprev_summary', reqBody);
