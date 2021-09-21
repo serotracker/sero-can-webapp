@@ -2,14 +2,13 @@ import React, { useContext } from "react";
 import { Dropdown } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType, PageState, State } from '../../../types';
-import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
+import { sendUnityAnalyticsEvent } from "../../../utils/analyticsUtils";
 import { updateFilters } from "../../../utils/stateUpdateUtils";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
 import Translate, { getCountryName } from "../../../utils/translate/translateService";
 import InformationIcon from "../../shared/InformationIcon";
 import SectionHeader from "./SectionHeader";
 import Datepicker from "./datepicker/Datepicker";
-import { Link } from "react-router-dom";
 import "./Filters.css";
 import { LanguageType } from "../../../types";
 
@@ -24,7 +23,7 @@ interface PopulationGroupFilterOption {
 
 export default function Filters({ page }: FilterProps) {
   const [state, dispatch] = useContext(AppContext);
-  const pageState = state[page as keyof State] as PageState;
+  const filters = (state[page as keyof State] as PageState).filters;
 
   const formatOptions = (options: any, filter_type: FilterType) => {
     if (!options) {
@@ -69,10 +68,10 @@ export default function Filters({ page }: FilterProps) {
     return formatted_options;
   }
 
-  const addFilter = async (data: any, filterType: FilterType) => {
-    await updateFilters(
+  const addFilter = (data: any, filterType: FilterType) => {
+    updateFilters(
       dispatch,
-      pageState.filters,
+      filters,
       filterType,
       data,
       page)
@@ -89,19 +88,10 @@ export default function Filters({ page }: FilterProps) {
           clearable
           selection
           options={formatOptions(state.allFilterOptions[filter_type], filter_type)}
-          onChange={async (e: any, data: any) => {
-            await addFilter(data.value, filter_type)
-            sendAnalyticsEvent({
-              /** Typically the object that was interacted with (e.g. 'Video') */
-              category: 'Filter',
-              /** The type of interaction (e.g. 'play') */
-              action: 'selection',
-              /** Useful for categorizing events (e.g. 'Fall Campaign') */
-              label: `${filter_type.toString()} - ${data.value}`
-              /** A numeric value associated with the event (e.g. 42) */
-            })
+          onChange={(e: any, data: any) => {
+            addFilter(data.value, filter_type)
           }}
-          defaultValue={pageState.filters[filter_type] as string[]}
+          defaultValue={filters[filter_type] as string[]}
         />
       </div>
     )
@@ -109,15 +99,18 @@ export default function Filters({ page }: FilterProps) {
 
   const buildFilterCheckbox = (filter_type: FilterType, label: string, title?: string, link?: string) => {
     return(
-        <div title={title ? title: label} className="checkbox-item pb-3" id="National">
-          <input className="ui checkbox" type="checkbox" checked={pageState.filters[filter_type] as boolean} onClick={async (e: React.MouseEvent<HTMLElement>) => {
-          await addFilter(
-            !pageState.filters[filter_type], 
-            filter_type
-          )
-        }}/>
-          {link ? <label><a target="_blank" rel="noreferrer" href={link}>{label}</a></label> : <label>{label}</label>}
-        </div>
+      <div title={title ? title: label} className="checkbox-item pb-3" id="National" onClick={(e: React.MouseEvent<HTMLElement>) => {
+        if(filter_type === "unity_aligned_only" && filters[filter_type]){
+          sendUnityAnalyticsEvent();
+        }
+        addFilter(
+          !filters[filter_type], 
+          filter_type
+        )
+      }}>
+        <input className="ui checkbox" type="checkbox" checked={filters[filter_type] as boolean} readOnly />
+        <label>{label}</label>
+      </div>
     )
   }
 

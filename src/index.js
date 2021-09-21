@@ -7,13 +7,24 @@ import { AppContextProvider } from './context'
 import {Router} from 'react-router-dom';
 import GAListener from "./utils/analyticsUtils";
 import {createBrowserHistory} from 'history';
+import ReactGA from 'react-ga';
+
+// Initialize ReactGA
+const isDev = process.env.NODE_ENV === "development";
+ReactGA.initialize(process.env.REACT_APP_GA_TRACKERID, {
+  titleCase: false,
+  debug: isDev,
+  gaOptions: {
+    cookieDomain: isDev ? 'none' : 'auto'
+  }
+});
 
 const history = createBrowserHistory()
 
 ReactDOM.render(
   <React.StrictMode>
     <Router history={history}>
-      <GAListener trackingId={process.env.REACT_APP_GA_TRACKERID}>
+      <GAListener>
         <AppContextProvider>
           <App />
         </AppContextProvider>
