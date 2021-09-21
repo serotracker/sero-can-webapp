@@ -52,7 +52,7 @@ export default function StudyPopup(record: AirtableRecord) {
             {Translate("VaccineRolloutStatus")}
         </div>
         <div className="popup-text">
-            {(record.vaccination_policy == 0) ? Translate("VaccinationPolicyLow") : (record.vaccination_policy == 1 || record.vaccination_policy == 2 || record.vaccination_policy == 3) ? Translate("VaccinationPolicyMed") : Translate("VaccinationPolicy")}
+            {(record.vaccination_policy == 0) ? Translate("VaccinationPolicyLow") : (record.vaccination_policy == 1 || record.vaccination_policy == 2 || record.vaccination_policy == 3) ? Translate("VaccinationPolicyMed") : Translate("VaccinationPolicyHigh")}
         </div>
         <div className="popup-heading">
             {Translate("RiskOfBias")}

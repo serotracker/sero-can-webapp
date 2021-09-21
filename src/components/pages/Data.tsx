@@ -66,9 +66,17 @@ function DataButtons() {
 function DataDropdowns() {
   const [activeIndex, setActiveIndex] = useState(-1);
   const handleClick = (e: any, data: AccordionTitleProps) => {
-    const { index } = data;
+    const { index, titleText } = data;
     const newIndex = activeIndex === index ? -1 : index;
     setActiveIndex(newIndex as number);
+    if(newIndex != -1){
+      // Only send event if question was opened, not closed
+      sendAnalyticsEvent({
+        category: "Data FAQ",
+        action: "open",
+        label: titleText,
+      });
+    } 
   };
 
   const dropdownContent = Object.entries(TranslateObject("DropdownQuestions")).map(

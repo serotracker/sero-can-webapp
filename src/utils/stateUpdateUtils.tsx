@@ -1,6 +1,6 @@
-import _ from 'lodash';
 import httpClient from '../httpClient'
 import { FiltersConfig, FilterType } from '../types'
+import { sendFiltersAnalyticsEvent } from "../utils/analyticsUtils";
 
 export const updateFilters = async (
   dispatch: any,
@@ -28,6 +28,7 @@ export const updateFilters = async (
 
   const updatedFilters: FiltersConfig = Object.assign({}, filters);
   updatedFilters[filterType] = filterValue;
+  sendFiltersAnalyticsEvent(updatedFilters);
 
   const api = new httpClient()
   // Update current records when called
