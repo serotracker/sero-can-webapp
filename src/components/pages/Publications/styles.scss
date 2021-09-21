@@ -1,60 +1,62 @@
-.publications-card-image {
-  width: 100%;
-  border-radius: 5px;
-  position:relative;
-  object-fit: contain;
-  height: 100px;
-  align-items: flex-start;
-}
+.publications{
+  &-card{
+    height: 280px;
 
-.publications-card-date {
-  font-size: 0.9em;
-  font-weight: 500;
-}
+    &-image{
+      width: 100%;
+      border-radius: 5px;
+      position:relative;
+      object-fit: contain;
+      height: 100px;
+      align-items: flex-start;
+    }
 
-.publications-card-title {
-  line-height: 1.3em;
-  font-size: 1.2em;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+    &-date{
+      font-size: 0.9em;
+      font-weight: 500;
+    }
 
-.publications-card {
-  height: 280px;
-}
+    &-title {
+      line-height: 1.3em;
+      font-size: 1.2em;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
 
-.publications-card-no-img {
-  height: 120px;
-}
+    &-no-img {
+      height: 120px;
+    }
 
 
-.publications-card-image-overlay {
-  font-size: 20px;
-  font-weight: 400;
-  color: white;
-}
+    &-image-overlay {
+      font-size: 20px;
+      font-weight: 400;
+      color: white;
+    }
 
-.publications-card-image:hover > .overlay {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  border-radius: 5px;
-  background-color: #000;
-  justify-content: center;
-  text-decoration: none;
-  transition-delay: 3s;
-  transition: opacity 500ms;
-  opacity: 0.8;
-}
+    &-image:hover > .overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      border-radius: 5px;
+      background-color: #000;
+      justify-content: center;
+      text-decoration: none;
+      transition-delay: 3s;
+      transition: opacity 500ms;
+      opacity: 0.8;
+    }
 
-.publications-card-image > .overlay {
-  position: absolute;
-  justify-content: center;
-  opacity: 0;
-  width: 100%;
-  height: 100%;
+    &-image > .overlay {
+      position: absolute;
+      justify-content: center;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 
 // CSS trick to get arrows to show
@@ -65,9 +67,13 @@
   line-height: 1;
   font-family: "slick"
 }
-
 .slick-prev:before { content: "‹"; }
 .slick-next:before { content: "›"; }
+
+.slick-dots {
+  position: relative;
+  margin-top: -32px;
+}
 
 // https://github.com/akiran/react-slick/issues/1571
 .publications-slider-container {
