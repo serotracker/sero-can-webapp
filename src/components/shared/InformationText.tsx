@@ -22,13 +22,9 @@ export default function InformationText(props: InformationTextProps) {
         size={popupSize}
         onOpen={() => {
           sendAnalyticsEvent({
-            /** Typically the object that was interacted with (e.g. 'Video') */
             category: 'Tooltip',
-            /** The type of interaction (e.g. 'play') */
             action: 'opening',
-            /** Useful for categorizing events (e.g. 'Fall Campaign') */
             label: tooltipHeader || "Unknown tooltip"
-            /** A numeric value associated with the event (e.g. 42) */
           })
         }}
         //fix for janky popup positioning due to overflow styling
