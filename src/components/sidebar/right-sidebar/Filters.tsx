@@ -109,7 +109,8 @@ export default function Filters({ page }: FilterProps) {
         )
       }}>
         <input className="ui checkbox" type="checkbox" checked={filters[filter_type] as boolean} readOnly />
-        <label>{label}</label>
+        <label><a href={link}
+                  target="_blank" rel="noopener noreferrer">{label}</a></label>
       </div>
     )
   }
