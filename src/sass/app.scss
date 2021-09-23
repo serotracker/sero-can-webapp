@@ -248,10 +248,6 @@ Footer a{
     align-content: flex-start;
 }
 
-.space-between {
-    justify-content: space-between;
-}
-
 .space-evenly {
     justify-content: space-evenly;
 }
@@ -267,6 +263,10 @@ Footer a{
     justify-content: center;
     align-items: center;
     align-content: center;
+}
+
+.space-between {
+    justify-content: space-between;
 }
 
 .App-container {

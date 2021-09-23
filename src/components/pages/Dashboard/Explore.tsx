@@ -1,79 +1,118 @@
-import React , { useContext, useEffect } from "react";
-import { useMediaQuery } from "react-responsive";
-import { Loader } from "semantic-ui-react";
-import { isMaintenanceMode, mobileDeviceOrTabletWidth, PAGE_HASHES } from "../../../constants";
-import { AppContext } from "../../../context";
-import { PageStateEnum, FiltersConfig } from "../../../types";
+import React, {useContext, useEffect, useState} from "react";
+import {useMediaQuery} from "react-responsive";
+import {Loader, Icon} from "semantic-ui-react";
+import {isMaintenanceMode, mobileDeviceOrTabletWidth, PAGE_HASHES} from "../../../constants";
+import {AppContext} from "../../../context";
+import {PageStateEnum, FiltersConfig} from "../../../types";
 import MapboxMap from '../../map/MapboxMap';
 import MobileComponents from '../../mobile/ExploreMobile';
 import MaintenanceModal from "../../shared/MaintenanceModal";
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import Filters from "../../sidebar/right-sidebar/Filters";
 import Legend from "components/map/Legend";
-import { initializeData } from "../../../utils/stateUpdateUtils";
-import { sendFiltersAnalyticsEvent, sendUnityAnalyticsEvent } from "../../../utils/analyticsUtils";
+import {initializeData} from "../../../utils/stateUpdateUtils";
+import {sendFiltersAnalyticsEvent, sendUnityAnalyticsEvent} from "../../../utils/analyticsUtils";
+import closeIcon from "../../../assets/images/close-round.png"
 
 interface ExploreProps {
-  initialFilters?: FiltersConfig;
+    initialFilters?: FiltersConfig;
 }
 
 export default function Explore({initialFilters}: ExploreProps) {
-  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
-  const [state, dispatch] = useContext(AppContext);
+    const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth});
+    const [state, dispatch] = useContext(AppContext);
+    const [showUnityBanner, setShowUnityBanner] = useState(true);
 
-  // Apply initial input filters and get records
-  useEffect(() => {
-    if(initialFilters){
-      dispatch({
-        type: 'UPDATE_ALL_FILTERS',
-        payload: {
-          newFilters: initialFilters,
-          pageStateEnum: PageStateEnum.explore
+    // Apply initial input filters and get records
+    useEffect(() => {
+        if (initialFilters) {
+            dispatch({
+                type: 'UPDATE_ALL_FILTERS',
+                payload: {
+                    newFilters: initialFilters,
+                    pageStateEnum: PageStateEnum.explore
+                }
+            });
+            sendFiltersAnalyticsEvent(initialFilters);
+            if (initialFilters.unity_aligned_only) {
+                sendUnityAnalyticsEvent();
+            }
         }
-      });
-      sendFiltersAnalyticsEvent(initialFilters);
-      if(initialFilters.unity_aligned_only){
-        sendUnityAnalyticsEvent();
-      }
-    }
-    initializeData(dispatch, state.explore.filters, PageStateEnum.explore)
-    // We only want this to run once so we pass no dependencies. Do not remove this
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+        initializeData(dispatch, state.explore.filters, PageStateEnum.explore)
+        // We only want this to run once so we pass no dependencies. Do not remove this
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
-  return (
-    <>
-      <div className="fill flex dashboard">
-        {!isMobileDeviceOrTablet ?
-          (<div className="fill flex">
-            <div className="col-2 p-0 flex">
-              <LeftSidebar page={PageStateEnum.explore} />
+    return (
+        <>
+            {
+                //I know we prefer classes to inline styles, I will upgrade the same once utility classes from my punlication
+                //PR are available
+            }
+            <div className="fill flex dashboard">
+                {!isMobileDeviceOrTablet ?
+                    (<>
+                        <div className={showUnityBanner ? "px-4 flex center-item space-between w-100 visible" : "invisible"} style={{backgroundColor: "#E8EBEF", height: showUnityBanner ? "50px" : "0"}}>
+                            <div>
+                              Currently, only
+                              <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}
+                                 target="_blank" rel="noopener noreferrer">
+                                &nbsp;WHO Unity sero-epidemiological&nbsp;
+                              </a>
+                              protocol aligned studies are displayed. To view our
+                              full database, uncheck the
+                              <a>&nbsp;WHO Unity only&nbsp;</a>
+                              filter.
+                            </div>
+                            <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
+                        </div>
+                        <div className="flex w-100">
+                            <div className="col-2 p-0 flex">
+                                <LeftSidebar page={PageStateEnum.explore}/>
+                            </div>
+                            <div className="col-8 p-0 flex" id={PAGE_HASHES.Explore.Map}>
+                                <Loader indeterminate active={state.explore.isLoading}/>
+                                <div className="info flex legend center-item">
+                                    <Legend/>
+                                </div>
+                                <MapboxMap
+                                    countriesConfig={{
+                                        estimateGradePrevalences: state.explore.estimateGradePrevalences
+                                    }}
+                                    studyPinsConfig={{
+                                        records: state.explore.records
+                                    }}
+                                />
+                            </div>
+                            <div className="col-2 p-0 flex sidebar-container">
+                                <Filters page={PageStateEnum.explore}/>
+                            </div>
+                        </div>
+                    </>) :
+                    (
+                        <>
+                          <div className={showUnityBanner ? "px-4 flex center-item space-between w-100 visible" : "invisible"} style={{backgroundColor: "#E8EBEF", height: showUnityBanner ? "50px" : "0"}}>
+                            <div>
+                              Currently, only
+                              <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}
+                                 target="_blank" rel="noopener noreferrer">
+                                &nbsp;WHO Unity sero-epidemiological&nbsp;
+                              </a>
+                              protocol aligned studies are displayed. To view our
+                              full database, uncheck the
+                              <a>&nbsp;WHO Unity only&nbsp;</a>
+                              filter.
+                            </div>
+                            <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
+                          </div>
+                          <div className="flex w-100">
+                            <MobileComponents/>
+                          </div>
+                        </>
+
+                    )}
             </div>
-            <div className="col-8 p-0 flex" id={PAGE_HASHES.Explore.Map}>
-              <Loader indeterminate active={state.explore.isLoading}></Loader>
-              <div className="info flex legend center-item">
-                <Legend/>
-              </div>
-              <MapboxMap 
-              countriesConfig={{
-                estimateGradePrevalences: state.explore.estimateGradePrevalences
-              }} 
-              studyPinsConfig={{
-                records: state.explore.records
-              }}
-              />
-            </div>
-            <div className="col-2 p-0 flex sidebar-container">
-              <Filters page={PageStateEnum.explore} />
-            </div>
-          </div>) :
-          (
-            <div className="fill flex">
-              <MobileComponents />
-            </div>
-          )}
-      </div >
-      <MaintenanceModal isOpen={isMaintenanceMode} headerText={"Explore"} />
-    </>
-  )
+            <MaintenanceModal isOpen={isMaintenanceMode} headerText={"Explore"}/>
+        </>
+    )
 }
