@@ -472,8 +472,6 @@
     "Male": "Male",
     "Unspecified": "Unspecified"
   },
-  "UnityStudiesOnly": "WHO Unity only",
-  "UnityStudiesOnlyLong": "Show WHO Unity-aligned studies only",
   "Source": "Source",
   "SourceType": "Source Type",
   "SourceTypeOptions": {
@@ -560,6 +558,13 @@
   "Today": "Today",
   "TotalEstimates": "Total Estimates",
   "TotalTests": "Total Tests",
+  "UnityBanner": {
+    "Currently": "Currently, only ",
+    "ProtocolLink": "WHO Unity sero-epidemiological protocol ",
+    "ViewDatabase": "aligned studies are displayed. To view our full database, uncheck the WHO Unity only filter."
+  },
+  "UnityStudiesOnly": "WHO Unity only",
+  "UnityStudiesOnlyLong": "Show WHO Unity-aligned studies only",
   "UniversityOf": "University of NAME",
   "UseOfData": "Use of this data is governed by SeroTracker's",
   "ViewPartnership": "View Partnership",

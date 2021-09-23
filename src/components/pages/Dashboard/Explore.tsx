@@ -13,6 +13,7 @@ import Legend from "components/map/Legend";
 import {initializeData} from "../../../utils/stateUpdateUtils";
 import {sendFiltersAnalyticsEvent, sendUnityAnalyticsEvent} from "../../../utils/analyticsUtils";
 import closeIcon from "../../../assets/images/close-round.png"
+import Translate from "../../../utils/translate/translateService";
 
 interface ExploreProps {
     initialFilters?: FiltersConfig;
@@ -21,11 +22,12 @@ interface ExploreProps {
 export default function Explore({initialFilters}: ExploreProps) {
     const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth});
     const [state, dispatch] = useContext(AppContext);
-    const [showUnityBanner, setShowUnityBanner] = useState(true);
+    const [showUnityBanner, setShowUnityBanner] = useState(false);
 
     // Apply initial input filters and get records
     useEffect(() => {
         if (initialFilters) {
+            setShowUnityBanner(true);
             dispatch({
                 type: 'UPDATE_ALL_FILTERS',
                 payload: {
@@ -53,16 +55,12 @@ export default function Explore({initialFilters}: ExploreProps) {
                 {!isMobileDeviceOrTablet ?
                     (<>
                         <div className={showUnityBanner ? "px-4 flex center-item space-between w-100 visible" : "invisible"} style={{backgroundColor: "#E8EBEF", height: showUnityBanner ? "50px" : "0"}}>
-                            <div>
-                              Currently, only
+                            <div style={{width: "80%"}}>
+                                {Translate("UnityBanner", ["Currently"])}
                               <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}
                                  target="_blank" rel="noopener noreferrer">
-                                &nbsp;WHO Unity sero-epidemiological&nbsp;
-                              </a>
-                              protocol aligned studies are displayed. To view our
-                              full database, uncheck the
-                              <a>&nbsp;WHO Unity only&nbsp;</a>
-                              filter.
+                                {Translate("UnityBanner", ["ProtocolLink"])}
+                              </a>  {Translate("UnityBanner", ["ViewDatabase"])}
                             </div>
                             <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
                         </div>
@@ -91,7 +89,7 @@ export default function Explore({initialFilters}: ExploreProps) {
                     </>) :
                     (
                         <>
-                          <div className={showUnityBanner ? "px-4 flex center-item space-between w-100 visible" : "invisible"} style={{backgroundColor: "#E8EBEF", height: showUnityBanner ? "50px" : "0"}}>
+                          <div className={showUnityBanner ? "px-4 flex center-item space-between w-100 visible" : "invisible"} style={{backgroundColor: "#E8EBEF", height: showUnityBanner ? "50px" : "0px"}}>
                             <div>
                               Currently, only
                               <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}

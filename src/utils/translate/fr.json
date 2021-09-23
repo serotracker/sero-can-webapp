@@ -469,8 +469,6 @@
     "Male": "Homme",
     "Unspecified": "Non précisé"
   },
-  "UnityStudiesOnly": "L'OMS-UNITY seulement",
-  "UnityStudiesOnlyLong": "Afficher seulement des études alignées avec l'OMS-UNITY",
   "Source": "Source",
   "SourceType": "Type de source",
   "SourceTypeOptions": {
@@ -554,6 +552,13 @@
   "Today": "Aujourd'hui",
   "TotalEstimates": "Estimations totales",
   "TotalTests": "Total des tests",
+  "UnityBanner": {
+    "Currently": "En ce moment, seulement les études alignées sur le ",
+    "ProtocolLink": "protocole séro-épidémiologique de l'OMS Unity ",
+    "ViewDatabase": "sont affichées. Pour afficher notre base de données complète, décochez le filtre seulement OMS Unity."
+  },
+  "UnityStudiesOnly": "Seulement OMS Unity",
+  "UnityStudiesOnlyLong": "Afficher seulement des études alignées avec l'OMS-UNITY",
   "UniversityOf": "Université de NAME",
   "UseOfData": "L'utilisation de ces données est régie par SeroTracker de",
   "ViewPartnership": "Voir le partenariat",
