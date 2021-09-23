@@ -253,8 +253,8 @@ export default function About() {
             "https://twitter.com/lucasjpenny"
           )}
           {renderBioBlock(
-            "Mairead Whelan",
-            [Translate("UniversityOf", null, { NAME: "Oxford" })],
+            "Mairéad Whelan",
+            [Translate("UniversityOf", null, { NAME: "Oxford" }), Translate("UniversityOf", null, { NAME: "Calgary" })],
             "https://www.linkedin.com/in/mairead-whelan",
             "mairead.whelan@ucalgary.ca",
             "https://twitter.com/Mairead_GWhelan"
@@ -267,7 +267,7 @@ export default function About() {
           )}
           {renderBioBlock(
             "Mercedes Yanes",
-            [Translate("BlankUniversity", null, { NAME: "McGill" })],
+            [Translate("BlankUniversity", null, { NAME: "McGill" }), "Universidad Autonoma de San Luis Potosi"],
             "https://www.linkedin.com/in/mercedes-yanes-lane-64b25a19b",
             "mercedes.yaneslane@mcgill.ca",
             null
@@ -290,6 +290,13 @@ export default function About() {
             [Translate("UniversityOf", null, { NAME: "Calgary" })],
             null,
             "dtanyin@ucalgary.ca"
+          )}
+          {renderBioBlock(
+              "Kim Noël",
+              [Translate("BlankUniversity", null, { NAME: "McGill" })],
+              "https://www.linkedin.com/in/kim-noel-aa27821b8",
+              "kim.noel@mail.mcgill.ca",
+              null
           )}
         </div>
         <h2 className="team-name-text">Development Team</h2>
