@@ -9,7 +9,7 @@ import { withLocaleUrl } from "../../utils/utils";
 import { NumberDateToWordDate } from '../../utils/utils'
 import { PAGE_HASHES } from '../../constants'
 import WhoLogo from "components/shared/WhoLogo";
-import HealthAgencyLogo from 'assets/images/public-health-agency.png';
+import HealthAgencyLogo from 'assets/images/public-health-agency.svg';
 import UcalgaryLogo from 'assets/images/University-Of-Calgary-Logo.png';
 import AmcJoule from 'assets/images/amc-joule.png';
 

@@ -1,8 +1,6 @@
 import React from "react";
 import "../sidebar.scss";
-import Datepicker from "./datepicker/Datepicker";
 import Filters from "./Filters";
-import "./RightSidebar.css";
 
 interface SideBarProps {
   page: string

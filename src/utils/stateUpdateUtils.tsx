@@ -1,11 +1,10 @@
-import _ from 'lodash';
 import httpClient from '../httpClient'
-import { Filters, FilterType } from '../types'
+import { FiltersConfig, FilterType } from '../types'
 import { sendFiltersAnalyticsEvent } from "../utils/analyticsUtils";
 
 export const updateFilters = async (
   dispatch: any,
-  filters: Filters,
+  filters: FiltersConfig,
   filterType: FilterType,
   filterValue: any,
   page: string) => {
@@ -27,7 +26,7 @@ export const updateFilters = async (
     }
   });
 
-  const updatedFilters: Filters = Object.assign({}, filters);
+  const updatedFilters: FiltersConfig = Object.assign({}, filters);
   updatedFilters[filterType] = filterValue;
   sendFiltersAnalyticsEvent(updatedFilters);
 
@@ -58,7 +57,7 @@ export const updateFilters = async (
   })
 }
 
-export const initializeData = async (dispatch: any, filters: Filters, page: string) => {
+export const initializeData = async (dispatch: any, filters: FiltersConfig, page: string) => {
 
   const api = new httpClient()
 

@@ -1,10 +1,13 @@
 .sidebar-container {
   border: none;
   overflow-y: auto;
+  overflow-x: hidden;
   display: block;
   padding: 5%;
-  border: 1px solid rgba(34,36,38,.15);
-  border-radius: .28571429rem;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
 }
 
 .left-sidebar {
