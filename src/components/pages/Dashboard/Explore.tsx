@@ -23,6 +23,7 @@ export default function Explore({initialFilters}: ExploreProps) {
     const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth});
     const [state, dispatch] = useContext(AppContext);
     const [showUnityBanner, setShowUnityBanner] = useState(false);
+    const [pulsateUnityCheckbox, setPulsateUnityCheckbox] = useState(false);
 
     // Apply initial input filters and get records
     useEffect(() => {
@@ -60,7 +61,8 @@ export default function Explore({initialFilters}: ExploreProps) {
                               <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}
                                  target="_blank" rel="noopener noreferrer">
                                 {Translate("UnityBanner", ["ProtocolLink"])}
-                              </a>  {Translate("UnityBanner", ["ViewDatabase"])}
+                              </a> {Translate("UnityBanner",["ViewDatabase"])} <span className={"a"} onClick={() => {setPulsateUnityCheckbox(true)}}> {Translate("UnityBanner", ["WHOUnityFilter"])} </span>
+                                {Translate("UnityBanner", ["Filter"])}
                             </div>
                             <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
                         </div>
@@ -83,31 +85,26 @@ export default function Explore({initialFilters}: ExploreProps) {
                                 />
                             </div>
                             <div className="col-2 p-0 flex sidebar-container">
-                                <Filters page={PageStateEnum.explore}/>
+                                <Filters page={PageStateEnum.explore}  pulsateUnityFilter={pulsateUnityCheckbox} setPulsateUnityFilter={setPulsateUnityCheckbox}/>
                             </div>
                         </div>
                     </>) :
                     (
-                        <>
-                          <div className={showUnityBanner ? "px-4 flex center-item space-between w-100 visible" : "invisible"} style={{backgroundColor: "#E8EBEF", height: showUnityBanner ? "50px" : "0px"}}>
-                            <div>
-                              Currently, only
-                              <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}
-                                 target="_blank" rel="noopener noreferrer">
-                                &nbsp;WHO Unity sero-epidemiological&nbsp;
-                              </a>
-                              protocol aligned studies are displayed. To view our
-                              full database, uncheck the
-                              <a>&nbsp;WHO Unity only&nbsp;</a>
-                              filter.
-                            </div>
-                            <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
-                          </div>
-                          <div className="flex w-100">
-                            <MobileComponents/>
-                          </div>
-                        </>
 
+                          <div className="flex w-100">
+                              <div className={showUnityBanner ? "px-4 flex center-item space-between w-100 visible" : "invisible"} style={{backgroundColor: "#E8EBEF", height: showUnityBanner ? "150px" : "0px"}}>
+                                  <div style={{width: "80%"}}>
+                                      {Translate("UnityBanner", ["Currently"])}
+                                      <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}
+                                         target="_blank" rel="noopener noreferrer">
+                                          {Translate("UnityBanner", ["ProtocolLink"])}
+                                      </a> {Translate("UnityBanner",["ViewDatabase"])} <span className={"a"} onClick={() => {setPulsateUnityCheckbox(true)}}> {Translate("UnityBanner", ["WHOUnityFilter"])} </span>
+                                      {Translate("UnityBanner", ["Filter"])}
+                                  </div>
+                                  <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
+                              </div>
+                            <MobileComponents pulsateUnityFilter={pulsateUnityCheckbox} setPulsateUnityFilter={setPulsateUnityCheckbox}/>
+                          </div>
                     )}
             </div>
             <MaintenanceModal isOpen={isMaintenanceMode} headerText={"Explore"}/>

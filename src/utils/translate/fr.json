@@ -555,7 +555,9 @@
   "UnityBanner": {
     "Currently": "En ce moment, seulement les études alignées sur le ",
     "ProtocolLink": "protocole séro-épidémiologique de l'OMS Unity ",
-    "ViewDatabase": "sont affichées. Pour afficher notre base de données complète, décochez le filtre seulement OMS Unity."
+    "ViewDatabase": "sont affichées. Pour afficher notre base de données complète, décochez le filtre",
+    "WHOUnityFilter": "seulement OMS Unity.",
+    "Filter": ""
   },
   "UnityStudiesOnly": "Seulement OMS Unity",
   "UnityStudiesOnlyLong": "Afficher seulement des études alignées avec l'OMS-UNITY",

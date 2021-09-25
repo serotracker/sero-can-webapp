@@ -561,7 +561,9 @@
   "UnityBanner": {
     "Currently": "Currently, only ",
     "ProtocolLink": "WHO Unity sero-epidemiological protocol ",
-    "ViewDatabase": "aligned studies are displayed. To view our full database, uncheck the WHO Unity only filter."
+    "ViewDatabase": "aligned studies are displayed. To view our full database, uncheck the ",
+    "WHOUnityFilter": "WHO Unity Only",
+    "Filter": "filter"
   },
   "UnityStudiesOnly": "WHO Unity only",
   "UnityStudiesOnlyLong": "Show WHO Unity-aligned studies only",

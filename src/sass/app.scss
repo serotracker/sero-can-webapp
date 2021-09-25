@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import "animations";
 
 .App {
     flex: 1 1 auto;
@@ -374,4 +375,12 @@ Footer a{
 .filter-btn {
     top: 10px;
     left: 10px;
+}
+
+.a {
+    color: #0066CC;
+    cursor: pointer;
+    &:hover {
+        color: #2f00a1;
+    }
 }

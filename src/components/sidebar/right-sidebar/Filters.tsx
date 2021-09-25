@@ -13,7 +13,9 @@ import "./Filters.css";
 import { LanguageType } from "../../../types";
 
 interface FilterProps {
-  page: string
+  page: string,
+  pulsateUnityFilter: boolean;
+  setPulsateUnityFilter: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface PopulationGroupFilterOption {
@@ -21,7 +23,7 @@ interface PopulationGroupFilterOption {
   french: string
 }
 
-export default function Filters({ page }: FilterProps) {
+export default function Filters({ page, pulsateUnityFilter, setPulsateUnityFilter }: FilterProps) {
   const [state, dispatch] = useContext(AppContext);
   const filters = (state[page as keyof State] as PageState).filters;
 
@@ -99,7 +101,7 @@ export default function Filters({ page }: FilterProps) {
 
   const buildFilterCheckbox = (filter_type: FilterType, label: string, title?: string, link?: string) => {
     return(
-      <div title={title ? title: label} className="checkbox-item pb-3" id="National" onClick={(e: React.MouseEvent<HTMLElement>) => {
+      <div title={title ? title: label} className={"checkbox-item pb-3 " } id="National" onClick={(e: React.MouseEvent<HTMLElement>) => {
         if(filter_type === "unity_aligned_only" && filters[filter_type]){
           sendUnityAnalyticsEvent();
         }
@@ -108,7 +110,7 @@ export default function Filters({ page }: FilterProps) {
           filter_type
         )
       }}>
-        <input className="ui checkbox" type="checkbox" checked={filters[filter_type] as boolean} readOnly />
+        <input className={"ui checkbox " + (pulsateUnityFilter ? "pulse" : "")} onClick={() => setPulsateUnityFilter(false)} type="checkbox" checked={filters[filter_type] as boolean} readOnly />
         <label><a href={link}
                   target="_blank" rel="noopener noreferrer">{label}</a></label>
       </div>
