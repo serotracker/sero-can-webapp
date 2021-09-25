@@ -92,7 +92,7 @@ export default function Explore({initialFilters}: ExploreProps) {
                     (
 
                           <div className="flex w-100">
-                              <div className={showUnityBanner ? "px-4 flex center-item space-between w-100 visible" : "invisible"} style={{backgroundColor: "#E8EBEF", height: showUnityBanner ? "150px" : "0px"}}>
+                              <div className={showUnityBanner ? "px-4 flex center-item space-between w-100 visible" : "invisible"} style={{backgroundColor: "#E8EBEF", height: showUnityBanner ? "150px" : "0px", width: showUnityBanner ? "100%" : "0"}}>
                                   <div style={{width: "80%"}}>
                                       {Translate("UnityBanner", ["Currently"])}
                                       <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}
