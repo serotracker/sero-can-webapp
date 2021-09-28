@@ -61,7 +61,7 @@ export default function Explore({initialFilters}: ExploreProps) {
                               <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}
                                  target="_blank" rel="noopener noreferrer">
                                 {Translate("UnityBanner", ["ProtocolLink"])}
-                              </a> {Translate("UnityBanner",["ViewDatabase"])} <span className={"a"} onClick={() => {setPulsateUnityCheckbox(true)}}> {Translate("UnityBanner", ["WHOUnityFilter"])} </span>
+                              </a> {Translate("UnityBanner",["ViewDatabase"])} <span className={"link"} onClick={() => {setPulsateUnityCheckbox(true)}}> {Translate("UnityBanner", ["WHOUnityFilter"])} </span>
                                 {Translate("UnityBanner", ["Filter"])}
                             </div>
                             <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
@@ -98,7 +98,7 @@ export default function Explore({initialFilters}: ExploreProps) {
                                       <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}
                                          target="_blank" rel="noopener noreferrer">
                                           {Translate("UnityBanner", ["ProtocolLink"])}
-                                      </a> {Translate("UnityBanner",["ViewDatabase"])} <span className={"a"} onClick={() => {setPulsateUnityCheckbox(true)}}> {Translate("UnityBanner", ["WHOUnityFilter"])} </span>
+                                      </a> {Translate("UnityBanner",["ViewDatabase"])} <span className={"link"} onClick={() => {setPulsateUnityCheckbox(true)}}> {Translate("UnityBanner", ["WHOUnityFilter"])} </span>
                                       {Translate("UnityBanner", ["Filter"])}
                                   </div>
                                   <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
