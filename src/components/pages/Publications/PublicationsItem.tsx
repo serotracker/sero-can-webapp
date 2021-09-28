@@ -12,10 +12,10 @@ export interface PublicationsItemProps {
     year: string,
     titleKey1: string,
     titleKey2: string[],
-    publicationName: string,
+    publicationName?: string,
     img?: string,
     url: string,
-    authors: string,
+    authors?: string,
     italicize?: string
 }
 
@@ -44,7 +44,7 @@ export function PublicationsItem(props: PublicationsItemProps) {
                             {props.year}
                         </div>
                         <div className={"text-small"}>
-                            {props.authors !== "" && Translate("Authors: ") + props.authors}
+                            {props.authors ? props.authors !== "" && Translate("Authors: ") + props.authors : ""}
                         </div>
                     </Item.Meta>
                 </Item.Content>

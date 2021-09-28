@@ -40,7 +40,7 @@ export default function Publications() {
                     </p>
                     <p className={"publication-menu-item"}>
                         <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.MonthlyReports}>
-                            Monthly Reports
+                            {Translate('MonthlyReports')}
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
@@ -112,6 +112,15 @@ const getPublications = (type: PublicationsType) => {
         }))
 }
 
+const getLinksOfPublications = (type: PublicationsType) => {
+    return PublicationsInfo[type].map((publicationsProps) => {
+        return <a className={"py-2 publication-link"} href={publicationsProps.url} target="_blank" rel="noopener noreferrer">
+            {publicationsProps.italicize ?
+                <i>{publicationsProps.italicize}&nbsp;</i> : null}{Translate(publicationsProps.titleKey1, publicationsProps.titleKey2)}
+        </a>
+    })
+}
+
 const sliderSettings = {
     dots: true,
     infinite: true,
@@ -140,15 +149,6 @@ const sliderSettings = {
         }
     ]
 };
-
-const getLinksOfPublications = (type: PublicationsType) => {
-    return PublicationsInfo[type].map((publicationsProps) => {
-        return <a className={"py-2 publication-link"} href={publicationsProps.url} target="_blank" rel="noopener noreferrer">
-            {publicationsProps.italicize ?
-                <i>{publicationsProps.italicize}&nbsp;</i> : null}{Translate(publicationsProps.titleKey1, publicationsProps.titleKey2)}
-        </a>
-    })
-}
 
 const getCarouselOfPublicationsCards = (type: PublicationsType) => {
     return (

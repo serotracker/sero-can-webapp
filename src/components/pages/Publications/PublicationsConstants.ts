@@ -46,8 +46,6 @@ const listOfReports: PublicationsCardProps[] = [
         img: InventoryEvidenceSynthesis,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['InventoryEvidenceSynthesis'],
-        publicationName: "",
-        authors: "",
         url: "https://www.mcmasterforum.org/networks/covid-end/resources-to-support-decision-makers/Inventory-of-best-evidence-syntheses/public-health-measures",
     },
     {
@@ -57,8 +55,6 @@ const listOfReports: PublicationsCardProps[] = [
         img: YearInReview2020,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['YearInReview2020'],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/14u0GroEadFQ__Gdvoe104HI-y0LWDwSu/view?usp=sharing",
     },
     {           
@@ -68,8 +64,6 @@ const listOfReports: PublicationsCardProps[] = [
         img: InsuringTheEconomy,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['InsuringTheEconomy'],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/1kEl6xv54yPGoDXZoPq9h2q4SqYnL2OU-/view?usp=sharing"
     },
     {           
@@ -79,8 +73,6 @@ const listOfReports: PublicationsCardProps[] = [
         img: BloodBank,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['BloodBank'],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/1It2CzAwEfTcQ1zIC6z2fO7i7XEfmWfom/view?usp=sharing"
     },
     {           
@@ -90,8 +82,6 @@ const listOfReports: PublicationsCardProps[] = [
         img: PreprintUpdate,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['PreliminaryReport'],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/1I1gY1lZndwp4_eUqoZviU8L2_izmkmQP/view?usp=sharing"
     },
 ]
@@ -373,8 +363,6 @@ const listOfBiblioDigests: PublicationsCardProps[] = [
         img: SeptemberBiblioDigest,
         titleKey1: 'BiblioDigestTitles',
         titleKey2: ['September'],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/16Bi6Si2Ph0wwCSkDR15l-gNYzB91aOei/view?usp=sharing"
     },
     {
@@ -384,8 +372,6 @@ const listOfBiblioDigests: PublicationsCardProps[] = [
         img: AugustBiblioDigest,
         titleKey1: 'BiblioDigestTitles',
         titleKey2: ['August'],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/1c7OWeVdGwL2Hix-RIHs8y-EZHdKGv8kV/view?usp=sharing"
     },
     {           
@@ -395,8 +381,6 @@ const listOfBiblioDigests: PublicationsCardProps[] = [
         img: JulyBiblioDigest,
         titleKey1: "BiblioDigestTitles",
         titleKey2: ['July'],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/1u6mix47HTUwSLraj4eMcD1rvGj7N7Z4g/view?usp=sharing"
     },
     {           
@@ -406,8 +390,6 @@ const listOfBiblioDigests: PublicationsCardProps[] = [
         img: JuneBiblioDigest,
         titleKey1: "BiblioDigestTitles",
         titleKey2: ['June'],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/1qxAa3xnqEQzFwsph75wI4_zBj84iJ2FZ/view?usp=sharing"
     },
 ]
@@ -420,8 +402,6 @@ const listOfMonthlyReports: PublicationsCardProps[] = [
         img: October2020Update,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ["OctoberReport"],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/1aCgxzxv9J5Zvh4EVyI5REmSVgWLQ_Ip3/view?usp=sharing"
     },
     {
@@ -431,8 +411,6 @@ const listOfMonthlyReports: PublicationsCardProps[] = [
         img: September2020Update,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['SeptemberReport'],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/1CjMcs7UZzu4_E_QFJVYZdv0QhyfoNMAe/view?usp=sharing"
     },
     {
@@ -442,8 +420,6 @@ const listOfMonthlyReports: PublicationsCardProps[] = [
         img: August2020Update,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['AugustReport'],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/1m7BlfUKCYs32_D1jnFUEQHPr3Qjg5Eyt/view?usp=sharing"
     },
     {
@@ -453,8 +429,6 @@ const listOfMonthlyReports: PublicationsCardProps[] = [
         img: July2020Update,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['JulyReport'],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/1Rx3i_Sy01suu-ZZYV7LRpo2KEclbXCNN/view?usp=sharing"
     },
     {
@@ -464,8 +438,6 @@ const listOfMonthlyReports: PublicationsCardProps[] = [
         img: June2020Update,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['JuneReport'],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/1HO--VWYdyEqd5Dc3xcZBwERXWDBjCfxN/view"
     },
     {
@@ -475,8 +447,6 @@ const listOfMonthlyReports: PublicationsCardProps[] = [
         img: May2020Update,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['MayReport'],
-        publicationName: "",
-        authors: "",
         url: "https://drive.google.com/file/d/16pCR-zh1UiWjQFhTDxW_2adSGuq0pCgz/view?usp=sharing"
     },
 ]
