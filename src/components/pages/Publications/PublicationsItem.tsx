@@ -44,7 +44,7 @@ export function PublicationsItem(props: PublicationsItemProps) {
                             {props.year}
                         </div>
                         <div className={"text-small"}>
-                            {props.authors ? props.authors !== "" && Translate("Authors: ") + props.authors : ""}
+                            {props.authors ? Translate("Authors: ") + props.authors : ""}
                         </div>
                     </Item.Meta>
                 </Item.Content>
