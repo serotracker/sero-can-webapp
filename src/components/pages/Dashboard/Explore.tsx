@@ -12,7 +12,6 @@ import Filters from "../../sidebar/right-sidebar/Filters";
 import Legend from "components/map/Legend";
 import {initializeData} from "../../../utils/stateUpdateUtils";
 import {sendFiltersAnalyticsEvent, sendUnityAnalyticsEvent} from "../../../utils/analyticsUtils";
-import closeIcon from "../../../assets/images/close-round.png"
 import Translate from "../../../utils/translate/translateService";
 
 interface ExploreProps {
@@ -55,7 +54,7 @@ export default function Explore({initialFilters}: ExploreProps) {
             <div className="fill flex dashboard">
                 {!isMobileDeviceOrTablet ?
                     (<>
-                        <div className={showUnityBanner ? "px-4 flex center-item space-between w-100 visible" : "invisible"} style={{backgroundColor: "#E8EBEF", height: showUnityBanner ? "50px" : "0"}}>
+                    {showUnityBanner && (<div className={ "px-4 flex center-item justify-content-between w-100 visible"} style={{backgroundColor: "#E8EBEF", height: "50px"}}>
                             <div style={{width: "80%"}}>
                                 {Translate("UnityBanner", ["Currently"])}
                               <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}
@@ -65,7 +64,7 @@ export default function Explore({initialFilters}: ExploreProps) {
                                 {Translate("UnityBanner", ["Filter"])}
                             </div>
                             <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
-                        </div>
+                    </div>)}
                         <div className="flex w-100">
                             <div className="col-2 p-0 flex">
                                 <LeftSidebar page={PageStateEnum.explore}/>
@@ -92,17 +91,23 @@ export default function Explore({initialFilters}: ExploreProps) {
                     (
 
                           <div className="flex w-100">
-                              <div className={showUnityBanner ? "px-4 flex center-item space-between w-100 visible" : "invisible"} style={{backgroundColor: "#E8EBEF", height: showUnityBanner ? "150px" : "0px", width: showUnityBanner ? "100%" : "0"}}>
+                              {showUnityBanner && (<div className={"px-4 flex center-item justify-content-between w-100"}
+                                                       style={{backgroundColor: "#E8EBEF", height: "150px"}}>
                                   <div style={{width: "80%"}}>
                                       {Translate("UnityBanner", ["Currently"])}
                                       <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}
                                          target="_blank" rel="noopener noreferrer">
                                           {Translate("UnityBanner", ["ProtocolLink"])}
-                                      </a> {Translate("UnityBanner",["ViewDatabase"])} <span className={"link"} onClick={() => {setPulsateUnityCheckbox(true)}}> {Translate("UnityBanner", ["WHOUnityFilter"])} </span>
+                                      </a> {Translate("UnityBanner", ["ViewDatabase"])} <span className={"link"}
+                                                                                              onClick={() => {
+                                                                                                  setPulsateUnityCheckbox(true)
+                                                                                              }}> {Translate("UnityBanner", ["WHOUnityFilter"])} </span>
                                       {Translate("UnityBanner", ["Filter"])}
                                   </div>
-                                  <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
-                              </div>
+                                  <Icon link onClick={() => {
+                                      setShowUnityBanner(false)
+                                  }} name='close'/>
+                              </div>)}
                             <MobileComponents pulsateUnityFilter={pulsateUnityCheckbox} setPulsateUnityFilter={setPulsateUnityCheckbox}/>
                           </div>
                     )}
