@@ -26,7 +26,7 @@ export function PublicationsItem(props: PublicationsItemProps) {
             <Item className={"publication-item"}>
                 <Item.Content>
                     <Item.Meta className={"text-default"}>
-                        {props.publicationName !== "" && props.publicationName}
+                        {props.publicationName && props.publicationName}
                     </Item.Meta>
                     <Item.Header>
                         <h4 className={"m-0"}>
@@ -44,7 +44,7 @@ export function PublicationsItem(props: PublicationsItemProps) {
                             {props.year}
                         </div>
                         <div className={"text-small"}>
-                            {props.authors ? props.authors !== "" && Translate("Authors: ") + props.authors : ""}
+                            {props.authors ? Translate("Authors: ") + props.authors : ""}
                         </div>
                     </Item.Meta>
                 </Item.Content>
