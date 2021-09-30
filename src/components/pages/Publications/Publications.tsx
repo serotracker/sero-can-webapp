@@ -29,13 +29,13 @@ export default function Publications() {
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
-                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.BiblioDigests}>
-                            {Translate('BiblioDigests')}
+                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.PrivateSectorReports}>
+                            {Translate('PrivateSectorReports')}
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
-                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.PrivateSectorReports}>
-                            {Translate('PrivateSectorReports')}
+                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.BiblioDigests}>
+                            {Translate('BiblioDigests')}
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>

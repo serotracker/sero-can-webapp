@@ -22,7 +22,7 @@ export interface PublicationsCardProps {
 export function PublicationsCard(props: PublicationsCardProps) {
   const [state] = useContext(AppContext);
   return (
-    <div className="py-4 px-2">
+    <div className="py-4 px-2 flex justify-content-center">
       <Card className={"publications-card"}>
         {props.img && (
           <Card.Content>
