@@ -43,8 +43,10 @@ export const PAGE_HASHES = {
     },
     [PAGES.Publications]: {
         ResearchArticles: "ResearchArticles",
-        Reports: "Reports",
-        MediaMentions: "MediaMentions"
+        PrivateSectorReports: "PrivateSectorReports",
+        MediaMentions: "MediaMentions",
+        BiblioDigests: "BiblioDigests",
+        MonthlyReports: "MonthlyReports"
     },
     [PAGES.About]: {
         Team: "Team",

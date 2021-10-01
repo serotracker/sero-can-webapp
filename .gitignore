@@ -29,5 +29,8 @@ yarn-error.log*
 
 #.env
 # DO NOT COMMIT SECRETS
-.env
+.envwq
 load-dotenv.sh
+
+.idea/
+

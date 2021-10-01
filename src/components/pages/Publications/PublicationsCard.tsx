@@ -12,24 +12,26 @@ export interface PublicationsCardProps {
   year: string,
   titleKey1: string,
   titleKey2: string[],
+  publicationName?: string,
   img?: string,
   url: string,
+  authors?: string,
   italicize?: string
 }
 
 export function PublicationsCard(props: PublicationsCardProps) {
   const [state] = useContext(AppContext);
   return (
-    <div className="py-4 px-2">
-      <Card className={props.img ? "publications-card" : "publications-card-no-img"}> 
+    <div className="py-4 px-2 flex justify-content-center">
+      <Card className={"publications-card"}>
         {props.img && (
           <Card.Content>
             <div className="flex center-item publications-card-image mb-2">
-              <img src={props.img} alt="" className="fit publications-card-image"></img>
+              <img src={props.img} alt="" className="fit publications-card-image"/>
               <a href={props.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="overlay flex">
+                className="overlay flex publication-link">
                 <div className="publications-card-image-overlay flex fill center-item column">
                   <div>{Translate('ViewFile')}</div>
                   <div className="flex center-item">
@@ -45,8 +47,8 @@ export function PublicationsCard(props: PublicationsCardProps) {
           </Card.Content>
         )}
         <Card.Content>
-          <div className="publications-card-title pb-1">
-            <a href={props.url} target="_blank" rel="noopener noreferrer" className="">
+          <div className="publications-card-title m-0">
+            <a href={props.url} target="_blank" rel="noopener noreferrer" className="publication-link">
               {props.italicize ? <i>{props.italicize}&nbsp;</i> : null}{Translate(props.titleKey1, props.titleKey2)}
             </a>
           </div>
