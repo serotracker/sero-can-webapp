@@ -292,7 +292,7 @@ export default function About() {
             "dtanyin@ucalgary.ca"
           )}
         </div>
-        <h2 className="team-name-text">Development Team</h2>
+        <h2 className="team-name-text">{Translate("DevelopmentTeam")}</h2>
         <div className="bio-grid-container">
           {renderBioBlock(
             "Austin Atmaja",
