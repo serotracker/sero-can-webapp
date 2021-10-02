@@ -5,21 +5,9 @@ import Translate from "../../../utils/translate/translateService";
 import { Card } from "semantic-ui-react";
 import { AppContext } from "../../../context";
 import { LanguageType } from "../../../types";
+import {PublicationProps} from "./PublicationsConstants"
 
-export interface PublicationsCardProps {
-  day?: string,
-  month: string,
-  year: string,
-  titleKey1: string,
-  titleKey2: string[],
-  publicationName?: string,
-  img?: string,
-  url: string,
-  authors?: string,
-  italicize?: string
-}
-
-export function PublicationsCard(props: PublicationsCardProps) {
+export function PublicationsCard(props: PublicationProps) {
   const [state] = useContext(AppContext);
   return (
     <div className="py-4 px-2 flex justify-content-center">
@@ -52,10 +40,12 @@ export function PublicationsCard(props: PublicationsCardProps) {
               {props.italicize ? <i>{props.italicize}&nbsp;</i> : null}{Translate(props.titleKey1, props.titleKey2)}
             </a>
           </div>
-          <div className="publications-card-date">
-            {state.language === LanguageType.english ? `${props.month } ${props.day ? props.day + "," : ""} ` : `${props.day} ${Translate("Months", [props.month])} `}
-            {props.year}
-          </div>
+          {(props.month && props.year) && (
+            <div className="publications-card-date">
+              {state.language === LanguageType.english ? `${props.month } ${props.day ? props.day + "," : ""} ` : `${props.day} ${Translate("Months", [props.month])} `}
+              {props.year}
+            </div>
+          )}
         </Card.Content>
       </Card>
     </div>

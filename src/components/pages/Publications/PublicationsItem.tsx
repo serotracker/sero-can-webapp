@@ -1,25 +1,11 @@
-import { faFile } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, {useContext} from "react";
 import Translate from "../../../utils/translate/translateService";
-import {Item, ItemContent} from "semantic-ui-react";
+import {Item} from "semantic-ui-react";
 import { AppContext } from "../../../context";
 import { LanguageType } from "../../../types";
+import {PublicationProps} from "./PublicationsConstants"
 
-export interface PublicationsItemProps {
-    day?: string,
-    month: string,
-    year: string,
-    titleKey1: string,
-    titleKey2: string[],
-    publicationName?: string,
-    img?: string,
-    url: string,
-    authors?: string,
-    italicize?: string
-}
-
-export function PublicationsItem(props: PublicationsItemProps) {
+export function PublicationsItem(props: PublicationProps) {
     const [state] = useContext(AppContext);
     return (
         <div className="py-2">
@@ -39,10 +25,12 @@ export function PublicationsItem(props: PublicationsItemProps) {
                         //Could potentially add a description in the hover state if we feel like we need it.
                     }
                     <Item.Meta>
-                        <div className={"text-small"}>
-                            {Translate("Published")}: {state.language === LanguageType.english ? `${props.month } ${props.day ? props.day + "," : ""} ` : `${props.day} ${Translate("Months", [props.month])} `}
-                            {props.year}
-                        </div>
+                        {(props.month && props.year) && (
+                            <div className={"text-small"}>
+                                {Translate("Published")}: {state.language === LanguageType.english ? `${props.month } ${props.day ? props.day + "," : ""} ` : `${props.day} ${Translate("Months", [props.month])} `}
+                                {props.year}
+                            </div>
+                        )}
                         <div className={"text-small"}>
                             {props.authors ? Translate("Authors: ") + props.authors : ""}
                         </div>
