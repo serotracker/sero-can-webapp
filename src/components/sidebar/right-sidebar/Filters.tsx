@@ -14,8 +14,6 @@ import { LanguageType } from "../../../types";
 
 interface FilterProps {
   page: string,
-  pulsateUnityFilter: boolean;
-  setPulsateUnityFilter: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface PopulationGroupFilterOption {
@@ -23,7 +21,7 @@ interface PopulationGroupFilterOption {
   french: string
 }
 
-export default function Filters({ page, pulsateUnityFilter, setPulsateUnityFilter }: FilterProps) {
+export default function Filters({ page }: FilterProps) {
   const [state, dispatch] = useContext(AppContext);
   const filters = (state[page as keyof State] as PageState).filters;
 
@@ -110,7 +108,7 @@ export default function Filters({ page, pulsateUnityFilter, setPulsateUnityFilte
           filter_type
         )
       }}>
-        <input className={"ui checkbox " + (pulsateUnityFilter ? "pulse" : "")} onClick={() => setPulsateUnityFilter(false)} type="checkbox" checked={filters[filter_type] as boolean} readOnly />
+        <input className={"ui checkbox " + (state.pulsateUnityFilter ? "pulse" : "")} type="checkbox" onClick={() => {dispatch({type: "SET_UNITY_FILTER_PULSATE", payload: false})}} checked={filters[filter_type] as boolean} readOnly />
         <label><a href={link}
                   target="_blank" rel="noopener noreferrer">{label}</a></label>
       </div>

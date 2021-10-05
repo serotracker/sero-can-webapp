@@ -94,6 +94,7 @@ export type State = {
   language: LanguageType;
   showCookieBanner: boolean;
   countries: any;
+  pulsateUnityFilter: boolean;
 };
 
 export type StartDates = {
