@@ -225,7 +225,7 @@ export default function About() {
           )}
           {renderBioBlock(
             "Natasha Ilincic",
-            [Translate("UniversityOf", null, { NAME: "Guelph" })],
+            [Translate("UniversityOf", null, { NAME: "Toronto" }), Translate("UniversityOf", null, { NAME: "Guelph" })],
             "https://www.linkedin.com/in/natasha-ilincic/",
             "natasha.ilincic@gmail.com"
           )}
@@ -276,7 +276,7 @@ export default function About() {
             "Sara Perlman-Arrow",
             [Translate("BlankUniversity", null, { NAME: "McGill" })],
             "https://www.linkedin.com/in/sara-perlman-arrow-5075421b6/",
-            "sara.perlman8@gmail.com"
+            "sara.perlman-arrow@mail.mcgill.ca"
           )}
           {renderBioBlock(
             "Lucia Otera Varela",
@@ -295,8 +295,60 @@ export default function About() {
               "Kim Noël",
               [Translate("BlankUniversity", null, { NAME: "McGill" })],
               "https://www.linkedin.com/in/kim-noel-aa27821b8",
-              "kim.noel@mail.mcgill.ca",
-              null
+              "kim.noel@mail.mcgill.ca"
+            )}
+          {renderBioBlock(
+              "Gabriel Deeaux",
+              [Translate("MemorialUniversityOfNewfoundland")],
+              "https://www.linkedin.com/in/grdeveaux/",
+              "grdeveaux@mun.ca"
+          )}
+          {renderBioBlock(
+              "Caseng Zhang",
+              [Translate("BlankUniversity", null, { NAME: "McMaster" })],
+              "www.linkedin.com/in/caseng",
+              "zhangcaseng@gmail.com"
+          )}
+          {renderBioBlock(
+              "Xiaomeng Ma",
+              [Translate("UniversityOf", null, { NAME: "Toronto" })],
+              "https://www.linkedin.com/in/xiaomeng-simone-ma-6a8156b9/",
+              "xiaomeng.ma@mail.utoronto.ca"
+          )}
+          {renderBioBlock(
+              "Anabel Selemon",
+              [Translate("UniversityOf", null, { NAME: "Calgary" })],
+              null,
+              "anabel.selemon@ucalgary.ca"
+          )}
+          {renderBioBlock(
+              "Dayoung Kim",
+              [Translate("UniversityOf", null, { NAME: "Calgary" })],
+              "https://www.linkedin.com/in/dayoung-kim-448425198/",
+              "dayoung.kim1@ucalgary.ca"
+          )}
+          {renderBioBlock(
+              "Emma Loeschnik",
+              [Translate("BlankUniversity", null, {NAME: "Western"}), Translate("BlankUniversity", null, { NAME: "Brock" })],
+              "https://www.linkedin.com/in/emma-loeschnik-97bb48220",
+              "eloeschn@uwo.ca",
+              "https://twitter.com/emma_loeschnik"
+          )}
+          {renderBioBlock(
+              "Zihan",
+              [Translate("UniversityOf", null, {NAME: "Waterloo"})],
+              "https://www.linkedin.com/in/zihanli/",
+              "zihan.li@uwaterloo.ca",
+              "https://twitter.com/emma_loeschnik"
+          )}
+        </div>
+        <h2 className="team-name-text">WHO Unity Team</h2>
+        <div className="bio-grid-container">
+          {renderBioBlock(
+              "Harriet Ware",
+              [Translate("UniversityOf", null, { NAME: "Toronto" }), Translate("BlankUniversity", null, { NAME: "Queen's"})],
+              null,
+              "ware.harriet@gmail.com"
           )}
         </div>
         <h2 className="team-name-text">Development Team</h2>
@@ -351,15 +403,27 @@ export default function About() {
             null,
             "noel.loo.188@gmail.com"
           )}
+          {renderBioBlock(
+              "Himanshu Ranka",
+              [Translate("BlankUniversity", null, { NAME: "McGill" })],
+              "https://www.linkedin.com/in/himanshu-ranka-635a02181/",
+              "himanshu.ranka@mail.mcgill.ca"
+          )}
+          {renderBioBlock(
+              "Flora Guo",
+              [Translate("UniversityOf", null, { NAME: "Waterloo" })],
+              "https://www.linkedin.com/in/floraguolr/",
+              "floraguolr@gmail.com"
+          )}
         </div>
         <h2 className="team-name-text">{Translate("PrivateSectorMonitoringTeam")}</h2>
         <div className="bio-grid-container">
           {renderBioBlock(
             "Nathan Duarte",
-            [Translate("UniversityOf", null, { NAME: "Waterloo" })],
+            [Translate("BlankUniversity", null, { NAME: "McGill"}), Translate("UniversityOf", null, { NAME: "Waterloo" })],
             "https://www.linkedin.com/in/duartenathan/",
             "nathanduarte1@gmail.com",
-            "https://twitter.com/_nathan_duarte_"
+            "https://twitter.com/niduarte_canada"
           )}
           {renderBioBlock(
             "Abhinav Pillai	",
