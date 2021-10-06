@@ -72,7 +72,7 @@ export default function About() {
   return (
     <div className="page col-12">
       <div className={isMobileDeviceOrTablet ? "pb-2 static-mobile" : "static-content pb-2"}>
-        <h1>{Translate("AboutSeroTracker")}</h1>
+        <h1>{Translate("AboutPage", ["Headers", "AboutSeroTracker"])}</h1>
         <p>
         <b>{Translate("AboutPage", ["AboutSection", "PartOne"])}</b>
           {Translate("AboutPage", ["AboutSection", "PartTwo"], null, [true, false])}
@@ -144,7 +144,7 @@ export default function About() {
           </a>{" "}
           {Translate("AboutPage", ["Mapbox"])}
         </p>
-        <h2 id={PAGE_HASHES.About.Contact}>{Translate("ContactUs")}</h2>
+        <h2 id={PAGE_HASHES.About.Contact}>{Translate("AboutPage", ["Headers","ContactUs"])}</h2>
         <div>
           <p>
             {Translate("AboutPage", ["ContactSection", "BulletPointOne", "PartOne"], null, [true, true])}
@@ -171,8 +171,8 @@ export default function About() {
             .
           </p>
         </div>
-        <h1 id={PAGE_HASHES.About.Team}>{Translate("OurTeam")}</h1>
-        <h2 className="team-name-text">{Translate("TeamLead")}</h2>
+        <h1 id={PAGE_HASHES.About.Team}>{Translate("AboutPage", ["Headers","OurTeam"])}</h1>
+        <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "TeamLead"])}</h2>
         <div className="bio-grid-container">
           {renderBioBlock(
             "Rahul Arora",
@@ -188,7 +188,7 @@ export default function About() {
             "https://twitter.com/TingtingYan_"
           )}
         </div>
-        <h2 className="team-name-text">{Translate("ResearchTeam")}</h2>
+        <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "ResearchTeam"])}</h2>
         <div className="bio-grid-container">
           {renderBioBlock(
             "Niklas Bobrovitz ",
@@ -335,14 +335,14 @@ export default function About() {
               "https://twitter.com/emma_loeschnik"
           )}
           {renderBioBlock(
-              "Zihan",
+              "Zihan Li",
               [Translate("UniversityOf", null, {NAME: "Waterloo"})],
               "https://www.linkedin.com/in/zihanli/",
               "zihan.li@uwaterloo.ca",
               "https://twitter.com/emma_loeschnik"
           )}
         </div>
-        <h2 className="team-name-text">WHO Unity Team</h2>
+        <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "WHOUnityTeam"])}</h2>
         <div className="bio-grid-container">
           {renderBioBlock(
               "Harriet Ware",
@@ -350,8 +350,15 @@ export default function About() {
               null,
               "ware.harriet@gmail.com"
           )}
+          {renderBioBlock(
+              "Mairéad Whelan",
+              [Translate("UniversityOf", null, { NAME: "Oxford" }), Translate("UniversityOf", null, { NAME: "Calgary" })],
+              "https://www.linkedin.com/in/mairead-whelan",
+              "mairead.whelan@ucalgary.ca",
+              "https://twitter.com/Mairead_GWhelan"
+          )}
         </div>
-        <h2 className="team-name-text">Development Team</h2>
+        <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "DevelopmentTeam"])}</h2>
         <div className="bio-grid-container">
           {renderBioBlock(
             "Austin Atmaja",
@@ -416,7 +423,7 @@ export default function About() {
               "floraguolr@gmail.com"
           )}
         </div>
-        <h2 className="team-name-text">{Translate("PrivateSectorMonitoringTeam")}</h2>
+        <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "PrivateSectorMonitoringTeam"])}</h2>
         <div className="bio-grid-container">
           {renderBioBlock(
             "Nathan Duarte",
@@ -440,7 +447,7 @@ export default function About() {
             "https://twitter.com/SeanDMello1"
           )}
         </div>
-        <h2 className="team-name-text">{Translate("ScientificAdvisorsAndCollaborators")}</h2>
+        <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "ScientificAdvisorsAndCollaborators"])}</h2>
         <div className="bio-grid-container">
           {renderBioBlock("Tim Evans", [
             Translate("Biographies", ["Tim", "PartOne"]),

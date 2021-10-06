@@ -34,9 +34,21 @@
       },
       "SectionOne": "We are an interdisciplinary team of researchers and engineers at the University of Oxford, University of Toronto, University of Waterloo, University of Calgary, and Harvard University."
     },
+    "Headers": {
+      "AboutSeroTracker": "About SeroTracker",
+      "ContactUs": "Contact Us",
+      "OurTeam": "Our Team"
+    },
+    "SubHeaders": {
+      "DevelopmentTeam": "Development Team",
+      "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
+      "ResearchTeam": "Research Team",
+      "ScientificAdvisorsAndCollaborators": "Scientific Advisors and Project Staff",
+      "TeamLead": "Team Leads",
+      "WHOUnityTeam": "WHO Unity Collaboration Team"
+    },
     "Mapbox": "supports SeroTracker's mapping infrastructure."
   },
-  "AboutSeroTracker": "About SeroTracker",
   "Accept": "Accept",
   "AcceptCookies": "Accept Cookies",
   "AdditionalGraphs": "Additional Graphs",
@@ -123,7 +135,7 @@
   "CPPInvestmentBoard": "CPP Investment Board",
   "ChangeSettings": "Change Settings",
   "CoDirector": "Co-Director",
-  "ContactUs": "Contact Us",
+
   "CookiePolicy": "Cookie Policy",
   "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
   "Countries": "Countries",
@@ -155,7 +167,6 @@
   "Demographics": "Demographics",
   "DemographicsTooltip": "Filter on demographic variables, including population group, sex, and age group.",
   "Details": "Details",
-  "DevelopmentTeam": "Development Team",
   "DisclaimerFooter": " *The representatives of SeroTracker are listed on the SeroTracker website. ",
   "DisclaimerList1": "This website and its contents herein, including all data, mapping, and analysis (“Website”), copyright 2020 SeroTracker, all rights reserved, is provided solely for non-profit public health, educational, and academic research purposes. You should not rely on this Website for medical advice or guidance. ",
   "DisclaimerList2": "Use of the Website by commercial parties and/or in commerce without explicit written permission by a representative* of SeroTracker is strictly prohibited. Redistribution of the Website or the aggregated data set underlying the Website without explicit written permission by a representative* of SeroTracker is also strictly prohibited.",
@@ -370,7 +381,6 @@
     "Text": "The table below describes our findings, including detailed information about each study, each prevalence estimate, and the associated Risk of bias."
   },
   "OurProtocol": "Our protocol",
-  "OurTeam": "Our Team",
   "OverallRiskOfBias": "Overall Risk of bias",
   "Paper": "Paper",
   "PaperText": "Our first manuscript, describing lessons from serosurveys up to May 1, can be found on",
@@ -415,7 +425,6 @@
   "Prevalence": "Prevalence",
   "PrevalenceEstimateDetails": "Prevalence Estimate Details",
   "PrivacyPolicy": "Privacy Policy",
-  "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
   "Publication": "Publication",
   "Publications": "Publications",
   "Published": "Published",
@@ -430,7 +439,6 @@
   "PrivateSectorReports": "Private Sector Reports",
   "ReportsAndArticles": "Reports & Articles",
   "ResearchArticles": "Research Articles",
-  "ResearchTeam": "Research Team",
   "RiskOfBias": "Risk of bias",
   "RiskOfBiasOptions": {
     "High": "High",
@@ -447,7 +455,6 @@
     "Cumming": "Cumming School of Medicine",
     "Schulich": "Schulich School of Engineering"
   },
-  "ScientificAdvisorsAndCollaborators": "Scientific Advisors and Project Staff",
   "ScientificLead": "Scientific Lead",
   "Sensitivity": "Sensitivity",
   "SeroPrevalenceByCountry": "Aggregated Seroprevalence Estimates in Different Countries",
@@ -533,7 +540,6 @@
   "SubmitSource": "Submit source",
   "Summary": "Summary",
   "SummaryStatistics": "Summary Statistics",
-  "TeamLead": "Team Leads",
   "TemporaryMaintenance": "Temporary Maintenance",
   "TemporaryMaintenanceDescription": "We are down for scheduled maintenance, service will return shortly.",
   "TermsOfUse": "Terms of Use",

@@ -34,9 +34,21 @@
       },
       "SectionOne": "Nous sommes une équipe interdisciplinaire de chercheurs et d'ingénieurs à l'Université d’Oxford, l'Université de Toronto, l'Université de Waterloo, l'Université de Calgary et à l'Université de Harvard."
     },
+    "Headers": {
+      "AboutSeroTracker": "À propos de SeroTracker",
+      "ContactUs": "Nous contacter",
+      "OurTeam": "Notre équipe"
+    },
+    "SubHeaders": {
+      "DevelopmentTeam": "Équipe de développement",
+      "PrivateSectorMonitoringTeam": "Équipe de suivi du secteur privé",
+      "ResearchTeam": "Équipe de recherche",
+      "ScientificAdvisorsAndCollaborators": "Conseillers et collaborateurs scientifiques",
+      "TeamLead": "Responsables d'équipes",
+      "WHOUnityTeam": " Équipe de collaboration de \"WHO Unity\""
+    },
     "Mapbox": "prend en charge l'infrastructure de mappage de SeroTracker."
   },
-  "AboutSeroTracker": "À propos de SeroTracker",
   "Accept": "Accepter",
   "AcceptCookies": "Accepter les fichiers témoins",
   "Age": "Âge",
@@ -110,11 +122,10 @@
       "PartTwo": "Professeur associé, Université de Calgary"
     }
   },
-  "BlankUniversity": "Université de NOM",
+  "BlankUniversity": "Université de NAME",
   "ChangeLog": "Un registre de modifications",
   "ChangeSettings": "Modifier les paramètres",
   "CoDirector": "Codirecteur",
-  "ContactUs": "Nous contacter",
   "CookiePolicy": "Politique sur les fichiers témoins",
   "CookiePolicyBody": "Nous utilisons des fichiers témoins pour nous permettre de livrer une meilleure expérience d'utilisation et nous ne collectons jamais de données personnelles. En utilisant notre site Internet, vous confirmez que vous avez lu et accepté nos ",
   "Countries": "Pays",
@@ -147,7 +158,6 @@
   "Demographics": "Données démographiques",
   "DemographicsTooltip": "Filtrer les variables démographiques, y compris le groupe de population, le sexe et le groupe d'âge.",
   "Details": "Détails",
-  "DevelopmentTeam": "Équipe de développement",
   "DisclaimerBody": "Les noms des emplacements apparaissant sur le site Web correspondent aux désignations officielles de simplemaps.com. Le contenu du site n’exprime aucune opinion de la part de l’équipe de SeroTracker, de ses membres et des organisations auxquelles ceux-ci sont affiliés, ou du Groupe de travail sur l’immunité face à la COVID-19 en ce qui concerne la situation juridique d’un pays, d’un territoire ou de ses autorités. Nous ne garantissons pas l’absence d’erreur au sein des frontières, des noms géographiques et des données connexes s’affichant sur les cartes ou dans les listes, les tableaux, les documents et les bases de données du site Web. L’emploi de ces renseignements ne constitue par ailleurs pas un cautionnement officiel par l’équipe de SeroTracker, ses membres et les organisations auxquelles ceux-ci sont affiliés, ou le Groupe de travail sur l’immunité face à la COVID-19.",
   "DisclaimerFooter": "* Les représentants de SeroTracker sont listés sur le site Web de l’entreprise.",
   "DisclaimerList1": "Le présent site Web et son contenu, y compris toute donnée, carte et analyse (« site Web »), est la propriété intellectuelle de SeroTracker (2020, tous droits réservés). Le site Web est offert exclusivement pour un usage à but non lucratif à des fins de santé, d’éducation et de recherche. Le présent site Web ne constitue pas des conseils médicaux.",
@@ -370,7 +380,6 @@
     "Text": "Le tableau ci-dessous décrit nos résultats, y compris des informations détaillées pour chaque étude, chaque estimation de prévalence et les risques de partialité associés."
   },
   "OurProtocol": "Notre protocole",
-  "OurTeam": "Notre équipe",
   "OverallRiskOfBias": "Risque général de partialité",
   "Paper": "Article",
   "PaperText": "Vous trouverez notre premier manuscrit décrivant les enseignements des sérosondages jusqu'au 1er mai sur",
@@ -415,7 +424,7 @@
   "Prevalence": "Prévalence",
   "PrevalenceEstimateDetails": "Détails de l'estimation de prévalence",
   "PrivacyPolicy": "Politique de confidentialité",
-  "PrivateSectorMonitoringTeam": "Équipe de suivi du secteur privé",
+
   "Publication": "Publication",
   "Publications": "Publications",
   "Published": "Publié",
@@ -428,7 +437,6 @@
   "PrivateSectorReports": "Les bulletins du secteur privé",
   "ReportsAndArticles": "Rapports et articles",
   "ResearchArticles": "Articles de recherche",
-  "ResearchTeam": "Équipe de recherche",
   "RiskOfBias": "Risque de partialité",
   "RiskOfBiasOptions": {
     "High": "Élevé",
@@ -444,7 +452,6 @@
     "Cumming": "École de médecine Cumming",
     "Schulich": "École d'ingénieurs Schulich"
   },
-  "ScientificAdvisorsAndCollaborators": "Conseillers et collaborateurs scientifiques",
   "ScientificLead": "Responsable scientifique",
   "Sensitivity": "Sensibilité",
   "Seroprevalence": "Séroprévalence",
@@ -527,7 +534,6 @@
   "SubmitSource": "Soumettre un article",
   "Summary": "Résumé",
   "SummaryStatistics": "Statistiques sommaires",
-  "TeamLead": "Responsables d'équipes",
   "TemporaryMaintenance": "Entretien provisoire",
   "TemporaryMaintenanceDescription": "Nous sommes en cours de maintenance programmée, le service sera de retour sous peu.",
   "TermsOfUse": "Conditions d'utilisation",
