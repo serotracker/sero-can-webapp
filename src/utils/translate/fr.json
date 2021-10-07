@@ -14,11 +14,11 @@
       "PublicHealthAgency": "l'Agence de la santé publique du Canada",
       "SupportedBy": "SeroTracker dispose du soutien de",
       "ThroughThe": "à travers le",
-      "WHO1": "SeroTracker travaille avec",
-      "WorldHealthOrganization": "l’Organisation mondiale de la santé",
-      "WHO2": "de la santé pour visualiser et synthétiser les résultats des études de",
       "UnityStudies": "séroprévalence Unity.",
-      "WHO3": "SeroTracker et l’Organisation mondiale de la santé remercions le Ministère Fédéral Allemand de la Santé (BMG) Recherche et Développement COVID-19 pour le financement pour soutenir cet effort"
+      "WHO1": "SeroTracker travaille avec",
+      "WHO2": "de la santé pour visualiser et synthétiser les résultats des études de",
+      "WHO3": "SeroTracker et l’Organisation mondiale de la santé remercions le Ministère Fédéral Allemand de la Santé (BMG) Recherche et Développement COVID-19 pour le financement pour soutenir cet effort",
+      "WorldHealthOrganization": "l’Organisation mondiale de la santé"
     },
     "ContactSection": {
       "BulletPointFive": {
@@ -41,14 +41,14 @@
     },
     "SubHeaders": {
       "Alumni": "Anciens",
-      "DevelopmentTeam": "Équipe de développement",
-      "PrivateSectorMonitoringTeam": "Équipe de suivi du secteur privé",
-      "ProjectStaff": "Personnel du projet",
       "DataCuration": "Équipe de synthèse des preuves et de conservation des données",
       "DataInfrastructure": "\nÉquipe d'infrastructure de données et d'analyse",
+      "DevelopmentTeam": "Équipe de développement",
+      "GlobalPartnerships": "Équipe des partenariats mondiaux pour la santé",
+      "PrivateSectorMonitoringTeam": "Équipe de suivi du secteur privé",
+      "ProjectStaff": "Personnel du projet",
       "ScientificAdvisors": "Conseillers et collaborateurs scientifiques",
-      "TeamLead": "Responsables d'équipes",
-      "GlobalPartnerships": "Équipe des partenariats mondiaux pour la santé"
+      "TeamLead": "Responsables d'équipes"
     },
     "Mapbox": "prend en charge l'infrastructure de mappage de SeroTracker."
   },
@@ -94,7 +94,6 @@
   "CountriesAndAreas": "Pays et régions",
   "CountryEstimatesExist": "Pays dotés d'estimations de séroprévalence",
   "CountryEstimatesNotExist": "",
-  "NotApplicable": "",
   "CountryOptions": {
     "England": "Angleterre",
     "Iran": "Iran",
@@ -276,6 +275,7 @@
   "Legalese": "Jargon juridique",
   "LocalEstimateRange": "Plage d'estimation locale",
   "LocalEstimates": "Estimations locales",
+  "LocalStudyDetails": "Détails de l'étude locale",
   "Location": "Lieu",
   "Manufacturers": "Fabricants",
   "ManuscriptAndPreprint": "Manuscrit et préimpression",
@@ -305,12 +305,7 @@
   "NationalEstimateRange": "Plage d'estimation nationale",
   "NationalEstimates": "Estimations nationales",
   "NationalStudyDetails": "Détails de l'étude nationale",
-  "RegionalStudyDetails": "Détails de l'étude nationale",
-  "SublocalStudyDetails": "Détails de l'étude sous-locale",
-  "LocalStudyDetails": "Détails de l'étude locale",
-  "StudyName": "Nom de l'étude",
-  "StudyPins": "Afficher les lieux d'étude",
-  "Sublocal": "Sous-local",
+  "NotApplicable": "",
   "NoData": "Aucune donnée",
   "NoDataAnalyze": {
     "PartOne": "Il n'y pas de données correspondant a vos filtres.",
@@ -391,6 +386,7 @@
   "ReferencesTable": "Table de références",
   "RegionalEstimateRange": "Plage d'estimation régionale",
   "RegionalEstimates": "Estimations régionales",
+  "RegionalStudyDetails": "Détails de l'étude nationale",
   "RegulatoryApproval": "Autorisation réglementaire",
   "Report": "Rapport",
   "PrivateSectorReports": "Les bulletins du secteur privé",
@@ -488,8 +484,12 @@
     "Ongoing": "En cours"
   },
   "StudyType": "Type d'étude",
+  "StudyName": "Nom de l'étude",
+  "StudyPins": "Afficher les lieux d'étude",
+  "Sublocal": "Sous-local",
   "SublocalEstimateRange": "Plage d'estimation sous-locale",
   "SublocalEstimates": "Estimations sous-locales",
+  "SublocalStudyDetails": "Détails de l'étude sous-locale",
   "SubmitSource": "Soumettre un article",
   "Summary": "Résumé",
   "SummaryStatistics": "Statistiques sommaires",
