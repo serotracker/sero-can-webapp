@@ -64,6 +64,7 @@
   },
   "Analyze": "Analyze",
   "Article": "Article",
+  "Authors": "Authors",
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
   "BestSeroprevalenceEstimate": "Best seroprevalence estimate",
   "VaccineRolloutStatus": "Vaccine availability during study",
@@ -272,14 +273,14 @@
     "EconomistDeathToll": "How we estimated the true death toll of the pandemic"
   },
   "IndustryReportTitles": {
-    "AugustReport": "August Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "AugustReport": "August Report",
     "BloodBank": "SeroTracker Blood Bank Seroprevalence Preliminary Report",
-    "JulyReport": "July Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "JuneReport": "June Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "MayReport": "May Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "OctoberReport": "October Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "PreliminaryReport": "Preliminary Report - COVID-19 Screening & Testing in Canada’s Private Sector",
-    "SeptemberReport": "September Report - COVID-19 Screening & Testing in Canada’s Private Sector",
+    "JulyReport": "July Report",
+    "JuneReport": "June Report",
+    "MayReport": "May Report",
+    "OctoberReport": "October Report",
+    "PreliminaryReport": "Preliminary Report",
+    "SeptemberReport": "September Report",
     "YearInReview2020": "SeroTracker 2020 Year in Review",
     "InsuringTheEconomy": "Insuring the Economy Against a Second Pandemic Wave",
     "InventoryEvidenceSynthesis": "Inventory of Best Evidence Synthesis"
@@ -291,6 +292,7 @@
     "PlosOnePub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis"
   },
   "BiblioDigestTitles": {
+    "October": "October Literature Update Report",
     "September": "September Literature Update Report",
     "August": "August Literature Update Report",
     "July": "July Literature Update Report",
@@ -329,6 +331,7 @@
   "Map": "Map",
   "Media": "Media",
   "MediaMentions": "Media Mentions",
+  "MonthlyReports": "Monthly Reports",
   "Months": {
     "January": "January",
     "February": "February",
@@ -416,6 +419,14 @@
   "PrivacyPolicy": "Privacy Policy",
   "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
   "Publication": "Publication",
+  "PublicationDescriptions": {
+    "Publications": "Learn more about SeroTracker’s impact in research articles, summaries, and media mentions.",
+    "ResearchArticles": "Peer-reviewed research papers published by the SeroTracker team.",
+    "LiteratureUpdateReports": "Monthly overviews and updates on trends in serosurvey literature and WHO-supplied metrics.",
+    "PrivateSectorReports": "Updates on COVID-19 Screening & Testing in Canada’s Private Sector.",
+    "MediaMentions": "Worldwide media publications featuring SeroTracker.",
+    "MonthlyReports": "COVID-19 Screening & Testing in Canada’s Private Sector"
+  },
   "Publications": "Publications",
   "Published": "Published",
   "References": "References",
