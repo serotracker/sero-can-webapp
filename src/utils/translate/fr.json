@@ -40,12 +40,15 @@
       "OurTeam": "Notre équipe"
     },
     "SubHeaders": {
+      "Alumni": "Anciens",
       "DevelopmentTeam": "Équipe de développement",
       "PrivateSectorMonitoringTeam": "Équipe de suivi du secteur privé",
-      "ResearchTeam": "Équipe de recherche",
-      "ScientificAdvisorsAndCollaborators": "Conseillers et collaborateurs scientifiques",
+      "ProjectStaff": "Personnel du projet",
+      "DataCuration": "Équipe de synthèse des preuves et de conservation des données",
+      "DataInfrastructure": "\nÉquipe d'infrastructure de données et d'analyse",
+      "ScientificAdvisors": "Conseillers et collaborateurs scientifiques",
       "TeamLead": "Responsables d'équipes",
-      "WHOUnityTeam": " Équipe de collaboration de \"WHO Unity\""
+      "GlobalPartnerships": "Équipe des partenariats mondiaux pour la santé"
     },
     "Mapbox": "prend en charge l'infrastructure de mappage de SeroTracker."
   },
@@ -76,53 +79,8 @@
   "Analyze": "Analyser",
   "Article": "Article",
   "AuthorAndLeadOrganizationNotReported": "Auteur et organisation responsable non indiqués",
-  "Biographies": {
-    "BruceM": {
-      "PartOne": "directeur scientifique (Stratégie), Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Professeur, Université McGill"
-    },
-    "CatherineE": {
-      "PartOne": "Operations Manager, Centre d'informatique de la santé",
-      "PartTwo": "Professeur adjoint, Université de Calgary"
-    },
-    "CatherineH": {
-      "PartOne": "Co-président, Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Professeur, Université McGill"
-    },
-    "DavidB": {
-      "PartOne": "Gestionnaire de programme, Gestion / Analyse des données, Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Professeur, Université McGill"
-    },
-    "DavidN": {
-      "PartOne": "Co-présidente, Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Président émérite, Université de Toronto"
-    },
-    "ErinO": {
-      "PartOne": "Chef du projet, Centre d'informatique de la santé",
-      "PartTwo": "Université de Calgary"
-    },
-    "Jesse": {
-      "PartOne": "Scientifique, Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Professeur adjoint, Université McGill"
-    },
-    "Jonathan": {
-      "PartOne": "Gestionnaire de programme, Épidémiologie / Méthodes, Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Professeur associé, Université McGill"
-    },
-    "Matthew": {
-      "PartOne": "Gestionnaire de programme, Diagnostics / Tests, Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Professeur adjoint, Université McGill"
-    },
-    "Tim": {
-      "PartOne": "Directeur, École de santé des populations et de santé mondiale, Université McGill",
-      "PartTwo": "Directeur général, Groupe de travail sur l’immunité face à la COVID-19"
-    },
-    "Tyler": {
-      "PartOne": "Directeur adjoint, Centre d'informatique de santé",
-      "PartTwo": "Professeur associé, Université de Calgary"
-    }
-  },
   "BlankUniversity": "Université de NAME",
+  "CentreHealthInformatics": "Centre d'informatique de la santé",
   "ChangeLog": "Un registre de modifications",
   "ChangeSettings": "Modifier les paramètres",
   "CoDirector": "Codirecteur",
@@ -144,6 +102,7 @@
     "UnitedStates": "États-Unis"
   },
   "CPPInvestmentBoard": "Office d'investissement du RPC",
+  "COVIDImmunityTaskForce": "Groupe de travail sur l'immunité face à COVID-19",
   "Dashboard": "Tableau de bord",
   "Data": "Données",
   "DatabaseUptoDateTo": "Base de données à jour pour",

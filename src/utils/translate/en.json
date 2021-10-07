@@ -40,12 +40,15 @@
       "OurTeam": "Our Team"
     },
     "SubHeaders": {
+      "Alumni": "Alumni",
       "DevelopmentTeam": "Development Team",
       "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
-      "ResearchTeam": "Research Team",
-      "ScientificAdvisorsAndCollaborators": "Scientific Advisors and Project Staff",
+      "ProjectStaff": "Project Staff",
+      "DataCuration": "Evidence Synthesis and Data Curation Team",
+      "DataInfrastructure": "Data Infrastructure and Analytics Team",
+      "ScientificAdvisors": "Scientific Advisors",
       "TeamLead": "Team Leads",
-      "WHOUnityTeam": "WHO Unity Collaboration Team"
+      "GlobalPartnerships": "Global Health Partnerships Team"
     },
     "Mapbox": "supports SeroTracker's mapping infrastructure."
   },
@@ -82,60 +85,14 @@
   "VaccinationPolicyLow": "Vaccines unavailable",
   "VaccinationPolicyMed": "Vaccines available to certain groups",
   "VaccinationPolicyHigh": "Vaccines available to broader population",
-  "Biographies": {
-    "BruceM": {
-      "PartOne": "Associate Scientific Director (Strategy), COVID-19 Immunity Task Force",
-      "PartTwo": "Professor, McGill University"
-    },
-    "CatherineE": {
-      "PartOne": "Operations Manager, Centre for Health Informatics",
-      "PartTwo": "Adjunct Assistant Professor, University of Calgary"
-    },
-    "CatherineH": {
-      "PartOne": "Co-Chair, COVID-19 Immunity Task Force",
-      "PartTwo": "Professor, McGill University"
-    },
-    "DavidB": {
-      "PartOne": "Scientific Program Manager, Data Management/Analytics, COVID-19 Immunity Task Force",
-      "PartTwo": "Professor, McGill University"
-    },
-    "DavidN": {
-      "PartOne": "Co-Chair, COVID-19 Immunity Task Force",
-      "PartTwo": "President Emeritus, University of Toronto"
-    },
-    "ErinO": {
-      "PartOne": "Project Lead, Centre for Health Informatics",
-      "PartTwo": "University of Calgary"
-    },
-    "Jesse": {
-      "PartOne": "Scientist, COVID-19 Immunity Task Force",
-      "PartTwo": "Assistant Professor, McGill University"
-    },
-    "Jonathan": {
-      "PartOne": "Scientific Program Manager, Epidemiology/Methods, COVID-19 Immunity Task Force",
-      "PartTwo": "Associate Professor, McGill University"
-    },
-    "Matthew": {
-      "PartOne": "Scientific Program Manager, Diagnostics/Testing, COVID-19 Immunity Task Force",
-      "PartTwo": "Assistant Professor, McGill University"
-    },
-    "Tim": {
-      "PartOne": "Director, School of Population and Global Health, McGill University",
-      "PartTwo": "Executive Director, Canadian COVID-19 Immunity Task Force"
-    },
-    "Tyler": {
-      "PartOne": "Associate Director, Centre for Health Informatics",
-      "PartTwo": "Associate Professor, University of Calgary"
-    }
-  },
   "BlankUniversity": "NAME University",
   "ByCountry": "By Country",
   "ByPopulation": "By Population",
+  "CentreHealthInformatics": "Centre for Health Informatics",
   "ChangeLog": "Change log",
   "CPPInvestmentBoard": "CPP Investment Board",
   "ChangeSettings": "Change Settings",
   "CoDirector": "Co-Director",
-
   "CookiePolicy": "Cookie Policy",
   "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
   "Countries": "Countries",
@@ -153,6 +110,7 @@
     "Scotland": "Scotland",
     "UnitedStates": "United States"
   },
+  "COVIDImmunityTaskForce": "COVID-19 Immunity Task Force",
   "Dashboard": "Dashboard",
   "Data": "Data",
   "DatabaseUptoDateTo": "Last updated",
