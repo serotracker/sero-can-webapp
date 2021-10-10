@@ -1,4 +1,4 @@
-import { AggregatedRecord, AggregationFactor, AirtableRecord, FiltersConfig, FilterType, StudiesFilters } from "./types";
+import { AirtableRecord, FiltersConfig, StudiesFilters } from "./types";
 import { formatDates } from "./utils/utils";
 import {parseISO, format } from "date-fns";
 
@@ -113,8 +113,7 @@ export default class httpClient {
         return reqBody;
     }
 
-    
-    async getAirtableRecords(filters: FiltersConfig,
+    async getExploreData(filters: FiltersConfig,
         only_explore_columns: Boolean=false) {
         const reqBody: Record<string, any> = this.preparePostBody(filters);
 
@@ -123,46 +122,20 @@ export default class httpClient {
         }
 
         const response = await this.httpPost('/data_provider/records', reqBody)
-        if (!response) {
-            return [];
+        if (!response || !response.records || !response.country_seroprev_summary) {
+            return {
+                records: [],
+                estimateGradePrevalences: []
+            };
         }
-        const filtered_records = response.map((item: Record<string, any>) => {
+
+        const records = response.records!.map((item: Record<string, any>) => {
             // Convert response to AirtableRecord type
             const record: AirtableRecord = item as AirtableRecord;
             return record;
         });
-        // Remove timestamp from updated at string
 
-        return filtered_records;
-    }
-
-    async getAirtableRecordsForCountry(filters: StudiesFilters) {
-
-        const reqBody: Record<string, any> = {
-            filters: filters,
-            include_subgeography_estimates: true,
-        }
-
-        const response = await this.httpPost('/data_provider/records', reqBody)
-        if (!response) {
-            return [];
-        }
-
-        const filtered_records = response.map((item: Record<string, any>) => {
-            return item as AirtableRecord;
-        });
-
-        return filtered_records;
-    }
-
-    async getEstimateGrades(filters: FiltersConfig) {
-        const reqBody: Record<string, any> = this.preparePostBody(filters);
-
-        const response = await this.httpPost('/data_provider/country_seroprev_summary', reqBody);
-        if (!response) {
-            return [];
-        }
-        const formattedResponse = response.map((record: Record<string, any>) => {
+        const estimateGradePrevalences = response.country_seroprev_summary!.map((record: Record<string, any>) => {
             // Convert response to AlternateAggregatedRecord type         
             const estimateSummary = record.seroprevalence_estimate_summary;
             return {
@@ -193,6 +166,26 @@ export default class httpClient {
             }
         });
 
-        return formattedResponse;
+        return { records, estimateGradePrevalences };
+    }
+
+    async getAirtableRecordsForCountry(filters: StudiesFilters) {
+
+        const reqBody: Record<string, any> = {
+            filters: filters,
+            include_subgeography_estimates: true,
+            calculate_country_seroprev_summaries: false
+        }
+
+        const response = await this.httpPost('/data_provider/records', reqBody)
+        if (!response || !response.records) {
+            return [];
+        }
+
+        const filtered_records = response.records!.map((item: Record<string, any>) => {
+            return item as AirtableRecord;
+        });
+
+        return filtered_records;
     }
 }

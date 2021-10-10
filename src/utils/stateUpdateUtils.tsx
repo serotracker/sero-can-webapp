@@ -29,15 +29,9 @@ export const updateFilters = async (
   const updatedFilters: FiltersConfig = Object.assign({}, filters);
   updatedFilters[filterType] = filterValue;
   sendFiltersAnalyticsEvent(updatedFilters);
-
-  const api = new httpClient()
-  // Update current records when called
-  const [records,
-    estimateGradePrevalences] = await
-      Promise.all([
-        api.getAirtableRecords(updatedFilters, true),
-        api.getEstimateGrades(updatedFilters)
-      ]);
+  
+  const api = new httpClient();
+  const { records, estimateGradePrevalences } = await api.getExploreData(filters, true);
  
   dispatch({
     type: 'GET_AIRTABLE_RECORDS',
@@ -69,10 +63,7 @@ export const initializeData = async (dispatch: any, filters: FiltersConfig, page
     }
   })
   
-  const [records,
-    estimateGradePrevalences] = await Promise
-      .all([api.getAirtableRecords(filters, true),
-      api.getEstimateGrades(filters)]);
+  const { records, estimateGradePrevalences } = await api.getExploreData(filters, true);
 
   dispatch({
     type: 'GET_AIRTABLE_RECORDS',
