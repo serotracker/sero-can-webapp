@@ -15,8 +15,7 @@ import { Footer } from "./components/shared/Footer";
 import Analyze from "./components/pages/Analyze"
 import { AppContext, getEmptyFilters } from "./context";
 import httpClient from "./httpClient";
-import { LanguageType, PageStateEnum } from "./types";
-import { initializeData } from "./utils/stateUpdateUtils";
+import { LanguageType } from "./types";
 import { setLanguageType } from "./utils/translate/translateService";
 import Partnerships from "components/pages/Partnerships/Partnerships";
 

@@ -10,8 +10,8 @@ import MaintenanceModal from "../../shared/MaintenanceModal";
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import Filters from "../../sidebar/right-sidebar/Filters";
 import Legend from "components/map/Legend";
-import {initializeData} from "../../../utils/stateUpdateUtils";
-import {sendFiltersAnalyticsEvent, sendUnityAnalyticsEvent} from "../../../utils/analyticsUtils";
+import { fetchExploreData } from "../../../utils/stateUpdateUtils";
+import { sendFiltersAnalyticsEvent, sendUnityAnalyticsEvent } from "../../../utils/analyticsUtils";
 import Translate from "../../../utils/translate/translateService";
 
 interface ExploreProps {
@@ -40,7 +40,7 @@ export default function Explore({initialFilters}: ExploreProps) {
                 sendUnityAnalyticsEvent();
             }
         }
-        initializeData(dispatch, state.explore.filters, PageStateEnum.explore)
+        fetchExploreData(dispatch, state.explore.filters, PageStateEnum.explore)
         // We only want this to run once so we pass no dependencies. Do not remove this
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
