@@ -1,0 +1,35 @@
+.pulse {
+  cursor: pointer;
+  box-shadow: 0 0 0 #65BEE9;
+  animation: pulse 1s;
+  animation-iteration-count: 5;
+}
+.pulse:hover {
+  animation: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(101, 190, 233, 0.8);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 14px rgba(101, 190, 233, 0.4);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(101, 190, 233, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(101, 190, 233, 0.8);
+    box-shadow: 0 0 0 0 rgba(101, 190, 233, 0.4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 14px rgba(101, 190, 233, 0.4);
+    box-shadow: 0 0 0 14px rgba(101, 190, 233, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(101, 190, 233, 0);
+    box-shadow: 0 0 0 0 rgba(101, 190, 233, 0);
+  }
+}

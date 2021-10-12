@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import "animations";
 @import "typography";
 
 .App {
@@ -249,10 +250,6 @@ Footer a{
     align-content: flex-start;
 }
 
-.space-between {
-    justify-content: space-between;
-}
-
 .space-evenly {
     justify-content: space-evenly;
 }
@@ -377,3 +374,10 @@ Footer a{
     left: 10px;
 }
 
+.link {
+    color: #0066CC;
+    cursor: pointer;
+    &:hover {
+        color: #2f00a1;
+    }
+}

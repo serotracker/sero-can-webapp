@@ -18,7 +18,7 @@
 .dashboard {
   max-height: calc(100% - 100px);
   height: 100%;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .static-content {

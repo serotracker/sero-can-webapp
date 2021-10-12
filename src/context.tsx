@@ -51,6 +51,7 @@ const initialState: State = {
   updatedAt: "",
   showCookieBanner: false,
   countries: [],
+  pulsateUnityFilter: false,
 };
 
 const reducer = (state: State, action: Record<string, any>): State => {
@@ -167,6 +168,12 @@ const reducer = (state: State, action: Record<string, any>): State => {
           },
         },
       };
+    }
+    case "SET_UNITY_FILTER_PULSATE": {
+      return {
+        ...state,
+        pulsateUnityFilter: action.payload
+      }
     }
     default:
       return state;
