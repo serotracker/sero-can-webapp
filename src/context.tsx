@@ -50,7 +50,6 @@ const initialState: State = {
   language: LanguageType.english,
   updatedAt: "",
   showCookieBanner: false,
-  countries: [],
   pulsateUnityFilter: false,
 };
 
@@ -73,11 +72,6 @@ const reducer = (state: State, action: Record<string, any>): State => {
       pageState.estimateGradePrevalences = estimateGradePrevalences;
       return newState;
     }
-    case "UPDATE_COUNTRIES_JSON":
-      return {
-        ...state,
-        countries: action.payload,
-      };
     case "SELECT_LANGUAGE":
       return {
         ...state,
