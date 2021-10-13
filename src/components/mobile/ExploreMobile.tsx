@@ -1,6 +1,6 @@
 import { faTimes} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, {  useState, useContext } from "react";
+import React, {useState, useContext, useEffect} from "react";
 import { AppContext } from "context";
 import { Menu, Segment, Sidebar, Icon } from "semantic-ui-react";
 import { PageStateEnum } from "../../types";
@@ -13,7 +13,6 @@ import Legend from "components/map/Legend";
 import Translate from "utils/translate/translateService";
 import WhoLogo from "components/shared/WhoLogo"
 
-
 export default function ExploreMobile() {
   const [showMobileFilters, setShowFilters] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
@@ -24,8 +23,12 @@ export default function ExploreMobile() {
     setShowSummary(showSummary);
   }
 
+  useEffect(() => {
+    setShowFilters(state.pulsateUnityFilter);
+  }, [state.pulsateUnityFilter])
+
   return (
-    <div className="fill flex">
+    <div className="fill flex" style={{height: "100%"}}>
       <Sidebar.Pushable as={Segment} className="fill flex">
         <Sidebar
           as={Menu}
@@ -37,7 +40,7 @@ export default function ExploreMobile() {
           visible={showMobileFilters}
           width='wide'
         >
-        <Filters page={PageStateEnum.explore}/>
+        <Filters page={PageStateEnum.explore} />
         <Datepicker page={PageStateEnum.explore}/>
           <FontAwesomeIcon
             icon={faTimes}

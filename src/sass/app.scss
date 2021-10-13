@@ -1,4 +1,6 @@
 @import './variables.scss';
+@import "animations";
+@import "typography";
 
 .App {
     flex: 1 1 auto;
@@ -248,10 +250,6 @@ Footer a{
     align-content: flex-start;
 }
 
-.space-between {
-    justify-content: space-between;
-}
-
 .space-evenly {
     justify-content: space-evenly;
 }
@@ -374,4 +372,12 @@ Footer a{
 .filter-btn {
     top: 10px;
     left: 10px;
+}
+
+.link {
+    color: #0066CC;
+    cursor: pointer;
+    &:hover {
+        color: #2f00a1;
+    }
 }
