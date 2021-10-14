@@ -93,7 +93,6 @@ export type State = {
   calendarStartDates: StartDates;
   language: LanguageType;
   showCookieBanner: boolean;
-  countries: any;
   pulsateUnityFilter: boolean;
 };
 
