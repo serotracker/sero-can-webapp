@@ -2,6 +2,12 @@ import { AirtableRecord, FiltersConfig, StudiesFilters } from "./types";
 import { formatDates } from "./utils/utils";
 import {parseISO, format } from "date-fns";
 
+// TODO: Change this back to /data_provider/records once that endpoint can be updated fully
+const RECORDS_URL = "/data_provider/dashboard_records";
+const RECORD_DETAILS_URL = "/data_provider/record_details";
+const FILTER_OPTIONS_URL = "/data_provider/filter_options";
+
+
 export default class httpClient {
 
     async httpGet(url: string, useAppRoute: boolean) {
@@ -59,7 +65,7 @@ export default class httpClient {
     }
 
     async getRecordDetails(source_id : string) {
-        const response = await this.httpGet(`/data_provider/record_details/${source_id}`, true);
+        const response = await this.httpGet(`${RECORD_DETAILS_URL}/${source_id}`, true);
         if (!response) {
             return null;
         }
@@ -68,7 +74,7 @@ export default class httpClient {
     }
 
     async getAllFilterOptions() {
-        const response = await this.httpGet('/data_provider/filter_options', true);
+        const response = await this.httpGet(FILTER_OPTIONS_URL, true);
 
         const options: Record<string, any> = {}
         for(let k in response){
@@ -121,7 +127,7 @@ export default class httpClient {
             reqBody.columns = ["source_id", "estimate_grade", "pin_latitude", "pin_longitude"];
         }
 
-        const response = await this.httpPost('/data_provider/records', reqBody)
+        const response = await this.httpPost(RECORDS_URL, reqBody)
         if (!response || !response.records || !response.country_seroprev_summary) {
             return {
                 records: [],
@@ -181,7 +187,7 @@ export default class httpClient {
             include_subgeography_estimates: true,
         }
 
-        const response = await this.httpPost('/data_provider/records', reqBody)
+        const response = await this.httpPost(RECORDS_URL, reqBody)
         if (!response || !response.records || !response.country_seroprev_summary) {
             return {
                 records: [],
