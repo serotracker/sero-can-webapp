@@ -129,7 +129,7 @@ export default function Data() {
           </div>
 
           <div className={isMobileDeviceOrTablet ? "pt-3" : "pt-0"} id={PAGE_HASHES.Data.FAQ}>
-            <h1 >{Translate("FAQ")}</h1>
+            <h1 >{Translate("FrequentlyAskedQuestions")}</h1>
             <DataDropdowns />
           </div>
 

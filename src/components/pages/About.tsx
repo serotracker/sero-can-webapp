@@ -144,7 +144,7 @@ export default function About() {
           </a>{" "}
           {Translate("AboutPage", ["Mapbox"])}
         </p>
-        <h2 id={PAGE_HASHES.About.Contact}>{Translate("ContactUs")}</h2>
+        <h2 id={PAGE_HASHES.About.ContactUs}>{Translate("ContactUs")}</h2>
         <div>
           <p>
             {Translate("AboutPage", ["ContactSection", "BulletPointOne", "PartOne"], null, [true, true])}

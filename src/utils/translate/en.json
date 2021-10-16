@@ -239,7 +239,8 @@
     "Article": "article"
   },
   "French": "Français",
-  "FAQ": "Frequently Asked Questions",
+  "FAQ": "FAQ",
+  "FrequentlyAskedQuestions": "Frequently Asked Questions",
   "GeneralTerms": "General Terms",
   "Geographies": "Geographies",
   "Geography": "Geography",
@@ -541,6 +542,7 @@
   "SubmitSource": "Submit source",
   "Summary": "Summary",
   "SummaryStatistics": "Summary Statistics",
+  "Team": "Team",
   "TeamLead": "Team Leads",
   "TemporaryMaintenance": "Temporary Maintenance",
   "TemporaryMaintenanceDescription": "We are down for scheduled maintenance, service will return shortly.",
