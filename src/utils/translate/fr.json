@@ -39,6 +39,7 @@
   "AboutSeroTracker": "À propos de SeroTracker",
   "Accept": "Accepter",
   "AcceptCookies": "Accepter les fichiers témoins",
+  "AdditionalGraphs": "Graphiques supplémentaires",
   "Age": "Âge",
   "AgeGroup": "Groupe d'âge",
   "AgeOptions": {
@@ -112,6 +113,8 @@
     }
   },
   "BlankUniversity": "Université de NOM",
+  "ByCountry": "Par pays",
+  "ByPopulation": "Par population",
   "ChangeLog": "Un registre de modifications",
   "ChangeSettings": "Modifier les paramètres",
   "CoDirector": "Codirecteur",
@@ -202,6 +205,7 @@
     }
   },
   "DownloadCsv": "Télécharger CSV",
+  "DownloadData": "Télécharger les données",
   "EconomicsTeam": "Équipe économique",
   "EndDate": "Date de fin",
   "English": "anglais",
@@ -230,6 +234,8 @@
     "Article": "article"
   },
   "French": "français",
+  "FAQ": "FAQ",
+  "FrequentlyAskedQuestions": "Foire aux questions",
   "GeneralTerms": "Conditions générales",
   "Geographies": "Géographies",
   "Geography": "Géographie",
@@ -316,6 +322,7 @@
     "FirstParagraph": "méthodes complètes",
     "SecondParagraph": "(de l’annexe à notre revue systématique complète et méta-analyse des enquêtes sérologiques SARS-CoV-2)"
   },
+  "Map": "Carte",
   "Media": "Médias",
   "MediaMentions": "Mentions dans les médias",
   "MonthlyReports": "Rapports mensuels",
@@ -535,6 +542,7 @@
   "SubmitSource": "Soumettre un article",
   "Summary": "Résumé",
   "SummaryStatistics": "Statistiques sommaires",
+  "Team": "L'équipe",
   "TeamLead": "Responsables d'équipes",
   "TemporaryMaintenance": "Entretien provisoire",
   "TemporaryMaintenanceDescription": "Nous sommes en cours de maintenance programmée, le service sera de retour sous peu.",

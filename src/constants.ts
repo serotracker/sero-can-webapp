@@ -50,6 +50,6 @@ export const PAGE_HASHES = {
     },
     [PAGES.About]: {
         Team: "Team",
-        Contact: "Contact"
+        ContactUs: "ContactUs"
     }
 }
