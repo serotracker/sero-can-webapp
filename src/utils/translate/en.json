@@ -14,11 +14,11 @@
       "PublicHealthAgency": "Public Health Agency of Canada",
       "SupportedBy": "SeroTracker is supported by the",
       "ThroughThe": "through the",
-      "WHO1": "SeroTracker is working with the",
-      "WorldHealthOrganization": "World Health Organization",
-      "WHO2": "to visualize and synthesize results from the",
       "UnityStudies": "Unity seroprevalence studies.",
-      "WHO3": "SeroTracker and the World Health Organization are grateful for German Federal Ministry of Health (BMG) COVID-19 Research and Development funding to support this effort."
+      "WHO1": "SeroTracker is working with the",
+      "WHO2": "to visualize and synthesize results from the",
+      "WHO3": "SeroTracker and the World Health Organization are grateful for German Federal Ministry of Health (BMG) COVID-19 Research and Development funding to support this effort.",
+      "WorldHealthOrganization": "World Health Organization"
     },
     "ContactSection": {
       "BulletPointFive": {
@@ -41,14 +41,13 @@
     },
     "SubHeaders": {
       "Alumni": "Alumni",
-      "DevelopmentTeam": "Development Team",
-      "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
-      "ProjectStaff": "Project Staff",
       "DataCuration": "Evidence Synthesis and Data Curation Team",
       "DataInfrastructure": "Data Infrastructure and Analytics Team",
+      "GlobalPartnerships": "Global Health Partnerships Team",
+      "DevelopmentTeam": "Development Team",
+      "ProjectStaff": "Project Staff",
       "ScientificAdvisors": "Scientific Advisors",
-      "TeamLead": "Team Leads",
-      "GlobalPartnerships": "Global Health Partnerships Team"
+      "TeamLead": "Team Leads"
     },
     "Mapbox": "supports SeroTracker's mapping infrastructure."
   },
@@ -81,10 +80,6 @@
   "Article": "Article",
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
   "BestSeroprevalenceEstimate": "Best seroprevalence estimate",
-  "VaccineRolloutStatus": "Vaccine availability during study",
-  "VaccinationPolicyLow": "Vaccines unavailable",
-  "VaccinationPolicyMed": "Vaccines available to certain groups",
-  "VaccinationPolicyHigh": "Vaccines available to broader population",
   "BlankUniversity": "NAME University",
   "ByCountry": "By Country",
   "ByPopulation": "By Population",
@@ -103,7 +98,6 @@
   "CountriesAndAreas": "Countries and Areas",
   "CountryEstimatesExist": "Seroprevalence Estimates",
   "CountryEstimatesNotExist": "No Seroprevalence Estimates",
-  "NotApplicable": "Not Applicable",
   "CountryOptions": {
     "England": "England",
     "Iran": "Iran",
@@ -324,6 +318,7 @@
     "PartOne": "No data is available for the filters you've specified.",
     "PartTwo": "Please try a different filter combination."
   },
+  "NotApplicable": "Not Applicable",
   "NotFound": {
     "PartOne": "Page Not Found",
     "PartTwo": "Uh oh, we couldn't find the page you're looking for! Please try another URL or visit our Explore page to get back on track.",
@@ -534,6 +529,10 @@
   "UnityStudiesOnlyLong": "Show WHO Unity-aligned studies only",
   "UniversityOf": "University of NAME",
   "UseOfData": "Use of this data is governed by SeroTracker's",
+  "VaccineRolloutStatus": "Vaccine availability during study",
+  "VaccinationPolicyLow": "Vaccines unavailable",
+  "VaccinationPolicyMed": "Vaccines available to certain groups",
+  "VaccinationPolicyHigh": "Vaccines available to broader population",
   "ViewPartnership": "View Partnership",
   "ViewFile": "View File",
   "ViewHere": "View Here",
