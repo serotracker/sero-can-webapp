@@ -8,6 +8,7 @@ import Translate from "../../utils/translate/translateService";
 import WhoLogo from "components/shared/WhoLogo";
 import "./static.css";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
+import {Sponsers} from "../shared/Footer"
 import HealthAgencyLogo from "../../assets/images/public-health-agency.png";
 import UcalgaryLogo from "../../assets/images/University-Of-Calgary-Logo.png";
 
@@ -77,39 +78,7 @@ export default function About() {
         <b>{Translate("AboutPage", ["AboutSection", "PartOne"])}</b>
           {Translate("AboutPage", ["AboutSection", "PartTwo"], null, [true, false])}
         </p>
-        <p>
-          <a
-            href="https://www.covid19immunitytaskforce.ca/"
-            className="pr-2"
-            target="__blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="https://www.covid19immunitytaskforce.ca/wp-content/themes/pena-lite-child/CITF_logo_ENG.svg"
-              alt="COVID-19 Immunity Task Force Logo"
-              height="45"
-            ></img>
-          </a>
-          <a
-            href="https://www.canada.ca/en/public-health.html/"
-            className="px-2"
-            target="__blank"
-            rel="noopener noreferrer"
-          >
-            <img src={HealthAgencyLogo} alt="Public Health Agency Logo" height="45"></img>
-          </a>
-          <a
-            href="https://cumming.ucalgary.ca/centres/centre-health-informatics"
-            className="px-2"
-            target="__blank"
-            rel="noopener noreferrer"
-          >
-            <img src={UcalgaryLogo} alt="Centre for Health Informatics" height="40"></img>
-          </a>
-          <a href="https://www.who.int/" className="px-2" target="__blank" rel="noopener noreferrer">
-            <WhoLogo height="50"/>
-          </a>
-        </p>
+        <Sponsers />
         <p>
           {Translate("AboutPage", ["AboutSection", "SupportedBy"])}
           <a onClick={() => selectLink("Public Health Agency")} href="https://www.canada.ca/en/public-health.html">
@@ -236,6 +205,11 @@ export default function About() {
               null
           )}
           {renderBioBlock(
+              "Natalie Duarte",
+              [],
+              null,
+              "natalieaduarte@gmail.com")}
+          {renderBioBlock(
               "Natasha Ilincic",
               [Translate("UniversityOf", null, { NAME: "Toronto" }), Translate("UniversityOf", null, { NAME: "Guelph" })],
               "https://www.linkedin.com/in/natasha-ilincic/",
@@ -270,10 +244,22 @@ export default function About() {
               "grdeveaux@mun.ca"
           )}
           {renderBioBlock(
+              "Harriet Ware",
+              [Translate("UniversityOf", null, { NAME: "Toronto" }), Translate("BlankUniversity", null, { NAME: "Queen's"})],
+              null,
+              "ware.harriet@gmail.com"
+          )}
+          {renderBioBlock(
               "Judy Chen",
               [Translate("BlankUniversity", null, { NAME: "McGill" })],
               null,
               "judy.chen@mail.mcgill.ca"
+          )}
+          {renderBioBlock(
+              "Noel Loo",
+              [Translate("UniversityOf", null, { NAME: "Cambridge" })],
+              null,
+              "noel.loo.188@gmail.com"
           )}
         </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "GlobalPartnerships"])}</h2>
@@ -340,12 +326,6 @@ export default function About() {
               "https://twitter.com/jordanvw_"
           )}
           {renderBioBlock(
-              "Noel Loo",
-              [Translate("UniversityOf", null, { NAME: "Cambridge" })],
-              null,
-              "noel.loo.188@gmail.com"
-          )}
-          {renderBioBlock(
               "Prannoy Lal",
               [Translate("UniversityOf", null, { NAME: "Waterloo" })],
               "https://www.linkedin.com/in/prannoylal/",
@@ -358,34 +338,6 @@ export default function About() {
             "serocco@uwaterloo.ca"
           )}
         </div>
-        <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "PrivateSectorMonitoringTeam"])}</h2>
-        <div className="bio-grid-container">
-          {renderBioBlock(
-            "Nathan Duarte",
-            [Translate("BlankUniversity", null, { NAME: "McGill"}), Translate("UniversityOf", null, { NAME: "Waterloo" })],
-            "https://www.linkedin.com/in/duartenathan/",
-            "nathanduarte1@gmail.com",
-            "https://twitter.com/niduarte_canada"
-          )}
-          {renderBioBlock(
-            "Abhinav Pillai",
-            [Translate("UniversityOf", null, { NAME: "Calgary" })],
-            null,
-            "abhinav.arunpillai@ucalgary.ca"
-          )}
-          {renderBioBlock(
-              "Natalie Duarte",
-              [],
-              null,
-              "natalieaduarte@gmail.com")}
-          {renderBioBlock(
-            "Sean D'Mello",
-            [Translate("UniversityOf", null, { NAME: "Waterloo" })],
-            "https://www.linkedin.com/in/dmellosean/",
-            "sean.dmello@uwaterloo.ca",
-            "https://twitter.com/SeanDMello1"
-          )}
-        </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "Alumni"])}</h2>
         <div className="bio-grid-container">
           {renderBioBlock(
@@ -393,6 +345,12 @@ export default function About() {
               [Translate("UniversityOf", null, { NAME: "Waterloo" })],
               "https://www.linkedin.com/in/abel-joseph/",
               "abel.joseph@uwaterloo.ca"
+          )}
+          {renderBioBlock(
+              "Abhinav Pillai",
+              [Translate("UniversityOf", null, { NAME: "Calgary" })],
+              null,
+              "abhinav.arunpillai@ucalgary.ca"
           )}
           {renderBioBlock(
               "Emily Boucher",
@@ -430,6 +388,13 @@ export default function About() {
               "mitchell.segal@mail.utoronto.ca"
           )}
           {renderBioBlock(
+              "Nathan Duarte",
+              [Translate("BlankUniversity", null, { NAME: "McGill"}), Translate("UniversityOf", null, { NAME: "Waterloo" })],
+              "https://www.linkedin.com/in/duartenathan/",
+              "nathanduarte1@gmail.com",
+              "https://twitter.com/niduarte_canada"
+          )}
+          {renderBioBlock(
               "Lucas Penny",
               [Translate("UniversityOf", null, { NAME: "Toronto" })],
               "https://www.linkedin.com/in/lucaspenny/",
@@ -437,17 +402,11 @@ export default function About() {
               "https://twitter.com/lucasjpenny"
           )}
           {renderBioBlock(
-              "Lucia Otera Varela",
-              [Translate("UniversityOf", null, { NAME: "Calgary" })],
-              "https://www.linkedin.com/in/lucia-ov/",
-              "lucia.oterovarela@ucalgary.ca",
-              "https://twitter.com/loterovarela"
-          )}
-          {renderBioBlock(
-              "Divine Tanyingoh",
-              [Translate("UniversityOf", null, { NAME: "Calgary" })],
-              null,
-              "dtanyin@ucalgary.ca"
+              "Sean D'Mello",
+              [Translate("UniversityOf", null, { NAME: "Waterloo" })],
+              "https://www.linkedin.com/in/dmellosean/",
+              "sean.dmello@uwaterloo.ca",
+              "https://twitter.com/SeanDMello1"
           )}
         </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "ScientificAdvisors"])}</h2>
@@ -486,7 +445,7 @@ export default function About() {
           ])}
         </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "ProjectStaff"])}</h2>
-        <div className="bio-grid-container">
+        <div className="bio-grid-container mb-5">
           {renderBioBlock("Erin O'Connor", [
             Translate("CentreHealthInformatics"),
             Translate("UniversityOf", null, {NAME: "Calgary"}),
