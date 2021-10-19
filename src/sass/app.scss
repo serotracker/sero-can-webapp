@@ -362,7 +362,12 @@ Footer a{
 
 .dropdown a {
     color: #333333 !important;
+    &:hover {
+        color: #666666 !important;
+    }
 }
+
+
 
 .info-btn {
     top: 45px;
