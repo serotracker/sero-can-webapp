@@ -145,7 +145,7 @@ const PageLinks = () => (
     {
       Object.keys(PAGE_HASHES).map((page) => {
         return(
-        <div className="col">
+        <div className="col mx-2">
           <h3 className="row">{Translate(page)}</h3>
           {
           Object.keys(PAGE_HASHES[page]).map(h => (

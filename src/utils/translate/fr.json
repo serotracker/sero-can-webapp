@@ -53,6 +53,7 @@
   },
   "Accept": "Accepter",
   "AcceptCookies": "Accepter les fichiers témoins",
+  "AdditionalGraphs": "Graphiques supplémentaires",
   "Age": "Âge",
   "AgeGroup": "Groupe d'âge",
   "AgeOptions": {
@@ -77,8 +78,11 @@
   },
   "Analyze": "Analyser",
   "Article": "Article",
+  "Authors": "Auteurs",
   "AuthorAndLeadOrganizationNotReported": "Auteur et organisation responsable non indiqués",
   "BlankUniversity": "Université de NAME",
+  "ByCountry": "Par pays",
+  "ByPopulation": "Par population",
   "CentreHealthInformatics": "Centre d'informatique de la santé",
   "ChangeLog": "Un registre de modifications",
   "ChangeSettings": "Modifier les paramètres",
@@ -92,7 +96,7 @@
   },
   "CountriesAndAreas": "Pays et régions",
   "CountryEstimatesExist": "Pays dotés d'estimations de séroprévalence",
-  "CountryEstimatesNotExist": "",
+  "CountryEstimatesNotExist": "Aucune estimation de séroprévalence",
   "CountryOptions": {
     "England": "Angleterre",
     "Iran": "Iran",
@@ -168,6 +172,7 @@
     }
   },
   "DownloadCsv": "Télécharger CSV",
+  "DownloadData": "Télécharger les données",
   "EconomicsTeam": "Équipe économique",
   "EndDate": "Date de fin",
   "English": "anglais",
@@ -196,6 +201,8 @@
     "Article": "article"
   },
   "French": "français",
+  "FAQ": "FAQ",
+  "FrequentlyAskedQuestions": "Foire aux questions",
   "GeneralTerms": "Conditions générales",
   "Geographies": "Géographies",
   "Geography": "Géographie",
@@ -229,14 +236,14 @@
     "EconomistDeathToll": "Comment avons-nous estimé le véritable nombre de morts de la pandémie?"
   },
   "IndustryReportTitles": {
-    "AugustReport": "Le bulletin d'Août - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
+    "AugustReport": "Le bulletin d'Août",
     "BloodBank": "SeroTracker banque de sang séroprévalence Rapport préliminaire",
-    "JulyReport": "Le bulletin de Juillet - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "JuneReport": "Le bulletin de Juin - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "MayReport": "Le bulletin de mai - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "OctoberReport": "Le bulletin d'Octobre - Covid-19 dépistage et d'essais dans le secteur privé du Canada",
-    "PreliminaryReport": "Le bulletin préliminaire - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
-    "SeptemberReport": "Le bulletin de Septembre - Covid-19 Dépistage et d'essais dans le secteur privé du Canada",
+    "JulyReport": "Le bulletin de Juillet",
+    "JuneReport": "Le bulletin de Juin",
+    "MayReport": "Le bulletin de mai",
+    "OctoberReport": "Le bulletin d'Octobre",
+    "PreliminaryReport": "Le bulletin préliminaire",
+    "SeptemberReport": "Le bulletin de Septembre",
     "YearInReview2020": "Bilan de l’année 2020 de SeroTracker",
     "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie",
     "InventoryEvidenceSynthesis": "Inventaire des meilleures synthèses de preuves"
@@ -248,6 +255,7 @@
     "PlosOnePub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse"
   },
   "BiblioDigestTitles": {
+    "October": "Le bulletin de mise à jour de la littérature de octobre",
     "September": "Le bulletin de mise à jour de la littérature de septembre",
     "August": "Le bulletin de mise à jour de la littérature d'août",
     "July": "Le bulletin de mise à jour de la littérature de juillet",
@@ -282,9 +290,11 @@
     "FirstParagraph": "méthodes complètes",
     "SecondParagraph": "(de l’annexe à notre revue systématique complète et méta-analyse des enquêtes sérologiques SARS-CoV-2)"
   },
+  "Map": "Carte",
   "Media": "Médias",
   "MediaMentions": "Mentions dans les médias",
   "MemorialUniversityOfNewfoundland": "Université commémorative de Terre-Neuve",
+  "MonthlyReports": "Rapports mensuels",
   "Months": {
     "January": "janvier",
     "February": "février",
@@ -379,6 +389,14 @@
   "PrivacyPolicy": "Politique de confidentialité",
 
   "Publication": "Publication",
+  "PublicationDescriptions": {
+    "Publications": "Apprenez-en plus sur l'impact de SeroTracker dans des articles de recherche, des résumés et des mentions dans les médias.",
+    "ResearchArticles": "Articles de recherche évalués par des pairs publiés par l'équipe SeroTracker.",
+    "LiteratureUpdateReports": "Aperçus mensuels et mises à jour sur les tendances dans la littérature des enquêtes sérologiques et les paramètres fournis par l'OMS.",
+    "PrivateSectorReports": " Mises à jour sur le dépistage et les tests COVID-19 dans le secteur privé au Canada.",
+    "MediaMentions": "Publications médiatiques mondiales mettant en vedette SeroTracker.",
+    "MonthlyReports": "Covid-19 Dépistage et d'essais dans le secteur privé du Canada"
+  },
   "Publications": "Publications",
   "Published": "Publié",
   "References": "Références",
@@ -490,6 +508,8 @@
   "SubmitSource": "Soumettre un article",
   "Summary": "Résumé",
   "SummaryStatistics": "Statistiques sommaires",
+  "Team": "L'équipe",
+  "TeamLead": "Responsables d'équipes",
   "TemporaryMaintenance": "Entretien provisoire",
   "TemporaryMaintenanceDescription": "Nous sommes en cours de maintenance programmée, le service sera de retour sous peu.",
   "TermsOfUse": "Conditions d'utilisation",
@@ -536,8 +556,8 @@
     "FirstParagraph": "Chez SeroTracker, nous collectons les données publiées et non publiées de séroprévalence pour informer une revue systématique et méta-analyse du SRAS-CoV-2 au niveau mondial. Les données sont collectées pour l’estimation primaire pour chaque source et certains sous-groupes pertinents. Nos méthodes complètes sont accessibles dans le protocole. ",
     "SecondParagraph": "Nous produisons les données pour l’usage académique et publique sur notre site Web. Notre objectif est de mettre à jour nos données chaque semaine. Pour l’information supplémentaire en addition du sommaire général qui suit, s'il vous plaît consultez nos méthodes complètes, accessible dans le protocole de SeroTracker. "
   },
-  "WhoDisclaimerSmall": "",
-  "WhoDisclaimer": "",
+  "WhoDisclaimerSmall": "Les appellations employées dans la présente publication et la présentation des données qui y figurent n’impliquent de la part de l’OMS aucune prise de position quant au statut juridique des pays, territoires, villes ou zones, ou de leurs autorités, ni quant au tracé de leurs frontières ou limites. Les traits discontinus formés d’une succession de points ou de tirets sur les cartes représentent des frontières approximatives dont le tracé peut ne pas avoir fait l'objet d'un accord définitif.",
+  "WhoDisclaimer": "Les appellations employées dans la présente publication et la présentation des données qui y figurent n’impliquent de la part de l’OMS aucune prise de position quant au statut juridique des pays, territoires, villes ou zones, ou de leurs autorités, ni quant au tracé de leurs frontières ou limites. Les traits discontinus formés d’une succession de points ou de tirets sur les cartes représentent des frontières approximatives dont le tracé peut ne pas avoir fait l'objet d'un accord définitif. La mention de certaines firmes ou de produits commerciaux dans le matériel publié sur cette plateforme ne signifie pas que ces firmes et ces produits commerciaux sont agréés ou recommandés par l’OMS de préférence à d’autres de nature analogue qui ne sont pas mentionnés. Sauf erreur ou omission, une majuscule initiale indique qu’il s’agit d’un nom déposé. La mention de certains matériels dans cette plateforme ne signifie pas que ces matériels sont agréés ou recommandés par l’OMS ni que ces derniers ont vérifié les informations contenues dans ces matériels. La plateforme a été créée sans aucune garantie, expresse ou implicite de la part de l’OMS. La responsabilité de l'interprétation et de l'utilisation dudit matériel incombe au lecteur. En aucun cas, l’OMS ne saurait être tenus responsable des préjudices subis du fait de son utilisation.",
   "WhoSerotrackAndPartnersDisclaimerSmall": "Les appellations employées dans la présente publication et la présentation des données qui y figurent n’impliquent de la part de l’OMS, SeroTracker ou les partenaires de SeroTracker aucune prise de position quant au statut juridique des pays, territoires, villes ou zones, ou de leurs autorités, ni quant au tracé de leurs frontières ou limites. Les traits discontinus formés d’une succession de points ou de tirets sur les cartes représentent des frontières approximatives dont le tracé peut ne pas avoir fait l'objet d'un accord définitif.",
   "WhoSerotrackAndPartnersDisclaimer1": " Les appellations employées dans la présente publication et la présentation des données qui y figurent n’impliquent de la part de l’OMS aucune prise de position quant au statut juridique des pays, territoires, villes ou zones, ou de leurs autorités, ni quant au tracé de leurs frontières ou limites. Les traits discontinus formés d’une succession de points ou de tirets sur les cartes représentent des frontières approximatives dont le tracé peut ne pas avoir fait l'objet d'un accord définitif",
   "WhoSerotrackAndPartnersDisclaimer2": "La mention de certaines firmes ou de produits commerciaux dans le matériel publié sur cette plateforme ne signifie pas que ces firmes et ces produits commerciaux sont agréés ou recommandés par l’OMS, SeroTracker ou les partenaires de SeroTracker de préférence à d’autres de nature analogue qui ne sont pas mentionnés. Sauf erreur ou omission, une majuscule initiale indique qu’il s’agit d’un nom déposé. La mention de certains matériels dans cette plateforme ne signifie pas que ces matériels sont agréés ou recommandés par l’OMS, SeroTracker ou les partenaires de SeroTracker, ni que ces derniers ont vérifié les informations contenues dans ces matériels.",

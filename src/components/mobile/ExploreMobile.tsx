@@ -13,12 +13,7 @@ import Legend from "components/map/Legend";
 import Translate from "utils/translate/translateService";
 import WhoLogo from "components/shared/WhoLogo"
 
-interface props {
-  pulsateUnityFilter: boolean;
-  setPulsateUnityFilter: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function ExploreMobile({ pulsateUnityFilter, setPulsateUnityFilter } : props) {
+export default function ExploreMobile() {
   const [showMobileFilters, setShowFilters] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
   const [state] = useContext(AppContext);
@@ -29,8 +24,8 @@ export default function ExploreMobile({ pulsateUnityFilter, setPulsateUnityFilte
   }
 
   useEffect(() => {
-    setShowFilters(pulsateUnityFilter);
-  }, [pulsateUnityFilter])
+    setShowFilters(state.pulsateUnityFilter);
+  }, [state.pulsateUnityFilter])
 
   return (
     <div className="fill flex" style={{height: "100%"}}>
@@ -45,7 +40,7 @@ export default function ExploreMobile({ pulsateUnityFilter, setPulsateUnityFilte
           visible={showMobileFilters}
           width='wide'
         >
-        <Filters page={PageStateEnum.explore} pulsateUnityFilter={pulsateUnityFilter} setPulsateUnityFilter={setPulsateUnityFilter}/>
+        <Filters page={PageStateEnum.explore} />
         <Datepicker page={PageStateEnum.explore}/>
           <FontAwesomeIcon
             icon={faTimes}

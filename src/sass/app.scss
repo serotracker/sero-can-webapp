@@ -1,5 +1,6 @@
 @import './variables.scss';
 @import "animations";
+@import "typography";
 
 .App {
     flex: 1 1 auto;
@@ -264,10 +265,6 @@ Footer a{
     justify-content: center;
     align-items: center;
     align-content: center;
-}
-
-.space-between {
-    justify-content: space-between;
 }
 
 .App-container {
