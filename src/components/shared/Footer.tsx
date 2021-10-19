@@ -9,7 +9,7 @@ import { withLocaleUrl } from "../../utils/utils";
 import { NumberDateToWordDate } from '../../utils/utils'
 import { PAGE_HASHES } from '../../constants'
 import WhoLogo from "components/shared/WhoLogo";
-import HealthAgencyLogo from 'assets/images/public-health-agency.png';
+import HealthAgencyLogo from 'assets/images/public-health-agency.svg';
 import UcalgaryLogo from 'assets/images/University-Of-Calgary-Logo.png';
 import AmcJoule from 'assets/images/amc-joule.png';
 
@@ -145,7 +145,7 @@ const PageLinks = () => (
     {
       Object.keys(PAGE_HASHES).map((page) => {
         return(
-        <div className="col">
+        <div className="col mx-2">
           <h3 className="row">{Translate(page)}</h3>
           {
           Object.keys(PAGE_HASHES[page]).map(h => (

@@ -113,7 +113,7 @@ export default function About() {
           </a>{" "}
           {Translate("AboutPage", ["Mapbox"])}
         </p>
-        <h2 id={PAGE_HASHES.About.Contact}>{Translate("AboutPage", ["Headers","ContactUs"])}</h2>
+        <h2 id={PAGE_HASHES.About.ContactUs}>{Translate("AboutPage", ["Headers","ContactUs"])}</h2>
         <div>
           <p>
             {Translate("AboutPage", ["ContactSection", "BulletPointOne", "PartOne"], null, [true, true])}
@@ -292,6 +292,7 @@ export default function About() {
           )}
         </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "DevelopmentTeam"])}</h2>
+
         <div className="bio-grid-container">
           {renderBioBlock(
             "Austin Atmaja",

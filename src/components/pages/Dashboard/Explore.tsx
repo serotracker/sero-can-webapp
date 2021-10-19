@@ -1,79 +1,118 @@
-import React , { useContext, useEffect } from "react";
-import { useMediaQuery } from "react-responsive";
-import { Loader } from "semantic-ui-react";
-import { isMaintenanceMode, mobileDeviceOrTabletWidth, PAGE_HASHES } from "../../../constants";
-import { AppContext } from "../../../context";
-import { PageStateEnum, Filters } from "../../../types";
+import React, {useContext, useEffect, useState} from "react";
+import {useMediaQuery} from "react-responsive";
+import {Loader, Icon} from "semantic-ui-react";
+import {isMaintenanceMode, mobileDeviceOrTabletWidth, PAGE_HASHES} from "../../../constants";
+import {AppContext} from "../../../context";
+import {PageStateEnum, FiltersConfig} from "../../../types";
 import MapboxMap from '../../map/MapboxMap';
 import MobileComponents from '../../mobile/ExploreMobile';
 import MaintenanceModal from "../../shared/MaintenanceModal";
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
-import RightSidebar from "../../sidebar/right-sidebar/RightSidebar";
+import Filters from "../../sidebar/right-sidebar/Filters";
 import Legend from "components/map/Legend";
-import { initializeData } from "../../../utils/stateUpdateUtils";
-import { sendFiltersAnalyticsEvent, sendUnityAnalyticsEvent } from "../../../utils/analyticsUtils";
+import {initializeData} from "../../../utils/stateUpdateUtils";
+import {sendFiltersAnalyticsEvent, sendUnityAnalyticsEvent} from "../../../utils/analyticsUtils";
+import Translate from "../../../utils/translate/translateService";
 
 interface ExploreProps {
-  initialFilters?: Filters;
+    initialFilters?: FiltersConfig;
 }
 
 export default function Explore({initialFilters}: ExploreProps) {
-  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
-  const [state, dispatch] = useContext(AppContext);
+    const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth});
+    const [state, dispatch] = useContext(AppContext);
+    const [showUnityBanner, setShowUnityBanner] = useState(false);
+    const [pulsateUnityCheckbox, setPulsateUnityCheckbox] = useState(false);
 
-  // Apply initial input filters and get records
-  useEffect(() => {
-    if(initialFilters){
-      dispatch({
-        type: 'UPDATE_ALL_FILTERS',
-        payload: {
-          newFilters: initialFilters,
-          pageStateEnum: PageStateEnum.explore
+    // Apply initial input filters and get records
+    useEffect(() => {
+        if (initialFilters) {
+            setShowUnityBanner(true);
+            dispatch({
+                type: 'UPDATE_ALL_FILTERS',
+                payload: {
+                    newFilters: initialFilters,
+                    pageStateEnum: PageStateEnum.explore
+                }
+            });
+            sendFiltersAnalyticsEvent(initialFilters);
+            if (initialFilters.unity_aligned_only) {
+                sendUnityAnalyticsEvent();
+            }
         }
-      });
-      sendFiltersAnalyticsEvent(initialFilters);
-      if(initialFilters.unity_aligned_only){
-        sendUnityAnalyticsEvent();
-      }
-    }
-    initializeData(dispatch, state.explore.filters, PageStateEnum.explore)
-    // We only want this to run once so we pass no dependencies. Do not remove this
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+        initializeData(dispatch, state.explore.filters, PageStateEnum.explore)
+        // We only want this to run once so we pass no dependencies. Do not remove this
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
-  return (
-    <>
-      <div className="fill flex dashboard">
-        {!isMobileDeviceOrTablet ?
-          (<div className="fill flex">
-            <div className="col-2 p-0 flex">
-              <LeftSidebar page={PageStateEnum.explore} />
+    return (
+        <>
+            {
+                //I know we prefer classes to inline styles, I will upgrade the same once utility classes from my punlication
+                //PR are available
+            }
+            <div className="fill flex dashboard">
+                {!isMobileDeviceOrTablet ?
+                    (<>
+                    {showUnityBanner && (<div className={ "px-4 flex center-item justify-content-between w-100 visible"} style={{backgroundColor: "#E8EBEF", height: "50px"}}>
+                            <div style={{width: "80%"}}>
+                                {Translate("UnityBanner", ["Currently"])}
+                              <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}
+                                 target="_blank" rel="noopener noreferrer">
+                                {Translate("UnityBanner", ["ProtocolLink"])}
+                              </a> {Translate("UnityBanner",["ViewDatabase"])} <span className={"link"} onClick={() => {dispatch({type: "SET_UNITY_FILTER_PULSATE", payload: true})}}> {Translate("UnityBanner", ["WHOUnityFilter"])} </span>
+                                {Translate("UnityBanner", ["Filter"])}
+                            </div>
+                            <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
+                    </div>)}
+                        <div className="flex w-100">
+                            <div className="col-2 p-0 flex">
+                                <LeftSidebar page={PageStateEnum.explore}/>
+                            </div>
+                            <div className="col-8 p-0 flex" id={PAGE_HASHES.Explore.Map}>
+                                <Loader indeterminate active={state.explore.isLoading}/>
+                                <div className="info flex legend center-item">
+                                    <Legend/>
+                                </div>
+                                <MapboxMap
+                                    countriesConfig={{
+                                        estimateGradePrevalences: state.explore.estimateGradePrevalences
+                                    }}
+                                    studyPinsConfig={{
+                                        records: state.explore.records
+                                    }}
+                                />
+                            </div>
+                            <div className="col-2 p-0 flex sidebar-container">
+                                <Filters page={PageStateEnum.explore}/>
+                            </div>
+                        </div>
+                    </>) :
+                    (
+
+                          <div className="flex w-100">
+                              {showUnityBanner && (<div className={"px-4 flex center-item justify-content-between w-100"}
+                                                       style={{backgroundColor: "#E8EBEF", height: "150px"}}>
+                                  <div style={{width: "80%"}}>
+                                      {Translate("UnityBanner", ["Currently"])}
+                                      <a href={"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations"}
+                                         target="_blank" rel="noopener noreferrer">
+                                          {Translate("UnityBanner", ["ProtocolLink"])}
+                                      </a> {Translate("UnityBanner", ["ViewDatabase"])} <span className={"link"}
+                                                                                              onClick={() => {
+                                                                                                  dispatch({type: "SET_UNITY_FILTER_PULSATE", payload: true})
+                                                                                              }}> {Translate("UnityBanner", ["WHOUnityFilter"])} </span>
+                                      {Translate("UnityBanner", ["Filter"])}
+                                  </div>
+                                  <Icon link onClick={() => {
+                                      setShowUnityBanner(false)
+                                  }} name='close'/>
+                              </div>)}
+                            <MobileComponents/>
+                          </div>
+                    )}
             </div>
-            <div className="col-8 p-0 flex" id={PAGE_HASHES.Explore.Map}>
-              <Loader indeterminate active={state.explore.isLoading}></Loader>
-              <div className="info flex legend center-item">
-                <Legend/>
-              </div>
-              <MapboxMap 
-              countriesConfig={{
-                estimateGradePrevalences: state.explore.estimateGradePrevalences
-              }} 
-              studyPinsConfig={{
-                records: state.explore.records
-              }}
-              />
-            </div>
-            <div className="col-2 p-0 flex">
-              <RightSidebar page={PageStateEnum.explore} />
-            </div>
-          </div>) :
-          (
-            <div className="fill flex">
-              <MobileComponents />
-            </div>
-          )}
-      </div >
-      <MaintenanceModal isOpen={isMaintenanceMode} headerText={"Explore"} />
-    </>
-  )
+            <MaintenanceModal isOpen={isMaintenanceMode} headerText={"Explore"}/>
+        </>
+    )
 }

@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import ReactGA from 'react-ga'
 import { useHistory } from 'react-router-dom'
 import _ from "lodash";
-import { Filters, FilterType } from "../types";
+import { FiltersConfig, FilterType } from "../types";
 import { getEmptyFilters } from "../context"
 
 const sendPageView: LocationListener = (location: Location): void => {
@@ -27,7 +27,7 @@ export const sendAnalyticsEvent = (props: eventSenderProps) => {
 }
 
 // Send filters analytics event if filters have been updated
-export const sendFiltersAnalyticsEvent = (newFilters: Filters) => {
+export const sendFiltersAnalyticsEvent = (newFilters: FiltersConfig) => {
   // Only send event if they are
   const defaultFilters = getEmptyFilters();
   if(!_.isEqual(newFilters, defaultFilters)){

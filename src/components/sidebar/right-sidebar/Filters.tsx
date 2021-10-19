@@ -13,7 +13,7 @@ import "./Filters.css";
 import { LanguageType } from "../../../types";
 
 interface FilterProps {
-  page: string
+  page: string,
 }
 
 interface PopulationGroupFilterOption {
@@ -56,7 +56,7 @@ export default function Filters({ page }: FilterProps) {
           } else {
             const translatedString = Translate(jsonObjectString, [toPascalCase(o as string)]);
             const alternativeString = Translate(jsonObjectString, [(o as string).replace(/ /g, '')]);
-            let text = !alternativeString && !translatedString ? o + "*" : (translatedString ? translatedString : alternativeString);
+            let text = !alternativeString && !translatedString ? o as string : (translatedString ? translatedString : alternativeString);
             formatted_options.push({
               key: o as string,
               text: text,
@@ -99,7 +99,7 @@ export default function Filters({ page }: FilterProps) {
 
   const buildFilterCheckbox = (filter_type: FilterType, label: string, title?: string, link?: string) => {
     return(
-      <div title={title ? title: label} className="checkbox-item pb-3" id="National" onClick={(e: React.MouseEvent<HTMLElement>) => {
+      <div title={title ? title: label} className={"checkbox-item pb-3 " } id="National" onClick={(e: React.MouseEvent<HTMLElement>) => {
         if(filter_type === "unity_aligned_only" && filters[filter_type]){
           sendUnityAnalyticsEvent();
         }
@@ -108,8 +108,9 @@ export default function Filters({ page }: FilterProps) {
           filter_type
         )
       }}>
-        <input className="ui checkbox" type="checkbox" checked={filters[filter_type] as boolean} readOnly />
-        <label>{label}</label>
+        <input className={"ui checkbox " + (state.pulsateUnityFilter ? "pulse" : "")} type="checkbox" onClick={() => {dispatch({type: "SET_UNITY_FILTER_PULSATE", payload: false})}} checked={filters[filter_type] as boolean} readOnly />
+        <label><a href={link}
+                  target="_blank" rel="noopener noreferrer">{label}</a></label>
       </div>
     )
   }

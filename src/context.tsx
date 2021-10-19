@@ -1,12 +1,12 @@
 import React, { createContext, Dispatch, useReducer } from "react";
-import { AggregationFactor, Filters, FilterType, LanguageType, PageState, State } from "./types";
+import { AggregationFactor, FiltersConfig, FilterType, LanguageType, PageState, State } from "./types";
 
 export const AppContext = createContext({} as [State, Dispatch<Record<string, any>>]);
 
 const initialMinDate = new Date(2019, 1, 1, 1);
 const initialMaxDate = new Date();
 
-export function getEmptyFilters(): Filters {
+export function getEmptyFilters(): FiltersConfig {
   return {
     source_type: [],
     test_type: [],
@@ -50,7 +50,7 @@ const initialState: State = {
   language: LanguageType.english,
   updatedAt: "",
   showCookieBanner: false,
-  countries: [],
+  pulsateUnityFilter: false,
 };
 
 const reducer = (state: State, action: Record<string, any>): State => {
@@ -72,11 +72,6 @@ const reducer = (state: State, action: Record<string, any>): State => {
       pageState.estimateGradePrevalences = estimateGradePrevalences;
       return newState;
     }
-    case "UPDATE_COUNTRIES_JSON":
-      return {
-        ...state,
-        countries: action.payload,
-      };
     case "SELECT_LANGUAGE":
       return {
         ...state,
@@ -167,6 +162,12 @@ const reducer = (state: State, action: Record<string, any>): State => {
           },
         },
       };
+    }
+    case "SET_UNITY_FILTER_PULSATE": {
+      return {
+        ...state,
+        pulsateUnityFilter: action.payload
+      }
     }
     default:
       return state;
