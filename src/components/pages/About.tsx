@@ -206,7 +206,7 @@ export default function About() {
           )}
           {renderBioBlock(
               "Natalie Duarte",
-              [],
+              [Translate("UniversityOf", null, { NAME: "Toronto" })],
               null,
               "natalieaduarte@gmail.com")}
           {renderBioBlock(
