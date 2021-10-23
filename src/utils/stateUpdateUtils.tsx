@@ -8,15 +8,6 @@ export const updateFilters = async (
   filterType: FilterType,
   filterValue: any,
   page: string) => {
-
-  dispatch({
-    type: "CHANGE_LOADING",
-    payload: {
-      pageStateEnum: page,
-      isLoading: true
-    }
-  })
-
   dispatch({
     type: 'UPDATE_FILTER',
     payload: {
@@ -30,34 +21,10 @@ export const updateFilters = async (
   updatedFilters[filterType] = filterValue;
   sendFiltersAnalyticsEvent(updatedFilters);
 
-  const api = new httpClient()
-  // Update current records when called
-  const [records,
-    estimateGradePrevalences] = await
-      Promise.all([
-        api.getAirtableRecords(updatedFilters, true),
-        api.getEstimateGrades(updatedFilters)
-      ]);
- 
-  dispatch({
-    type: 'GET_AIRTABLE_RECORDS',
-    payload: { pageStateEnum: page, records }
-  });
-  dispatch({
-    type: 'UPDATE_ESTIMATE_PREVALENCES',
-    payload: { pageStateEnum: page, estimateGradePrevalences }
-  });
-
-  dispatch({
-    type: "CHANGE_LOADING",
-    payload: {
-      pageStateEnum: page,
-      isLoading: false
-    }
-  })
+  fetchExploreData(dispatch, updatedFilters, page);
 }
 
-export const initializeData = async (dispatch: any, filters: FiltersConfig, page: string) => {
+export const fetchExploreData = async (dispatch: any, filters: FiltersConfig, page: string) => {
 
   const api = new httpClient()
 
@@ -69,10 +36,7 @@ export const initializeData = async (dispatch: any, filters: FiltersConfig, page
     }
   })
   
-  const [records,
-    estimateGradePrevalences] = await Promise
-      .all([api.getAirtableRecords(filters, true),
-      api.getEstimateGrades(filters)]);
+  const { records, estimateGradePrevalences } = await api.getExploreData(filters, true);
 
   dispatch({
     type: 'GET_AIRTABLE_RECORDS',
