@@ -120,7 +120,7 @@ const WhoDisclaimer = () => (
   </small>
 )
 // to={withLocaleUrl(`${page}`)}
-const Sponsers = () => (
+export const Sponsers = () => (
   <div className="d-flex justify-content-around">
     <a href="https://www.covid19immunitytaskforce.ca/" target="__blank" rel="noopener noreferrer" className="footer-link">
       <img src="https://www.covid19immunitytaskforce.ca/wp-content/themes/pena-lite-child/CITF_logo_ENG.svg" className="footer-image" alt="COVID-19 Immunity Task Force Logo"></img>

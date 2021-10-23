@@ -14,11 +14,11 @@
       "PublicHealthAgency": "l'Agence de la santé publique du Canada",
       "SupportedBy": "SeroTracker dispose du soutien de",
       "ThroughThe": "à travers le",
-      "WHO1": "SeroTracker travaille avec",
-      "WorldHealthOrganization": "l’Organisation mondiale de la santé",
-      "WHO2": "de la santé pour visualiser et synthétiser les résultats des études de",
       "UnityStudies": "séroprévalence Unity.",
-      "WHO3": "SeroTracker et l’Organisation mondiale de la santé remercions le Ministère Fédéral Allemand de la Santé (BMG) Recherche et Développement COVID-19 pour le financement pour soutenir cet effort"
+      "WHO1": "SeroTracker travaille avec",
+      "WHO2": "de la santé pour visualiser et synthétiser les résultats des études de",
+      "WHO3": "SeroTracker et l’Organisation mondiale de la santé remercions le Ministère Fédéral Allemand de la Santé (BMG) Recherche et Développement COVID-19 pour le financement pour soutenir cet effort",
+      "WorldHealthOrganization": "l’Organisation mondiale de la santé"
     },
     "ContactSection": {
       "BulletPointFive": {
@@ -34,9 +34,23 @@
       },
       "SectionOne": "Nous sommes une équipe interdisciplinaire de chercheurs et d'ingénieurs à l'Université d’Oxford, l'Université de Toronto, l'Université de Waterloo, l'Université de Calgary et à l'Université de Harvard."
     },
+    "Headers": {
+      "AboutSeroTracker": "À propos de SeroTracker",
+      "ContactUs": "Nous contacter",
+      "OurTeam": "Notre équipe"
+    },
+    "SubHeaders": {
+      "Alumni": "Anciens",
+      "DataCuration": "Équipe de synthèse des preuves et de conservation des données",
+      "DataInfrastructure": "\nÉquipe d'infrastructure de données et d'analyse",
+      "DevelopmentTeam": "Équipe de développement",
+      "GlobalPartnerships": "Équipe des partenariats mondiaux pour la santé",
+      "ProjectStaff": "Personnel du projet",
+      "ScientificAdvisors": "Conseillers et collaborateurs scientifiques",
+      "TeamLead": "Responsables d'équipes"
+    },
     "Mapbox": "prend en charge l'infrastructure de mappage de SeroTracker."
   },
-  "AboutSeroTracker": "À propos de SeroTracker",
   "Accept": "Accepter",
   "AcceptCookies": "Accepter les fichiers témoins",
   "AdditionalGraphs": "Graphiques supplémentaires",
@@ -66,59 +80,13 @@
   "Article": "Article",
   "Authors": "Auteurs",
   "AuthorAndLeadOrganizationNotReported": "Auteur et organisation responsable non indiqués",
-  "Biographies": {
-    "BruceM": {
-      "PartOne": "directeur scientifique (Stratégie), Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Professeur, Université McGill"
-    },
-    "CatherineE": {
-      "PartOne": "Operations Manager, Centre d'informatique de la santé",
-      "PartTwo": "Professeur adjoint, Université de Calgary"
-    },
-    "CatherineH": {
-      "PartOne": "Co-président, Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Professeur, Université McGill"
-    },
-    "DavidB": {
-      "PartOne": "Gestionnaire de programme, Gestion / Analyse des données, Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Professeur, Université McGill"
-    },
-    "DavidN": {
-      "PartOne": "Co-présidente, Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Président émérite, Université de Toronto"
-    },
-    "ErinO": {
-      "PartOne": "Chef du projet, Centre d'informatique de la santé",
-      "PartTwo": "Université de Calgary"
-    },
-    "Jesse": {
-      "PartOne": "Scientifique, Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Professeur adjoint, Université McGill"
-    },
-    "Jonathan": {
-      "PartOne": "Gestionnaire de programme, Épidémiologie / Méthodes, Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Professeur associé, Université McGill"
-    },
-    "Matthew": {
-      "PartOne": "Gestionnaire de programme, Diagnostics / Tests, Groupe de travail sur l’immunité face à la COVID-19",
-      "PartTwo": "Professeur adjoint, Université McGill"
-    },
-    "Tim": {
-      "PartOne": "Directeur, École de santé des populations et de santé mondiale, Université McGill",
-      "PartTwo": "Directeur général, Groupe de travail sur l’immunité face à la COVID-19"
-    },
-    "Tyler": {
-      "PartOne": "Directeur adjoint, Centre d'informatique de santé",
-      "PartTwo": "Professeur associé, Université de Calgary"
-    }
-  },
-  "BlankUniversity": "Université de NOM",
+  "BlankUniversity": "Université de NAME",
   "ByCountry": "Par pays",
   "ByPopulation": "Par population",
+  "CentreHealthInformatics": "Centre d'informatique de la santé",
   "ChangeLog": "Un registre de modifications",
   "ChangeSettings": "Modifier les paramètres",
   "CoDirector": "Codirecteur",
-  "ContactUs": "Nous contacter",
   "CookiePolicy": "Politique sur les fichiers témoins",
   "CookiePolicyBody": "Nous utilisons des fichiers témoins pour nous permettre de livrer une meilleure expérience d'utilisation et nous ne collectons jamais de données personnelles. En utilisant notre site Internet, vous confirmez que vous avez lu et accepté nos ",
   "Countries": "Pays",
@@ -129,7 +97,6 @@
   "CountriesAndAreas": "Pays et régions",
   "CountryEstimatesExist": "Pays dotés d'estimations de séroprévalence",
   "CountryEstimatesNotExist": "Aucune estimation de séroprévalence",
-  "NotApplicable": "Non pas applicable",
   "CountryOptions": {
     "England": "Angleterre",
     "Iran": "Iran",
@@ -137,6 +104,7 @@
     "UnitedStates": "États-Unis"
   },
   "CPPInvestmentBoard": "Office d'investissement du RPC",
+  "COVIDImmunityTaskForce": "Groupe de travail sur l'immunité face à COVID-19",
   "Dashboard": "Tableau de bord",
   "Data": "Données",
   "DatabaseUptoDateTo": "Base de données à jour pour",
@@ -151,7 +119,6 @@
   "Demographics": "Données démographiques",
   "DemographicsTooltip": "Filtrer les variables démographiques, y compris le groupe de population, le sexe et le groupe d'âge.",
   "Details": "Détails",
-  "DevelopmentTeam": "Équipe de développement",
   "DisclaimerBody": "Les noms des emplacements apparaissant sur le site Web correspondent aux désignations officielles de simplemaps.com. Le contenu du site n’exprime aucune opinion de la part de l’équipe de SeroTracker, de ses membres et des organisations auxquelles ceux-ci sont affiliés, ou du Groupe de travail sur l’immunité face à la COVID-19 en ce qui concerne la situation juridique d’un pays, d’un territoire ou de ses autorités. Nous ne garantissons pas l’absence d’erreur au sein des frontières, des noms géographiques et des données connexes s’affichant sur les cartes ou dans les listes, les tableaux, les documents et les bases de données du site Web. L’emploi de ces renseignements ne constitue par ailleurs pas un cautionnement officiel par l’équipe de SeroTracker, ses membres et les organisations auxquelles ceux-ci sont affiliés, ou le Groupe de travail sur l’immunité face à la COVID-19.",
   "DisclaimerFooter": "* Les représentants de SeroTracker sont listés sur le site Web de l’entreprise.",
   "DisclaimerList1": "Le présent site Web et son contenu, y compris toute donnée, carte et analyse (« site Web »), est la propriété intellectuelle de SeroTracker (2020, tous droits réservés). Le site Web est offert exclusivement pour un usage à but non lucratif à des fins de santé, d’éducation et de recherche. Le présent site Web ne constitue pas des conseils médicaux.",
@@ -315,6 +282,7 @@
   "Legalese": "Jargon juridique",
   "LocalEstimateRange": "Plage d'estimation locale",
   "LocalEstimates": "Estimations locales",
+  "LocalStudyDetails": "Détails de l'étude locale",
   "Location": "Lieu",
   "Manufacturers": "Fabricants",
   "ManuscriptAndPreprint": "Manuscrit et préimpression",
@@ -325,6 +293,7 @@
   "Map": "Carte",
   "Media": "Médias",
   "MediaMentions": "Mentions dans les médias",
+  "MemorialUniversityOfNewfoundland": "Université commémorative de Terre-Neuve",
   "MonthlyReports": "Rapports mensuels",
   "Months": {
     "January": "janvier",
@@ -345,12 +314,7 @@
   "NationalEstimateRange": "Plage d'estimation nationale",
   "NationalEstimates": "Estimations nationales",
   "NationalStudyDetails": "Détails de l'étude nationale",
-  "RegionalStudyDetails": "Détails de l'étude nationale",
-  "SublocalStudyDetails": "Détails de l'étude sous-locale",
-  "LocalStudyDetails": "Détails de l'étude locale",
-  "StudyName": "Nom de l'étude",
-  "StudyPins": "Afficher les lieux d'étude",
-  "Sublocal": "Sous-local",
+  "NotApplicable": "",
   "NoData": "Aucune donnée",
   "NoDataAnalyze": {
     "PartOne": "Il n'y pas de données correspondant a vos filtres.",
@@ -379,7 +343,6 @@
     "Text": "Le tableau ci-dessous décrit nos résultats, y compris des informations détaillées pour chaque étude, chaque estimation de prévalence et les risques de partialité associés."
   },
   "OurProtocol": "Notre protocole",
-  "OurTeam": "Notre équipe",
   "OverallRiskOfBias": "Risque général de partialité",
   "Paper": "Article",
   "PaperText": "Vous trouverez notre premier manuscrit décrivant les enseignements des sérosondages jusqu'au 1er mai sur",
@@ -424,7 +387,7 @@
   "Prevalence": "Prévalence",
   "PrevalenceEstimateDetails": "Détails de l'estimation de prévalence",
   "PrivacyPolicy": "Politique de confidentialité",
-  "PrivateSectorMonitoringTeam": "Équipe de suivi du secteur privé",
+
   "Publication": "Publication",
   "PublicationDescriptions": {
     "Publications": "Apprenez-en plus sur l'impact de SeroTracker dans des articles de recherche, des résumés et des mentions dans les médias.",
@@ -440,12 +403,12 @@
   "ReferencesTable": "Table de références",
   "RegionalEstimateRange": "Plage d'estimation régionale",
   "RegionalEstimates": "Estimations régionales",
+  "RegionalStudyDetails": "Détails de l'étude nationale",
   "RegulatoryApproval": "Autorisation réglementaire",
   "Report": "Rapport",
   "PrivateSectorReports": "Les bulletins du secteur privé",
   "ReportsAndArticles": "Rapports et articles",
   "ResearchArticles": "Articles de recherche",
-  "ResearchTeam": "Équipe de recherche",
   "RiskOfBias": "Risque de partialité",
   "RiskOfBiasOptions": {
     "High": "Élevé",
@@ -461,7 +424,6 @@
     "Cumming": "École de médecine Cumming",
     "Schulich": "École d'ingénieurs Schulich"
   },
-  "ScientificAdvisorsAndCollaborators": "Conseillers et collaborateurs scientifiques",
   "ScientificLead": "Responsable scientifique",
   "Sensitivity": "Sensibilité",
   "Seroprevalence": "Séroprévalence",
@@ -537,8 +499,12 @@
     "Ongoing": "En cours"
   },
   "StudyType": "Type d'étude",
+  "StudyName": "Nom de l'étude",
+  "StudyPins": "Afficher les lieux d'étude",
+  "Sublocal": "Sous-local",
   "SublocalEstimateRange": "Plage d'estimation sous-locale",
   "SublocalEstimates": "Estimations sous-locales",
+  "SublocalStudyDetails": "Détails de l'étude sous-locale",
   "SubmitSource": "Soumettre un article",
   "Summary": "Résumé",
   "SummaryStatistics": "Statistiques sommaires",
