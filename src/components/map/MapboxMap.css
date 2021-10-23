@@ -50,12 +50,14 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
 }
 
 .popup-content {
+  width: 375px;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   background: #fff;
   font-style: normal;
   text-align: start;
 }
+
 
 .disable-popup {
   display:none !important;

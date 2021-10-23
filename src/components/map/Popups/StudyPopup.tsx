@@ -3,62 +3,55 @@ import { AirtableRecord } from "types";
 import Translate from 'utils/translate/translateService';
 import { getGeography, getPossibleNullDateString } from 'utils/utils';
 
+/**
+ * @param title: left column of study modal: title of content
+ * @param content: right content of study modal: the actual content for this record
+ */
+function row(title: string, content: JSX.Element | string | null) {
+    return (
+        <div className={"d-flex justify-content-between mb-1"}>
+            <div className={"popup-heading"}>
+                {title}
+            </div>
+            <div className={"popup-text"}>
+                {content}
+            </div>
+        </div>
+    )
+}
+
+function riskTag(riskLevel: string | null | undefined) {
+    return(
+        <div className={"popup-risk-tag popup-risk-" + riskLevel}>
+            {riskLevel} risk of bias
+        </div>
+    )
+}
+
 export default function StudyPopup(record: AirtableRecord) {
-    return (<div className="popup-content" >
-        <div className="popup-title">
-            {Translate(`${record.estimate_grade}StudyDetails`)}
-        </div>
-        <div className="popup-heading">
-            {Translate("StudyName")}
-        </div>
-        <div className="popup-text">
-            {record.url ? <a href={record.url} target="_blank" rel="noopener noreferrer">{record.source_name}</a> : record.source_name}
-        </div>
-        <div className="popup-heading">
-            {Translate("Location")}
-        </div>
-        <div className="popup-text">
-            {getGeography(record.city, record.state, record.country)}
-        </div>
-        <div className="popup-heading">
-            {Translate("PopulationGroup")}
-        </div>
-        <div className="popup-text">
-            {record.population_group ?? Translate("NotReported")}
-        </div>
-        {(record.sampling_start_date && record.sampling_end_date) && (
-            <>
-                <div className="popup-heading">
-                    {Translate("SamplingDates")}
+
+    return (
+        <div className="popup-content" >
+            <div className={"d-flex justify-content-between mb-1"}>
+                <div className="popup-title">
+                    {Translate(`${record.estimate_grade}StudyDetails`)}:
                 </div>
                 <div className="popup-text">
-                    {`${getPossibleNullDateString(record.sampling_start_date)} → ${getPossibleNullDateString(record.sampling_end_date)}`}
+                    {getGeography(record.city, record.state, record.country)}
                 </div>
-            </>)
-        }
-        <div className="popup-heading">
-            {Translate("BestSeroprevalenceEstimate")}
-        </div>
-        <div className="popup-text">
-            {record.serum_pos_prevalence ? `${(record.serum_pos_prevalence * 100).toFixed(1)}%` : "N/A"}
-        </div>
-        <div className="popup-heading">
-            {Translate("N")}
-        </div>
-        <div className="popup-text">
-            {`${record.denominator_value}`}
-        </div>
-        <div className="popup-heading">
-            {Translate("VaccineRolloutStatus")}
-        </div>
-        <div className="popup-text">
-            {(record.vaccination_policy == 0) ? Translate("VaccinationPolicyLow") : (record.vaccination_policy == 1 || record.vaccination_policy == 2 || record.vaccination_policy == 3) ? Translate("VaccinationPolicyMed") : Translate("VaccinationPolicyHigh")}
-        </div>
-        <div className="popup-heading">
-            {Translate("RiskOfBias")}
-        </div>
-        <div className="popup-text">
-            {`${record.overall_risk_of_bias}`}
-        </div>
-    </div>)
+            </div>
+            {row(Translate("StudyName"), record.url ? <a href={record.url} target="_blank" rel="noopener noreferrer">{record.source_name}</a> : record.source_name)}
+            {row(Translate("BestSeroprevalenceEstimate"), record.serum_pos_prevalence ? `${(record.serum_pos_prevalence * 100).toFixed(1)}%` : "N/A")}
+            {(record.sampling_start_date && record.sampling_end_date) && (
+                <>
+                    {row(Translate("SamplingDates"), `${getPossibleNullDateString(record.sampling_start_date)} → ${getPossibleNullDateString(record.sampling_end_date)}`)}
+                </>)
+            }
+            {row(Translate("SampleSize"), `${record.denominator_value}`)}
+            {row(Translate("PositiveCases"), ("Missing"))}
+            {row(Translate("Vaccinations"), ("Missing"))}
+            {row(Translate("PopulationGroup"), record.population_group ?? Translate("NotReported"))}
+            {riskTag(`${record.overall_risk_of_bias}`)}
+        </div>)
 }
+// hello `${record.denominator_value}`

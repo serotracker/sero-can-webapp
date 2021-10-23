@@ -92,6 +92,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
             togglePinBlur(map, source_id);
             pinPopup = new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
               .setLngLat(e.lngLat)
+              .setMaxWidth("400px")
               .setHTML(ReactDOMServer.renderToString(StudyPopup(record)))
               .addTo(map);
             map.flyTo({
