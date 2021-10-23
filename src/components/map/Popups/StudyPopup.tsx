@@ -7,7 +7,7 @@ import { getGeography, getPossibleNullDateString } from 'utils/utils';
  * @param title: left column of study modal: title of content
  * @param content: right content of study modal: the actual content for this record
  */
-function row(title: string, content: JSX.Element | string | null) {
+function row(title: string, content: JSX.Element | string | null | undefined) {
     return (
         <div className={"d-flex justify-content-between mb-1"}>
             <div className={"popup-heading"}>
@@ -47,7 +47,7 @@ export default function StudyPopup(record: AirtableRecord) {
                     {row(Translate("SamplingDates"), `${getPossibleNullDateString(record.sampling_start_date)} → ${getPossibleNullDateString(record.sampling_end_date)}`)}
                 </>)
             }
-            {row(Translate("SampleSize"), `${record.denominator_value}`)}
+            {row(Translate("SampleSize"), record.denominator_value?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, Translate(",")))}
             {row(Translate("PositiveCases"), ("Missing"))}
             {row(Translate("Vaccinations"), ("Missing"))}
             {row(Translate("PopulationGroup"), record.population_group ?? Translate("NotReported"))}
