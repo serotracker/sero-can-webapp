@@ -9,7 +9,7 @@ import { getGeography, getPossibleNullDateString } from 'utils/utils';
  */
 function row(title: string, content: JSX.Element | string | null | undefined) {
     return (
-        <div className={"d-flex justify-content-between mb-1"}>
+        <div className={"d-flex justify-content-between mb-2"}>
             <div className={"popup-heading"}>
                 {title}
             </div>
@@ -36,7 +36,7 @@ export default function StudyPopup(record: AirtableRecord) {
                 <div className="popup-title">
                     {Translate(`${record.estimate_grade}StudyDetails`)}:
                 </div>
-                <div className="popup-text">
+                <div className="popup-subtitle">
                     {getGeography(record.city, record.state, record.country)}
                 </div>
             </div>
