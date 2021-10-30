@@ -85,8 +85,8 @@ export default function DateSlider({minPossibleValue, maxPossibleValue, minDate,
             <div className="slider">
                 <div className="slider-track" />
                 <div className="slider-range" ref={range} />
-                <div className={"slider-left-value"}>{toDateString(toDateSinceMinDate(leftThumbVal))}</div>
-                <div className={"slider-right-value"}>{toDateString(toDateSinceMinDate(rightThumbVal))}</div>
+                <div className={"slider-left-value"}></div>
+                <div className={"slider-right-value"}></div>
             </div>
         </div>
     )

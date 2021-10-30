@@ -1,5 +1,5 @@
 .slider-container{
-    margin: 10px 0 25px 0;
+    margin: 10px 0 5px 0;
     height: 10px;
 }
 
@@ -92,4 +92,23 @@
 
 .slider-right-value {
     right: -4px;
+}
+
+
+.ui.fluid.input>input {
+    width: 40% !important;
+}
+
+.ui.input>input {
+    padding: 5px;
+    max-width: 80%;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.float-right {
+    float: right;
 }

@@ -10,6 +10,7 @@ import SectionHeader from "../SectionHeader";
 import {enUS, fr} from 'date-fns/locale'
 import DateSlider from "./DateSlider";
 import { sendFiltersAnalyticsEvent } from "../../../../utils/analyticsUtils";
+import './DateSlider.css';
 
 interface DatepickerProps {
   page: string
@@ -63,14 +64,9 @@ export default function Datepicker({ page }: DatepickerProps) {
   }
 
   const CustomInput = ({ value, onClick, text }: any) => (
-    <div className="col-12 p-0 flex column">
-      <div>
-        {text}
-      </div>
+    <div className="col-12 p-0 flex">
       <Input className="col-12 p-0 cursor"
         value={value}
-        iconPosition="left"
-        icon="calendar"
         fluid={true}
         type="text"
         placeholder='Select date..'
@@ -81,12 +77,12 @@ export default function Datepicker({ page }: DatepickerProps) {
   return (
     <div className="row justify-content-center">
       <div className="col-10 col align-items-center p-0">
-        <div className="pb-1">
+        <div>
           <div>
             <SectionHeader header_text={Translate('DateRange')} tooltip_text={Translate('DateRangeTooltip')} />
           </div>
           <DateSlider maxPossibleValue={sliderRange} minPossibleValue={0} onMouseUp={datePickerChanged} values={sliderThumbValues} minDate={earliestPublicationDate}/>
-          <div>
+          <div className="space-between mb-3">
             <DatePicker
                 selected={chosenStartDate}
                 onChange={() => { }}
@@ -100,16 +96,15 @@ export default function Datepicker({ page }: DatepickerProps) {
                 scrollableYearDropdown
                 showMonthDropdown
                 locale={state.language}
-                customInput={<CustomInput value={chosenStartDate} text={Translate("StartDate")} onClick={onclick} />}
+                customInput={<CustomInput value={chosenStartDate} onClick={onclick} />}
                 withPortal
                 closeOnScroll={true}
                 shouldCloseOnSelect={false}
                 dropdownMode="select"
                 todayButton="Today"
             />
-          </div>
-          <div>
-            <DatePicker
+            <div className="float-right">
+              <DatePicker
                 selected={chosenEndDate}
                 onChange={() => { }}
                 onSelect={(date: Date) => datePickerChanged(false, date)}
@@ -122,13 +117,14 @@ export default function Datepicker({ page }: DatepickerProps) {
                 scrollableYearDropdown
                 showMonthDropdown
                 locale={state.language}
-                customInput={<CustomInput value={chosenEndDate} text={Translate("EndDate")} onClick={onclick} />}
+                customInput={<CustomInput value={chosenEndDate}  onClick={onclick} />}
                 withPortal
                 closeOnScroll={true}
                 shouldCloseOnSelect={false}
                 dropdownMode="select"
                 todayButton="Today"
             />
+            </div>
           </div>
         </div>
       </div>
