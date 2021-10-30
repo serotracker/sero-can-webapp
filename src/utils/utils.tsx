@@ -55,10 +55,11 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
     else if (geo.length > 1 && typeof geo !== "string") {
       return geo?.join(", ");
     }
-    return geo
+    return geo + ", "
   }
 
-  return  [renderOutGeography(city), renderOutGeography(state), country].filter(Boolean).map((str)=>{return (<React.Fragment>{str}<br/></React.Fragment>)})
+  return  [renderOutGeography(city), renderOutGeography(state), country].filter(Boolean).map((str)=>{return (<React.Fragment>{str}</React.Fragment>)})
+  //return "" + renderOutGeography(city) + ", " + renderOutGeography(state) + ", " + country
 }
 
 export const withLocaleUrl = (path: string) => {

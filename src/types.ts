@@ -32,6 +32,8 @@ export type AirtableRecord = {
   url: string | null;
   estimate_grade: string | null;
   vaccination_policy: number | null;
+  full_vaccinations_per_hundred: number | null;
+  cases_per_hundred: number | null;
 };
 
 export type AggregatedRecord = {

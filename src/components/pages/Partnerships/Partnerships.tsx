@@ -68,11 +68,12 @@ export default function Partnerships() {
 
   useEffect(() => {
     const api = new httpClient();
-    const getPartnershipsRecords = async () => {
-      setRecords(await api.getAirtableRecordsForCountry({country: [config?.routeName]}));
+    const getPartnershipsData = async () => {
+      const { records, estimateGradePrevalences } = await api.getCountryPartnershipData({country: [config?.routeName]});
+      setRecords(records);
+      setEstimateGradePrevalence(estimateGradePrevalences[0]);
     }
-    getPartnershipsRecords()
-    setEstimateGradePrevalence(state.explore.estimateGradePrevalences.find(x => x.alpha3Code === config?.iso3));
+    getPartnershipsData()
   }, [config, state.explore.estimateGradePrevalences])
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
   return (

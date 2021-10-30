@@ -286,29 +286,67 @@ Footer a{
     color: lightgrey;
 }
 
-.popup-title { 
-  font-weight: bold;
-  font-size: 18px;
-}
 
-.popup-heading { 
-  font-weight: bold;
-  font-size: 12px;
-}
 
-.popup-text { 
-  font-weight: normal;
-  font-size: 12px;
-}
+.popup{
+    &-title {
+        font-weight: bold;
+        font-size: 18px;
+        flex: 1;
+    }
 
-.popup-header {
-    font-size: 1.40em;
-    line-height: 1.2;
-    margin-bottom: 0.25em;
-    color: #333333;
-    display:flex;
-    justify-content: flex-start;
-    font-weight: 600;
+    &-subtitle {
+        font-weight: normal;
+        font-size: 18px;
+        width: 67.75%;
+    }
+
+    &-heading {
+        font-weight: 600;
+        font-size: 12px;
+        width: 28%;
+    }
+
+    &-text {
+        font-weight: normal;
+        font-size: 12px;
+        width: 67.75%;
+    }
+
+    &-header {
+        font-size: 1.40em;
+        line-height: 1.2;
+        margin-bottom: 0.25em;
+        color: #333333;
+        display:flex;
+        justify-content: flex-start;
+        font-weight: 600;
+    }
+    &-risk-tag{
+        padding: 2px 5px;
+        background-color: #C4C4C4;
+        font-size: 12px;
+        font-weight: 600;
+        text-align: center;
+        width: 100%
+
+    }
+
+    &-risk {
+        &-High{
+            background-color: #FEDBD7;
+            //width: 109px;
+        }
+        &-Moderate{
+            background-color: #FFF8D3;
+            //width: 139px;
+        }
+        &-Low{
+            background-color: #D4F7F6;
+            //width: 106px;
+        }
+    }
+
 }
 
 .icon-container {
@@ -363,11 +401,9 @@ Footer a{
 .dropdown a {
     color: #333333 !important;
     &:hover {
-        color: #666666 !important;
+        color: #333333 !important;
     }
 }
-
-
 
 .info-btn {
     top: 45px;

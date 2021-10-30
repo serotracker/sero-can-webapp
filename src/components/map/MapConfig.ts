@@ -90,12 +90,23 @@ export const Expressions = {
           MapSymbology.StudyFeature.Sublocal.Size,
           MapSymbology.StudyFeature.Default.Size,
         ],
-        'circle-stroke-width': 1,
-        'circle-stroke-opacity': [
+        'circle-stroke-color':[
             'case',
             ['boolean', ['feature-state', 'isSelected'], false],
+            'black',
+            'white'
+        ],
+        'circle-stroke-width': 3,
+        'circle-stroke-opacity': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
             1,
-            0
+            [
+                'case',
+                ['boolean', ['feature-state', 'isSelected'], false],
+                1,
+                0
+            ],
         ],
         'circle-opacity': [
             'case',
