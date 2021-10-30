@@ -328,21 +328,22 @@ Footer a{
         font-size: 12px;
         font-weight: 600;
         text-align: center;
+        width: 100%
 
     }
 
     &-risk {
         &-High{
             background-color: #FEDBD7;
-            width: 109px;
+            //width: 109px;
         }
         &-Moderate{
             background-color: #FFF8D3;
-            width: 139px;
+            //width: 139px;
         }
         &-Low{
             background-color: #D4F7F6;
-            width: 106px;
+            //width: 106px;
         }
     }
 
