@@ -10,6 +10,7 @@ import generateSourceFromRecords from "utils/GeoJsonGenerator";
 import {Expressions} from "components/map/MapConfig"
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 
+// Checks and blurs all pins that are not selected whgen a certain pin is clicked
 const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
   const features = map.querySourceFeatures('study-pins', {
     sourceLayer: 'study-pins'
@@ -26,6 +27,8 @@ const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
         },
         {
           isBlurred: isBlurred,
+          // a safety net because sometimes the hover state is skipped on click, makes sure to reset the map everytime something is clicked
+          hover: false
         }
       );
     }
@@ -38,6 +41,8 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
   const [api] = useState(new httpClient());
   const [selectedPinId, setSelectedPinId] = useState<string | undefined>(undefined);
   const prevSelectedPinId = usePrevious(selectedPinId)
+  const [hoveredOverId, setHoveredOverId] = useState<string | undefined>(undefined);
+  const prevHoveredOverId = usePrevious(hoveredOverId)
 
   useEffect(() => {
     if(map){
@@ -119,9 +124,43 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
       map.on("mouseleave", "study-pins", function () {
         map.getCanvas().style.cursor = "";
       });
+
+      // Toggles the hover state
+      map.on("mousemove", "study-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
+        setHoveredOverId(e.features[0].properties.source_id)
+      })
     }
   }, [map, state.language, api])
 
+  // Changes hover state of each circle
+  useEffect(() => {
+    if(map){
+      if(hoveredOverId && !selectedPinId){
+        map.setFeatureState(
+            {
+              source: "study-pins",
+              id: hoveredOverId,
+            },
+            {
+              hover: true,
+            }
+        )
+
+        map.setFeatureState(
+            {
+              source: "study-pins",
+              id: prevHoveredOverId,
+            },
+            {
+              hover: false,
+            }
+        )
+      }
+    }
+
+  }, [map, hoveredOverId])
+
+  // changes select state styling of each circle
   useEffect(() => {
     if (map) {
       if (prevSelectedPinId) {
