@@ -71,16 +71,14 @@ export default function PartnerShipsMap({ partnershipconfig }: PartnerShipsMapPr
 
   useEffect(() => {
     const api = new httpClient();
-    const getPartnershipsRecords = async () => {
-      setRecords(await api.getAirtableRecordsForCountry({ country: [partnershipconfig?.routeName] }));
-    };
-    getPartnershipsRecords();
-    setEstimateGradePrevalence(
-      state.explore.estimateGradePrevalences.find((x) => x.alpha3Code === partnershipconfig?.iso3)
-    );
-  }, [partnershipconfig, state.explore.estimateGradePrevalences]);
-
-  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
+    const getPartnershipsData = async () => {
+      const { records, estimateGradePrevalences } = await api.getCountryPartnershipData({country: [partnershipconfig?.routeName]});
+      setRecords(records);
+      setEstimateGradePrevalence(estimateGradePrevalences[0]);
+    }
+    getPartnershipsData()
+  }, [partnershipconfig, state.explore.estimateGradePrevalences])
+  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
 
   if (partnershipconfig === undefined) {
     return <></>;

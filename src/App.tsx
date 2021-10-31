@@ -15,8 +15,7 @@ import { Footer } from "./components/shared/Footer";
 import Analyze from "./components/pages/Analyze"
 import { AppContext, getEmptyFilters } from "./context";
 import httpClient from "./httpClient";
-import { LanguageType, PageStateEnum } from "./types";
-import { initializeData } from "./utils/stateUpdateUtils";
+import { LanguageType } from "./types";
 import { setLanguageType } from "./utils/translate/translateService";
 import Partnerships from "components/pages/Partnerships/Partnerships";
 
@@ -27,7 +26,6 @@ function App() {
   // General call that happens once at the start of everything.
   useEffect(() => {
     const api = new httpClient()
-    initializeData(dispatch, explore.filters, PageStateEnum.explore)
     const allFilterOptions = async () => {
       const { options, updatedAt, maxDate, minDate } = await api.getAllFilterOptions();
       dispatch({

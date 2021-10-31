@@ -14,11 +14,11 @@
       "PublicHealthAgency": "Public Health Agency of Canada",
       "SupportedBy": "SeroTracker is supported by the",
       "ThroughThe": "through the",
-      "WHO1": "SeroTracker is working with the",
-      "WorldHealthOrganization": "World Health Organization",
-      "WHO2": "to visualize and synthesize results from the",
       "UnityStudies": "Unity seroprevalence studies.",
-      "WHO3": "SeroTracker and the World Health Organization are grateful for German Federal Ministry of Health (BMG) COVID-19 Research and Development funding to support this effort."
+      "WHO1": "SeroTracker is working with the",
+      "WHO2": "to visualize and synthesize results from the",
+      "WHO3": "SeroTracker and the World Health Organization are grateful for German Federal Ministry of Health (BMG) COVID-19 Research and Development funding to support this effort.",
+      "WorldHealthOrganization": "World Health Organization"
     },
     "ContactSection": {
       "BulletPointFive": {
@@ -34,9 +34,23 @@
       },
       "SectionOne": "We are an interdisciplinary team of researchers and engineers at the University of Oxford, University of Toronto, University of Waterloo, University of Calgary, and Harvard University."
     },
+    "Headers": {
+      "AboutSeroTracker": "About SeroTracker",
+      "ContactUs": "Contact Us",
+      "OurTeam": "Our Team"
+    },
+    "SubHeaders": {
+      "Alumni": "Alumni",
+      "DataCuration": "Evidence Synthesis and Data Curation Team",
+      "DataInfrastructure": "Data Infrastructure and Analytics Team",
+      "GlobalPartnerships": "Global Health Partnerships Team",
+      "DevelopmentTeam": "Development Team",
+      "ProjectStaff": "Project Staff",
+      "ScientificAdvisors": "Scientific Advisors",
+      "TeamLead": "Team Leads"
+    },
     "Mapbox": "supports SeroTracker's mapping infrastructure."
   },
-  "AboutSeroTracker": "About SeroTracker",
   "Accept": "Accept",
   "AcceptCookies": "Accept Cookies",
   "AdditionalGraphs": "Additional Graphs",
@@ -67,64 +81,14 @@
   "Authors": "Authors",
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
   "BestSeroprevalenceEstimate": "Best seroprevalence estimate",
-  "VaccineRolloutStatus": "Vaccine availability during study",
-  "VaccinationPolicyLow": "Vaccines unavailable",
-  "VaccinationPolicyMed": "Vaccines available to certain groups",
-  "VaccinationPolicyHigh": "Vaccines available to broader population",
-  "Biographies": {
-    "BruceM": {
-      "PartOne": "Associate Scientific Director (Strategy), COVID-19 Immunity Task Force",
-      "PartTwo": "Professor, McGill University"
-    },
-    "CatherineE": {
-      "PartOne": "Operations Manager, Centre for Health Informatics",
-      "PartTwo": "Adjunct Assistant Professor, University of Calgary"
-    },
-    "CatherineH": {
-      "PartOne": "Co-Chair, COVID-19 Immunity Task Force",
-      "PartTwo": "Professor, McGill University"
-    },
-    "DavidB": {
-      "PartOne": "Scientific Program Manager, Data Management/Analytics, COVID-19 Immunity Task Force",
-      "PartTwo": "Professor, McGill University"
-    },
-    "DavidN": {
-      "PartOne": "Co-Chair, COVID-19 Immunity Task Force",
-      "PartTwo": "President Emeritus, University of Toronto"
-    },
-    "ErinO": {
-      "PartOne": "Project Lead, Centre for Health Informatics",
-      "PartTwo": "University of Calgary"
-    },
-    "Jesse": {
-      "PartOne": "Scientist, COVID-19 Immunity Task Force",
-      "PartTwo": "Assistant Professor, McGill University"
-    },
-    "Jonathan": {
-      "PartOne": "Scientific Program Manager, Epidemiology/Methods, COVID-19 Immunity Task Force",
-      "PartTwo": "Associate Professor, McGill University"
-    },
-    "Matthew": {
-      "PartOne": "Scientific Program Manager, Diagnostics/Testing, COVID-19 Immunity Task Force",
-      "PartTwo": "Assistant Professor, McGill University"
-    },
-    "Tim": {
-      "PartOne": "Director, School of Population and Global Health, McGill University",
-      "PartTwo": "Executive Director, Canadian COVID-19 Immunity Task Force"
-    },
-    "Tyler": {
-      "PartOne": "Associate Director, Centre for Health Informatics",
-      "PartTwo": "Associate Professor, University of Calgary"
-    }
-  },
   "BlankUniversity": "NAME University",
   "ByCountry": "By Country",
   "ByPopulation": "By Population",
+  "CentreHealthInformatics": "Centre for Health Informatics",
   "ChangeLog": "Change log",
   "CPPInvestmentBoard": "CPP Investment Board",
   "ChangeSettings": "Change Settings",
   "CoDirector": "Co-Director",
-  "ContactUs": "Contact Us",
   "CookiePolicy": "Cookie Policy",
   "CookiePolicyBody": "We use cookies to help us deliver a better user experience and we never collect any personal data. By using our website, you signify that you have read and agree to our ",
   "Countries": "Countries",
@@ -135,13 +99,13 @@
   "CountriesAndAreas": "Countries and Areas",
   "CountryEstimatesExist": "Seroprevalence Estimates",
   "CountryEstimatesNotExist": "No Seroprevalence Estimates",
-  "NotApplicable": "Not Applicable",
   "CountryOptions": {
     "England": "England",
     "Iran": "Iran",
     "Scotland": "Scotland",
     "UnitedStates": "United States"
   },
+  "COVIDImmunityTaskForce": "COVID-19 Immunity Task Force",
   "Dashboard": "Dashboard",
   "Data": "Data",
   "DatabaseUptoDateTo": "Last updated",
@@ -156,7 +120,6 @@
   "Demographics": "Demographics",
   "DemographicsTooltip": "Filter on demographic variables, including population group, sex, and age group.",
   "Details": "Details",
-  "DevelopmentTeam": "Development Team",
   "DisclaimerFooter": " *The representatives of SeroTracker are listed on the SeroTracker website. ",
   "DisclaimerList1": "This website and its contents herein, including all data, mapping, and analysis (“Website”), copyright 2020 SeroTracker, all rights reserved, is provided solely for non-profit public health, educational, and academic research purposes. You should not rely on this Website for medical advice or guidance. ",
   "DisclaimerList2": "Use of the Website by commercial parties and/or in commerce without explicit written permission by a representative* of SeroTracker is strictly prohibited. Redistribution of the Website or the aggregated data set underlying the Website without explicit written permission by a representative* of SeroTracker is also strictly prohibited.",
@@ -239,7 +202,8 @@
     "Article": "article"
   },
   "French": "Français",
-  "FAQ": "Frequently Asked Questions",
+  "FAQ": "FAQ",
+  "FrequentlyAskedQuestions": "Frequently Asked Questions",
   "GeneralTerms": "General Terms",
   "Geographies": "Geographies",
   "Geography": "Geography",
@@ -331,6 +295,7 @@
   "Map": "Map",
   "Media": "Media",
   "MediaMentions": "Media Mentions",
+  "MemorialUniversityOfNewfoundland": "Memorial university of Newfoundland",
   "MonthlyReports": "Monthly Reports",
   "Months": {
     "January": "January",
@@ -357,6 +322,7 @@
     "PartOne": "No data is available for the filters you've specified.",
     "PartTwo": "Please try a different filter combination."
   },
+  "NotApplicable": "Not Applicable",
   "NotFound": {
     "PartOne": "Page Not Found",
     "PartTwo": "Uh oh, we couldn't find the page you're looking for! Please try another URL or visit our Explore page to get back on track.",
@@ -372,7 +338,6 @@
     "Text": "The table below describes our findings, including detailed information about each study, each prevalence estimate, and the associated Risk of bias."
   },
   "OurProtocol": "Our protocol",
-  "OurTeam": "Our Team",
   "OverallRiskOfBias": "Overall Risk of bias",
   "Paper": "Paper",
   "PaperText": "Our first manuscript, describing lessons from serosurveys up to May 1, can be found on",
@@ -417,7 +382,6 @@
   "Prevalence": "Prevalence",
   "PrevalenceEstimateDetails": "Prevalence Estimate Details",
   "PrivacyPolicy": "Privacy Policy",
-  "PrivateSectorMonitoringTeam": "Private-Sector Monitoring Team",
   "Publication": "Publication",
   "PublicationDescriptions": {
     "Publications": "Learn more about SeroTracker’s impact in research articles, summaries, and media mentions.",
@@ -440,7 +404,6 @@
   "PrivateSectorReports": "Private Sector Reports",
   "ReportsAndArticles": "Reports & Articles",
   "ResearchArticles": "Research Articles",
-  "ResearchTeam": "Research Team",
   "RiskOfBias": "Risk of bias",
   "RiskOfBiasOptions": {
     "High": "High",
@@ -457,7 +420,6 @@
     "Cumming": "Cumming School of Medicine",
     "Schulich": "Schulich School of Engineering"
   },
-  "ScientificAdvisorsAndCollaborators": "Scientific Advisors and Project Staff",
   "ScientificLead": "Scientific Lead",
   "Sensitivity": "Sensitivity",
   "SeroPrevalenceByCountry": "Aggregated Seroprevalence Estimates in Different Countries",
@@ -541,6 +503,7 @@
   "SubmitSource": "Submit source",
   "Summary": "Summary",
   "SummaryStatistics": "Summary Statistics",
+  "Team": "Team",
   "TeamLead": "Team Leads",
   "TemporaryMaintenance": "Temporary Maintenance",
   "TemporaryMaintenanceDescription": "We are down for scheduled maintenance, service will return shortly.",
@@ -580,6 +543,10 @@
   "UnityStudiesOnlyLong": "Show WHO Unity-aligned studies only",
   "UniversityOf": "University of NAME",
   "UseOfData": "Use of this data is governed by SeroTracker's",
+  "VaccineRolloutStatus": "Vaccine availability during study",
+  "VaccinationPolicyLow": "Vaccines unavailable",
+  "VaccinationPolicyMed": "Vaccines available to certain groups",
+  "VaccinationPolicyHigh": "Vaccines available to broader population",
   "ViewPartnership": "View Partnership",
   "ViewFile": "View File",
   "ViewHere": "View Here",
