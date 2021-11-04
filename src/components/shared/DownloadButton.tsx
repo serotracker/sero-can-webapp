@@ -44,7 +44,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
     
     return (
         iconName === "" ?       
-        <Popup content={Translate(popupText)} position="top right" trigger={
+        <Popup content={Translate(popupText)} style={{textAlign: "left"}} position="top right" trigger={
             <Button key={buttonLabelKey} size="large" iconName={iconName}className="download-data-btn mb-2 mr-2">
             <a
                 onClick={() => clickButton()}
@@ -59,7 +59,9 @@ export default function DownloadButton(props: DownloadButtonProps) {
         </Button>
         }></Popup>  
   
-    :   <Popup content={Translate(popupText)} position="top right" trigger={        
+    :  
+
+    <Popup  offset={-10}style={{textAlign: "left"}}content={Translate(popupText)} position="top right" trigger={        
     <Button key={buttonLabelKey} size="large" iconName={iconName} className="download-data-btn mb-2 mr-2">
     <a
         onClick={() => clickButton()}
