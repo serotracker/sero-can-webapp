@@ -23,7 +23,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
 
   const githubDownloadProps = {
     buttonLabelKey: "AccessGithub", 
-    downloadLink: "https://airtable.com/shraXWPJ9Yu7ybowM/tbljN2mhRVfSlZv2d?backgroundColor=blue&viewControls=on" ,
+    downloadLink: "https://github.com/serotracker/sars-cov-2-data" ,
     formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform" ,
     iconName: "github",
     popupText: "DownloadGithub"
