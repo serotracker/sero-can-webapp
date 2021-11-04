@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
-import { Segment, Button, Accordion, Icon, AccordionTitleProps } from "semantic-ui-react";
+import { Segment, Button, Accordion, Icon, AccordionTitleProps, SemanticICONS } from "semantic-ui-react";
 import { isMaintenanceMode, mobileDeviceOrTabletWidth, PAGE_HASHES } from "../../constants";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
 import Translate, { TranslateObject } from "../../utils/translate/translateService";
@@ -53,11 +53,33 @@ function DataButtons() {
     </Button>
   ));
 
+
+  const airtableDownloadProps = {
+    buttonLabelKey: "DownloadCsv", 
+    downloadLink: "https://airtable.com/shraXWPJ9Yu7ybowM/tbljN2mhRVfSlZv2d?backgroundColor=blue&viewControls=on" ,
+    formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform" ,
+    iconName: "",
+    popupText: "DownloadAirtable"
+  }
+
+  const githubDownloadProps = {
+    buttonLabelKey: "AccessGithub", 
+    downloadLink: "https://airtable.com/shraXWPJ9Yu7ybowM/tbljN2mhRVfSlZv2d?backgroundColor=blue&viewControls=on" ,
+    formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform" ,
+    iconName: "github",
+    popupText: "DownloadGithub"
+  }
+
   return (
     <div>
       {buttons}
       <span id={PAGE_HASHES.Data.DownloadData}>
-        <DownloadButton />
+        <DownloadButton
+        {...airtableDownloadProps}
+        />
+        <DownloadButton
+        {...githubDownloadProps}
+        />
       </span>
     </div>
   );
