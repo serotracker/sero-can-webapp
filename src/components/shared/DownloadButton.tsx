@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Translate from "../../utils/translate/translateService";
 import { sendAnalyticsEvent } from '../../utils/analyticsUtils';
-import { Button } from "semantic-ui-react";
+import { Button, Popup } from "semantic-ui-react";
 import { Icon } from 'semantic-ui-react';
+import { SemanticICONS } from "semantic-ui-react/dist/commonjs/generic";
+import airtableLogo from '../../assets/images/airtable-icon.svg';
 interface DownloadButtonProps {
     buttonLabelKey?: string;
     downloadLink?: string;
     formLink?: string;
-    buttonSize?: "mini" | "tiny" | "small" | "large" | "huge";
-    buttonColour?: any;
+    iconName: string;
+    popupText: string;
   }
 
 export default function DownloadButton(props: DownloadButtonProps) {
     const [letDownload, setLetDownload] = useState(false);
 
-    const { buttonLabelKey = "DownloadCsv", 
-            downloadLink = "https://airtable.com/shraXWPJ9Yu7ybowM/tbljN2mhRVfSlZv2d?backgroundColor=blue&viewControls=on",
-            formLink = "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform",
-            buttonSize = "large",
-            buttonColour = "blue" } = props;
+    const { buttonLabelKey, 
+            downloadLink ,
+            formLink,
+        iconName, popupText} = props;
     
     useEffect(() => {
         const doneSurvey = localStorage.getItem("DownloadFormCompleted");
@@ -28,7 +29,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
     }, [])
 
     const clickButton = async () => {
-        sendAnalyticsEvent({ category: 'Data Link Click', action: 'click', label: buttonLabelKey })
+        sendAnalyticsEvent({ category: 'Data Link Click', action: 'click', label: buttonLabelKey as string})
         localStorage.setItem('DownloadFormCompleted', "true");
         // Only allow users to access download form 3 mins after they clicked the original link
         // to deter users from getting data without actually filling out the form
@@ -42,7 +43,9 @@ export default function DownloadButton(props: DownloadButtonProps) {
     }
     
     return (
-        <Button key={buttonLabelKey} size={buttonSize} className="download-data-btn">
+        iconName === "" ?       
+        <Popup content={Translate(popupText)} style={{textAlign: "left"}} position="top right" trigger={
+            <Button key={buttonLabelKey} size="large" iconName={iconName}className="download-data-btn mb-2 mr-2">
             <a
                 onClick={() => clickButton()}
                 target="_blank"
@@ -50,14 +53,32 @@ export default function DownloadButton(props: DownloadButtonProps) {
                 href={getButtonLink()}
                 className='d-flex align-items-center'
             >
-                <span className="button-text"> {Translate(buttonLabelKey)}</span>
-                <Icon 
-                name='download'
-                size='large'
-                className='ml-3'
-                />
+                <span className="button-text"> {Translate(buttonLabelKey as string)}</span>
+                <img className="ml-3"src={airtableLogo} alt="airtable-logo" width="24" height="24"/>
             </a>
         </Button>
+        }></Popup>  
+  
+    :  
+
+    <Popup  offset={-10}style={{textAlign: "left"}}content={Translate(popupText)} position="top right" trigger={        
+    <Button key={buttonLabelKey} size="large" iconName={iconName} className="download-data-btn mb-2 mr-2">
+    <a
+        onClick={() => clickButton()}
+        target="_blank"
+        rel="noreferrer"
+        href={getButtonLink()}
+        className='d-flex align-items-center'
+    >
+        <span className="button-text"> {Translate(buttonLabelKey as string)}</span>
+        <Icon 
+        name={iconName as SemanticICONS} 
+        size="large"
+        className="ml-3"
+        />
+    </a>
+</Button>
+}></Popup>
     );
   }
   
