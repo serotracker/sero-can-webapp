@@ -358,7 +358,11 @@
     "Canada": "Canada - Groupe de travail sur l'immunité contre le Covid-19"
   },
   "PartnershipsPageDescription": {
-    "Canada": "SeroTracker est soutenu financièrement par l'Agence de la santé publique du Canada par le biais du Groupe de travail sur l’immunité face à la COVID-19 (GTIC). Le GTIC a financé de nombreuses enquêtes sérologiques de haut calibre parmi d'autres recherches sur lesquelles vous pouvez en apprendre davantage sur leur site Web. (https://www.covid19immunitytaskforce.ca/) Cette page présente les données des enquêtes sérologiques canadiennes et la modélisation basée sur ces données."
+    "Canada": {
+      "PartOne": "SeroTracker est soutenu financièrement par l'Agence de la santé publique du Canada par le biais du Groupe de travail sur l’immunité face à la COVID-19 (GTIC). Le GTIC a financé de nombreuses enquêtes sérologiques de haut calibre parmi d'autres recherches sur lesquelles vous pouvez en apprendre davantage sur",
+      "PartTwo": "leur site Web.",
+      "PartThree": "Cette page présente les données des enquêtes sérologiques canadiennes et la modélisation basée sur ces données."
+    }
   },
   "PartnershipsView": {
     "MapNote1": "La carte affiche des estimations pour toutes les estimations géographiques (y compris les sous-estimations rapportées, par exemple les estimations régionales provinciales rapportées dans une étude nationale). Les épingles sont disposées autour du centre de leur(s) emplacement(s) géographique(s).",
