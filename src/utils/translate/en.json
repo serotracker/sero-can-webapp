@@ -82,7 +82,7 @@
   "AntibodyTargetOptions": {
     "EnvelopeProtein": "Envelope protein",
     "MembraneProtein": "Membrane protein",
-    "Nr": "NR",
+    "NR": "NR",
     "NotReported": "Not reported",
     "NucleocapsideNProtein": "Nucleocapsid (N-protein)",
     "Spike": "Spike",
