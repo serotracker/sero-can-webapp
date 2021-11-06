@@ -52,6 +52,7 @@ export type FiltersConfig = {
   overall_risk_of_bias: string[];
   isotypes_reported: string[];
   specimen_type: string[];
+  antibody_target: string[],
   publish_date: Date[];
   estimate_grade: string[];
   unity_aligned_only: boolean;
@@ -71,6 +72,7 @@ export type FilterType =
   | "overall_risk_of_bias"
   | "isotypes_reported"
   | "specimen_type"
+  | "antibody_target"
   | "estimate_grade"
   | "unity_aligned_only";
 
