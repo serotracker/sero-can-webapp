@@ -34,6 +34,7 @@ export type AirtableRecord = {
   vaccination_policy: number | null;
   full_vaccinations_per_hundred: number | null;
   cases_per_hundred: number | null;
+  antibody_target: string[] | null;
 };
 
 export type AggregatedRecord = {

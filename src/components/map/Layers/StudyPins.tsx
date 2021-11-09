@@ -101,7 +101,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
               .setHTML(ReactDOMServer.renderToString(StudyPopup(record)))
               .addTo(map);
             map.flyTo({
-              center: e.lngLat,
+              center: [e.lngLat.lng, e.lngLat.lat - 15], //TODO: works for most cases, not sure how to center popup
               curve: 0.5,
               speed: 0.5,
               });

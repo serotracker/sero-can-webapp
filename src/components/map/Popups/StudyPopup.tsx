@@ -34,7 +34,7 @@ export default function StudyPopup(record: AirtableRecord) {
         <div className="popup-content" >
             <div className={"d-flex justify-content-between mb-1"}>
                 <div className="popup-title">
-                    {Translate(`${record.estimate_grade}StudyDetails`)}:
+                    {Translate(`${record.estimate_grade}StudyDetails`)}
                 </div>
                 <div className="popup-subtitle">
                     {getGeography(record.city, record.state, record.country)}
@@ -48,9 +48,10 @@ export default function StudyPopup(record: AirtableRecord) {
                 </>)
             }
             {row(Translate("SampleSize"), record.denominator_value?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, Translate(",")))}
-            {row(Translate("PositiveCases"), (record.cases_per_hundred ? record.cases_per_hundred.toFixed(3) : "N/A"))}
-            {row(Translate("Vaccinations"), (record.full_vaccinations_per_hundred ? record.full_vaccinations_per_hundred.toFixed(3) : "N/A"))}
+            {row(Translate("PositiveCases"), (record.cases_per_hundred ? record.cases_per_hundred.toFixed(1) + " per 100" : "N/A"))}
+            {row(Translate("Vaccinations"), (record.full_vaccinations_per_hundred ? record.full_vaccinations_per_hundred.toFixed(1) + " per 100" : "N/A"))}
             {row(Translate("PopulationGroup"), record.population_group ?? Translate("NotReported"))}
+            {row("Antibody Target", record.antibody_target ? (record.antibody_target[0]) : "N/A")}
             {riskTag(`${record.overall_risk_of_bias}`)}
         </div>)
 }

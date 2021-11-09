@@ -33,7 +33,7 @@ const CountryPopup = (country : any, language : LanguageType, onDetailsClick?: a
     addRegion(properties.sublocalEstimate, Translate('SublocalEstimates'));
 
     return (
-      <div className="col-12 p-0 flex column popup-content" >
+      <div className="col-12 p-0 flex column country-popup-content" >
         <div className="fit popup-title">{getCountryName(properties.geographicalName, language, "CountryOptions")}</div>
         <div className="flex column fit popup-heading">
           <div className="fit popup-text">{Translate("TestsAdministered")}: <b>{properties?.testsAdministered}</b></div>

@@ -58,6 +58,15 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
   text-align: start;
 }
 
+.country-popup-content {
+  width: 450px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  background: #fff;
+  font-style: normal;
+  text-align: start;
+}
+
 
 .disable-popup {
   display:none !important;
