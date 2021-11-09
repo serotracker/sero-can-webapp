@@ -64,7 +64,7 @@ export default function Datepicker({ page }: DatepickerProps) {
   }
 
   const CustomInput = ({ value, onClick, text }: any) => (
-    <div className="col-12 p-0 flex">
+    <div className="col-12 p-0 flex input-seperate">
       <Input className="col-12 p-0 cursor"
         value={value}
         fluid={true}
@@ -103,7 +103,6 @@ export default function Datepicker({ page }: DatepickerProps) {
                 dropdownMode="select"
                 todayButton="Today"
             />
-            <div className="float-right">
               <DatePicker
                 selected={chosenEndDate}
                 onChange={() => { }}
@@ -124,7 +123,6 @@ export default function Datepicker({ page }: DatepickerProps) {
                 dropdownMode="select"
                 todayButton="Today"
             />
-            </div>
           </div>
         </div>
       </div>

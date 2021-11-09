@@ -94,14 +94,12 @@
     right: -4px;
 }
 
-
 .ui.fluid.input>input {
     width: 40% !important;
 }
 
 .ui.input>input {
     padding: 5px;
-    max-width: 80%;
 }
 
 .space-between {
@@ -111,4 +109,9 @@
 
 .float-right {
     float: right;
+}
+
+.input-seperate {
+    width: 12ch;
+    padding: 0 1px;
 }
