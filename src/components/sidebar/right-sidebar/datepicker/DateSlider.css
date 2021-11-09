@@ -107,11 +107,7 @@
     justify-content: space-between;
 }
 
-.float-right {
-    float: right;
-}
-
 .input-seperate {
-    width: 12ch;
+    width: 11ch;
     padding: 0 1px;
 }
