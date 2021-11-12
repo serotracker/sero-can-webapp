@@ -78,6 +78,16 @@
     "Tooltip": "The aggregation technique used is fixed-effects, inverse-variance-weighted meta-analysis of prevalence, with the Freeman-Tukey double arcsin transform used to stabilize variance. Records over sample size MIN_DENOMINATOR considered."
   },
   "Analyze": "Analyze",
+  "AntibodyTarget": "Antibody Target",
+  "AntibodyTargetOptions": {
+    "EnvelopeProtein": "Envelope protein",
+    "MembraneProtein": "Membrane protein",
+    "NR": "NR",
+    "NotReported": "Not reported",
+    "NucleocapsidNProtein": "Nucleocapsid (N-protein)",
+    "Spike": "Spike",
+    "WholeVirusAntigen": "Whole-virus antigen"
+  },
   "Article": "Article",
   "Authors": "Authors",
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",

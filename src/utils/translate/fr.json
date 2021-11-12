@@ -78,6 +78,16 @@
     "Tooltip": "La technique d'agrégation est à effets fixes, méta-analyse pondérée inverse la variance de la prévalence, avec la double arcsin Freeman-Tukey transformée utilisés pour stabiliser la variance sur la taille des échantillons MIN_DENOMINATOR dossiers considérés."
   },
   "Analyze": "Analyser",
+  "AntibodyTarget": "Cible d'anticorps",
+  "AntibodyTargetOptions": {
+    "EnvelopeProtein": "Protéine d'enveloppe",
+    "MembraneProtein": "Protéine membranaire",
+    "NR": "NR",
+    "NotReported": "Non reporté",
+    "NucleocapsidNProtein": "Nucléocapside (Protéine N)",
+    "Spike": "Péplomère",
+    "WholeVirusAntigen": "Antigène de virus entier"
+  },
   "Article": "Article",
   "Authors": "Auteurs",
   "AuthorAndLeadOrganizationNotReported": "Auteur et organisation responsable non indiqués",

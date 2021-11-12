@@ -17,6 +17,7 @@ export function getEmptyFilters(): FiltersConfig {
     overall_risk_of_bias: [],
     isotypes_reported: [],
     specimen_type: [],
+    antibody_target: [],
     publish_date: [initialMinDate, initialMaxDate],
     estimate_grade: [],
     unity_aligned_only: false
