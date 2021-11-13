@@ -1,9 +1,9 @@
-import React, { useContext, createRef, useRef } from "react";
-import { Dropdown, Button, Ref } from 'semantic-ui-react';
+import React, { useContext, useRef } from "react";
+import { Dropdown, Button } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType, PageState, State } from '../../../types';
 import { sendUnityAnalyticsEvent } from "../../../utils/analyticsUtils";
-import { updateFilters } from "../../../utils/stateUpdateUtils";
+import { updateFilters, clearFilters } from "../../../utils/stateUpdateUtils";
 import { toPascalCase } from "../../../utils/translate/caseChanger";
 import Translate, { getCountryName } from "../../../utils/translate/translateService";
 import InformationIcon from "../../shared/InformationIcon";
@@ -85,6 +85,13 @@ export default function Filters({ page }: FilterProps) {
       filterType,
       data,
       page)
+  }
+
+  const clearFilter = () => {
+    clearFilters(
+      dispatch,
+      page
+    )
   }
 
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
@@ -214,6 +221,7 @@ export default function Filters({ page }: FilterProps) {
         </div>
       </div>
       <Datepicker page={page}/>
+      <Button color="grey" size="small" onClick={clearFilter}>Click Here</Button>
     </div>
   )
 }
