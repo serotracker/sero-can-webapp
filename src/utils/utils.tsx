@@ -58,8 +58,8 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
     return geo + ", "
   }
 
-  return  [renderOutGeography(city), renderOutGeography(state), country].filter(Boolean).map((str)=>{return (<React.Fragment>{str}</React.Fragment>)})
-  //return "" + renderOutGeography(city) + ", " + renderOutGeography(state) + ", " + country
+  //return  [renderOutGeography(city), renderOutGeography(state), country].filter(Boolean).map((str)=>{return (<React.Fragment>{str}</React.Fragment>)})
+  return "" + (renderOutGeography(city) ? renderOutGeography(city) : "") + (renderOutGeography(state) ? renderOutGeography(state) : "")  + country
 }
 
 export const withLocaleUrl = (path: string) => {

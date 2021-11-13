@@ -96,6 +96,7 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
                 if (map.queryRenderedFeatures(e.point).filter((f) => f.source === "study-pins").length === 0) {
                     const country = e.features[0];
                     countryPopup
+                        .setMaxWidth("370px")
                       .setHTML(ReactDOMServer.renderToString(
                           CountryPopup(
                             country, 

@@ -78,6 +78,7 @@
     "Tooltip": "La technique d'agrégation est à effets fixes, méta-analyse pondérée inverse la variance de la prévalence, avec la double arcsin Freeman-Tukey transformée utilisés pour stabiliser la variance sur la taille des échantillons MIN_DENOMINATOR dossiers considérés."
   },
   "Analyze": "Analyser",
+  "AntibodyTarget": "Cible d'anticorps",
   "Article": "Article",
   "Authors": "Auteurs",
   "AuthorAndLeadOrganizationNotReported": "Auteur et organisation responsable non indiqués",
@@ -330,7 +331,7 @@
     "Button": "Visiter Notre Page «Explorer»"
   },
   "NotReported": "Non signalée",
-  "BestSeroprevalenceEstimate": "Estimation de la séroprévalence",
+  "BestSeroprevalenceEstimate": "Séroprévalence",
   "VaccineRolloutStatus": "Circulation des vaccins pendant l'étude",
   "VaccinationPolicyLow": "Vaccins indisponibles",
   "VaccinationPolicyMed": "Vaccins disponibles pour certains groupes",
