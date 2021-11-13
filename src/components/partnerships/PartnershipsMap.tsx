@@ -85,7 +85,7 @@ export default function PartnerShipsMap({ partnershipconfig }: PartnerShipsMapPr
   }
 
   const Map = isMobileDeviceOrTablet ? mobileMap(partnershipconfig, estimateGradePrevalence, records): desktopMap(partnershipconfig, estimateGradePrevalence, records)
-  const mapHeight = isMobileDeviceOrTablet ? "50vw" : "70vh"
+  const mapHeight = isMobileDeviceOrTablet ? "50vw" : "100%"
   return (
     <div style={{ height: mapHeight }} className="row">
     <Loader indeterminate active={state.explore.isLoading} />
