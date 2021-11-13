@@ -52,26 +52,19 @@ export default function Filters({ page }: FilterProps) {
           })
         });
         break;
+      case 'population_group':
+         // This code block will be deprecated once as this becomes the standardized filter option logic
+        options.forEach((o: PopulationGroupFilterOption) => {
+          const optionString = state.language === LanguageType.english ? o.english : o.french;
+          formatted_options.push({
+            key: optionString,
+            text: optionString,
+            value: optionString
+          })
+        })
+        break;
       default:
-        options.forEach((o: string | PopulationGroupFilterOption) => {
-          // This code block will be deprecated once as this becomes the standardized filter option logic
-          if (filter_type === "population_group") {
-            o = o as PopulationGroupFilterOption;
-            let optionString = ""
-            if (state.language === LanguageType.english) {
-              optionString = o.english;
-            } else if (state.language === LanguageType.french) {
-              optionString = o.french;
-            } else if (state.language === LanguageType.german) {
-              optionString = o.german;
-            }
-            
-            formatted_options.push({
-              key: optionString,
-              text: optionString,
-              value: optionString
-            })
-          } else {
+        options.forEach((o: string) => {     
             const translatedString = Translate(jsonObjectString, [toPascalCase(o as string)]);
             const alternativeString = Translate(jsonObjectString, [(o as string).replace(/ /g, '')]);
             let text = !alternativeString && !translatedString ? o as string : (translatedString ? translatedString : alternativeString);
@@ -80,7 +73,6 @@ export default function Filters({ page }: FilterProps) {
               text: text,
               value: o as string
             })
-          }
         });
     };
     return formatted_options;
