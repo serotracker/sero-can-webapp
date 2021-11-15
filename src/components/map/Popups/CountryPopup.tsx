@@ -1,12 +1,12 @@
 import React from "react";
 import { RegionalPrevalenceEstimate } from "types";
 import { LanguageType } from "types";
-import { Button } from 'semantic-ui-react'
+import {Button, Divider} from 'semantic-ui-react'
 import Translate, { getCountryName } from 'utils/translate/translateService';
 
 function row(title: string, content: JSX.Element | string | string[] | null | undefined) {
     return (
-        <div className={"d-flex justify-content-between mb-2"}>
+        <div className={"d-flex mb-2"}>
             <div className={"country-popup-heading"}>
                 {title}
             </div>
@@ -23,8 +23,8 @@ const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimat
   const regionString = minString === maxString ? minString : `${minString} - ${maxString}`;
 
   return (
-    <div key={Math.random()} className={"flex column mt-2"}>
-        <div key={Math.random()} className="country-popup-heading pt-1">
+    <div key={Math.random()}>
+        <div key={Math.random()} className="country-popup-header pt-1 mb-2">
             {title}
         </div>
         {row(Translate('EstimateRange'), (<b>{regionString}</b>))}
@@ -48,10 +48,11 @@ const CountryPopup = (country : any, language : LanguageType, onDetailsClick?: a
     addRegion(properties.sublocalEstimate, Translate('SublocalEstimates'));
 
     return (
-      <div className="col-12 p-0 flex column country-popup-content" >
+      <div className="country-popup-content" >
         <div className="country-popup-title">
             {getCountryName(properties.geographicalName, language, "CountryOptions")}
         </div>
+          <Divider />
         {row(Translate("TestsAdministered"), <b>{properties?.testsAdministered}</b>)}
         {row(Translate('NumSeroprevalenceEstimates'), <b>{properties?.numberOfStudies}</b>)}
         {regions.map((o) => createPopupGeographySection(o.Region, o.Name))}
@@ -64,7 +65,7 @@ const CountryPopup = (country : any, language : LanguageType, onDetailsClick?: a
   }
 
   return (
-    <div className="col-12 p-0 flex">
+    <div className="country-popup-content">
       <div className="country-popup-title">{getCountryName(properties.geographicalName, language, "CountryOptions")}</div>
       <div className="col-12 p-0 flex country-popup-text">{Translate('NoData')}</div>
     </div>)

@@ -66,51 +66,33 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
     background: #fff;
     font-style: normal;
     text-align: start;
-    height: 100%;
   }
 
   &-title {
     font-weight: bold;
     font-size: 18px;
     flex: 1;
-    width: 54%;
-    height: 100%;
-
-  }
-
-  &-subtitle {
-    font-weight: normal;
-    font-size: 18px;
-    width: 41.75%;
-    height: 100%;
+    width: 100%;
 
   }
 
   &-heading {
     font-weight: 600;
     font-size: 12px;
-    width: 54%;
-    height: 100%;
+    width: 52%;
   }
 
   &-text {
     font-weight: normal;
     font-size: 12px;
-    width: 41.75%;
-    height: 100%;
+    width: 43.75%;
 
   }
 
   &-header {
-    font-size: 1.40em;
-    line-height: 1.2;
-    margin-bottom: 0.25em;
-    color: #333333;
-    display: flex;
-    justify-content: flex-start;
-    font-weight: 600;
-    height: 100%;
-
+    font-weight: bold;
+    font-size: 14px;
+    width: 100%;
   }
 }
 

@@ -33,7 +33,14 @@ export const getPossibleNullDateString = (nullString: string | null | undefined)
   if (nullString === null || nullString === undefined) {
     return Translate("Not Reported")
   }
-  return format(parseISO(nullString), "yyyy/MM/dd")
+
+  const dateTimeFormat = new Intl.DateTimeFormat('en', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  return dateTimeFormat.format(new Date(nullString))
 }
 
 export const getPossibleNullStringArray = (nullString: string[] | null | undefined) => {
