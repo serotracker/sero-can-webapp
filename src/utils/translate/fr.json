@@ -54,6 +54,7 @@
   },
   "Accept": "Accepter",
   "AcceptCookies": "Accepter les fichiers témoins",
+  "AccessGithub": "Accéder à Github",
   "AdditionalGraphs": "Graphiques supplémentaires",
   "Age": "Âge",
   "AgeGroup": "Groupe d'âge",
@@ -79,6 +80,15 @@
   },
   "Analyze": "Analyser",
   "AntibodyTarget": "Cible d'anticorps",
+  "AntibodyTargetOptions": {
+    "EnvelopeProtein": "Protéine d'enveloppe",
+    "MembraneProtein": "Protéine membranaire",
+    "NR": "NR",
+    "NotReported": "Non reporté",
+    "NucleocapsidNProtein": "Nucléocapside (Protéine N)",
+    "Spike": "Péplomère",
+    "WholeVirusAntigen": "Antigène de virus entier"
+  },
   "Article": "Article",
   "Authors": "Auteurs",
   "AuthorAndLeadOrganizationNotReported": "Auteur et organisation responsable non indiqués",
@@ -173,8 +183,10 @@
       }
     }
   },
+  "DownloadAirtable": "Cliquez pour accéder et télécharger nos données de séroprévalence SARS-CoV-2 sur Airtable",
   "DownloadCsv": "Télécharger CSV",
   "DownloadData": "Télécharger les données",
+  "DownloadGithub": "Cliquez pour télécharger nos données de séroprévalence SARS-CoV-2 par programmation sur GitHub",
   "EconomicsTeam": "Équipe économique",
   "EndDate": "Date de fin",
   "English": "anglais",

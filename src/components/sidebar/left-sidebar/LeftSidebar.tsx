@@ -3,6 +3,8 @@ import Translate from "utils/translate/translateService";
 import TotalStats from "./TotalStats";
 import { Divider } from 'semantic-ui-react'
 import DownloadButton from "components/shared/DownloadButton";
+import { SemanticICONS } from "semantic-ui-react";
+import { PAGE_HASHES } from "../../../constants";
 import "../sidebar.scss";
 
 interface SideBarProps {
@@ -11,6 +13,21 @@ interface SideBarProps {
 
 export default function LeftSidebar({ page }: SideBarProps) {
 
+  const airtableDownloadProps = {
+    buttonLabelKey: "DownloadCsv", 
+    downloadLink: "https://airtable.com/shraXWPJ9Yu7ybowM/tbljN2mhRVfSlZv2d?backgroundColor=blue&viewControls=on" ,
+    formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform" ,
+    iconName: "",
+    popupText: "DownloadAirtable"
+  }
+
+  const githubDownloadProps = {
+    buttonLabelKey: "AccessGithub", 
+    downloadLink: "https://github.com/serotracker/sars-cov-2-data" ,
+    formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform" ,
+    iconName: "github",
+    popupText: "DownloadGithub"
+  }
 
   return (
     <div className="sidebar-container flex left-sidebar">
@@ -24,7 +41,20 @@ export default function LeftSidebar({ page }: SideBarProps) {
         <p>{Translate('ExploreBlurb', ['ThirdParagraph'])}</p>
       </div>
       <div className="d-flex justify-content-center mt-3">
-        <DownloadButton />
+      <span style={{margin: "0"}} id={PAGE_HASHES.Data.DownloadData}>
+        <DownloadButton
+        {...airtableDownloadProps}
+        />
+  
+      </span>
+      </div>
+      <div className="d-flex justify-content-center mt-1">
+      <span style={{margin: "0"}} id={PAGE_HASHES.Data.DownloadData}>
+   
+        <DownloadButton
+        {...githubDownloadProps}
+        />
+      </span>
       </div>
     </div>
   )
