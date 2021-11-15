@@ -33,7 +33,14 @@ export const getPossibleNullDateString = (nullString: string | null | undefined)
   if (nullString === null || nullString === undefined) {
     return Translate("Not Reported")
   }
-  return format(parseISO(nullString), "yyyy/MM/dd")
+
+  const dateTimeFormat = new Intl.DateTimeFormat('en', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  return dateTimeFormat.format(new Date(nullString))
 }
 
 export const getPossibleNullStringArray = (nullString: string[] | null | undefined) => {
@@ -58,8 +65,8 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
     return geo + ", "
   }
 
-  return  [renderOutGeography(city), renderOutGeography(state), country].filter(Boolean).map((str)=>{return (<React.Fragment>{str}</React.Fragment>)})
-  //return "" + renderOutGeography(city) + ", " + renderOutGeography(state) + ", " + country
+  //return  [renderOutGeography(city), renderOutGeography(state), country].filter(Boolean).map((str)=>{return (<React.Fragment>{str}</React.Fragment>)})
+  return "" + (renderOutGeography(city) ? renderOutGeography(city) : "") + (renderOutGeography(state) ? renderOutGeography(state) : "")  + country
 }
 
 export const withLocaleUrl = (path: string) => {

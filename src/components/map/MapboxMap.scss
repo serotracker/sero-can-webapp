@@ -50,7 +50,7 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
 }
 
 .popup-content {
-  width: 375px;
+  width: 425px;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   background: #fff;
@@ -58,6 +58,43 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
   text-align: start;
 }
 
+.country-popup {
+  &-content {
+    width: 350px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    background: #fff;
+    font-style: normal;
+    text-align: start;
+  }
+
+  &-title {
+    font-weight: bold;
+    font-size: 18px;
+    flex: 1;
+    width: 100%;
+
+  }
+
+  &-heading {
+    font-weight: 600;
+    font-size: 12px;
+    width: 52%;
+  }
+
+  &-text {
+    font-weight: normal;
+    font-size: 12px;
+    width: 43.75%;
+
+  }
+
+  &-header {
+    font-weight: bold;
+    font-size: 14px;
+    width: 100%;
+  }
+}
 
 .disable-popup {
   display:none !important;
