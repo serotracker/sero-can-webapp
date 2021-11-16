@@ -59,7 +59,7 @@ export const DefaultMapboxMapOptions = {
     minZoom: 2,
     maxZoom: 14,
     attributionControl: false,
-    doubleClickZoom: false,
+    scrollZoom: false
 }
 
 export const Expressions = {

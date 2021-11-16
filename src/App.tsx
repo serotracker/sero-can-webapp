@@ -11,7 +11,7 @@ import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import TermsOfUse from "./components/pages/TermsOfUse";
 import { CookieBanner } from "./components/shared/CookieBanner";
 import { Header } from "./components/shared/Header";
-import { Footer } from "./components/shared/Footer";
+import { Footer } from "./components/shared/Footer/Footer";
 import Analyze from "./components/pages/Analyze"
 import { AppContext, getEmptyFilters } from "./context";
 import httpClient from "./httpClient";

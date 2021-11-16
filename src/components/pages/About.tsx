@@ -8,7 +8,7 @@ import Translate from "../../utils/translate/translateService";
 import WhoLogo from "components/shared/WhoLogo";
 import "./static.css";
 import { sendAnalyticsEvent } from "../../utils/analyticsUtils";
-import {Sponsers} from "../shared/Footer"
+import {Sponsers} from "../shared/Footer/Footer"
 import HealthAgencyLogo from "../../assets/images/public-health-agency.png";
 import UcalgaryLogo from "../../assets/images/University-Of-Calgary-Logo.png";
 
