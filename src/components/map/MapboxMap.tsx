@@ -86,7 +86,7 @@ const MapboxMap = ( {mapConfig, countriesConfig, studyPinsConfig}: MapboxMapProp
 
   return (
     //@ts-ignore
-    <div className="w-100 h-100" ref={(el) => (mapContainerRef.current = el)}></div>
+    <div className="w-100 h-100 overflow-hidden" ref={(el) => (mapContainerRef.current = el)}></div>
   );
 };
 
