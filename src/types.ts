@@ -5,7 +5,6 @@ export type AirtableRecord = {
   first_author: string | null;
   source_type: string | null;
   test_type: string | null;
-  specimen_type: string[] | null;
   isotypes_reported: string[] | null;
   test_manufacturer: string[] | null;
   sensitivity: number | null;
@@ -51,7 +50,6 @@ export type FiltersConfig = {
   age: string[];
   overall_risk_of_bias: string[];
   isotypes_reported: string[];
-  specimen_type: string[];
   antibody_target: string[],
   publish_date: Date[];
   estimate_grade: string[];
@@ -71,7 +69,6 @@ export type FilterType =
   | "source_type"
   | "overall_risk_of_bias"
   | "isotypes_reported"
-  | "specimen_type"
   | "antibody_target"
   | "estimate_grade"
   | "unity_aligned_only";

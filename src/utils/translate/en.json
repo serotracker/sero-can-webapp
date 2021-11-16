@@ -467,13 +467,6 @@
     "Publication": "Publication"
   },
   "Specificity": "Specificity",
-  "SpecimenType": "Specimen Type",
-  "SpecimenTypeOptions": {
-    "DriedBlood": "Dried blood",
-    "Plasma": "Plasma",
-    "Serum": "Serum",
-    "WholeBlood": "Whole blood"
-  },
   "StartDate": "Start Date",
   "Status": "Status",
   "StudiesPerPage": "Studies per page",
