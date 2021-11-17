@@ -8,7 +8,7 @@ import { CountriesMapConfig, StudyPinsMapConfig } from "types";
 // @ts-ignore
 // eslint-disable-next-line
 import mapboxgl, { Style } from '!mapbox-gl';
-import "components/map/MapboxMap.css";
+import "components/map/MapboxMap.scss";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 // @ts-ignore
