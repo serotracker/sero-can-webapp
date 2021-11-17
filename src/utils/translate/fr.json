@@ -474,13 +474,6 @@
     "Publication": "Publication"
   },
   "Specificity": "Spécificité",
-  "SpecimenType": "Type de spécimen",
-  "SpecimenTypeOptions": {
-    "DriedBlood": "Sang séché",
-    "Plasma": "Plasma",
-    "Serum": "Sérum",
-    "WholeBlood": "Sang total"
-  },
   "StartDate": "Date de début",
   "Status": "État",
   "StudiesPerPage": "Études par page",
