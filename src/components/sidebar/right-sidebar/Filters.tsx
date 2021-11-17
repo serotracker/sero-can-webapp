@@ -197,6 +197,9 @@ export default function Filters({ page }: FilterProps) {
             <div>
               {buildFilterDropdown('specimen_type', Translate('SpecimenType'))}
             </div>
+            <div>
+              {buildFilterDropdown('antibody_target', Translate('AntibodyTarget'))}
+            </div>
           </div>
         </div>
       </div>
