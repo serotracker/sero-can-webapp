@@ -1,0 +1,76 @@
+@import '../../../sass/variables.scss';
+
+.whoDisclaimer {
+    font-size: 0.8rem;
+    line-height: 0;
+}
+
+.ui.styled.accordion.footer-accordion {
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+}
+
+.title.footer.accordion__title{
+    color: white !important;
+}
+
+.footer {
+    background-color: $sero-dark-blue;
+    font-size: 16px;
+    font-weight: 300;
+    color: white !important;
+
+    .updated-at-bold {
+        font-weight: 600;
+    }
+
+    a:hover {
+        color: white !important;
+        text-decoration: underline;
+    }
+
+    &--mobile {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    &__item {
+        font-size: 1em;
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+
+    &__link {
+        color: white;
+    }
+
+    &__image-wrapper {
+        display: flex;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    &__image {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        max-width: 120px;
+    }
+
+    &__sponsers-pill {
+        padding: 1em;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    &__visible-section {
+        height: 50px;
+        white-space: nowrap;
+    }
+
+    h3 {
+        font-weight: 600;
+    }
+}

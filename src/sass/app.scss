@@ -65,90 +65,10 @@
     transform: rotate(180deg) !important;
 }
 
-Footer {
-    background-color: $sero-dark-blue;
-    font-size: 16px;
-    font-weight: 300;
-    color: white !important;
-
-    .updated-at-bold {
-        font-weight: 600;
-    }
-
-    a:hover {
-        color: white !important;
-        text-decoration: underline;
-    }
-}
-
-Footer h3{
-    font-weight: 600;
-}
-
-Footer a{
-    color: white;
-}
-
-.footer-visible-section {
-    height: 50px;
-    white-space: nowrap;
-}
-
 .download-data-btn.ui.button {
     background-color: $stone-cold-steve-austin;
     a {
         color: white;
-    }
-}
-
-.sponsers-pill {
-    padding: 1em;
-    background-color: white;
-    border-radius: 10px;
-}
-
-.footer-image {
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-    max-width: 120px;
-}
-
-.footer-link {
-    display: inline-block;
-    height: 55px;
-}
-
-.whoDisclaimer {
-    font-size: 11px;
-}
-
-.App-footer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    z-index: 10000;
-
-    &--mobile {
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-
-    &__item {
-        font-size: 1em;
-        color: white;
-        display: flex;
-        align-items: center;
-    }
-
-    &__link {
-        color: white;
-        &:hover {
-            font-weight: 600;
-            color: white;
-        }
     }
 }
 
