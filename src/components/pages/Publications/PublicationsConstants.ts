@@ -360,7 +360,7 @@ const listOfBiblioDigests: PublicationProps[] = [
     {
         titleKey1: 'BiblioDigestTitles',
         titleKey2: ['LateOctober'],
-        url: "https://drive.google.com/file/d/1jVvi9fEO8VM_LQ2vCfgF0oYFRd1tqwYw/view?usp=sharing"
+        url: "https://drive.google.com/file/d/11JHvvKtR9_s2HQHeHmp6j-hx8Y1sIF-O/view?usp=sharing"
     },
     {
         titleKey1: 'BiblioDigestTitles',

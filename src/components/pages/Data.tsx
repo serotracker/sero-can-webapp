@@ -31,7 +31,7 @@ function DataButtons() {
     },
     {
       label: "DataDictionary",
-      link: "https://docs.google.com/spreadsheets/d/1KQbp5T9Cq_HnNpmBTWY1iKs6Etu1-qJcnhdJ5eyw7N8/edit?usp=sharing",
+      link: "https://airtable.com/shr9XzggGpYFqMdJF/tblIdx2b6ZOLevdJr",
       id: PAGE_HASHES.Data.DataDictionary,
     },
     {
