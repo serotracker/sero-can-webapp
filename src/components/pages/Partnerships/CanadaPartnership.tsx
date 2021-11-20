@@ -15,7 +15,13 @@ export default function CanadaPartnership({partnershipConfig}:CanadaPartnershipP
   return (
     <>
       <h1 className="mt-5">{Translate("PartnershipsPageTitle", [partnershipConfig.routeName])}</h1>
-      <p>{Translate("PartnershipsPageDescription", [partnershipConfig.routeName])}</p>
+      <div className="mt-2">
+        {Translate("PartnershipsPageDescription", [partnershipConfig.routeName, "PartOne"], null, [false, true])}
+        <a target="_blank" rel="noopener noreferrer" href="https://www.covid19immunitytaskforce.ca/">
+          {Translate("PartnershipsPageDescription", [partnershipConfig.routeName, "PartTwo"], null, [false, true])}
+        </a> 
+        {Translate("PartnershipsPageDescription", [partnershipConfig.routeName, "PartThree"])}
+      </div>
       <div className="mt-5 mb-1">
         <h3>
           {Translate("SeroprevalenceEstimatesInRegion", null, {
