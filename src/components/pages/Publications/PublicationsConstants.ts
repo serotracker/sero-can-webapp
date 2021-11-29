@@ -359,6 +359,11 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
 const listOfBiblioDigests: PublicationProps[] = [
     {
         titleKey1: 'BiblioDigestTitles',
+        titleKey2: ['November'],
+        url: "https://drive.google.com/file/d/1kwMjD6w2onk9lh-sCOgAcEBH-I1DrW7_/view"
+    },
+    {
+        titleKey1: 'BiblioDigestTitles',
         titleKey2: ['LateOctober'],
         url: "https://drive.google.com/file/d/11JHvvKtR9_s2HQHeHmp6j-hx8Y1sIF-O/view?usp=sharing"
     },
