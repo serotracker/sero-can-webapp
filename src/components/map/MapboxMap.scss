@@ -50,12 +50,16 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
 }
 
 .popup-content {
-  width: 425px;
+  width: 460px;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   background: #fff;
   font-style: normal;
   text-align: start;
+}
+
+.mapboxgl-popup-content {
+  padding: 0 !important;
 }
 
 .country-popup {
