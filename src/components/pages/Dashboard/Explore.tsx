@@ -55,14 +55,14 @@ export default function Explore({initialFilters}: ExploreProps) {
                 closeOnDimmerClick={true}
             >
                 <Modal.Header className={"flex justify-content-center text-center"}>
-                    Welcome to Serotracker!
+                    {Translate("Welcome")}
                 </Modal.Header>
                 <Modal.Content className={"text-center"}>
-                    For optimized site functionality, please visit us on a desktop device.
+                    {Translate("OptimisedFunctionality")}
                 </Modal.Content>
                 <Modal.Actions className={"flex justify-content-center"}>
                     <Button onClick={() => setMobileModalOpen(false)} style={{backgroundColor: "#094180", color:"#FFFFFF"}}>
-                        Okay, I understand
+                        {Translate("Okay")}
                     </Button>
                 </Modal.Actions>
             </Modal>
