@@ -55,14 +55,18 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
     return Translate("Not Reported");
   }
 
-  function renderOutGeography(geo: string[] | null | undefined) {
+  function renderOutGeography(geo: string[] | string | null | undefined) {
     if (!geo || geo.length === 0) {
       return undefined
     }
-    else if (geo.length > 1 && typeof geo !== "string") {
-      return geo?.join(", ");
+    if (typeof geo === "string"){
+      return geo.trim() + ", "
     }
-    return geo + ", "
+    else if (geo.length > 1) {
+      return geo.join(", ");
+    }
+    return geo[0].trim() + ", "
+
   }
 
   //return  [renderOutGeography(city), renderOutGeography(state), country].filter(Boolean).map((str)=>{return (<React.Fragment>{str}</React.Fragment>)})
