@@ -81,34 +81,35 @@ export default function About() {
         <Sponsers />
         <p>
           {Translate("AboutPage", ["AboutSection", "SupportedBy"])}
-          <a onClick={() => selectLink("Public Health Agency")} href="https://www.canada.ca/en/public-health.html">
+          <a target="_blank" rel="noreferrer noopener" onClick={() => selectLink("Public Health Agency")} href="https://www.canada.ca/en/public-health.html">
             {Translate("AboutPage", ["AboutSection", "PublicHealthAgency"], null, [true, true])}
           </a>
           {Translate("AboutPage", ["AboutSection", "ThroughThe"])}
-          <a onClick={() => selectLink("ITF Website")} href="https://www.covid19immunitytaskforce.ca/">
+          <a target="_blank" rel="noreferrer noopener" onClick={() => selectLink("ITF Website")} href="https://www.covid19immunitytaskforce.ca/">
             {Translate("AboutPage", ["AboutSection", "Covid19ImmunityTaskForce"], null, [true, true])}
           </a>
           {Translate("AboutPage", ["AboutSection", "HostedAt"])}
           <a
             onClick={() => selectLink("Centre for Health Informatics")}
             href="https://cumming.ucalgary.ca/centres/centre-health-informatics"
+            target="_blank" rel="noreferrer noopener"
           >
             {Translate("AboutPage", ["AboutSection", "HealthInformatics"], null, [true, true])}
           </a>
         </p>
         <p>
           {Translate("AboutPage", ["AboutSection", "WHO1"])}
-          <a onClick={() => selectLink("WorldHealthOrganization")} href="https://www.who.int/">
+          <a onClick={() => selectLink("WorldHealthOrganization")} href="https://www.who.int/" target="_blank" rel="noreferrer noopener">
             {Translate("AboutPage", ["AboutSection", "WorldHealthOrganization"], null, [true, true])}
           </a>
           {Translate("AboutPage", ["AboutSection", "WHO2"])}
-          <a onClick={() => selectLink("UnityStudies")} href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations">
+          <a target="_blank" rel="noreferrer noopener" onClick={() => selectLink("UnityStudies")} href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations">
             {Translate("AboutPage", ["AboutSection", "UnityStudies"], null, [true, false])}
           </a>
           {Translate("AboutPage", ["AboutSection", "WHO3"], null, [true, true])}
         </p>
         <p>
-          <a onClick={() => selectLink("Mapbox")} href="https://www.mapbox.com/">
+          <a onClick={() => selectLink("Mapbox")} href="https://www.mapbox.com/" target="_blank" rel="noreferrer noopener">
             Mapbox
           </a>{" "}
           {Translate("AboutPage", ["Mapbox"])}
@@ -117,13 +118,13 @@ export default function About() {
         <div>
           <p>
             {Translate("AboutPage", ["ContactSection", "BulletPointOne", "PartOne"], null, [true, true])}
-            <a href="mailto:rahul.arora@balliol.ox.ac.uk">rahul.arora@balliol.ox.ac.uk</a>
+            <a target="_blank" rel="noreferrer noopener" href="mailto:rahul.arora@balliol.ox.ac.uk">rahul.arora@balliol.ox.ac.uk</a>
             {Translate("AboutPage", ["ContactSection", "BulletPointOne", "PartTwo"], null, [true, true])}
-            <a href="mailto:tingting.yan@mail.utoronto.ca">tingting.yan@mail.utoronto.ca</a>.
+            <a target="_blank" rel="noreferrer noopener" href="mailto:tingting.yan@mail.utoronto.ca">tingting.yan@mail.utoronto.ca</a>.
             {Translate("AboutPage", ["ContactSection", "BulletPointOne", "PartThree"], null, [true, true])}
-            <a href="mailto:media@covid19immunitytaskforce.ca">media@covid19immunitytaskforce.ca</a>
+            <a target="_blank" rel="noreferrer noopener" href="mailto:media@covid19immunitytaskforce.ca">media@covid19immunitytaskforce.ca</a>
             {Translate("AboutPage", ["ContactSection", "BulletPointOne", "PartFour"], null, [true, true])}
-            <a href="mailto:kelly.johnston2@ucalgary.ca">kelly.johnston2@ucalgary.ca</a>.
+            <a target="_blank" rel="noreferrer noopener" href="mailto:kelly.johnston2@ucalgary.ca">kelly.johnston2@ucalgary.ca</a>.
           </p>
           <p>
             {Translate("AboutPage", ["ContactSection", "BulletPointFive", "PartOne"])}
