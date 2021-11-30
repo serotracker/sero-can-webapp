@@ -20,7 +20,7 @@ const desktopMap = (
 ) => {
   return (
     <>
-      <div className="col-10">
+      <div className="col-9 h-100">
         <MapboxMap
           mapConfig={partnershipconfig.mapboxMapOptions}
           countriesConfig={{
@@ -32,14 +32,14 @@ const desktopMap = (
           }}
         />
       </div>
-      <div className="col-2">
+      <div className="col-3 h-100">
         <Legend hideLayers />
-        <div className="mt-5">{Translate("PartnershipsView", ["MapNote1"])}</div>
-        <div className="mt-3">
-          {Translate("PartnershipsView", ["MapNote2"], {
-            WEBSITE: "ourworldindata.org",
-          })}
-        </div>
+          <div className="mt-1">{Translate("PartnershipsView", ["MapNote1"])}</div>
+          <div className="mt-1">
+              {Translate("PartnershipsView", ["MapNote2"], {
+                  WEBSITE: "ourworldindata.org",
+              })}
+          </div>
       </div>
     </>
   );
@@ -91,5 +91,5 @@ export default function PartnerShipsMap({ partnershipconfig }: PartnerShipsMapPr
     <Loader indeterminate active={state.explore.isLoading} />
       {Map}
     </div>
-  );;
+  );
 }
