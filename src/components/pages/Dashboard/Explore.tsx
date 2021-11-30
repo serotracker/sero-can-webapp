@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import {useMediaQuery} from "react-responsive";
-import {Loader, Icon} from "semantic-ui-react";
+import {Loader, Icon, Modal, Button} from "semantic-ui-react";
 import {isMaintenanceMode, mobileDeviceOrTabletWidth, PAGE_HASHES} from "../../../constants";
 import {AppContext} from "../../../context";
 import {PageStateEnum, FiltersConfig} from "../../../types";
@@ -22,7 +22,7 @@ export default function Explore({initialFilters}: ExploreProps) {
     const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth});
     const [state, dispatch] = useContext(AppContext);
     const [showUnityBanner, setShowUnityBanner] = useState(false);
-    const [pulsateUnityCheckbox, setPulsateUnityCheckbox] = useState(false);
+    const [mobileModalOpen, setMobileModalOpen] = useState(isMobileDeviceOrTablet);
 
     // Apply initial input filters and get records
     useEffect(() => {
@@ -47,10 +47,25 @@ export default function Explore({initialFilters}: ExploreProps) {
 
     return (
         <>
-            {
-                //I know we prefer classes to inline styles, I will upgrade the same once utility classes from my punlication
-                //PR are available
-            }
+            <Modal
+                onClose={() => {setMobileModalOpen(false)}}
+                open={mobileModalOpen}
+                size="mini"
+                closeOnEscape={true}
+                closeOnDimmerClick={true}
+            >
+                <Modal.Header className={"flex justify-content-center text-center"}>
+                    {Translate("Welcome")}
+                </Modal.Header>
+                <Modal.Content className={"text-center"}>
+                    {Translate("OptimisedFunctionality")}
+                </Modal.Content>
+                <Modal.Actions className={"flex justify-content-center"}>
+                    <Button onClick={() => setMobileModalOpen(false)} style={{backgroundColor: "#094180", color:"#FFFFFF"}}>
+                        {Translate("Okay")}
+                    </Button>
+                </Modal.Actions>
+            </Modal>
             <div className="fill flex dashboard">
                 {!isMobileDeviceOrTablet ?
                     (<>

@@ -351,6 +351,8 @@
   "VaccinationPolicyHigh": "Vaccins disponibles pour la population entière",
   "NumberEstimates": "Nombre d'estimations",
   "NumSeroprevalenceEstimates": "Nombre d'estimations de séroprévalence",
+  "Okay": "Ok, je comprends!",
+  "OptimisedFunctionality": "Pour une fonctionnalité optimisée du site, veuillez nous rendre visite sur un appareil de bureau.",
   "OurData": "Nos données",
   "OurDataText": {
     "PointOne": "saisissent la totalité des études indiquant des estimations de prévalence",
