@@ -2,6 +2,7 @@ import React from "react";
 import { format, parseISO, formatISO, add } from "date-fns";
 import Translate from 'utils/translate/translateService';
 import { LanguageType } from "../types";
+import mapboxgl from "mapbox-gl";
 
 let language = LanguageType.english;
 
@@ -72,6 +73,30 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
 
   //return  [renderOutGeography(city), renderOutGeography(state), country].filter(Boolean).map((str)=>{return (<React.Fragment>{str}</React.Fragment>)})
   return "" + (renderOutGeography(city) ? renderOutGeography(city) : "") + (renderOutGeography(state) ? renderOutGeography(state) : "")  + country
+}
+
+export const getMapboxLatitudeOffset = (map: mapboxgl.Map | undefined) => {
+  // This gets the zoom level of the map, and changes the latitude offset respectively to make sure the modal
+  // is as centered as possible no matter how much the map is zoomed in
+  if(map){
+    var mapZoom = map.getZoom();
+    if(mapZoom <= 4){
+      return 30/mapZoom;
+    }
+    else if(mapZoom > 4 && mapZoom < 6) {
+      return 30/(2*mapZoom);
+    }
+    else if(mapZoom > 5 && mapZoom < 7) {
+      return 30/(mapZoom*4);
+    }
+    else if(mapZoom >= 7 && mapZoom < 9) {
+      return 30/(mapZoom*8);
+    }
+    else if(mapZoom >= 9) {
+      return 30/(mapZoom*64);
+    }
+  }
+  return 0
 }
 
 export const withLocaleUrl = (path: string) => {

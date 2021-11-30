@@ -9,6 +9,7 @@ import mapboxgl from "mapbox-gl";
 import generateSourceFromRecords from "utils/GeoJsonGenerator";
 import {Expressions} from "components/map/MapConfig"
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
+import {getMapboxLatitudeOffset} from "../../../utils/utils";
 
 // Checks and blurs all pins that are not selected whgen a certain pin is clicked
 const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
@@ -90,7 +91,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
           pinPopup.remove()
         }
         const source_id = e.features[0].properties.source_id;
-
+        const offset = getMapboxLatitudeOffset(map)
         api.getRecordDetails(source_id).then((record) => {
           if (record !== null) {
             setSelectedPinId(source_id);
@@ -101,7 +102,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
               .setHTML(ReactDOMServer.renderToString(StudyPopup(record)))
               .addTo(map);
             map.flyTo({
-              center: [e.lngLat.lng, e.lngLat.lat - 15], //TODO: works for most cases, not sure how to center popup
+              center: [e.lngLat.lng, e.lngLat.lat - offset],
               curve: 0.5,
               speed: 0.5,
               });
