@@ -63,7 +63,8 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
       return geo.trim() + ", "
     }
     else if (geo.length > 1) {
-      return geo.join(", ");
+
+      return geo.join(", ") + ", ";
     }
     return geo[0].trim() + ", "
 
