@@ -26,7 +26,9 @@ export const PAGES = {
 
 export const PAGE_HASHES = {
     [PAGES.Explore]: {
-        Map: "Map"
+        Map: "Map",
+        DownloadCsv: "DownloadCsv",
+        AccessGithub: "AccessGithub"
     },
     [PAGES.Analyze]: {
         ByCountry: "ByCountry",
@@ -46,7 +48,7 @@ export const PAGE_HASHES = {
         PrivateSectorReports: "PrivateSectorReports",
         BiblioDigests: "BiblioDigests",
         MonthlyReports: "MonthlyReports",
-        MediaMentions: "MediaMentions",
+        MediaMentions: "MediaMentions"
     },
     [PAGES.About]: {
         ContactUs: "ContactUs",

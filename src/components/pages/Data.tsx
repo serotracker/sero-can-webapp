@@ -73,7 +73,7 @@ function DataButtons() {
   return (
     <div>
       {buttons}
-      <span id={PAGE_HASHES.Data.DownloadData}>
+      <span>
         <DownloadButton
         {...airtableDownloadProps}
         />
