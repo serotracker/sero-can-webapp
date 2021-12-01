@@ -26,7 +26,9 @@ export const PAGES = {
 
 export const PAGE_HASHES = {
     [PAGES.Explore]: {
-        Map: "Map"
+        Map: "Map",
+        DownloadCsv: "DownloadCsv",
+        AccessGithub: "AccessGithub"
     },
     [PAGES.Analyze]: {
         ByCountry: "ByCountry", 
@@ -34,22 +36,21 @@ export const PAGE_HASHES = {
         AdditionalGraphs: "AdditionalGraphs"
     }, 
     [PAGES.Data]: {
-        DownloadData: "DownloadData",
-        FAQ: "FAQ",
+        DataDictionary: "DataDictionary",
         SubmitSource: "SubmitSource",
         ChangeLog: "ChangeLog",
-        DataDictionary: "DataDictionary",
+        FAQ: "FAQ",
         References: "References"
     },
     [PAGES.Publications]: {
         ResearchArticles: "ResearchArticles",
         PrivateSectorReports: "PrivateSectorReports",
-        MediaMentions: "MediaMentions",
         BiblioDigests: "BiblioDigests",
-        MonthlyReports: "MonthlyReports"
+        MonthlyReports: "MonthlyReports",
+        MediaMentions: "MediaMentions"
     },
     [PAGES.About]: {
-        Team: "Team",
-        ContactUs: "ContactUs"
+        ContactUs: "ContactUs",
+        Team: "Team"
     }
 }
