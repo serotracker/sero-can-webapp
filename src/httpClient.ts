@@ -6,6 +6,10 @@ const RECORDS_URL = "/data_provider/records";
 const RECORD_DETAILS_URL = "/data_provider/record_details";
 const FILTER_OPTIONS_URL = "/data_provider/filter_options";
 
+// Making this a global constant so that we can easily change this
+// in case our estimate selection strategy changes in the future
+const ESTIMATES_SUBGROUP = "primary_estimates";
+
 
 export default class httpClient {
 
@@ -113,7 +117,8 @@ export default class httpClient {
             filters: reqBodyFilters,
             sampling_start_date: startDate,
             sampling_end_date: endDate,
-            unity_aligned_only
+            unity_aligned_only,
+            estimates_subgroup: ESTIMATES_SUBGROUP
         }
         return reqBody;
     }
@@ -184,6 +189,7 @@ export default class httpClient {
         const reqBody: Record<string, any> = {
             filters: filters,
             include_subgeography_estimates: true,
+            estimates_subgroup: ESTIMATES_SUBGROUP
         }
 
         const response = await this.httpPost(RECORDS_URL, reqBody)
