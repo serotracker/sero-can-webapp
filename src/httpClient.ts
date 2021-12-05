@@ -2,8 +2,7 @@ import { AirtableRecord, FiltersConfig, StudiesFilters } from "./types";
 import { formatDates } from "./utils/utils";
 import {parseISO, format } from "date-fns";
 
-// TODO: Change this back to /data_provider/records once that endpoint can be updated fully
-const RECORDS_URL = "/data_provider/dashboard_records";
+const RECORDS_URL = "/data_provider/records";
 const RECORD_DETAILS_URL = "/data_provider/record_details";
 const FILTER_OPTIONS_URL = "/data_provider/filter_options";
 
