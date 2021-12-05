@@ -9,27 +9,26 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-
-    - name: Checkout
-      uses: actions/checkout@v1
-
-    - name: Build
-      run: |
-        npm install
-        npm run build
-      env:
-        REACT_APP_MAPBOX_API_KEY: ${{ secrets.MAPBOX_API_KEY }}
-        REACT_APP_ROUTE: ${{ secrets.ROUTE }}
-        REACT_APP_GA_TRACKERID: ${{ secrets.GA_TRACKERID }}
-        CI: false
-
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "12.16.0"
+      - name: Build
+        run: |
+          npm install
+          npm run build
+        env:
+          REACT_APP_MAPBOX_API_KEY: ${{ secrets.MAPBOX_API_KEY }}
+          REACT_APP_ROUTE: ${{ secrets.ROUTE }}
+          REACT_APP_GA_TRACKERID: ${{ secrets.GA_TRACKERID }}
+          CI: false
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
