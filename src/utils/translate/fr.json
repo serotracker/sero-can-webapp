@@ -59,12 +59,9 @@
   "Age": "Âge",
   "AgeGroup": "Groupe d'âge",
   "AgeOptions": {
-    "Adults(18-64)": "Adultes (18-64)",
-    "All": "Tous",
-    "Children(0-12)": "Enfants (0-12)",
-    "Seniors(65+)": "Personnes âgées (65+)",
-    "Unspecified": "Non précisé",
-    "Youth(13-17)": "Jeunes (13-17)"
+    "Adults1864Years": "Adultes (18-64 ans)",
+    "ChildrenAndYouth017Years": "Enfants et jeunes (0-17 ans)",
+    "Seniors65Years": "Aînés (65 ans et plus)"
   },
   "AggregatedPrevalence": "Fréquence cumulative",
   "Aggregating": "agrégeant ",
@@ -362,6 +359,12 @@
   },
   "OurProtocol": "Notre protocole",
   "OverallRiskOfBias": "Risque général de partialité",
+  "OverallRiskOfBiasOptions": {
+    "Low": "Bas",
+    "Moderate": "Modérer",
+    "High": "Élevé",
+    "Unclear": "Pas clair"
+  },
   "Paper": "Article",
   "PaperText": "Vous trouverez notre premier manuscrit décrivant les enseignements des sérosondages jusqu'au 1er mai sur",
   "PaperTextTwo": "Pour plus d'informations sur notre tableau de bord, consultez",
@@ -467,14 +470,14 @@
   "Settings": "Paramètres",
   "Sex": "Sexe",
   "SexOptions": {
-    "All": "Tous",
     "Female": "Femme",
     "Male": "Homme",
-    "Unspecified": "Non précisé"
+    "Other": "Autre"
   },
   "Source": "Source",
   "SourceType": "Type de source",
   "SourceTypeOptions": {
+    "JournalArticlePeerReviewed": "Article de revue (évalué par les pairs)",
     "InstitutionalReport": "Rapport institutionnel",
     "NewsAndMedia": "Actualités et médias",
     "Preprint": "Préimpression",
@@ -535,18 +538,11 @@
   "TestsAdministered": "Tests d'anticorps administrés",
   "TestType": "Type de test",
   "TestTypeOptions": {
-    "ChemiluminescenceImmunoassay": "Immunodosage en chimiluminescence",
-    "ColloidalGold": "Or colloïdal",
-    "ElectroChemiluminescenceImmunoassay": "Immunodosage en électrochimiluminescence",
-    "ELISA": "ELISA",
-    "LFIA": "LFIA",
-    "LIPS": "LIPS",
-    "MicrosphereImmunoassay": "Immunodosage à microsphère",
-    "NeutralizationAssay": "Test de neutralisation",
-    "NotReported": "Non signalé",
-    "RapidImmunochromatographicTest": "Test immunochromatographique rapide",
-    "RDT": "RDT",
-    "SolidPhaseImmunochromatography": "Immunochromatographie en phase solide"
+    "Neutralization": "Neutralisation",
+    "Clia": "CLIA",
+    "Elisa": "ELISA",
+    "Lfia": "LFIA",
+    "Other": "Autre"
   },
   "TestUsed": "Test utilisé",
   "ThisForm": "Ce formulaire",
