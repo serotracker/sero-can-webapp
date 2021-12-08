@@ -58,25 +58,31 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
     const [state] = useContext(AppContext);
     const [popup, setPopup] = useState<mapboxgl.Popup | undefined>(undefined);
     const [highlight, setHighlight] = useState<string | undefined>(undefined);
+    const [countriesLoaded, setCountriesLoaded] = useState<boolean>(false);
     const history = useHistory();
 
-    // If estimates are updated, waits until map is loaded then maps estimate data to country features
+    // If estimates are updated, maps estimate data to country features
     useEffect(() => {
+        if (map && estimateGradePrevalences && countriesLoaded)
+        {
+            SetMapData(map, estimateGradePrevalences);
+        }
+    }, [map, estimateGradePrevalences, countryFocus, countriesLoaded]);
 
+    // Waits until map is loaded
+    useEffect(() => {
         if (map)
         {
-            if(estimateGradePrevalences)
+            if (!map.getSource(COUNTRY_LAYER_ID)) 
             {
-                if (!map.getSource(COUNTRY_LAYER_ID)) 
-                {
-                    map.on('styledata', ()=>SetMapData(map, estimateGradePrevalences));
-                }
-                else {
-                    SetMapData(map, estimateGradePrevalences);
-                }
+                map.on('styledata', ()=>setCountriesLoaded(true));
+            }
+            else
+            {
+                setCountriesLoaded(true);
             }
         }
-    }, [map, estimateGradePrevalences, countryFocus]);
+    }, [map]);
 
 
     // wait until map is loaded then creates and binds popup to map events
