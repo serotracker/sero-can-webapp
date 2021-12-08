@@ -9,7 +9,6 @@ import Translate, { getCountryName } from "../../../utils/translate/translateSer
 import InformationIcon from "../../shared/InformationIcon";
 import SectionHeader from "./SectionHeader";
 import Datepicker from "./datepicker/Datepicker";
-import NewDatepicker from './new-datepicker/NewDatepicker';
 import "./Filters.css";
 import { LanguageType } from "../../../types";
 
@@ -211,7 +210,6 @@ export default function Filters({ page }: FilterProps) {
         </div>
       </div>
       <Datepicker page={page}/>
-      <NewDatepicker/>
     </div>
   )
 }
