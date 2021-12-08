@@ -87,7 +87,6 @@ export default function Datepicker({ page }: DatepickerProps) {
             <SectionHeader header_text={Translate('DateRange')} tooltip_text={Translate('DateRangeTooltip')} />
           </div>
           <DateSlider maxPossibleValue={sliderRange} minPossibleValue={0} onMouseUp={datePickerChanged} values={sliderThumbValues} minDate={earliestPublicationDate}/>
-          <NewDateSlider maxPossibleValue={sliderRange} minPossibleValue={0} onMouseUp={datePickerChanged} values={sliderThumbValues} minDate={earliestPublicationDate}/>
           <div>
             <DatePicker
                 selected={chosenStartDate}

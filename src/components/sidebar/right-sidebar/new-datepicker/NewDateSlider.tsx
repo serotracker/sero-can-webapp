@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Slider, Rail, Handles, Tracks } from "react-compound-slider";
 import { Handle, Track, TooltipRail } from "./components"; // example render components - source below
-import { useState } from "react";
+import {useEffect, useState} from "react";
 
 const sliderStyle: React.CSSProperties = {
   position: "relative",
@@ -12,7 +12,7 @@ const sliderStyle: React.CSSProperties = {
 interface DateSliderProps {
   minPossibleValue: number; //minimum possible value for slider
   maxPossibleValue: number; //maximum possible value for slider
-  values: Date[];
+  values: number[];
   minDate: Date;
   onMouseUp: Function;
 }
@@ -20,16 +20,25 @@ interface DateSliderProps {
 export default function NewDateSlider({minPossibleValue, maxPossibleValue, minDate, values, onMouseUp}: DateSliderProps) {
   const milliSecondsPerDay = 86400000;
   const [updatedValues, setUpdatedValues] = useState([minPossibleValue, maxPossibleValue])
-  const [chosenValues, setChosenValues] = useState([minPossibleValue, maxPossibleValue])
   // min date and max date
   const domain = [minPossibleValue, maxPossibleValue]
-
+  //running update
   const onUpdate = (update: ReadonlyArray<number>) => {
     setUpdatedValues(update.concat());
   };
 
-  const onChange = (values: ReadonlyArray<number>) => {
-    setChosenValues(values.concat());
+  useEffect(() => {
+      setUpdatedValues(values)
+  }, [values])
+
+  //set update
+  const onChange = (newValues: ReadonlyArray<number>) => {
+      if (newValues[0] === values[0]){
+          onMouseUp(false, toDateSinceMinDate(newValues.concat()[1]))
+      }
+      else{
+          onMouseUp(true, toDateSinceMinDate(newValues.concat()[0]))
+      }
   };
 
   const toDateSinceMinDate = (val: number) => {
@@ -49,7 +58,7 @@ export default function NewDateSlider({minPossibleValue, maxPossibleValue, minDa
           rootStyle={sliderStyle}
           onUpdate={onUpdate}
           onChange={onChange}
-          values={chosenValues}
+          values={values}
         >
           <Rail>{railProps => <TooltipRail {...railProps} />}</Rail>
           <Handles>
@@ -83,14 +92,6 @@ export default function NewDateSlider({minPossibleValue, maxPossibleValue, minDa
           </Tracks>
         </Slider>
         <div className={"pt-4 d-flex justify-content-between"}>
-          <div>
-            {toDateString(toDateSinceMinDate(updatedValues[0]))}
-          </div>
-          <div>
-            {toDateString(toDateSinceMinDate(updatedValues[1]))}
-          </div>
-      </div>
-      <div className={"pt-4 d-flex justify-content-between"}>
           <div>
             {toDateString(toDateSinceMinDate(updatedValues[0]))}
           </div>
