@@ -4,7 +4,7 @@ import 'sass/app.scss';
 import About from './components/pages/About';
 import NotFoundPage from './components/pages/NotFoundPage';
 import CookiePolicy from "./components/pages/CookiePolicy";
-import Explore from "./components/pages/Dashboard/Explore";
+import Explore from "./components/pages/Explore/Explore";
 import Data from './components/pages/Data';
 import Publications from "./components/pages/Publications/Publications";
 import PrivacyPolicy from './components/pages/PrivacyPolicy';

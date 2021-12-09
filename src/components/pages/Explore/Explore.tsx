@@ -5,7 +5,7 @@ import {isMaintenanceMode, mobileDeviceOrTabletWidth, PAGE_HASHES} from "../../.
 import {AppContext} from "../../../context";
 import {PageStateEnum, FiltersConfig} from "../../../types";
 import MapboxMap from '../../map/MapboxMap';
-import MobileComponents from '../../mobile/ExploreMobile';
+import MobileComponents from './ExploreMobile';
 import MaintenanceModal from "../../shared/MaintenanceModal";
 import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
 import Filters from "../../sidebar/right-sidebar/Filters";

@@ -3,24 +3,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, {useState, useContext, useEffect} from "react";
 import { AppContext } from "context";
 import { Menu, Segment, Sidebar, Icon } from "semantic-ui-react";
-import { PageStateEnum } from "../../types";
+import { PageStateEnum } from "../../../types";
 import MapboxMap from "components/map/MapboxMap"
-import AnalysisMethods from "../sidebar/left-sidebar/AnalysisMethods";
-import TotalStats from "../sidebar/left-sidebar/TotalStats";
-import Datepicker from "../sidebar/right-sidebar/datepicker/Datepicker";
-import Filters from "../sidebar/right-sidebar/Filters";
+import Datepicker from "../../sidebar/right-sidebar/datepicker/Datepicker";
+import Filters from "../../sidebar/right-sidebar/Filters";
 import Legend from "components/map/Legend";
-import Translate from "utils/translate/translateService";
-import WhoLogo from "components/shared/WhoLogo"
+import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
+import './Explore.scss';
 
 export default function ExploreMobile() {
   const [showMobileFilters, setShowFilters] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
+  const [showLegend, setShowLegend] = useState(false);
   const [state] = useContext(AppContext);
 
-  const handleFilterToggle = (showMobile: boolean, showSummary: boolean) => {
+  const handleFilterToggle = (showMobile: boolean = false, showSummary: boolean = false, showLegend: boolean = false) => {
     setShowFilters(showMobile);
     setShowSummary(showSummary);
+    setShowLegend(showLegend);
   }
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function ExploreMobile() {
   }, [state.pulsateUnityFilter])
 
   return (
-    <div className="fill flex" style={{height: "100%"}}>
+    <div className="fill flex explore" style={{height: "100%"}}>
       <Sidebar.Pushable as={Segment} className="fill flex">
         <Sidebar
           as={Menu}
@@ -44,13 +44,12 @@ export default function ExploreMobile() {
         <Datepicker page={PageStateEnum.explore}/>
           <FontAwesomeIcon
             icon={faTimes}
-            onClick={() => handleFilterToggle(false, false)}
+            onClick={() => handleFilterToggle()}
             className={'icon'}
             color={'#455a64'}
             style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
             size={"lg"} />
         </Sidebar>
-        {/* Left Sidebar */}
         <Sidebar
           as={Menu}
           animation='overlay'
@@ -61,51 +60,67 @@ export default function ExploreMobile() {
           visible={showSummary}
           width='wide'
         >
-          <TotalStats page={PageStateEnum.explore}/>
-          <AnalysisMethods />
           <FontAwesomeIcon
             icon={faTimes}
-            onClick={() => handleFilterToggle(false, false)}
+            onClick={() => handleFilterToggle()}
             className={'icon'}
             color={'#455a64'}
             style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
             size={"lg"} />
-            <a href="https://www.who.int/" className="d-block mt-3 mx-auto" target="__blank" rel="noopener noreferrer">
-          <WhoLogo className="d-block mx-auto" height="50"/>
-        </a>
-        <p className="d-block mx-3 mt-3">
-          <small>
-          {Translate('WhoSerotrackAndPartnersDisclaimerSmall')}
-          </small>
-        </p>
+          <LeftSidebar page={PageStateEnum.explore}/>
+        </Sidebar>
+        <Sidebar
+          as={Menu}
+          animation='overlay'
+          icon='labeled'
+          className="col-10 p-0"
+          vertical
+          visible={showLegend}
+          width='wide'
+        >
+          <FontAwesomeIcon
+            icon={faTimes}
+            onClick={() => handleFilterToggle()}
+            className={'icon'}
+            color={'#455a64'}
+            style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
+            size={"lg"} />
+            <div className='m-3 mt-5'>
+              <Legend/>
+            </div>
         </Sidebar>
         <Sidebar.Pusher className="fill flex">
-          <div className="info flex legend center-item">
-            <Legend/>
-          </div>
-          <MapboxMap 
+          <MapboxMap
               countriesConfig={{
                 estimateGradePrevalences: state.explore.estimateGradePrevalences
-              }} 
+              }}
               studyPinsConfig={{
                 records: state.explore.records
               }}
               />
           {/* Icons */}
-          <div className="icon-container info-btn">
-             <Icon 
+          <div className="sidebar__info-btn">
+             <Icon
              name='filter'
              size='large'
              className='ml-1 mt-1'
-             onClick={() => handleFilterToggle(!showMobileFilters, false)}
+             onClick={() => handleFilterToggle(!showMobileFilters, false, false)}
              />
           </div>
-          <div className="icon-container filter-btn">
-          <Icon 
+          <div className="sidebar__filter-btn">
+          <Icon
              name='question circle'
              size='large'
              className='ml-1 mt-1'
-             onClick={() => handleFilterToggle(false, !showSummary)}
+             onClick={() => handleFilterToggle(false, !showSummary, false)}
+             />
+          </div>
+          <div className="sidebar__map-btn">
+          <Icon
+             name='map'
+             size='large'
+             className='ml-1 mt-1'
+             onClick={() => handleFilterToggle(false, false, !showMobileFilters)}
              />
           </div>
         </Sidebar.Pusher>

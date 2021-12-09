@@ -1,0 +1,33 @@
+@import '../../../sass/variables.scss';
+
+@mixin icon-container {
+    position: absolute;
+    z-index: 3000;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 3px 3px 0 #646464;
+    height: 30px;
+    width: 30px;
+  }
+
+.explore {
+    .sidebar {
+        &__info-btn {
+            @include icon-container;
+            top: 45px;
+            left: 10px;
+        }
+
+        &__filter-btn {
+            @include icon-container;
+            top: 10px;
+            left: 10px;
+        }
+
+        &__map-btn {
+            @include icon-container;
+            bottom: 10px;
+            right: 10px;
+        }
+    }
+}
