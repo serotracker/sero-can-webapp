@@ -13,6 +13,61 @@ type PartnerShipsMapProps = {
   partnershipconfig?: Partnership;
 };
 
+// Not a priority to implement loader here because mobile is deprecated anyways
+const mobileMap = (
+  partnershipconfig: Partnership,
+  estimateGradePrevalence: EstimateGradePrevalence | undefined,
+  records: AirtableRecord[]
+) => {
+  return (
+      <MapboxMap
+        mapConfig={partnershipconfig.mapboxMapOptions}
+        countriesConfig={{
+          estimateGradePrevalences: estimateGradePrevalence ? [estimateGradePrevalence] : undefined,
+          countryFocus: partnershipconfig?.iso3,
+        }}
+        studyPinsConfig={{
+          records: records,
+        }}
+      />
+  );
+};
+
+
+const desktopMap = (
+  partnershipconfig: Partnership,
+  estimateGradePrevalence: EstimateGradePrevalence | undefined,
+  records: AirtableRecord[],
+  isLoading: boolean
+) => {
+  return (
+    <>
+      <div className="col-9 h-100">
+        <Loader indeterminate active={isLoading}/>
+        <MapboxMap
+          mapConfig={partnershipconfig.mapboxMapOptions}
+          countriesConfig={{
+            estimateGradePrevalences: estimateGradePrevalence ? [estimateGradePrevalence] : undefined,
+            countryFocus: partnershipconfig?.iso3,
+          }}
+          studyPinsConfig={{
+            records: records,
+          }}
+        />
+      </div>
+      <div className="col-3 h-100">
+        <Legend hideLayers />
+          <div className="mt-1">{Translate("PartnershipsView", ["MapNote1"])}</div>
+          <div className="mt-1">
+              {Translate("PartnershipsView", ["MapNote2"], {
+                  WEBSITE: "ourworldindata.org",
+              })}
+          </div>
+      </div>
+    </>
+  );
+};
+
 export default function PartnerShipsMap({ partnershipconfig }: PartnerShipsMapProps) {
   const [state] = useContext(AppContext);
   const [records, setRecords] = useState<AirtableRecord[]>([]);
@@ -35,62 +90,10 @@ export default function PartnerShipsMap({ partnershipconfig }: PartnerShipsMapPr
   if (partnershipconfig === undefined) {
     return <></>;
   }
-
-  const desktopMap = (
-    partnershipconfig: Partnership,
-    estimateGradePrevalence: EstimateGradePrevalence | undefined,
-    records: AirtableRecord[]
-  ) => {
-    return (
-      <>
-        <div className="col-9 h-100">
-          <Loader indeterminate active={isLoading}/>
-          <MapboxMap
-            mapConfig={partnershipconfig.mapboxMapOptions}
-            countriesConfig={{
-              estimateGradePrevalences: estimateGradePrevalence ? [estimateGradePrevalence] : undefined,
-              countryFocus: partnershipconfig?.iso3,
-            }}
-            studyPinsConfig={{
-              records: records,
-            }}
-          />
-        </div>
-        <div className="col-3 h-100">
-          <Legend hideLayers />
-            <div className="mt-1">{Translate("PartnershipsView", ["MapNote1"])}</div>
-            <div className="mt-1">
-                {Translate("PartnershipsView", ["MapNote2"], {
-                    WEBSITE: "ourworldindata.org",
-                })}
-            </div>
-        </div>
-      </>
-    );
-  };
   
   // Note: Loading spinner doesn't work very well on mobile
-  // Not a priority to implement because mobile is deprecated anyways
-  const mobileMap = (
-    partnershipconfig: Partnership,
-    estimateGradePrevalence: EstimateGradePrevalence | undefined,
-    records: AirtableRecord[]
-  ) => {
-    return (
-        <MapboxMap
-          mapConfig={partnershipconfig.mapboxMapOptions}
-          countriesConfig={{
-            estimateGradePrevalences: estimateGradePrevalence ? [estimateGradePrevalence] : undefined,
-            countryFocus: partnershipconfig?.iso3,
-          }}
-          studyPinsConfig={{
-            records: records,
-          }}
-        />
-    );
-  };
 
-  const Map = isMobileDeviceOrTablet ? mobileMap(partnershipconfig, estimateGradePrevalence, records): desktopMap(partnershipconfig, estimateGradePrevalence, records)
+  const Map = isMobileDeviceOrTablet ? mobileMap(partnershipconfig, estimateGradePrevalence, records) : desktopMap(partnershipconfig, estimateGradePrevalence, records, isLoading)
   const mapHeight = isMobileDeviceOrTablet ? "50vw" : "70vh"
   return (
     <div style={{ height: mapHeight }} className="row">
