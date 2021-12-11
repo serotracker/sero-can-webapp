@@ -156,7 +156,7 @@ export default function Data() {
           </div>
 
           <div className={isMobileDeviceOrTablet ? "pb-3 pt-3" : "pt-0 pb-0"} id={PAGE_HASHES.Data.References}>
-            <h1>{Translate("ReferencesTable")}</h1>
+            <h1>{Translate("DataTable")}</h1>
             <p>
               <span>{Translate("UseOfData", null, null, [false, true])}</span>
               <Link to="/TermsOfUse">{Translate("TermsOfUse")}</Link>.

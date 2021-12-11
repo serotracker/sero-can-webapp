@@ -144,19 +144,19 @@
     },
     "Question2": {
       "Question": "Comment SeroTracker recueille-t-il des données?  ",
-      "Answer": "Nous effectuons des recherches habituelles sur Google et sur des bases de données telles que Medline, EMBASE, Web of Science, et Europe PMC. De plus, nous acceptons des soumissions d'études - vous pouvez soumettre une source en utilisant le bouton 'Soumettre une source' au-dessus."
+      "Answer": "Nous effectuons des recherches habituelles sur Google et sur des bases de données telles que Medline, EMBASE, Web of Science, et Europe PMC. De plus, nous acceptons des soumissions d'études - vous pouvez soumettre un article en utilisant le bouton \"Soumettre un article\" au-dessus."
     },
     "Question3": {
       "Question": "Comment SeroTracker extrait-t-il des données de ses sources?  ",
-      "Answer": "Nous avons une équipe de chercheurs qui ont une formation en sciences de la santé et en épidémiologie. Les membres de notre 'équipe révisent les études et enregistrent manuellement les valeurs de séroprévalence dans nos base de données sur AirTable, notre logiciel de gestion. Les processus et les règles que nous suivons chez SeroTracker pour extraire les données sont disponibles dans le protocole et le document dictionnaire des données."
+      "Answer": "Nous avons une équipe de chercheurs qui ont une formation en sciences de la santé et en épidémiologie. Les membres de notre 'équipe révisent les études et enregistrent manuellement les valeurs de séroprévalence dans nos base de données sur une plate-forme de gestion de données appelée AirTable. Les processus et les règles que nous suivons chez SeroTracker pour extraire les données sont disponibles dans le protocole et le document dictionnaire des données."
     },
     "Question4": {
       "Question": "Comment les données sont-elles visualisées sur la carte interactive?  ",
-      "Answer": "Les données qui sont sur AirTable sont exécutées automatiquement à travers une pipeline de logiciels. Les données sont vérifiées et les informations supplémentaires (telles que l’emplacement géographique de l'étude) sont ajoutées. Ces nouvelles données sont retenues dans un logiciel séparé - utilisé par le page Explore."
+      "Answer": "Les données qui sont sur AirTable sont exécutées automatiquement à travers une pipeline de logiciels. Les données sont vérifiées et les informations supplémentaires (telles que l’emplacement géographique de l'étude) sont ajoutées. Ces nouvelles données sont retenues dans un logiciel séparé - utilisé par le page \"Explore\"."
     },
     "Question5": {
       "Question": "Est-ce que je peux utiliser les données de SeroTracker pour effectuer ma propre analyse?  ",
-      "Answer": "Absolument! Notre base de données est gratuite pour tout le monde. Vous pouvez télécharger notre document .csv complet avec le bouton 'CSV' au-dessus. Avant de vous fournier ces données, nous vous demandons de compléter un questionnaire avec votre rôle, votre affiliation académique (si pertinent), et le type de recherche que vous faites. Cette information nous aide beaucoup à créer les données les plus utiles pour vous."
+      "Answer": "Absolument! Notre base de données est gratuite pour tout le monde. Vous pouvez télécharger notre document .csv complet avec le bouton \"Télécharger CSV\" au-dessus. Avant de vous fournier ces données, nous vous demandons de compléter un questionnaire avec votre rôle, votre affiliation académique (si pertinent), et le type de recherche que vous faites. Cette information nous aide beaucoup à créer les données les plus utiles pour vous."
     },
     "Question6": {
       "Question": "Est-ce que je dois être un utilisateur de AirTable pour utiliser les données de SeroTracker?  ",
@@ -169,7 +169,7 @@
     "Question8": {
       "Question": "Comment les données de SeroTracker ont-elles été utilisées par les autres?",
       "Answer": {
-        "Part1": "Les données de SeroTracker sont utilisées par beaucoup de professionnels de la santé publique et par les agences de santé telles que l’Organisation Mondial de la Santé, et l’Agence de la Santé Publique du Canada. Dans la section Perspectives de notre site Web, vous pouvez accéder aux rapports, aux articles académiques, et aux nouvelles/médias avec SeroTracker. Notre",
+        "Part1": "Les données de SeroTracker sont utilisées par beaucoup de professionnels de la santé publique et par les agences de santé telles que l’Organisation Mondial de la Santé, et l’Agence de la Santé Publique du Canada. Dans la section \"Publications\" de notre site Web, vous pouvez accéder aux rapports, aux articles académiques, et aux nouvelles/médias avec SeroTracker. Notre",
         "Part2": "la plus récente analyse la séroprévalence mondiale de janvier à décembre 2020."
       },
       "Links": {
@@ -426,7 +426,7 @@
   "Publications": "Publications",
   "Published": "Publié",
   "References": "Références",
-  "ReferencesTable": "Table de références",
+  "DataTable": "Table de données",
   "RegionalEstimateRange": "Plage d'estimation régionale",
   "RegionalEstimates": "Estimations régionales",
   "RegionalStudyDetails": "Étude régionale",
