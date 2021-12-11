@@ -93,3 +93,21 @@
 .slider-right-value {
     right: -4px;
 }
+
+.ui.fluid.input>input {
+    width: 40% !important;
+}
+
+.ui.input>input {
+    padding: 5px;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-seperate {
+    width: 11ch;
+    padding: 0 1px;
+} 
