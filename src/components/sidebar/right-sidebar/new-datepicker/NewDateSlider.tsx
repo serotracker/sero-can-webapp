@@ -15,9 +15,10 @@ interface DateSliderProps {
   values: number[];
   minDate: Date;
   onMouseUp: Function;
+  onSliderMove: Function;
 }
 
-export default function NewDateSlider({minPossibleValue, maxPossibleValue, minDate, values, onMouseUp}: DateSliderProps) {
+export default function NewDateSlider({minPossibleValue, maxPossibleValue, minDate, values, onMouseUp, onSliderMove}: DateSliderProps) {
   const milliSecondsPerDay = 86400000;
   const [updatedValues, setUpdatedValues] = useState([minPossibleValue, maxPossibleValue])
   // min date and max date
@@ -25,6 +26,7 @@ export default function NewDateSlider({minPossibleValue, maxPossibleValue, minDa
   //running update
   const onUpdate = (update: ReadonlyArray<number>) => {
     setUpdatedValues(update.concat());
+    onSliderMove(updatedValues)
   };
 
   useEffect(() => {

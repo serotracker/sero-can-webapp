@@ -47,8 +47,12 @@ export default function NewDatepicker({ page }: DatepickerProps) {
     setSliderRange(fromDateToNumber(latestPublicationDate));
     }, [latestPublicationDate, earliestPublicationDate])
 
-  const datePickerChanged = (isStart: Boolean, date: Date) => {
-    let newDates;
+  const onChange = (dates: number[]) => {
+      setChosenDates(dates)
+  }
+
+  const onUpdate = (isStart: Boolean, date: Date) => {
+    let newDates: Date[];
 
     if (isStart) {
       newDates = [date, toDateSinceMinDate(chosenDates[1])];
@@ -84,12 +88,12 @@ export default function NewDatepicker({ page }: DatepickerProps) {
             <div>
               <SectionHeader header_text={Translate('DateRange')} tooltip_text={Translate('DateRangeTooltip')} />
             </div>
-            <NewDateSlider maxPossibleValue={sliderRange} minPossibleValue={0} onMouseUp={datePickerChanged} values={chosenDates} minDate={earliestPublicationDate}/>
+            <NewDateSlider maxPossibleValue={sliderRange} minPossibleValue={0} onMouseUp={onUpdate} onSliderMove={onChange} values={chosenDates} minDate={earliestPublicationDate}/>
             <div className="space-between mt-3 mb-3">
               <DatePicker
                   selected={toDateSinceMinDate(chosenDates[0])}
                   onChange={() => { }}
-                  onSelect={(date: Date) => datePickerChanged(true, date)}
+                  onSelect={(date: Date) => onUpdate(true, date)}
                   dateFormatCalendar={"MMMM yyyy "}
                   dateFormat="yyyy/MM/dd"
                   minDate={earliestPublicationDate}
@@ -109,7 +113,7 @@ export default function NewDatepicker({ page }: DatepickerProps) {
                <DatePicker
                   selected={toDateSinceMinDate(chosenDates[1])}
                   onChange={() => { }}
-                  onSelect={(date: Date) => datePickerChanged(false, date)}
+                  onSelect={(date: Date) => onUpdate(false, date)}
                   dateFormat="yyyy/MM/dd"
                   dateFormatCalendar={"MMM yyyy"}
                   minDate={toDateSinceMinDate(chosenDates[0])}
