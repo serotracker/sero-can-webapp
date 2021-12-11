@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 const sliderStyle: React.CSSProperties = {
   position: "relative",
   width: "80%",
-  margin: "20% 10%"
+  margin: "5% 10%"
 };
 
 interface DateSliderProps {
@@ -50,7 +50,7 @@ export default function NewDateSlider({minPossibleValue, maxPossibleValue, minDa
   }
 
   return(
-      <div style={{ height: 120, width: "100%" }}>
+      <div style={{ height: 10  , width: "100%" }}>
         <Slider
           mode={1}
           step={1}
@@ -98,7 +98,7 @@ export default function NewDateSlider({minPossibleValue, maxPossibleValue, minDa
           <div>
             {toDateString(toDateSinceMinDate(updatedValues[1]))}
           </div>
-      </div>
+         </div>
     </div>
   )
 }
