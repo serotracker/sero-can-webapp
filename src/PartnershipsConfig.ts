@@ -11,8 +11,8 @@ const PartnershipsConfig: Partnership[] = [
             },
             mapboxMapOptions: {
                 bounds: [
-                    [-140.99, 41.67], // Southwest coordinates
-                    [-52.64, 83.23] // Northeast coordinates
+                    [-148, 39], // Southwest coordinates
+                    [-50, 75] // Northeast coordinates
                 ],
                 /*
                 maxBounds: [
