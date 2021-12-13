@@ -29,27 +29,27 @@ export const PAGE_HASHES = {
         Map: "Map"
     },
     [PAGES.Analyze]: {
-        ByCountry: "ByCountry", 
-        ByPopulation: "ByPopulation", 
+        ByCountry: "ByCountry",
+        ByPopulation: "ByPopulation",
         AdditionalGraphs: "AdditionalGraphs"
-    }, 
+    },
     [PAGES.Data]: {
+        DataDictionary: "DataDictionary",
+        ChangeLog: "ChangeLog",
+        SubmitSource: "SubmitSource",
         DownloadData: "DownloadData",
         FAQ: "FAQ",
-        SubmitSource: "SubmitSource",
-        ChangeLog: "ChangeLog",
-        DataDictionary: "DataDictionary",
         References: "References"
     },
     [PAGES.Publications]: {
         ResearchArticles: "ResearchArticles",
         PrivateSectorReports: "PrivateSectorReports",
-        MediaMentions: "MediaMentions",
         BiblioDigests: "BiblioDigests",
-        MonthlyReports: "MonthlyReports"
+        MonthlyReports: "MonthlyReports",
+        MediaMentions: "MediaMentions",
     },
     [PAGES.About]: {
-        Team: "Team",
-        ContactUs: "ContactUs"
+        ContactUs: "ContactUs",
+        Team: "Team"
     }
 }
