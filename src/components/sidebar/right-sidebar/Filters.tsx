@@ -55,7 +55,15 @@ export default function Filters({ page }: FilterProps) {
       case 'population_group':
          // This code block will be deprecated once as this becomes the standardized filter option logic
         options.forEach((o: PopulationGroupFilterOption) => {
-          const optionString = state.language === LanguageType.english ? o.english : o.french;
+          o = o as PopulationGroupFilterOption;
+          let optionString = ""
+          if (state.language === LanguageType.english) {
+            optionString = o.english;
+          } else if (state.language === LanguageType.french) {
+            optionString = o.french;
+          } else if (state.language === LanguageType.german) {
+            optionString = o.german;
+          }
           formatted_options.push({
             key: optionString,
             text: optionString,
@@ -88,10 +96,22 @@ export default function Filters({ page }: FilterProps) {
   }
 
   const clearFilter = () => {
+    // remove filters in backend
     clearFilters(
       dispatch,
       page
     )
+
+    // remove selected options in dropdown (frontend)
+    if (unityAlignedOnlyItem.current.querySelector(".clear")) unityAlignedOnlyItem.current.querySelector(".clear").click();
+    if (sourceTypeItem.current.querySelector(".clear")) sourceTypeItem.current.querySelector(".clear").click();
+    if (overallRiskOfBiasItem.current.querySelector(".clear")) overallRiskOfBiasItem.current.querySelector(".clear").click();
+    if (populationGroupItem.current.querySelector(".clear")) populationGroupItem.current.querySelector(".clear").click();
+    if (sexItem.current.querySelector(".clear")) sexItem.current.querySelector(".clear").click();
+    if (ageItem.current.querySelector(".clear")) ageItem.current.querySelector(".clear").click();
+    if (testTypeItem.current.querySelector(".clear")) testTypeItem.current.querySelector(".clear").click();
+    if (isotypesReportedItem.current.querySelector(".clear")) isotypesReportedItem.current.querySelector(".clear").click();
+    if (antibodyTargetItem.current.querySelector(".clear")) antibodyTargetItem.current.querySelector(".clear").click();
   }
 
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
