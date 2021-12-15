@@ -79,6 +79,7 @@ export type FilterType =
 export enum LanguageType {
   french = "fr",
   english = "en",
+  german = "de",
 }
 
 export enum PageStateEnum {

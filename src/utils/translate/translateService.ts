@@ -3,9 +3,11 @@ import { LanguageType } from "../../types";
 import * as Countries from "i18n-iso-countries";
 import EnglishCountries from "i18n-iso-countries/langs/en.json";
 import FrenchCountries from "i18n-iso-countries/langs/fr.json";
+import GermanCountries from 'i18n-iso-countries/langs/de.json'
 
 import English from "./en.json";
 import French from "./fr.json";
+import German from './de.json'
 import { toPascalCase } from "./caseChanger";
 import { setLanguage } from "../utils";
 
@@ -19,6 +21,7 @@ interface Json extends JsonRecord<Json> {}
 
 Countries.registerLocale(EnglishCountries);
 Countries.registerLocale(FrenchCountries);
+Countries.registerLocale(GermanCountries);
 
 export const getCountryName = (
   country: string,
@@ -65,7 +68,7 @@ export default function Translate(
   addSpaces: [boolean, boolean] | null = null
 ): string {
   const translationDictionary: Json =
-    language === LanguageType.english ? (English as Json) : (French as Json);
+    language === LanguageType.english ? (English as Json) : LanguageType.french ? (French as Json) : (German as Json);
 
   try {
     let translatedString = translationDictionary[text];
@@ -109,7 +112,7 @@ export default function Translate(
  */
 export function TranslateObject(text: string): object {
   const translationDictionary: Json =
-    language === LanguageType.english ? (English as Json) : (French as Json);
+    language === LanguageType.english ? (English as Json) : LanguageType.french ? (French as Json) : (German as Json);
 
   try {
     return translationDictionary[text] as object;

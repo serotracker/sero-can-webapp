@@ -72,11 +72,15 @@ function App() {
         type: "SELECT_LANGUAGE",
         payload: LanguageType.english
       })
-    }
-    else if (pathname.includes("/fr/") && language !== LanguageType.french) {
+    } else if (pathname.includes("/fr/") && language !== LanguageType.french) {
       dispatch({
         type: "SELECT_LANGUAGE",
         payload: LanguageType.french
+      })
+    } else if (pathname.includes("/de/") && language !== LanguageType.german) {
+      dispatch({
+        type: "SELECT_LANGUAGE",
+        payload: LanguageType.german
       })
     }
   }

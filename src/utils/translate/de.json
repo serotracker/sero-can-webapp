@@ -1,42 +1,42 @@
 {
   ",": ",",
-  "95%ConfidenceInterval": "95% Confidence Interval",
-  "95%ConfidenceIntervalTooltip": "Wider error bars indicate greater uncertainty in the pooled seroprevalence estimate.",
-  "About": "About",
+  "95%ConfidenceInterval": "95% Konfidenzintervall",
+  "95%ConfidenceIntervalTooltip": "Breitere Fehlerbalken weisen auf eine größere Unsicherheit in der aggregierten Seroprävalenzschätzung hin.",
+  "About": "Über",
   "AboutPage": {
     "AboutSection": {
-      "Covid19ImmunityTaskForce": "COVID-19 Immunity Task Force.",
-      "GlobalSerologicalKnowledgeHub": "Global Serological Knowledge Hub",
-      "HealthInformatics": "University of Calgary's Centre for Health Informatics.",
-      "HostedAt": "SeroTracker is also hosted at the",
-      "MappingTheExtent": "The COVID-19 Immunity Task Force is mapping the extent of SARS-CoV-2 infection in Canada, and SeroTracker also provides content for their",
-      "PartOne": "SeroTracker synthesizes findings from thousands of COVID-19 seroprevalence studies worldwide, providing a data platform and interactive dashboard for SARS-CoV-2 serosurveillance.",
-      "PartTwo": "Confirmed COVID-19 cases are just the tip of the iceberg - they undercount the true number of SARS-CoV-2 infections because many people have asymptomatic infections or lack access to diagnostic testing. In contrast, seroprevalence studies measure antibodies against SARS-CoV-2 in the population. Because people with these antibodies have been previously infected or vaccinated, these studies are crucial to understanding the true extent of the pandemic and in measuring population antibody levels.",
-      "PublicHealthAgency": "Public Health Agency of Canada",
-      "SupportedBy": "SeroTracker is supported by the",
-      "ThroughThe": "through the",
-      "UnityStudies": "Unity seroprevalence studies.",
-      "WHO1": "SeroTracker is working with the",
-      "WHO2": "to visualize and synthesize results from the",
-      "WHO3": "SeroTracker and the World Health Organization are grateful for German Federal Ministry of Health (BMG) COVID-19 Research and Development funding to support this effort.",
-      "WorldHealthOrganization": "World Health Organization"
+      "Covid19ImmunityTaskForce": "COVID-19-Arbeitsgruppe Immunität.",
+      "GlobalSerologicalKnowledgeHub": "Globaler serologischer Wissenshub",
+      "HealthInformatics": "Zentrum für Gesundheitsinformatik an der Universität Calgary.",
+      "HostedAt": "SeroTracker wird auch gehostet bei der",
+      "MappingTheExtent": "Die COVID-19-Arbeitsgruppe Immunität bildet das Ausmaß der SARS-CoV-2-Infektionen in Kanada ab; SeroTracker liefert auch Inhalte für ihre",
+      "PartOne": "SeroTracker fasst die Ergebnisse von Tausenden von COVID-19-Seroprävalenzstudien weltweit zusammen und bietet eine Datenplattform sowie ein interaktives Dashboard für die serologische Überwachung von SARS-CoV-2.",
+      "PartTwo": "Bestätigte COVID-19-Fälle sind nur die Spitze des Eisbergs – die tatsächliche Zahl der SARS-CoV-2-Infektionen wird unterschätzt, da viele Menschen asymptomatisch infiziert sind oder keinen Zugang zu diagnostischen Tests haben. Im Gegensatz dazu werden bei Seroprävalenzstudien Antikörper gegen SARS-CoV-2 in der Bevölkerung gemessen. Da Menschen mit diesen Antikörpern zuvor infiziert oder geimpft worden sind, sind diese Studien für das Verständnis des wahren Ausmaßes der Pandemie und für die Messung der Antikörperspiegel in der Bevölkerung von entscheidender Bedeutung.",
+      "PublicHealthAgency": "Agentur für öffentliche Gesundheit, Kanada",
+      "SupportedBy": "SeroTracker wird unterstützt von der",
+      "ThroughThe": "durch die",
+      "UnityStudies": "Seroprävalenzstudien von WHO Unity.",
+      "WHO1": "SeroTracker arbeitet mit dem/der",
+      "WHO2": "zur Visualisierung und Synthese von Ergebnissen aus den",
+      "WHO3": "SeroTracker und die Weltgesundheitsorganisation bedanken sich beim Bundesministerium für Gesundheit (BMG) für die COVID-19-Forschungs- und Entwicklungsmittel zur Unterstützung dieser Bemühungen.",
+      "WorldHealthOrganization": "Weltgesundheitsorganisation"
     },
     "ContactSection": {
       "BulletPointFive": {
-        "PartOne": "To make us aware of",
-        "PartThree": "or studies that we have not yet captured, please fill out",
-        "PartTwo": "new SARS-CoV-2 seroprevalence studies"
+        "PartOne": "Um uns darauf aufmerksam zu machen,",
+        "PartThree": "oder Studien, die wir noch nicht erfasst haben, bitte ausfüllen,",
+        "PartTwo": "neue Seroprävalenzstudien zu SARS-CoV-2"
       },
       "BulletPointOne": {
-        "PartFour": "and Kelly Johnston at",
-        "PartOne": "For all SeroTracker inquiries (including to support our efforts, collaborate with us, or if you are a journalist interested in reporting on our findings), please contact Rahul Arora at ",
-        "PartThree": "Journalists and members of the media: please contact Caroline Phaneuf at",
-        "PartTwo": "and Tingting Yan at "
+        "PartFour": "und Kelly Johnston bei",
+        "PartOne": "Bitte richten Sie alle Anfragen zu SeroTracker an Rahul Arora (z. B. wenn Sie unserer Bemühungen unterstützen wollen, mit uns zusammenarbeiten möchten oder als Journalist*In an einer Berichterstattung über unsere Ergebnisse interessiert sind), und zwar unter ",
+        "PartThree": "Journalistinnen, Journalisten und Medienvertretende: bitte kontaktieren Sie Caroline Phaneuf unter",
+        "PartTwo": "und Tingting Yan unter "
       },
-      "SectionOne": "We are an interdisciplinary team of researchers and engineers at the University of Oxford, University of Toronto, University of Waterloo, University of Calgary, and Harvard University."
+      "SectionOne": "Wir sind ein interdisziplinäres Team von Forschern und Ingenieuren der Universität Oxford, der Universität Toronto, der Universität Waterloo, der Universität Calgary und der Harvard University."
     },
     "Headers": {
-      "AboutSeroTracker": "About SeroTracker",
+      "AboutSeroTracker": "Über SeroTracker",
       "ContactUs": "Contact Us",
       "OurTeam": "Our Team"
     },
@@ -50,32 +50,32 @@
       "ScientificAdvisors": "Scientific Advisors",
       "TeamLead": "Team Leads"
     },
-    "Mapbox": "supports SeroTracker's mapping infrastructure."
+    "Mapbox": "unterstützt die Kartierungsinfrastruktur von SeroTracker."
   },
-  "Accept": "Accept",
-  "AcceptCookies": "Accept Cookies",
+  "Accept": "Akzeptieren",
+  "AcceptCookies": "Cookies akzeptieren",
   "AccessGithub": "Access Github",
-  "AdditionalGraphs": "Additional Graphs",
-  "Age": "Age",
-  "AgeGroup": "Age Group",
+  "AdditionalGraphs": "Zusätzliche Schaubilder",
+  "Age": "Alter",
+  "AgeGroup": "Altersgruppe",
   "AgeOptions": {
-    "Adults(18-64)": "Adults (18-64)",
-    "All": "All",
-    "Children(0-12)": "Children (0-12)",
-    "Seniors(65+)": "Seniors (65+)",
-    "Unspecified": "Unspecified",
-    "Youth(13-17)": "Youth (13-17)"
+    "Adults(18-64)": "Erwachsene (18-64)",
+    "All": "Alle",
+    "Children(0-12)": "Kinder (0-12)",
+    "Seniors(65+)": "Senioren (65+)",
+    "Unspecified": "Nicht spezifiziert",
+    "Youth(13-17)": "Jugendliche (13-17)"
   },
-  "AggregatedPrevalence": "Aggregated Prevalence",
-  "Aggregating": "Aggregating",
+  "AggregatedPrevalence": "Aggregierte Prävalenz",
+  "Aggregating": "Aggregieren",
   "AnalysisMethods": {
     "FirstParagraph": {
-      "FirstSentence": "The seroprevalence shown for each country or factor is calculated by ",
-      "SecondSentence": "all seroprevalence estimates that match the filters you specify."
+      "FirstSentence": "Die für jedes Land und jeden Faktor angegebene Seroprävalenz wird berechnet durch ",
+      "SecondSentence": "alle Seroprävalenzschätzungen, die den von Ihnen angegebenen Filtern entsprechen."
     },
-    "SecondParagraph": "Default filters: Country/Territory-Wide and regional estimates, in the general population and blood donors. ",
-    "ThirdParagraph": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high Risk of bias.",
-    "Title": "Analysis Methods",
+    "SecondParagraph": "Standard-Filter: Landes- bzw. gebietsweite Schätzungen in der Allgemeinbevölkerung und bei Blutspendenden. ",
+    "ThirdParagraph": "Diese aggregierten Schätzungen sollten mit Vorsicht interpretiert werden, insbesondere wenn die Studien, die aggregiert wurden, keine repräsentativen Stichproben enthielten oder ein hohes Verzerrungspotenzial aufwiesen.",
+    "Title": "Analysemethoden",
     "Tooltip": "The aggregation technique used is fixed-effects, inverse-variance-weighted meta-analysis of prevalence, with the Freeman-Tukey double arcsin transform used to stabilize variance. Records over sample size MIN_DENOMINATOR considered."
   },
   "Analyze": "Analyze",
@@ -148,19 +148,19 @@
     },
     "Question2": {
       "Question": "How does SeroTracker collect their data?",
-      "Answer": "We conduct regular searches of several databases including Medline, EMBASE, Web of Science, and Europe PMC and targeted google searches. In addition, anyone can submit sources for us to screen and include in our review using the \"Submit source\" button above."
+      "Answer": "We conduct regular searches of several databases including Medline, EMBASE, Web of Science, and Europe PMC and targeted google searches. In addition, anyone can submit sources for us to screen and include in our review using the Submit a source button above."
     },
     "Question3": {
       "Question": "How does SeroTracker extract data from their sources?",
-      "Answer": "We have an extensive research team trained in health sciences and epidemiology who manually reviews articles and records seroprevalence estimates into a data management platform called AirTable. The processes and rules we follow to extract data are available in our study protocol document and AirTable data dictionary."
+      "Answer": "We have an extensive research team trained in health sciences and epidemiology who manually review articles and records seroprevalence estimates into AirTable, our database managing software. The processes and rules we follow to extract data is available in our study protocol document and AirTable data dictionary."
     },
     "Question4": {
       "Question": "How does SeroTracker’s data show up on the map?",
-      "Answer": "Data inputted into Airtable is automatically run through a software pipeline that cleans it and computes additional information (e.g. a study’s geographic coordinates). The outputs of the pipeline are then stored in a separate database, which is queried by serotracker.com to serve the \"Explore\" tab."
+      "Answer": "Data inputted into Airtable is automatically run through a software pipeline that cleans it and computes additional information (e.g. a study’s geographic coordinates). The outputs of the pipeline are then stored in a separate database, which is queried by serotracker.com to serve the Explore tab."
     },
     "Question5": {
       "Question": "Can I download SeroTracker's data for my own analysis?",
-      "Answer": "Yes, our data is open-source and free for anyone to use. You can download our complete .csv file using the \"Download CSV\" button above. You will first be asked to fill out a form indicating your role, affiliation (if relevant), and type of research you’re conducting - This helps us create datasets that are most useful to you. "
+      "Answer": "Yes, our data is open-source and free for anyone to use. You can download our complete .csv file using the Download CSV button above. You will first be asked to fill out a form indicating your role, affiliation (if relevant), and type of research you’re conducting - This helps us create datasets that are most useful to you. "
     },
     "Question6": {
       "Question": "Do I need to be an AirTable user to use SeroTracker's data?",
@@ -171,9 +171,9 @@
       "Answer": "Please see our Data Dictionary (using the button above) for explanations of our variables, data types, and descriptions as well as insight into how our data is collected by our research team. It is structured to help interpret our downloadable data set. "
     },
     "Question8": {
-      "Question": "How has SeroTracker's data been used by others?",
+      "Question": "How has SeroTracker's data been used by others or researchers?",
       "Answer": {
-        "Part1": "SeroTracker data is used by many public health professionals and health agencies such as the World Health Organization and Public Health Agency of Canada, among others. The \"Publications\" tab has links to internal reports, publications we have produced, and features of SeroTracker data and work in the media. Our most recent",
+        "Part1": "SeroTracker data is used by many public health professionals and health agencies such as the World Health Organization and Public Health Agency of Canada, among others. The ‘Insights’ tab has links to internal reports, publications we have produced, and features of SeroTracker data and work in the media. Our most recent",
         "Part2": "analyzes global seroprevalence from January - December, 2020."
       },
       "Links": {
@@ -296,7 +296,7 @@
   },
   "LancetArticle": "Lancet ID",
   "LancetID": "The Lancet Infectious Diseases",
-  "Language" : "Language",
+  "Language": "Sprache",
   "LastUpdatedTooltip": "SeroTracker is continuously updated with findings from newly-released serological studies. We include new studies from our search within 48 hours of publication.",
   "Legalese": "Legalese",
   "LocalEstimateRange": "Local Estimate Range",
@@ -419,7 +419,7 @@
   "Publications": "Publications",
   "Published": "Published",
   "References": "References",
-  "DataTable": "Data Table",
+  "ReferencesTable": "References Table",
   "RegionalEstimateRange": "Regional Estimate Range",
   "RegionalEstimates": "Regional Estimates",
   "RegionalStudies": "Regional Studies",

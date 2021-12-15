@@ -7,7 +7,7 @@ import Translate from "../../../utils/translate/translateService";
 
 export default function LanguageSelector() {
   const [state, dispatch] = useContext(AppContext);
-  const [checked, setChecked] = useState(state.language === LanguageType.french)
+  const [checked, setChecked] = useState(state.language !== LanguageType.english)
   const handleChange = (event: React.SyntheticEvent<HTMLElement, Event>, data: CheckboxProps) => {
     event.preventDefault();
     let newLanguage = data.checked ? LanguageType.french : LanguageType.english

@@ -30,18 +30,19 @@ export const Header = () => {
 
   const history = useHistory();
 
-  const changeLanguages = () => {
+  const changeLanguages = (newLanguage: LanguageType) => {
     let url = history.location.pathname;
     if (state.language === LanguageType.english) {
-      url = url.replace("/en/", "/fr/")
-    }
-    else {
-      url = url.replace("/fr/", "/en/")
+      url = url.replace("/en/", `/${newLanguage}/`)
+    } else if (state.language === LanguageType.french) {
+      url = url.replace("/fr/", `/${newLanguage}/`)
+    } else if (state.language === LanguageType.german) {
+      url = url.replace("/de/", `/${newLanguage}/`)
     }
     dispatch(
       {
         type: "SELECT_LANGUAGE",
-        payload: state.language === LanguageType.english ? LanguageType.french : LanguageType.english
+        payload: newLanguage
       })
 
     history.push(url)
@@ -154,8 +155,10 @@ const desktopNav = ( getTabClass: any, changeLanguages:any, language: any) => {
   <div className={'col-auto h-100 px-0'}>
     |
   </div>
-  <div className={"nav__item col-auto h-100 flex center-item cursor"} onClick={() => changeLanguages()}>
-    {language === LanguageType.english ? "FR" : "EN" }
+  <div className={"nav__item col-auto h-100 flex center-item cursor"} >
+  <Dropdown text={Translate("Language")}>
+      {renderLanguageDropDownMenu(language)}
+    </Dropdown>
   </div>
 </div>)
 }
@@ -171,6 +174,19 @@ const renderPartnershipsDropDownMenu = () => (
         <Link to={withLocaleUrl('Unity')}>{Translate("WhoUnity")}</Link>
       </Dropdown.Item>
   </Dropdown.Menu>)
+
+// const renderLanguageDropDownMenu = (language: LanguageType) => (
+//   <Dropdown.Menu >
+//       <Dropdown.Item selected={language === LanguageType.english} onClick={() => changeLanguages()>
+//         EN
+//       </Dropdown.Item>
+//       <Dropdown.Item selected={language === LanguageType.french}>
+//         FR
+//       </Dropdown.Item>
+//       <Dropdown.Item selected={language === LanguageType.german}>
+//         DE
+//       </Dropdown.Item>
+//   </Dropdown.Menu>)
 
 const renderPartnershipsAccordianContent = (partnershipDrownDownActive: boolean) => (
     <Accordion.Content active={partnershipDrownDownActive} className="ml-2">
