@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Dropdown } from 'semantic-ui-react';
+import React, { useContext, createRef, useRef } from "react";
+import { Dropdown, Button, Ref } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType, PageState, State } from '../../../types';
 import { sendUnityAnalyticsEvent } from "../../../utils/analyticsUtils";
@@ -23,6 +23,15 @@ interface PopulationGroupFilterOption {
 }
 
 export default function Filters({ page }: FilterProps) {
+  let unityAlignedOnlyItem: any = useRef(null);
+  let sourceTypeItem: any = useRef(null);
+  let overallRiskOfBiasItem: any = useRef(null);
+  let populationGroupItem: any = useRef(null);
+  let sexItem: any = useRef(null);
+  let ageItem: any = useRef(null);
+  let testTypeItem: any = useRef(null);
+  let isotypesReportedItem: any = useRef(null);
+  let antibodyTargetItem: any = useRef(null);
   const [state, dispatch] = useContext(AppContext);
   const filters = (state[page as keyof State] as PageState).filters;
 
@@ -89,6 +98,7 @@ export default function Filters({ page }: FilterProps) {
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
     return (
       <div className="pb-3">
+      
         <Dropdown
           text={placeholder}
           fluid
@@ -102,6 +112,7 @@ export default function Filters({ page }: FilterProps) {
           }}
           defaultValue={filters[filter_type] as string[]}
         />
+ 
       </div>
     )
   }
@@ -141,7 +152,7 @@ export default function Filters({ page }: FilterProps) {
             tooltip={Translate('FilterTooltip')} />
         </div>
       </div>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center mb-4">   
         <div className="col-10 col align-items-center p-0">
           <div className="pb-1">
             <div>
@@ -169,13 +180,14 @@ export default function Filters({ page }: FilterProps) {
                 />
               }
             </div>
-            <div>
+        
+            <div ref={unityAlignedOnlyItem}>
               {buildFilterCheckbox('unity_aligned_only', Translate('UnityStudiesOnly'), Translate('UnityStudiesOnlyLong'), "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations")}
             </div>
-            <div>
+            <div ref={sourceTypeItem}>
               {buildFilterDropdown('source_type', Translate('SourceType'))}
             </div>
-            <div>
+            <div ref={overallRiskOfBiasItem}>
               {buildFilterDropdown('overall_risk_of_bias', Translate('OverallRiskOfBias'))}
             </div>
           </div>
@@ -183,13 +195,13 @@ export default function Filters({ page }: FilterProps) {
             <div>
               <SectionHeader header_text={Translate('Demographics')} tooltip_text={Translate('DemographicsTooltip')}/>
             </div>
-            <div>
+            <div ref={populationGroupItem}>
               {buildFilterDropdown('population_group', Translate('PopulationGroup'))}
             </div>
-            <div>
+            <div ref={sexItem}>
               {buildFilterDropdown('sex', Translate('Sex'))}
             </div>
-            <div>
+            <div ref={ageItem}>
               {buildFilterDropdown('age', Translate('Age'))}
             </div>
           </div>
@@ -197,13 +209,13 @@ export default function Filters({ page }: FilterProps) {
             <div>
               <SectionHeader header_text={Translate('TestInformation')} tooltip_text={Translate('TestInformationTooltip')}/>
             </div>
-            <div>
+            <div ref={testTypeItem}>
               {buildFilterDropdown('test_type', Translate('TestType'))}
             </div>
-            <div>
+            <div ref={isotypesReportedItem}>
               {buildFilterDropdown('isotypes_reported', Translate('IsotypesReported'))}
             </div>
-            <div>
+            <div ref={antibodyTargetItem}>
               {buildFilterDropdown('antibody_target', Translate('AntibodyTarget'))}
             </div>
           </div>
