@@ -169,15 +169,18 @@ export const Header = () => {
   
   const renderLanguageDropDownMenu = () => (
     <Dropdown.Menu >
+      {state.language !== LanguageType.english ?   
         <Dropdown.Item onClick={() => {changeLanguages(LanguageType.english)}}>
           { LanguageType.english.toUpperCase() }
-        </Dropdown.Item>
+        </Dropdown.Item> : ""}
+     {state.language !== LanguageType.french ?        
         <Dropdown.Item onClick={() => {changeLanguages(LanguageType.french)}}>
         { LanguageType.french.toUpperCase() }
-        </Dropdown.Item>
-        <Dropdown.Item onClick={() => {changeLanguages(LanguageType.german)}}  >
+        </Dropdown.Item> : ""}
+     {state.language !== LanguageType.german ?      
+         <Dropdown.Item onClick={() => {changeLanguages(LanguageType.german)}}  >
         { LanguageType.german.toUpperCase() }
-        </Dropdown.Item>
+        </Dropdown.Item> : ""}
     </Dropdown.Menu>)
   
   const renderPartnershipsAccordianContent = (partnershipDrownDownActive: boolean) => (
