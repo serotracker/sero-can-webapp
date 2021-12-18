@@ -49,6 +49,149 @@ export const Header = () => {
   }
 
   usePageViews()
+
+  const AppTitle = () => {
+    return (
+    <div className="App-title col-auto py-3 px-0">
+      <Link to={withLocaleUrl("Explore")} className="flex align-items-center">
+        <img src={Img} width={23} height={23} alt="" />
+        <div className="col-auto px-2 align-middle" >SeroTracker</div>
+      </Link>
+    </div>)
+  }
+  
+  const mobileNav = (partnershipDrownDownActive: boolean, handleClick: any, changeLanguages:any, language: any) => {
+    return (
+    <Dropdown icon='bars' direction='left' simple>
+    <Dropdown.Menu>
+      <Dropdown.Item>
+        <Link to={withLocaleUrl("Explore")}>
+            {Translate('Explore')}
+        </Link>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Link to={withLocaleUrl("Analyze")}>
+          {Translate('Analyze')}
+        </Link>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Link to={withLocaleUrl("Data")}>
+          {Translate('Data')}
+        </Link>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Link to={withLocaleUrl("Publications")}>
+          {Translate('Publications')}
+        </Link>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Link to={withLocaleUrl("About")}>
+          {Translate('About')}
+        </Link>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Accordion fluid>
+            <Accordion.Title
+              active={partnershipDrownDownActive}
+              index={0}
+              onClick={handleClick}
+              className={'flex center-item py-0'}
+            >
+              {Translate("Partnerships")}
+              <Icon name='dropdown' className={`ml-5 ${partnershipDrownDownActive ? 'dropdown__icon' : 'dropdown__icon--active'} `}/>
+            </Accordion.Title>
+            {renderPartnershipsAccordianContent(partnershipDrownDownActive)}
+          </Accordion>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <div onClick={() => changeLanguages()}>
+            {language === LanguageType.english ? "FR" : "EN" }
+        </div>
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>)
+  }
+  
+  const desktopNav = ( getTabClass: any, changeLanguages:any, language: any) => {
+    return (<div className={`App-tabs col-auto space-evenly p-0`}>
+    <div className={getTabClass('/Explore')}>
+      <Link to={withLocaleUrl("Explore")}>
+        {Translate('Explore')}
+      </Link>
+    </div>
+    <div className={getTabClass('/Analyze')}>
+      <Link to={withLocaleUrl("Analyze")}>
+        {Translate('Analyze')}
+      </Link>
+    </div>
+    <div className={getTabClass('/Data')}>
+      <Link to={withLocaleUrl("Data")}>
+        {Translate('Data')}
+      </Link>
+    </div>
+    <div className={getTabClass('/Publications')}>
+      <Link to={withLocaleUrl("Publications")}>
+        {Translate('Publications')}
+      </Link>
+    </div>
+    <div className={getTabClass('/About')}>
+      <Link to={withLocaleUrl("About")}>
+        {Translate('About')}
+      </Link>
+    </div>
+    <div className={'nav__item col-auto h-100 flex center-item'}>
+      <Dropdown text={Translate("Partnerships")}>
+        {renderPartnershipsDropDownMenu()}
+      </Dropdown>
+    </div>
+    <div className={'col-auto h-100 px-0'}>
+      |
+    </div>
+    <div className={"nav__item col-auto h-100 flex center-item cursor"} >
+    <Dropdown text={language.toUpperCase()}>
+        {renderLanguageDropDownMenu()}
+      </Dropdown>
+    </div>
+  </div>)
+  }
+  
+  const renderPartnershipsDropDownMenu = () => (
+    <Dropdown.Menu>{
+      PartnershipsConfig.map( p => (
+        <Dropdown.Item>
+          <Link to={withLocaleUrl(`Partnerships/${p.routeName}`)}>{Translate("PartnershipsList", [p.routeName])}</Link>
+        </Dropdown.Item>
+      ))}
+        <Dropdown.Item>
+          <Link to={withLocaleUrl('Unity')}>{Translate("WhoUnity")}</Link>
+        </Dropdown.Item>
+    </Dropdown.Menu>)
+  
+  const renderLanguageDropDownMenu = () => (
+    <Dropdown.Menu >
+        <Dropdown.Item onClick={() => {changeLanguages(LanguageType.english)}}>
+          { LanguageType.english.toUpperCase() }
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => {changeLanguages(LanguageType.french)}}>
+        { LanguageType.french.toUpperCase() }
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => {changeLanguages(LanguageType.german)}}  >
+        { LanguageType.german.toUpperCase() }
+        </Dropdown.Item>
+    </Dropdown.Menu>)
+  
+  const renderPartnershipsAccordianContent = (partnershipDrownDownActive: boolean) => (
+      <Accordion.Content active={partnershipDrownDownActive} className="ml-2">
+        {PartnershipsConfig.map( p => (
+          <p>
+            <Link to={withLocaleUrl(`Partnerships/${p.routeName}`)}>{Translate("PartnershipsList", [p.routeName])}</Link>
+          </p>
+        ))}
+        <p>
+          <Link to={withLocaleUrl('Unity')}>{Translate("WhoUnity")}</Link>
+        </p>
+      </Accordion.Content>)
+
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
   return (
     <header className="App-header col-12 px-3">
@@ -58,144 +201,3 @@ export const Header = () => {
   )
 }
 
-const AppTitle = () => {
-  return (
-  <div className="App-title col-auto py-3 px-0">
-    <Link to={withLocaleUrl("Explore")} className="flex align-items-center">
-      <img src={Img} width={23} height={23} alt="" />
-      <div className="col-auto px-2 align-middle" >SeroTracker</div>
-    </Link>
-  </div>)
-}
-
-const mobileNav = (partnershipDrownDownActive: boolean, handleClick: any, changeLanguages:any, language: any) => {
-  return (
-  <Dropdown icon='bars' direction='left' simple>
-  <Dropdown.Menu>
-    <Dropdown.Item>
-      <Link to={withLocaleUrl("Explore")}>
-          {Translate('Explore')}
-      </Link>
-    </Dropdown.Item>
-    <Dropdown.Item>
-      <Link to={withLocaleUrl("Analyze")}>
-        {Translate('Analyze')}
-      </Link>
-    </Dropdown.Item>
-    <Dropdown.Item>
-      <Link to={withLocaleUrl("Data")}>
-        {Translate('Data')}
-      </Link>
-    </Dropdown.Item>
-    <Dropdown.Item>
-      <Link to={withLocaleUrl("Publications")}>
-        {Translate('Publications')}
-      </Link>
-    </Dropdown.Item>
-    <Dropdown.Item>
-      <Link to={withLocaleUrl("About")}>
-        {Translate('About')}
-      </Link>
-    </Dropdown.Item>
-    <Dropdown.Item>
-      <Accordion fluid>
-          <Accordion.Title
-            active={partnershipDrownDownActive}
-            index={0}
-            onClick={handleClick}
-            className={'flex center-item py-0'}
-          >
-            {Translate("Partnerships")}
-            <Icon name='dropdown' className={`ml-5 ${partnershipDrownDownActive ? 'dropdown__icon' : 'dropdown__icon--active'} `}/>
-          </Accordion.Title>
-          {renderPartnershipsAccordianContent(partnershipDrownDownActive)}
-        </Accordion>
-    </Dropdown.Item>
-    <Dropdown.Item>
-      <div onClick={() => changeLanguages()}>
-          {language === LanguageType.english ? "FR" : "EN" }
-      </div>
-    </Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>)
-}
-
-const desktopNav = ( getTabClass: any, changeLanguages:any, language: any) => {
-  return (<div className={`App-tabs col-auto space-evenly p-0`}>
-  <div className={getTabClass('/Explore')}>
-    <Link to={withLocaleUrl("Explore")}>
-      {Translate('Explore')}
-    </Link>
-  </div>
-  <div className={getTabClass('/Analyze')}>
-    <Link to={withLocaleUrl("Analyze")}>
-      {Translate('Analyze')}
-    </Link>
-  </div>
-  <div className={getTabClass('/Data')}>
-    <Link to={withLocaleUrl("Data")}>
-      {Translate('Data')}
-    </Link>
-  </div>
-  <div className={getTabClass('/Publications')}>
-    <Link to={withLocaleUrl("Publications")}>
-      {Translate('Publications')}
-    </Link>
-  </div>
-  <div className={getTabClass('/About')}>
-    <Link to={withLocaleUrl("About")}>
-      {Translate('About')}
-    </Link>
-  </div>
-  <div className={'nav__item col-auto h-100 flex center-item'}>
-    <Dropdown text={Translate("Partnerships")}>
-      {renderPartnershipsDropDownMenu()}
-    </Dropdown>
-  </div>
-  <div className={'col-auto h-100 px-0'}>
-    |
-  </div>
-  <div className={"nav__item col-auto h-100 flex center-item cursor"} >
-  <Dropdown text={Translate("Language")}>
-      {renderLanguageDropDownMenu(language)}
-    </Dropdown>
-  </div>
-</div>)
-}
-
-const renderPartnershipsDropDownMenu = () => (
-  <Dropdown.Menu>{
-    PartnershipsConfig.map( p => (
-      <Dropdown.Item>
-        <Link to={withLocaleUrl(`Partnerships/${p.routeName}`)}>{Translate("PartnershipsList", [p.routeName])}</Link>
-      </Dropdown.Item>
-    ))}
-      <Dropdown.Item>
-        <Link to={withLocaleUrl('Unity')}>{Translate("WhoUnity")}</Link>
-      </Dropdown.Item>
-  </Dropdown.Menu>)
-
-// const renderLanguageDropDownMenu = (language: LanguageType) => (
-//   <Dropdown.Menu >
-//       <Dropdown.Item selected={language === LanguageType.english} onClick={() => changeLanguages()>
-//         EN
-//       </Dropdown.Item>
-//       <Dropdown.Item selected={language === LanguageType.french}>
-//         FR
-//       </Dropdown.Item>
-//       <Dropdown.Item selected={language === LanguageType.german}>
-//         DE
-//       </Dropdown.Item>
-//   </Dropdown.Menu>)
-
-const renderPartnershipsAccordianContent = (partnershipDrownDownActive: boolean) => (
-    <Accordion.Content active={partnershipDrownDownActive} className="ml-2">
-      {PartnershipsConfig.map( p => (
-        <p>
-          <Link to={withLocaleUrl(`Partnerships/${p.routeName}`)}>{Translate("PartnershipsList", [p.routeName])}</Link>
-        </p>
-      ))}
-      <p>
-        <Link to={withLocaleUrl('Unity')}>{Translate("WhoUnity")}</Link>
-      </p>
-    </Accordion.Content>)

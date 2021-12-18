@@ -67,8 +67,15 @@ export default function Translate(
   substitution: Record<string, string | number> | null = null,
   addSpaces: [boolean, boolean] | null = null
 ): string {
-  const translationDictionary: Json =
-    language === LanguageType.english ? (English as Json) : LanguageType.french ? (French as Json) : (German as Json);
+  let translationDictionary: Json = {}
+
+  if (language === LanguageType.english) {
+    translationDictionary = English as Json;
+  } else if (language === LanguageType.french) {
+    translationDictionary = French as Json;
+  } else if (language === LanguageType.german) {
+    translationDictionary = German as Json;
+  } 
 
   try {
     let translatedString = translationDictionary[text];
@@ -111,8 +118,15 @@ export default function Translate(
  * @returns object
  */
 export function TranslateObject(text: string): object {
-  const translationDictionary: Json =
-    language === LanguageType.english ? (English as Json) : LanguageType.french ? (French as Json) : (German as Json);
+  let translationDictionary: Json = {}
+
+  if (language === LanguageType.english) {
+    translationDictionary = English as Json;
+  } else if (language === LanguageType.french) {
+    translationDictionary = French as Json;
+  } else if (language === LanguageType.german) {
+    translationDictionary = German as Json;
+  } 
 
   try {
     return translationDictionary[text] as object;

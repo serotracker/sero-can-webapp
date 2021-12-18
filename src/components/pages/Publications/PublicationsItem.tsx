@@ -7,6 +7,19 @@ import {PublicationProps} from "./PublicationsConstants"
 
 export function PublicationsItem(props: PublicationProps) {
     const [state] = useContext(AppContext);
+
+    const dateFormatsByLanguage = {
+        "en": "",
+        "fr": "",
+        "de": ""
+      }
+    
+    if (props.month && props.year) {
+        dateFormatsByLanguage["en"] = `${props.month } ${props.day ? props.day + "," : ""} `;
+        dateFormatsByLanguage["fr"] = `${props.day} ${Translate("Months", [props.month])} `;
+        dateFormatsByLanguage["de"] = `${props.day ? props.day + "." : ""} ${Translate("Months", [props.month])} `;
+    }
+
     return (
         <div className="py-2">
             <Item className={"publication-item"}>
@@ -27,7 +40,7 @@ export function PublicationsItem(props: PublicationProps) {
                     <Item.Meta>
                         {(props.month && props.year) && (
                             <div className={"text-small"}>
-                                {Translate("Published")}: {state.language === LanguageType.english ? `${props.month } ${props.day ? props.day + "," : ""} ` : `${props.day} ${Translate("Months", [props.month])} `}
+                                {dateFormatsByLanguage[state.language]}
                                 {props.year}
                             </div>
                         )}

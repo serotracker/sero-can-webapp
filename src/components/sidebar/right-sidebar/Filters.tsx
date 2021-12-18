@@ -47,7 +47,16 @@ export default function Filters({ page }: FilterProps) {
           // This code block will be deprecated once as this becomes the standardized filter option logic
           if (filter_type === "population_group") {
             o = o as PopulationGroupFilterOption;
-            const optionString = state.language === LanguageType.english ? o.english : o.french;
+            // add german here
+            let optionString = ""
+            if (state.language === LanguageType.english) {
+              optionString = o.english;
+            } else if (state.language === LanguageType.french) {
+              optionString = o.french;
+            } else if (state.language === LanguageType.german) {
+              // optionString = o.german;
+            }
+            
             formatted_options.push({
               key: optionString,
               text: optionString,
