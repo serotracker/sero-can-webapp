@@ -14,12 +14,15 @@ export const Header = () => {
   const [tab, setTab] = useState("");
   const [state, dispatch] = useContext(AppContext);
   const [ partnershipDrownDownActive, setPartnershipDrownDownActive ] = useState(false);
+  const [ languageDropdownActive, setLanguageDropdownActive ] = useState(false); 
 
   const getTabClass = (tabName: string) => {
     return tab.includes(tabName) ? 'nav__item--active col-auto h-100 flex center-item' : 'nav__item col-auto h-100 flex center-item';
   }
 
-  const handleClick = () => setPartnershipDrownDownActive(!partnershipDrownDownActive)
+  const handlePartnershipClick = () => setPartnershipDrownDownActive(!partnershipDrownDownActive)
+
+  const handleLanguageClick = () => setLanguageDropdownActive(!languageDropdownActive)
 
   const usePageViews = () => {
     let location = useLocation();
@@ -60,7 +63,7 @@ export const Header = () => {
     </div>)
   }
   
-  const mobileNav = (partnershipDrownDownActive: boolean, handleClick: any, changeLanguages:any, language: any) => {
+  const mobileNav = (partnershipDrownDownActive: boolean, languageDropdownActive: boolean, handlePartnershipClick: any, handleLanguageClick: any, changeLanguages:any, language: any) => {
     return (
     <Dropdown icon='bars' direction='left' simple>
     <Dropdown.Menu>
@@ -94,7 +97,7 @@ export const Header = () => {
             <Accordion.Title
               active={partnershipDrownDownActive}
               index={0}
-              onClick={handleClick}
+              onClick={handlePartnershipClick}
               className={'flex center-item py-0'}
             >
               {Translate("Partnerships")}
@@ -104,9 +107,29 @@ export const Header = () => {
           </Accordion>
       </Dropdown.Item>
       <Dropdown.Item>
-        <div onClick={() => changeLanguages()}>
-            {language === LanguageType.english ? "FR" : "EN" }
-        </div>
+        <Accordion fluid>
+        <Accordion.Title
+              active={languageDropdownActive}
+              index={0}
+              onClick={handleLanguageClick}
+              className={'flex py-0'}
+            >
+              {state.language.toUpperCase()}
+              <Icon name='dropdown' className={`ml-5 ${languageDropdownActive ? 'dropdown__icon' : 'dropdown__icon--active'} `}/>
+              </Accordion.Title>
+              { state.language !== LanguageType.english ?    
+                 <Accordion.Content active={languageDropdownActive} onClick={() => {changeLanguages(LanguageType.english)}} className="ml-2">
+                  { LanguageType.english.toUpperCase() }
+                </Accordion.Content> : "" }
+              {state.language !== LanguageType.french ?         
+                <Accordion.Content active={languageDropdownActive}  onClick={() => {changeLanguages(LanguageType.french)}} className="ml-2">
+                { LanguageType.french.toUpperCase() }
+                </Accordion.Content> : ""}
+              {state.language !== LanguageType.german ?       
+                <Accordion.Content active={languageDropdownActive} onClick={() => {changeLanguages(LanguageType.german)}} className="ml-2">
+                { LanguageType.german.toUpperCase() }
+                </Accordion.Content> : ""}
+        </Accordion>
       </Dropdown.Item>
     </Dropdown.Menu>
   </Dropdown>)
@@ -199,7 +222,7 @@ export const Header = () => {
   return (
     <header className="App-header col-12 px-3">
       <AppTitle />
-      { isMobileDeviceOrTablet ? mobileNav(partnershipDrownDownActive, handleClick, changeLanguages, state.language) : desktopNav( getTabClass, changeLanguages, state.language) }
+      { isMobileDeviceOrTablet ? mobileNav(partnershipDrownDownActive, languageDropdownActive, handlePartnershipClick, handleLanguageClick, changeLanguages, state.language) : desktopNav( getTabClass, changeLanguages, state.language) }
     </header >
   )
 }
