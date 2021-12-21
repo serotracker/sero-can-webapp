@@ -61,7 +61,6 @@ export default function StudyPopup(record: AirtableRecord) {
                 {row(Translate("PopulationGroup"), record.population_group ?? Translate("NotReported"))}
                 {row(Translate("Location"), getGeography(record.city, record.state, record.country))}
                 {row(Translate("SampleSize"), record.denominator_value?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, Translate(",")))}
-                <Divider fitted/>
                 {row(Translate("AntibodyTarget"), record.antibody_target && record.antibody_target.length > 0 ? (record.antibody_target.length === 2 ? record.antibody_target.join(", ") : record.antibody_target) : "N/A")}
                 {row(Translate("PositiveCases"), (record.cases_per_hundred ? record.cases_per_hundred.toFixed(1) + " per 100" : "N/A"))}
                 {row(Translate("Vaccinations"), (record.full_vaccinations_per_hundred ? record.full_vaccinations_per_hundred.toFixed(1) + " per 100" : "N/A"))}
