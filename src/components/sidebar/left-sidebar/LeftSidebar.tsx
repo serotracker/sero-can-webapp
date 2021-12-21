@@ -40,7 +40,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
         <p>{Translate('ExploreBlurb', ['ThirdParagraph'])}</p>
       </div>
       <div className="d-flex justify-content-center mt-3">
-      <span style={{margin: "0"}} id={PAGE_HASHES.Explore.DownloadCsv}>
+      <span style={{margin: "0"}} >
         <DownloadButton
         {...airtableDownloadProps}
         />
