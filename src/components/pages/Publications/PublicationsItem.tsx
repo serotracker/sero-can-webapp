@@ -4,21 +4,10 @@ import {Item} from "semantic-ui-react";
 import { AppContext } from "../../../context";
 import { LanguageType } from "../../../types";
 import {PublicationProps} from "./PublicationsConstants"
+import { getformattedDate } from "utils/utils";
 
 export function PublicationsItem(props: PublicationProps) {
     const [state] = useContext(AppContext);
-
-    const dateFormatsByLanguage = {
-        "en": "",
-        "fr": "",
-        "de": ""
-      }
-    
-    if (props.month && props.year) {
-        dateFormatsByLanguage["en"] = `${props.month } ${props.day ? props.day + "," : ""} `;
-        dateFormatsByLanguage["fr"] = `${props.day} ${Translate("Months", [props.month])} `;
-        dateFormatsByLanguage["de"] = `${props.day ? props.day + "." : ""} ${Translate("Months", [props.month])} `;
-    }
 
     return (
         <div className="py-2">
@@ -40,8 +29,7 @@ export function PublicationsItem(props: PublicationProps) {
                     <Item.Meta>
                         {(props.month && props.year) && (
                             <div className={"text-small"}>
-                                {dateFormatsByLanguage[state.language]}
-                                {props.year}
+                                {getformattedDate(props.day, props.month, props.year, state.language)}
                             </div>
                         )}
                         <div className={"text-small"}>

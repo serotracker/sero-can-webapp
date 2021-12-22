@@ -79,3 +79,28 @@ export const NumberDateToWordDate = (date_str: string) => {
   const monthStr = months[Number(month) - 1];
   return `${Translate("Months", [monthStr])} ${day}, ${year}`
 }
+
+export const getformattedDate = (day: string | undefined, month: string | undefined, year: string | undefined, language: LanguageType) => {
+  interface dateFormatsByLanguageOptions {
+    en: string;
+    fr: string,
+    de: string
+  }
+  
+  const dateFormatsByLanguage: dateFormatsByLanguageOptions = {
+    "en": "",
+    "fr": "",
+    "de": ""
+  }
+
+  if (month && year) {
+    dateFormatsByLanguage["en"] = `${month } ${day ? day + "," : ""} ${year}`;
+    dateFormatsByLanguage["fr"] = `${day} ${Translate("Months", [month])} ${year}`;
+    dateFormatsByLanguage["de"] = `${day ? day + "." : ""} ${Translate("Months", [month])} ${year}`;
+  }
+
+  return dateFormatsByLanguage[language];
+}
+
+
+

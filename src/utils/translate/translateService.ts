@@ -23,6 +23,12 @@ Countries.registerLocale(EnglishCountries);
 Countries.registerLocale(FrenchCountries);
 Countries.registerLocale(GermanCountries);
 
+const translations = {
+  "en": English,
+  "fr": French,
+  "de": German
+}
+
 export const getCountryName = (
   country: string,
   language: LanguageType,
@@ -67,15 +73,7 @@ export default function Translate(
   substitution: Record<string, string | number> | null = null,
   addSpaces: [boolean, boolean] | null = null
 ): string {
-  let translationDictionary: Json = {}
-
-  if (language === LanguageType.english) {
-    translationDictionary = English as Json;
-  } else if (language === LanguageType.french) {
-    translationDictionary = French as Json;
-  } else if (language === LanguageType.german) {
-    translationDictionary = German as Json;
-  } 
+  let translationDictionary: Json = translations[language] as Json;
 
   try {
     let translatedString = translationDictionary[text];
@@ -118,15 +116,8 @@ export default function Translate(
  * @returns object
  */
 export function TranslateObject(text: string): object {
-  let translationDictionary: Json = {}
 
-  if (language === LanguageType.english) {
-    translationDictionary = English as Json;
-  } else if (language === LanguageType.french) {
-    translationDictionary = French as Json;
-  } else if (language === LanguageType.german) {
-    translationDictionary = German as Json;
-  } 
+  let translationDictionary: Json = translations[language] as Json;
 
   try {
     return translationDictionary[text] as object;

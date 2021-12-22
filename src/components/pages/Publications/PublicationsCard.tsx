@@ -6,21 +6,10 @@ import { Card } from "semantic-ui-react";
 import { AppContext } from "../../../context";
 import { LanguageType } from "../../../types";
 import {PublicationProps} from "./PublicationsConstants"
+import { getformattedDate } from "utils/utils";
 
 export function PublicationsCard(props: PublicationProps) {
   const [state] = useContext(AppContext);
-
-  const dateFormatsByLanguage = {
-    "en": "",
-    "fr": "",
-    "de": ""
-  }
-
-  if (props.month && props.year) {
-    dateFormatsByLanguage["en"] = `${props.month } ${props.day ? props.day + "," : ""} `;
-    dateFormatsByLanguage["fr"] = `${props.day} ${Translate("Months", [props.month])} `;
-    dateFormatsByLanguage["de"] = `${props.day ? props.day + "." : ""} ${Translate("Months", [props.month])} `;
-  }
 
   return (
     <div className="py-4 px-2 flex justify-content-center">
@@ -55,8 +44,7 @@ export function PublicationsCard(props: PublicationProps) {
           </div>
           {(props.month && props.year) && (
             <div className="publications-card-date">
-              {dateFormatsByLanguage[state.language]}
-              {props.year}
+              {getformattedDate(props.day, props.month, props.year, state.language)}
             </div>
           )}
         </Card.Content>

@@ -35,13 +35,7 @@ export const Header = () => {
 
   const changeLanguages = (newLanguage: LanguageType) => {
     let url = history.location.pathname;
-    if (state.language === LanguageType.english) {
-      url = url.replace("/en/", `/${newLanguage}/`)
-    } else if (state.language === LanguageType.french) {
-      url = url.replace("/fr/", `/${newLanguage}/`)
-    } else if (state.language === LanguageType.german) {
-      url = url.replace("/de/", `/${newLanguage}/`)
-    }
+    url = url.replace(`/${state.language}/`, `/${newLanguage}/`)
     dispatch(
       {
         type: "SELECT_LANGUAGE",
