@@ -16,8 +16,7 @@ interface DownloadButtonProps {
 
 export default function DownloadButton(props: DownloadButtonProps) {
     const [letDownload, setLetDownload] = useState(false);
-    console.log(props.id)
-    const { buttonLabelKey, 
+    const { buttonLabelKey,
             downloadLink ,
             formLink,
         iconName, popupText} = props;
