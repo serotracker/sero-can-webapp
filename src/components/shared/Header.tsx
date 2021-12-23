@@ -109,7 +109,7 @@ export const Header = () => {
               className={'flex py-0'}
             >
               {state.language.toUpperCase()}
-              <Icon name='dropdown' className={`ml-5 ${languageDropdownActive ? 'dropdown__icon' : 'dropdown__icon--active'} `}/>
+              <Icon name='dropdown' style={{marginLeft: "107px"}}className={`${languageDropdownActive ? 'dropdown__icon' : 'dropdown__icon--active'} `}/>
               </Accordion.Title>
               { state.language !== LanguageType.english ?    
                  <Accordion.Content active={languageDropdownActive} onClick={() => {changeLanguages(LanguageType.english)}} className="ml-2">
