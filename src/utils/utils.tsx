@@ -29,12 +29,12 @@ export const getPossibleNullString = (nullString: string | number | null | undef
   return nullString
 }
 
-export const getPossibleNullDateString = (nullString: string | null | undefined) => {
+export const getPossibleNullDateString = (nullString: string | null | undefined, language: LanguageType) => {
   if (nullString === null || nullString === undefined) {
     return Translate("Not Reported")
   }
 
-  const dateTimeFormat = new Intl.DateTimeFormat('en', {
+  const dateTimeFormat = new Intl.DateTimeFormat(language, {
     year: 'numeric',
     month: 'long',
     day: 'numeric',

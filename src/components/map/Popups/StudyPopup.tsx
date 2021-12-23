@@ -1,5 +1,5 @@
 import React from "react";
-import { AirtableRecord } from "types";
+import { AirtableRecord, LanguageType } from "types";
 import Translate from 'utils/translate/translateService';
 import { getGeography, getPossibleNullDateString } from 'utils/utils';
 import {Divider} from "semantic-ui-react"
@@ -29,8 +29,7 @@ function riskTag(riskLevel: string | null | undefined) {
     )
 }
 
-export default function StudyPopup(record: AirtableRecord) {
-
+export default function StudyPopup(record: AirtableRecord, language: LanguageType) {
     return (
         <div className="popup-content" >
             <div className={"d-flex justify-content-between mb-1"}>
@@ -47,7 +46,7 @@ export default function StudyPopup(record: AirtableRecord) {
             {/*{row(Translate(`${record.estimate_grade}StudyDetails`), getGeography(record.city, record.state, record.country))}*/}
             {(record.sampling_start_date && record.sampling_end_date) && (
                 <>
-                    {row(Translate("SamplingDates"), `${getPossibleNullDateString(record.sampling_start_date)} → ${getPossibleNullDateString(record.sampling_end_date)}`)}
+                    {row(Translate("SamplingDates"), `${getPossibleNullDateString(record.sampling_start_date, language)} → ${getPossibleNullDateString(record.sampling_end_date, language)}`)}
                 </>)
             }
             {row(Translate("PopulationGroup"), record.population_group ?? Translate("NotReported"))}

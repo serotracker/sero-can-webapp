@@ -98,7 +98,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
             pinPopup = new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
               .setLngLat(e.lngLat)
               .setMaxWidth("445px")
-              .setHTML(ReactDOMServer.renderToString(StudyPopup(record)))
+              .setHTML(ReactDOMServer.renderToString(StudyPopup(record, state.language)))
               .addTo(map);
             map.flyTo({
               center: [e.lngLat.lng, e.lngLat.lat - 15], //TODO: works for most cases, not sure how to center popup
