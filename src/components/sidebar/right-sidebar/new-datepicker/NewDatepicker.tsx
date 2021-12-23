@@ -76,7 +76,8 @@ export default function NewDatepicker({ page }: DatepickerProps) {
                value={value}
                fluid={true}
                type="text"
-               placeholder='Select date..'
+               // TODO: also add translation in german.json
+               placeholder={Translate('SelectDate')}
                onClick={onClick} />
       </div>
   )
@@ -108,7 +109,8 @@ export default function NewDatepicker({ page }: DatepickerProps) {
                   closeOnScroll={true}
                   shouldCloseOnSelect={false}
                   dropdownMode="select"
-                  todayButton="Today"
+                  // TODO: also add translation in german.json
+                  todayButton={Translate("Today")}
               />
                <DatePicker
                   selected={toDateSinceMinDate(chosenDates[1])}

@@ -10,12 +10,12 @@ const sliderStyle: React.CSSProperties = {
 };
 
 interface DateSliderProps {
-  minPossibleValue: number; //minimum possible value for slider
-  maxPossibleValue: number; //maximum possible value for slider
+  minPossibleValue: number; //minimum possible value for slider in milliseconds - unix time
+  maxPossibleValue: number; //maximum possible value for slider in milliseconds - unix time
   values: number[];
   minDate: Date;
-  onMouseUp: Function;
-  onSliderMove: Function;
+  onMouseUp: (isStart: Boolean, date: Date) => void;
+  onSliderMove: (dates: number[]) => void;
 }
 
 export default function NewDateSlider({minPossibleValue, maxPossibleValue, minDate, values, onMouseUp, onSliderMove}: DateSliderProps) {

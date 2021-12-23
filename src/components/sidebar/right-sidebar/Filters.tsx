@@ -209,7 +209,6 @@ export default function Filters({ page }: FilterProps) {
           </div>
         </div>
       </div>
-      {/*<Datepicker page={page}/>*/}
       <NewDatepicker page={page}/>
     </div>
   )
