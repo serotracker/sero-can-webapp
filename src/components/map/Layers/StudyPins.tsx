@@ -93,6 +93,21 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
 
         api.getRecordDetails(source_id).then((record) => {
           if (record !== null) {
+            // substitute population group with its translation
+            // TODO: refactor so that we no longer need filter options to be a set
+            const popGroupOptions = Array.from(state.allFilterOptions.population_group);
+            console.log(popGroupOptions)
+            const popGroupWithTranslations = popGroupOptions.find(x => x.english === record.population_group)
+            // TODO: refactor backend so that popGroupOptions keys directly map to languages on the frontend
+            const languageTypeMapping = {
+              'en': 'english',
+              'fr': 'french'
+            }
+            if(popGroupWithTranslations){
+              const lang = languageTypeMapping[state.language]
+              record.population_group = popGroupWithTranslations[lang]
+            }
+
             setSelectedPinId(source_id);
             togglePinBlur(map, source_id);
             pinPopup = new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
@@ -130,7 +145,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
         setHoveredOverId(e.features[0].properties.source_id)
       })
     }
-  }, [map, state.language, api])
+  }, [map, state.language, state.allFilterOptions.population_group, api])
 
   // Changes hover state of each circle
   useEffect(() => {

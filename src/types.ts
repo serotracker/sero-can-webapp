@@ -48,7 +48,7 @@ export type FiltersConfig = {
   source_type: string[];
   test_type: string[];
   country: string[];
-  population_group: string[];
+  population_group: Record<string, string>[];
   sex: string[];
   age: string[];
   overall_risk_of_bias: string[];
