@@ -5,11 +5,11 @@ import { AppContext } from "context";
 import { Menu, Segment, Sidebar, Icon } from "semantic-ui-react";
 import { PageStateEnum } from "../../../types";
 import MapboxMap from "components/map/MapboxMap"
-import Datepicker from "../../sidebar/right-sidebar/datepicker/Datepicker";
-import Filters from "../../sidebar/right-sidebar/Filters";
+import Datepicker from "./right-sidebar/datepicker/Datepicker";
+import Filters from "./right-sidebar/Filters";
 import Legend from "components/map/Legend";
-import LeftSidebar from "../../sidebar/left-sidebar/LeftSidebar";
-import './Explore.scss';
+import LeftSidebar from "./left-sidebar/LeftSidebar";
+import './ExploreMobile.scss';
 
 export default function ExploreMobile() {
   const [showMobileFilters, setShowFilters] = useState(false);

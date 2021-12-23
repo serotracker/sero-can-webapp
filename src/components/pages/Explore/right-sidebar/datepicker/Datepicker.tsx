@@ -2,14 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Input } from "semantic-ui-react";
-import { AppContext } from "../../../../context";
-import { FilterType, PageState, State } from '../../../../types';
-import { updateFilters } from "../../../../utils/stateUpdateUtils";
-import Translate from "../../../../utils/translate/translateService";
+import { AppContext } from "../../../../../context";
+import { FilterType, PageState, State } from '../../../../../types';
+import { updateFilters } from "../../../../../utils/stateUpdateUtils";
+import Translate from "../../../../../utils/translate/translateService";
 import SectionHeader from "../SectionHeader";
 import {enUS, fr} from 'date-fns/locale'
 import DateSlider from "./DateSlider";
-import { sendFiltersAnalyticsEvent } from "../../../../utils/analyticsUtils";
+import { sendFiltersAnalyticsEvent } from "../../../../../utils/analyticsUtils";
 
 interface DatepickerProps {
   page: string

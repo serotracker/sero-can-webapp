@@ -3,7 +3,7 @@ import { Dropdown, DropdownProps } from "semantic-ui-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
 import Translate from "../../utils/translate/translateService";
-import LanguageSelector from "../sidebar/right-sidebar/LanguageSelector";
+import LanguageSelector from "./LanguageSelector";
 import { useMediaQuery } from "react-responsive";
 import { mobileDeviceOrTabletWidth } from "../../constants";
 

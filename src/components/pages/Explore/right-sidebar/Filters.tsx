@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 import { Dropdown } from 'semantic-ui-react';
-import { AppContext } from "../../../context";
-import { FilterType, PageState, State } from '../../../types';
-import { sendUnityAnalyticsEvent } from "../../../utils/analyticsUtils";
-import { updateFilters } from "../../../utils/stateUpdateUtils";
-import { toPascalCase } from "../../../utils/translate/caseChanger";
-import Translate, { getCountryName } from "../../../utils/translate/translateService";
-import InformationIcon from "../../shared/InformationIcon";
+import { AppContext } from "../../../../context";
+import { FilterType, PageState, State } from '../../../../types';
+import { sendUnityAnalyticsEvent } from "../../../../utils/analyticsUtils";
+import { updateFilters } from "../../../../utils/stateUpdateUtils";
+import { toPascalCase } from "../../../../utils/translate/caseChanger";
+import Translate, { getCountryName } from "../../../../utils/translate/translateService";
+import InformationIcon from "../../../shared/InformationIcon";
 import SectionHeader from "./SectionHeader";
 import Datepicker from "./datepicker/Datepicker";
 import "./Filters.css";
-import { LanguageType } from "../../../types";
+import { LanguageType } from "../../../../types";
 
 interface FilterProps {
   page: string,

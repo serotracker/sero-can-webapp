@@ -3,7 +3,7 @@ import { Partnership } from "types";
 import { AppContext } from "../../../context";
 import TableauEmbed from "components/shared/TableauEmbed";
 import Translate, { getCountryName } from "utils/translate/translateService";
-import PartnerShipsMap from "components/partnerships/PartnershipsMap";
+import PartnerShipsMap from "./PartnershipsMap";
 
 type CanadaPartnershipProps = {
     partnershipConfig: Partnership;

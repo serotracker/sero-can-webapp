@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../../context";
-import { State, PageState } from "../../../types";
-import Translate from "../../../utils/translate/translateService";
+import { AppContext } from "../../../../context";
+import { State, PageState } from "../../../../types";
+import Translate from "../../../../utils/translate/translateService";
 import "./TotalStats.css";
 
 interface TotalStatsProps {

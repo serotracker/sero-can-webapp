@@ -1,6 +1,6 @@
 import React from "react";
-import Translate from "../../../utils/translate/translateService";
-import InformationText from "../../shared/InformationText";
+import Translate from "../../../../utils/translate/translateService";
+import InformationText from "../../../shared/InformationText";
 
 const MIN_DENOMINATOR = 100
 export default function AnalysisMethods() {

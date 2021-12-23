@@ -1,6 +1,6 @@
 import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import InformationIcon from "../../shared/InformationIcon";
+import InformationIcon from "../../../shared/InformationIcon";
 
 interface SectionHeaderProps {
     header_text: string,

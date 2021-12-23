@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AirtableRecord, EstimateGradePrevalence, Partnership } from "types";
 import { useMediaQuery } from "react-responsive";
 import { AppContext } from "context";
-import { mobileDeviceOrTabletWidth } from "../../constants";
+import { mobileDeviceOrTabletWidth } from "../../../constants";
 import Translate from "utils/translate/translateService";
 import { Loader } from "semantic-ui-react";
 import Legend from "components/map/Legend";

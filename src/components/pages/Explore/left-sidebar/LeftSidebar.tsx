@@ -3,8 +3,7 @@ import Translate from "utils/translate/translateService";
 import TotalStats from "./TotalStats";
 import { Divider } from 'semantic-ui-react'
 import DownloadButton from "components/shared/DownloadButton";
-import { SemanticICONS } from "semantic-ui-react";
-import { PAGE_HASHES } from "../../../constants";
+import { PAGE_HASHES } from "../../../../constants";
 import "../sidebar.scss";
 
 interface SideBarProps {
