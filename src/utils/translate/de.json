@@ -1,0 +1,574 @@
+{
+  ",": ",",
+  "95%ConfidenceInterval": "95% Konfidenzintervall",
+  "95%ConfidenceIntervalTooltip": "Breitere Fehlerbalken weisen auf eine größere Unsicherheit in der aggregierten Seroprävalenzschätzung hin.",
+  "About": "Über",
+  "AboutPage": {
+    "AboutSection": {
+      "Covid19ImmunityTaskForce": "COVID-19-Arbeitsgruppe Immunität.",
+      "GlobalSerologicalKnowledgeHub": "Globaler serologischer Wissenshub",
+      "HealthInformatics": "Zentrum für Gesundheitsinformatik an der Universität Calgary.",
+      "HostedAt": "SeroTracker wird auch gehostet bei der",
+      "MappingTheExtent": "Die COVID-19-Arbeitsgruppe Immunität bildet das Ausmaß der SARS-CoV-2-Infektionen in Kanada ab; SeroTracker liefert auch Inhalte für ihre",
+      "PartOne": "SeroTracker fasst die Ergebnisse von Tausenden von COVID-19-Seroprävalenzstudien weltweit zusammen und bietet eine Datenplattform sowie ein interaktives Dashboard für die serologische Überwachung von SARS-CoV-2.",
+      "PartTwo": "Bestätigte COVID-19-Fälle sind nur die Spitze des Eisbergs – die tatsächliche Zahl der SARS-CoV-2-Infektionen wird unterschätzt, da viele Menschen asymptomatisch infiziert sind oder keinen Zugang zu diagnostischen Tests haben. Im Gegensatz dazu werden bei Seroprävalenzstudien Antikörper gegen SARS-CoV-2 in der Bevölkerung gemessen. Da Menschen mit diesen Antikörpern zuvor infiziert oder geimpft worden sind, sind diese Studien für das Verständnis des wahren Ausmaßes der Pandemie und für die Messung der Antikörperspiegel in der Bevölkerung von entscheidender Bedeutung.",
+      "PublicHealthAgency": "Agentur für öffentliche Gesundheit, Kanada",
+      "SupportedBy": "SeroTracker wird unterstützt von der",
+      "ThroughThe": "durch die",
+      "UnityStudies": "Seroprävalenzstudien von WHO Unity",
+      "WHO1": "SeroTracker arbeitet mit dem/der",
+      "WHO2": "zur Visualisierung und Synthese von Ergebnissen aus den",
+      "WHO3": "SeroTracker und die Weltgesundheitsorganisation bedanken sich beim Bundesministerium für Gesundheit (BMG) für die COVID-19-Forschungs- und Entwicklungsmittel zur Unterstützung dieser Bemühungen.",
+      "WorldHealthOrganization": "Weltgesundheitsorganisation"
+    },
+    "ContactSection": {
+      "BulletPointFive": {
+        "PartOne": "Um uns darauf aufmerksam zu machen,",
+        "PartThree": "oder Studien, die wir noch nicht erfasst haben, bitte ausfüllen,",
+        "PartTwo": "neue Seroprävalenzstudien zu SARS-CoV-2"
+      },
+      "BulletPointOne": {
+        "PartFour": "und Kelly Johnston bei",
+        "PartOne": "Bitte richten Sie alle Anfragen zu SeroTracker an Rahul Arora (z. B. wenn Sie unserer Bemühungen unterstützen wollen, mit uns zusammenarbeiten möchten oder als Journalist*In an einer Berichterstattung über unsere Ergebnisse interessiert sind), und zwar unter ",
+        "PartThree": "Journalistinnen, Journalisten und Medienvertretende: bitte kontaktieren Sie Caroline Phaneuf unter",
+        "PartTwo": "und Tingting Yan unter "
+      },
+      "SectionOne": "Wir sind ein interdisziplinäres Team von Forschern und Ingenieuren der Universität Oxford, der Universität Toronto, der Universität Waterloo, der Universität Calgary und der Harvard University."
+    },
+    "Headers": {
+      "AboutSeroTracker": "Über SeroTracker",
+      "ContactUs": "Kontaktieren Sie uns",
+      "OurTeam": "Unser Team"
+    },
+    "SubHeaders": {
+      "Alumni": "Ehemalige",
+      "DataCuration": "Team für Evidenzsynthese und Datenkuration",
+      "DataInfrastructure": "Team Dateninfrastruktur und -analyse",
+      "GlobalPartnerships": "Team für globale Gesundheitspartnerschaften",
+      "DevelopmentTeam": "Entwicklungsteam",
+      "ProjectStaff": "Projektmitarbeiter",
+      "ScientificAdvisors": "Wissenschaftliche Beraterinnen",
+      "TeamLead": "Teamleiter"
+    },
+    "Mapbox": "unterstützt die Kartierungsinfrastruktur von SeroTracker"
+  },
+  "Accept": "Akzeptieren",
+  "AcceptCookies": "Cookies akzeptieren",
+  "AccessGithub": "Auf Github zugreifen",
+  "AdditionalGraphs": "Zusätzliche Schaubilder",
+  "Age": "Alter",
+  "AgeGroup": "Altersgruppe",
+  "AgeOptions": {
+    "Adults1864Years": "Erwachsene (18-64)",
+    "ChildrenAndYouth017Years": "Kinder und jugendliche (0-17)",
+    "Seniors65Years": "Senioren (65+)"
+  },
+  "AggregatedPrevalence": "Aggregierte Prävalenz",
+  "Aggregating": "Aggregieren",
+  "AnalysisMethods": {
+    "FirstParagraph": {
+      "FirstSentence": "Die für jedes Land und jeden Faktor angegebene Seroprävalenz wird berechnet durch ",
+      "SecondSentence": "alle Seroprävalenzschätzungen, die den von Ihnen angegebenen Filtern entsprechen."
+    },
+    "SecondParagraph": "Standard-Filter: Landes- bzw. gebietsweite Schätzungen in der Allgemeinbevölkerung und bei Blutspendenden.",
+    "ThirdParagraph": "Diese aggregierten Schätzungen sollten mit Vorsicht interpretiert werden, insbesondere wenn die Studien, die aggregiert wurden, keine repräsentativen Stichproben enthielten oder ein hohes Verzerrungspotenzial aufwiesen.",
+    "Title": "Analysemethoden",
+    "Tooltip": "Die verwendete Aggregationsmethode ist eine mit fixen Effekten und inverser Varianz gewichtete Meta-Analyse der Prävalenz, wobei die Freeman-Tukey-Transformation mit doppeltem Arkussinus zur Stabilisierung der Varianz verwendet wird. Datensätze über dem Stichprobenumfang MIN_DENOMINATOR werden berücksichtigt."
+  },
+  "Analyze": "Analysieren",
+  "AntibodyTarget": "Antikörperziel",
+  "AntibodyTargetOptions": {
+    "EnvelopeProtein": "Hüllprotein",
+    "MembraneProtein": "Membranprotein",
+    "NR": "NR",
+    "NotReported": "Nicht berichtet",
+    "NucleocapsidNProtein": "Nukleokapsid (N-Protein)",
+    "Spike": "Spike",
+    "WholeVirusAntigen": "Vollvirus-Antigen"
+  },
+  "Article": "Artikel",
+  "Authors": "Autoren",
+  "AuthorAndLeadOrganizationNotReported": "Autor und federführende Organisation nicht angegeben",
+  "AntibodyTarget": "Antikörperziel",
+  "BestSeroprevalenceEstimate": "Beste Schätzung der Seroprävalenz",
+  "BlankUniversity": "NAME Universität,",
+  "ByCountry": "Nach Land",
+  "ByPopulation": "Nach Bevölkerung,",
+  "CentreHealthInformatics": "Zentrum für Gesundheitsinformatik",
+  "ChangeLog": "Änderungsprotokoll",
+  "CPPInvestmentBoard": "CPP-Investitionsausschuss",
+  "ChangeSettings": "Einstellungen ändern",
+  "CoDirector": "Co-Direktor",
+  "ContactUs": "Kontaktieren Sie uns",
+  "CookiePolicy": "Cookie-Richtlinie",
+  "CookiePolicyBody": "Wir verwenden Cookies, um die Benutzerfreundlichkeit zu verbessern; wir sammeln niemals persönliche Daten. Durch die Nutzung unserer Website erklären Sie, dass Sie unsere ",
+  "Countries": "Länder",
+  "CountriesIncluded": {
+    "PartOne": "in",
+    "PartTwo": "Länder und Gebiete/Territorien"
+  },
+  "CountriesAndAreas": "Länder und Gebiete",
+  "CountryEstimatesExist": "Schätzungen der Seroprävalenz",
+  "CountryEstimatesNotExist": "Keine Schätzungen der Seroprävalenz",
+  "CountryOptions": {
+    "England": "England",
+    "Iran": "Iran",
+    "Scotland": "Schottland",
+    "UnitedStates": "Vereinigte Staaten"
+  },
+  "COVIDImmunityTaskForce": "Covid-19-Arbeitsgruppe Immunität",
+  "Dashboard": "Dashboard",
+  "Data": "Daten",
+  "DatabaseUptoDateTo": "Zuletzt aktualisiert",
+  "DataDictionary": "Datenwörterbuch",
+  "DataDictionaryText": {
+    "FirstParagraph": "Weitere Informationen und Zusammenhänge zu unseren Daten finden Sie in unserer/m",
+    "SecondParagraph": "und"
+  },
+  "DataDownload": "Um eine Liste aller Studien in unserer Datenbank und eine Zusammenfassung der geschätzten Seroprävalenz herunterzuladen, klicken Sie bitte auf den Link \"CSV herunterladen“ unten rechts auf dieser Seite. Wenn Sie zusätzliche Daten oder Informationen zu diesen Daten für Ihre Analyse benötigen, wenden Sie sich bitte an die",
+  "DateRange": "Datumsbereich",
+  "DateRangeTooltip": "Studien nach dem Enddatum der Stichprobe filtern.",
+  "Demographics": "Demografische Daten",
+  "DemographicsTooltip": "Filtern Sie nach demografischen Variablen, einschließlich Bevölkerungsgruppe, Geschlecht und Altersgruppe ",
+  "Details": "Einzelheiten",
+  "DisclaimerFooter": "*Die Vertreterinnen und Vertreter von SeroTracker sind auf der SeroTracker-Website aufgeführt.",
+  "DisclaimerList1": "Diese Website und ihr Inhalt, einschließlich aller Daten, Kartierungen/Mapping und Analysen (\"Website“) – Copyright 2020 SeroTracker, alle Rechte vorbehalten – werden ausschließlich für gemeinnützige öffentliche Gesundheits-, Bildungs- und akademische Forschungszwecke bereitgestellt. Wenn Sie einen medizinischen Rat oder eine medizinische Anleitung suchen, sollten Sie sich nicht auf diese Website verlassen.",
+  "DisclaimerList2": "Die Nutzung der Website durch Vertreter wirtschaftlicher Interessen bzw. zu Handelszwecken ohne ausdrückliche schriftliche Genehmigung durch eine/n Vertreter/in* von SeroTracker ist strengstens untersagt. Die Weiterverbreitung der Website oder des der Website zugrundeliegenden aggregierten Datensatzes ohne ausdrückliche schriftliche Genehmigung eines/r Vertreters/in* von SeroTracker ist ebenfalls strengstens untersagt.",
+  "DisclaimerList3": "Wenn Sie Informationen von der Website nutzen oder auf die Website verlinken, geben Sie bitte die SeroTracker-Website der SeroTracker Collaboration als Quelle an.",
+  "DisclaimerList4": "Die Website stützt sich auf öffentlich verfügbare Daten aus verschiedenen Quellen, die nicht immer übereinstimmen. Das SeroTracker-Team und die COVID-19-Arbeitsgruppe Immunität lehnen hiermit jegliche Zusicherungen und Gewährleistungen in Bezug auf die Website ab, einschließlich der Genauigkeit, der Gebrauchstauglichkeit, der Zuverlässigkeit, der Vollständigkeit und der Nicht-Verletzung der Rechte Dritter.",
+  "DisclaimerList5": "Jegliche Nutzung der Namen, Logos, Warenzeichen und/oder Handelsaufmachungen von SeroTracker oder der COVID-19-Arbeitsgruppe Immunität auf sachlich falscher Weise oder zu Marketing-, Werbe- oder kommerzielle Zwecke ohne ausdrückliche schriftliche Genehmigung eines/r Vertreters/in* von SeroTracker ist strengstens verboten.",
+  "DisclaimerList6": "Diese Geschäftsbedingungen können sich ändern. Mit der Nutzung der Website erklären Sie sich mit diesen Geschäftsbedingungen sowie mit allen künftigen Änderungen einverstanden.",
+  "DisclaimerListHeader": "Geschäftsbedingungen für die Nutzung der Website:,",
+  "DropdownQuestions": {
+    "Question1": {
+      "Question": "Woher stammen die Daten von SeroTracker?",
+      "Answer": "Wir sammeln Daten aus veröffentlichten, von Fachleuten geprüften Forschungsartikeln, Vorabdrucken, Berichten und Medien (unveröffentlichte graue Literatur). Die Quellen, die bisher in unser Dashboard aufgenommen wurden, sind in der nachstehenden Tabelle aufgeführt."
+    },
+    "Question2": {
+      "Question": "Wie sammelt SeroTracker seine Daten?",
+      "Answer": "Wir führen regelmäßige Recherchen in verschiedenen Datenbanken durch, darunter Medline, EMBASE, Web of Science und Europe PMC, sowie gezielte Google-Suchen. Darüber hinaus kann jeder über die Schaltfläche “Quelle einreichen“ Quellen einreichen, die wir prüfen und in unsere Überprüfung aufnehmen können."
+    },
+    "Question3": {
+      "Question": "Wie extrahiert SeroTracker Daten aus ihren Quellen?",
+      "Answer": "Wir verfügen über ein umfangreiches, in Gesundheitswissenschaften und Epidemiologie geschultes Forschungsteam, das Artikel manuell überprüft und Schätzungen der Seroprävalenz in AirTable, unserer Datenbankverwaltungssoftware, erfasst. Die Prozesse und Regeln, die wir bei der Datenextraktion befolgen, sind in unserem Studienprotokoll und im AirTable-Datenwörterbuch zu finden."
+    },
+    "Question4": {
+      "Question": "Wie werden die Daten von SeroTracker auf der Karte angezeigt?",
+      "Answer": "Die in Airtable eingegebenen Daten durchlaufen automatisch eine Software-Pipeline, die sie bereinigt und zusätzliche Informationen berechnet (z. B. die geografischen Koordinaten einer Studie). Die Ergebnisse der Pipeline werden dann in einer separaten Datenbank gespeichert, die von serotracker.com abgefragt wird, um die Registerkarte “Explore“ zu bedienen.."
+    },
+    "Question5": {
+      "Question": "Kann ich die Daten von SeroTracker für meine eigene Analyse herunterladen?",
+      "Answer": "Ja, unsere Daten sind quelloffen und können von jedermann frei genutzt werden. Sie können unsere vollständige .csv-Datei über die Schaltfläche “Download CSV“ (siehe oben) herunterladen. Sie werden zunächst gebeten, ein Formular auszufüllen, in dem Sie Ihre Funktion, Ihre Zugehörigkeit (falls relevant) und die Art der von Ihnen durchgeführten Forschungsarbeiten angeben – so können wir Datensätze erstellen, die für Sie am nützlichsten sind."
+    },
+    "Question6": {
+      "Question": "Muss ich ein AirTable-Benutzer sein, um die Daten von SeroTracker zu nutzen?",
+      "Answer": "Nein. Obwohl unsere Daten in einer AirTable-Datei dargestellt werden, können Sie diese problemlos in Excel oder andere Formate exportieren."
+    },
+    "Question7": {
+      "Question": "Wie interpretiere ich die Variablen im Datensatz von SeroTracker?",
+      "Answer": "In unserem Datenlexikon (über die oben erwähnte Schaltfläche) finden Sie Erklärungen zu unseren Variablen, Datentypen und Beschreibungen sowie einen Einblick in die Art und Weise, wie unsere Daten von unserem Forschungsteam erhoben werden. Sie ist so aufgebaut, dass sie die Interpretation unseres herunterladbaren Datensatzes erleichtert. "
+    },
+    "Question8": {
+      "Question": "Wie sind die Daten von SeroTracker von anderen oder Forschern verwendet worden?",
+      "Answer": {
+        "Part1": "Die Daten von SeroTracker werden von vielen Fachleuten des öffentlichen Gesundheitswesens und von Gesundheitsbehörden wie der Weltgesundheitsorganisation und der Agentur für öffentliche Gesundheit, Kanada, verwendet, um nur einige zu nennen. Die Registerkarte “Einblicke/Insights“ enthält Links zu internen Berichten, von uns erstellten Veröffentlichungen, sowie zu Berichten über SeroTracker-Daten und -Arbeiten in den Medien. Unser jüngstes ",
+        "Part2": "analysiert die weltweite Seroprävalenz von Januar bis Dezember 2020."
+      },
+      "Links": {
+        "Link1": "https://www.medrxiv.org/content/10.1101/2020.11.17.20233460v2"
+      },
+      "LinkTexts": {
+        "LinkText1": "Veröffentlichung"
+      }
+    }
+  },
+  "DownloadAirtable": "Klicken Sie hier, um unsere SARS-CoV-2 Seroprävalenzdaten programmatisch auf Airtable herunterzuladen",
+  "DownloadCsv": "CSV herunterladen",
+  "DownloadData": "Daten herunterladen",
+  "DownloadGithub": "Klicken Sie hier, um unsere SARS-CoV-2 Seroprävalenzdaten programmatisch auf GitHub herunterzuladen",
+  "EconomicsTeam": "Team Wirtschaft",
+  "EndDate": "Enddatum",
+  "English": "Englisch",
+  "Estimate": "Schätzung",
+  "EstimateGrade": "Schätzungsebene",
+  "EstimateGradeOptions": {
+    "Hyperlocal": "Hyperlokal",
+    "Local": "Lokale",
+    "National": "Landesweit/Gebietsweit",
+    "Regional": "Regionale"
+  },
+  "EstimateRange": "Schätzbereich",
+  "ExecutiveDirector": "Exekutivdirektor",
+  "Explore": "Erkunden/Explore",
+  "ExploreBlurb": {
+    "FirstParagraph": "SeroTracker ist eine Dashboard- und Datenplattform für SARS-CoV-2-Serosurveys.",
+    "SecondParagraph": "Wir führen eine laufende systematische Überprüfung durch, um Serosurveys (auf Antikörpertests basierende Überwachungsmaßnahmen) auf der ganzen Welt zu verfolgen und die Ergebnisse auf diesem Dashboard sichtbar zu machen.",
+    "ThirdParagraph": "Antikörper gegen SARS-CoV-2 – das Virus, das COVID-19 verursacht – weisen auf eine frühere Infektion oder Impfung hin."
+  },
+  "Filter": "Filter",
+  "FilterTooltip": "Filtern Sie den SeroTracker-Datensatz nach geographischen Gegebenheiten, nach Studie, Demografie und Test. Es werden nur Studien berücksichtigt, die allen aufgeführten Filtern entsprechen.,",
+  "For": "Für",
+  "Footer": {
+    "CiteAs": "Zitieren Sie bitte als:",
+    "LastUpdated": "Zuletzt aktualisiert",
+    "LancetInfDis": "Lancet Inf Dis",
+    "Article": "Artikel"
+  },
+  "French": "Français",
+  "FAQ": "FAQ",
+  "FrequentlyAskedQuestions": "Häufig gestellte Fragen",
+  "GeneralTerms": "Allgemeine Bedingungen ",
+  "Geographies": "Geografien",
+  "Geography": "Geographie",
+  "GeographyTooltip": "Wählen Sie die Länder aus, die Sie interessieren.",
+  "Here": "Hier",
+  "IncludingParticipants": {
+    "PartOne": "einschließlich",
+    "PartTwo": "Teilnehmende"
+  },
+  "IndustryMediaTitles": {
+    "UnderstandingVirus": "Das Virus und seine unbeantworteten Fragen verstehen",
+    "KnowledgeHub": "Wissenshub, der zur Verfolgung von SARS-CoV-Antikörperstudien entwickelt wurde",
+    "GlobalLaunch": "Weltweiter Start von SeroTracker: ein Hub für COVID-19-Antikörpertests in Zusammenarbeit mit der kanadischen COVID-19-Arbeitsgruppe Immunität",
+    "StudentsBuild": "Studenten erstellen Online-Dashboard zur Verfolgung von COVID-19-Antikörperstudien",
+    "NewlyLaunched": "Der neu gestartete SeroTracker wird die weltweiten Bemühungen um Antikörpertests überwachen",
+    "VeteranDoctor": "Was ist, wenn es keinen COVID-19-Impfstoff gibt? Ein erfahrener Arzt der HIV/AIDS-Krise bietet Alternativen",
+    "CovidRadar": "Covid-Radar: taxa de subnotificação de casos de covid-19 na Rocinha chega a 62 vezes [Untererfassungsfaktor für COVID-19 erreicht 62 in Rocinha].",
+    "HowMany": "Wie viele von uns dürften uns bisher mit dem Coronavirus angesteckt haben?",
+    "Lecturership": "Lehrauftrag für den CHI-Lab-DPhil-Studenten Rahul Arora",
+    "HomeTests": "Billige, tägliche Tests für Zuhause sind der erste Schritt zur Eindämmung der Pandemie",
+    "Webinar": "SeroTracker COVID-19-Reise: Webinar von HIMSS, Ortsverband Kanada",
+    "AlumniAndStudents": "Der Serotracker: Ehemalige und gegenwärtige Studenten entwickeln Instrument zur Verfolgung der Verbreitung von Covid-19",
+    "InfectionRate": "Studie über die weltweite Infektionsrate mit dem Coronavirus: Anzahl der nicht gemeldeten Fälle",
+    "McKinseyHealthcare": "McKinsey über das Gesundheitswesen: Das Jahr 2020 im Rückblick",
+    "JouleRecipients": "Joule gibt die Empfängerinnen und Empfänger der Innovationsförderung 2020 bekannt",
+    "JouleInnovation": "SeroTracker: Empfängerin der Joule-Innovationsförderung",
+    "WhenEnd": "Wann wird die COVID-19-Pandemie enden?",
+    "JouleAnnounce": "Joule gibt die Empfängerinnen und Empfänger der Innovationsförderung 2020 bekannt",
+    "StillVulnerable": "Die Weltbevölkerung ist immer noch anfällig für COVID-19",
+    "NYTIndia": "Wie hoch könnte die tatsächliche Covid-Opferzahl in Indien sein?",
+    "EconomistDeathToll": "Wie wir die tatsächliche Zahl der Todesopfer der Pandemie geschätzt haben"
+  },
+  "IndustryReportTitles": {
+    "AugustReport": "August-Bericht",
+    "BloodBank": "SeroTracker Blutbank Seroprävalenz Vorläufiger Bericht",
+    "JulyReport": "Juli-Bericht",
+    "JuneReport": "Juni-Bericht",
+    "MayReport": "Mai-Bericht",
+    "OctoberReport": "Oktober-Bericht",
+    "PreliminaryReport": "Vorläufiger Bericht",
+    "SeptemberReport": "Bericht September",
+    "YearInReview2020": "SeroTracker 2020 Jahresrückblick",
+    "InsuringTheEconomy": "Absicherung der Wirtschaft gegen eine zweite Pandemiewelle",
+    "InventoryEvidenceSynthesis": "Bestandsaufnahme der Synthese der besten Erkenntnisse"
+  },
+  "ResearchArticleTitles": {
+    "PrePrint": "Lehren aus einer raschen systematischen Überprüfung der ersten SARS-CoV-2-Serosurveys",
+    "MedRxivPub": "Globale Seroprävalenz von SARS-CoV-2-Antikörpern: eine systematische Überprüfung und Meta-Analyse",
+    "LancetID": "SeroTracker: ein globales SARS-CoV-2 Seroprävalenz-Dashboard",
+    "PlosOnePub": "Globale Seroprävalenz von SARS-CoV-2-Antikörpern: eine systematische Überprüfung und Meta-Analyse"
+  },
+  "BiblioDigestTitles": {
+    "November": "Literatur-Update-Bericht November",
+    "LateOctober": "Literatur-Update-Bericht Ende Oktober",
+    "October": "Literatur-Update-Bericht Oktober",
+    "September": "Literatur-Update-Bericht September",
+    "August": "Literatur-Update-Bericht August",
+    "July": "Literatur-Update-Bericht Juli",
+    "June": "Literatur-Update-Bericht Juni"
+  },
+  "BiblioDigests": "Literatur-Update-Berichte",
+  "InitInfoModalText": {
+    "PartOne": "Willkommen auf der SeroTracker-Registerkarte “Analyze“  Wir führen eine systematische Überprüfung von SARS-CoV-2-Serosurveys durch und verwenden die Daten aus unserer Überprüfung, um dieses Dashboard zu erstellen",
+    "PartThree": "Diese aggregierten Schätzungen sollten mit Vorsicht interpretiert werden, insbesondere wenn die Studien, die aggregiert wurden, keine repräsentativen Stichproben enthielten oder ein hohes Verzerrungspotenzial aufwiesen. Sie können die Quellenliteratur auf der Referenzkarte am Ende dieser Seite eingehend studieren.",
+    "PartTwo": "Unser Dashboard aggregiert die Schätzungen der Seroprävalenz in jedem Land. Diese aggregierten Schätzungen umfassen standardmäßig landes- bzw. gebietsweite Seroprävalenzschätzungen in der Allgemeinbevölkerung oder bei Blutspendenden und schließen Schätzungen aus, die nur in den Nachrichten veröffentlicht wurden"
+  },
+  "Insights": "Einblicke",
+  "Isotypes": "Isotypen",
+  "IsotypesReported": "Gemeldete Isotypen",
+  "IsotypesReportedOptions": {
+    "IgA": "IgA",
+    "IgG": "IgG",
+    "IgM": "IgM",
+    "IgMIgG": "IgM IgG"
+  },
+  "LancetArticle": "Lancet ID",
+  "LancetID": "The Lancet Infectious Diseases",
+  "LastUpdatedTooltip": "SeroTracker wird ständig mit den Ergebnissen neu veröffentlichter serologischer Studien aktualisiert. Wir berücksichtigen neue Studien aus unserer Suche innerhalb von 48 Stunden nach der Veröffentlichung",
+  "Legalese": "Juristensprache",
+  "LocalEstimateRange": "Lokaler Schätzbereich",
+  "LocalEstimates": "Lokale Schätzungen",
+  "LocalStudies": "Lokale Studien",
+  "LocalStudyDetails": "Details zu lokalen Studien",
+  "Location": "Standort",
+  "Manufacturers": "Hersteller",
+  "ManuscriptAndPreprint": "Manuskript und Vorabdruck",
+  "ManuscriptAppendixText": {
+    "FirstParagraph": "vollständige Methoden",
+    "SecondParagraph": "(aus dem Anhang zu unserer vollständigen systematischen Überprüfung und Meta-Analyse von SARS-CoV-2-Serosurveys)"
+  },
+  "Map": "Karte",
+  "Media": "Medien ",
+  "MediaMentions": "Erwähnungen in den Medien",
+  "MemorialUniversityOfNewfoundland": "Memorial-Universität von Neufundland",
+  "MonthlyReports": "Monatliche Berichte",
+  "Months": {
+    "January": "Januar",
+    "February": "Februar",
+    "March": "März",
+    "April": "April",
+    "May": "Mai",
+    "June": "Juni",
+    "July": "Juli",
+    "August": "August",
+    "September": "September",
+    "October": "Oktober",
+    "November": "November",
+    "December": "Dezember"
+  },
+  "N": "N",
+  "Name": "Name",
+  "NationalEstimateRange": "Landes- bzw. gebietsweite Schätzbereich",
+  "NationalEstimates": "Landes- bzw. gebietsweite Schätzungen",
+  "NationalStudies": "Landes- bzw. gebietsweite Studien",
+  "NationalStudyDetails": "Landes- bzw. gebietsweite Studiendetails",
+  "NoData": "Keine Daten",
+  "NoDataAnalyze": {
+    "PartOne": "Für die von Ihnen angegebenen Filter sind keine Daten verfügbar",
+    "PartTwo": "Bitte versuchen Sie eine andere Filterkombination"
+  },
+  "NotApplicable": "Nicht zutreffend",
+  "NotFound": {
+    "PartOne": "Seite nicht gefunden",
+    "PartTwo": "Upps! Wir konnten die gesuchte Seite nicht finden! Bitte versuchen Sie es mit einer anderen URL oder besuchen Sie unsere “Explore“-Seite, um wieder auf den richtigen Weg zu kommen.",
+    "Button": "“Explore“-Seite besuchen"
+  },
+  "NotReported": "Nicht gemeldet",
+    "NumberEstimates": "Anzahl der Schätzungen",
+    "NumSeroprevalenceEstimates": "Anzahl der Seroprävalenzschätzungen",
+  "Okay": "Okay, ich verstehe!",
+  "OptimisedFunctionality": "Für eine optimale Funktionalität der Website besuchen Sie uns bitte auf einem Desktop-Gerät.",
+  "OurData": "Unsere Daten",
+  "OurDataText": {
+    "PointOne": "erfasst alle Studien, die über Prävalenzschätzungen berichten",
+    "PointTwo": "beschreibt Studien, die noch keine Seroprävalenzschätzungen vorgelegt haben",
+    "Text": "Die nachstehende Tabelle beschreibt unsere Ergebnisse, einschließlich detaillierter Informationen zu jeder Studie, jeder Prävalenzschätzung sowie zum damit verbundenen Verzerrungspotenzial."
+  },
+  "OurProtocol": "Unser Protokoll",
+  "OverallRiskOfBias": "Gesamtverzerrungspotenzial",
+  "Paper": "Papier",
+  "PaperText": "Unser erstes Manuskript, in dem die Erkenntnisse aus den Serosurveys bis zum 1. Mai beschrieben werden, finden Sie unter",
+  "PaperTextTwo": "Weitere Informationen über unser Dashboard finden Sie unter",
+  "Partnerships": "Partnerschaften",
+  "PartnershipsList": {
+    "Canada": "Kanada (CITF)"
+  },
+  "PartnershipsPageTitle": {
+    "Canada": "Kanada – Covid-19-Arbeitsgruppe Immunität"
+  },
+  "PartnershipsPageDescription": {
+    "Canada": {
+      "PartOne": "SeroTracker wird von der Agentur für öffentliche Gesundheit, Kanada, über die COVID-19-Arbeitsgruppe Immunität (CITF) finanziell unterstützt. Die CITF hat viele hochkarätige serologische Untersuchungen und andere immunitätsbezogene Forschungsarbeiten finanziert, über die Sie",
+      "PartTwo": "auf seiner Website mehr erfahren können. (https://www.covid19immunitytaskforce.ca/) ",
+      "PartThree": "Auf dieser Seite werden Daten aus kanadischen serologischen Erhebungen und darauf basierenden Modellierungen vorgestellt."
+    }
+  },
+  "PartnershipsView": {
+    "MapNote1": "Die Karte zeigt die Seroprävalenzschätzungen für alle geografisch basierten Schätzungen (einschließlich der gemeldeten Teilschätzungen, z. B. regionale Schätzungen auf Provinzebene, die in einer landesweiten Studie gemeldet wurden). Die Pins sind um den Mittelpunkt ihrer geografischen Lage(n) angeordnet.",
+    "MapNote2": "Die Anzahl der Fälle und Todesfälle (in der Mitte der Stichprobe der Studie) wurde auf nationaler Ebene von ourworldindata.org übernommen (Unterquelle: coronavirus.jhu.edu)"
+  },
+  "PlannedSerosurveys": "Geplante Serosurveys",
+  "Population": "Bevölkerung",
+  "PopulationGroup": "Bevölkerungsgruppe",
+  "PopulationGroupOptions": {
+    "All": "Alle",
+    "BloodDonors": "Blutspendende",
+    "Children": "Kinder",
+    "CommunityResident": "Einwohnerinnen und Einwohner der Gemeinde",
+    "FactoryWorker": "Fabrikarbeiterinnen und Fabrikarbeiter",
+    "FirstResponders": "Ersthelferinnen und Ersthelfer",
+    "GeneralPopulation": "Allgemeine Bevölkerung",
+    "HealthCareWorkers": "Fachkräfte im Gesundheitswesen",
+    "HotelStaffMember": "Hotelangestellte/r",
+    "IndustrySpecificEmployees": "Branchenspezifische Mitarbeiterinnen und Mitarbeiter",
+    "NonCovidHospitalizedPatients": "Nicht-COVID-Patientinnen und -Patienten im Krankenhaus",
+    "NonCovidPatientsInHealthCareSettings": "Nicht-COVID-Patientinnen und -Patienten in der Gesundheitsversorgung",
+    "PregnantOrParturientWomen": "Schwangere oder gebärende Frauen",
+    "RelativeOfHealthCareWorker": "Angehörige/r einer medizinischen Fachkraft",
+    "ResidualSera": "Restliche Seren",
+    "Students": "Studentinnen und Studenten",
+    "Unspecified": "Nicht spezifiziert"
+  },
+  "Populations": "Bevölkerungen",
+  "PositiveCases": "Positive cases",
+  "Prevalence": "Prävalenz",
+  "PrevalenceEstimateDetails": "Details zur Prävalenzschätzung",
+  "PrivacyPolicy": "Datenschutzrichtlinie",
+  "Publication": "Veröffentlichung",
+  "PublicationDescriptions": {
+    "Publications": "Erfahren Sie mehr über den Einfluss von SeroTracker in Forschungsartikeln Zusammenfassungen und Medienberichten.",
+    "ResearchArticles": "Von Fachleuten begutachtete Forschungsarbeiten, die vom SeroTracker-Team veröffentlicht wurden.",
+    "LiteratureUpdateReports": "Monatliche Übersichten und Updates zu Trends in der Literatur über Serosurveys und zu den von der WHO bereitgestellten Metriken.",
+    "PrivateSectorReports": "Updates zu COVID-19-Screening und -Tests im privaten Sektor Kanadas",
+    "MediaMentions": "Weltweite Medienveröffentlichungen, die SeroTracker vorstellen.",
+    "MonthlyReports": "COVID-19-Screening und -Tests im Privatsektor Kanadas"
+  },
+  "Publications": "Veröffentlichung",
+  "Published": "Veröffentlicht",
+  "References": "Referenzen",
+  "DataTable": "Referenzentabelle",
+  "RegionalEstimateRange": "Regionaler Schätzbereich",
+  "RegionalEstimates": "Regionale Schätzungen",
+  "RegionalStudies": "Regionale Studien",
+  "RegionalStudyDetails": "Details zu regionalen Studien",
+  "RegulatoryApproval": "Behördliche Genehmigung",
+  "Report": "Bericht",
+  "PrivateSectorReports": "Berichte aus dem Privatsektor",
+  "ReportsAndArticles": "Berichte und Artikel",
+  "ResearchArticles": "Forschungsartikel",
+  "RiskOfBias": "Verzerrungspotenzial",
+  "OverallRiskOfBiasOptions": {
+    "High": "Hoch",
+    "Low": "Niedrig",
+    "Moderate": "Mäßig",
+    "Unclear": "Unklar"
+  },
+  "SampleSize": "Stichprobengröße",
+  "Sampling": "Probenahme",
+  "SamplingEndDate": "Enddatum der Probenahme",
+  "SamplingDates": "Daten der Probenahme",
+  "SamplingMethod": "Stichprobenverfahren",
+  "SchoolName": {
+    "Cumming": "Cumming School of Medicine",
+    "Schulich": "Schulich School of Engineering"
+  },
+  "ScientificLead": "Wissenschaftliche/r Leiter/in",
+  "Sensitivity": "Empfindlichkeit",
+  "SeroPrevalenceByCountry": "Aggregierte Schätzungen der Seroprävalenz in verschiedenen Ländern",
+  "Seroprevalence": "Seroprävalenz",
+  "SeroprevalenceBy": "Seroprävalenz nach",
+  "SeroprevalenceScale": "Seroprävalenz-Skala",
+  "SeroprevalenceScaleTooltip": "Erstellt aus der Logit-Transformation des Maximalwertes zur Bestimmung der 'Bins'",
+  "SeroprevalenceStudies": "Seroprävalenzstudien",
+  "SeroprevalenceTooltip": {
+    "FirstParagraph": "Prävalenz von Antikörpern gegen SARS-CoV-2 aggregiert gemäß den von Ihnen gewählten Filtern.",
+    "SecondParagraph": "NB: Dies sollte nicht als repräsentative Schätzung der Seroprävalenz in der betreffenden Region interpretiert werden, insbesondere nicht wenn die aggregierten Studien verzerrte Stichproben aufweisen.",
+    "ThirdParagraph": "Pooling-Technik: mit festen Effekten und inverser Varianz gewichtete Aggregation von Datensätzen mit einem Stichprobenumfang über dem MIN_DENOMINATOR"
+  },
+  "Serosurveys": "Serosurveys",
+  "SerosurveysReportingPrevalence": "Serosurveys, die eine Prävalenz melden",
+  "SeroprevalenceEstimatesInRegion": "Seroprävalenzschätzungen in NAME nach geografischem Gebiet",
+  "SeroTrackerTeam": "SeroTracker-Team",
+  "Settings": "Einstellungen",
+  "Sex": "Geschlecht",
+  "SexOptions": {
+    "Female": "Weiblich",
+    "Male": "Männlich",
+    "Other": "Andere"
+  },
+  "Source": "Quelle",
+  "SourceType": "Quellenart",
+  "SourceTypeOptions": {
+    "JournalArticlePeerReviewed": "Zeitschriftenartikel (begutachten)",
+    "InstitutionalReport": "Institutioneller Bericht",
+    "NewsAndMedia": "Nachrichten und Medien",
+    "Preprint": "Preprint",
+    "Publication": "Veröffentlichung"
+  },
+  "Specificity": "Spezifität",
+  "StartDate": "Startdatum",
+  "Status": "Status",
+  "StudiesPerPage": "Studien pro Seite",
+  "Study": "Studie",
+  "StudyDetailsAuthorString": {
+    "LeadOrg": "Vom/Nach FIRST_AUTHOR bei LEAD_ORG",
+    "NoLeadOrg": "Vom/Nach FIRST_AUTHOR"
+  },
+  "StudyDetailsPublishString": {
+    "NoPublishDate": "Veröffentlicht vom PUBLISHER ",
+    "NoPublisher": "Veröffentlicht am PUBLISH_DATE ",
+    "PublisherAndDate": "Veröffentlicht am PUBLISH_DATE von PUBLISHER"
+  },
+  "StudyInformation": "Informationen zur Studie",
+  "StudyInformationTooltip": {
+    "FirstParagraph": "Filtern Sie nach Studiendetails, einschließlich der Art der Quelle (Veröffentlichung, Preprint, Nachrichten oder Bericht), nach dem Status der Studie (laufend, abgeschlossen) sowie nach der Orientierung an das WHO-Unity-Protokoll.",
+    "SecondParagraph": {
+        "PartOne": "Verzerrungspotenzial:",
+        "PartTwo": "spiegelt das Ausmaß wider, in dem die tatsächliche Prävalenz von der geschätzten Prävalenz abweichen kann. Geschätzt von SeroTracker-Reviewerinnen und Reviewer auf der Grundlage des kritischen Bewertungstools für Prävalenzschätzungen aus dem Joanna Briggs Institute"
+    },
+    "ThirdParagraph": {
+        "PartOne": "WHO-Unity-Protokoll:",
+        "PartTwo": "Die WHO hat mehrere standardisierte generische Protokolle für robuste Untersuchungen auf COVID-19 entwickelt:",
+        "PartThree": "die Unity-Studien.",
+        "PartFour": "SeroTracker arbeitet mit der WHO zusammen, um Studien zu unterstützen und sichtbar zu machen, die auf das bevölkerungsbezogene seroepidemiologische Unity-Protokoll abgestimmt sind."
+    }
+  },
+  "StudyName": "Name der Studie",
+  "StudyPins": "Studienpins anzeigen",
+  "StudySize": "Größe der Studie",
+  "StudyStatus": "Status der Studie",
+  "StudyStatusOptions": {
+    "Completed": "Abgeschlossen",
+    "Ongoing": "Laufend"
+  },
+  "StudyType": "Studienart",
+  "SublocalEstimateRange": "Sublokaler Schätzbereich",
+  "SublocalEstimates": "Sublokale Schätzungen",
+  "SublocalStudyDetails": "Details zu sublokalen Studien",
+  "SubmitSource": "Quelle einreichen",
+  "Summary": "Zusammenfassung",
+  "SummaryStatistics": "Zusammenfassende Statistik",
+  "Team": "Team",
+  "TeamLead": "Teamleiter",
+  "TemporaryMaintenance": "Vorübergehende Wartung",
+  "TemporaryMaintenanceDescription": "Wir sind wegen geplanter Wartungsarbeiten außer Betrieb, der Dienst wird in Kürze wieder aufgenommen.",
+  "TermsOfUse": "Nutzungsbedingungen",
+  "TestDetails": "Test-Details",
+  "TestInformation": "Test-Informationen",
+  "TestInformationTooltip": "Filtern Sie nach Testdetails, einschließlich Assay-Typ und Antikörper-Isotyp.",
+  "TestsAdministered": "Durchgeführte Antikörpertests",
+  "TestType": "Testtyp",
+  "TestTypeOptions": {
+    "Neutralization": "Neutralisierungs",
+    "Clia": "CLIA",
+    "Elisa": "ELISA",
+    "Lfia": "LFIA",
+    "Other": "Andere"
+  },
+  "TestUsed": "Verwendeter Test",
+  "ThisForm": "Dieses Formular",
+  "Today": "Heute",
+  "TotalEstimates": "Schätzungen insgesamt",
+  "TotalTests": "Tests insgesamt",
+  "UnityBanner": {
+    "Currently": "Derzeit sind nur",
+    "ProtocolLink": "Seroepidemiologisches Protokoll der WHO Unity",
+    "ViewDatabase": "ausgerichtete Studien werden angezeigt. Um unsere vollständige Datenbank zu sehen, deaktivieren Sie bitte das Kontrollkästchen",
+    "WHOUnityFilter": "Nur WHO-Unity",
+    "Filter": "Filter"
+  },
+  "UnityStudiesOnly": "Nur WHO-Einheit",
+  "UnityStudiesOnlyLong": "Nur Studien im Rahmen der WHO-Unity anzeigen",
+  "UniversityOf": "Universität NAME",
+  "UseOfData": "Die Verwendung dieser Daten unterliegt den SeroTracker-Bestimmungen",
+  "Vaccinations": "Impfungen",
+  "VaccineRolloutStatus": "Verfügbarkeit des Impfstoffs während der Studie",
+  "VaccinationPolicyLow": "Impfstoffe nicht verfügbar",
+  "VaccinationPolicyMed": "Für bestimmte Gruppen verfügbare Impfstoffe",
+  "VaccinationPolicyHigh": "Impfstoffe für breite Bevölkerungsschichten verfügbar",
+  "ViewPartnership": "Ansicht Partnerschaft",
+  "ViewFile": "Datei ansehen",
+  "ViewHere": "Hier ansehen",
+  "Welcome": "Willkommen bei SeroTracker",
+  "WhatWeDoText": {
+    "FirstParagraph": "Bei SeroTracker sammeln wir Daten und Informationen über SARS-CoV-2-Seroprävalenzstudien, indem wir eine systematische Überprüfung und Meta-Analyse von veröffentlichten und unveröffentlichten Daten zur Seroprävalenz durchführen. Die Daten werden für die primäre Schätzung jeder Quelle und bestimmte relevante Untergruppen extrahiert. Die vollständigen Methoden finden Sie in unserem Protokoll.",
+    "SecondParagraph": "Auf unserem Dashboard erstellen wir Daten für den akademischen und öffentlichen Gebrauch. Wir bemühen uns, unser Dashboard wöchentlich zu aktualisieren. Weitere Informationen, die über die folgende überblicksartige Zusammenfassung hinausgehen, finden Sie in unserem Studienprotokoll und in den ergänzenden Methoden für eine detaillierte Erläuterung unserer Forschungsprozesse."
+  },
+  "WhoDisclaimerSmall": "Die verwendeten Bezeichnungen und die Darstellung des auf dieser Plattform verfügbaren Materials bedeuten nicht, dass die WHO irgendeine Meinung über den rechtlichen Status eines Landes, eines Gebiets, einer Stadt oder eines Gebiets oder seiner Behörden oder über den Verlauf seiner Grenzen zum Ausdruck bringt. Die gepunkteten und gestrichelten Linien auf den Karten stellen ungefähre Grenzlinien dar, über die eventuell noch kein vollständiges Einvernehmen besteht.",
+  "WhoDisclaimer": "Haftungsausschluss: Die verwendeten Bezeichnungen und die Darstellung des auf dieser Plattform verfügbaren Materials bedeuten nicht, dass die WHO irgendeine Meinung über den rechtlichen Status eines Landes, eines Gebiets, einer Stadt oder eines Bereichs oder seiner Behörden oder über den Verlauf seiner Grenzen zum Ausdruck bringt. Die gepunkteten und gestrichelten Linien auf den Karten stellen ungefähre Grenzlinien dar, über die eventuell noch kein vollständiges Einvernehmen besteht. Die Erwähnung bestimmter Unternehmen oder Produkte bestimmter Hersteller in den auf dieser Plattform verfügbaren Materialien bedeutet nicht, dass diese von der WHO befürwortet oder empfohlen werden und anderen, nicht erwähnten Produkten ähnlicher Art vorgezogen werden. Vorbehaltlich von Irrtümern und Auslassungen sind die Namen der geschützten Produkte durch große Anfangsbuchstaben gekennzeichnet. Die Auflistung von Materialien auf dieser Plattform bedeutet nicht, dass die WHO diese Veröffentlichungen oder Websites befürwortet oder empfiehlt oder die darin enthaltenen Inhalte überprüft hat. Die Plattform wurde ohne jegliche Garantie, weder ausdrücklich noch stillschweigend, von der WHO erstellt. Die Verantwortung für die Auslegung und Nutzung der auf dieser Plattform verfügbaren Veröffentlichungen und Materialien liegt beim Leser. Die WHO haftet in keinem Fall für Schäden, die sich aus der Nutzung dieser Website ergeben.",
+  "WhoSerotrackAndPartnersDisclaimerSmall": "Die verwendeten Bezeichnungen und die Darstellung des auf dieser Plattform verfügbaren Materials bedeuten nicht, dass die WHO, SeroTracker oder die Partner von SeroTracker irgendeine Meinung über den rechtlichen Status eines Landes, eines Gebiets, einer Stadt oder eines Gebiets oder seiner Behörden oder über den Verlauf seiner Grenzen zum Ausdruck bringen. Die gepunkteten und gestrichelten Linien auf den Karten stellen ungefähre Grenzlinien dar, über die eventuell noch kein vollständiges Einvernehmen besteht.",
+  "WhoSerotrackAndPartnersDisclaimer1": "Die verwendeten Bezeichnungen und die Darstellung des auf dieser Plattform verfügbaren Materials bedeuten nicht, dass die WHO, SeroTracker oder die Partner von SeroTracker irgendeine Meinung über den rechtlichen Status eines Landes, eines Gebiets, einer Stadt oder eines Gebiets oder seiner Behörden oder über den Verlauf seiner Grenzen zum Ausdruck bringen. Die gepunkteten und gestrichelten Linien auf den Karten stellen ungefähre Grenzlinien dar, über die eventuell noch kein vollständiges Einvernehmen besteht.",
+  "WhoSerotrackAndPartnersDisclaimer2": "Die Erwähnung bestimmter Unternehmen oder Produkte bestimmter Hersteller in den auf dieser Plattform verfügbaren Materialien bedeutet nicht, dass diese von der WHO, SeroTracker oder den SeroTracker-Partnern befürwortet oder empfohlen werden und anderen, nicht erwähnten Produkten ähnlicher Art vorgezogen werden. Vorbehaltlich von Irrtümern und Auslassungen sind die Namen der geschützten Produkte durch große Anfangsbuchstaben gekennzeichnet. Die Auflistung von Materialien auf dieser Plattform bedeutet nicht, dass die WHO, SeroTracker oder die Partner von SeroTracker diese Veröffentlichungen oder Websites befürwortet oder empfiehlt oder die darin enthaltenen Inhalte überprüft hat.",
+  "WhoSerotrackAndPartnersDisclaimer3": "Die Plattform wurde ohne jegliche Garantie, weder ausdrücklich noch stillschweigend, von der WHO, SeroTracker oder den SeroTracker-Partnern erstellt. Die Verantwortung für die Auslegung und Nutzung der auf dieser Plattform verfügbaren Veröffentlichungen und Materialien liegt beim Leser. In keinem Fall sind die WHO, SeroTracker oder die Partner von SeroTracker für Schäden haftbar, die aus der Nutzung dieser Website entstehen.",
+  "WhoUnity": "WHO-Einheit"
+}

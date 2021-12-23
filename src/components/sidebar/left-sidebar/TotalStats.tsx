@@ -34,7 +34,7 @@ export default function TotalStats({ page }: TotalStatsProps) {
 
   return (
     <div className="col-12 p-0 stats-container">
-      <h3 className="col-12 mt-3 mb-2 center">
+      <h3 className="mt-3 mb-2 center">
         {Translate("SummaryStatistics")}
       </h3>
       <div className="flex middle py-2">
