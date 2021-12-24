@@ -125,3 +125,19 @@ export function TranslateObject(text: string): object {
     return { error: `No translation object for string ${text}` };
   }
 }
+
+/**
+ * Used to translate and localize dates
+ * @param dateString
+ * @returns string
+ */
+ export function TranslateDate(dateString: string): string {
+
+  const dateTimeFormat = new Intl.DateTimeFormat(language, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+  
+  return dateTimeFormat.format(new Date(dateString))
+}

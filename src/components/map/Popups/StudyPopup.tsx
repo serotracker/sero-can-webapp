@@ -1,7 +1,7 @@
 import React from "react";
 import { AirtableRecord, LanguageType } from "types";
-import Translate from 'utils/translate/translateService';
-import { getGeography, getPossibleNullDateString } from 'utils/utils';
+import Translate, { TranslateDate } from 'utils/translate/translateService';
+import { getGeography } from 'utils/utils';
 import {Divider} from "semantic-ui-react"
 
 /**
@@ -46,7 +46,7 @@ export default function StudyPopup(record: AirtableRecord, language: LanguageTyp
             {/*{row(Translate(`${record.estimate_grade}StudyDetails`), getGeography(record.city, record.state, record.country))}*/}
             {(record.sampling_start_date && record.sampling_end_date) && (
                 <>
-                    {row(Translate("SamplingDates"), `${getPossibleNullDateString(record.sampling_start_date, language)} → ${getPossibleNullDateString(record.sampling_end_date, language)}`)}
+                    {row(Translate("SamplingDates"), `${TranslateDate(record.sampling_start_date)} → ${TranslateDate(record.sampling_end_date)}`)}
                 </>)
             }
             {row(Translate("PopulationGroup"), record.population_group ?? Translate("NotReported"))}
