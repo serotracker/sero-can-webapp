@@ -96,12 +96,12 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
             // substitute population group with its translation
             // TODO: refactor so that we no longer need filter options to be a set
             const popGroupOptions = Array.from(state.allFilterOptions.population_group);
-            console.log(popGroupOptions)
             const popGroupWithTranslations = popGroupOptions.find(x => x.english === record.population_group)
             // TODO: refactor backend so that popGroupOptions keys directly map to languages on the frontend
             const languageTypeMapping = {
               'en': 'english',
-              'fr': 'french'
+              'fr': 'french',
+              'de': 'german'
             }
             if(popGroupWithTranslations){
               const lang = languageTypeMapping[state.language]
