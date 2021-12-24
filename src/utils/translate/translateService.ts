@@ -54,6 +54,10 @@ const recursiveFind = (object: any, keys: string[], index: number): string => {
 
 let language: LanguageType = LanguageType.english;
 
+export const getLanguageType = () => {
+  return language;
+}
+
 export const setLanguageType = (newLanguage: LanguageType) => {
   setLanguage(newLanguage);
   language = newLanguage;

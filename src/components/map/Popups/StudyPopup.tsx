@@ -1,6 +1,6 @@
 import React from "react";
 import { AirtableRecord, LanguageType } from "types";
-import Translate, { TranslateDate } from 'utils/translate/translateService';
+import Translate, { TranslateDate, getLanguageType } from 'utils/translate/translateService';
 import { getGeography } from 'utils/utils';
 import {Divider} from "semantic-ui-react"
 
@@ -29,7 +29,28 @@ function riskTag(riskLevel: string | null | undefined) {
     )
 }
 
-export default function StudyPopup(record: AirtableRecord, language: LanguageType) {
+/**
+ * @param popGroupOptions: List of population group options, each option being a dictionary with key = language and value = translated option string
+ * @param englishPopGroup: English population group string
+ */
+function getTranslatedPopulationGroup(popGroupOptions: Record<string, string>[], englishPopGroup: string){
+    let result = englishPopGroup;
+    const popGroupWithTranslations = popGroupOptions.find(x => x.english === englishPopGroup)
+    // TODO: refactor so that popGroupOptions keys directly map to languages on the frontend
+    const languageTypeMapping = {
+      'en': 'english',
+      'fr': 'french',
+      'de': 'german'
+    }
+
+    if(popGroupWithTranslations){
+      const lang = languageTypeMapping[getLanguageType()]
+      result = popGroupWithTranslations[lang]
+    }
+    return result
+}
+
+export default function StudyPopup(record: AirtableRecord, popGroupOptions: Record<string, string>[]) {
     return (
         <div className="popup-content" >
             <div className={"d-flex justify-content-between mb-1"}>
@@ -49,7 +70,7 @@ export default function StudyPopup(record: AirtableRecord, language: LanguageTyp
                     {row(Translate("SamplingDates"), `${TranslateDate(record.sampling_start_date)} → ${TranslateDate(record.sampling_end_date)}`)}
                 </>)
             }
-            {row(Translate("PopulationGroup"), record.population_group ?? Translate("NotReported"))}
+            {row(Translate("PopulationGroup"), record.population_group ? getTranslatedPopulationGroup(popGroupOptions, record.population_group) : Translate("NotReported"))}
             {row(Translate("BestSeroprevalenceEstimate"),record.serum_pos_prevalence ? `${(record.serum_pos_prevalence * 100).toFixed(1)}%` : "N/A")}
             {row(Translate("SampleSize"), record.denominator_value?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, Translate(",")))}
             {row(Translate("AntibodyTarget"), record.antibody_target && record.antibody_target.length > 0 ? (record.antibody_target.length === 2 ? record.antibody_target.join(", ") : record.antibody_target) : "N/A")}

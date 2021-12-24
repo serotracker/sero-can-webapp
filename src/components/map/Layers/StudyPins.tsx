@@ -92,26 +92,12 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
 
         api.getRecordDetails(source_id).then((record) => {
           if (record !== null) {
-            // substitute population group with its translation
-            const popGroupOptions = state.allFilterOptions.population_group;
-            const popGroupWithTranslations = popGroupOptions.find(x => x.english === record.population_group)
-            // TODO: refactor backend so that popGroupOptions keys directly map to languages on the frontend
-            const languageTypeMapping = {
-              'en': 'english',
-              'fr': 'french',
-              'de': 'german'
-            }
-            if(popGroupWithTranslations){
-              const lang = languageTypeMapping[state.language]
-              record.population_group = popGroupWithTranslations[lang]
-            }
-
             setSelectedPinId(source_id);
             togglePinBlur(map, source_id);
             pinPopup = new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
               .setLngLat(e.lngLat)
               .setMaxWidth("445px")
-              .setHTML(ReactDOMServer.renderToString(StudyPopup(record, state.language)))
+              .setHTML(ReactDOMServer.renderToString(StudyPopup(record, state.allFilterOptions.population_group)))
               .addTo(map);
             map.flyTo({
               center: [e.lngLat.lng, e.lngLat.lat - 15], //TODO: works for most cases, not sure how to center popup
@@ -143,7 +129,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
         setHoveredOverId(e.features[0].properties.source_id)
       })
     }
-  }, [map, state.language, state.allFilterOptions.population_group, api])
+  }, [map, api])
 
   // Changes hover state of each circle
   useEffect(() => {
