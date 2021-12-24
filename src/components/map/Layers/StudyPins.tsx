@@ -84,7 +84,6 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
       let pinPopup: mapboxgl.Popup | undefined = undefined;
 
       map.on("click", "study-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
-
         if (pinPopup !== undefined)
         {
           pinPopup.remove()
@@ -94,8 +93,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
         api.getRecordDetails(source_id).then((record) => {
           if (record !== null) {
             // substitute population group with its translation
-            // TODO: refactor so that we no longer need filter options to be a set
-            const popGroupOptions = Array.from(state.allFilterOptions.population_group);
+            const popGroupOptions = state.allFilterOptions.population_group;
             const popGroupWithTranslations = popGroupOptions.find(x => x.english === record.population_group)
             // TODO: refactor backend so that popGroupOptions keys directly map to languages on the frontend
             const languageTypeMapping = {
