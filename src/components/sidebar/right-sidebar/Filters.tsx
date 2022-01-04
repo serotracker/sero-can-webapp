@@ -8,7 +8,7 @@ import { toPascalCase } from "../../../utils/translate/caseChanger";
 import Translate, { getCountryName } from "../../../utils/translate/translateService";
 import InformationIcon from "../../shared/InformationIcon";
 import SectionHeader from "./SectionHeader";
-import NewDatepicker from './new-datepicker/NewDatepicker';
+import Datepicker from './datepicker/Datepicker';
 import "./Filters.css";
 import { LanguageType } from "../../../types";
 
@@ -209,7 +209,7 @@ export default function Filters({ page }: FilterProps) {
           </div>
         </div>
       </div>
-      <NewDatepicker page={page}/>
+      <Datepicker page={page}/>
     </div>
   )
 }

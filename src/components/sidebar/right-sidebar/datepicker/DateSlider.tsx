@@ -1,93 +1,108 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import './DateSlider.css';
+import * as React from "react";
+import { Slider, Rail, Handles, Tracks } from "react-compound-slider";
+import { Handle, Track, TooltipRail } from "./components"; // example render components - source below
+import {useEffect, useState} from "react";
 
-interface DSprops {
-    minPossibleValue: number; //minimum possible value for slider
-    maxPossibleValue: number; //maximum possible value for slider
-    values: Date[];
-    minDate: Date;
-    onMouseUp: Function;
+const sliderStyle: React.CSSProperties = {
+  position: "relative",
+  width: "80%",
+  margin: "5% 10%"
+};
+
+interface DateSliderProps {
+  minPossibleValue: number; //minimum possible value for slider in milliseconds - unix time
+  maxPossibleValue: number; //maximum possible value for slider in milliseconds - unix time
+  values: number[];
+  minDate: Date;
+  onMouseUp: (isStart: Boolean, date: Date) => void;
+  onSliderMove: (dates: number[]) => void;
 }
 
-export default function DateSlider({minPossibleValue, maxPossibleValue, minDate, values, onMouseUp}: DSprops){
+export default function DateSlider({minPossibleValue, maxPossibleValue, minDate, values, onMouseUp, onSliderMove}: DateSliderProps) {
+  const milliSecondsPerDay = 86400000;
+  const [updatedValues, setUpdatedValues] = useState([minPossibleValue, maxPossibleValue])
+  // min date and max date
+  const domain = [minPossibleValue, maxPossibleValue]
+  //running update
+  const onUpdate = (update: ReadonlyArray<number>) => {
+    setUpdatedValues(update.concat());
+    onSliderMove(updatedValues)
+  };
 
-    const milliSecondsPerDay = 86400000;
+  useEffect(() => {
+      setUpdatedValues(values)
+  }, [values])
 
-    const [sliderThumbValues, setSliderThumbValues] = useState<number[]>([(values[0].getTime() - minDate.getTime())/milliSecondsPerDay,
-        (values[1].getTime() - minDate.getTime())/milliSecondsPerDay])
-    const [leftThumbVal, setLeftThumbVal] = useState(sliderThumbValues[0]);
-    const [rightThumbVal, setRightThumbVal] = useState(sliderThumbValues[1]);
-    const minValRef = useRef(minPossibleValue);
-    const maxValRef = useRef(maxPossibleValue);
-    const range = useRef<HTMLDivElement>(null);
+  //set update
+  const onChange = (newValues: ReadonlyArray<number>) => {
+      if (newValues[0] === values[0]){
+          onMouseUp(false, toDateSinceMinDate(newValues.concat()[1]))
+      }
+      else{
+          onMouseUp(true, toDateSinceMinDate(newValues.concat()[0]))
+      }
+  };
 
-    const getPercent = (value: number) => Math.round(((value - minPossibleValue) / (maxPossibleValue - minPossibleValue)) * 100)
+  const toDateSinceMinDate = (val: number) => {
+    return new Date(minDate.getTime() + (val*milliSecondsPerDay));
+  }
 
-    useEffect(() => {
-      setLeftThumbVal(sliderThumbValues[0]);
-      setRightThumbVal(sliderThumbValues[1]);
-    }, [sliderThumbValues])
+  const toDateString = (date: Date) => {
+    return "" + date.getFullYear() + "/" + (date.getMonth()+1) + "/" + (date.getDate());
+  }
 
-    useEffect(() => {
-        const minPercent = getPercent(leftThumbVal);
-        const maxPercent = getPercent(rightThumbVal);
-        if (range.current) {
-            range.current.style.left = `${minPercent}%`;
-            range.current.style.width = maxPercent - minPercent < 100 ? `${maxPercent - minPercent}%` : "100%";
-        }
-    }, [leftThumbVal, getPercent]);
-
-    useEffect(() => {
-        const minPercent = getPercent(leftThumbVal);
-        const maxPercent = getPercent(rightThumbVal);
-        if (range.current) {
-            range.current.style.width = maxPercent - minPercent < 100 ? `${maxPercent - minPercent}%` : "100%";
-        }
-    }, [rightThumbVal, getPercent]);
-
-    useEffect(() => {
-        setSliderThumbValues([(values[0].getTime() - minDate.getTime())/milliSecondsPerDay,
-            (values[1].getTime() - minDate.getTime())/milliSecondsPerDay]);
-    }, [values[0], values[1]])
-
-    const toDateSinceMinDate = (val: number) => {
-        return new Date(minDate.getTime() + (val*milliSecondsPerDay));
-    }
-
-    const toDateString = (date: Date) => {
-        return "" + date.getFullYear() + "/" + (date.getMonth()+1) + "/" + (date.getDate());
-    }
-
-    return(
-        <div className={"slider-container"}>
-            <input className={"thumb thumb-left"} type={"range"} value={leftThumbVal} min={minPossibleValue} max={maxPossibleValue}
-                   onChange={event => {
-                       const value = Math.min(Number(event.target.value), rightThumbVal - 1);
-                       setLeftThumbVal(value);
-                       minValRef.current = value;
-                   }}
-                   onMouseUp={() => {
-                       onMouseUp(true, toDateSinceMinDate(leftThumbVal));
-                   }}
-
-                   style={{ zIndex: (leftThumbVal > maxPossibleValue - 100 ? 5 : 3)}}
-            />
-            <input className={"thumb thumb-right"} type={"range"} value={rightThumbVal} min={minPossibleValue} max={maxPossibleValue}
-                   onChange={event => {
-                       const value = Math.max(Number(event.target.value), leftThumbVal + 1);
-                       setRightThumbVal(value);
-                       maxValRef.current = value;
-                   }}
-                   onMouseUp={() => {
-                       onMouseUp(false, toDateSinceMinDate(rightThumbVal))
-                   }}
-            />
-            <div className="slider">
-                <div className="slider-track" />
-                <div className="slider-range" ref={range} />
-                <div className={"slider-left-value"}>{toDateString(toDateSinceMinDate(leftThumbVal))}</div>
-                <div className={"slider-right-value"}>{toDateString(toDateSinceMinDate(rightThumbVal))}</div>
-            </div>
-        </div>
-    )
+  return(
+      <div style={{ height: 10  , width: "100%" }}>
+        <Slider
+          mode={1}
+          step={1}
+          domain={domain}
+          rootStyle={sliderStyle}
+          onUpdate={onUpdate}
+          onChange={onChange}
+          values={values}
+        >
+          <Rail>{railProps => <TooltipRail {...railProps} />}</Rail>
+          <Handles>
+            {({ handles, activeHandleID, getHandleProps }) => (
+              <div className="slider-handles">
+                {handles.map(handle => (
+                  <Handle
+                    key={handle.id}
+                    handle={handle}
+                    domain={domain}
+                    isActive={handle.id === activeHandleID}
+                    getHandleProps={getHandleProps}
+                  />
+                ))}
+              </div>
+            )}
+          </Handles>
+          <Tracks left={false} right={false}>
+            {({ tracks, getTrackProps }) => (
+              <div className="slider-tracks">
+                {tracks.map(({ id, source, target }) => (
+                  <Track
+                    key={id}
+                    source={source}
+                    target={target}
+                    getTrackProps={getTrackProps}
+                  />
+                ))}
+              </div>
+            )}
+          </Tracks>
+        </Slider>
+        <div className={"pt-4 d-flex justify-content-between"}>
+          <div>
+            {toDateString(toDateSinceMinDate(updatedValues[0]))}
+          </div>
+          <div>
+            {toDateString(toDateSinceMinDate(updatedValues[1]))}
+          </div>
+         </div>
+    </div>
+  )
 }
+
+
