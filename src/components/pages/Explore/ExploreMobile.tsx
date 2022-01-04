@@ -41,7 +41,6 @@ export default function ExploreMobile() {
           width='wide'
         >
         <Filters page={PageStateEnum.explore} />
-        <Datepicker page={PageStateEnum.explore}/>
           <FontAwesomeIcon
             icon={faTimes}
             onClick={() => handleFilterToggle()}
