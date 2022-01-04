@@ -24,6 +24,12 @@ const railCenterStyle: React.CSSProperties = {
   backgroundColor: "#eaeaea"
 };
 
+const handleStyle: React.CSSProperties = {
+  position: "absolute",
+  marginLeft: "-11px",
+  marginTop: "-35px"
+};
+
 interface TooltipRailProps {
   activeHandleID: string;
   getRailProps: (props: object) => object;
@@ -69,9 +75,7 @@ export default class TooltipRail extends Component<TooltipRailProps> {
           <div
             style={{
               left: `${percent}%`,
-              position: "absolute",
-              marginLeft: "-11px",
-              marginTop: "-35px"
+              ...handleStyle
             }}
           >
             <div className="tooltip">

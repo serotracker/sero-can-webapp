@@ -11,9 +11,27 @@ interface HandleProps {
     disabled?: Boolean;
     domain: number[];
     getHandleProps: (id: string, config: object) => object;
-  }
-  
-  export default class Handle extends Component<HandleProps> {
+}
+
+const activeHandleStyle: React.CSSProperties = {
+  position: "absolute",
+  marginLeft: "-11px",
+  marginTop: "-35px"
+};
+
+const handleStyle: React.CSSProperties = {
+  position: "absolute",
+  marginLeft: "-11px",
+  marginTop: "-6px",
+  zIndex: 400,
+  width: 18,
+  height: 18,
+  cursor: "pointer",
+  border: "none",
+  borderRadius: "50%",
+  boxShadow: "0 0 1px 1px #ced4da",
+};
+export default class Handle extends Component<HandleProps> {
     static defaultProps = {
       disabled: false
     };
@@ -46,9 +64,7 @@ interface HandleProps {
             <div
               style={{
                 left: `${percent}%`,
-                position: "absolute",
-                marginLeft: "-11px",
-                marginTop: "-35px"
+                ...activeHandleStyle
               }}
             >
               <div className="tooltip">
@@ -63,17 +79,8 @@ interface HandleProps {
             aria-valuenow={value}
             style={{
               left: `${percent}%`,
-              position: "absolute",
-              marginLeft: "-11px",
-              marginTop: "-6px",
-              zIndex: 400,
-              width: 18,
-              height: 18,
-              cursor: "pointer",
-              border: "none",
-              borderRadius: "50%",
-              boxShadow: "0 0 1px 1px #ced4da",
-              backgroundColor: disabled ? "#666" : "#f1f5f7"
+              backgroundColor: disabled ? "#666" : "#f1f5f7",
+              ...handleStyle
             }}
             {...getHandleProps(id, {
               onMouseEnter: this.onMouseEnter,

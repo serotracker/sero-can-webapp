@@ -6,9 +6,17 @@ interface TrackProps {
     target: SliderItem;
     disabled?: Boolean;
     getTrackProps: () => object;
-  }
+}
   
-  export default function Track({
+const trackStyle: React.CSSProperties = {
+  position: "absolute",
+  height: 5,
+  zIndex: 1,
+  borderRadius: 7,
+  cursor: "pointer",
+};
+
+export default function Track({
     source,
     target,
     getTrackProps,
@@ -17,14 +25,10 @@ interface TrackProps {
     return (
       <div
         style={{
-          position: "absolute",
-          height: 5,
-          zIndex: 1,
           backgroundColor: disabled ? "#999" : "#455a6a",
-          borderRadius: 7,
-          cursor: "pointer",
           left: `${source.percent}%`,
-          width: `${target.percent - source.percent}%`
+          width: `${target.percent - source.percent}%`,
+          ...trackStyle
         }}
         {...getTrackProps()}
       />
