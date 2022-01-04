@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Slider, Rail, Handles, Tracks } from "react-compound-slider";
-import { Handle, Track, TooltipRail } from "./components"; // example render components - source below
+import Handle from './Handle';
+import Track from './Track';
+import TooltipRail from './TooltipRail';
 import {useEffect, useState} from "react";
 
 const sliderStyle: React.CSSProperties = {

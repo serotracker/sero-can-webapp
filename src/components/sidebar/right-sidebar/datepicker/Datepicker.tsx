@@ -7,7 +7,7 @@ import { FilterType, PageState, State } from '../../../../types';
 import { updateFilters } from "../../../../utils/stateUpdateUtils";
 import Translate from "../../../../utils/translate/translateService";
 import SectionHeader from "../SectionHeader";
-import {enUS, fr} from 'date-fns/locale'
+import {enUS, fr, de} from 'date-fns/locale'
 import DateSlider from './DateSlider';
 import '../datepicker/DateSlider.css'
 
@@ -25,7 +25,6 @@ export default function Datepicker({ page }: DatepickerProps) {
   const [sliderRange, setSliderRange] = useState<number>((latestPublicationDate.getTime()-earliestPublicationDate.getTime())/millisecondsPerDay); //in days
   const [filterStartDate, filterEndDate]: Date[] = Array.from(filters.publish_date);
 
-  // TODO: should these functions be in util since one of them is used in both this file and the slider file?
   const fromDateToNumber = (date: Date) => {
     return (date.getTime()-earliestPublicationDate.getTime())/millisecondsPerDay
   }
@@ -39,6 +38,7 @@ export default function Datepicker({ page }: DatepickerProps) {
   useEffect(() => {
     registerLocale("en", enUS)
     registerLocale("fr", fr)
+    registerLocale("de", de)
   }, [])
 
   useEffect(() => {
