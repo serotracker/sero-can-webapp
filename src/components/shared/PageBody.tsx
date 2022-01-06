@@ -16,7 +16,7 @@ const PageBody = (props: TableauEmbedProps) => {
         {props.children}
       </div>
     </div>
-    {props.includeMaintenanceModal ? <MaintenanceModal isOpen={isMaintenanceMode} headerText={""} /> : ''}
+    {props.includeMaintenanceModal && <MaintenanceModal isOpen={isMaintenanceMode} headerText={""} /> }
   </div>
   )
 }
