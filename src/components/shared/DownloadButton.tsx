@@ -11,12 +11,12 @@ interface DownloadButtonProps {
     formLink?: string;
     iconName: string;
     popupText: string;
+    id?: string;
   }
 
 export default function DownloadButton(props: DownloadButtonProps) {
     const [letDownload, setLetDownload] = useState(false);
-
-    const { buttonLabelKey, 
+    const { buttonLabelKey,
             downloadLink ,
             formLink,
         iconName, popupText} = props;
@@ -45,7 +45,24 @@ export default function DownloadButton(props: DownloadButtonProps) {
     return (
         iconName === "" ?       
         <Popup content={Translate(popupText)} style={{textAlign: "left"}} position="top right" trigger={
-            <Button key={buttonLabelKey} size="large" iconName={iconName}className="download-data-btn mb-2 mr-2">
+            <Button key={buttonLabelKey} size="large" iconName={iconName} className="download-data-btn mb-2 mr-2" id={props.id} >
+                <a
+                    onClick={() => clickButton()}
+                    target="_blank"
+                    rel="noreferrer"
+                    href={getButtonLink()}
+                    className='d-flex align-items-center'
+                >
+                    <span className="button-text"> {Translate(buttonLabelKey as string)}</span>
+                    <img className="ml-3" src={airtableLogo} alt="airtable-logo" width="24" height="24"/>
+                </a>
+            </Button>
+        }/>
+  
+    :  
+
+    <Popup id={props.id} offset={-10} style={{textAlign: "left"}}content={Translate(popupText)} position="top right" trigger={
+        <Button id={props.id} key={buttonLabelKey} size="large" iconName={iconName} className="download-data-btn mb-2 mr-2">
             <a
                 onClick={() => clickButton()}
                 target="_blank"
@@ -54,31 +71,14 @@ export default function DownloadButton(props: DownloadButtonProps) {
                 className='d-flex align-items-center'
             >
                 <span className="button-text"> {Translate(buttonLabelKey as string)}</span>
-                <img className="ml-3"src={airtableLogo} alt="airtable-logo" width="24" height="24"/>
+                <Icon
+                    name={iconName as SemanticICONS}
+                    size="large"
+                    className="ml-3"
+                />
             </a>
         </Button>
-        }></Popup>  
-  
-    :  
-
-    <Popup  offset={-10}style={{textAlign: "left"}}content={Translate(popupText)} position="top right" trigger={        
-    <Button key={buttonLabelKey} size="large" iconName={iconName} className="download-data-btn mb-2 mr-2">
-    <a
-        onClick={() => clickButton()}
-        target="_blank"
-        rel="noreferrer"
-        href={getButtonLink()}
-        className='d-flex align-items-center'
-    >
-        <span className="button-text"> {Translate(buttonLabelKey as string)}</span>
-        <Icon 
-        name={iconName as SemanticICONS} 
-        size="large"
-        className="ml-3"
-        />
-    </a>
-</Button>
-}></Popup>
+    }/>
     );
   }
   

@@ -3,7 +3,6 @@ import Translate from "utils/translate/translateService";
 import TotalStats from "./TotalStats";
 import { Divider } from 'semantic-ui-react'
 import DownloadButton from "components/shared/DownloadButton";
-import { SemanticICONS } from "semantic-ui-react";
 import { PAGE_HASHES } from "../../../constants";
 import "../sidebar.scss";
 
@@ -41,7 +40,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
         <p>{Translate('ExploreBlurb', ['ThirdParagraph'])}</p>
       </div>
       <div className="d-flex justify-content-center mt-3">
-      <span style={{margin: "0"}} id={PAGE_HASHES.Data.DownloadData}>
+      <span style={{margin: "0"}} >
         <DownloadButton
         {...airtableDownloadProps}
         />
@@ -49,8 +48,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
       </span>
       </div>
       <div className="d-flex justify-content-center mt-1">
-      <span style={{margin: "0"}} id={PAGE_HASHES.Data.DownloadData}>
-   
+      <span style={{margin: "0"}} id={PAGE_HASHES.Explore.AccessGithub}>
         <DownloadButton
         {...githubDownloadProps}
         />
