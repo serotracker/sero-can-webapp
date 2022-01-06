@@ -2,13 +2,13 @@ import React from "react";
 import { isMaintenanceMode } from "../../constants";
 import MaintenanceModal from "../shared/MaintenanceModal";
 
-interface TableauEmbedProps {
+interface PageBodyProps {
     className?: string,
     children?: JSX.Element | JSX.Element[];
     includeMaintenanceModal: boolean,
 }
 
-const PageBody = (props: TableauEmbedProps) => {
+const PageBody = (props: PageBodyProps) => {
   return (
     <div className={`container ${props.className}`}>
     <div className="row">
