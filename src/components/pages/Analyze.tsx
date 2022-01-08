@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { AppContext } from "context";
 import { ANALYZE_URLS, PAGE_HASHES, mobileDeviceOrTabletWidth } from "../../constants";
 import { useMediaQuery } from "react-responsive";
-import TableauEmbed from "components/shared/TableauEmbed";
+import TableauEmbed from "components/shared/TableauEmbed/TableauEmbed";
 import "./static.css";
 
 const ANALYZE_MOBILE_HEIGHT = 2900;
@@ -16,7 +16,7 @@ export default function Analyze() {
   });
   const [{ language }] = useContext(AppContext);
 
-  // function to calculate the number of pixels from the top of the page 
+  // function to calculate the number of pixels from the top of the page
   // the nth chart (0-indexed) is
   // note: this assumes that charts are the same height
   const getOffsetForGraphNum = (n: number) => {
