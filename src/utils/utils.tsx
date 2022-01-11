@@ -1,6 +1,7 @@
 import { formatISO, add } from "date-fns";
 import Translate from 'utils/translate/translateService';
 import { LanguageType } from "../types";
+import { compareAsc } from "date-fns";
 
 let language = LanguageType.english;
 
@@ -9,11 +10,13 @@ export const setLanguage = (newLanguage: LanguageType) => {
 }
 
 export const formatDates = (dates: Array<Date> | null) => {
-
   let endDate = formatISO(new Date());
   let startDate = formatISO(add(new Date(endDate), { years: -2 }));
   if (dates) {
     const dateList = Array.from(dates);
+    if (compareAsc(dateList[0], dateList[1]) === 1) {
+      dateList.reverse();
+    }
     endDate = dateList[1] ? formatISO(dateList[1] as Date) : endDate;
     startDate = dateList[0] ? formatISO(dateList[0] as Date) : startDate;
   }
