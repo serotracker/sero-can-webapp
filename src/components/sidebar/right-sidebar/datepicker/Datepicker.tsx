@@ -74,7 +74,7 @@ export default function Datepicker({ page }: DatepickerProps) {
                value={value}
                fluid={true}
                type="text"
-               // TODO: also add translation in german.json
+   
                placeholder={Translate('SelectDate')}
                onClick={onClick} />
       </div>
