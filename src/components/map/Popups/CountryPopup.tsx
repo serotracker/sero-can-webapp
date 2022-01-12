@@ -6,7 +6,7 @@ import Translate, { getCountryName } from 'utils/translate/translateService';
 
 function row(title: string, content: JSX.Element | string | string[] | null | undefined) {
     return (
-        <div className={"d-flex mb-2"}>
+        <div className={"d-flex justify-content-between mb-2"}>
             <div className={"country-popup-heading"}>
                 {title}
             </div>
