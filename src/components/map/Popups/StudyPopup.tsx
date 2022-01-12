@@ -1,7 +1,7 @@
 import React from "react";
 import { AirtableRecord, LanguageType } from "types";
 import Translate, { TranslateDate, getLanguageType } from 'utils/translate/translateService';
-import { getGeography, getformattedDate } from 'utils/utils';
+import {getGeography, getformattedDate, NumberDateToWordDate} from 'utils/utils';
 import {Divider} from "semantic-ui-react"
 
 /**
@@ -69,9 +69,10 @@ export default function StudyPopup(record: AirtableRecord, popGroupOptions: Reco
                     {Translate("BestSeroprevalenceEstimate")}: <b> {record.serum_pos_prevalence ? `${(record.serum_pos_prevalence * 100).toFixed(1)}%` : "N/A"}</b>
                 </div>
                 <div className={"popup-text"}>
+                    {console.log((record.sampling_start_date?.substring(0, 10).replace(/-/g, '/')))}
                     {(record.sampling_start_date && record.sampling_end_date) && (
                         <>
-                            {`${getformattedDate(record.sampling_start_date)} → ${getformattedDate(record.sampling_end_date)}`}
+                            {`${NumberDateToWordDate(record.sampling_start_date.substring(0, 10).replace(/-/g, '/'))} → ${NumberDateToWordDate(record.sampling_end_date.substring(0, 10).replace(/-/g, '/'))}`}
                         </>)
                     }
                 </div>

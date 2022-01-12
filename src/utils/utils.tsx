@@ -17,6 +17,7 @@ export const formatDates = (dates: Array<Date> | null) => {
     const dateList = Array.from(dates);
     endDate = dateList[1] ? formatISO(dateList[1] as Date) : endDate;
     startDate = dateList[0] ? formatISO(dateList[0] as Date) : startDate;
+
   }
   return [startDate, endDate]
 }
