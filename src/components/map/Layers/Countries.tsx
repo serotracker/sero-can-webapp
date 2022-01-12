@@ -7,6 +7,7 @@ import CountryPopup from 'components/map/Popups/CountryPopup'
 import PartnershipsConfig from '../../../PartnershipsConfig'
 import { useHistory } from 'react-router-dom';
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
+import {getMapboxLatitudeOffset} from "../../../utils/utils";
 
 const COUNTRY_LAYER_ID = 'Countries';
 
@@ -87,7 +88,6 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
               className: "pin-popup",
               closeOnClick: true,
               closeButton: true,
-              anchor: 'top-left'
             });
 
             setPopup(countryPopup)
@@ -95,14 +95,17 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
             map.on('click', COUNTRY_LAYER_ID, function(e: any) {
                 if (map.queryRenderedFeatures(e.point).filter((f) => f.source === "study-pins").length === 0) {
                     const country = e.features[0];
+                    const offset = getMapboxLatitudeOffset(map)
                     countryPopup
-                        .setMaxWidth("370px")
-                      .setHTML(ReactDOMServer.renderToString(
-                          CountryPopup(
-                            country, 
-                            state.language)))
+                      .setMaxWidth("370px")
+                      .setHTML(ReactDOMServer.renderToString(CountryPopup(country, state.language)))
                       .setLngLat(e.lngLat)
                       .addTo(map);
+                    map.flyTo({
+                        center: [e.lngLat.lng, e.lngLat.lat - offset],
+                        curve: 0.5,
+                        speed: 0.5,
+                    });
                     sendAnalyticsEvent({
                         category: "Country popup",
                         action: "open",

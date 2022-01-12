@@ -10,6 +10,8 @@ import generateSourceFromRecords from "utils/GeoJsonGenerator";
 import {Expressions} from "components/map/MapConfig"
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import {getMapboxLatitudeOffset} from "../../../utils/utils";
+import {useMediaQuery} from "react-responsive";
+import {mobileDeviceOrTabletWidth} from "../../../constants";
 
 // Checks and blurs all pins that are not selected whgen a certain pin is clicked
 const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
@@ -18,7 +20,7 @@ const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
     });
   
   features.forEach(x => {
-    const isBlurred = (selectedPinId === x?.id || selectedPinId === undefined) ? false : true
+    const isBlurred = (!(selectedPinId === x?.id || selectedPinId === undefined))
     if (x && x.id)
     {
       map.setFeatureState(
@@ -80,6 +82,8 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
     }
   }, [map, state.explore.legendLayers]);
 
+  const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth})
+
   useEffect(() => {
     if (map) {
       let pinPopup: mapboxgl.Popup | undefined = undefined;
@@ -98,7 +102,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
             togglePinBlur(map, source_id);
             pinPopup = new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
               .setLngLat(e.lngLat)
-              .setMaxWidth("480px")
+              .setMaxWidth(isMobileDeviceOrTablet ? "480px" : "340px")
               .setHTML(ReactDOMServer.renderToString(StudyPopup(record)))
               .addTo(map);
             map.flyTo({

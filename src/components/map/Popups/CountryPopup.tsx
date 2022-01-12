@@ -48,7 +48,7 @@ const CountryPopup = (country : any, language : LanguageType, onDetailsClick?: a
     addRegion(properties.sublocalEstimate, Translate('SublocalEstimates'));
 
     return (
-      <div className="country-popup-content" >
+      <div className="country-popup-content p-4" >
         <div className="country-popup-title">
             {getCountryName(properties.geographicalName, language, "CountryOptions")}
         </div>
