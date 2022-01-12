@@ -87,7 +87,6 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
       let pinPopup: mapboxgl.Popup | undefined = undefined;
 
       map.on("click", "study-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
-
         if (pinPopup !== undefined)
         {
           pinPopup.remove()
@@ -101,7 +100,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
             pinPopup = new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
               .setLngLat(e.lngLat)
               .setMaxWidth("480px")
-              .setHTML(ReactDOMServer.renderToString(StudyPopup(record)))
+              .setHTML(ReactDOMServer.renderToString(StudyPopup(record, state.allFilterOptions.population_group)))
               .addTo(map);
             map.flyTo({
               center: [e.lngLat.lng, e.lngLat.lat - offset],
@@ -133,7 +132,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
         setHoveredOverId(e.features[0].properties.source_id)
       })
     }
-  }, [map, state.language, api])
+  }, [map, api])
 
   // Changes hover state of each circle
   useEffect(() => {

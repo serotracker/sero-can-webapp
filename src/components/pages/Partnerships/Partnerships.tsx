@@ -1,10 +1,9 @@
 import React from "react";
 import { Redirect, useParams } from "react-router-dom";
-import { isMaintenanceMode } from "../../../constants";
 import { Partnership } from "types";
-import MaintenanceModal from "../../shared/MaintenanceModal";
 import PartnershipsConfig from "PartnershipsConfig";
-import CanadaPartnership from 'components/pages/Partnerships/CanadaPartnership'
+import CanadaPartnership from 'components/pages/Partnerships/CanadaPartnership';
+import PageBody from '../../shared/PageBody'
 
 type PartnershipProps = {
   partnershipConfig: Partnership;
@@ -17,7 +16,7 @@ function RenderSelectedPartnershipComponent({partnershipConfig}: PartnershipProp
       partnership = <CanadaPartnership partnershipConfig={partnershipConfig}/>
       break;
     // Add more cases for new parnership components here.
-  } 
+  }
 
   return partnership
 }
@@ -29,14 +28,9 @@ export default function Partnerships() {
   return (
     <>
       {config !== undefined ? (
-        <>
-          <div className="col-12 page pb-6">
-            <div className="col-10">
-              {RenderSelectedPartnershipComponent({partnershipConfig: config})}
-            </div>
-          </div>
-          <MaintenanceModal isOpen={isMaintenanceMode} headerText={""} />
-        </>
+        <PageBody includeMaintenanceModal>
+          {RenderSelectedPartnershipComponent({partnershipConfig: config})}
+        </PageBody>
       ) : (
         <Redirect to="/404" />
       )}

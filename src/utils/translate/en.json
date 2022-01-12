@@ -92,7 +92,6 @@
   "Article": "Article",
   "Authors": "Authors",
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
-  "AntibodyTarget": "Antibody Target",
   "BestSeroprevalenceEstimate": "Seroprevalence",
   "BlankUniversity": "NAME University",
   "ByCountry": "By Country",
@@ -149,19 +148,19 @@
     },
     "Question2": {
       "Question": "How does SeroTracker collect their data?",
-      "Answer": "We conduct regular searches of several databases including Medline, EMBASE, Web of Science, and Europe PMC and targeted google searches. In addition, anyone can submit sources for us to screen and include in our review using the Submit a source button above."
+      "Answer": "We conduct regular searches of several databases including Medline, EMBASE, Web of Science, and Europe PMC and targeted google searches. In addition, anyone can submit sources for us to screen and include in our review using the \"Submit source\" button above."
     },
     "Question3": {
       "Question": "How does SeroTracker extract data from their sources?",
-      "Answer": "We have an extensive research team trained in health sciences and epidemiology who manually review articles and records seroprevalence estimates into AirTable, our database managing software. The processes and rules we follow to extract data is available in our study protocol document and AirTable data dictionary."
+      "Answer": "We have an extensive research team trained in health sciences and epidemiology who manually reviews articles and records seroprevalence estimates into a data management platform called AirTable. The processes and rules we follow to extract data are available in our study protocol document and AirTable data dictionary."
     },
     "Question4": {
       "Question": "How does SeroTracker’s data show up on the map?",
-      "Answer": "Data inputted into Airtable is automatically run through a software pipeline that cleans it and computes additional information (e.g. a study’s geographic coordinates). The outputs of the pipeline are then stored in a separate database, which is queried by serotracker.com to serve the Explore tab."
+      "Answer": "Data inputted into Airtable is automatically run through a software pipeline that cleans it and computes additional information (e.g. a study’s geographic coordinates). The outputs of the pipeline are then stored in a separate database, which is queried by serotracker.com to serve the \"Explore\" tab."
     },
     "Question5": {
       "Question": "Can I download SeroTracker's data for my own analysis?",
-      "Answer": "Yes, our data is open-source and free for anyone to use. You can download our complete .csv file using the Download CSV button above. You will first be asked to fill out a form indicating your role, affiliation (if relevant), and type of research you’re conducting - This helps us create datasets that are most useful to you. "
+      "Answer": "Yes, our data is open-source and free for anyone to use. You can download our complete .csv file using the \"Download CSV\" button above. You will first be asked to fill out a form indicating your role, affiliation (if relevant), and type of research you’re conducting - This helps us create datasets that are most useful to you. "
     },
     "Question6": {
       "Question": "Do I need to be an AirTable user to use SeroTracker's data?",
@@ -172,9 +171,9 @@
       "Answer": "Please see our Data Dictionary (using the button above) for explanations of our variables, data types, and descriptions as well as insight into how our data is collected by our research team. It is structured to help interpret our downloadable data set. "
     },
     "Question8": {
-      "Question": "How has SeroTracker's data been used by others or researchers?",
+      "Question": "How has SeroTracker's data been used by others?",
       "Answer": {
-        "Part1": "SeroTracker data is used by many public health professionals and health agencies such as the World Health Organization and Public Health Agency of Canada, among others. The ‘Insights’ tab has links to internal reports, publications we have produced, and features of SeroTracker data and work in the media. Our most recent",
+        "Part1": "SeroTracker data is used by many public health professionals and health agencies such as the World Health Organization and Public Health Agency of Canada, among others. The \"Publications\" tab has links to internal reports, publications we have produced, and features of SeroTracker data and work in the media. Our most recent",
         "Part2": "analyzes global seroprevalence from January - December, 2020."
       },
       "Links": {
@@ -272,6 +271,7 @@
     "PlosOnePub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis"
   },
   "BiblioDigestTitles": {
+    "December": "December Literature Update Report",
     "November": "November Literature Update Report",
     "LateOctober": "Late October Literature Update Report",
     "October": "October Literature Update Report",
@@ -297,6 +297,7 @@
   },
   "LancetArticle": "Lancet ID",
   "LancetID": "The Lancet Infectious Diseases",
+  "Language" : "Language",
   "LastUpdatedTooltip": "SeroTracker is continuously updated with findings from newly-released serological studies. We include new studies from our search within 48 hours of publication.",
   "Legalese": "Legalese",
   "LocalEstimateRange": "Local Estimate Range",
@@ -419,7 +420,7 @@
   "Publications": "Publications",
   "Published": "Published",
   "References": "References",
-  "ReferencesTable": "References Table",
+  "DataTable": "Data Table",
   "RegionalEstimateRange": "Regional Estimate Range",
   "RegionalEstimates": "Regional Estimates",
   "RegionalStudies": "Regional Studies",

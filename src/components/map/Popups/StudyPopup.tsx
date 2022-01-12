@@ -1,7 +1,7 @@
 import React from "react";
-import { AirtableRecord } from "types";
-import Translate from 'utils/translate/translateService';
-import { getGeography, getPossibleNullDateString } from 'utils/utils';
+import { AirtableRecord, LanguageType } from "types";
+import Translate, { TranslateDate, getLanguageType } from 'utils/translate/translateService';
+import { getGeography, getformattedDate } from 'utils/utils';
 import {Divider} from "semantic-ui-react"
 
 /**
@@ -29,8 +29,28 @@ function riskTag(riskLevel: string | null | undefined) {
     )
 }
 
-export default function StudyPopup(record: AirtableRecord) {
+/**
+ * @param popGroupOptions: List of population group options, each option being a dictionary with key = language and value = translated option string
+ * @param englishPopGroup: English population group string
+ */
+function getTranslatedPopulationGroup(popGroupOptions: Record<string, string>[], englishPopGroup: string){
+    let result = englishPopGroup;
+    const popGroupWithTranslations = popGroupOptions.find(x => x.english === englishPopGroup)
+    // TODO: refactor so that popGroupOptions keys directly map to languages on the frontend
+    const languageTypeMapping = {
+      'en': 'english',
+      'fr': 'french',
+      'de': 'german'
+    }
 
+    if(popGroupWithTranslations){
+      const lang = languageTypeMapping[getLanguageType()]
+      result = popGroupWithTranslations[lang]
+    }
+    return result
+}
+
+export default function StudyPopup(record: AirtableRecord, popGroupOptions: Record<string, string>[]) {
     return (
         <div className="popup-content pt-2" >
             {/*Header section*/}
@@ -51,7 +71,7 @@ export default function StudyPopup(record: AirtableRecord) {
                 <div className={"popup-text"}>
                     {(record.sampling_start_date && record.sampling_end_date) && (
                         <>
-                            {`${getPossibleNullDateString(record.sampling_start_date)} → ${getPossibleNullDateString(record.sampling_end_date)}`}
+                            {`${getformattedDate(record.sampling_start_date)} → ${getformattedDate(record.sampling_end_date)}`}
                         </>)
                     }
                 </div>

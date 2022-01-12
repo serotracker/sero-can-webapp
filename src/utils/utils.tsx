@@ -1,5 +1,4 @@
-import React from "react";
-import { format, parseISO, formatISO, add } from "date-fns";
+import { formatISO, add } from "date-fns";
 import Translate from 'utils/translate/translateService';
 import { LanguageType } from "../types";
 import mapboxgl from "mapbox-gl";
@@ -20,35 +19,6 @@ export const formatDates = (dates: Array<Date> | null) => {
     startDate = dateList[0] ? formatISO(dateList[0] as Date) : startDate;
   }
   return [startDate, endDate]
-}
-
-
-export const getPossibleNullString = (nullString: string | number | null | undefined) => {
-  if (nullString === null || nullString === undefined) {
-    return Translate("Not Reported")
-  }
-  return nullString
-}
-
-export const getPossibleNullDateString = (nullString: string | null | undefined) => {
-  if (nullString === null || nullString === undefined) {
-    return Translate("Not Reported")
-  }
-
-  const dateTimeFormat = new Intl.DateTimeFormat('en', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-
-  return dateTimeFormat.format(new Date(nullString))
-}
-
-export const getPossibleNullStringArray = (nullString: string[] | null | undefined) => {
-  if (nullString === null || nullString === undefined) {
-    return Translate("Not Reported")
-  }
-  return nullString.join(", ")
 }
 
 export const getGeography = (city: string[] | null | undefined, state: string[] | null | undefined, country: string | null) => {
@@ -96,3 +66,15 @@ export const NumberDateToWordDate = (date_str: string) => {
   const monthStr = months[Number(month) - 1];
   return `${Translate("Months", [monthStr])} ${day}, ${year}`
 }
+
+export const getformattedDate = (day: any, month: any, year: any, language: LanguageType) => {
+  switch(language) {   
+    case 'en': return `${month } ${day ? day + "," : ""} ${year}`;
+    case 'fr': return `${day} ${Translate("Months", [month])} ${year}`;
+    case 'de': return `${day ? day + "." : ""} ${Translate("Months", [month])} ${year}`;
+    default: return `${month } ${day ? day + "," : ""} ${year}`;      
+  }
+}
+
+
+

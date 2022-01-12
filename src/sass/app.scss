@@ -6,7 +6,7 @@
     flex: 1 1 auto;
     flex-direction: column;
     flex-wrap: nowrap;
-    overflow-y: auto;  
+    overflow-y: auto;
     height: 100vh; /* Fallback for browsers that do not support Custom Properties */
     height: calc(var(--vh, 1vh) * 100);
 }
@@ -284,16 +284,6 @@
 
 }
 
-.icon-container {
-    position: absolute;
-    z-index: 3000;
-    background-color: white;
-    border-radius: 3px;
-    box-shadow: 0 3px 3px 0 #646464;
-    height: 30px;
-    width: 30px;
-}
-
 .icon {
     margin: 3px 5px;
 }
@@ -338,16 +328,6 @@
     &:hover {
         color: #333333 !important;
     }
-}
-
-.info-btn {
-    top: 45px;
-    left: 10px;
-}
-
-.filter-btn {
-    top: 10px;
-    left: 10px;
 }
 
 .link {

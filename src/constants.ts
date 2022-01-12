@@ -8,7 +8,8 @@ export const mapZIndex = {
 }
 
 export const ANALYZE_URLS = {
-    "en": "https://public.tableau.com/views/SeroTrackerAnalyse/GlobalAnalyse?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"
+    "en": "https://public.tableau.com/views/SeroTrackerAnalyse/GlobalAnalyse?:language=en&:display_count=y&publish=yes&:origin=viz_share_link",
+    "fr": "https://public.tableau.com/views/SeroTrackerAnalyseFR/GlobalAnalyse?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
 }
 export const CANADA_URLS = {
     "en": "https://public.tableau.com/views/CanadaianDetail/Canadiandetail?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link",
@@ -26,30 +27,32 @@ export const PAGES = {
 
 export const PAGE_HASHES = {
     [PAGES.Explore]: {
-        Map: "Map"
+        Map: "Map",
     },
     [PAGES.Analyze]: {
-        ByCountry: "ByCountry", 
-        ByPopulation: "ByPopulation", 
+        ByCountry: "ByCountry",
+        ByPopulation: "ByPopulation",
         AdditionalGraphs: "AdditionalGraphs"
-    }, 
+    },
     [PAGES.Data]: {
-        DownloadData: "DownloadData",
-        FAQ: "FAQ",
-        SubmitSource: "SubmitSource",
-        ChangeLog: "ChangeLog",
         DataDictionary: "DataDictionary",
+        ChangeLog: "ChangeLog",
+        SubmitSource: "SubmitSource",
+        DownloadCsv: "DownloadCsv",
+        AccessGithub: "AccessGithub",
+        FAQ: "FAQ",
         References: "References"
+
     },
     [PAGES.Publications]: {
         ResearchArticles: "ResearchArticles",
         PrivateSectorReports: "PrivateSectorReports",
-        MediaMentions: "MediaMentions",
         BiblioDigests: "BiblioDigests",
-        MonthlyReports: "MonthlyReports"
+        MonthlyReports: "MonthlyReports",
+        MediaMentions: "MediaMentions"
     },
     [PAGES.About]: {
-        Team: "Team",
-        ContactUs: "ContactUs"
+        ContactUs: "ContactUs",
+        Team: "Team"
     }
 }

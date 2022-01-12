@@ -55,25 +55,27 @@ function DataButtons() {
 
 
   const airtableDownloadProps = {
+    id: PAGE_HASHES.Data.DownloadCsv,
     buttonLabelKey: "DownloadCsv", 
     downloadLink: "https://airtable.com/shraXWPJ9Yu7ybowM/tbljN2mhRVfSlZv2d?backgroundColor=blue&viewControls=on" ,
     formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform" ,
     iconName: "",
-    popupText: "DownloadAirtable"
+    popupText: "DownloadAirtable",
   }
 
   const githubDownloadProps = {
+    id: PAGE_HASHES.Data.AccessGithub,
     buttonLabelKey: "AccessGithub", 
     downloadLink: "https://github.com/serotracker/sars-cov-2-data" ,
     formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform" ,
     iconName: "github",
-    popupText: "DownloadGithub"
+    popupText: "DownloadGithub",
   }
 
   return (
     <div>
       {buttons}
-      <span id={PAGE_HASHES.Data.DownloadData}>
+      <span>
         <DownloadButton
         {...airtableDownloadProps}
         />
@@ -156,7 +158,7 @@ export default function Data() {
           </div>
 
           <div className={isMobileDeviceOrTablet ? "pb-3 pt-3" : "pt-0 pb-0"} id={PAGE_HASHES.Data.References}>
-            <h1>{Translate("ReferencesTable")}</h1>
+            <h1>{Translate("DataTable")}</h1>
             <p>
               <span>{Translate("UseOfData", null, null, [false, true])}</span>
               <Link to="/TermsOfUse">{Translate("TermsOfUse")}</Link>.
