@@ -57,7 +57,6 @@ function SetMapData(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePr
 const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, countryFocus}: CountriesMapConfig) => {
 
     const [state] = useContext(AppContext);
-    const [popup, setPopup] = useState<mapboxgl.Popup | undefined>(undefined);
     const [highlight, setHighlight] = useState<string | undefined>(undefined);
     const history = useHistory();
 
@@ -82,21 +81,12 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
 
     // wait until map is loaded then creates and binds popup to map events
     useEffect(() => {
-        if (map && popup === undefined) {
-            const countryPopup = new mapboxgl.Popup({
-              offset: 25,
-              className: "pin-popup",
-              closeOnClick: true,
-              closeButton: true,
-            });
-
-            setPopup(countryPopup)
-
+        if (map) {
             map.on('click', COUNTRY_LAYER_ID, function(e: any) {
                 if (map.queryRenderedFeatures(e.point).filter((f) => f.source === "study-pins").length === 0) {
                     const country = e.features[0];
                     const offset = getMapboxLatitudeOffset(map)
-                    countryPopup
+                    new mapboxgl.Popup({offset: 25, className: "pin-popup",})
                       .setMaxWidth("370px")
                       .setHTML(ReactDOMServer.renderToString(CountryPopup(country, state.language)))
                       .setLngLat(e.lngLat)
@@ -114,7 +104,7 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
                 }
             });
         }
-    }, [map, state.language, popup, history])
+    }, [map, state.language, history])
 
     useEffect(() => {
         if (map) {

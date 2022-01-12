@@ -82,8 +82,6 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
     }
   }, [map, state.explore.legendLayers]);
 
-  const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth})
-
   useEffect(() => {
     if (map) {
       let pinPopup: mapboxgl.Popup | undefined = undefined;
@@ -102,7 +100,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
             togglePinBlur(map, source_id);
             pinPopup = new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
               .setLngLat(e.lngLat)
-              .setMaxWidth(isMobileDeviceOrTablet ? "480px" : "340px")
+              .setMaxWidth("480px")
               .setHTML(ReactDOMServer.renderToString(StudyPopup(record)))
               .addTo(map);
             map.flyTo({
