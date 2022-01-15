@@ -96,12 +96,6 @@ export default function Filters({ page }: FilterProps) {
   }
 
   const clearFilter = () => {
-    // remove filters in backend
-    clearFilters(
-      dispatch,
-      page
-    )
-
     // remove selected options in dropdown (frontend)
     if (unityAlignedOnlyItem.current.querySelector(".clear")) unityAlignedOnlyItem.current.querySelector(".clear").click();
     if (sourceTypeItem.current.querySelector(".clear")) sourceTypeItem.current.querySelector(".clear").click();
@@ -112,6 +106,12 @@ export default function Filters({ page }: FilterProps) {
     if (testTypeItem.current.querySelector(".clear")) testTypeItem.current.querySelector(".clear").click();
     if (isotypesReportedItem.current.querySelector(".clear")) isotypesReportedItem.current.querySelector(".clear").click();
     if (antibodyTargetItem.current.querySelector(".clear")) antibodyTargetItem.current.querySelector(".clear").click();
+
+      // remove filters in backend
+    clearFilters(
+      dispatch,
+      page
+    )
   }
 
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
@@ -242,7 +242,6 @@ export default function Filters({ page }: FilterProps) {
         <Button color="grey" size="small" onClick={clearFilter}>Clear all filters</Button>
       </div>
       <Datepicker page={page}/>
-      <Button color="grey" size="small" onClick={clearFilter}>Click Here</Button>
     </div>
   )
 }

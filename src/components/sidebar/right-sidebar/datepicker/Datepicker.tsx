@@ -42,6 +42,11 @@ export default function Datepicker({ page }: DatepickerProps) {
   }, [])
 
   useEffect(() => {
+    const [filterStartDate, filterEndDate]: Date[] = Array.from(filters.publish_date);
+    setChosenDates([fromDateToNumber(filterStartDate), fromDateToNumber(filterEndDate)]);
+  }, [filters.publish_date])
+
+  useEffect(() => {
     setSliderRange(fromDateToNumber(latestPublicationDate));
     }, [latestPublicationDate, earliestPublicationDate])
 
