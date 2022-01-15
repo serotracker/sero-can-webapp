@@ -239,7 +239,7 @@ export default function Filters({ page }: FilterProps) {
             </div>
           </div>
         </div>
-        <Button color="grey" size="small" onClick={clearFilter}>Clear all filters</Button>
+        <Button color="grey" size="small" onClick={clearFilter}> {Translate('ClearAllFilters')}</Button>
       </div>
       <Datepicker page={page}/>
     </div>
