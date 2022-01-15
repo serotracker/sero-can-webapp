@@ -29,8 +29,8 @@ export default function Publications() {
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
-                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.PrivateSectorReports}>
-                            {Translate('PrivateSectorReports')}
+                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.GeneralSerotrackerCommunications}>
+                            {Translate('GeneralSerotrackerCommunications')}
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
@@ -59,12 +59,11 @@ export default function Publications() {
                     {Translate("PublicationDescriptions", ["ResearchArticles"])}
                 </p>
                 {getPublications("articles")}
-
-                <h2 id={PAGE_HASHES.Publications.PrivateSectorReports}>
-                    {Translate('PrivateSectorReports')}
+                <h2 id={PAGE_HASHES.Publications.GeneralSerotrackerCommunications}>
+                    {Translate('GeneralSerotrackerCommunications')}
                 </h2>
                 <p>
-                    {Translate("PublicationDescriptions", ["PrivateSectorReports"])}
+                    {Translate("PublicationDescriptions", ["GeneralSerotrackerCommunications"])}
                 </p>
                 {getPublications("reports")}
 

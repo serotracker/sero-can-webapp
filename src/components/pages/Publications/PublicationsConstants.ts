@@ -25,6 +25,8 @@ import NYT from '../../../assets/images/PubMedia/New-York-Times-Logo8x6_0.png'
 import oxford from '../../../assets/images/PubMedia/oxford.jpg'
 import UCalgary from '../../../assets/images/PubMedia/UCalgary.svg'
 import waterloo from '../../../assets/images/PubMedia/waterloo.png'
+import covidend from '../../../assets/images/PubMedia/covidend-global-logo.png'
+
 
 export interface PublicationProps {
     day?: string,
@@ -40,15 +42,6 @@ export interface PublicationProps {
   }
 
 const listOfReports: PublicationProps[] = [
-    {
-        day: "29",
-        month: "June",
-        year: "2021",
-        img: InventoryEvidenceSynthesis,
-        titleKey1: 'IndustryReportTitles',
-        titleKey2: ['InventoryEvidenceSynthesis'],
-        url: "https://www.mcmasterforum.org/networks/covid-end/resources-to-support-decision-makers/Inventory-of-best-evidence-syntheses/public-health-measures",
-    },
     {
         day: "15",
         month: "January",
@@ -353,6 +346,28 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         authors: "",
         url: "https://www.bloomberg.com/news/articles/2020-05-06/understanding-the-virus-and-its-unanswered-questions-quicktake",
         img: bloomberg
+    },
+    {
+        day: "12",
+        month: "January",
+        year: "2022",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['EconomistDeathToll2'],
+        publicationName: "The Economist",
+        authors: "",
+        url: "https://www.economist.com/graphic-detail/coronavirus-excess-deaths-estimates",
+        img: theEconomist
+    },
+    {
+        day: "29",
+        month: "June",
+        year: "2021",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['InventoryEvidenceSynthesis'],
+        publicationName: "COVID-END",
+        authors: "",
+        url: "https://www.mcmasterforum.org/networks/covid-end/resources-to-support-decision-makers/Inventory-of-best-evidence-syntheses/public-health-measures",
+        img: covidend
     }
 ]
 

@@ -85,12 +85,13 @@
 .publication-menu{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .publication-menu-item {
   box-sizing: border-box;
   padding: 0 0.5rem;
+  flex: 1;
 }
 
 .publication-meta {

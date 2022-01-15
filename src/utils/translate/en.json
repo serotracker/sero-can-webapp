@@ -219,6 +219,7 @@
   "French": "Français",
   "FAQ": "FAQ",
   "FrequentlyAskedQuestions": "Frequently Asked Questions",
+  "GeneralSerotrackerCommunications": "General SeroTracker Communications",
   "GeneralTerms": "General Terms",
   "Geographies": "Geographies",
   "Geography": "Geography",
@@ -249,7 +250,9 @@
     "JouleAnnounce": "Joule announces 2020 Innovation grant recipients",
     "StillVulnerable": "The world's population is still vulnerable to COVID-19",
     "NYTIndia": "Just how big could India’s true Covid toll be?",
-    "EconomistDeathToll": "How we estimated the true death toll of the pandemic"
+    "EconomistDeathToll": "How we estimated the true death toll of the pandemic",
+    "EconomistDeathToll2": "The pandemic’s true death toll",
+    "InventoryEvidenceSynthesis": "Inventory of Best Evidence Synthesis"
   },
   "IndustryReportTitles": {
     "AugustReport": "August Report",
@@ -261,8 +264,7 @@
     "PreliminaryReport": "Preliminary Report",
     "SeptemberReport": "September Report",
     "YearInReview2020": "SeroTracker 2020 Year in Review",
-    "InsuringTheEconomy": "Insuring the Economy Against a Second Pandemic Wave",
-    "InventoryEvidenceSynthesis": "Inventory of Best Evidence Synthesis"
+    "InsuringTheEconomy": "Insuring the Economy Against a Second Pandemic Wave"
   },
   "ResearchArticleTitles": {
     "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
@@ -413,7 +415,7 @@
     "Publications": "Learn more about SeroTracker’s impact in research articles, summaries, and media mentions.",
     "ResearchArticles": "Peer-reviewed research papers published by the SeroTracker team.",
     "LiteratureUpdateReports": "Monthly overviews and updates on trends in serosurvey literature and WHO-supplied metrics.",
-    "PrivateSectorReports": "Updates on COVID-19 Screening & Testing in Canada’s Private Sector.",
+    "GeneralSerotrackerCommunications": "Updates and insights from across the SeroTracker team",
     "MediaMentions": "Worldwide media publications featuring SeroTracker.",
     "MonthlyReports": "COVID-19 Screening & Testing in Canada’s Private Sector"
   },
@@ -427,7 +429,6 @@
   "RegionalStudyDetails": "Regional study",
   "RegulatoryApproval": "Regulatory Approval",
   "Report": "Report",
-  "PrivateSectorReports": "Private Sector Reports",
   "ReportsAndArticles": "Reports & Articles",
   "ResearchArticles": "Research Articles",
   "RiskOfBias": "Risk of bias",

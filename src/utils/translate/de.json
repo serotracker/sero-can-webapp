@@ -217,6 +217,7 @@
   "French": "Français",
   "FAQ": "FAQ",
   "FrequentlyAskedQuestions": "Häufig gestellte Fragen",
+  "GeneralSerotrackerCommunications": "Allgemeine SeroTracker-Kommunikation",
   "GeneralTerms": "Allgemeine Bedingungen ",
   "Geographies": "Geografien",
   "Geography": "Geographie",
@@ -247,7 +248,9 @@
     "JouleAnnounce": "Joule gibt die Empfängerinnen und Empfänger der Innovationsförderung 2020 bekannt",
     "StillVulnerable": "Die Weltbevölkerung ist immer noch anfällig für COVID-19",
     "NYTIndia": "Wie hoch könnte die tatsächliche Covid-Opferzahl in Indien sein?",
-    "EconomistDeathToll": "Wie wir die tatsächliche Zahl der Todesopfer der Pandemie geschätzt haben"
+    "EconomistDeathToll": "Wie wir die tatsächliche Zahl der Todesopfer der Pandemie geschätzt haben",
+    "EconomistDeathToll2": "Die wahre Zahl der Todesopfer der Pandemie",
+    "InventoryEvidenceSynthesis": "Bestandsaufnahme der Synthese der besten Erkenntnisse"
   },
   "IndustryReportTitles": {
     "AugustReport": "August-Bericht",
@@ -259,8 +262,7 @@
     "PreliminaryReport": "Vorläufiger Bericht",
     "SeptemberReport": "Bericht September",
     "YearInReview2020": "SeroTracker 2020 Jahresrückblick",
-    "InsuringTheEconomy": "Absicherung der Wirtschaft gegen eine zweite Pandemiewelle",
-    "InventoryEvidenceSynthesis": "Bestandsaufnahme der Synthese der besten Erkenntnisse"
+    "InsuringTheEconomy": "Absicherung der Wirtschaft gegen eine zweite Pandemiewelle"
   },
   "ResearchArticleTitles": {
     "PrePrint": "Lehren aus einer raschen systematischen Überprüfung der ersten SARS-CoV-2-Serosurveys",
@@ -409,7 +411,7 @@
     "Publications": "Erfahren Sie mehr über den Einfluss von SeroTracker in Forschungsartikeln Zusammenfassungen und Medienberichten.",
     "ResearchArticles": "Von Fachleuten begutachtete Forschungsarbeiten, die vom SeroTracker-Team veröffentlicht wurden.",
     "LiteratureUpdateReports": "Monatliche Übersichten und Updates zu Trends in der Literatur über Serosurveys und zu den von der WHO bereitgestellten Metriken.",
-    "PrivateSectorReports": "Updates zu COVID-19-Screening und -Tests im privaten Sektor Kanadas",
+    "GeneralSerotrackerCommunications": "Updates und Einblicke aus dem gesamten SeroTracker-Team",
     "MediaMentions": "Weltweite Medienveröffentlichungen, die SeroTracker vorstellen.",
     "MonthlyReports": "COVID-19-Screening und -Tests im Privatsektor Kanadas"
   },
@@ -423,7 +425,6 @@
   "RegionalStudyDetails": "Details zu regionalen Studien",
   "RegulatoryApproval": "Behördliche Genehmigung",
   "Report": "Bericht",
-  "PrivateSectorReports": "Berichte aus dem Privatsektor",
   "ReportsAndArticles": "Berichte und Artikel",
   "ResearchArticles": "Forschungsartikel",
   "RiskOfBias": "Verzerrungspotenzial",
