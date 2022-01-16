@@ -3,13 +3,18 @@ import React from "react";
 import {useMediaQuery} from "react-responsive";
 import {mobileDeviceOrTabletWidth, PAGE_HASHES} from "../../../constants";
 import {PublicationsCard} from "./PublicationsCard";
-import {PublicationsInfo} from "./PublicationsConstants";
+import {
+    listOfReports, 
+    listOfBiblioDigests, 
+    listOfMediaPublicationsProps, 
+    listOfMonthlyReports, 
+    listOfResearchArticles,
+    PublicationProps
+} from "./PublicationsConstants";
 import './styles.scss';
 import Translate from "../../../utils/translate/translateService";
 import {PublicationsItem} from "./PublicationsItem";
 import Slider from "react-slick";
-
-export type PublicationsType = 'articles' | 'reports' | 'media' | 'biblioDigests' | 'monthlyReports';
 
 export default function Publications() {
     const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth})
@@ -58,14 +63,14 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["ResearchArticles"])}
                 </p>
-                {getPublications("articles")}
+                {getPublicationsItems(listOfResearchArticles)}
                 <h2 id={PAGE_HASHES.Publications.GeneralSerotrackerCommunications}>
                     {Translate('GeneralSerotrackerCommunications')}
                 </h2>
                 <p>
                     {Translate("PublicationDescriptions", ["GeneralSerotrackerCommunications"])}
                 </p>
-                {getPublications("reports")}
+                {getPublicationsItems(listOfReports)}
 
                 <h2 id={PAGE_HASHES.Publications.BiblioDigests}>
                     {Translate('BiblioDigests')}
@@ -73,7 +78,7 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["LiteratureUpdateReports"])}
                 </p>
-                {getLinksOfPublications("biblioDigests")}
+                {getPublicationsLinks(listOfBiblioDigests)}
 
                 <h2 id={PAGE_HASHES.Publications.MonthlyReports}>
                     {"Monthly Reports"}
@@ -81,7 +86,7 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["MonthlyReports"])}
                 </p>
-                {getLinksOfPublications("monthlyReports")}
+                {getPublicationsLinks(listOfMonthlyReports)}
 
                 <h2 id={PAGE_HASHES.Publications.MediaMentions}>
                     {Translate('MediaMentions')}
@@ -89,22 +94,22 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["MediaMentions"])}
                 </p>
-                {getCarouselOfPublicationsCards("media")}
+                {getMediaCarousel()}
             </div>
         </div>
     )
 }
 
 
-const getPublications = (type: PublicationsType) => {
+const getPublicationsItems = (publications: PublicationProps[]) => {
     return (
-        PublicationsInfo[type].map((publicationsProps) => {
+        publications.map((publicationsProps) => {
             return <PublicationsItem {...publicationsProps}/>
         }))
 }
 
-const getLinksOfPublications = (type: PublicationsType) => {
-    return PublicationsInfo[type].map((publicationsProps) => {
+const getPublicationsLinks = (publications: PublicationProps[]) => {
+    return publications.map((publicationsProps) => {
         return <a className={"py-2 publication-link"} href={publicationsProps.url} target="_blank" rel="noopener noreferrer">
             {publicationsProps.italicize ?
                 <i>{publicationsProps.italicize}&nbsp;</i> : null}{Translate(publicationsProps.titleKey1, publicationsProps.titleKey2)}
@@ -141,12 +146,12 @@ const sliderSettings = {
     ]
 };
 
-const getCarouselOfPublicationsCards = (type: PublicationsType) => {
+const getMediaCarousel = () => {
     return (
         <div className="publications-slider-container pb-4">
             <Slider {...sliderSettings}>
                 {
-                    PublicationsInfo[type].map((publicationsProps) => {
+                    listOfMediaPublicationsProps.map((publicationsProps) => {
                         return <PublicationsCard {...publicationsProps}/>
                     })
                 }

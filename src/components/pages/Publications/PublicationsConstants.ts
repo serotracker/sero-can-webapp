@@ -28,9 +28,6 @@ import covidend from '../../../assets/images/PubMedia/covidend-global-logo.png'
 
 
 export interface PublicationProps {
-    day?: string,
-    month?: string,
-    year?: string,
     date?: string,
     titleKey1: string,
     titleKey2: string[],
@@ -39,9 +36,20 @@ export interface PublicationProps {
     url: string,
     authors?: string,
     italicize?: string
-  }
+}
 
-const listOfReports: PublicationProps[] = [
+export interface BiblioDigestProps extends PublicationProps {
+    sourcesAdded?: number,
+    serosurveysTotal: number,
+    serosurveysAFRO: number,
+    serosurveysEMRO: number,
+    serosurveysEURO: number,
+    serosurveysPAHO: number,
+    serosurveysSEARO: number,
+    serosurveysWPRO: number,
+}
+
+export const listOfReports: PublicationProps[] = [
     {
         date: "2021-01-15",
         img: YearInReview2020,
@@ -72,7 +80,7 @@ const listOfReports: PublicationProps[] = [
     },
 ]
 
-const listOfResearchArticles: PublicationProps[] = [
+export const listOfResearchArticles: PublicationProps[] = [
     {
         date: "2021-06-23",
         img: PlosOnePub,
@@ -102,7 +110,7 @@ const listOfResearchArticles: PublicationProps[] = [
     },
 ]
 
-const listOfMediaPublicationsProps: PublicationProps[] = [
+export const listOfMediaPublicationsProps: PublicationProps[] = [
     {
         date: "2021-06-25",
         titleKey1: 'IndustryMediaTitles',
@@ -312,50 +320,110 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
     }
 ]
 
-const listOfBiblioDigests: PublicationProps[] = [
+export const listOfBiblioDigests: BiblioDigestProps[] = [
     {
         titleKey1: 'BiblioDigestTitles',
         titleKey2: ['December'],
-        url: "https://drive.google.com/file/d/1u2g7tmbP9kD0oi0syLgapmoBP4BCV0NF/view?usp=sharing"
+        url: "https://drive.google.com/file/d/1u2g7tmbP9kD0oi0syLgapmoBP4BCV0NF/view?usp=sharing",
+        sourcesAdded: 56,
+        serosurveysTotal: 118,
+        serosurveysAFRO: 37,
+        serosurveysEMRO: 2,
+        serosurveysEURO: 39,
+        serosurveysPAHO: 24,
+        serosurveysSEARO: 5,
+        serosurveysWPRO: 10,
     },
     {
         titleKey1: 'BiblioDigestTitles',
         titleKey2: ['November'],
-        url: "https://drive.google.com/file/d/1kwMjD6w2onk9lh-sCOgAcEBH-I1DrW7_/view"
+        url: "https://drive.google.com/file/d/1kwMjD6w2onk9lh-sCOgAcEBH-I1DrW7_/view",
+        sourcesAdded: 133,
+        serosurveysTotal: 270,
+        serosurveysAFRO: 14,
+        serosurveysEMRO: 10,
+        serosurveysEURO: 153,
+        serosurveysPAHO: 55,
+        serosurveysSEARO: 24,
+        serosurveysWPRO: 13,
     },
     {
         titleKey1: 'BiblioDigestTitles',
         titleKey2: ['LateOctober'],
-        url: "https://drive.google.com/file/d/11JHvvKtR9_s2HQHeHmp6j-hx8Y1sIF-O/view?usp=sharing"
+        url: "https://drive.google.com/file/d/11JHvvKtR9_s2HQHeHmp6j-hx8Y1sIF-O/view?usp=sharing",
+        sourcesAdded: 171,
+        serosurveysTotal: 264,
+        serosurveysAFRO: 18,
+        serosurveysEMRO: 24,
+        serosurveysEURO: 134,
+        serosurveysPAHO: 66,
+        serosurveysSEARO: 11,
+        serosurveysWPRO: 10,
     },
     {
         titleKey1: 'BiblioDigestTitles',
         titleKey2: ['October'],
-        url: "https://drive.google.com/file/d/1uOhhQ8ToNYbXYcQ8acqVljHTksH8v-em/view?usp=sharing"
+        url: "https://drive.google.com/file/d/1uOhhQ8ToNYbXYcQ8acqVljHTksH8v-em/view?usp=sharing",
+        sourcesAdded: 117,
+        serosurveysTotal: 297,
+        serosurveysAFRO: 6,
+        serosurveysEMRO: 8,
+        serosurveysEURO: 136,
+        serosurveysPAHO: 117,
+        serosurveysSEARO: 18,
+        serosurveysWPRO: 4,
     },
     {
         titleKey1: 'BiblioDigestTitles',
         titleKey2: ['September'],
-        url: "https://drive.google.com/file/d/16Bi6Si2Ph0wwCSkDR15l-gNYzB91aOei/view?usp=sharing"
+        url: "https://drive.google.com/file/d/16Bi6Si2Ph0wwCSkDR15l-gNYzB91aOei/view?usp=sharing",
+        serosurveysTotal: 147,
+        serosurveysAFRO: 2,
+        serosurveysEMRO: 11,
+        serosurveysEURO: 53,
+        serosurveysPAHO: 63,
+        serosurveysSEARO: 14,
+        serosurveysWPRO: 4,
     },
     {
         titleKey1: 'BiblioDigestTitles',
         titleKey2: ['August'],
-        url: "https://drive.google.com/file/d/1c7OWeVdGwL2Hix-RIHs8y-EZHdKGv8kV/view?usp=sharing"
+        url: "https://drive.google.com/file/d/1c7OWeVdGwL2Hix-RIHs8y-EZHdKGv8kV/view?usp=sharing",
+        serosurveysTotal: 271,
+        serosurveysAFRO: 98,
+        serosurveysEMRO: 7,
+        serosurveysEURO: 94,
+        serosurveysPAHO: 46,
+        serosurveysSEARO: 12,
+        serosurveysWPRO: 14,
     },
     {           
         titleKey1: "BiblioDigestTitles",
         titleKey2: ['July'],
-        url: "https://drive.google.com/file/d/1u6mix47HTUwSLraj4eMcD1rvGj7N7Z4g/view?usp=sharing"
+        url: "https://drive.google.com/file/d/1u6mix47HTUwSLraj4eMcD1rvGj7N7Z4g/view?usp=sharing",
+        serosurveysTotal: 214,
+        serosurveysAFRO: 51,
+        serosurveysEMRO: 7,
+        serosurveysEURO: 71,
+        serosurveysPAHO: 44,
+        serosurveysSEARO: 21,
+        serosurveysWPRO: 20,
     },
     {           
         titleKey1: "BiblioDigestTitles",
         titleKey2: ['June'],
-        url: "https://drive.google.com/file/d/1qxAa3xnqEQzFwsph75wI4_zBj84iJ2FZ/view?usp=sharing"
+        url: "https://drive.google.com/file/d/1qxAa3xnqEQzFwsph75wI4_zBj84iJ2FZ/view?usp=sharing",
+        serosurveysTotal: 162,
+        serosurveysAFRO: 17,
+        serosurveysEMRO: 3,
+        serosurveysEURO: 72,
+        serosurveysPAHO: 51,
+        serosurveysSEARO: 11,
+        serosurveysWPRO: 8,
     },
 ]
 
-const listOfMonthlyReports: PublicationProps[] = [
+export const listOfMonthlyReports: PublicationProps[] = [
     {
         titleKey1: 'IndustryReportTitles',
         titleKey2: ["OctoberReport"],
@@ -387,19 +455,3 @@ const listOfMonthlyReports: PublicationProps[] = [
         url: "https://drive.google.com/file/d/16pCR-zh1UiWjQFhTDxW_2adSGuq0pCgz/view?usp=sharing"
     },
 ]
-
-interface PublicationsInfoInterface {
-    media: PublicationProps[],
-    articles: PublicationProps[],
-    reports: PublicationProps[],
-    biblioDigests: PublicationProps[],
-    monthlyReports: PublicationProps[]
-}
-
-export const PublicationsInfo: PublicationsInfoInterface = {
-    media: listOfMediaPublicationsProps,
-    articles: listOfResearchArticles,
-    reports: listOfReports,
-    biblioDigests: listOfBiblioDigests,
-    monthlyReports: listOfMonthlyReports,
-}
