@@ -5,7 +5,7 @@ import Translate, {TranslateDate} from "../../../utils/translate/translateServic
 import { Card } from "semantic-ui-react";
 import {PublicationProps} from "./PublicationsConstants"
 
-export function PublicationsCard(props: PublicationProps) {
+export function MediaCard(props: PublicationProps) {
   return (
     <div className="py-4 px-2 flex justify-content-center">
       <Card className={"publications-card"}>

@@ -2,7 +2,8 @@ import React from "react";
 
 import {useMediaQuery} from "react-responsive";
 import {mobileDeviceOrTabletWidth, PAGE_HASHES} from "../../../constants";
-import {PublicationsCard} from "./PublicationsCard";
+import {MediaCard} from "./MediaCard";
+import {BiblioDigestCard} from "./BiblioDigestCard";
 import {
     listOfReports, 
     listOfBiblioDigests, 
@@ -78,7 +79,7 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["LiteratureUpdateReports"])}
                 </p>
-                {getPublicationsLinks(listOfBiblioDigests)}
+                {getBiblioDigestCarousel()}
 
                 <h2 id={PAGE_HASHES.Publications.MonthlyReports}>
                     {"Monthly Reports"}
@@ -117,42 +118,58 @@ const getPublicationsLinks = (publications: PublicationProps[]) => {
     })
 }
 
-const sliderSettings = {
-    dots: true,
-    infinite: true,
-    arrows: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    responsive: [
-        {
-            breakpoint: 1048,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                infinite: true,
-                dots: true
+const sliderSettings = (slidesToShow: number) =>{
+    return {
+        dots: true,
+        infinite: true,
+        arrows: true,
+        speed: 500,
+        slidesToShow: slidesToShow,
+        slidesToScroll: slidesToShow,
+        responsive: [
+            {
+                breakpoint: 1048,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
             }
-        },
-        {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                infinite: true,
-                dots: true
-            }
-        }
-    ]
-};
+        ]
+    };
+} 
 
 const getMediaCarousel = () => {
     return (
         <div className="publications-slider-container pb-4">
-            <Slider {...sliderSettings}>
+            <Slider {...sliderSettings(3)}>
                 {
                     listOfMediaPublicationsProps.map((publicationsProps) => {
-                        return <PublicationsCard {...publicationsProps}/>
+                        return <MediaCard {...publicationsProps}/>
+                    })
+                }
+            </Slider>
+        </div>
+    )
+}
+
+const getBiblioDigestCarousel = () => {
+    return (
+        <div className="publications-slider-container pb-4">
+            <Slider {...sliderSettings(2)}>
+                {
+                    listOfBiblioDigests.map((publicationsProps) => {
+                        return <BiblioDigestCard {...publicationsProps}/>
                     })
                 }
             </Slider>

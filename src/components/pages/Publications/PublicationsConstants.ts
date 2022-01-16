@@ -27,6 +27,7 @@ import waterloo from '../../../assets/images/PubMedia/waterloo.png'
 import covidend from '../../../assets/images/PubMedia/covidend-global-logo.png'
 
 
+// Note: Dates should be strings in YYYY-MM-DD format
 export interface PublicationProps {
     date?: string,
     titleKey1: string,
@@ -38,7 +39,8 @@ export interface PublicationProps {
     italicize?: string
 }
 
-export interface BiblioDigestProps extends PublicationProps {
+export interface BiblioDigestProps {
+    url: string,
     sourcesAdded?: number,
     serosurveysTotal: number,
     serosurveysAFRO: number,
@@ -47,6 +49,9 @@ export interface BiblioDigestProps extends PublicationProps {
     serosurveysPAHO: number,
     serosurveysSEARO: number,
     serosurveysWPRO: number,
+    screeningStartDate: string,
+    screeningEndDate: string,
+    publishDate: string
 }
 
 export const listOfReports: PublicationProps[] = [
@@ -320,10 +325,10 @@ export const listOfMediaPublicationsProps: PublicationProps[] = [
     }
 ]
 
+
+// Note: for biblio digests, date = date published
 export const listOfBiblioDigests: BiblioDigestProps[] = [
     {
-        titleKey1: 'BiblioDigestTitles',
-        titleKey2: ['December'],
         url: "https://drive.google.com/file/d/1u2g7tmbP9kD0oi0syLgapmoBP4BCV0NF/view?usp=sharing",
         sourcesAdded: 56,
         serosurveysTotal: 118,
@@ -333,10 +338,11 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 24,
         serosurveysSEARO: 5,
         serosurveysWPRO: 10,
+        publishDate: "2021-12-10",
+        screeningStartDate: "2021-11-20",
+        screeningEndDate: "2021-12-03"
     },
     {
-        titleKey1: 'BiblioDigestTitles',
-        titleKey2: ['November'],
         url: "https://drive.google.com/file/d/1kwMjD6w2onk9lh-sCOgAcEBH-I1DrW7_/view",
         sourcesAdded: 133,
         serosurveysTotal: 270,
@@ -346,10 +352,11 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 55,
         serosurveysSEARO: 24,
         serosurveysWPRO: 13,
+        publishDate: "2021-11-26",
+        screeningStartDate: "2021-10-23",
+        screeningEndDate: "2021-11-09"
     },
     {
-        titleKey1: 'BiblioDigestTitles',
-        titleKey2: ['LateOctober'],
         url: "https://drive.google.com/file/d/11JHvvKtR9_s2HQHeHmp6j-hx8Y1sIF-O/view?usp=sharing",
         sourcesAdded: 171,
         serosurveysTotal: 264,
@@ -359,10 +366,11 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 66,
         serosurveysSEARO: 11,
         serosurveysWPRO: 10,
+        publishDate: "2021-10-29",
+        screeningStartDate: "2021-09-25",
+        screeningEndDate: "2021-10-22"
     },
     {
-        titleKey1: 'BiblioDigestTitles',
-        titleKey2: ['October'],
         url: "https://drive.google.com/file/d/1uOhhQ8ToNYbXYcQ8acqVljHTksH8v-em/view?usp=sharing",
         sourcesAdded: 117,
         serosurveysTotal: 297,
@@ -372,10 +380,11 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 117,
         serosurveysSEARO: 18,
         serosurveysWPRO: 4,
+        publishDate: "2021-12-01",
+        screeningStartDate: "2021-08-28",
+        screeningEndDate: "2021-09-24"
     },
     {
-        titleKey1: 'BiblioDigestTitles',
-        titleKey2: ['September'],
         url: "https://drive.google.com/file/d/16Bi6Si2Ph0wwCSkDR15l-gNYzB91aOei/view?usp=sharing",
         serosurveysTotal: 147,
         serosurveysAFRO: 2,
@@ -384,10 +393,11 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 63,
         serosurveysSEARO: 14,
         serosurveysWPRO: 4,
+        publishDate: "2021-09-03",
+        screeningStartDate: "2021-07-31",
+        screeningEndDate: "2021-08-27"
     },
     {
-        titleKey1: 'BiblioDigestTitles',
-        titleKey2: ['August'],
         url: "https://drive.google.com/file/d/1c7OWeVdGwL2Hix-RIHs8y-EZHdKGv8kV/view?usp=sharing",
         serosurveysTotal: 271,
         serosurveysAFRO: 98,
@@ -396,10 +406,11 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 46,
         serosurveysSEARO: 12,
         serosurveysWPRO: 14,
+        publishDate: "2021-08-06",
+        screeningStartDate: "2021-07-03",
+        screeningEndDate: "2021-07-30"
     },
     {           
-        titleKey1: "BiblioDigestTitles",
-        titleKey2: ['July'],
         url: "https://drive.google.com/file/d/1u6mix47HTUwSLraj4eMcD1rvGj7N7Z4g/view?usp=sharing",
         serosurveysTotal: 214,
         serosurveysAFRO: 51,
@@ -408,10 +419,11 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 44,
         serosurveysSEARO: 21,
         serosurveysWPRO: 20,
+        publishDate: "2021-07-09",
+        screeningStartDate: "2021-06-05",
+        screeningEndDate: "2021-07-02"
     },
-    {           
-        titleKey1: "BiblioDigestTitles",
-        titleKey2: ['June'],
+    {          
         url: "https://drive.google.com/file/d/1qxAa3xnqEQzFwsph75wI4_zBj84iJ2FZ/view?usp=sharing",
         serosurveysTotal: 162,
         serosurveysAFRO: 17,
@@ -420,6 +432,9 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 51,
         serosurveysSEARO: 11,
         serosurveysWPRO: 8,
+        publishDate: "2021-06-10",
+        screeningStartDate: "2021-04-25",
+        screeningEndDate: "2021-06-04"
     },
 ]
 
