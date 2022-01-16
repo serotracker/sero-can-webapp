@@ -1,14 +1,9 @@
-import React, {useContext} from "react";
-import Translate from "../../../utils/translate/translateService";
+import React from "react";
+import Translate, {TranslateDate} from "../../../utils/translate/translateService";
 import {Item} from "semantic-ui-react";
-import { AppContext } from "../../../context";
-import { LanguageType } from "../../../types";
 import {PublicationProps} from "./PublicationsConstants"
-import { getformattedDate } from "utils/utils";
 
 export function PublicationsItem(props: PublicationProps) {
-    const [state] = useContext(AppContext);
-
     return (
         <div className="py-2">
             <Item className={"publication-item"}>
@@ -27,9 +22,9 @@ export function PublicationsItem(props: PublicationProps) {
                         //Could potentially add a description in the hover state if we feel like we need it.
                     }
                     <Item.Meta>
-                        {(props.month && props.year) && (
+                        {props.date && (
                             <div className={"text-small"}>
-                                {getformattedDate(props.day, props.month, props.year, state.language)}
+                                {TranslateDate(props.date + "T00:00:00")}
                             </div>
                         )}
                         <div className={"text-small"}>

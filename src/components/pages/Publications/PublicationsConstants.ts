@@ -5,7 +5,6 @@ import MedRxiv from '../../../assets/images/Prepublication.png'
 import LancetId from '../../../assets/images/LancetIDArticle.png'
 import InsuringTheEconomy from '../../../assets/images/InsuringTheEconomy.png'
 import PlosOnePub from '../../../assets/images/PlosOnePub.png'
-import InventoryEvidenceSynthesis from '../../../assets/images/InventoryEvidenceSynthesis.png'
 import theEconomist from '../../../assets/images/PubMedia/1200px-The_Economist_Logo.svg.png'
 import newScientist from '../../../assets/images/PubMedia/3622.1582633003.png'
 import bloomberg from '../../../assets/images/PubMedia/Bloomberg_Logo.jpg'
@@ -32,6 +31,7 @@ export interface PublicationProps {
     day?: string,
     month?: string,
     year?: string,
+    date?: string,
     titleKey1: string,
     titleKey2: string[],
     publicationName?: string,
@@ -43,36 +43,28 @@ export interface PublicationProps {
 
 const listOfReports: PublicationProps[] = [
     {
-        day: "15",
-        month: "January",
-        year: "2021",
+        date: "2021-01-15",
         img: YearInReview2020,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['YearInReview2020'],
         url: "https://drive.google.com/file/d/14u0GroEadFQ__Gdvoe104HI-y0LWDwSu/view?usp=sharing",
     },
-    {           
-        day: "20",
-        month: "August",
-        year: "2020",
+    {     
+        date: "2020-08-20",      
         img: InsuringTheEconomy,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['InsuringTheEconomy'],
         url: "https://drive.google.com/file/d/1kEl6xv54yPGoDXZoPq9h2q4SqYnL2OU-/view?usp=sharing"
     },
-    {           
-        day: "22",
-        month: "July",
-        year: "2020",
+    {      
+        date: "2020-07-22",     
         img: BloodBank,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['BloodBank'],
         url: "https://drive.google.com/file/d/1It2CzAwEfTcQ1zIC6z2fO7i7XEfmWfom/view?usp=sharing"
     },
-    {           
-        day: "19",
-        month: "May",
-        year: "2020",
+    {    
+        date: "2020-05-19",       
         img: PreprintUpdate,
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['PreliminaryReport'],
@@ -82,9 +74,7 @@ const listOfReports: PublicationProps[] = [
 
 const listOfResearchArticles: PublicationProps[] = [
     {
-        day: "23",
-        month: "June",
-        year: "2021",
+        date: "2021-06-23",
         img: PlosOnePub,
         titleKey1: 'ResearchArticleTitles',
         titleKey2: ['PlosOnePub'],
@@ -92,10 +82,8 @@ const listOfResearchArticles: PublicationProps[] = [
         authors: "Niklas Bobrovitz, Rahul Krishan Arora, Christian Cao et al.",
         url: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0252617"
     },
-    {           
-        day: "14",
-        month: "August",
-        year: "2020",
+    {   
+        date: "2020-08-14",        
         img: LancetId,
         titleKey1: "ResearchArticleTitles",
         titleKey2: ['LancetID'],
@@ -103,10 +91,8 @@ const listOfResearchArticles: PublicationProps[] = [
         authors: "Rahul K Arora, Abel Joseph, Jordan Van Wyk et al.",
         url: "https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30631-9/fulltext#%20"
     },
-    {           
-        day: "14",
-        month: "May",
-        year: "2020",
+    {     
+        date: "2020-05-14",      
         img: MedRxiv,
         titleKey1: "ResearchArticleTitles",
         titleKey2: ['PrePrint'],
@@ -118,9 +104,7 @@ const listOfResearchArticles: PublicationProps[] = [
 
 const listOfMediaPublicationsProps: PublicationProps[] = [
     {
-        day: "25",
-        month: "June",
-        year: "2021",
+        date: "2021-06-25",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['StillVulnerable'],
         publicationName: "Le Journal de Quebec",
@@ -129,9 +113,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         url: "https://www.journaldequebec.com/2021/06/25/la-population-mondiale-toujours-vulnerable-a-la-covid-19",
     },
     {
-        day: "25",
-        month: "May",
-        year: "2021",
+        date: "2021-05-25",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['NYTIndia'],
         publicationName: "The New York Times",
@@ -140,9 +122,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: NYT
     },
     {
-        day: "13",
-        month: "May",
-        year: "2021",
+        date: "2021-05-13",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['EconomistDeathToll'],
         publicationName: "The Economist",
@@ -151,9 +131,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: theEconomist
     },
     {
-        day: "23",
-        month: "January",
-        year: "2021",
+        date: "2021-01-23",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['JouleAnnounce'],
         publicationName: "Cision",
@@ -162,9 +140,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: cision
     },
     {
-        day: "20",
-        month: "January",
-        year: "2021",
+        date: "2021-01-20",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['WhenEnd'],
         publicationName: "McKinsey & Company",
@@ -173,9 +149,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: mckinsey
     },
     {
-        day: "15",
-        month: "January",
-        year: "2021",
+        date: "2021-01-15",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['JouleInnovation'],
         publicationName: "AMC Joule",
@@ -184,9 +158,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: joule
     },
     {
-        day: "14",
-        month: "January",
-        year: "2021",
+        date: "2021-01-14",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['JouleRecipients'],
         publicationName: "Markets Insider",
@@ -195,8 +167,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: joule
     },
     {
-        month: "January",
-        year: "2021",
+        date: "2021-01-01",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['McKinseyHealthcare'],
         publicationName: "McKinsey & Company",
@@ -205,9 +176,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: mckinsey
     },
     {
-        day: "24",
-        month: "November",
-        year: "2020",
+        date: "2020-11-24",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['InfectionRate'],
         publicationName: "taz",
@@ -216,9 +185,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: taz
     },
     {
-        day: "23",
-        month: "November",
-        year: "2020",
+        date: "2020-11-23",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['AlumniAndStudents'],
         publicationName: "University of Calgary",
@@ -227,9 +194,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: UCalgary
     },
     {
-        day: "10",
-        month: "November",
-        year: "2020",
+        date: "2020-11-10",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['Webinar'],
         publicationName: "HIMSS",
@@ -238,9 +203,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: HIMSS
     },
     {
-        day: "17",
-        month: "August",
-        year: "2020",
+        date: "2020-08-17",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['HomeTests'],
         publicationName: "Forbes",
@@ -249,9 +212,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: forbes
     },
     {
-        day: "3",
-        month: "August",
-        year: "2020",
+        date: "2020-08-03",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['Lecturership'],
         publicationName: "Computational Health Informatics",
@@ -260,9 +221,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: chi
     },
     {
-        day: "22",
-        month: "July",
-        year: "2020",
+        date: "2020-07-22",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['HowMany'],
         publicationName: "NewScientist",
@@ -271,9 +230,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: newScientist
     },
     {
-        day: "7",
-        month: "July",
-        year: "2020",
+        date: "2020-07-07",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['CovidRadar'],
         publicationName: "M1 Marica News",
@@ -282,9 +239,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: marcia
     },
     {
-        day: "11",
-        month: "June",
-        year: "2020",
+        date: "2020-06-11",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['VeteranDoctor'],
         publicationName: "MaRS",
@@ -293,9 +248,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: mars
     },
     {
-        day: "2",
-        month: "June",
-        year: "2020",
+        date: "2020-06-02",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['NewlyLaunched'],
         publicationName: "McGill Publications",
@@ -304,9 +257,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: mcgill
     },
     {
-        day: "2",
-        month: "June",
-        year: "2020",
+        date: "2020-06-02",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['StudentsBuild'],
         publicationName: "University of Waterloo",
@@ -315,9 +266,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: waterloo
     },
     {
-        day: "28",
-        month: "May",
-        year: "2020",
+        date: "2020-05-28",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['GlobalLaunch'],
         publicationName: "Covid-19 Immunity Task Force",
@@ -326,9 +275,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: CITF
     },
     {
-        day: "24",
-        month: "May",
-        year: "2020",
+        date: "2020-05-24",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['KnowledgeHub'],
         publicationName: "University of Oxford",
@@ -337,9 +284,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: oxford
     },
     {
-        day: "23",
-        month: "May",
-        year: "2020",
+        date: "2020-05-23",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['UnderstandingVirus'],
         publicationName: "Bloomberg",
@@ -348,9 +293,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: bloomberg
     },
     {
-        day: "12",
-        month: "January",
-        year: "2022",
+        date: "2022-01-12",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['EconomistDeathToll2'],
         publicationName: "The Economist",
@@ -359,9 +302,7 @@ const listOfMediaPublicationsProps: PublicationProps[] = [
         img: theEconomist
     },
     {
-        day: "29",
-        month: "June",
-        year: "2021",
+        date: "2021-06-29",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['InventoryEvidenceSynthesis'],
         publicationName: "COVID-END",

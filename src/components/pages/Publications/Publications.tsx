@@ -99,15 +99,7 @@ export default function Publications() {
 const getPublications = (type: PublicationsType) => {
     return (
         PublicationsInfo[type].map((publicationsProps) => {
-            return <PublicationsItem
-                day={publicationsProps.day ?? ""}
-                month={publicationsProps.month}
-                year={publicationsProps.year}
-                titleKey1={publicationsProps.titleKey1}
-                titleKey2={publicationsProps.titleKey2}
-                url={publicationsProps.url}
-                authors={publicationsProps.authors}
-                publicationName={publicationsProps.publicationName}/>
+            return <PublicationsItem {...publicationsProps}/>
         }))
 }
 
@@ -154,18 +146,8 @@ const getCarouselOfPublicationsCards = (type: PublicationsType) => {
         <div className="publications-slider-container pb-4">
             <Slider {...sliderSettings}>
                 {
-                    PublicationsInfo[type].map((publicationsProps, idx) => {
-                        return <PublicationsCard
-                            day={publicationsProps.day ?? ""}
-                            month={publicationsProps.month}
-                            year={publicationsProps.year}
-                            titleKey1={publicationsProps.titleKey1}
-                            titleKey2={publicationsProps.titleKey2}
-                            url={publicationsProps.url}
-                            authors={publicationsProps.authors}
-                            publicationName={publicationsProps.publicationName}
-                            img={publicationsProps.img}
-                        />
+                    PublicationsInfo[type].map((publicationsProps) => {
+                        return <PublicationsCard {...publicationsProps}/>
                     })
                 }
             </Slider>
