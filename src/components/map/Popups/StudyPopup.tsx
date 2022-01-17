@@ -79,7 +79,8 @@ export default function StudyPopup(record: AirtableRecord, popGroupOptions: Reco
             </div>
             {/*Content section*/}
             <div className={"popup-section"}>
-                {row(Translate("PopulationGroup"), record.population_group ?? Translate("NotReported"))}
+                            {row(Translate("PopulationGroup"), record.population_group ? getTranslatedPopulationGroup(popGroupOptions, record.population_group) : Translate("NotReported"))}
+
                 {row(Translate("Location"), getGeography(record.city, record.state, record.country))}
                 {row(Translate("SampleSize"), record.denominator_value?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, Translate(",")))}
                 {row(Translate("AntibodyTarget"), record.antibody_target && record.antibody_target.length > 0 ? (record.antibody_target.length === 2 ? record.antibody_target.join(", ") : record.antibody_target) : "N/A")}
