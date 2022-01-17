@@ -1,8 +1,7 @@
 import React from "react";
-import { AirtableRecord, LanguageType } from "types";
+import { AirtableRecord } from "types";
 import Translate, { TranslateDate, getLanguageType } from 'utils/translate/translateService';
-import {getGeography, getformattedDate, NumberDateToWordDate} from 'utils/utils';
-import {Divider} from "semantic-ui-react"
+import {getGeography} from 'utils/utils';
 
 /**
  * @param title: left column of study modal: title of content
@@ -77,8 +76,7 @@ export default function StudyPopup(record: AirtableRecord, popGroupOptions: Reco
             </div>
             {/*Content section*/}
             <div className={"popup-section"}>
-                            {row(Translate("PopulationGroup"), record.population_group ? getTranslatedPopulationGroup(popGroupOptions, record.population_group) : Translate("NotReported"))}
-
+                {row(Translate("PopulationGroup"), record.population_group ? getTranslatedPopulationGroup(popGroupOptions, record.population_group) : Translate("NotReported"))}
                 {row(Translate("Location"), getGeography(record.city, record.state, record.country))}
                 {row(Translate("SampleSize"), record.denominator_value?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, Translate(",")))}
                 {row(Translate("AntibodyTarget"), record.antibody_target && record.antibody_target.length > 0 ? (record.antibody_target.length === 2 ? record.antibody_target.join(", ") : record.antibody_target) : "N/A")}

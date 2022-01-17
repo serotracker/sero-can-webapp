@@ -57,13 +57,6 @@ export const withLocaleUrl = (path: string) => {
   return `/${language}/${path}`;
 }
 
-export const NumberDateToWordDate = (date_str: string) => {
-  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const [year, month, day] = date_str.split("/");
-  const monthStr = months[Number(month) - 1];
-  return `${Translate("Months", [monthStr])} ${day}, ${year}`
-}
-
 export const getformattedDate = (day: any, month: any, year: any, language: LanguageType) => {
   switch(language) {   
     case 'en': return `${month } ${day ? day + "," : ""} ${year}`;

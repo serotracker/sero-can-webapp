@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link';
 import { Accordion, Icon } from 'semantic-ui-react'
 import { mobileDeviceOrTabletWidth } from '../../../constants'
-import Translate from '../../../utils/translate/translateService'
+import Translate, {TranslateDate} from '../../../utils/translate/translateService'
 import { AppContext } from "../../../context"
 import { withLocaleUrl } from "../../../utils/utils";
-import { NumberDateToWordDate } from '../../../utils/utils'
 import { PAGE_HASHES } from '../../../constants'
 import WhoLogo from "components/shared/WhoLogo";
 import HealthAgencyLogo from 'assets/images/public-health-agency.svg';
@@ -99,15 +98,15 @@ const renderMobileFooter = (updatedAt: string) => (
     </footer>
 )
 
-const renderUpdateDate = (updatedAt: string) => {
-  return NumberDateToWordDate(updatedAt)
-}
+// const renderUpdateDate = (updatedAt: string) => {
+//   return NumberDateToWordDate(updatedAt)
+// }
 
 const UpdatedAt = ({updatedAt}: UpdatedAtProps) => {
   // only renders 'last updated' when we have a valid date
   return updatedAt ? (
   <span className='pr-2'>
-    {Translate("Footer", ["LastUpdated"])}: <b className='updated-at-bold'>{renderUpdateDate(updatedAt)}</b>
+    {Translate("Footer", ["LastUpdated"])}: <b className='updated-at-bold'>{TranslateDate(updatedAt)}</b>
   </span>
   ): null
 }
