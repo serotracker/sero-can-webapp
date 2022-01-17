@@ -119,7 +119,7 @@
   "COVIDImmunityTaskForce": "Covid-19-Arbeitsgruppe Immunität",
   "Dashboard": "Dashboard",
   "Data": "Daten",
-  "DatabaseUptoDateTo": "Zuletzt aktualisiert",
+  "DatabaseUptoDateTo": "Datenbank aktuell bis",
   "DataDictionary": "Datenwörterbuch",
   "DataDictionaryText": {
     "FirstParagraph": "Weitere Informationen und Zusammenhänge zu unseren Daten finden Sie in unserer/m",
@@ -210,7 +210,7 @@
   "For": "Für",
   "Footer": {
     "CiteAs": "Zitieren Sie bitte als:",
-    "LastUpdated": "Zuletzt aktualisiert",
+    "LastUpdated": "Datenbank aktuell bis",
     "LancetInfDis": "Lancet Inf Dis",
     "Article": "Artikel"
   },
