@@ -116,7 +116,7 @@
   "COVIDImmunityTaskForce": "Groupe de travail sur l'immunité face à COVID-19",
   "Dashboard": "Tableau de bord",
   "Data": "Données",
-  "DatabaseUptoDateTo": "Base de données à jour pour",
+  "DatabaseUptoDateTo": "Base de données à jour jusqu'au",
   "DataDictionary": "Dictionnaire de données",
   "DataDictionaryText": {
     "FirstParagraph": "Pour plus d'informations et de contexte sur nos données, veuillez s'il vous plait consulter notre",
@@ -207,7 +207,7 @@
   "For": "Pour",
   "Footer": {
     "CiteAs": "Citez ceci comme: ",
-    "LastUpdated": "Base de données à jour jusqu'à",
+    "LastUpdated": "Base de données à jour jusqu'au",
     "LancetInfDis": "Lancet Inf Dis",
     "Article": "article"
   },

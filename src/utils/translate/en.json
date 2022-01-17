@@ -121,7 +121,7 @@
   "COVIDImmunityTaskForce": "COVID-19 Immunity Task Force",
   "Dashboard": "Dashboard",
   "Data": "Data",
-  "DatabaseUptoDateTo": "Last updated",
+  "DatabaseUptoDateTo": "Database up to date to",
   "DataDictionary": "Data dictionary",
   "DataDictionaryText": {
     "FirstParagraph": "For more information and context about our data, please take a look at our",
@@ -212,7 +212,7 @@
   "For": "For",
   "Footer": {
     "CiteAs": "Cite as: ",
-    "LastUpdated": "Last updated",
+    "LastUpdated": "Database up to date to",
     "LancetInfDis": "Lancet Inf Dis",
     "Article": "article"
   },
