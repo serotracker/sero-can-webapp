@@ -60,7 +60,6 @@ export default function StudyPopup(record: AirtableRecord, popGroupOptions: Reco
                 </div>
                 <div className="popup-subtitle">
                     {record.url ? <a href={record.url} target="_blank" rel="noopener noreferrer">{record.source_name}</a> : record.source_name}
-                    {/*{getGeography(record.city, record.state, record.country)}*/}
                 </div>
             </div>
             {/*SeroPrev section*/}
@@ -69,10 +68,9 @@ export default function StudyPopup(record: AirtableRecord, popGroupOptions: Reco
                     {Translate("BestSeroprevalenceEstimate")}: <b> {record.serum_pos_prevalence ? `${(record.serum_pos_prevalence * 100).toFixed(1)}%` : "N/A"}</b>
                 </div>
                 <div className={"popup-text"}>
-                    {console.log((record.sampling_start_date?.substring(0, 10).replace(/-/g, '/')))}
                     {(record.sampling_start_date && record.sampling_end_date) && (
                         <>
-                            {`${NumberDateToWordDate(record.sampling_start_date.substring(0, 10).replace(/-/g, '/'))} → ${NumberDateToWordDate(record.sampling_end_date.substring(0, 10).replace(/-/g, '/'))}`}
+                            {`${TranslateDate(record.sampling_start_date)} → ${TranslateDate(record.sampling_end_date)}`}
                         </>)
                     }
                 </div>

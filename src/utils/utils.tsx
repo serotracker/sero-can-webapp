@@ -29,21 +29,17 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
 
   function renderOutGeography(geo: string[] | string | null | undefined) {
     if (!geo || geo.length === 0) {
-      return undefined
+      return ""
     }
     if (typeof geo === "string"){
       return geo.trim() + ", "
     }
-    else if (geo.length > 1) {
-
+    else {
       return geo.join(", ") + ", ";
     }
-    return geo[0].trim() + ", "
-
   }
 
-  //return  [renderOutGeography(city), renderOutGeography(state), country].filter(Boolean).map((str)=>{return (<React.Fragment>{str}</React.Fragment>)})
-  return "" + (renderOutGeography(city) ? renderOutGeography(city) : "") + (renderOutGeography(state) ? renderOutGeography(state) : "")  + country
+  return "" + renderOutGeography(city) + renderOutGeography(state)  + country
 }
 
 export const getMapboxLatitudeOffset = (map: mapboxgl.Map | undefined) => {
