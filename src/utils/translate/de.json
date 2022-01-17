@@ -90,6 +90,18 @@
   "Authors": "Autoren",
   "AuthorAndLeadOrganizationNotReported": "Autor und federführende Organisation nicht angegeben",
   "AntibodyTarget": "Antikörperziel",
+  "BiblioDigestCard": {
+    "Title": "Wichtige Erkenntnisse von Serotracker",
+    "Published": "Veröffentlicht:",
+    "NewSerosurveys": "Neue serosurveys identifiziert",
+    "AFRO": "Afrikanisch",
+    "EMRO": "Östliches Mittelmeer",
+    "EURO": "Europäisch",
+    "PAHO": "Region Amerikas",
+    "SEARO": "Südostasien",
+    "WPRO": "Westpazifik",
+    "NewSources": "Neue quellen hinzugefügt"
+  },
   "BestSeroprevalenceEstimate": "Beste Schätzung der Seroprävalenz",
   "BlankUniversity": "NAME Universität,",
   "ByCountry": "Nach Land",

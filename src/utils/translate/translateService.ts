@@ -132,14 +132,14 @@ export function TranslateObject(text: string): object {
 
 /**
  * Used to translate and localize dates
- * @param dateString
+ * @param dateString with format `{YYYY-MM-DD}T{HH:MM:SS}`
  * @returns string
  */
  export function TranslateDate(dateString: string): string {
 
   const dateTimeFormat = new Intl.DateTimeFormat(language, {
     year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric',
   });
   

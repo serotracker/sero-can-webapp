@@ -93,6 +93,18 @@
   "Authors": "Authors",
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
   "BestSeroprevalenceEstimate": "Seroprevalence",
+  "BiblioDigestCard": {
+    "Title": "Serotracker Key Insights from",
+    "Published": "Published:",
+    "NewSerosurveys": "New serosurveys identified",
+    "AFRO": "African",
+    "EMRO": "Eastern Medditerranean",
+    "EURO": "European",
+    "PAHO": "Region of the Americas",
+    "SEARO": "South-East Asia",
+    "WPRO": "Western Pacific",
+    "NewSources": "New sources added"
+  },
   "BlankUniversity": "NAME University",
   "ByCountry": "By Country",
   "ByPopulation": "By Population",

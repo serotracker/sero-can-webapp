@@ -1,16 +1,11 @@
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, {useContext} from "react";
-import Translate from "../../../utils/translate/translateService";
+import React from "react";
+import Translate, {TranslateDate} from "../../../utils/translate/translateService";
 import { Card } from "semantic-ui-react";
-import { AppContext } from "../../../context";
-import { LanguageType } from "../../../types";
 import {PublicationProps} from "./PublicationsConstants"
-import { getformattedDate } from "utils/utils";
 
-export function PublicationsCard(props: PublicationProps) {
-  const [state] = useContext(AppContext);
-
+export function MediaCard(props: PublicationProps) {
   return (
     <div className="py-4 px-2 flex justify-content-center">
       <Card className={"publications-card"}>
@@ -42,9 +37,9 @@ export function PublicationsCard(props: PublicationProps) {
               {props.italicize ? <i>{props.italicize}&nbsp;</i> : null}{Translate(props.titleKey1, props.titleKey2)}
             </a>
           </div>
-          {(props.month && props.year) && (
+          {(props.date) && (
             <div className="publications-card-date">
-              {getformattedDate(props.day, props.month, props.year, state.language)}
+              {TranslateDate(props.date + "T00:00:00")}
             </div>
           )}
         </Card.Content>

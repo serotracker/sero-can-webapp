@@ -49,15 +49,3 @@ export const NumberDateToWordDate = (date_str: string) => {
   const monthStr = months[Number(month) - 1];
   return `${Translate("Months", [monthStr])} ${day}, ${year}`
 }
-
-export const getformattedDate = (day: any, month: any, year: any, language: LanguageType) => {
-  switch(language) {   
-    case 'en': return `${month } ${day ? day + "," : ""} ${year}`;
-    case 'fr': return `${day} ${Translate("Months", [month])} ${year}`;
-    case 'de': return `${day ? day + "." : ""} ${Translate("Months", [month])} ${year}`;
-    default: return `${month } ${day ? day + "," : ""} ${year}`;      
-  }
-}
-
-
-
