@@ -139,7 +139,7 @@ export function TranslateObject(text: string): object {
 
   const dateTimeFormat = new Intl.DateTimeFormat(language, {
     year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric',
   });
   

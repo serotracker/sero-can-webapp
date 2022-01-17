@@ -89,6 +89,18 @@
   "Article": "Article",
   "Authors": "Auteurs",
   "AuthorAndLeadOrganizationNotReported": "Auteur et organisation responsable non indiqués",
+  "BiblioDigestCard": {
+    "Title": "Aperçus clés de Serotracker de",
+    "Published": "Publié:",
+    "NewSerosurveys": "De nouvelles enquêtes sérologiques identifiées",
+    "AFRO": "Africain",
+    "EMRO": "Méditerranée orientale",
+    "EURO": "Européenne",
+    "PAHO": "Région des Amériques",
+    "SEARO": "Asie du sud est",
+    "WPRO": "Pacifique ouest",
+    "NewSources": "Nouvelles sources ajoutées"
+  },
   "BlankUniversity": "Université de NAME",
   "ByCountry": "Par pays",
   "ByPopulation": "Par population",
