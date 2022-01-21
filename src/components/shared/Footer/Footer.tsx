@@ -98,9 +98,6 @@ const renderMobileFooter = (updatedAt: string) => (
     </footer>
 )
 
-// const renderUpdateDate = (updatedAt: string) => {
-//   return NumberDateToWordDate(updatedAt)
-// }
 
 const UpdatedAt = ({updatedAt}: UpdatedAtProps) => {
   // only renders 'last updated' when we have a valid date

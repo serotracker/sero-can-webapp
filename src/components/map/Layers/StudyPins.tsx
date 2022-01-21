@@ -20,7 +20,7 @@ const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
     });
   
   features.forEach(x => {
-    const isBlurred = (!(selectedPinId === x?.id || selectedPinId === undefined))
+    const isBlurred = !(selectedPinId === x?.id || selectedPinId === undefined)
     if (x && x.id)
     {
       map.setFeatureState(

@@ -47,7 +47,8 @@ export const getMapboxLatitudeOffset = (map: mapboxgl.Map | undefined) => {
   // in the same center everytime
   if(map){
     // offset needs to reduce exponentially with zoom -- higher zoom x smaller offset
-    var mapZoom = map.getZoom();
+    let mapZoom = map.getZoom();
+
     return 80/(Math.pow(2, mapZoom))
   }
   return 0
