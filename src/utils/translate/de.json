@@ -24,8 +24,9 @@
     "ContactSection": {
       "BulletPointFive": {
         "PartOne": "Um auf",
-        "PartThree": "aufmerksam zu machen, oder auf Studien, die wir noch nicht erfasst haben, füllen Sie bitte dieses Formular aus.",
-        "PartTwo": "neue Seroprävalenzstudien zu SARS-CoV-2"
+        "PartThree": "aufmerksam zu machen, oder auf Studien, die wir noch nicht erfasst haben, füllen Sie bitte ",
+        "PartTwo": "neue Seroprävalenzstudien zu SARS-CoV-2",
+        "PartFour": "aus."
       },
       "BulletPointOne": {
         "PartFour": "und Kelly Johnston unter ",
@@ -455,7 +456,6 @@
     "Cumming": "Cumming School of Medicine",
     "Schulich": "Schulich School of Engineering"
   },
-  "ScientificLead": "Wissenschaftliche Beratung",
   "Sensitivity": "Empfindlichkeit",
   "SeroPrevalenceByCountry": "Aggregierte Schätzungen der Seroprävalenz in verschiedenen Ländern",
   "Seroprevalence": "Seroprävalenz",
@@ -549,7 +549,7 @@
     "Other": "Andere"
   },
   "TestUsed": "Verwendeter Test",
-  "ThisForm": "Dieses Formular",
+  "ThisForm": "dieses Formular",
   "Today": "Heute",
   "TotalEstimates": "Schätzungen insgesamt",
   "TotalTests": "Tests insgesamt",

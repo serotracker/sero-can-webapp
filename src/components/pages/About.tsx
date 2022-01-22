@@ -136,9 +136,9 @@ export default function About() {
               target="_blank"
               href="https://forms.gle/XWHQ7QPjQnzQMXSz8"
             >
-              {Translate("ThisForm").toLowerCase()}
+              {Translate("ThisForm")}
             </a>
-            .
+            {Translate("AboutPage", ["ContactSection", "BulletPointFive", "PartFour"], null, [true, true])}
           </p>
         </div>
         <h1 id={PAGE_HASHES.About.Team}>{Translate("AboutPage", ["Headers","OurTeam"])}</h1>

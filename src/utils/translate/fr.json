@@ -25,7 +25,8 @@
       "BulletPointFive": {
         "PartOne": "Pour nous signaler",
         "PartThree": "ou des études que nous n'avons pas encore capturées, veuillez remplir",
-        "PartTwo": "de nouvelles études sur la séroprévalence du SRAS-CoV-2"
+        "PartTwo": "de nouvelles études sur la séroprévalence du SRAS-CoV-2",
+        "PartFour": "."
       },
       "BulletPointOne": {
         "PartFour": "et Kelly Johnston",
@@ -465,7 +466,6 @@
     "Cumming": "École de médecine Cumming",
     "Schulich": "École d'ingénieurs Schulich"
   },
-  "ScientificLead": "Responsable scientifique",
   "Sensitivity": "Sensibilité",
   "Seroprevalence": "Séroprévalence",
   "SeroprevalenceBy": "Séroprévalence par",
@@ -560,7 +560,7 @@
     "Other": "Autre"
   },
   "TestUsed": "Test utilisé",
-  "ThisForm": "Ce formulaire",
+  "ThisForm": "ce formulaire",
   "Today": "Aujourd'hui",
   "TotalEstimates": "Estimations totales",
   "TotalTests": "Total des tests",
