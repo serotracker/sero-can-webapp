@@ -2,16 +2,16 @@
   ",": ",",
   "95%ConfidenceInterval": "95% Konfidenzintervall",
   "95%ConfidenceIntervalTooltip": "Breitere Fehlerbalken weisen auf eine größere Unsicherheit in der aggregierten Seroprävalenzschätzung hin.",
-  "About": "Über",
+  "About": "Über uns",
   "AboutPage": {
     "AboutSection": {
       "Covid19ImmunityTaskForce": "COVID-19-Arbeitsgruppe Immunität.",
       "GlobalSerologicalKnowledgeHub": "Globaler serologischer Wissenshub",
       "HealthInformatics": "Zentrum für Gesundheitsinformatik an der Universität Calgary.",
-      "HostedAt": "SeroTracker wird auch gehostet bei der",
+      "HostedAt": "SeroTracker wird auch gehostet beim der",
       "MappingTheExtent": "Die COVID-19-Arbeitsgruppe Immunität bildet das Ausmaß der SARS-CoV-2-Infektionen in Kanada ab; SeroTracker liefert auch Inhalte für ihre",
-      "PartOne": "SeroTracker fasst die Ergebnisse von Tausenden von COVID-19-Seroprävalenzstudien weltweit zusammen und bietet eine Datenplattform sowie ein interaktives Dashboard für die serologische Überwachung von SARS-CoV-2.",
-      "PartTwo": "Bestätigte COVID-19-Fälle sind nur die Spitze des Eisbergs – die tatsächliche Zahl der SARS-CoV-2-Infektionen wird unterschätzt, da viele Menschen asymptomatisch infiziert sind oder keinen Zugang zu diagnostischen Tests haben. Im Gegensatz dazu werden bei Seroprävalenzstudien Antikörper gegen SARS-CoV-2 in der Bevölkerung gemessen. Da Menschen mit diesen Antikörpern zuvor infiziert oder geimpft worden sind, sind diese Studien für das Verständnis des wahren Ausmaßes der Pandemie und für die Messung der Antikörperspiegel in der Bevölkerung von entscheidender Bedeutung.",
+      "PartOne": "SeroTracker fasst die Ergebnisse von Tausenden von COVID-19-Seroprävalenzstudien weltweit zusammen und bietet eine Datenplattform sowie ein interaktives Dashboard für die serologische Surveillance von SARS-CoV-2.",
+      "PartTwo": "Bestätigte COVID-19-Fälle sind nur die Spitze des Eisbergs – die tatsächliche Zahl der SARS-CoV-2-Infektionen wird unterschätzt, da viele Menschen asymptomatisch infiziert sind oder keinen Zugang zu diagnostischen Tests haben. Im Gegensatz dazu werden bei Seroprävalenzstudien Antikörper gegen SARS-CoV-2 in der Bevölkerung gemessen. Da Menschen, bei denen diese Antikörper vorliegen, zuvor infiziert waren oder geimpft wurden, sind diese Studien für das Verständnis des wahren Ausmaßes der Pandemie und für die Messung der Antikörperspiegel in der Bevölkerung von entscheidender Bedeutung.",
       "PublicHealthAgency": "Agentur für öffentliche Gesundheit, Kanada",
       "SupportedBy": "SeroTracker wird unterstützt von der",
       "ThroughThe": "durch die",
@@ -23,14 +23,15 @@
     },
     "ContactSection": {
       "BulletPointFive": {
-        "PartOne": "Um uns darauf aufmerksam zu machen,",
-        "PartThree": "oder Studien, die wir noch nicht erfasst haben, bitte ausfüllen,",
-        "PartTwo": "neue Seroprävalenzstudien zu SARS-CoV-2"
+        "PartOne": "Um auf",
+        "PartThree": "aufmerksam zu machen, oder auf Studien, die wir noch nicht erfasst haben, füllen Sie bitte ",
+        "PartTwo": "neue Seroprävalenzstudien zu SARS-CoV-2",
+        "PartFour": "aus."
       },
       "BulletPointOne": {
-        "PartFour": "und Kelly Johnston bei",
-        "PartOne": "Bitte richten Sie alle Anfragen zu SeroTracker an Rahul Arora (z. B. wenn Sie unserer Bemühungen unterstützen wollen, mit uns zusammenarbeiten möchten oder als Journalist*In an einer Berichterstattung über unsere Ergebnisse interessiert sind), und zwar unter ",
-        "PartThree": "Journalistinnen, Journalisten und Medienvertretende: bitte kontaktieren Sie Caroline Phaneuf unter",
+        "PartFour": "und Kelly Johnston unter ",
+        "PartOne": "Bitte richten Sie alle Anfragen zu SeroTracker (z. B. wenn Sie unsere Bemühungen unterstützen wollen, mit uns zusammenarbeiten möchten oder als Journalist*in an einer Berichterstattung über unsere Ergebnisse interessiert sind) an Rahul Arora unter ",
+        "PartThree": "Journalist*innen und Medienvertreter*innen: Bitte kontaktieren Sie Caroline Phaneuf unter ",
         "PartTwo": "und Tingting Yan unter "
       },
       "SectionOne": "Wir sind ein interdisziplinäres Team von Forschern und Ingenieuren der Universität Oxford, der Universität Toronto, der Universität Waterloo, der Universität Calgary und der Harvard University."
@@ -46,9 +47,9 @@
       "DataInfrastructure": "Team Dateninfrastruktur und -analyse",
       "GlobalPartnerships": "Team für globale Gesundheitspartnerschaften",
       "DevelopmentTeam": "Entwicklungsteam",
-      "ProjectStaff": "Projektmitarbeiter",
+      "ProjectStaff": "Projektmitarbeitende",
       "ScientificAdvisors": "Wissenschaftliche Beraterinnen",
-      "TeamLead": "Teamleiter"
+      "TeamLead": "Teamleitung"
     },
     "Mapbox": "unterstützt die Kartierungsinfrastruktur von SeroTracker"
   },
@@ -76,7 +77,7 @@
     "Tooltip": "Die verwendete Aggregationsmethode ist eine mit fixen Effekten und inverser Varianz gewichtete Meta-Analyse der Prävalenz, wobei die Freeman-Tukey-Transformation mit doppeltem Arkussinus zur Stabilisierung der Varianz verwendet wird. Datensätze über dem Stichprobenumfang MIN_DENOMINATOR werden berücksichtigt."
   },
   "Analyze": "Analysieren",
-  "AntibodyTarget": "Antikörperziel",
+  "AntibodyTarget": "Antikörper-Target",
   "AntibodyTargetOptions": {
     "EnvelopeProtein": "Hüllprotein",
     "MembraneProtein": "Membranprotein",
@@ -89,7 +90,7 @@
   "Article": "Artikel",
   "Authors": "Autoren",
   "AuthorAndLeadOrganizationNotReported": "Autor und federführende Organisation nicht angegeben",
-  "AntibodyTarget": "Antikörperziel",
+  "AntibodyTarget": "Antikörper-Target",
   "BiblioDigestCard": {
     "Title": "Wichtige Erkenntnisse von Serotracker",
     "Published": "Veröffentlicht:",
@@ -103,7 +104,7 @@
     "NewSources": "Neue quellen hinzugefügt"
   },
   "BestSeroprevalenceEstimate": "Beste Schätzung der Seroprävalenz",
-  "BlankUniversity": "NAME Universität,",
+  "BlankUniversity": "NAME Universität",
   "ByCountry": "Nach Land",
   "ByPopulation": "Nach Bevölkerung,",
   "CentreHealthInformatics": "Zentrum für Gesundheitsinformatik",
@@ -116,10 +117,10 @@
   "CookiePolicyBody": "Wir verwenden Cookies, um die Benutzerfreundlichkeit zu verbessern; wir sammeln niemals persönliche Daten. Durch die Nutzung unserer Website erklären Sie, dass Sie unsere ",
   "Countries": "Länder",
   "CountriesIncluded": {
-    "PartOne": "in",
-    "PartTwo": "Länder und Gebiete/Territorien"
+    "PartOne": "mit",
+    "PartTwo": "Ländern und Regionen"
   },
-  "CountriesAndAreas": "Länder und Gebiete",
+  "CountriesAndAreas": "Ländern und Regionen",
   "CountryEstimatesExist": "Schätzungen der Seroprävalenz",
   "CountryEstimatesNotExist": "Keine Schätzungen der Seroprävalenz",
   "CountryOptions": {
@@ -158,7 +159,7 @@
     },
     "Question2": {
       "Question": "Wie sammelt SeroTracker seine Daten?",
-      "Answer": "Wir führen regelmäßige Recherchen in verschiedenen Datenbanken durch, darunter Medline, EMBASE, Web of Science und Europe PMC, sowie gezielte Google-Suchen. Darüber hinaus kann jeder über die Schaltfläche “Quelle einreichen“ Quellen einreichen, die wir prüfen und in unsere Überprüfung aufnehmen können."
+      "Answer": "Wir führen regelmäßige Recherchen in verschiedenen Datenbanken durch, darunter Medline, EMBASE, Web of Science und Europe PMC, sowie gezielte Google-Suchen. Darüber hinaus kann jeder über die Schaltfläche “Quelle einreichen“ Quellen einreichen, die wir prüfen und in unseren Review aufnehmen können."
     },
     "Question3": {
       "Question": "Wie extrahiert SeroTracker Daten aus ihren Quellen?",
@@ -181,16 +182,16 @@
       "Answer": "In unserem Datenlexikon (über die oben erwähnte Schaltfläche) finden Sie Erklärungen zu unseren Variablen, Datentypen und Beschreibungen sowie einen Einblick in die Art und Weise, wie unsere Daten von unserem Forschungsteam erhoben werden. Sie ist so aufgebaut, dass sie die Interpretation unseres herunterladbaren Datensatzes erleichtert. "
     },
     "Question8": {
-      "Question": "Wie sind die Daten von SeroTracker von anderen oder Forschern verwendet worden?",
+      "Question": "Wie haben andere dieSeroTracker-Daten verwendet?",
       "Answer": {
-        "Part1": "Die Daten von SeroTracker werden von vielen Fachleuten des öffentlichen Gesundheitswesens und von Gesundheitsbehörden wie der Weltgesundheitsorganisation und der Agentur für öffentliche Gesundheit, Kanada, verwendet, um nur einige zu nennen. Die Registerkarte “Einblicke/Insights“ enthält Links zu internen Berichten, von uns erstellten Veröffentlichungen, sowie zu Berichten über SeroTracker-Daten und -Arbeiten in den Medien. Unser jüngstes ",
+        "Part1": "Die Daten von SeroTracker werden von vielen Fachleuten des öffentlichen Gesundheitswesens und von Gesundheitsbehörden wie der Weltgesundheitsorganisation und der Agentur für öffentliche Gesundheit, Kanada, verwendet, um nur einige zu nennen. Die Registerkarte “Einblicke/Insights“ enthält Links zu internen Berichten, von uns erstellten Veröffentlichungen sowie zu Berichten über SeroTracker-Daten und -Arbeiten in den Medien. Unsere neueste ",
         "Part2": "analysiert die weltweite Seroprävalenz von Januar bis Dezember 2020."
       },
       "Links": {
         "Link1": "https://www.medrxiv.org/content/10.1101/2020.11.17.20233460v2"
       },
       "LinkTexts": {
-        "LinkText1": "Veröffentlichung"
+        "LinkText1": "Veröffentlichungen"
       }
     }
   },
@@ -214,7 +215,7 @@
   "Explore": "Erkunden/Explore",
   "ExploreBlurb": {
     "FirstParagraph": "SeroTracker ist eine Dashboard- und Datenplattform für SARS-CoV-2-Serosurveys.",
-    "SecondParagraph": "Wir führen eine laufende systematische Überprüfung durch, um Serosurveys (auf Antikörpertests basierende Überwachungsmaßnahmen) auf der ganzen Welt zu verfolgen und die Ergebnisse auf diesem Dashboard sichtbar zu machen.",
+    "SecondParagraph": "Wir führen einen fortlaufenden systematischen Review durch, um Serosurveys (auf Antikörpertests basierende Surveillancemaßnahmen) auf der ganzen Welt zu verfolgen und die Ergebnisse auf diesem Dashboard sichtbar zu machen.",
     "ThirdParagraph": "Antikörper gegen SARS-CoV-2 – das Virus, das COVID-19 verursacht – weisen auf eine frühere Infektion oder Impfung hin."
   },
   "Filter": "Filter",
@@ -237,7 +238,7 @@
   "Here": "Hier",
   "IncludingParticipants": {
     "PartOne": "einschließlich",
-    "PartTwo": "Teilnehmende"
+    "PartTwo": "Teilnehmenden"
   },
   "IndustryMediaTitles": {
     "UnderstandingVirus": "Das Virus und seine unbeantworteten Fragen verstehen",
@@ -369,7 +370,7 @@
     "Text": "Die nachstehende Tabelle beschreibt unsere Ergebnisse, einschließlich detaillierter Informationen zu jeder Studie, jeder Prävalenzschätzung sowie zum damit verbundenen Verzerrungspotenzial."
   },
   "OurProtocol": "Unser Protokoll",
-  "OverallRiskOfBias": "Gesamtverzerrungspotenzial",
+  "OverallRiskOfBias": "Gesamt Risk of bias (Verzerrungsrisiko) ",
   "Paper": "Papier",
   "PaperText": "Unser erstes Manuskript, in dem die Erkenntnisse aus den Serosurveys bis zum 1. Mai beschrieben werden, finden Sie unter",
   "PaperTextTwo": "Weitere Informationen über unser Dashboard finden Sie unter",
@@ -425,7 +426,7 @@
     "LiteratureUpdateReports": "Monatliche Übersichten und Updates zu Trends in der Literatur über Serosurveys und zu den von der WHO bereitgestellten Metriken.",
     "GeneralSerotrackerCommunications": "Updates und Einblicke aus dem gesamten SeroTracker-Team",
     "MediaMentions": "Weltweite Medienveröffentlichungen, die SeroTracker vorstellen.",
-    "MonthlyReports": "COVID-19-Screening und -Tests im Privatsektor Kanadas"
+    "MonthlyReports": "Updates zu COVID-19-Screening und -Tests im privatwirtschaftlichen Sektor Kanadas"
   },
   "Publications": "Veröffentlichung",
   "Published": "Veröffentlicht",
@@ -439,7 +440,7 @@
   "Report": "Bericht",
   "ReportsAndArticles": "Berichte und Artikel",
   "ResearchArticles": "Forschungsartikel",
-  "RiskOfBias": "Verzerrungspotenzial",
+  "RiskOfBias": "Gesamt Risk of bias (Verzerrungsrisiko)",
   "OverallRiskOfBiasOptions": {
     "High": "Hoch",
     "Low": "Niedrig",
@@ -455,7 +456,6 @@
     "Cumming": "Cumming School of Medicine",
     "Schulich": "Schulich School of Engineering"
   },
-  "ScientificLead": "Wissenschaftliche/r Leiter/in",
   "Sensitivity": "Empfindlichkeit",
   "SeroPrevalenceByCountry": "Aggregierte Schätzungen der Seroprävalenz in verschiedenen Ländern",
   "Seroprevalence": "Seroprävalenz",
@@ -482,11 +482,11 @@
   "Source": "Quelle",
   "SourceType": "Quellenart",
   "SourceTypeOptions": {
-    "JournalArticlePeerReviewed": "Zeitschriftenartikel (begutachten)",
+    "JournalArticlePeerReviewed": "Zeitschriftenartikel (peer-reviewed)",
     "InstitutionalReport": "Institutioneller Bericht",
     "NewsAndMedia": "Nachrichten und Medien",
     "Preprint": "Preprint",
-    "Publication": "Veröffentlichung"
+    "Publication": "Veröffentlichungen"
   },
   "Specificity": "Spezifität",
   "StartDate": "Startdatum",
@@ -513,7 +513,7 @@
         "PartOne": "WHO-Unity-Protokoll:",
         "PartTwo": "Die WHO hat mehrere standardisierte generische Protokolle für robuste Untersuchungen auf COVID-19 entwickelt:",
         "PartThree": "die Unity-Studien.",
-        "PartFour": "SeroTracker arbeitet mit der WHO zusammen, um Studien zu unterstützen und sichtbar zu machen, die auf das bevölkerungsbezogene seroepidemiologische Unity-Protokoll abgestimmt sind."
+        "PartFour": "SeroTracker arbeitet mit der Weltgesundheitsorganisation zusammen, um Ergebnisse aus den WHO Unity Seroprävalenzstudien zu visualisieren und zusammenzufassen. SeroTracker und die Weltgesundheitsorganisation bedanken sich beim deutschen Bundesministerium für Gesundheit (BMG) für die COVID-19-Forschungs- und -Entwicklungsmittel zur Unterstützung dieser Bemühungen."
     }
   },
   "StudyName": "Name der Studie",
@@ -531,7 +531,7 @@
   "SubmitSource": "Quelle einreichen",
   "Summary": "Zusammenfassung",
   "SummaryStatistics": "Zusammenfassende Statistik",
-  "Team": "Team",
+  "Team": "Unser Team",
   "TeamLead": "Teamleiter",
   "TemporaryMaintenance": "Vorübergehende Wartung",
   "TemporaryMaintenanceDescription": "Wir sind wegen geplanter Wartungsarbeiten außer Betrieb, der Dienst wird in Kürze wieder aufgenommen.",
@@ -543,13 +543,13 @@
   "TestType": "Testtyp",
   "TestTypeOptions": {
     "Neutralization": "Neutralisierungs",
-    "Clia": "CLIA",
+    "Clia": "Neutralisationstest CLIA",
     "Elisa": "ELISA",
     "Lfia": "LFIA",
     "Other": "Andere"
   },
   "TestUsed": "Verwendeter Test",
-  "ThisForm": "Dieses Formular",
+  "ThisForm": "dieses Formular",
   "Today": "Heute",
   "TotalEstimates": "Schätzungen insgesamt",
   "TotalTests": "Tests insgesamt",
@@ -557,10 +557,10 @@
     "Currently": "Derzeit sind nur",
     "ProtocolLink": "Seroepidemiologisches Protokoll der WHO Unity",
     "ViewDatabase": "ausgerichtete Studien werden angezeigt. Um unsere vollständige Datenbank zu sehen, deaktivieren Sie bitte das Kontrollkästchen",
-    "WHOUnityFilter": "Nur WHO-Unity",
+    "WHOUnityFilter": "WHO-Unity Protokoll konforme Studien",
     "Filter": "Filter"
   },
-  "UnityStudiesOnly": "Nur WHO-Einheit",
+  "UnityStudiesOnly": "WHO-Unity Protokoll konforme Studien",
   "UnityStudiesOnlyLong": "Nur Studien im Rahmen der WHO-Unity anzeigen",
   "UniversityOf": "Universität NAME",
   "UseOfData": "Die Verwendung dieser Daten unterliegt den SeroTracker-Bestimmungen",
@@ -574,8 +574,8 @@
   "ViewHere": "Hier ansehen",
   "Welcome": "Willkommen bei SeroTracker",
   "WhatWeDoText": {
-    "FirstParagraph": "Bei SeroTracker sammeln wir Daten und Informationen über SARS-CoV-2-Seroprävalenzstudien, indem wir eine systematische Überprüfung und Meta-Analyse von veröffentlichten und unveröffentlichten Daten zur Seroprävalenz durchführen. Die Daten werden für die primäre Schätzung jeder Quelle und bestimmte relevante Untergruppen extrahiert. Die vollständigen Methoden finden Sie in unserem Protokoll.",
-    "SecondParagraph": "Auf unserem Dashboard erstellen wir Daten für den akademischen und öffentlichen Gebrauch. Wir bemühen uns, unser Dashboard wöchentlich zu aktualisieren. Weitere Informationen, die über die folgende überblicksartige Zusammenfassung hinausgehen, finden Sie in unserem Studienprotokoll und in den ergänzenden Methoden für eine detaillierte Erläuterung unserer Forschungsprozesse."
+    "FirstParagraph": "Bei SeroTracker sammeln wir Daten und Informationen über SARS-CoV-2-Seroprävalenzstudien, indem wir einen systematischen Review und eine Meta-Analyse von veröffentlichten und unveröffentlichten Daten zur Seroprävalenz durchführen. Die Daten werden für den Hauptschätzer jeder Quelle und für bestimmte relevante Untergruppen extrahiert. Die vollständigen Methoden finden Sie in unserem Studienprotokoll.",
+    "SecondParagraph": "Auf unserem Dashboard stellen wir Daten für die Fach- und breite Öffentlichkeit zur Verfügung. Wir bemühen uns, unser Dashboard wöchentlich zu aktualisieren. Weitere Informationen, die über die folgende überblicksartige Zusammenfassung hinausgehen, finden Sie in unserem Studienprotokoll und in den ergänzenden Methoden für eine detaillierte Erläuterung unserer Forschungsprozesse."
   },
   "WhoDisclaimerSmall": "Die verwendeten Bezeichnungen und die Darstellung des auf dieser Plattform verfügbaren Materials bedeuten nicht, dass die WHO irgendeine Meinung über den rechtlichen Status eines Landes, eines Gebiets, einer Stadt oder eines Gebiets oder seiner Behörden oder über den Verlauf seiner Grenzen zum Ausdruck bringt. Die gepunkteten und gestrichelten Linien auf den Karten stellen ungefähre Grenzlinien dar, über die eventuell noch kein vollständiges Einvernehmen besteht.",
   "WhoDisclaimer": "Haftungsausschluss: Die verwendeten Bezeichnungen und die Darstellung des auf dieser Plattform verfügbaren Materials bedeuten nicht, dass die WHO irgendeine Meinung über den rechtlichen Status eines Landes, eines Gebiets, einer Stadt oder eines Bereichs oder seiner Behörden oder über den Verlauf seiner Grenzen zum Ausdruck bringt. Die gepunkteten und gestrichelten Linien auf den Karten stellen ungefähre Grenzlinien dar, über die eventuell noch kein vollständiges Einvernehmen besteht. Die Erwähnung bestimmter Unternehmen oder Produkte bestimmter Hersteller in den auf dieser Plattform verfügbaren Materialien bedeutet nicht, dass diese von der WHO befürwortet oder empfohlen werden und anderen, nicht erwähnten Produkten ähnlicher Art vorgezogen werden. Vorbehaltlich von Irrtümern und Auslassungen sind die Namen der geschützten Produkte durch große Anfangsbuchstaben gekennzeichnet. Die Auflistung von Materialien auf dieser Plattform bedeutet nicht, dass die WHO diese Veröffentlichungen oder Websites befürwortet oder empfiehlt oder die darin enthaltenen Inhalte überprüft hat. Die Plattform wurde ohne jegliche Garantie, weder ausdrücklich noch stillschweigend, von der WHO erstellt. Die Verantwortung für die Auslegung und Nutzung der auf dieser Plattform verfügbaren Veröffentlichungen und Materialien liegt beim Leser. Die WHO haftet in keinem Fall für Schäden, die sich aus der Nutzung dieser Website ergeben.",

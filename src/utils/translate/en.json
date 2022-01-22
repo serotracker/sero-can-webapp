@@ -25,7 +25,8 @@
       "BulletPointFive": {
         "PartOne": "To make us aware of",
         "PartThree": "or studies that we have not yet captured, please fill out",
-        "PartTwo": "new SARS-CoV-2 seroprevalence studies"
+        "PartTwo": "new SARS-CoV-2 seroprevalence studies",
+        "PartFour": "."
       },
       "BulletPointOne": {
         "PartFour": "and Kelly Johnston at",
@@ -459,7 +460,6 @@
     "Cumming": "Cumming School of Medicine",
     "Schulich": "Schulich School of Engineering"
   },
-  "ScientificLead": "Scientific Lead",
   "Sensitivity": "Sensitivity",
   "SeroPrevalenceByCountry": "Aggregated Seroprevalence Estimates in Different Countries",
   "Seroprevalence": "Seroprevalence",
@@ -560,7 +560,7 @@
     "SolidPhaseImmunochromatography": "Solid phase immunochromatography"
   },
   "TestUsed": "Test Used",
-  "ThisForm": "This form",
+  "ThisForm": "this form",
   "Today": "Today",
   "TotalEstimates": "Total Estimates",
   "TotalTests": "Total Tests",
