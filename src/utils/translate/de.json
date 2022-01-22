@@ -8,7 +8,7 @@
       "Covid19ImmunityTaskForce": "COVID-19-Arbeitsgruppe Immunität.",
       "GlobalSerologicalKnowledgeHub": "Globaler serologischer Wissenshub",
       "HealthInformatics": "Zentrum für Gesundheitsinformatik an der Universität Calgary.",
-      "HostedAt": "SeroTracker wird auch gehostet bei der",
+      "HostedAt": "SeroTracker wird auch gehostet beim der",
       "MappingTheExtent": "Die COVID-19-Arbeitsgruppe Immunität bildet das Ausmaß der SARS-CoV-2-Infektionen in Kanada ab; SeroTracker liefert auch Inhalte für ihre",
       "PartOne": "SeroTracker fasst die Ergebnisse von Tausenden von COVID-19-Seroprävalenzstudien weltweit zusammen und bietet eine Datenplattform sowie ein interaktives Dashboard für die serologische Surveillance von SARS-CoV-2.",
       "PartTwo": "Bestätigte COVID-19-Fälle sind nur die Spitze des Eisbergs – die tatsächliche Zahl der SARS-CoV-2-Infektionen wird unterschätzt, da viele Menschen asymptomatisch infiziert sind oder keinen Zugang zu diagnostischen Tests haben. Im Gegensatz dazu werden bei Seroprävalenzstudien Antikörper gegen SARS-CoV-2 in der Bevölkerung gemessen. Da Menschen, bei denen diese Antikörper vorliegen, zuvor infiziert waren oder geimpft wurden, sind diese Studien für das Verständnis des wahren Ausmaßes der Pandemie und für die Messung der Antikörperspiegel in der Bevölkerung von entscheidender Bedeutung.",
@@ -118,7 +118,7 @@
   "Countries": "Länder",
   "CountriesIncluded": {
     "PartOne": "mit",
-    "PartTwo": "Länder und Gebiete/Territorien"
+    "PartTwo": "Ländern und Regionen"
   },
   "CountriesAndAreas": "Ländern und Regionen",
   "CountryEstimatesExist": "Schätzungen der Seroprävalenz",
@@ -184,7 +184,7 @@
     "Question8": {
       "Question": "Wie haben andere dieSeroTracker-Daten verwendet?",
       "Answer": {
-        "Part1": "Die Daten von SeroTracker werden von vielen Fachleuten des öffentlichen Gesundheitswesens und von Gesundheitsbehörden wie der Weltgesundheitsorganisation und der Agentur für öffentliche Gesundheit, Kanada, verwendet, um nur einige zu nennen. Die Registerkarte “Einblicke/Insights“ enthält Links zu internen Berichten, von uns erstellten Veröffentlichungen sowie zu Berichten über SeroTracker-Daten und -Arbeiten in den Medien. Unsere neueste Veröffentlichung",
+        "Part1": "Die Daten von SeroTracker werden von vielen Fachleuten des öffentlichen Gesundheitswesens und von Gesundheitsbehörden wie der Weltgesundheitsorganisation und der Agentur für öffentliche Gesundheit, Kanada, verwendet, um nur einige zu nennen. Die Registerkarte “Einblicke/Insights“ enthält Links zu internen Berichten, von uns erstellten Veröffentlichungen sowie zu Berichten über SeroTracker-Daten und -Arbeiten in den Medien. Unsere neueste ",
         "Part2": "analysiert die weltweite Seroprävalenz von Januar bis Dezember 2020."
       },
       "Links": {
@@ -370,7 +370,7 @@
     "Text": "Die nachstehende Tabelle beschreibt unsere Ergebnisse, einschließlich detaillierter Informationen zu jeder Studie, jeder Prävalenzschätzung sowie zum damit verbundenen Verzerrungspotenzial."
   },
   "OurProtocol": "Unser Protokoll",
-  "OverallRiskOfBias": "Gesamtverzerrungspotenzial",
+  "OverallRiskOfBias": "Gesamt Risk of bias (Verzerrungsrisiko) ",
   "Paper": "Papier",
   "PaperText": "Unser erstes Manuskript, in dem die Erkenntnisse aus den Serosurveys bis zum 1. Mai beschrieben werden, finden Sie unter",
   "PaperTextTwo": "Weitere Informationen über unser Dashboard finden Sie unter",
@@ -486,7 +486,7 @@
     "InstitutionalReport": "Institutioneller Bericht",
     "NewsAndMedia": "Nachrichten und Medien",
     "Preprint": "Preprint",
-    "Publication": "Veröffentlichung"
+    "Publication": "Veröffentlichungen"
   },
   "Specificity": "Spezifität",
   "StartDate": "Startdatum",
@@ -531,7 +531,7 @@
   "SubmitSource": "Quelle einreichen",
   "Summary": "Zusammenfassung",
   "SummaryStatistics": "Zusammenfassende Statistik",
-  "Team": "Team",
+  "Team": "Unser Team",
   "TeamLead": "Teamleiter",
   "TemporaryMaintenance": "Vorübergehende Wartung",
   "TemporaryMaintenanceDescription": "Wir sind wegen geplanter Wartungsarbeiten außer Betrieb, der Dienst wird in Kürze wieder aufgenommen.",
@@ -560,7 +560,7 @@
     "WHOUnityFilter": "WHO-Unity Protokoll konforme Studien",
     "Filter": "Filter"
   },
-  "UnityStudiesOnly": "Nur WHO-Einheit",
+  "UnityStudiesOnly": "WHO-Unity Protokoll konforme Studien",
   "UnityStudiesOnlyLong": "Nur Studien im Rahmen der WHO-Unity anzeigen",
   "UniversityOf": "Universität NAME",
   "UseOfData": "Die Verwendung dieser Daten unterliegt den SeroTracker-Bestimmungen",
