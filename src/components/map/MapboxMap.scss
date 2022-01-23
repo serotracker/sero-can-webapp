@@ -50,7 +50,11 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
 }
 
 .popup-content {
-  width: 425px;
+  width: 460px;
+  @media screen and (max-width: 1200px){
+    width: 300px;
+  }
+
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   background: #fff;
@@ -58,9 +62,16 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
   text-align: start;
 }
 
+.mapboxgl-popup-content {
+  padding: 0 !important;
+}
+
 .country-popup {
   &-content {
     width: 350px;
+    @media screen and (max-width: 1200px){
+      width: 300px;
+    }
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     background: #fff;
@@ -79,13 +90,13 @@ div.ReactModal__Overlay.ReactModal__Overlay--after-open.slide-pane__overlay.some
   &-heading {
     font-weight: 600;
     font-size: 12px;
-    width: 52%;
+    width: 62%;
   }
 
   &-text {
     font-weight: normal;
     font-size: 12px;
-    width: 43.75%;
+    width: 34.75%;
 
   }
 

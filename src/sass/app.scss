@@ -211,15 +211,15 @@
 .popup{
     &-title {
         font-weight: bold;
-        font-size: 18px;
+        font-size: 16px;
         flex: 1;
-        width: 34%;
+        width: 100%;
     }
 
     &-subtitle {
         font-weight: normal;
-        font-size: 18px;
-        width: 61.75%;
+        font-size: 12px;
+        width: 100%;
     }
 
     &-heading {
@@ -243,6 +243,7 @@
         justify-content: flex-start;
         font-weight: 600;
     }
+
     &-risk-tag{
         padding: 2px 5px;
         background-color: #C4C4C4;
@@ -266,6 +267,19 @@
             background-color: #D4F7F6;
             //width: 106px;
         }
+    }
+
+    &-seroprev-level{
+        display: flex;
+        justify-content: space-between;
+        background-color: #EAEAEA;
+        font-size: 12px;
+        font-weight: 600;
+        width: 100%
+    }
+
+    &-section{
+        padding: 5px 10px;
     }
 
 }

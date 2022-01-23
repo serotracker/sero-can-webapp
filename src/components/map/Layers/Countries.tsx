@@ -7,6 +7,7 @@ import CountryPopup from 'components/map/Popups/CountryPopup'
 import PartnershipsConfig from '../../../PartnershipsConfig'
 import { useHistory } from 'react-router-dom';
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
+import {getMapboxLatitudeOffset} from "../../../utils/utils";
 
 const COUNTRY_LAYER_ID = 'Countries';
 
@@ -56,7 +57,6 @@ function SetMapData(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePr
 const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, countryFocus}: CountriesMapConfig) => {
 
     const [state] = useContext(AppContext);
-    const [popup, setPopup] = useState<mapboxgl.Popup | undefined>(undefined);
     const [highlight, setHighlight] = useState<string | undefined>(undefined);
     const [countriesLoaded, setCountriesLoaded] = useState<boolean>(false);
     const history = useHistory();
@@ -87,28 +87,21 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
 
     // wait until map is loaded then creates and binds popup to map events
     useEffect(() => {
-        if (map && popup === undefined) {
-            const countryPopup = new mapboxgl.Popup({
-              offset: 25,
-              className: "pin-popup",
-              closeOnClick: true,
-              closeButton: true,
-              anchor: 'top-left'
-            });
-
-            setPopup(countryPopup)
-
+        if (map) {
             map.on('click', COUNTRY_LAYER_ID, function(e: any) {
                 if (map.queryRenderedFeatures(e.point).filter((f) => f.source === "study-pins").length === 0) {
                     const country = e.features[0];
-                    countryPopup
-                        .setMaxWidth("370px")
-                      .setHTML(ReactDOMServer.renderToString(
-                          CountryPopup(
-                            country, 
-                            state.language)))
+                    const offset = getMapboxLatitudeOffset(map)
+                    new mapboxgl.Popup({offset: 25, className: "pin-popup",})
+                      .setMaxWidth("370px")
+                      .setHTML(ReactDOMServer.renderToString(CountryPopup(country, state.language)))
                       .setLngLat(e.lngLat)
                       .addTo(map);
+                    map.flyTo({
+                        center: [e.lngLat.lng, e.lngLat.lat - offset],
+                        curve: 0.5,
+                        speed: 0.5,
+                    });
                     sendAnalyticsEvent({
                         category: "Country popup",
                         action: "open",
@@ -117,7 +110,7 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
                 }
             });
         }
-    }, [map, state.language, popup, history])
+    }, [map, state.language, history])
 
     useEffect(() => {
         if (map) {
