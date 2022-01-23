@@ -1,34 +1,6 @@
 import * as React from "react";
-import './tooltip.css';
 
 const { Component, Fragment } = React;
-
-const railStyle: React.CSSProperties = {
-  position: "absolute",
-  width: "100%",
-  height: 40,
-  top: -13,
-  borderRadius: 7,
-  cursor: "pointer",
-  opacity: 0.3,
-  zIndex: 300,
-};
-
-const railCenterStyle: React.CSSProperties = {
-  position: "absolute",
-  width: "100%",
-  height: 5,
-  borderRadius: 7,
-  cursor: "pointer",
-  pointerEvents: "none",
-  backgroundColor: "#eaeaea"
-};
-
-const handleStyle: React.CSSProperties = {
-  position: "absolute",
-  marginLeft: "-11px",
-  marginTop: "-35px"
-};
 
 interface TooltipRailProps {
   activeHandleID: string;
@@ -73,9 +45,9 @@ export default class TooltipRail extends Component<TooltipRailProps> {
       <Fragment>
         {!activeHandleID && value ? (
           <div
+              className={"handle-style"}
             style={{
               left: `${percent}%`,
-              ...handleStyle
             }}
           >
             <div className="tooltip">
@@ -84,13 +56,13 @@ export default class TooltipRail extends Component<TooltipRailProps> {
           </div>
         ) : null}
         <div
-          style={railStyle}
+          className={"rail-style"}
           {...getRailProps({
             onMouseEnter: this.onMouseEnter,
             onMouseLeave: this.onMouseLeave
           })}
         />
-        <div style={railCenterStyle} />
+        <div className={"rail-center-style"} />
       </Fragment>
     );
   }

@@ -13,24 +13,6 @@ interface HandleProps {
     getHandleProps: (id: string, config: object) => object;
 }
 
-const activeHandleStyle: React.CSSProperties = {
-  position: "absolute",
-  marginLeft: "-11px",
-  marginTop: "-35px"
-};
-
-const handleStyle: React.CSSProperties = {
-  position: "absolute",
-  marginLeft: "-11px",
-  marginTop: "-6px",
-  zIndex: 400,
-  width: 18,
-  height: 18,
-  cursor: "pointer",
-  border: "none",
-  borderRadius: "50%",
-  boxShadow: "0 0 1px 1px #ced4da",
-};
 export default class Handle extends Component<HandleProps> {
     static defaultProps = {
       disabled: false
@@ -62,9 +44,9 @@ export default class Handle extends Component<HandleProps> {
         <Fragment>
           {(mouseOver || isActive) && !disabled ? (
             <div
+                className={"active-handle-style"}
               style={{
-                left: `${percent}%`,
-                ...activeHandleStyle
+                left: `${percent}%`
               }}
             >
               <div className="tooltip">
@@ -77,10 +59,10 @@ export default class Handle extends Component<HandleProps> {
             aria-valuemin={min}
             aria-valuemax={max}
             aria-valuenow={value}
+            className={"handle-style"}
             style={{
               left: `${percent}%`,
               backgroundColor: disabled ? "#666" : "#f1f5f7",
-              ...handleStyle
             }}
             {...getHandleProps(id, {
               onMouseEnter: this.onMouseEnter,

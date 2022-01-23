@@ -8,37 +8,22 @@ interface TickProps {
 }
   
 const defaultFormat = (d: number) => `d`;
-
-const tickStyle: React.CSSProperties = {
-    position: "absolute",
-    marginTop: 17,
-    width: 1,
-    height: 5,
-    backgroundColor: "rgb(200,200,200)",
-};
-
-const tickCenterStyle: React.CSSProperties = {
-    position: "absolute",
-    marginTop: 25,
-    fontSize: 10,
-    textAlign: "center",
-  };
   
 export default function Tick({ tick, count, format = defaultFormat }: TickProps) {
     return (
       <div>
         <div
+            className={"tick-style"}
           style={{
             left: `${tick.percent}%`,
-            ...tickStyle
           }}
         />
         <div
+            className={"tick-center-style"}
           style={{
             marginLeft: `${-(100 / count) / 2}%`,
             width: `${100 / count}%`,
             left: `${tick.percent}%`,
-            ...tickCenterStyle
           }}
         >
           {format(tick.value)}

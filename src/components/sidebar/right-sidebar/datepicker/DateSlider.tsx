@@ -5,6 +5,7 @@ import Track from './Track';
 import TooltipRail from './TooltipRail';
 import {useEffect, useState} from "react";
 
+//TODO: not sure if I can remove this one - heman
 const sliderStyle: React.CSSProperties = {
   position: "relative",
   width: "80%",
