@@ -25,7 +25,8 @@
       "BulletPointFive": {
         "PartOne": "Pour nous signaler",
         "PartThree": "ou des études que nous n'avons pas encore capturées, veuillez remplir",
-        "PartTwo": "de nouvelles études sur la séroprévalence du SRAS-CoV-2"
+        "PartTwo": "de nouvelles études sur la séroprévalence du SRAS-CoV-2",
+        "PartFour": "."
       },
       "BulletPointOne": {
         "PartFour": "et Kelly Johnston",
@@ -89,6 +90,18 @@
   "Article": "Article",
   "Authors": "Auteurs",
   "AuthorAndLeadOrganizationNotReported": "Auteur et organisation responsable non indiqués",
+  "BiblioDigestCard": {
+    "Title": "Aperçus clés de Serotracker du",
+    "Published": "Publié:",
+    "NewSerosurveys": "Nouvelles enquêtes sérologiques identifiées",
+    "AFRO": "Afrique",
+    "EMRO": "Méditerranée orientale",
+    "EURO": "Europe",
+    "PAHO": "Amériques",
+    "SEARO": "Asie du Sud-Est",
+    "WPRO": "Pacifique occidental",
+    "NewSources": "Nouvelles sources ajoutées"
+  },
   "BlankUniversity": "Université de NAME",
   "ByCountry": "Par pays",
   "ByPopulation": "Par population",
@@ -466,7 +479,6 @@
     "Cumming": "École de médecine Cumming",
     "Schulich": "École d'ingénieurs Schulich"
   },
-  "ScientificLead": "Responsable scientifique",
   "Sensitivity": "Sensibilité",
   "Seroprevalence": "Séroprévalence",
   "SeroprevalenceBy": "Séroprévalence par",
@@ -561,7 +573,7 @@
     "Other": "Autre"
   },
   "TestUsed": "Test utilisé",
-  "ThisForm": "Ce formulaire",
+  "ThisForm": "ce formulaire",
   "Today": "Aujourd'hui",
   "TotalEstimates": "Estimations totales",
   "TotalTests": "Total des tests",

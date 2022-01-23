@@ -25,7 +25,8 @@
       "BulletPointFive": {
         "PartOne": "To make us aware of",
         "PartThree": "or studies that we have not yet captured, please fill out",
-        "PartTwo": "new SARS-CoV-2 seroprevalence studies"
+        "PartTwo": "new SARS-CoV-2 seroprevalence studies",
+        "PartFour": "."
       },
       "BulletPointOne": {
         "PartFour": "and Kelly Johnston at",
@@ -93,6 +94,18 @@
   "Authors": "Authors",
   "AuthorAndLeadOrganizationNotReported": "Author and lead organization not reported",
   "BestSeroprevalenceEstimate": "Seroprevalence",
+  "BiblioDigestCard": {
+    "Title": "Serotracker Key Insights from",
+    "Published": "Published:",
+    "NewSerosurveys": "New serosurveys identified",
+    "AFRO": "African",
+    "EMRO": "Eastern Medditerranean",
+    "EURO": "European",
+    "PAHO": "Region of the Americas",
+    "SEARO": "South-East Asia",
+    "WPRO": "Western Pacific",
+    "NewSources": "New sources added"
+  },
   "BlankUniversity": "NAME University",
   "ByCountry": "By Country",
   "ByPopulation": "By Population",
@@ -460,7 +473,6 @@
     "Cumming": "Cumming School of Medicine",
     "Schulich": "Schulich School of Engineering"
   },
-  "ScientificLead": "Scientific Lead",
   "Sensitivity": "Sensitivity",
   "SeroPrevalenceByCountry": "Aggregated Seroprevalence Estimates in Different Countries",
   "Seroprevalence": "Seroprevalence",
@@ -561,7 +573,7 @@
     "SolidPhaseImmunochromatography": "Solid phase immunochromatography"
   },
   "TestUsed": "Test Used",
-  "ThisForm": "This form",
+  "ThisForm": "this form",
   "Today": "Today",
   "TotalEstimates": "Total Estimates",
   "TotalTests": "Total Tests",
