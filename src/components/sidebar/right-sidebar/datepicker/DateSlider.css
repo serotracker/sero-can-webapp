@@ -1,95 +1,126 @@
-.slider-container{
-    margin: 10px 0 25px 0;
-    height: 10px;
+.ui.fluid.input>input {
+    width: 40% !important;
 }
 
-.slider{
-    position: relative;
-    width: 100%;
+.ui.input>input {
+    padding: 5px;
 }
 
-.slider-track,
-.slider-range{
-    border-radius: 3px;
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-seperate {
+    width: 11ch;
+    padding: 0 1px;
+}
+
+/*Component CSS*/
+
+.track-style{
+    position: absolute;
     height: 5px;
-    position: absolute;
-}
-
-.slider-track {
     z-index: 1;
-    background-color: #eaeaea;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+/*TooltipRail Style*/
+
+.rail-style{
+    position: absolute;
     width: 100%;
+    height: 40px;
+    top: -13px;
+    border-radius: 7px;
+    cursor: pointer;
+    opacity: 0.3;
+    z-index: 300;
 }
 
-.slider-range {
-    z-index: 2;
-    background-color: #455a6a;
-}
-
-/* Removing the default appearance */
-.thumb,
-.thumb::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.thumb {
+.rail-center-style{
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    border-radius: 7px;
+    cursor: pointer;
     pointer-events: none;
+    background-color: #eaeaea;
+}
+
+.handle-style{
     position: absolute;
-    height: 0;
-    width: 100%;
-    outline: none;
-    left: 0;
+    margin-left: -11px;
+    margin-top: -35px;
 }
 
-.thumb-left {
-    z-index: 3;
+/* Sub category: tooltip styles*/
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted #222;
+    margin-left: 22px;
 }
 
-.thumb-right {
-    z-index: 4;
+.tooltip .tooltiptext {
+    width: 100px;
+    background-color: #222;
+    color: #fff;
+    opacity: 0.8;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
 }
 
-/* For Chrome browsers */
-.thumb::-webkit-slider-thumb {
-    background-color: #f1f5f7;
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #222 transparent transparent transparent;
+}
+
+/* Tick Styles */
+.tick-style{
+    position: absolute;
+    margin-top: 17px;
+    width: 1px;
+    height: 5px;
+    background-color: rgb(200,200,200);
+}
+
+.tick-center-style{
+    position: absolute;
+    margin-top: 25px;
+    font-size: 10px;
+    text-align: center;
+}
+
+/* Handle props */
+.active-handle-style{
+    position: absolute;
+    margin-left: -11px;
+    margin-top: -35px
+}
+
+.handle-style{
+    position: absolute;
+    margin-left: -11px;
+    margin-top: -6px;
+    z-index: 400;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
     border: none;
     border-radius: 50%;
     box-shadow: 0 0 1px 1px #ced4da;
-    cursor: pointer;
-    height: 18px;
-    width: 18px;
-    margin-top: 4px;
-    pointer-events: all;
-    position: relative;
-}
-
-/* For Firefox browsers */
-.thumb::-moz-range-thumb {
-    background-color: #f1f5f7;
-    border: none;
-    border-radius: 50%;
-    box-shadow: 0 0 1px 1px #ced4da;
-    cursor: pointer;
-    height: 18px;
-    width: 18px;
-    margin-top: 4px;
-    pointer-events: all;
-    position: relative;
-}
-
-.slider-left-value,
-.slider-right-value {
-    color: #88898C;
-    font-size: 12px;
-    margin-top: 12px;
-    position: absolute;
-}
-
-.slider-left-value {
-    left: 6px;
-}
-
-.slider-right-value {
-    right: -4px;
 }
