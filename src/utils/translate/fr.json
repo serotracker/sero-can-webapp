@@ -25,7 +25,8 @@
       "BulletPointFive": {
         "PartOne": "Pour nous signaler",
         "PartThree": "ou des études que nous n'avons pas encore capturées, veuillez remplir",
-        "PartTwo": "de nouvelles études sur la séroprévalence du SRAS-CoV-2"
+        "PartTwo": "de nouvelles études sur la séroprévalence du SRAS-CoV-2",
+        "PartFour": "."
       },
       "BulletPointOne": {
         "PartFour": "et Kelly Johnston",
@@ -89,6 +90,18 @@
   "Article": "Article",
   "Authors": "Auteurs",
   "AuthorAndLeadOrganizationNotReported": "Auteur et organisation responsable non indiqués",
+  "BiblioDigestCard": {
+    "Title": "Aperçus clés de Serotracker du",
+    "Published": "Publié:",
+    "NewSerosurveys": "Nouvelles enquêtes sérologiques identifiées",
+    "AFRO": "Afrique",
+    "EMRO": "Méditerranée orientale",
+    "EURO": "Europe",
+    "PAHO": "Amériques",
+    "SEARO": "Asie du Sud-Est",
+    "WPRO": "Pacifique occidental",
+    "NewSources": "Nouvelles sources ajoutées"
+  },
   "BlankUniversity": "Université de NAME",
   "ByCountry": "Par pays",
   "ByPopulation": "Par population",
@@ -116,7 +129,7 @@
   "COVIDImmunityTaskForce": "Groupe de travail sur l'immunité face à COVID-19",
   "Dashboard": "Tableau de bord",
   "Data": "Données",
-  "DatabaseUptoDateTo": "Base de données à jour pour",
+  "DatabaseUptoDateTo": "Base de données à jour jusqu'au",
   "DataDictionary": "Dictionnaire de données",
   "DataDictionaryText": {
     "FirstParagraph": "Pour plus d'informations et de contexte sur nos données, veuillez s'il vous plait consulter notre",
@@ -140,7 +153,16 @@
   "DropdownQuestions": {
     "Question1": {
       "Question": "D'où viennent les données de SeroTracker?",
-      "Answer": "Nous collectons les données à partir des articles évalués par les pairs (peer reviewed), les prépublications, les comptes rendus, et les nouvelles non-publiées. "
+      "Answer": {
+        "Part1": "Nous recueillons toutes les données de séroprévalence à partir d'articles évalués par des pairs, de prépublications, de rapports et de médias (littérature grise non publiée). Les données reliées au statut vaccinal et au nombre de cas sont extraites du ",
+        "Part2": "Les sources incluses dans notre tableau de bord jusqu'à présent sont dans le tableau ci-dessous."
+      },
+      "Links": {
+        "Link1": "https://github.com/owid/covid-19-data"
+      },
+      "LinkTexts": {
+        "LinkText1": "référentiel GitHub de Our World In Data (OWID). "
+      }
     },
     "Question2": {
       "Question": "Comment SeroTracker recueille-t-il des données?  ",
@@ -151,22 +173,26 @@
       "Answer": "Nous avons une équipe de chercheurs qui ont une formation en sciences de la santé et en épidémiologie. Les membres de notre 'équipe révisent les études et enregistrent manuellement les valeurs de séroprévalence dans nos base de données sur une plate-forme de gestion de données appelée AirTable. Les processus et les règles que nous suivons chez SeroTracker pour extraire les données sont disponibles dans le protocole et le document dictionnaire des données."
     },
     "Question4": {
+      "Question": "À quelle fréquence les données SeroTracker sont-elles mises à jour ?",
+      "Answer": "Les données de SeroTracker sont mises à jour environ toutes les semaines. Notre équipe analyse la nouvelle littérature chaque vendredi et les données sont ajoutées au cours de la semaine suivante."
+    },
+    "Question5": {
       "Question": "Comment les données sont-elles visualisées sur la carte interactive?  ",
       "Answer": "Les données qui sont sur AirTable sont exécutées automatiquement à travers une pipeline de logiciels. Les données sont vérifiées et les informations supplémentaires (telles que l’emplacement géographique de l'étude) sont ajoutées. Ces nouvelles données sont retenues dans un logiciel séparé - utilisé par le page \"Explore\"."
     },
-    "Question5": {
+    "Question6": {
       "Question": "Est-ce que je peux utiliser les données de SeroTracker pour effectuer ma propre analyse?  ",
       "Answer": "Absolument! Notre base de données est gratuite pour tout le monde. Vous pouvez télécharger notre document .csv complet avec le bouton \"Télécharger CSV\" au-dessus. Avant de vous fournier ces données, nous vous demandons de compléter un questionnaire avec votre rôle, votre affiliation académique (si pertinent), et le type de recherche que vous faites. Cette information nous aide beaucoup à créer les données les plus utiles pour vous."
     },
-    "Question6": {
+    "Question7": {
       "Question": "Est-ce que je dois être un utilisateur de AirTable pour utiliser les données de SeroTracker?  ",
       "Answer": "Non. Bien que nos données soient présentées dans un format AirTable, vous pouvez facilement le transformer en format Excel ou en autres formats. "
     },
-    "Question7": {
+    "Question8": {
       "Question": "Comment est-ce que les variables doivent être interprétées?",
       "Answer": "Veuillez consulter notre dictionnaire de données (avec le bouton associé au dessus) pour les explications de nos variables, types des données, et descriptions. Il possède aussi de l’information à propos de notre collection de données. Le document est structuré de manière  à faciliter la compréhension de notre base des données. "
     },
-    "Question8": {
+    "Question9": {
       "Question": "Comment les données de SeroTracker ont-elles été utilisées par les autres?",
       "Answer": {
         "Part1": "Les données de SeroTracker sont utilisées par beaucoup de professionnels de la santé publique et par les agences de santé telles que l’Organisation Mondial de la Santé, et l’Agence de la Santé Publique du Canada. Dans la section \"Publications\" de notre site Web, vous pouvez accéder aux rapports, aux articles académiques, et aux nouvelles/médias avec SeroTracker. Notre",
@@ -207,13 +233,14 @@
   "For": "Pour",
   "Footer": {
     "CiteAs": "Citez ceci comme: ",
-    "LastUpdated": "Base de données à jour jusqu'à",
+    "LastUpdated": "Base de données à jour jusqu'au",
     "LancetInfDis": "Lancet Inf Dis",
     "Article": "article"
   },
   "French": "français",
   "FAQ": "FAQ",
   "FrequentlyAskedQuestions": "Foire aux questions",
+  "GeneralSerotrackerCommunications": "Communications générales SeroTracker",
   "GeneralTerms": "Conditions générales",
   "Geographies": "Géographies",
   "Geography": "Géographie",
@@ -244,7 +271,9 @@
     "JouleAnnounce": "Joule annonce les lauréats des bourses «Innovation» 2020",
     "StillVulnerable": "La population mondiale toujours vulnérable à la COVID-19",
     "NYTIndia": "Quelle pourrait être la vraie ampleur de la propagation de Covid en Inde?",
-    "EconomistDeathToll": "Comment avons-nous estimé le véritable nombre de morts de la pandémie?"
+    "EconomistDeathToll": "Comment avons-nous estimé le véritable nombre de morts de la pandémie?",
+    "EconomistDeathToll2": "Le véritable bilan de la pandémie",
+    "InventoryEvidenceSynthesis": "Inventaire des meilleures synthèses de preuves"
   },
   "IndustryReportTitles": {
     "AugustReport": "Le bulletin d'Août",
@@ -256,8 +285,7 @@
     "PreliminaryReport": "Le bulletin préliminaire",
     "SeptemberReport": "Le bulletin de Septembre",
     "YearInReview2020": "Bilan de l’année 2020 de SeroTracker",
-    "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie",
-    "InventoryEvidenceSynthesis": "Inventaire des meilleures synthèses de preuves"
+    "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie"
   },
   "ResearchArticleTitles": {
     "PrePrint": "Leçons d'un examen rapide et systématique du début des SRAS-CoV-2 enquêtes sérologiques",
@@ -421,7 +449,7 @@
     "Publications": "Apprenez-en plus sur l'impact de SeroTracker dans des articles de recherche, des résumés et des mentions dans les médias.",
     "ResearchArticles": "Articles de recherche évalués par des pairs publiés par l'équipe SeroTracker.",
     "LiteratureUpdateReports": "Aperçus mensuels et mises à jour sur les tendances dans la littérature des enquêtes sérologiques et les paramètres fournis par l'OMS.",
-    "PrivateSectorReports": " Mises à jour sur le dépistage et les tests COVID-19 dans le secteur privé au Canada.",
+    "GeneralSerotrackerCommunications": "Mises à jour et réflexions de l'ensemble de l'équipe SeroTracker.",
     "MediaMentions": "Publications médiatiques mondiales mettant en vedette SeroTracker.",
     "MonthlyReports": "Covid-19 Dépistage et d'essais dans le secteur privé du Canada"
   },
@@ -434,7 +462,6 @@
   "RegionalStudyDetails": "Étude régionale",
   "RegulatoryApproval": "Autorisation réglementaire",
   "Report": "Rapport",
-  "PrivateSectorReports": "Les bulletins du secteur privé",
   "ReportsAndArticles": "Rapports et articles",
   "ResearchArticles": "Articles de recherche",
   "RiskOfBias": "Risque de partialité",
@@ -548,7 +575,7 @@
     "Other": "Autre"
   },
   "TestUsed": "Test utilisé",
-  "ThisForm": "Ce formulaire",
+  "ThisForm": "ce formulaire",
   "Today": "Aujourd'hui",
   "TotalEstimates": "Estimations totales",
   "TotalTests": "Total des tests",

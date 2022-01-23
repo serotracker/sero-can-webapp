@@ -9,6 +9,9 @@ import mapboxgl from "mapbox-gl";
 import generateSourceFromRecords from "utils/GeoJsonGenerator";
 import {Expressions} from "components/map/MapConfig"
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
+import {getMapboxLatitudeOffset} from "../../../utils/utils";
+import {useMediaQuery} from "react-responsive";
+import {mobileDeviceOrTabletWidth} from "../../../constants";
 
 // Checks and blurs all pins that are not selected whgen a certain pin is clicked
 const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
@@ -17,7 +20,7 @@ const togglePinBlur = (map: mapboxgl.Map, selectedPinId?: string) => {
     });
   
   features.forEach(x => {
-    const isBlurred = (selectedPinId === x?.id || selectedPinId === undefined) ? false : true
+    const isBlurred = !(selectedPinId === x?.id || selectedPinId === undefined)
     if (x && x.id)
     {
       map.setFeatureState(
@@ -89,18 +92,18 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
           pinPopup.remove()
         }
         const source_id = e.features[0].properties.source_id;
-
+        const offset = getMapboxLatitudeOffset(map)
         api.getRecordDetails(source_id).then((record) => {
           if (record !== null) {
             setSelectedPinId(source_id);
             togglePinBlur(map, source_id);
             pinPopup = new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
               .setLngLat(e.lngLat)
-              .setMaxWidth("445px")
+              .setMaxWidth("480px")
               .setHTML(ReactDOMServer.renderToString(StudyPopup(record, state.allFilterOptions.population_group)))
               .addTo(map);
             map.flyTo({
-              center: [e.lngLat.lng, e.lngLat.lat - 15], //TODO: works for most cases, not sure how to center popup
+              center: [e.lngLat.lng, e.lngLat.lat - offset],
               curve: 0.5,
               speed: 0.5,
               });

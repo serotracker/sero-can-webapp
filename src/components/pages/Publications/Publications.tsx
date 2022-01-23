@@ -2,14 +2,20 @@ import React from "react";
 
 import {useMediaQuery} from "react-responsive";
 import {mobileDeviceOrTabletWidth, PAGE_HASHES} from "../../../constants";
-import {PublicationsCard} from "./PublicationsCard";
-import {PublicationsInfo} from "./PublicationsConstants";
+import {MediaCard} from "./MediaCard";
+import {BiblioDigestCard} from "./BiblioDigestCard";
+import {
+    listOfReports, 
+    listOfBiblioDigests, 
+    listOfMediaPublicationsProps, 
+    listOfMonthlyReports, 
+    listOfResearchArticles,
+    PublicationProps
+} from "./PublicationsConstants";
 import './styles.scss';
 import Translate from "../../../utils/translate/translateService";
 import {PublicationsItem} from "./PublicationsItem";
 import Slider from "react-slick";
-
-export type PublicationsType = 'articles' | 'reports' | 'media' | 'biblioDigests' | 'monthlyReports';
 
 export default function Publications() {
     const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth})
@@ -29,8 +35,8 @@ export default function Publications() {
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
-                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.PrivateSectorReports}>
-                            {Translate('PrivateSectorReports')}
+                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.GeneralSerotrackerCommunications}>
+                            {Translate('GeneralSerotrackerCommunications')}
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
@@ -58,15 +64,14 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["ResearchArticles"])}
                 </p>
-                {getPublications("articles")}
-
-                <h2 id={PAGE_HASHES.Publications.PrivateSectorReports}>
-                    {Translate('PrivateSectorReports')}
+                {getPublicationsItems(listOfResearchArticles)}
+                <h2 id={PAGE_HASHES.Publications.GeneralSerotrackerCommunications}>
+                    {Translate('GeneralSerotrackerCommunications')}
                 </h2>
                 <p>
-                    {Translate("PublicationDescriptions", ["PrivateSectorReports"])}
+                    {Translate("PublicationDescriptions", ["GeneralSerotrackerCommunications"])}
                 </p>
-                {getPublications("reports")}
+                {getPublicationsItems(listOfReports)}
 
                 <h2 id={PAGE_HASHES.Publications.BiblioDigests}>
                     {Translate('BiblioDigests')}
@@ -74,7 +79,7 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["LiteratureUpdateReports"])}
                 </p>
-                {getLinksOfPublications("biblioDigests")}
+                {getBiblioDigestCarousel()}
 
                 <h2 id={PAGE_HASHES.Publications.MonthlyReports}>
                     {"Monthly Reports"}
@@ -82,7 +87,7 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["MonthlyReports"])}
                 </p>
-                {getLinksOfPublications("monthlyReports")}
+                {getPublicationsLinks(listOfMonthlyReports)}
 
                 <h2 id={PAGE_HASHES.Publications.MediaMentions}>
                     {Translate('MediaMentions')}
@@ -90,30 +95,22 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["MediaMentions"])}
                 </p>
-                {getCarouselOfPublicationsCards("media")}
+                {getMediaCarousel()}
             </div>
         </div>
     )
 }
 
 
-const getPublications = (type: PublicationsType) => {
+const getPublicationsItems = (publications: PublicationProps[]) => {
     return (
-        PublicationsInfo[type].map((publicationsProps) => {
-            return <PublicationsItem
-                day={publicationsProps.day ?? ""}
-                month={publicationsProps.month}
-                year={publicationsProps.year}
-                titleKey1={publicationsProps.titleKey1}
-                titleKey2={publicationsProps.titleKey2}
-                url={publicationsProps.url}
-                authors={publicationsProps.authors}
-                publicationName={publicationsProps.publicationName}/>
+        publications.map((publicationsProps) => {
+            return <PublicationsItem {...publicationsProps}/>
         }))
 }
 
-const getLinksOfPublications = (type: PublicationsType) => {
-    return PublicationsInfo[type].map((publicationsProps) => {
+const getPublicationsLinks = (publications: PublicationProps[]) => {
+    return publications.map((publicationsProps) => {
         return <a className={"py-2 publication-link"} href={publicationsProps.url} target="_blank" rel="noopener noreferrer">
             {publicationsProps.italicize ?
                 <i>{publicationsProps.italicize}&nbsp;</i> : null}{Translate(publicationsProps.titleKey1, publicationsProps.titleKey2)}
@@ -121,52 +118,58 @@ const getLinksOfPublications = (type: PublicationsType) => {
     })
 }
 
-const sliderSettings = {
-    dots: true,
-    infinite: true,
-    arrows: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    responsive: [
-        {
-            breakpoint: 1048,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                infinite: true,
-                dots: true
+const sliderSettings = (slidesToShow: number) =>{
+    return {
+        dots: true,
+        infinite: true,
+        arrows: true,
+        speed: 500,
+        slidesToShow: slidesToShow,
+        slidesToScroll: slidesToShow,
+        responsive: [
+            {
+                breakpoint: 1048,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
             }
-        },
-        {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                infinite: true,
-                dots: true
-            }
-        }
-    ]
-};
+        ]
+    };
+} 
 
-const getCarouselOfPublicationsCards = (type: PublicationsType) => {
+const getMediaCarousel = () => {
     return (
         <div className="publications-slider-container pb-4">
-            <Slider {...sliderSettings}>
+            <Slider {...sliderSettings(3)}>
                 {
-                    PublicationsInfo[type].map((publicationsProps, idx) => {
-                        return <PublicationsCard
-                            day={publicationsProps.day ?? ""}
-                            month={publicationsProps.month}
-                            year={publicationsProps.year}
-                            titleKey1={publicationsProps.titleKey1}
-                            titleKey2={publicationsProps.titleKey2}
-                            url={publicationsProps.url}
-                            authors={publicationsProps.authors}
-                            publicationName={publicationsProps.publicationName}
-                            img={publicationsProps.img}
-                        />
+                    listOfMediaPublicationsProps.map((publicationsProps) => {
+                        return <MediaCard {...publicationsProps}/>
+                    })
+                }
+            </Slider>
+        </div>
+    )
+}
+
+const getBiblioDigestCarousel = () => {
+    return (
+        <div className="publications-slider-container pb-4">
+            <Slider {...sliderSettings(2)}>
+                {
+                    listOfBiblioDigests.map((publicationsProps) => {
+                        return <BiblioDigestCard {...publicationsProps}/>
                     })
                 }
             </Slider>
