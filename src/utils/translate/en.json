@@ -157,7 +157,16 @@
   "DropdownQuestions": {
     "Question1": {
       "Question": "Where does SeroTracker's data come from?",
-      "Answer": "We collect data from published peer reviewed research articles, preprints, reports, and media (unpublished grey literature). The sources included in our dashboard to date are in the table below."
+      "Answer": {
+        "Part1": "We collect all seroprevalence data from published peer reviewed research articles, preprints, reports, and media (unpublished grey literature). Data related to vaccination status and case counts is pulled from the",
+        "Part2": "The sources included in our dashboard to date are in the table below."
+      },
+      "Links": {
+        "Link1": "https://github.com/owid/covid-19-data"
+      },
+      "LinkTexts": {
+        "LinkText1": "OWID GitHub repository. "
+      }
     },
     "Question2": {
       "Question": "How does SeroTracker collect their data?",
@@ -168,22 +177,26 @@
       "Answer": "We have an extensive research team trained in health sciences and epidemiology who manually reviews articles and records seroprevalence estimates into a data management platform called AirTable. The processes and rules we follow to extract data are available in our study protocol document and AirTable data dictionary."
     },
     "Question4": {
+      "Question": "How often is SeroTracker Data Updated?",
+      "Answer": "SeroTracker data is updated approximately every week. Our team scans new literature every Friday and data is added over the course of the following week."
+    },
+    "Question5": {
       "Question": "How does SeroTracker’s data show up on the map?",
       "Answer": "Data inputted into Airtable is automatically run through a software pipeline that cleans it and computes additional information (e.g. a study’s geographic coordinates). The outputs of the pipeline are then stored in a separate database, which is queried by serotracker.com to serve the \"Explore\" tab."
     },
-    "Question5": {
+    "Question6": {
       "Question": "Can I download SeroTracker's data for my own analysis?",
       "Answer": "Yes, our data is open-source and free for anyone to use. You can download our complete .csv file using the \"Download CSV\" button above. You will first be asked to fill out a form indicating your role, affiliation (if relevant), and type of research you’re conducting - This helps us create datasets that are most useful to you. "
     },
-    "Question6": {
+    "Question7": {
       "Question": "Do I need to be an AirTable user to use SeroTracker's data?",
       "Answer": "No. Although our data is presented in an AirTable file, you can export this easily to Excel or other formats."
     },
-    "Question7": {
+    "Question8": {
       "Question": "How do I interpret the variables in SeroTracker's data set?",
       "Answer": "Please see our Data Dictionary (using the button above) for explanations of our variables, data types, and descriptions as well as insight into how our data is collected by our research team. It is structured to help interpret our downloadable data set. "
     },
-    "Question8": {
+    "Question9": {
       "Question": "How has SeroTracker's data been used by others?",
       "Answer": {
         "Part1": "SeroTracker data is used by many public health professionals and health agencies such as the World Health Organization and Public Health Agency of Canada, among others. The \"Publications\" tab has links to internal reports, publications we have produced, and features of SeroTracker data and work in the media. Our most recent",

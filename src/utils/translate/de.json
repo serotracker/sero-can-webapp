@@ -90,7 +90,6 @@
   "Article": "Artikel",
   "Authors": "Autoren",
   "AuthorAndLeadOrganizationNotReported": "Autor und federführende Organisation nicht angegeben",
-  "AntibodyTarget": "Antikörper-Target",
   "BiblioDigestCard": {
     "Title": "Wichtige Erkenntnisse von Serotracker",
     "Published": "Veröffentlicht:",
@@ -154,8 +153,17 @@
   "DisclaimerListHeader": "Geschäftsbedingungen für die Nutzung der Website:,",
   "DropdownQuestions": {
     "Question1": {
-      "Question": "Woher stammen die Daten von SeroTracker?",
-      "Answer": "Wir sammeln Daten aus veröffentlichten, von Fachleuten geprüften Forschungsartikeln, Vorabdrucken, Berichten und Medien (unveröffentlichte graue Literatur). Die Quellen, die bisher in unser Dashboard aufgenommen wurden, sind in der nachstehenden Tabelle aufgeführt."
+      "Question": "Woher kommen die Daten von SeroTracker?",
+      "Answer": {
+        "Part1": "Wir sammeln alle Seroprävalenzdaten aus veröffentlichten, begutachteten Forschungsartikeln, Preprints, Berichten und Medien (unveröffentlichte graue Literatur). Daten zum Impfstatus und zur Fallzahl werden aus dem",
+        "Part2": "gezogen. Die Quellen, die bisher in unser Dashboard eingeflossen sind, finden Sie in der folgenden Tabelle."
+      },
+      "Links": {
+        "Link1": "https://github.com/owid/covid-19-data"
+      },
+      "LinkTexts": {
+        "LinkText1": "OWID GitHub repository. "
+      }
     },
     "Question2": {
       "Question": "Wie sammelt SeroTracker seine Daten?",
@@ -166,22 +174,26 @@
       "Answer": "Wir verfügen über ein umfangreiches, in Gesundheitswissenschaften und Epidemiologie geschultes Forschungsteam, das Artikel manuell überprüft und Schätzungen der Seroprävalenz in AirTable, unserer Datenbankverwaltungssoftware, erfasst. Die Prozesse und Regeln, die wir bei der Datenextraktion befolgen, sind in unserem Studienprotokoll und im AirTable-Datenwörterbuch zu finden."
     },
     "Question4": {
+      "Question": "Wie oft werden die SeroTracker-Daten aktualisiert?",
+      "Answer": "Die SeroTracker-Daten werden ungefähr jede Woche aktualisiert. Unser Team scannt jeden Freitag neue Literatur und die Daten werden im Laufe der folgenden Woche hinzugefügt."
+    },
+    "Question5": {
       "Question": "Wie werden die Daten von SeroTracker auf der Karte angezeigt?",
       "Answer": "Die in Airtable eingegebenen Daten durchlaufen automatisch eine Software-Pipeline, die sie bereinigt und zusätzliche Informationen berechnet (z. B. die geografischen Koordinaten einer Studie). Die Ergebnisse der Pipeline werden dann in einer separaten Datenbank gespeichert, die von serotracker.com abgefragt wird, um die Registerkarte “Explore“ zu bedienen.."
     },
-    "Question5": {
+    "Question6": {
       "Question": "Kann ich die Daten von SeroTracker für meine eigene Analyse herunterladen?",
       "Answer": "Ja, unsere Daten sind quelloffen und können von jedermann frei genutzt werden. Sie können unsere vollständige .csv-Datei über die Schaltfläche “Download CSV“ (siehe oben) herunterladen. Sie werden zunächst gebeten, ein Formular auszufüllen, in dem Sie Ihre Funktion, Ihre Zugehörigkeit (falls relevant) und die Art der von Ihnen durchgeführten Forschungsarbeiten angeben – so können wir Datensätze erstellen, die für Sie am nützlichsten sind."
     },
-    "Question6": {
+    "Question7": {
       "Question": "Muss ich ein AirTable-Benutzer sein, um die Daten von SeroTracker zu nutzen?",
       "Answer": "Nein. Obwohl unsere Daten in einer AirTable-Datei dargestellt werden, können Sie diese problemlos in Excel oder andere Formate exportieren."
     },
-    "Question7": {
+    "Question8": {
       "Question": "Wie interpretiere ich die Variablen im Datensatz von SeroTracker?",
       "Answer": "In unserem Datenlexikon (über die oben erwähnte Schaltfläche) finden Sie Erklärungen zu unseren Variablen, Datentypen und Beschreibungen sowie einen Einblick in die Art und Weise, wie unsere Daten von unserem Forschungsteam erhoben werden. Sie ist so aufgebaut, dass sie die Interpretation unseres herunterladbaren Datensatzes erleichtert. "
     },
-    "Question8": {
+    "Question9": {
       "Question": "Wie haben andere dieSeroTracker-Daten verwendet?",
       "Answer": {
         "Part1": "Die Daten von SeroTracker werden von vielen Fachleuten des öffentlichen Gesundheitswesens und von Gesundheitsbehörden wie der Weltgesundheitsorganisation und der Agentur für öffentliche Gesundheit, Kanada, verwendet, um nur einige zu nennen. Die Registerkarte “Einblicke/Insights“ enthält Links zu internen Berichten, von uns erstellten Veröffentlichungen sowie zu Berichten über SeroTracker-Daten und -Arbeiten in den Medien. Unsere neueste ",
