@@ -7,14 +7,6 @@ interface TrackProps {
     disabled?: Boolean;
     getTrackProps: () => object;
 }
-  
-const trackStyle: React.CSSProperties = {
-  position: "absolute",
-  height: 5,
-  zIndex: 1,
-  borderRadius: 7,
-  cursor: "pointer",
-};
 
 export default function Track({
     source,
@@ -24,11 +16,11 @@ export default function Track({
   }: TrackProps) {
     return (
       <div
+        className={"track-style"}
         style={{
           backgroundColor: disabled ? "#999" : "#455a6a",
           left: `${source.percent}%`,
-          width: `${target.percent - source.percent}%`,
-          ...trackStyle
+          width: `${target.percent - source.percent}%`
         }}
         {...getTrackProps()}
       />
