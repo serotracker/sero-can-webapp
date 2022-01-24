@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useState } from "react";
 import { Dropdown, Button } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType, PageState, State } from '../../../types';
@@ -23,16 +23,8 @@ interface PopulationGroupFilterOption {
 }
 
 export default function Filters({ page }: FilterProps) {
-  let unityAlignedOnlyItem: any = useRef(null);
-  let sourceTypeItem: any = useRef(null);
-  let overallRiskOfBiasItem: any = useRef(null);
-  let populationGroupItem: any = useRef(null);
-  let sexItem: any = useRef(null);
-  let ageItem: any = useRef(null);
-  let testTypeItem: any = useRef(null);
-  let isotypesReportedItem: any = useRef(null);
-  let antibodyTargetItem: any = useRef(null);
   const [state, dispatch] = useContext(AppContext);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const filters = (state[page as keyof State] as PageState).filters;
 
   const formatOptions = (options: any, filter_type: FilterType) => {
@@ -93,31 +85,21 @@ export default function Filters({ page }: FilterProps) {
       filterType,
       data,
       page)
+      setIsButtonDisabled(false);
   }
 
-  const clearFilter = () => {
-    // remove selected options in dropdown (frontend)
-    if (unityAlignedOnlyItem.current.querySelector(".clear")) unityAlignedOnlyItem.current.querySelector(".clear").click();
-    if (sourceTypeItem.current.querySelector(".clear")) sourceTypeItem.current.querySelector(".clear").click();
-    if (overallRiskOfBiasItem.current.querySelector(".clear")) overallRiskOfBiasItem.current.querySelector(".clear").click();
-    if (populationGroupItem.current.querySelector(".clear")) populationGroupItem.current.querySelector(".clear").click();
-    if (sexItem.current.querySelector(".clear")) sexItem.current.querySelector(".clear").click();
-    if (ageItem.current.querySelector(".clear")) ageItem.current.querySelector(".clear").click();
-    if (testTypeItem.current.querySelector(".clear")) testTypeItem.current.querySelector(".clear").click();
-    if (isotypesReportedItem.current.querySelector(".clear")) isotypesReportedItem.current.querySelector(".clear").click();
-    if (antibodyTargetItem.current.querySelector(".clear")) antibodyTargetItem.current.querySelector(".clear").click();
-
-      // remove filters in backend
+  const clearFilter = async () => {
+    // remove filters in backend
     clearFilters(
       dispatch,
       page
     )
+    setIsButtonDisabled(true);
   }
 
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
     return (
       <div className="pb-3">
-      
         <Dropdown
           text={placeholder}
           fluid
@@ -129,12 +111,14 @@ export default function Filters({ page }: FilterProps) {
           onChange={(e: any, data: any) => {
             addFilter(data.value, filter_type)
           }}
+          value={filters[filter_type] as string[]}
           defaultValue={filters[filter_type] as string[]}
         />
  
       </div>
     )
   }
+
 
   const buildFilterCheckbox = (filter_type: FilterType, label: string, title?: string, link?: string) => {
     return(
@@ -200,13 +184,13 @@ export default function Filters({ page }: FilterProps) {
               }
             </div>
         
-            <div ref={unityAlignedOnlyItem}>
+            <div>
               {buildFilterCheckbox('unity_aligned_only', Translate('UnityStudiesOnly'), Translate('UnityStudiesOnlyLong'), "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/early-investigations")}
             </div>
-            <div ref={sourceTypeItem}>
+            <div>
               {buildFilterDropdown('source_type', Translate('SourceType'))}
             </div>
-            <div ref={overallRiskOfBiasItem}>
+            <div>
               {buildFilterDropdown('overall_risk_of_bias', Translate('OverallRiskOfBias'))}
             </div>
           </div>
@@ -214,13 +198,13 @@ export default function Filters({ page }: FilterProps) {
             <div>
               <SectionHeader header_text={Translate('Demographics')} tooltip_text={Translate('DemographicsTooltip')}/>
             </div>
-            <div ref={populationGroupItem}>
+            <div>
               {buildFilterDropdown('population_group', Translate('PopulationGroup'))}
             </div>
-            <div ref={sexItem}>
+            <div>
               {buildFilterDropdown('sex', Translate('Sex'))}
             </div>
-            <div ref={ageItem}>
+            <div>
               {buildFilterDropdown('age', Translate('Age'))}
             </div>
           </div>
@@ -228,18 +212,18 @@ export default function Filters({ page }: FilterProps) {
             <div>
               <SectionHeader header_text={Translate('TestInformation')} tooltip_text={Translate('TestInformationTooltip')}/>
             </div>
-            <div ref={testTypeItem}>
+            <div>
               {buildFilterDropdown('test_type', Translate('TestType'))}
             </div>
-            <div ref={isotypesReportedItem}>
+            <div>
               {buildFilterDropdown('isotypes_reported', Translate('IsotypesReported'))}
             </div>
-            <div ref={antibodyTargetItem}>
+            <div>
               {buildFilterDropdown('antibody_target', Translate('AntibodyTarget'))}
             </div>
           </div>
         </div>
-        <Button color="grey" size="small" onClick={clearFilter}> {Translate('ClearAllFilters')}</Button>
+        <Button color="grey" size="small" disabled={isButtonDisabled} onClick={clearFilter}> {Translate('ClearAllFilters')}</Button>
       </div>
       <Datepicker page={page}/>
     </div>
