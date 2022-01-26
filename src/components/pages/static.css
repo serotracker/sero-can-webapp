@@ -15,12 +15,6 @@
   border-left: 2px solid grey;
 }
 
-.dashboard {
-  max-height: calc(100% - 100px);
-  height: 100%;
-  overflow-y: scroll;
-}
-
 .static-content {
   width: 60%;
 }
@@ -168,7 +162,7 @@
 
 .policy-div-desktop {
   height: 100%;
-  width: 100%; 
+  width: 100%;
   margin-left: 40vh !important;
 }
 

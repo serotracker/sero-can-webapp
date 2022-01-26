@@ -30,4 +30,12 @@
             right: 10px;
         }
     }
+
+    &__dashboard {
+        display: flex;
+        flex: 1 1;
+        max-height: calc(100% - 100px);
+        height: 100%;
+        overflow-y: scroll;
+      }
 }
