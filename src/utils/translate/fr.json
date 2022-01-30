@@ -18,7 +18,7 @@
       "UnityStudies": "séroprévalence Unity.",
       "WHO1": "SeroTracker travaille avec",
       "WHO2": "de la santé pour visualiser et synthétiser les résultats des études de",
-      "WHO3": "SeroTracker et l’Organisation mondiale de la santé remercions le Ministère Fédéral Allemand de la Santé (BMG) Recherche et Développement COVID-19 pour le financement pour soutenir cet effort",
+      "WHO3": "SeroTracker et l’Organisation mondiale de la santé remercions le Ministère Fédéral Allemand de la Santé (BMG) Recherche et Développement COVID-19 pour le financement pour soutenir cet effort.",
       "WorldHealthOrganization": "l’Organisation mondiale de la santé"
     },
     "ContactSection": {
@@ -337,7 +337,7 @@
   "Media": "Médias",
   "MediaMentions": "Mentions dans les médias",
   "MemorialUniversityOfNewfoundland": "Université commémorative de Terre-Neuve",
-  "MonthlyReports": "Rapports mensuels",
+  "PrivateSectorReports": "Rapports du secteur privé",
   "Months": {
     "January": "janvier",
     "February": "février",
@@ -446,16 +446,15 @@
 
   "Publication": "Publication",
   "PublicationDescriptions": {
-    "Publications": "Apprenez-en plus sur l'impact de SeroTracker dans des articles de recherche, des résumés et des mentions dans les médias.",
-    "ResearchArticles": "Articles de recherche évalués par des pairs publiés par l'équipe SeroTracker.",
-    "LiteratureUpdateReports": "Aperçus mensuels et mises à jour sur les tendances dans la littérature des enquêtes sérologiques et les paramètres fournis par l'OMS.",
-    "GeneralSerotrackerCommunications": "Mises à jour et réflexions de l'ensemble de l'équipe SeroTracker.",
-    "MediaMentions": "Publications médiatiques mondiales mettant en vedette SeroTracker.",
-    "MonthlyReports": "Covid-19 Dépistage et d'essais dans le secteur privé du Canada"
+    "Publications": "Apprenez-en plus sur l'impact de SeroTracker dans des articles de recherche, des résumés et des mentions dans les médias",
+    "ResearchArticles": "Articles de recherche évalués par des pairs publiés par l'équipe SeroTracker",
+    "LiteratureUpdateReports": "Aperçus mensuels et mises à jour sur les tendances dans la littérature des enquêtes sérologiques et les paramètres fournis par l'OMS",
+    "GeneralSerotrackerCommunications": "Mises à jour et réflexions de l'ensemble de l'équipe SeroTracker",
+    "MediaMentions": "Publications médiatiques mondiales mettant en vedette SeroTracker",
+    "PrivateSectorReports": "Rapports sur les pratiques de dépistage et de test de la COVID-19 dans le secteur privé canadien"
   },
   "Publications": "Publications",
   "Published": "Publié",
-  "References": "Références",
   "DataTable": "Table de données",
   "RegionalEstimateRange": "Plage d'estimation régionale",
   "RegionalEstimates": "Estimations régionales",
