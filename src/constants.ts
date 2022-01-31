@@ -13,7 +13,7 @@ export const ANALYZE_URLS = {
 }
 export const CANADA_URLS = {
     "en": "https://public.tableau.com/views/CanadaEN/Canadiancharts?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link",
-    "fr": "https://public.tableau.com/app/profile/serotracker/viz/CanadaFR/Canadiancharts"
+    "fr": "https://public.tableau.com/views/CanadaFR/Canadiancharts?:language=en-US&:display_count=n&:origin=viz_share_link"
 }
 
 
