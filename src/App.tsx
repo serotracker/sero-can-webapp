@@ -18,6 +18,7 @@ import httpClient from "./httpClient";
 import { LanguageType } from "./types";
 import { setLanguageType } from "./utils/translate/translateService";
 import Partnerships from "components/pages/Partnerships/Partnerships";
+import NewsletterPopup from "./components/shared/NewsletterPopup";
 
 function App() {
   const [{ language, explore }, dispatch] = useContext(AppContext);
@@ -95,6 +96,7 @@ function App() {
     <div className="App">
       <Header />
       <CookieBanner />
+      <NewsletterPopup />
       <Switch>
         <Route path="/:language/About">
           <About />
