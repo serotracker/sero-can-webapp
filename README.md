@@ -1,7 +1,7 @@
 
 ## [Serotracker.com](https://serotracker.com/)
 
-### Getting Started
+### Prerequisites
 
 #### Required Software
 | Name | Version |  Link |  Description |
@@ -10,22 +10,29 @@
 | NPM | 6.13.4 | https://docs.npmjs.com/cli/v7/commands/npm-install | Software Package Manager |
 | VS Code | 6.13.4 | https://code.visualstudio.com/ | Code IDE, not required but popular choice for this project |
 
+#### Installing Node & NPM 
+
+We recommend using Node Version Manager (nvm), which is a command line tool that allows you to quickly install, use and switch between different versions of node. If you're using a bash shell (default shell for Mac OS), simply execute the following steps:
+
+1. Run `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash` 
+2. Check that `export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm` has been written into your `~/.bash_profile`, if not then add it in.
+3. Restart your terminal or run `source ~/.bash_profile` 
+4. Check that nvm has been installed properly by running `nvm -v`. If successful, this command should output the version of nvm that you've just installed.
+5. Run `nvm install 12.16.0` to install the version of node that's compatible with this project
+6. Run `node -v`, ensure that the output indicates that you're running node version 12.16.0
+
+### Local Development Setup 
+
 #### Starting Application Locally
-First, the following environment variables, `REACT_APP_MAPBOX_API_KEY` and `REACT_APP_ROUTE` must be set. Talk to a team member to get the keys.
 
-Second, install npm packages:
-```bash
-npm install
-```
-*Note: This needs to be run when you initially setup the repository and when packages are updated/added/removed.*
+1. Clone the sero-can-webapp repo
+2. Navigate to the root directory of sero-can-webapp
+3. Install project dependencies via `npm install`. Note, this only needs to be run  when you initially setup the repository and when packages are updated/added/removed.
+4. Set the following environment variables: `REACT_APP_ROUTE`, `REACT_APP_MAPBOX_API_KEY`. Ask a member of the dev team for these values.
+5. Run the application locally via `npm start`. This should cause the app to open in a browser window at `http://localhost:3000`
 
-Third, to start the local server, use:
-```bash
-npm start
-```
-The app should then open in a browser window as `http://localhost:3000`
-
-### VS  Code Startup Configurations
+#### VS Code Startup Configurations
 We can set launch configurations in VS Code for an improved development experience. This allows us to set breakpoints directly in the editor, and launch the app from the debug tab in VS Code. Multiple configurations can be added. Here is an example that launches the app with the Chrome browser:
 ```
 {
