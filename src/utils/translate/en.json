@@ -343,7 +343,7 @@
   "Media": "Media",
   "MediaMentions": "Media Mentions",
   "MemorialUniversityOfNewfoundland": "Memorial university of Newfoundland",
-  "MonthlyReports": "Monthly Reports",
+  "PrivateSectorReports": "Private Sector Reports",
   "Months": {
     "January": "January",
     "February": "February",
@@ -438,16 +438,15 @@
   "PrivacyPolicy": "Privacy Policy",
   "Publication": "Publication",
   "PublicationDescriptions": {
-    "Publications": "Learn more about SeroTracker’s impact in research articles, summaries, and media mentions.",
-    "ResearchArticles": "Peer-reviewed research papers published by the SeroTracker team.",
-    "LiteratureUpdateReports": "Monthly overviews and updates on trends in serosurvey literature and WHO-supplied metrics.",
+    "Publications": "Learn more about SeroTracker’s impact in research articles, summaries, and media mentions",
+    "ResearchArticles": "Peer-reviewed research papers published by the SeroTracker team",
+    "LiteratureUpdateReports": "Monthly overviews and updates on trends in serosurvey literature and WHO-supplied metrics",
     "GeneralSerotrackerCommunications": "Updates and insights from across the SeroTracker team",
-    "MediaMentions": "Worldwide media publications featuring SeroTracker.",
-    "MonthlyReports": "COVID-19 Screening & Testing in Canada’s Private Sector"
+    "MediaMentions": "Worldwide media publications featuring SeroTracker",
+    "PrivateSectorReports": "Reports on COVID-19 screening and testing practices across Canada’s private sector"
   },
   "Publications": "Publications",
   "Published": "Published",
-  "References": "References",
   "DataTable": "Data Table",
   "RegionalEstimateRange": "Regional Estimate Range",
   "RegionalEstimates": "Regional Estimates",

@@ -157,7 +157,7 @@ export default function Data() {
             <DataDropdowns />
           </div>
 
-          <div className={isMobileDeviceOrTablet ? "pb-3 pt-3" : "pt-0 pb-0"} id={PAGE_HASHES.Data.References}>
+          <div className={isMobileDeviceOrTablet ? "pb-3 pt-3" : "pt-0 pb-0"} id={PAGE_HASHES.Data.DataTable}>
             <h1>{Translate("DataTable")}</h1>
             <p>
               <span>{Translate("UseOfData", null, null, [false, true])}</span>
@@ -165,7 +165,7 @@ export default function Data() {
             </p>
             <Segment>
               <iframe
-                title="References Table"
+                title="Data Table"
                 className="iframe-style"
                 src={
                   isMobileDeviceOrTablet

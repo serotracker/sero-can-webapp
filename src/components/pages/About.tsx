@@ -303,12 +303,6 @@ export default function About() {
             "https://twitter.com/atatmaja_"
           )}
           {renderBioBlock(
-              "Brett Dziedzic",
-              [Translate("UniversityOf", null, { NAME: "Lethbridge" })],
-              "https://www.linkedin.com/in/brett-dziedzic/",
-              "brettdziedzic@gmail.com"
-          )}
-          {renderBioBlock(
               "Flora Guo",
               [Translate("UniversityOf", null, { NAME: "Waterloo" })],
               "https://www.linkedin.com/in/floraguolr/",
@@ -319,19 +313,6 @@ export default function About() {
               [Translate("BlankUniversity", null, { NAME: "McGill" })],
               "https://www.linkedin.com/in/himanshu-ranka-635a02181/",
               "himanshu.ranka@mail.mcgill.ca"
-          )}
-          {renderBioBlock(
-              "Jordan Van Wyk",
-              [Translate("UniversityOf", null, { NAME: "Waterloo" })],
-              "https://www.linkedin.com/in/jordanvanwyk/",
-              "jordanvanwyk@outlook.com",
-              "https://twitter.com/jordanvw_"
-          )}
-          {renderBioBlock(
-              "Prannoy Lal",
-              [Translate("UniversityOf", null, { NAME: "Waterloo" })],
-              "https://www.linkedin.com/in/prannoylal/",
-              "p4lal@uwaterloo.ca"
           )}
           {renderBioBlock(
             "Simona Rocco",
@@ -355,6 +336,12 @@ export default function About() {
               "abhinav.arunpillai@ucalgary.ca"
           )}
           {renderBioBlock(
+              "Brett Dziedzic",
+              [Translate("UniversityOf", null, { NAME: "Lethbridge" })],
+              "https://www.linkedin.com/in/brett-dziedzic/",
+              "brettdziedzic@gmail.com"
+          )}
+          {renderBioBlock(
               "Emily Boucher",
               [Translate("SchoolName", ["Cumming"]), Translate("UniversityOf", null, { NAME: "Calgary" })],
               null,
@@ -372,6 +359,20 @@ export default function About() {
               "https://www.linkedin.com/in/hannah-rahim/",
               "hannahrahim2@gmail.com",
               "https://twitter.com/Hannah_Rahim1"
+          )}
+          {renderBioBlock(
+              "Jordan Van Wyk",
+              [Translate("UniversityOf", null, { NAME: "Waterloo" })],
+              "https://www.linkedin.com/in/jordanvanwyk/",
+              "jordanvanwyk@outlook.com",
+              "https://twitter.com/jordanvw_"
+          )}
+          {renderBioBlock(
+              "Lucas Penny",
+              [Translate("UniversityOf", null, { NAME: "Toronto" })],
+              "https://www.linkedin.com/in/lucaspenny/",
+              "lucas.penny@mail.utoronto.ca",
+              "https://twitter.com/lucasjpenny"
           )}
           {renderBioBlock(
               "Michael Liu",
@@ -397,11 +398,10 @@ export default function About() {
               "https://twitter.com/niduarte_canada"
           )}
           {renderBioBlock(
-              "Lucas Penny",
-              [Translate("UniversityOf", null, { NAME: "Toronto" })],
-              "https://www.linkedin.com/in/lucaspenny/",
-              "lucas.penny@mail.utoronto.ca",
-              "https://twitter.com/lucasjpenny"
+              "Prannoy Lal",
+              [Translate("UniversityOf", null, { NAME: "Waterloo" })],
+              "https://www.linkedin.com/in/prannoylal/",
+              "p4lal@uwaterloo.ca"
           )}
           {renderBioBlock(
               "Sean D'Mello",

@@ -438,7 +438,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
     },
 ]
 
-export const listOfMonthlyReports: PublicationProps[] = [
+export const listOfPrivateSectorReports: PublicationProps[] = [
     {
         titleKey1: 'IndustryReportTitles',
         titleKey2: ["OctoberReport"],

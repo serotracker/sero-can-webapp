@@ -338,7 +338,7 @@
   "Media": "Medien ",
   "MediaMentions": "Erwähnungen in den Medien",
   "MemorialUniversityOfNewfoundland": "Memorial-Universität von Neufundland",
-  "MonthlyReports": "Monatliche Berichte",
+  "PrivateSectorReports": "Berichte aus dem Privatsektore",
   "Months": {
     "January": "Januar",
     "February": "Februar",
@@ -433,16 +433,15 @@
   "PrivacyPolicy": "Datenschutzrichtlinie",
   "Publication": "Veröffentlichung",
   "PublicationDescriptions": {
-    "Publications": "Erfahren Sie mehr über den Einfluss von SeroTracker in Forschungsartikeln Zusammenfassungen und Medienberichten.",
-    "ResearchArticles": "Von Fachleuten begutachtete Forschungsarbeiten, die vom SeroTracker-Team veröffentlicht wurden.",
-    "LiteratureUpdateReports": "Monatliche Übersichten und Updates zu Trends in der Literatur über Serosurveys und zu den von der WHO bereitgestellten Metriken.",
+    "Publications": "Erfahren Sie mehr über den Einfluss von SeroTracker in Forschungsartikeln Zusammenfassungen und Medienberichten",
+    "ResearchArticles": "Von Fachleuten begutachtete Forschungsarbeiten, die vom SeroTracker-Team veröffentlicht wurden",
+    "LiteratureUpdateReports": "Monatliche Übersichten und Updates zu Trends in der Literatur über Serosurveys und zu den von der WHO bereitgestellten Metriken",
     "GeneralSerotrackerCommunications": "Updates und Einblicke aus dem gesamten SeroTracker-Team",
-    "MediaMentions": "Weltweite Medienveröffentlichungen, die SeroTracker vorstellen.",
-    "MonthlyReports": "Updates zu COVID-19-Screening und -Tests im privatwirtschaftlichen Sektor Kanadas"
+    "MediaMentions": "Weltweite Medienveröffentlichungen, die SeroTracker vorstellen",
+    "PrivateSectorReports": "Berichte über COVID-19-Screening- und Testpraktiken im gesamten kanadischen Privatsektor"
   },
   "Publications": "Veröffentlichung",
   "Published": "Veröffentlicht",
-  "References": "Referenzen",
   "DataTable": "Referenzentabelle",
   "RegionalEstimateRange": "Regionaler Schätzbereich",
   "RegionalEstimates": "Regionale Schätzungen",

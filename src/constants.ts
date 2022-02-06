@@ -41,14 +41,14 @@ export const PAGE_HASHES = {
         DownloadCsv: "DownloadCsv",
         AccessGithub: "AccessGithub",
         FAQ: "FAQ",
-        References: "References"
+        DataTable: "DataTable"
 
     },
     [PAGES.Publications]: {
         ResearchArticles: "ResearchArticles",
         GeneralSerotrackerCommunications: "GeneralSerotrackerCommunications",
         BiblioDigests: "BiblioDigests",
-        MonthlyReports: "MonthlyReports",
+        PrivateSectorReports: "PrivateSectorReports",
         MediaMentions: "MediaMentions"
     },
     [PAGES.About]: {
