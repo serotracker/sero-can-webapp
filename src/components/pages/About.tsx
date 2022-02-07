@@ -256,12 +256,6 @@ export default function About() {
               null,
               "judy.chen@mail.mcgill.ca"
           )}
-          {renderBioBlock(
-              "Noel Loo",
-              [Translate("UniversityOf", null, { NAME: "Cambridge" })],
-              null,
-              "noel.loo.188@gmail.com"
-          )}
         </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "GlobalPartnerships"])}</h2>
         <div className="bio-grid-container">
@@ -396,6 +390,12 @@ export default function About() {
               "https://www.linkedin.com/in/duartenathan/",
               "nathanduarte1@gmail.com",
               "https://twitter.com/niduarte_canada"
+          )}
+          {renderBioBlock(
+              "Noel Loo",
+              [Translate("UniversityOf", null, { NAME: "Cambridge" })],
+              null,
+              "noel.loo.188@gmail.com"
           )}
           {renderBioBlock(
               "Prannoy Lal",

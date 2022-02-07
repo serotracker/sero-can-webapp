@@ -290,10 +290,11 @@
     "InsuringTheEconomy": "Absicherung der Wirtschaft gegen eine zweite Pandemiewelle"
   },
   "ResearchArticleTitles": {
-    "PrePrint": "Lehren aus einer raschen systematischen Überprüfung der ersten SARS-CoV-2-Serosurveys",
-    "MedRxivPub": "Globale Seroprävalenz von SARS-CoV-2-Antikörpern: eine systematische Überprüfung und Meta-Analyse",
+    "MedRxivMeta": "Globale Epidemiologie der SARS-CoV-2-Infektion: eine systematische Überprüfung und Metaanalyse standardisierter populationsbasierter Seroprävalenzstudien, Januar 2020 bis Oktober 2021",
+    "MedRxivROB": "SeroTracker-ROB: reproduzierbare Entscheidungsregeln zur Risiko-Bias-Bewertung von Seroprävalenzstudien",
+    "PlosOnePub": "Globale Seroprävalenz von SARS-CoV-2-Antikörpern: eine systematische Überprüfung und Meta-Analyse",
     "LancetID": "SeroTracker: ein globales SARS-CoV-2 Seroprävalenz-Dashboard",
-    "PlosOnePub": "Globale Seroprävalenz von SARS-CoV-2-Antikörpern: eine systematische Überprüfung und Meta-Analyse"
+    "PrePrint": "Lehren aus einer raschen systematischen Überprüfung der ersten SARS-CoV-2-Serosurveys"
   },
   "BiblioDigestTitles": {
     "November": "Literatur-Update-Bericht November",

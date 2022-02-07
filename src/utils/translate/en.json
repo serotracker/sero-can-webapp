@@ -99,7 +99,7 @@
     "Published": "Published:",
     "NewSerosurveys": "New serosurveys identified",
     "AFRO": "African",
-    "EMRO": "Eastern Medditerranean",
+    "EMRO": "Eastern Mediterranean",
     "EURO": "European",
     "PAHO": "Region of the Americas",
     "SEARO": "South-East Asia",
@@ -293,10 +293,11 @@
     "InsuringTheEconomy": "Insuring the Economy Against a Second Pandemic Wave"
   },
   "ResearchArticleTitles": {
-    "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
-    "MedRxivPub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
+    "MedRxivMeta": "Global epidemiology of SARS-CoV-2 infection: a systematic review and meta-analysis of standardized population-based seroprevalence studies, Jan 2020-Oct 2021",
+    "MedRxivROB": "SeroTracker-ROB: reproducible decision rules for risk of bias assessment of seroprevalence studies",
+    "PlosOnePub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
     "LancetID": "SeroTracker: a global SARS-CoV-2 seroprevalence dashboard",
-    "PlosOnePub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis"
+    "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys"
   },
   "BiblioDigestTitles": {
     "December": "December Literature Update Report",

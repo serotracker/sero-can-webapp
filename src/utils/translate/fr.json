@@ -288,10 +288,11 @@
     "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie"
   },
   "ResearchArticleTitles": {
-    "PrePrint": "Leçons d'un examen rapide et systématique du début des SRAS-CoV-2 enquêtes sérologiques",
-    "MedRxivPub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse",
+    "MedRxivMeta": "Épidémiologie mondiale de l'infection par le SRAS-CoV-2: une revue systématique et une méta-analyse d'études de séroprévalence standardisées basées sur la population, janvier 2020-octobre 2021",
+    "MedRxivROB": "SeroTracker-ROB: règles de décision reproductibles pour l'évaluation du risque de biais des études de séroprévalence",
+    "PlosOnePub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse",
     "LancetID": "SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2",
-    "PlosOnePub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse"
+    "PrePrint": "Leçons d'un examen rapide et systématique du début des SRAS-CoV-2 enquêtes sérologiques"
   },
   "BiblioDigestTitles": {
     "December": "Le bulletin de mise à jour de la littérature de decembre",

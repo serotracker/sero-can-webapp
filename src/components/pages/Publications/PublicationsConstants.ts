@@ -87,6 +87,24 @@ export const listOfReports: PublicationProps[] = [
 
 export const listOfResearchArticles: PublicationProps[] = [
     {
+        date: "2021-12-15",
+        img: MedRxiv,
+        titleKey1: 'ResearchArticleTitles',
+        titleKey2: ['MedRxivMeta'],
+        publicationName: "medRxiv",
+        authors: "Isabel Bergeri, Mairead Whelan, Harriet Ware et al.",
+        url: "https://www.medrxiv.org/content/10.1101/2021.12.14.21267791v1"
+    },
+    {
+        date: "2021-11-21",
+        img: MedRxiv,
+        titleKey1: 'ResearchArticleTitles',
+        titleKey2: ['MedRxivROB'],
+        publicationName: "medRxiv",
+        authors: "Niklas Bobrovitz, Kim Noël, Zihan Li et al.",
+        url: "https://www.medrxiv.org/content/10.1101/2021.11.17.21266471v1"
+    },
+    {
         date: "2021-06-23",
         img: PlosOnePub,
         titleKey1: 'ResearchArticleTitles',
@@ -329,9 +347,23 @@ export const listOfMediaPublicationsProps: PublicationProps[] = [
 // Note: for biblio digests, date = date published
 export const listOfBiblioDigests: BiblioDigestProps[] = [
     {
+        url: "https://drive.google.com/file/d/1J51-liWMXACBdMgl2Yqc_litXSIukkBQ/view?usp=sharing",
+        sourcesAdded: 65,
+        serosurveysTotal: 102,
+        serosurveysAFRO: 6,
+        serosurveysEMRO: 2,
+        serosurveysEURO: 49,
+        serosurveysPAHO: 24,
+        serosurveysSEARO: 15,
+        serosurveysWPRO: 6,
+        publishDate: "2022-01-14",
+        screeningStartDate: "2021-12-11",
+        screeningEndDate: "2021-01-07"
+    },
+    {
         url: "https://drive.google.com/file/d/1u2g7tmbP9kD0oi0syLgapmoBP4BCV0NF/view?usp=sharing",
         sourcesAdded: 56,
-        serosurveysTotal: 118,
+        serosurveysTotal: 117,
         serosurveysAFRO: 37,
         serosurveysEMRO: 2,
         serosurveysEURO: 39,
