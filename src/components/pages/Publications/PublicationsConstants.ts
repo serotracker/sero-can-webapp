@@ -105,6 +105,15 @@ export const listOfResearchArticles: PublicationProps[] = [
         url: "https://www.medrxiv.org/content/10.1101/2021.11.17.21266471v1"
     },
     {
+        date: "2021-07-03",
+        img: MedRxiv,
+        titleKey1: 'ResearchArticleTitles',
+        titleKey2: ['MedRxivPrivate'],
+        publicationName: "medRxiv",
+        authors: "Nathan Duarte, Sean D'Mello, Nathalie A Duarte et al.",
+        url: "https://www.medrxiv.org/content/10.1101/2021.06.29.21259730v1"
+    },
+    {
         date: "2021-06-23",
         img: PlosOnePub,
         titleKey1: 'ResearchArticleTitles',

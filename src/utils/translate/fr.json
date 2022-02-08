@@ -290,6 +290,7 @@
   "ResearchArticleTitles": {
     "MedRxivMeta": "Épidémiologie mondiale de l'infection par le SRAS-CoV-2: une revue systématique et une méta-analyse d'études de séroprévalence standardisées basées sur la population, janvier 2020-octobre 2021",
     "MedRxivROB": "SeroTracker-ROB: règles de décision reproductibles pour l'évaluation du risque de biais des études de séroprévalence",
+    "MedRxivPrivate": "Adoption des programmes de dépistage du SRAS-CoV-2 sur le lieu de travail, mars 2020 à mars 2021",
     "PlosOnePub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse",
     "LancetID": "SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2",
     "PrePrint": "Leçons d'un examen rapide et systématique du début des SRAS-CoV-2 enquêtes sérologiques"
@@ -448,7 +449,7 @@
   "Publication": "Publication",
   "PublicationDescriptions": {
     "Publications": "Apprenez-en plus sur l'impact de SeroTracker dans des articles de recherche, des résumés et des mentions dans les médias",
-    "ResearchArticles": "Articles de recherche évalués par des pairs publiés par l'équipe SeroTracker",
+    "ResearchArticles": "Articles de recherche évalués par des pairs et pré-imprimés publiés par l'équipe SeroTracker",
     "LiteratureUpdateReports": "Aperçus mensuels et mises à jour sur les tendances dans la littérature des enquêtes sérologiques et les paramètres fournis par l'OMS",
     "GeneralSerotrackerCommunications": "Mises à jour et réflexions de l'ensemble de l'équipe SeroTracker",
     "MediaMentions": "Publications médiatiques mondiales mettant en vedette SeroTracker",

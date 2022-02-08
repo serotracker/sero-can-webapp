@@ -292,6 +292,7 @@
   "ResearchArticleTitles": {
     "MedRxivMeta": "Globale Epidemiologie der SARS-CoV-2-Infektion: eine systematische Überprüfung und Metaanalyse standardisierter populationsbasierter Seroprävalenzstudien, Januar 2020 bis Oktober 2021",
     "MedRxivROB": "SeroTracker-ROB: reproduzierbare Entscheidungsregeln zur Risiko-Bias-Bewertung von Seroprävalenzstudien",
+    "MedRxivPrivate": "Aufnahme von SARS-CoV-2-Arbeitsplatztestprogrammen, März 2020 bis März 2021",
     "PlosOnePub": "Globale Seroprävalenz von SARS-CoV-2-Antikörpern: eine systematische Überprüfung und Meta-Analyse",
     "LancetID": "SeroTracker: ein globales SARS-CoV-2 Seroprävalenz-Dashboard",
     "PrePrint": "Lehren aus einer raschen systematischen Überprüfung der ersten SARS-CoV-2-Serosurveys"
@@ -435,7 +436,7 @@
   "Publication": "Veröffentlichung",
   "PublicationDescriptions": {
     "Publications": "Erfahren Sie mehr über den Einfluss von SeroTracker in Forschungsartikeln Zusammenfassungen und Medienberichten",
-    "ResearchArticles": "Von Fachleuten begutachtete Forschungsarbeiten, die vom SeroTracker-Team veröffentlicht wurden",
+    "ResearchArticles": "Peer-Review- und Pre-Print-Forschungspapiere, die vom SeroTracker-Team veröffentlicht wurden",
     "LiteratureUpdateReports": "Monatliche Übersichten und Updates zu Trends in der Literatur über Serosurveys und zu den von der WHO bereitgestellten Metriken",
     "GeneralSerotrackerCommunications": "Updates und Einblicke aus dem gesamten SeroTracker-Team",
     "MediaMentions": "Weltweite Medienveröffentlichungen, die SeroTracker vorstellen",
