@@ -36,7 +36,7 @@ export default function CanadaPartnership({partnershipConfig}:CanadaPartnershipP
         key={partnershipConfig.tableauKey}
         desktopOptions={{
           width: "100%",
-          height: "5100px",
+          height: "3100px",
         }}
         mobileOptions={{
           width: "100%",
