@@ -404,7 +404,8 @@
     "Canada": {
       "PartOne": "SeroTracker is financially supported by the Public Health Agency of Canada through the COVID-19 Immunity Task Force (CITF). The CITF has funded many high-calibre serological surveys among other immunity related research that you can learn more about on",
       "PartTwo": "their website.",
-      "PartThree": "This page presents data from Canadian serological surveys and modeling based on these data."
+      "PartThree": "They also provide modelled estimates of seroprevalence due to infection in the Canadian population which you can find",
+      "PartFour": "here."
     }
   },
   "PartnershipsView": {
@@ -490,7 +491,7 @@
   },
   "Serosurveys": "Serosurveys",
   "SerosurveysReportingPrevalence": "Serosurveys Reporting Prevalence",
-  "SeroprevalenceEstimatesInRegion": "Seroprevalence Estimates in NAME by Geographic Area",
+  "SeroprevalenceEstimatesInRegion": "Seroprevalence Estimates in Canada by Geographic Area",
   "SeroTrackerTeam": "SeroTracker team",
   "Settings": "Settings",
   "Sex": "Sex",

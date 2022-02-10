@@ -398,8 +398,9 @@
   "PartnershipsPageDescription": {
     "Canada": {
       "PartOne": "SeroTracker wird von der Agentur für öffentliche Gesundheit, Kanada, über die COVID-19-Arbeitsgruppe Immunität (CITF) finanziell unterstützt. Die CITF hat viele hochkarätige serologische Untersuchungen und andere immunitätsbezogene Forschungsarbeiten finanziert, über die Sie",
-      "PartTwo": "auf seiner Website mehr erfahren können. (https://www.covid19immunitytaskforce.ca/) ",
-      "PartThree": "Auf dieser Seite werden Daten aus kanadischen serologischen Erhebungen und darauf basierenden Modellierungen vorgestellt."
+      "PartTwo": "auf seiner Website mehr erfahren können.",
+      "PartThree": "Sie bieten auch modellierte Schätzungen der Seroprävalenz aufgrund von Infektionen in der kanadischen Bevölkerung",
+      "PartFour": "die Sie hier finden können."
     }
   },
   "PartnershipsView": {
