@@ -12,7 +12,7 @@
 
 #### Installing Node & NPM 
 
-We recommend using Node Version Manager (nvm), which is a command line tool that allows you to quickly install, use and switch between different versions of node. If you're using a bash shell (default shell for Mac OS), simply execute the following steps:
+We recommend using Node Version Manager ([nvm](https://github.com/nvm-sh/nvm)), which is a command line tool that allows you to quickly install, use and switch between different versions of node. If you're using a bash shell (default shell for Mac OS), simply execute the following steps:
 
 1. Run `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash` 
 2. Check that `export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -22,11 +22,13 @@ We recommend using Node Version Manager (nvm), which is a command line tool that
 5. Run `nvm install 12.16.0` to install the version of node that's compatible with this project
 6. Run `node -v`, ensure that the output indicates that you're running node version 12.16.0
 
+For zsh users, step 1 becomes `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh` and use `~/.zshrc` instead of `~/.bash_profile` everywhere.
+
 ### Local Development Setup 
 
 #### Starting Application Locally
 
-1. Clone the sero-can-webapp repo
+1. Clone the sero-can-webapp repo by running `git clone https://github.com/serotracker/sero-can-webapp.git`
 2. Navigate to the root directory of sero-can-webapp
 3. Install project dependencies via `npm install`. Note, this only needs to be run  when you initially setup the repository and when packages are updated/added/removed.
 4. Set the following environment variables: `REACT_APP_ROUTE`, `REACT_APP_MAPBOX_API_KEY`. Ask a member of the dev team for these values.
@@ -34,6 +36,7 @@ We recommend using Node Version Manager (nvm), which is a command line tool that
 
 #### VS Code Startup Configurations
 We can set launch configurations in VS Code for an improved development experience. This allows us to set breakpoints directly in the editor, and launch the app from the debug tab in VS Code. Multiple configurations can be added. Here is an example that launches the app with the Chrome browser:
+
 ```
 {
 "version": "0.2.0",
@@ -51,6 +54,7 @@ We can set launch configurations in VS Code for an improved development experien
 	}]
 }
 ```
+
 
 
 ### Github Pages/Heroku Deployment
