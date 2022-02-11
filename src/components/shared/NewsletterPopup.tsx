@@ -6,9 +6,11 @@ export default function NewsletterPopup() {
 
     useEffect(() => {
         if (!localStorage.getItem("SubscribePopupSeen")){
-            setTimeout(function () {
-                setHidden(false)
-            }, 30000) // 30 seconds in ms
+            if(localStorage.getItem("returnUser")) {
+                setTimeout(function () {
+                    setHidden(false)
+                }, 30000) // 30 seconds in ms
+            }
         }
     }, [])
 
