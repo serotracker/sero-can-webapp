@@ -20,10 +20,10 @@ function row(title: string, content: JSX.Element | string | string[] | null | un
     )
 }
 
-function riskTag(riskLevel: string | null | undefined) {
+function riskTag(riskLevel: string) {
     return(
         <div className={"popup-risk-tag popup-risk-" + riskLevel}>
-            {riskLevel} risk of bias
+            {Translate("RiskOfBiasOptions", [riskLevel])} {Translate("RiskOfBias")}
         </div>
     )
 }
@@ -80,8 +80,8 @@ export default function StudyPopup(record: AirtableRecord, popGroupOptions: Reco
                 {row(Translate("Location"), getGeography(record.city, record.state, record.country))}
                 {row(Translate("SampleSize"), record.denominator_value?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, Translate(",")))}
                 {row(Translate("AntibodyTarget"), record.antibody_target && record.antibody_target.length > 0 ? (record.antibody_target.length === 2 ? record.antibody_target.join(", ") : record.antibody_target) : "N/A")}
-                {row(Translate("PositiveCases"), (record.cases_per_hundred ? record.cases_per_hundred.toFixed(1) + " per 100" : "N/A"))}
-                {row(Translate("Vaccinations"), (record.full_vaccinations_per_hundred ? record.full_vaccinations_per_hundred.toFixed(1) + " per 100" : "N/A"))}
+                {row(Translate("PositiveCases"), (record.cases_per_hundred ? record.cases_per_hundred.toFixed(1) + Translate("Per100") : "N/A"))}
+                {row(Translate("Vaccinations"), (record.full_vaccinations_per_hundred ? record.full_vaccinations_per_hundred.toFixed(1) + Translate("Per100") : "N/A"))}
             </div>
             {/*RiskTag section*/}
             {riskTag(`${record.overall_risk_of_bias}`)}

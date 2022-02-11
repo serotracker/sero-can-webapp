@@ -92,6 +92,7 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
                 if (map.queryRenderedFeatures(e.point).filter((f) => f.source === "study-pins").length === 0) {
                     const country = e.features[0];
                     const offset = getMapboxLatitudeOffset(map)
+                    console.log("clicked country layer")
                     new mapboxgl.Popup({offset: 25, className: "pin-popup",})
                       .setMaxWidth("370px")
                       .setHTML(ReactDOMServer.renderToString(CountryPopup(country, state.language)))
