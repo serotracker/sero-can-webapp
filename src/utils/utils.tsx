@@ -64,3 +64,12 @@ export const getMapboxLatitudeOffset = (map: mapboxgl.Map | undefined) => {
 export const withLocaleUrl = (path: string) => {
   return `/${language}/${path}`;
 }
+
+export const translateAntibodyTargets = (antibodyTarget: string | string[]) => {
+
+  if (typeof antibodyTarget == "string") {
+    return Translate("AntibodyTargetOptions", [antibodyTarget.replace(/\s/g, "")])
+  }
+  else return Translate("AntibodyTargetOptions", [antibodyTarget[0].replace(/\s/g, "")])
+      + ", " + Translate("AntibodyTargetOptions", [antibodyTarget[1].replace(/\s/g, "")])
+}
