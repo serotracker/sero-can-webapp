@@ -152,7 +152,7 @@ export default function Filters({ page }: FilterProps) {
             tooltip={Translate('FilterTooltip')} />
         </div>
       </div>
-      <div className="row justify-content-center mb-4">   
+      <div className="row justify-content-center">   
         <div className="col-10 col align-items-center p-0">
           <div className="pb-1">
             <div>
@@ -220,9 +220,12 @@ export default function Filters({ page }: FilterProps) {
             </div>
           </div>
         </div>
-        <Button color="grey" size="small" onClick={clearFilter}> {Translate('ClearAllFilters')}</Button>
+      
       </div>
       <Datepicker page={page}/>
+      <div className="row justify-content-center">   
+        <Button  color="grey" size="small" onClick={clearFilter}> {Translate('ClearAllFilters')}</Button>
+      </div>
     </div>
   )
 }
