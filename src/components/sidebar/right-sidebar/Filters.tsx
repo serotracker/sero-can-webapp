@@ -24,7 +24,6 @@ interface PopulationGroupFilterOption {
 
 export default function Filters({ page }: FilterProps) {
   const [state, dispatch] = useContext(AppContext);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const filters = (state[page as keyof State] as PageState).filters;
 
   const formatOptions = (options: any, filter_type: FilterType) => {
@@ -85,7 +84,6 @@ export default function Filters({ page }: FilterProps) {
       filterType,
       data,
       page)
-      setIsButtonDisabled(false);
   }
 
   const clearFilter = async () => {
@@ -94,7 +92,6 @@ export default function Filters({ page }: FilterProps) {
       dispatch,
       page
     )
-    setIsButtonDisabled(true);
   }
 
   const buildFilterDropdown = (filter_type: FilterType, placeholder: string) => {
@@ -223,7 +220,7 @@ export default function Filters({ page }: FilterProps) {
             </div>
           </div>
         </div>
-        <Button color="grey" size="small" disabled={isButtonDisabled} onClick={clearFilter}> {Translate('ClearAllFilters')}</Button>
+        <Button color="grey" size="small" onClick={clearFilter}> {Translate('ClearAllFilters')}</Button>
       </div>
       <Datepicker page={page}/>
     </div>
