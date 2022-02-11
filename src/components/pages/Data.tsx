@@ -8,6 +8,7 @@ import Translate, { TranslateObject } from "../../utils/translate/translateServi
 import "./static.css";
 import MaintenanceModal from "../shared/MaintenanceModal";
 import DownloadButton from "../shared/DownloadButton";
+import {IconName} from "../../types";
 interface DropdownQuestion {
   Question: string;
   Answer: string | object;
@@ -59,7 +60,7 @@ function DataButtons() {
     buttonLabelKey: "DownloadCsv", 
     downloadLink: "https://airtable.com/shraXWPJ9Yu7ybowM/tbljN2mhRVfSlZv2d?backgroundColor=blue&viewControls=on" ,
     formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform" ,
-    iconName: "",
+    iconName: IconName.airtable,
     popupText: "DownloadAirtable",
   }
 
@@ -68,7 +69,7 @@ function DataButtons() {
     buttonLabelKey: "AccessGithub", 
     downloadLink: "https://github.com/serotracker/sars-cov-2-data" ,
     formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform" ,
-    iconName: "github",
+    iconName: IconName.github,
     popupText: "DownloadGithub",
   }
 

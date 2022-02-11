@@ -4,6 +4,7 @@ import TotalStats from "./TotalStats";
 import { Divider } from 'semantic-ui-react'
 import DownloadButton from "components/shared/DownloadButton";
 import { PAGE_HASHES } from "../../../constants";
+import {IconName} from "../../../types";
 import "../sidebar.scss";
 
 interface SideBarProps {
@@ -16,7 +17,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
     buttonLabelKey: "DownloadCsv", 
     downloadLink: "https://airtable.com/shraXWPJ9Yu7ybowM/tbljN2mhRVfSlZv2d?backgroundColor=blue&viewControls=on" ,
     formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform" ,
-    iconName: "",
+    iconName: IconName.airtable,
     popupText: "DownloadAirtable"
   }
 
@@ -24,7 +25,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
     buttonLabelKey: "AccessGithub", 
     downloadLink: "https://github.com/serotracker/sars-cov-2-data" ,
     formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdGd_wlq8YSyVPs2AOi1VfvxuLzxA8Ye5I3HkQwW_9yrumsCg/viewform" ,
-    iconName: "github",
+    iconName: IconName.github,
     popupText: "DownloadGithub"
   }
 

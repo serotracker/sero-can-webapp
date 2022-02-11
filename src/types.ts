@@ -193,3 +193,8 @@ export enum AggregationFactor {
   overall_risk_of_bias = "overall_risk_of_bias",
   isotypes_reported = "isotypes_reported",
 }
+
+export enum IconName {
+  airtable = "",
+  github = "github"
+}
