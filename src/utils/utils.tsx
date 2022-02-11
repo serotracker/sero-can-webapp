@@ -38,12 +38,10 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
       return geo.trim() + ", "
     }
     else {
-      console.log(geo)
       var geoTrimmed = []
       for (let i = 0; i < geo.length; i++) {
         geoTrimmed.push(geo[i].trim())
       }
-      console.log(geoTrimmed)
       return geoTrimmed.join(", ") + ", ";
     }
   }

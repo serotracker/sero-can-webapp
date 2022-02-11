@@ -414,6 +414,7 @@
     "MapNote1": "The map displays seroprevalence estimates for all geographic based estimates (including sub-estimates reported e.g. regional provincial estimates reported in a country-wide study). Pins are arranged around the center of their geographic location(s).",
     "MapNote2": "Case and death counts (at the midpoint in study sampling) are taken at a national level from ourworldindata.org (subsource: coronavirus.jhu.edu)"
   },
+  "Per100": " per 100",
   "PlannedSerosurveys": "Planned Serosurveys",
   "Population": "Population",
   "PopulationGroup": "Population group",
