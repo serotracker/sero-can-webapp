@@ -1,7 +1,7 @@
 import React from "react";
 import { AirtableRecord } from "types";
 import Translate, { TranslateDate, getLanguageType } from 'utils/translate/translateService';
-import {getGeography} from 'utils/utils';
+import {getGeography, translateAntibodyTargets} from 'utils/utils';
 
 /**
  * @param title: left column of study modal: title of content
@@ -79,7 +79,7 @@ export default function StudyPopup(record: AirtableRecord, popGroupOptions: Reco
                 {row(Translate("PopulationGroup"), record.population_group ? getTranslatedPopulationGroup(popGroupOptions, record.population_group) : Translate("NotReported"))}
                 {row(Translate("Location"), getGeography(record.city, record.state, record.country))}
                 {row(Translate("SampleSize"), record.denominator_value?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, Translate(",")))}
-                {row(Translate("AntibodyTarget"), record.antibody_target && record.antibody_target.length > 0 ? (record.antibody_target.length === 2 ? record.antibody_target.join(", ") : record.antibody_target) : "N/A")}
+                {row(Translate("AntibodyTarget"), record.antibody_target && record.antibody_target.length > 0 ? translateAntibodyTargets(record.antibody_target) : "N/A")}
                 {row(Translate("PositiveCases"), (record.cases_per_hundred ? record.cases_per_hundred.toFixed(1) + Translate("Per100") : "N/A"))}
                 {row(Translate("Vaccinations"), (record.full_vaccinations_per_hundred ? record.full_vaccinations_per_hundred.toFixed(1) + Translate("Per100") : "N/A"))}
             </div>
