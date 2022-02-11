@@ -5,14 +5,21 @@ export default function NewsletterPopup() {
     const [hidden, setHidden] = useState(true)
 
     useEffect(() => {
-        setTimeout(function () {
-            setHidden(false)
-        }, 30000) // 1 minute in ms
+        if (!localStorage.getItem("SubscribePopupSeen")){
+            setTimeout(function () {
+                setHidden(false)
+            }, 30000) // 30 seconds in ms
+        }
     }, [])
+
+    const onClickHandle = () => {
+        setHidden(true)
+        localStorage.setItem("SubscribePopupSeen", "true")
+    }
 
     return (
         <div className={"popup"} style={{visibility: hidden ? "hidden" : "visible"}}>
-            <Button className={"popup-close-button"} icon onClick={() => {setHidden(true)}}>
+            <Button className={"popup-close-button"} icon onClick={onClickHandle}>
                 <Icon className={"popup-close-button-icon"} name={"close"} />
             </Button>
             <iframe
