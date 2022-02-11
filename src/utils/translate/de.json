@@ -404,6 +404,7 @@
     "MapNote1": "Die Karte zeigt die Seroprävalenzschätzungen für alle geografisch basierten Schätzungen (einschließlich der gemeldeten Teilschätzungen, z. B. regionale Schätzungen auf Provinzebene, die in einer landesweiten Studie gemeldet wurden). Die Pins sind um den Mittelpunkt ihrer geografischen Lage(n) angeordnet.",
     "MapNote2": "Die Anzahl der Fälle und Todesfälle (in der Mitte der Stichprobe der Studie) wurde auf nationaler Ebene von ourworldindata.org übernommen (Unterquelle: coronavirus.jhu.edu)"
   },
+  "Per100": " pro 100",
   "PlannedSerosurveys": "Geplante Serosurveys",
   "Population": "Bevölkerung",
   "PopulationGroup": "Bevölkerungsgruppe",
@@ -452,8 +453,8 @@
   "Report": "Bericht",
   "ReportsAndArticles": "Berichte und Artikel",
   "ResearchArticles": "Forschungsartikel",
-  "RiskOfBias": "Gesamt Risk of bias (Verzerrungsrisiko)",
-  "OverallRiskOfBiasOptions": {
+  "RiskOfBias": "Risiko der Voreingenommenheit",
+  "RiskOfBiasOptions": {
     "High": "Hoch",
     "Low": "Niedrig",
     "Moderate": "Mäßig",
