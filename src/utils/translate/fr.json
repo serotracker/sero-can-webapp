@@ -405,13 +405,14 @@
     "Canada": "Canada (GTIC)"
   },
   "PartnershipsPageTitle": {
-    "Canada": "Canada - Groupe de travail sur l'immunité contre le Covid-19"
+    "Canada": "Groupe de travail canadien sur l'immunité contre le Covid-19"
   },
   "PartnershipsPageDescription": {
     "Canada": {
       "PartOne": "SeroTracker est soutenu financièrement par l'Agence de la santé publique du Canada par le biais du Groupe de travail sur l’immunité face à la COVID-19 (GTIC). Le GTIC a financé de nombreuses enquêtes sérologiques de haut calibre parmi d'autres recherches sur lesquelles vous pouvez en apprendre davantage sur",
       "PartTwo": "leur site Web.",
-      "PartThree": "Cette page présente les données des enquêtes sérologiques canadiennes et la modélisation basée sur ces données."
+      "PartThree": "Ils fournissent également des estimations modélisées de la séroprévalence due à l'infection dans la population canadienne que vous pouvez trouver",
+      "PartFour": "ici."
     }
   },
   "PartnershipsView": {
@@ -496,7 +497,7 @@
   },
   "Serosurveys": "Sérosondages",
   "SerosurveysReportingPrevalence": "Prévalence de signalement des sérosondages",
-  "SeroprevalenceEstimatesInRegion": "Estimations de la séroprévalence dans NAME par zone géographique",
+  "SeroprevalenceEstimatesInRegion": "Estimations de la séroprévalence dans Canada par zone géographique",
   "SeroTrackerTeam": "l’équipe SeroTracker",
   "Settings": "Paramètres",
   "Sex": "Sexe",
