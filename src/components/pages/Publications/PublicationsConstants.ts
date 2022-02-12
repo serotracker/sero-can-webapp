@@ -49,6 +49,7 @@ export interface BiblioDigestProps {
     serosurveysPAHO: number,
     serosurveysSEARO: number,
     serosurveysWPRO: number,
+    serosurveysNonMember: number,
     screeningStartDate: string,
     screeningEndDate: string,
     publishDate: string
@@ -356,6 +357,21 @@ export const listOfMediaPublicationsProps: PublicationProps[] = [
 // Note: for biblio digests, date = date published
 export const listOfBiblioDigests: BiblioDigestProps[] = [
     {
+        url: "https://drive.google.com/file/d/1PME1WFA-ItYAzzuPfGNSvLvJyKXQAezl/view?usp=sharing",
+        sourcesAdded: 98,
+        serosurveysTotal: 160,
+        serosurveysAFRO: 20,
+        serosurveysEMRO: 3,
+        serosurveysEURO: 66,
+        serosurveysPAHO: 36,
+        serosurveysSEARO: 14,
+        serosurveysWPRO: 20,
+        serosurveysNonMember: 1,
+        publishDate: "2022-02-11",
+        screeningStartDate: "2021-01-08",
+        screeningEndDate: "2021-02-04"
+    },
+    {
         url: "https://drive.google.com/file/d/1J51-liWMXACBdMgl2Yqc_litXSIukkBQ/view?usp=sharing",
         sourcesAdded: 65,
         serosurveysTotal: 102,
@@ -365,6 +381,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 24,
         serosurveysSEARO: 15,
         serosurveysWPRO: 6,
+        serosurveysNonMember: 0,
         publishDate: "2022-01-14",
         screeningStartDate: "2021-12-11",
         screeningEndDate: "2021-01-07"
@@ -372,13 +389,14 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
     {
         url: "https://drive.google.com/file/d/1u2g7tmbP9kD0oi0syLgapmoBP4BCV0NF/view?usp=sharing",
         sourcesAdded: 56,
-        serosurveysTotal: 117,
+        serosurveysTotal: 118,
         serosurveysAFRO: 37,
         serosurveysEMRO: 2,
         serosurveysEURO: 39,
         serosurveysPAHO: 24,
         serosurveysSEARO: 5,
         serosurveysWPRO: 10,
+        serosurveysNonMember: 1,
         publishDate: "2021-12-10",
         screeningStartDate: "2021-11-20",
         screeningEndDate: "2021-12-03"
@@ -393,6 +411,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 55,
         serosurveysSEARO: 24,
         serosurveysWPRO: 13,
+        serosurveysNonMember: 1,
         publishDate: "2021-11-26",
         screeningStartDate: "2021-10-23",
         screeningEndDate: "2021-11-09"
@@ -407,6 +426,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 66,
         serosurveysSEARO: 11,
         serosurveysWPRO: 10,
+        serosurveysNonMember: 1,
         publishDate: "2021-10-29",
         screeningStartDate: "2021-09-25",
         screeningEndDate: "2021-10-22"
@@ -421,6 +441,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 117,
         serosurveysSEARO: 18,
         serosurveysWPRO: 4,
+        serosurveysNonMember: 0,
         publishDate: "2021-12-01",
         screeningStartDate: "2021-08-28",
         screeningEndDate: "2021-09-24"
@@ -434,6 +455,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 63,
         serosurveysSEARO: 14,
         serosurveysWPRO: 4,
+        serosurveysNonMember: 0,
         publishDate: "2021-09-03",
         screeningStartDate: "2021-07-31",
         screeningEndDate: "2021-08-27"
@@ -447,6 +469,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 46,
         serosurveysSEARO: 12,
         serosurveysWPRO: 14,
+        serosurveysNonMember: 0,
         publishDate: "2021-08-06",
         screeningStartDate: "2021-07-03",
         screeningEndDate: "2021-07-30"
@@ -460,6 +483,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 44,
         serosurveysSEARO: 21,
         serosurveysWPRO: 20,
+        serosurveysNonMember: 0,
         publishDate: "2021-07-09",
         screeningStartDate: "2021-06-05",
         screeningEndDate: "2021-07-02"
@@ -473,6 +497,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 51,
         serosurveysSEARO: 11,
         serosurveysWPRO: 8,
+        serosurveysNonMember: 0,
         publishDate: "2021-06-10",
         screeningStartDate: "2021-04-25",
         screeningEndDate: "2021-06-04"

@@ -100,6 +100,7 @@
     "PAHO": "Amériques",
     "SEARO": "Asie du Sud-Est",
     "WPRO": "Pacifique occidental",
+    "NonMember": "États non membres",
     "NewSources": "Nouvelles sources ajoutées"
   },
   "BlankUniversity": "Université de NAME",
