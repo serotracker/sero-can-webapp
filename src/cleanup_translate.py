@@ -19,7 +19,7 @@ words_used = []
 for file_path in fname:
     with open(file_path, "r", encoding="utf-8") as open_file:
         file_content = open_file.read()
-        words = re.findall("Translate\(\"([^\"]*)\"", file_content)
+        words = re.findall("Translate\(([^\(\)]*)\)", file_content) # Translate\(\"([^\"]*)\" Translate\(([^\(]*)\)
         words_used.extend(words)
 
 with open(os.path.join(".", "utils", "translate", "translate_keys.json"), "w") as output:
