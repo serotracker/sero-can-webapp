@@ -56,7 +56,7 @@ Node.js suffers from extreme performance issues on [native Windows](https://docs
 
 ### Running the Application Locally
 #### Alternative 1: Using the Terminal
-1. Set the following environment variables: `REACT_APP_ROUTE`, `REACT_APP_MAPBOX_API_KEY`. Ask a member of the dev team for these values. Read the following guides for instructions on how to set environment variables on (MacOS / Linux / WSL)[https://blog.doppler.com/how-to-set-environment-variables-in-linux-and-mac#how-to-change-and-set-environment-variables] and on (Windows)[https://phoenixnap.com/kb/windows-set-environment-variable] 
+1. Set the following environment variables: `REACT_APP_ROUTE`, `REACT_APP_MAPBOX_API_KEY`. Ask a member of the dev team for these values. Read the following guides for instructions on how to set environment variables on [macOS / Linux / WSL](https://blog.doppler.com/how-to-set-environment-variables-in-linux-and-mac#how-to-change-and-set-environment-variables).
 2. Run the application locally via `npm start`. This should cause the app to open in a browser window at `http://localhost:3000`
 
 #### Alternative 2: Using VS Code Configurations
