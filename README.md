@@ -45,7 +45,7 @@ We recommend using Node Version Manager ([nvm](https://github.com/nvm-sh/nvm)), 
 7.  You can specify which version of NVM you'd like to use by running `nvm use <VERSION>`. For this project, we want to use version 12.16.0, so run `nvm use v12.16.0`
 
 ### Windows
-We recommend using nvm-windows. Please see the (linked guide)[https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows] for detailed instructions.
+Node.js suffers from extreme performance issues on [native Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows), so we recommend installing it on Windows Subsystem for Linux (WSL). Using your WSL terminal, follow the steps outlined in the [macOS / Linux / WSL](#macos--linux--wsl) section. Once you've completed these steps, follow the *Install Visual Studio Code* section of [Microsoft's Official Guide to installing Node.js on WSL](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl#install-visual-studio-code) to configure Visual Studio Code for working with WSL.
 
 ## Local Development Setup 
 
