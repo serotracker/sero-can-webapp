@@ -8,7 +8,7 @@ Code for [Serotracker.com](https://serotracker.com/).
 - [Table of contents](#table-of-contents)
 - [Set up](#set-up)
 	- [Installing Node & NPM](#installing-node--npm)
-		- [Mac OS / Linux / WSL](#mac-os--linux--wsl)
+		- [macOS/ Linux / WSL](#macos-linux--wsl)
 		- [Windows](#windows)
 	- [Local Development Setup](#local-development-setup)
 		- [Setting up the Application](#setting-up-the-application)
@@ -25,18 +25,24 @@ Code for [Serotracker.com](https://serotracker.com/).
 # Set up
 ## Installing Node & NPM 
 
-### Mac OS / Linux / WSL
-We recommend using Node Version Manager ([nvm](https://github.com/nvm-sh/nvm)), which is a command line tool that allows you to quickly install, use and switch between different versions of node. If you're using a bash shell (default shell for Mac OS), simply execute the following steps:
+### macOS/ Linux / WSL
+We recommend using Node Version Manager ([nvm](https://github.com/nvm-sh/nvm)), which is a command line tool that allows you to quickly install, use, and switch between different versions of node. Using your terminal, follow these instructions:
 
-1. Run `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash` 
-2. Check that `export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm` has been written into your `~/.bash_profile`, if not then add it in.
-3. Restart your terminal or run `source ~/.bash_profile` 
-4. Check that nvm has been installed properly by running `nvm -v`. If successful, this command should output the version of nvm that you've just installed.
-5. Run `nvm install 12.16.0` to install the version of node that's compatible with this project
-6. Run `node -v`, ensure that the output indicates that you're running node version 12.16.0
+1. Install cURL (a tool used for downloading content from the internet in the command-line)
 
-For zsh users, step 1 becomes `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh` and use `~/.zshrc` instead of `~/.bash_profile` everywhere.
+- macOS (homebrew) `brew install  curl`
+- Ubuntu/WSL (apt) `sudo apt-get install curl`
+
+2. Install NVM. The following command will download version 0.39.1 of nvm. Check nvm's [official GitHub projects page](https://github.com/nvm-sh/nvm) for the latest release of NVM.
+
+- Bash: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash`
+- Zsh: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh`
+
+3. To verify your installation, run `nvm -v`. You may need to source your shell's config file using `source ~/.bash_profile` or `source ~/.zshrc`
+4. You can list which versions of Node are currently installed (should be none at this point) with `nvm ls`.
+5. Install version 12.16.0 of Node.js using `nvm install 12.16.0`. You can also install the LTS release using `nvm install --lts` and the current release using `nvm install node`.
+6. List what versions of Node are installed with `nvm ls`.
+7.  You can specify which version of NVM you'd like to use by running `nvm use <VERSION>`. For this project, we want to use version 12.16.0, so run `nvm use v12.16.0`
 
 ### Windows
 We recommend using nvm-windows. Please see the (linked guide)[https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows] for detailed instructions.
