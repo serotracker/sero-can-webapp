@@ -387,19 +387,19 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         screeningEndDate: "2021-01-07"
     },
     {
-        url: "https://drive.google.com/file/d/1u2g7tmbP9kD0oi0syLgapmoBP4BCV0NF/view?usp=sharing",
-        sourcesAdded: 56,
-        serosurveysTotal: 118,
+        url: "https://drive.google.com/file/d/1ibebgdbG5C-k0whOJfjeEuECrybmHlQ2/view?usp=sharing",
+        sourcesAdded: 85,
+        serosurveysTotal: 176,
         serosurveysAFRO: 37,
-        serosurveysEMRO: 2,
-        serosurveysEURO: 39,
-        serosurveysPAHO: 24,
-        serosurveysSEARO: 5,
-        serosurveysWPRO: 10,
+        serosurveysEMRO: 5,
+        serosurveysEURO: 67,
+        serosurveysPAHO: 40,
+        serosurveysSEARO: 11,
+        serosurveysWPRO: 15,
         serosurveysNonMember: 1,
-        publishDate: "2021-12-10",
+        publishDate: "2021-12-17",
         screeningStartDate: "2021-11-20",
-        screeningEndDate: "2021-12-03"
+        screeningEndDate: "2021-12-10"
     },
     {
         url: "https://drive.google.com/file/d/1v1Tzyatwzg-1v7f0H6qO1JGfL9Hk3_jN/view?usp=sharing",
