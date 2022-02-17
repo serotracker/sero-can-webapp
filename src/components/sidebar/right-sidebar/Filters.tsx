@@ -224,7 +224,11 @@ export default function Filters({ page }: FilterProps) {
       </div>
       <Datepicker page={page}/>
       <div className="row justify-content-center">   
-        <Button  color="grey" size="small" onClick={clearFilter}> {Translate('ClearAllFilters')}</Button>
+        <div className="col-10 col align-items-center p-0">
+          <div className="pb-3">
+          <Button  className="clear-filters-btn" size="medium" onClick={clearFilter}> {Translate('ClearAllFilters')}</Button>
+          </div>
+        </div>
       </div>
     </div>
   )
