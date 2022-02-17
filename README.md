@@ -1,14 +1,6 @@
 
 ## [Serotracker.com](https://serotracker.com/)
 
-### Prerequisites
-
-#### Required Software
-| Name | Version |  Link |  Description |
-|--|--|--|--|
-| Node | v12.16.0 | https://nodejs.org/en/ | Open source server environment for javascript |
-| NPM | 6.13.4 | https://docs.npmjs.com/cli/v7/commands/npm-install | Software Package Manager |
-| VS Code | 6.13.4 | https://code.visualstudio.com/ | Code IDE, not required but popular choice for this project |
 
 #### Installing Node & NPM 
 
