@@ -16,6 +16,7 @@ import './styles.scss';
 import Translate from "../../../utils/translate/translateService";
 import {PublicationsItem} from "./PublicationsItem";
 import Slider from "react-slick";
+import {PrivateReportsCard} from "./PrivateReportsCard";
 
 export default function Publications() {
     const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth})
@@ -87,7 +88,7 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["PrivateSectorReports"])}
                 </p>
-                {getPublicationsLinks(listOfPrivateSectorReports)}
+                {getPrivateReportsCarousel()}
 
                 <h2 id={PAGE_HASHES.Publications.MediaMentions}>
                     {Translate('MediaMentions')}
@@ -170,6 +171,20 @@ const getBiblioDigestCarousel = () => {
                 {
                     listOfBiblioDigests.map((publicationsProps) => {
                         return <BiblioDigestCard {...publicationsProps}/>
+                    })
+                }
+            </Slider>
+        </div>
+    )
+}
+
+const getPrivateReportsCarousel = () => {
+    return (
+        <div className="publications-slider-container pb-4">
+            <Slider {...sliderSettings(2)}>
+                {
+                    listOfPrivateSectorReports.map((publicationsProps) => {
+                        return <PrivateReportsCard {...publicationsProps}/>
                     })
                 }
             </Slider>
