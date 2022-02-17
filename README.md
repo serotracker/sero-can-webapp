@@ -7,23 +7,23 @@ Code for [Serotracker.com](https://serotracker.com/).
 - [Sero-can-webapp](#sero-can-webapp)
 - [Table of contents](#table-of-contents)
 - [Set up](#set-up)
-	- [Installing Node & NPM](#installing-node--npm)
-		- [macOS/ Linux / WSL](#macos-linux--wsl)
-		- [Windows](#windows)
-	- [Local Development Setup](#local-development-setup)
-		- [Setting up the Application](#setting-up-the-application)
-		- [Running the Application Locally](#running-the-application-locally)
-			- [Alternative 1: Using the Terminal](#alternative-1-using-the-terminal)
-			- [Alternative 2: Using VS Code Configurations](#alternative-2-using-vs-code-configurations)
+  - [Installing Node & NPM](#installing-node--npm)
+    - [macOS/ Linux / WSL](#macos-linux--wsl)
+    - [Windows](#windows)
+  - [Local Development Setup](#local-development-setup)
+    - [Setting up the Application](#setting-up-the-application)
+    - [Running the Application Locally](#running-the-application-locally)
+      - [Alternative 1: Using the Terminal](#alternative-1-using-the-terminal)
+      - [Alternative 2: Using VS Code Configurations](#alternative-2-using-vs-code-configurations)
 - [Github Pages/Heroku Deployment](#github-pagesheroku-deployment)
-	- [Adding Secrets](#adding-secrets)
-		- [GitHub](#github)
-		- [Heroku](#heroku)
-	- [Staging Deployment](#staging-deployment)
+  - [Adding Secrets](#adding-secrets)
+    - [GitHub](#github)
+    - [Heroku](#heroku)
+  - [Staging Deployment](#staging-deployment)
 - [Continuous Integration](#continuous-integration)
 
 # Set up
-## Installing Node & NPM 
+## Installing Node & NPM
 
 ### macOS/ Linux / WSL
 We recommend using Node Version Manager ([nvm](https://github.com/nvm-sh/nvm)), which is a command line tool that allows you to quickly install, use, and switch between different versions of node. Using your terminal, follow these instructions:
@@ -47,7 +47,7 @@ We recommend using Node Version Manager ([nvm](https://github.com/nvm-sh/nvm)), 
 ### Windows
 Node.js suffers from extreme performance issues on [native Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows), so we recommend installing it on Windows Subsystem for Linux (WSL). Using your WSL terminal, follow the steps outlined in the [macOS / Linux / WSL](#macos--linux--wsl) section. Once you've completed these steps, follow the *Install Visual Studio Code* section of [Microsoft's Official Guide to installing Node.js on WSL](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl#install-visual-studio-code) to configure Visual Studio Code for working with WSL.
 
-## Local Development Setup 
+## Local Development Setup
 
 ### Setting up the Application
 1. In your terminal, clone the sero-can-webapp repo by running `git clone https://github.com/serotracker/sero-can-webapp.git`
@@ -65,19 +65,22 @@ Node.js suffers from extreme performance issues on [native Windows](https://docs
 3. Create a `launch.json` file within that folder and paste the following into it
 ```
 {
-"version": "0.2.0",
-"configurations": [
-	{
-		"type": "pwa-chrome",
-		"request": "launch",
-		"name": "Launch Chrome against localhost",
-		"url": "http://localhost:3000",
-		"webRoot": "${workspaceFolder}",
-		"env": {
-		"REACT_APP_ROUTE": "KEY",
-		"REACT_APP_MAPBOX_API_KEY": "KEY"
-		}
-	}]
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Run app pointing to prod",
+        "runtimeVersion": "12.16.0",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": ["start"],
+        "port": 3000,
+        "env": {
+          "REACT_APP_ROUTE": "KEY",
+          "REACT_APP_MAPBOX_API_KEY": "KEY"
+        }
+      }
+    ]
 }
 ```
 4. Simply click on the green triangle button highlighted in the image below to run the application
@@ -102,7 +105,7 @@ Secrets are added via the Heroku Dashboard. Message Austin to get access to the 
 Refer to this [article](https://devcenter.heroku.com/articles/config-vars#using-the-heroku-dashboard) to add secrets via the Dashboard.
 
 
-## Staging Deployment  
+## Staging Deployment
 As mentioned above, there are three staging instances. Their corresponding links are outlined in the table below.
 
 | Instance  | Link                                        |
