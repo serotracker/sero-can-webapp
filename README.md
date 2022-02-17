@@ -50,9 +50,9 @@ Node.js suffers from extreme performance issues on [native Windows](https://docs
 ## Local Development Setup 
 
 ### Setting up the Application
-1. Clone the sero-can-webapp repo by running `git clone https://github.com/serotracker/sero-can-webapp.git`
-2. Navigate to the root directory of sero-can-webapp
-3. Install project dependencies via `npm install`. Note, this only needs to be run  when you initially setup the repository and when packages are updated/added/removed.
+1. In your terminal, clone the sero-can-webapp repo by running `git clone https://github.com/serotracker/sero-can-webapp.git`
+2. Navigate to the root directory of sero-can-webapp with `cd sero-can-webapp`
+3. Install project dependencies with `npm install`. Note, this only needs to be run when you initially setup the repository and when packages are updated/added/removed.
 
 ### Running the Application Locally
 #### Alternative 1: Using the Terminal
