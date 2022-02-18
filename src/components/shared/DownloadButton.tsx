@@ -46,7 +46,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
     return (
         iconName === IconName.airtable ?       
         <Popup  popperModifiers={{ preventOverflow: { boundariesElement: "window" } }} content={Translate(popupText)} size="small" style={{textAlign: "left"}} position="top left" trigger={
-            <Button key={buttonLabelKey} size="large" iconName={iconName} className="download-data-btn mb-2 mr-2" id={props.id} >
+            <Button key={buttonLabelKey} size="large" iconName={iconName} className="download-data-btn mb-2" id={props.id} >
                 <a
                     onClick={() => clickButton()}
                     target="_blank"
@@ -63,7 +63,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
     :  
 
     <Popup  popperModifiers={{ preventOverflow: { boundariesElement: "window" } }} id={props.id} size="small" style={{textAlign: "left"}}content={Translate(popupText)} position="top left" trigger={
-        <Button id={props.id} key={buttonLabelKey}  size="large" iconName={iconName} className="download-data-btn mb-2 mr-2">
+        <Button id={props.id} key={buttonLabelKey}  size="large" iconName={iconName} className="download-data-btn mb-2">
             <a
                 onClick={() => clickButton()}
                 target="_blank"
