@@ -50,7 +50,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
                 <a
                     onClick={() => clickButton()}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     href={getButtonLink()}
                     className='d-flex align-items-center'
                 >
@@ -67,7 +67,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
             <a
                 onClick={() => clickButton()}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 href={getButtonLink()}
                 className='d-flex align-items-center'
             >
