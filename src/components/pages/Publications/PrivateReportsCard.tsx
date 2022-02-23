@@ -14,10 +14,10 @@ export function PrivateReportsCard(props: PublicationProps) {
                         </a>
                     </div>
                     <Card.Description className={"text-small mb-1"}>
-                        authored by: {props.authors}
+                        Authored by: {props.authors}
                     </Card.Description>
-                    <Card.Description className={"text-small"}>
-                        collected by: {props.collection}
+                    <Card.Description className={"text-small mb-1"}>
+                        Collected by: {props.collection}
                     </Card.Description>
 
                 </Card.Content>

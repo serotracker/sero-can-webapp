@@ -181,7 +181,7 @@ const getBiblioDigestCarousel = () => {
 const getPrivateReportsCarousel = () => {
     return (
         <div className="publications-slider-container pb-4">
-            <Slider {...sliderSettings(2)}>
+            <Slider {...sliderSettings(3)}>
                 {
                     listOfPrivateSectorReports.map((publicationsProps) => {
                         return <PrivateReportsCard {...publicationsProps}/>
