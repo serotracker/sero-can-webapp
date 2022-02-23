@@ -40,14 +40,7 @@ export default function Explore({initialFilters}: ExploreProps) {
                 sendUnityAnalyticsEvent();
             }
         }
-        if(localStorage.getItem("returnUser") == null) {
-            localStorage.setItem("returnUser", "false")
-        }
-        else {
-            if(!localStorage.getItem("returnUser")){
-                localStorage.setItem("returnUser", "true")
-            }
-        }
+
         fetchExploreData(dispatch, state.explore.filters, PageStateEnum.explore)
         // We only want this to run once so we pass no dependencies. Do not remove this
         // eslint-disable-next-line react-hooks/exhaustive-deps

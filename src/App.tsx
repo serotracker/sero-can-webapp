@@ -46,6 +46,12 @@ function App() {
     }
 
     allFilterOptions();
+
+    //track if user is a return user or not
+    if(!localStorage.getItem("returnUser")) {
+      localStorage.setItem("returnUser", "true")
+    }
+
     // We only want this to run once so we pass no dependencies. Do not remove this
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
