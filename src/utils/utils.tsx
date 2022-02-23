@@ -67,9 +67,13 @@ export const withLocaleUrl = (path: string) => {
 
 export const translateAntibodyTargets = (antibodyTarget: string | string[]) => {
 
-  if (typeof antibodyTarget == "string") {
-    return Translate("AntibodyTargetOptions", [antibodyTarget.replace(/\s/g, "")])
+  if (antibodyTarget){
+    if (typeof antibodyTarget == "string") {
+      return Translate("AntibodyTargetOptions", [antibodyTarget.replace(/\s/g, "")])
+    }
+    else return Translate("AntibodyTargetOptions", [antibodyTarget[0].replace(/\s/g, "")])
+        + ", " + Translate("AntibodyTargetOptions", [antibodyTarget[1].replace(/\s/g, "")])
+
   }
-  else return Translate("AntibodyTargetOptions", [antibodyTarget[0].replace(/\s/g, "")])
-      + ", " + Translate("AntibodyTargetOptions", [antibodyTarget[1].replace(/\s/g, "")])
+  else return "N/A"
 }
