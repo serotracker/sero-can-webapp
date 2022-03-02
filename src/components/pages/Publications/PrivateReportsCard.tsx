@@ -13,6 +13,9 @@ export function PrivateReportsCard(props: PublicationProps) {
                             {props.italicize ? <i>{props.italicize}&nbsp;</i> : null}{Translate(props.titleKey1, props.titleKey2)}
                         </a>
                     </div>
+                    <Card.Meta className={"text-small mb-1"}>
+                        {props.date}
+                    </Card.Meta>
                     <Card.Description className={"text-small mb-1"}>
                         Authored by: {props.authors}
                     </Card.Description>

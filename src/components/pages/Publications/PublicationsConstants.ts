@@ -513,6 +513,7 @@ export const listOfPrivateSectorReports: PublicationProps[] = [
         titleKey2: ["OctoberReport"],
         collection: "A Pillai, N Duarte, and M Rocco.",
         authors: "N Duarte and R Arora.",
+        date: "2020",
         url: "https://drive.google.com/file/d/1aCgxzxv9J5Zvh4EVyI5REmSVgWLQ_Ip3/view?usp=sharing"
     },
     {
@@ -520,6 +521,7 @@ export const listOfPrivateSectorReports: PublicationProps[] = [
         titleKey2: ['SeptemberReport'],
         collection: "A Pillai, N Duarte, and M Rocco.",
         authors: "N Duarte and R Arora.",
+        date: "2020",
         url: "https://drive.google.com/file/d/1CjMcs7UZzu4_E_QFJVYZdv0QhyfoNMAe/view?usp=sharing"
     },
     {
@@ -527,6 +529,7 @@ export const listOfPrivateSectorReports: PublicationProps[] = [
         titleKey2: ['AugustReport'],
         collection: "A Pillai, N Duarte, and M Rocco.",
         authors: "N Duarte, J Chen and R Arora.",
+        date: "2020",
         url: "https://drive.google.com/file/d/1m7BlfUKCYs32_D1jnFUEQHPr3Qjg5Eyt/view?usp=sharing"
     },
     {
@@ -534,6 +537,7 @@ export const listOfPrivateSectorReports: PublicationProps[] = [
         titleKey2: ['JulyReport'],
         collection: "A Pillai, N Duarte, and M Rocco.",
         authors: "Jamie Chen, N Duarte and R Arora.",
+        date: "2020",
         url: "https://drive.google.com/file/d/1Rx3i_Sy01suu-ZZYV7LRpo2KEclbXCNN/view?usp=sharing"
     },
     {
@@ -541,6 +545,7 @@ export const listOfPrivateSectorReports: PublicationProps[] = [
         titleKey2: ['JuneReport'],
         collection: "A Pillai, N Duarte, and M Rocco.",
         authors: "J Chen, N Duarte and R Arora.",
+        date: "2020",
         url: "https://drive.google.com/file/d/1HO--VWYdyEqd5Dc3xcZBwERXWDBjCfxN/view"
     },
     {
@@ -548,6 +553,7 @@ export const listOfPrivateSectorReports: PublicationProps[] = [
         titleKey2: ['MayReport'],
         collection: "by S Rocco, N Duarte, M Rocco, and J Van Wyk.",
         authors: "N Duarte and A Pillai.",
+        date: "2020",
         url: "https://drive.google.com/file/d/16pCR-zh1UiWjQFhTDxW_2adSGuq0pCgz/view?usp=sharing"
     },
 ]
