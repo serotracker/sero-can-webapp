@@ -194,4 +194,4 @@ export enum AggregationFactor {
   isotypes_reported = "isotypes_reported",
 }
 
-export type publiationCarouselCollections = "Media" | "BiblioDigest" | "PrivateReports"
+export type publicationCarouselCollections = "Media" | "BiblioDigest" | "PrivateReports"
