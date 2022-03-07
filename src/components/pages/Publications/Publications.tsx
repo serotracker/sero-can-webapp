@@ -17,7 +17,7 @@ import Translate from "../../../utils/translate/translateService";
 import {PublicationsItem} from "./PublicationsItem";
 import Slider from "react-slick";
 import {PrivateReportsCard} from "./PrivateReportsCard";
-import {publiationCarouselCollections} from "../../../types";
+import {publicationCarouselCollections} from "../../../types";
 
 export default function Publications() {
     const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth})
@@ -155,7 +155,7 @@ const sliderSettings = (slidesToShow: number) =>{
     };
 } 
 
-const renderCorrectCarousel = (pubCollectionName: publiationCarouselCollections) => {
+const renderCorrectCarousel = (pubCollectionName: publicationCarouselCollections) => {
     switch (pubCollectionName) {
         case "Media":
             return (
@@ -184,7 +184,7 @@ const renderCorrectCarousel = (pubCollectionName: publiationCarouselCollections)
     }
 }
 
-const getCarousel = (pubCollectionName: publiationCarouselCollections, slidesToShow: number) => {
+const getCarousel = (pubCollectionName: publicationCarouselCollections, slidesToShow: number) => {
     return (
         <div className="publications-slider-container pb-4">
             <Slider {...sliderSettings(slidesToShow)}>
