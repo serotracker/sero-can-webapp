@@ -199,5 +199,4 @@ export enum ButtonIconName {
   github = "github"
 }
 
-
-export type publicationCarouselCollections = "Media" | "BiblioDigest" | "PrivateReports"
+export type publicationCarouselCollectionNames = "Media" | "BiblioDigest" | "PrivateReports"
