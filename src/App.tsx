@@ -47,7 +47,7 @@ function App() {
 
     allFilterOptions();
 
-    //track if user is a return user or not
+    //track if user is a return user or not. if returnUser does not exist this is the users first time
     if(!localStorage.getItem("returnUser")) {
       localStorage.setItem("returnUser", "true")
     }
