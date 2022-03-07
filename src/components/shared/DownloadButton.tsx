@@ -5,12 +5,12 @@ import { Button, Popup } from "semantic-ui-react";
 import { Icon } from 'semantic-ui-react';
 import { SemanticICONS } from "semantic-ui-react/dist/commonjs/generic";
 import airtableLogo from '../../assets/images/airtable-icon.svg';
-import { IconName } from '../../types';
+import { ButtonIconName } from '../../types';
 interface DownloadButtonProps {
     buttonLabelKey?: string;
     downloadLink?: string;
     formLink?: string;
-    iconName: IconName;
+    iconName: ButtonIconName;
     popupText: string;
     id?: string;
   }
@@ -44,7 +44,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
     }
     
     return (
-        iconName === IconName.airtable ?       
+        iconName === ButtonIconName.airtable ?
         <Popup  popperModifiers={{ preventOverflow: { boundariesElement: "window" } }} content={Translate(popupText)} size="small" style={{textAlign: "left"}} position="top left" trigger={
             <Button key={buttonLabelKey} size="large" iconName={iconName} className="download-data-btn mb-2" id={props.id} >
                 <a

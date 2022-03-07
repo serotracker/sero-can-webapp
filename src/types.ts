@@ -194,7 +194,9 @@ export enum AggregationFactor {
   isotypes_reported = "isotypes_reported",
 }
 
-export enum IconName {
+export enum ButtonIconName {
   airtable = "",
   github = "github"
 }
+
+export type publiationCarouselCollections = "Media" | "BiblioDigest" | "PrivateReports"
