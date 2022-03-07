@@ -198,3 +198,5 @@ export enum IconName {
   airtable = "",
   github = "github"
 }
+
+export type publiationCarouselCollections = "Media" | "BiblioDigest" | "PrivateReports"

@@ -17,6 +17,7 @@ import Translate from "../../../utils/translate/translateService";
 import {PublicationsItem} from "./PublicationsItem";
 import Slider from "react-slick";
 import {PrivateReportsCard} from "./PrivateReportsCard";
+import {publiationCarouselCollections} from "../../../types";
 
 export default function Publications() {
     const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth})
@@ -57,7 +58,11 @@ export default function Publications() {
                     </p>
                 </div>
 
+
+
                 <hr style={{borderTop: "2px solid #bbb", width: "100%"}}/>
+
+
 
                 <h2 id={PAGE_HASHES.Publications.ResearchArticles}>
                     {Translate('ResearchArticles')}
@@ -66,6 +71,9 @@ export default function Publications() {
                     {Translate("PublicationDescriptions", ["ResearchArticles"])}
                 </p>
                 {getPublicationsItems(listOfResearchArticles)}
+
+
+
                 <h2 id={PAGE_HASHES.Publications.GeneralSerotrackerCommunications}>
                     {Translate('GeneralSerotrackerCommunications')}
                 </h2>
@@ -74,13 +82,17 @@ export default function Publications() {
                 </p>
                 {getPublicationsItems(listOfReports)}
 
+
+
                 <h2 id={PAGE_HASHES.Publications.BiblioDigests}>
                     {Translate('BiblioDigests')}
                 </h2>
                 <p>
                     {Translate("PublicationDescriptions", ["LiteratureUpdateReports"])}
                 </p>
-                {getBiblioDigestCarousel()}
+                {getCarousel("BiblioDigest", 2)}
+
+
 
                 <h2 id={PAGE_HASHES.Publications.PrivateSectorReports}>
                     {Translate('PrivateSectorReports')}
@@ -88,7 +100,9 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["PrivateSectorReports"])}
                 </p>
-                {getPrivateReportsCarousel()}
+                {getCarousel("PrivateReports", 3)}
+
+
 
                 <h2 id={PAGE_HASHES.Publications.MediaMentions}>
                     {Translate('MediaMentions')}
@@ -96,7 +110,7 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["MediaMentions"])}
                 </p>
-                {getMediaCarousel()}
+                {getCarousel("Media", 3)}
             </div>
         </div>
     )
@@ -108,15 +122,6 @@ const getPublicationsItems = (publications: PublicationProps[]) => {
         publications.map((publicationsProps) => {
             return <PublicationsItem {...publicationsProps}/>
         }))
-}
-
-const getPublicationsLinks = (publications: PublicationProps[]) => {
-    return publications.map((publicationsProps) => {
-        return <a className={"py-2 publication-link"} href={publicationsProps.url} target="_blank" rel="noopener noreferrer">
-            {publicationsProps.italicize ?
-                <i>{publicationsProps.italicize}&nbsp;</i> : null}{Translate(publicationsProps.titleKey1, publicationsProps.titleKey2)}
-        </a>
-    })
 }
 
 const sliderSettings = (slidesToShow: number) =>{
@@ -150,44 +155,41 @@ const sliderSettings = (slidesToShow: number) =>{
     };
 } 
 
-const getMediaCarousel = () => {
-    return (
-        <div className="publications-slider-container pb-4">
-            <Slider {...sliderSettings(3)}>
-                {
-                    listOfMediaPublicationsProps.map((publicationsProps) => {
-                        return <MediaCard {...publicationsProps}/>
-                    })
-                }
-            </Slider>
-        </div>
-    )
+const renderCorrectCarousel = (pubCollectionName: publiationCarouselCollections) => {
+    switch (pubCollectionName) {
+        case "Media":
+            return (
+                listOfMediaPublicationsProps.map((publicationsProps) => {
+                    return <MediaCard {...publicationsProps}/>
+                })
+            )
+        case "BiblioDigest":
+            return (
+                listOfBiblioDigests.map((publicationsProps) => {
+                    return <BiblioDigestCard {...publicationsProps}/>
+                })
+            )
+        case "PrivateReports":
+            return (
+                listOfPrivateSectorReports.map((publicationsProps) => {
+                    return <PrivateReportsCard {...publicationsProps}/>
+                })
+            )
+        default:
+            return (
+                <div>
+                    Collections of this nature do not exist
+                </div>
+            )
+    }
 }
 
-const getBiblioDigestCarousel = () => {
+const getCarousel = (pubCollectionName: publiationCarouselCollections, slidesToShow: number) => {
     return (
         <div className="publications-slider-container pb-4">
-            <Slider {...sliderSettings(2)}>
-                {
-                    listOfBiblioDigests.map((publicationsProps) => {
-                        return <BiblioDigestCard {...publicationsProps}/>
-                    })
-                }
+            <Slider {...sliderSettings(slidesToShow)}>
+                {renderCorrectCarousel(pubCollectionName)}
             </Slider>
         </div>
-    )
-}
-
-const getPrivateReportsCarousel = () => {
-    return (
-        <div className="publications-slider-container pb-4">
-            <Slider {...sliderSettings(3)}>
-                {
-                    listOfPrivateSectorReports.map((publicationsProps) => {
-                        return <PrivateReportsCard {...publicationsProps}/>
-                    })
-                }
-            </Slider>
-        </div>
-    )
+        )
 }
