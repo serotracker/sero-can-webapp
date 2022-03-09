@@ -28,7 +28,7 @@ Code for [Serotracker.com](https://serotracker.com/).
 ### macOS/ Linux / WSL
 We recommend using Node Version Manager ([nvm](https://github.com/nvm-sh/nvm)), which is a command line tool that allows you to quickly install, use, and switch between different versions of node. Using your terminal, follow these instructions:
 
-1. Install cURL (a tool used for downloading content from the internet in the command-line)
+1. Install curl (a tool used for downloading content from the internet in the command-line)
 
 - macOS (homebrew) `brew install  curl`
 - Ubuntu/WSL (apt) `sudo apt-get install curl`
