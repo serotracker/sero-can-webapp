@@ -73,6 +73,15 @@
     margin: 0;
 }
 
+.clear-filters-btn.ui.button {
+    border-color: $stone-cold-steve-austin;
+    background-color: white;
+    border-width: thin;
+    border-style: solid;
+    width: 100%;
+    color: $stone-cold-steve-austin;
+}
+
 .cite-link {
     color: #55A6BA;
 }
