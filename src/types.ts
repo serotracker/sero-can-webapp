@@ -200,3 +200,4 @@ export enum ButtonIconName {
 }
 
 export type publicationCarouselCollectionNames = "Media" | "BiblioDigest" | "PrivateReports"
+
