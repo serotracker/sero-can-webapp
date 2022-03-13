@@ -105,16 +105,9 @@
 }
 
 .publication-item {
-  border: 1px solid #888888;
-  box-sizing: border-box;
+  -webkit-box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;  box-sizing: border-box;
   padding: 1rem;
-
-  /* drop shadow/100 */
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
-
-  /* drop shadow/400 */
-  /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);*/
-
   border-radius: 5px;
 }
 

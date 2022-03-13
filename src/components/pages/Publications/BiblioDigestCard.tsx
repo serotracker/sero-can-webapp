@@ -45,6 +45,10 @@ export function BiblioDigestCard(props: BiblioDigestProps) {
                 <div className="biblio-digest-card-text">{Translate("BiblioDigestCard", ["WPRO"])}</div>
                 <div className="biblio-digest-card-text">{props.serosurveysWPRO}</div>
             </div>
+            <div className="biblio-digest-card-row pl-3">
+                <div className="biblio-digest-card-text">{Translate("BiblioDigestCard", ["NonMember"])}</div>
+                <div className="biblio-digest-card-text">{props.serosurveysNonMember}</div>
+            </div>
             {(props.sourcesAdded) && (
                 <div className="biblio-digest-card-row pt-2">
                     <div className="biblio-digest-card-text-bold">{Translate("BiblioDigestCard", ["NewSources"])}</div>

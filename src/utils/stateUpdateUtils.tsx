@@ -1,6 +1,7 @@
 import httpClient from '../httpClient'
 import { FiltersConfig, FilterType } from '../types'
 import { sendFiltersAnalyticsEvent } from "../utils/analyticsUtils";
+import { getEmptyFilters} from "../context";
 
 export const updateFilters = async (
   dispatch: any,
@@ -22,6 +23,19 @@ export const updateFilters = async (
   sendFiltersAnalyticsEvent(updatedFilters);
 
   fetchExploreData(dispatch, updatedFilters, page);
+}
+
+export const clearFilters = async (
+  dispatch: any,
+  page: string) => {
+  dispatch({
+    type: 'CLEAR_ALL_FILTERS',
+    payload: {
+      pageStateEnum: page
+    }
+  });
+
+  fetchExploreData(dispatch, getEmptyFilters(), page);
 }
 
 export const fetchExploreData = async (dispatch: any, filters: FiltersConfig, page: string) => {
