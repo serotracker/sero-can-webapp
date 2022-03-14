@@ -9,6 +9,7 @@ export default function NewsletterPopup() {
             if(localStorage.getItem("returnUser") === "true") {
                 setTimeout(function () {
                     setHidden(false)
+                    localStorage.setItem("SubscribePopupSeen", "true")
                 }, 30000) // 30 seconds in ms
             }
         }
@@ -16,11 +17,10 @@ export default function NewsletterPopup() {
 
     const onClickHandle = () => {
         setHidden(true)
-        localStorage.setItem("SubscribePopupSeen", "true")
     }
 
     return (
-        <div className={"newsletter-popup"} style={{visibility: hidden ? "hidden" : "visible"}}>
+        <div className={"newsletter-popup"} onClick={onClickHandle} style={{visibility: hidden ? "hidden" : "visible"}}>
             <Button className={"newsletter-popup-close-button"} icon onClick={onClickHandle}>
                 <Icon className={"newsletter-popup-close-button-icon"} name={"close"} />
             </Button>
