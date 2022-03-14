@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/static/css/main.74dfa1e4.chunk.css",
-    "main.js": "/static/js/main.ecad4d96.chunk.js",
-    "main.js.map": "/static/js/main.ecad4d96.chunk.js.map",
+    "main.js": "/static/js/main.b952476b.chunk.js",
+    "main.js.map": "/static/js/main.b952476b.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.9d5e18d9.js",
     "runtime-main.js.map": "/static/js/runtime-main.9d5e18d9.js.map",
     "static/css/2.988a3396.chunk.css": "/static/css/2.988a3396.chunk.css",
-    "static/js/2.66a95fd0.chunk.js": "/static/js/2.66a95fd0.chunk.js",
-    "static/js/2.66a95fd0.chunk.js.map": "/static/js/2.66a95fd0.chunk.js.map",
+    "static/js/2.ca7e2f55.chunk.js": "/static/js/2.ca7e2f55.chunk.js",
+    "static/js/2.ca7e2f55.chunk.js.map": "/static/js/2.ca7e2f55.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.eb630455ca9683b7f5e8bd226205959e.js": "/precache-manifest.eb630455ca9683b7f5e8bd226205959e.js",
+    "precache-manifest.9030dec9cecd25a9bf3c46abe9409ec7.js": "/precache-manifest.9030dec9cecd25a9bf3c46abe9409ec7.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.988a3396.chunk.css.map": "/static/css/2.988a3396.chunk.css.map",
     "static/css/main.74dfa1e4.chunk.css.map": "/static/css/main.74dfa1e4.chunk.css.map",
-    "static/js/2.66a95fd0.chunk.js.LICENSE.txt": "/static/js/2.66a95fd0.chunk.js.LICENSE.txt",
-    "static/js/mapbox-gl-csp-worker.81766fd4.worker.js": "/static/js/mapbox-gl-csp-worker.81766fd4.worker.js",
-    "static/js/mapbox-gl-csp-worker.81766fd4.worker.js.map": "/static/js/mapbox-gl-csp-worker.81766fd4.worker.js.map",
+    "static/js/2.ca7e2f55.chunk.js.LICENSE.txt": "/static/js/2.ca7e2f55.chunk.js.LICENSE.txt",
+    "static/js/mapbox-gl-csp-worker.fbc30435.worker.js": "/static/js/mapbox-gl-csp-worker.fbc30435.worker.js",
+    "static/js/mapbox-gl-csp-worker.fbc30435.worker.js.map": "/static/js/mapbox-gl-csp-worker.fbc30435.worker.js.map",
     "static/media/1200px-The_Economist_Logo.svg.png": "/static/media/1200px-The_Economist_Logo.svg.d48720c3.png",
     "static/media/3622.1582633003.png": "/static/media/3622.1582633003.73b9602c.png",
     "static/media/Bloomberg_Logo.jpg": "/static/media/Bloomberg_Logo.3ee92577.jpg",
@@ -53,8 +53,8 @@
   "entrypoints": [
     "static/js/runtime-main.9d5e18d9.js",
     "static/css/2.988a3396.chunk.css",
-    "static/js/2.66a95fd0.chunk.js",
+    "static/js/2.ca7e2f55.chunk.js",
     "static/css/main.74dfa1e4.chunk.css",
-    "static/js/main.ecad4d96.chunk.js"
+    "static/js/main.b952476b.chunk.js"
   ]
 }
