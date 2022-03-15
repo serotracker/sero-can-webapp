@@ -543,7 +543,7 @@ export const listOfPrivateSectorReports: PublicationProps[] = [
     {
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['JuneReport'],
-        collection: "A Pillai, N Duarte,, M Rocco.",
+        collection: "A Pillai, N Duarte, M Rocco.",
         authors: "J Chen, N Duarte, R Arora.",
         date: "2020",
         url: "https://drive.google.com/file/d/1HO--VWYdyEqd5Dc3xcZBwERXWDBjCfxN/view"
@@ -551,7 +551,7 @@ export const listOfPrivateSectorReports: PublicationProps[] = [
     {
         titleKey1: 'IndustryReportTitles',
         titleKey2: ['MayReport'],
-        collection: "by S Rocco, N Duarte, M Rocco,, J Van Wyk.",
+        collection: "by S Rocco, N Duarte, M Rocco, J Van Wyk.",
         authors: "N Duarte, A Pillai.",
         date: "2020",
         url: "https://drive.google.com/file/d/16pCR-zh1UiWjQFhTDxW_2adSGuq0pCgz/view?usp=sharing"
