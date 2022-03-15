@@ -18,6 +18,7 @@ import httpClient from "./httpClient";
 import { LanguageType } from "./types";
 import { setLanguageType } from "./utils/translate/translateService";
 import Partnerships from "components/pages/Partnerships/Partnerships";
+import NewsletterPopup from "./components/shared/NewsletterPopup";
 
 function App() {
   const [{ language, explore }, dispatch] = useContext(AppContext);
@@ -45,6 +46,12 @@ function App() {
     }
 
     allFilterOptions();
+
+    //track if user is a return user or not. if returnUser does not exist this is the users first time
+    if(!localStorage.getItem("returnUser")) {
+      localStorage.setItem("returnUser", "true")
+    }
+
     // We only want this to run once so we pass no dependencies. Do not remove this
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -95,6 +102,7 @@ function App() {
     <div className="App">
       <Header />
       <CookieBanner />
+      <NewsletterPopup />
       <Switch>
         <Route path="/:language/About">
           <About />
