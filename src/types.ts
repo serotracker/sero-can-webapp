@@ -194,7 +194,6 @@ export enum AggregationFactor {
   isotypes_reported = "isotypes_reported",
 }
 
-<<<<<<< HEAD
 export enum IconName {
   airtable = "",
   github = "github"
