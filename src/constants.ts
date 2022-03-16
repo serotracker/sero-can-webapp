@@ -9,7 +9,8 @@ export const mapZIndex = {
 
 export const ANALYZE_URLS = {
     "en": "https://public.tableau.com/views/SeroTrackerAnalyzeEN/GlobalAnalyze?:language=en-US&:display_count=n&:origin=viz_share_link",
-    "fr": "https://public.tableau.com/views/SeroTrackerAnalyseFR/GlobalAnalyse?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
+    "fr": "https://public.tableau.com/views/SeroTrackerAnalyseFR/GlobalAnalyse?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link",
+    "de": "https://public.tableau.com/views/SeroTrackerAnalyseDE/GlobalAnalyse?:language=de-DE&publish=yes&:display_count=n&:origin=viz_share_link"
 }
 export const CANADA_URLS = {
     "en": "https://public.tableau.com/views/CanadaEN/Canadiancharts?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link",
