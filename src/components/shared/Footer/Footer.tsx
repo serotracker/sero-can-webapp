@@ -19,7 +19,7 @@ const lancetId = "https://www.thelancet.com/journals/laninf/article/PIIS1473-309
 type UpdatedAtProps = {
   updatedAt: string;
 }
-
+//TODO: update footer design using figma
 export const Footer = () => {
   const [{updatedAt}] = useContext(AppContext);
 
