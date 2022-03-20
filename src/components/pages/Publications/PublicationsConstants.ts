@@ -88,6 +88,15 @@ export const listOfReports: PublicationProps[] = [
 
 export const listOfResearchArticles: PublicationProps[] = [
     {
+        date: "2022-02-25",
+        img: MedRxiv,
+        titleKey1: 'ResearchArticleTitles',
+        titleKey2: ['MedRxivNLP'],
+        publicationName: "medRxiv",
+        authors: "Sara Perlman-Arrow, Noel Loo, Niklas Bobrovitz et al.",
+        url: "https://www.medrxiv.org/content/10.1101/2022.02.24.22268947v1"
+    },
+    {
         date: "2021-12-15",
         img: MedRxiv,
         titleKey1: 'ResearchArticleTitles',
@@ -357,6 +366,21 @@ export const listOfMediaPublicationsProps: PublicationProps[] = [
 // Note: for biblio digests, date = date published
 export const listOfBiblioDigests: BiblioDigestProps[] = [
     {
+        url: "https://drive.google.com/file/d/1h7RpDI_EWi2qu2KTjErME03jlhY1hS5Y/view?usp=sharing",
+        sourcesAdded: 128,
+        serosurveysTotal: 310,
+        serosurveysAFRO: 29,
+        serosurveysEMRO: 4,
+        serosurveysEURO: 185,
+        serosurveysPAHO: 58,
+        serosurveysSEARO: 21,
+        serosurveysWPRO: 13,
+        serosurveysNonMember: 0,
+        publishDate: "2022-03-10",
+        screeningStartDate: "2022-02-05",
+        screeningEndDate: "2022-03-04"
+    },
+    {
         url: "https://drive.google.com/file/d/1PME1WFA-ItYAzzuPfGNSvLvJyKXQAezl/view?usp=sharing",
         sourcesAdded: 98,
         serosurveysTotal: 160,
@@ -368,8 +392,8 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysWPRO: 20,
         serosurveysNonMember: 1,
         publishDate: "2022-02-11",
-        screeningStartDate: "2021-01-08",
-        screeningEndDate: "2021-02-04"
+        screeningStartDate: "2022-01-08",
+        screeningEndDate: "2022-02-04"
     },
     {
         url: "https://drive.google.com/file/d/1J51-liWMXACBdMgl2Yqc_litXSIukkBQ/view?usp=sharing",
@@ -384,7 +408,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysNonMember: 0,
         publishDate: "2022-01-14",
         screeningStartDate: "2021-12-11",
-        screeningEndDate: "2021-01-07"
+        screeningEndDate: "2022-01-07"
     },
     {
         url: "https://drive.google.com/file/d/1ibebgdbG5C-k0whOJfjeEuECrybmHlQ2/view?usp=sharing",
