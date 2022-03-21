@@ -1,15 +1,27 @@
-import React from "react";
-import Translate from "utils/translate/translateService";
+import React, { useContext, useState } from 'react'
+import Translate, {TranslateDate} from '../../../utils/translate/translateService'
 import TotalStats from "./TotalStats";
 import { Divider } from 'semantic-ui-react'
 import DownloadButton from "components/shared/DownloadButton";
 import { PAGE_HASHES } from "../../../constants";
 import {IconName} from "../../../types";
 import "../sidebar.scss";
+import { AppContext } from "../../../context"
 
 interface SideBarProps {
   page: string
 }
+
+const lancetId = "https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30631-9/fulltext#%20"
+
+const Citation = () => (
+  <span className="text-right">
+    {Translate("Footer", ["CiteAs"])}
+    <a href={lancetId} target="__blank" rel="noopener noreferrer" className="cite-link">
+      <i>{Translate("Footer", ["LancetInfDis"])}</i> {Translate("Footer", ["Article"])}
+    </a> 
+  </span>
+)
 
 export default function LeftSidebar({ page }: SideBarProps) {
 
@@ -33,28 +45,39 @@ export default function LeftSidebar({ page }: SideBarProps) {
     <div className="sidebar-container flex left-sidebar">
       <TotalStats page={page} />
       <Divider/>
+      <div className="mt-3 mb-2 center subheading">
+      <p>{Translate('Welcome')}</p>
+      </div>
       <div>
         <p>{Translate('ExploreBlurb', ['FirstParagraph'])}</p>
         {"\n"}
         <p>{Translate('ExploreBlurb', ['SecondParagraph'])}</p>
-        {"\n"}
-        <p>{Translate('ExploreBlurb', ['ThirdParagraph'])}</p>
       </div>
+
       <div className="d-flex justify-content-center mt-3">
       <span style={{margin: "0"}} >
         <DownloadButton
         {...airtableDownloadProps}
         />
-  
       </span>
       </div>
-      <div className="d-flex justify-content-center mt-1">
+
+      <div className="d-flex justify-content-center mt-1 full-width-button">
       <span style={{margin: "0"}} id={PAGE_HASHES.Explore.AccessGithub}>
         <DownloadButton
         {...githubDownloadProps}
         />
       </span>
       </div>
+
+      <Divider/> 
+      <div>
+        <p>
+        {/*}  <UpdatedAt updatedAt={updatedAt}/> */}
+        <Citation/>
+        </p>
+      </div>
     </div>
+    
   )
 }

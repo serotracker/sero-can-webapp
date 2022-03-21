@@ -93,7 +93,7 @@ export default function About() {
             onClick={() => selectLink("Centre for Health Informatics")}
             href="https://cumming.ucalgary.ca/centres/centre-health-informatics"
             target="_blank" rel="noreferrer noopener"
-          >
+            >
             {Translate("AboutPage", ["AboutSection", "HealthInformatics"], null, [true, true])}
           </a>
         </p>

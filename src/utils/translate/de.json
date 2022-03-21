@@ -2,7 +2,7 @@
   ",": ",",
   "95%ConfidenceInterval": "95% Konfidenzintervall",
   "95%ConfidenceIntervalTooltip": "Breitere Fehlerbalken weisen auf eine größere Unsicherheit in der aggregierten Seroprävalenzschätzung hin.",
-  "About": "Über uns",
+  "About": "ÜBER UNS",
   "AboutPage": {
     "AboutSection": {
       "Covid19ImmunityTaskForce": "COVID-19-Arbeitsgruppe Immunität.",
@@ -76,7 +76,7 @@
     "Title": "Analysemethoden",
     "Tooltip": "Die verwendete Aggregationsmethode ist eine mit fixen Effekten und inverser Varianz gewichtete Meta-Analyse der Prävalenz, wobei die Freeman-Tukey-Transformation mit doppeltem Arkussinus zur Stabilisierung der Varianz verwendet wird. Datensätze über dem Stichprobenumfang MIN_DENOMINATOR werden berücksichtigt."
   },
-  "Analyze": "Analysieren",
+  "Analyze": "ANALYSIEREN",
   "AntibodyTarget": "Antikörper-Target",
   "AntibodyTargetOptions": {
     "EnvelopeProtein": "Hüllprotein",
@@ -132,7 +132,7 @@
   },
   "COVIDImmunityTaskForce": "Covid-19-Arbeitsgruppe Immunität",
   "Dashboard": "Dashboard",
-  "Data": "Daten",
+  "Data": "DATEN",
   "DatabaseUptoDateTo": "Datenbank aktuell bis",
   "DataDictionary": "Datenwörterbuch",
   "DataDictionaryText": {
@@ -205,7 +205,7 @@
         "Link1": "https://www.medrxiv.org/content/10.1101/2020.11.17.20233460v2"
       },
       "LinkTexts": {
-        "LinkText1": "Veröffentlichungen"
+        "LinkText1": "VERÖFFENTLICHUNGEN"
       }
     }
   },
@@ -226,13 +226,13 @@
   },
   "EstimateRange": "Schätzbereich",
   "ExecutiveDirector": "Exekutivdirektor",
-  "Explore": "Erkunden/Explore",
+  "Explore": "ERKUNDEN/EXPLORE",
   "ExploreBlurb": {
     "FirstParagraph": "SeroTracker ist eine Dashboard- und Datenplattform für SARS-CoV-2-Serosurveys.",
     "SecondParagraph": "Wir führen einen fortlaufenden systematischen Review durch, um Serosurveys (auf Antikörpertests basierende Surveillancemaßnahmen) auf der ganzen Welt zu verfolgen und die Ergebnisse auf diesem Dashboard sichtbar zu machen.",
     "ThirdParagraph": "Antikörper gegen SARS-CoV-2 – das Virus, das COVID-19 verursacht – weisen auf eine frühere Infektion oder Impfung hin."
   },
-  "Filter": "Filter",
+  "Filter": "FILTERN",
   "FilterTooltip": "Filtern Sie den SeroTracker-Datensatz nach geographischen Gegebenheiten, nach Studie, Demografie und Test. Es werden nur Studien berücksichtigt, die allen aufgeführten Filtern entsprechen.,",
   "For": "Für",
   "Footer": {
@@ -390,7 +390,7 @@
   "Paper": "Papier",
   "PaperText": "Unser erstes Manuskript, in dem die Erkenntnisse aus den Serosurveys bis zum 1. Mai beschrieben werden, finden Sie unter",
   "PaperTextTwo": "Weitere Informationen über unser Dashboard finden Sie unter",
-  "Partnerships": "Partnerschaften",
+  "Partnerships": "PARTNERSCHAFTEN",
   "PartnershipsList": {
     "Canada": "Kanada (CITF)"
   },
@@ -445,7 +445,7 @@
     "MediaMentions": "Weltweite Medienveröffentlichungen, die SeroTracker vorstellen",
     "PrivateSectorReports": "Berichte über COVID-19-Screening- und Testpraktiken im gesamten kanadischen Privatsektor"
   },
-  "Publications": "Veröffentlichung",
+  "Publications": "VERÖFFENTLICHUNG",
   "Published": "Veröffentlicht",
   "DataTable": "Referenzentabelle",
   "RegionalEstimateRange": "Regionaler Schätzbereich",
@@ -548,7 +548,9 @@
   "SublocalStudyDetails": "Details zu sublokalen Studien",
   "SubmitSource": "Quelle einreichen",
   "Summary": "Zusammenfassung",
-  "SummaryStatistics": "Zusammenfassende Statistik",
+  "SummaryStatistics": "WICHTIGE ERKENNTNISSE",
+  "SummaryStatisticsLink1": "Zweiwöchentliche Einblicke lesen",
+  "SummaryStatisticsLink2": "hier",
   "Team": "Unser Team",
   "TeamLead": "Teamleiter",
   "TemporaryMaintenance": "Vorübergehende Wartung",

@@ -77,12 +77,12 @@ function DataButtons() {
     <div>
       {buttons}
       <span>
-        <span className="mr-2">
+        <span className="pb-0 full-width-button">
           <DownloadButton
           {...airtableDownloadProps}
           />
         </span>
-        <span className="mr-2">
+        <span className="pb-0 full-width-button">
           <DownloadButton
           {...githubDownloadProps}
           />

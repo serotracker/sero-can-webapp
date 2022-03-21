@@ -1,27 +1,25 @@
 .main-statistic-title {
-  font-weight: 300;
-  font-size: 1.5em;
-  line-height: 28px;
-  color: #468ac1;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1em;
 }
 
 .main-statistic {
-  color: #468ac1;
-  font-weight: 300;
-  font-size: 3em;
-  line-height: 56px;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1em;
 }
 
 .secondary-statistic-title {
-  font-weight: 200;
-  font-size: 1.25em;
-  line-height: 21px;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1em;
 }
 
 .secondary-statistic {
-  font-weight: 500;
-  font-size: 1.25em;
-  line-height: 23px;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1em;
   text-align: center;  
   color: #455A64;
 }
