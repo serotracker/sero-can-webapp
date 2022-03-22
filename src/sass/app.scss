@@ -67,6 +67,7 @@
 
 .download-data-btn.ui.button {
     background-color: $stone-cold-steve-austin;
+    width: 100% !important;
     a {
         color: white;
     }
@@ -347,4 +348,8 @@
 .link {
     text-decoration: underline;
     font-weight: 900;
+}
+
+.full-width-button {
+    width: 100%;
 }

@@ -62,7 +62,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
       </span>
       </div>
 
-      <div className="d-flex justify-content-center mt-1">
+      <div className="d-flex justify-content-center mt-1 full-width-button">
       <span style={{margin: "0"}} id={PAGE_HASHES.Explore.AccessGithub}>
         <DownloadButton
         {...githubDownloadProps}
