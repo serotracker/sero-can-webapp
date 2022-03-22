@@ -26,7 +26,6 @@
     "i18n-iso-countries": "^6.0.0",
     "lodash": "^4.17.21",
     "mapbox-gl": "^2.0.0",
-    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-compound-slider": "^2.5.0",
     "react-datepicker": "^3.8.0",
@@ -39,10 +38,15 @@
     "react-scripts": "^3.4.1",
     "react-slick": "^0.28.0",
     "recharts": "^1.8.5",
+    "sass": "^1.49.9",
     "semantic-ui-react": "^0.88.2",
-    "tableau-react-embed": "^1.1.0",
     "typescript": "^3.8.3",
-    "worker-loader": "^3.0.8"
+    "worker-loader": "^3.0.8",
+    "es6-promise": "^4.0.5",
+    "prop-types": "^15.6.0",
+    "shallowequal": "^0.2.2",
+    "tableau-api": "git+https://github.com/ilyabo/tableau-api.git",
+    "url": "^0.11.0"
   },
   "scripts": {
     "start": "react-scripts start",
