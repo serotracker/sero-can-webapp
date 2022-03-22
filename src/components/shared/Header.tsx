@@ -17,7 +17,7 @@ export const Header = () => {
   const [ languageDropdownActive, setLanguageDropdownActive ] = useState(false); 
 
   const getTabClass = (tabName: string) => {
-    return tab.includes(tabName) ? 'nav__item--active col-auto h-100 flex center-item' : 'nav__item col-auto h-100 flex center-item';
+    return tab.includes(tabName) ? 'nav__item--active col-auto h-100 flex center-item link' : 'nav__item col-auto h-100 flex center-item';
   }
 
   const handlePartnershipClick = () => setPartnershipDrownDownActive(!partnershipDrownDownActive)
@@ -130,7 +130,7 @@ export const Header = () => {
   }
   
   const desktopNav = ( getTabClass: any, changeLanguages:any, language: any) => {
-    return (<div className={`App-tabs col-auto space-evenly p-0`}>
+    return (<div className={`App-tabs col-auto space-evenly p-0 subheading`}>
     <div className={getTabClass('/Explore')}>
       <Link to={withLocaleUrl("Explore")}>
         {Translate('Explore')}
@@ -148,7 +148,7 @@ export const Header = () => {
     </div>
     <div className={getTabClass('/Publications')}>
       <Link to={withLocaleUrl("Publications")}>
-        {Translate('Publications')}
+        {Translate('PublicationsHeader')}
       </Link>
     </div>
     <div className={getTabClass('/About')}>
@@ -220,4 +220,3 @@ export const Header = () => {
     </header >
   )
 }
-

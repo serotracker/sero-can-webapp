@@ -138,9 +138,9 @@ export default function Filters({ page }: FilterProps) {
   return (
     <div className="col-12 p-0">
       <div className="py-3 center flex">
-        <h3>
+        <div className="subheading">
           {Translate("Filter")}
-        </h3>
+        </div>
         <div className="tooltip-vert-adj">
           <InformationIcon
             offset={10}
@@ -154,7 +154,7 @@ export default function Filters({ page }: FilterProps) {
       </div>
       <div className="row justify-content-center">   
         <div className="col-10 col align-items-center p-0">
-          <div className="pb-1">
+          <div className="p-0">
             <div>
               {
                 <SectionHeader 
@@ -191,7 +191,7 @@ export default function Filters({ page }: FilterProps) {
               {buildFilterDropdown('overall_risk_of_bias', Translate('OverallRiskOfBias'))}
             </div>
           </div>
-          <div className="pb-1">
+          <div className="p-0">
             <div>
               <SectionHeader header_text={Translate('Demographics')} tooltip_text={Translate('DemographicsTooltip')}/>
             </div>
@@ -205,7 +205,7 @@ export default function Filters({ page }: FilterProps) {
               {buildFilterDropdown('age', Translate('Age'))}
             </div>
           </div>
-          <div className="pb-1">
+          <div className="p-0">
             <div>
               <SectionHeader header_text={Translate('TestInformation')} tooltip_text={Translate('TestInformationTooltip')}/>
             </div>

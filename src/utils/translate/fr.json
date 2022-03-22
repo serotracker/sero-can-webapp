@@ -2,7 +2,7 @@
   ",": " ",
   "95%ConfidenceInterval": "Intervalle de confiance de 95 %",
   "95%ConfidenceIntervalTooltip": "Les barres d'erreur plus larges indiquent une incertitude plus accentuée dans l'estimation regroupée de séroprévalence.",
-  "About": "À propos",
+  "About": "À PROPOS",
   "AboutPage": {
     "AboutSection": {
       "Covid19ImmunityTaskForce": "Groupe de travail sur l'immunité face à la COVID-19,",
@@ -76,7 +76,7 @@
     "Title": "Méthodes d'analyse",
     "Tooltip": "La technique d'agrégation est à effets fixes, méta-analyse pondérée inverse la variance de la prévalence, avec la double arcsin Freeman-Tukey transformée utilisés pour stabiliser la variance sur la taille des échantillons MIN_DENOMINATOR dossiers considérés."
   },
-  "Analyze": "Analyser",
+  "Analyze": "ANALYSER",
   "AntibodyTarget": "Cible d'anticorps",
   "AntibodyTargetOptions": {
     "EnvelopeProtein": "Protéine d'enveloppe",
@@ -130,7 +130,7 @@
   "CPPInvestmentBoard": "Office d'investissement du RPC",
   "COVIDImmunityTaskForce": "Groupe de travail sur l'immunité face à COVID-19",
   "Dashboard": "Tableau de bord",
-  "Data": "Données",
+  "Data": "DONNÉES",
   "DatabaseUptoDateTo": "Base de données à jour jusqu'au",
   "DataDictionary": "Dictionnaire de données",
   "DataDictionaryText": {
@@ -225,12 +225,12 @@
   },
   "EstimateRange": "Plage d'estimation",
   "ExecutiveDirector": "Directeur général",
-  "Explore": "Explorer",
+  "Explore": "EXPLORER",
   "ExploreBlurb": {
     "FirstParagraph": "SeroTracker est un tableau de bord et une plate-forme de données pour les enquêtes sérologiques sur le SRAS-CoV-2. Les anticorps contre le SRAS-CoV-2, le virus qui cause la COVID-19, indiquent une infection ou une vaccination antérieure. Nous menons une revue systématique continue pour suivre les enquêtes sérologiques (efforts de surveillance basés sur les tests d’anticorps) à travers le monde, et nous visualisons les résultats sur ce tableau de bord.",
     "SecondParagraph": "Vous pouvez configurer les données affichées utilisant le barre 'filtre' à droite, et consulter la liste complète des études que nous suivons sur la page 'Les données'. "
   },
-  "Filter": "Filtrer",
+  "Filter": "FILTRES",
   "FilterTooltip": "Filtrer le fichier de données SeroTracker selon l'emplacement géographique, l'étude, les données démographiques et le type de test. Seules les études correspondant aux filtres sélectionnés seront choisies.",
   "For": "Pour",
   "Footer": {
@@ -290,7 +290,7 @@
     "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie"
   },
   "ResearchArticleTitles": {
-    "MedRxivNLP": "Une évaluation concrète de la mise en oeuvre de la technologie NLP dans le triage d'abstraits pour une revue systématique",
+    "MedRxivNLP": "Une évaluation concrète de la mise en oeuvre de la technologie NLP dans le triage d'abstraits pour une revue systématique",    
     "MedRxivMeta": "Épidémiologie mondiale de l'infection par le SRAS-CoV-2: une revue systématique et une méta-analyse d'études de séroprévalence standardisées basées sur la population, janvier 2020-octobre 2021",
     "MedRxivROB": "SeroTracker-ROB: règles de décision reproductibles pour l'évaluation du risque de biais des études de séroprévalence",
     "MedRxivPrivate": "Adoption des programmes de dépistage du SRAS-CoV-2 sur le lieu de travail, mars 2020 à mars 2021",
@@ -403,7 +403,7 @@
   "Paper": "Article",
   "PaperText": "Vous trouverez notre premier manuscrit décrivant les enseignements des sérosondages jusqu'au 1er mai sur",
   "PaperTextTwo": "Pour plus d'informations sur notre tableau de bord, consultez",
-  "Partnerships": "Partenariats",
+  "Partnerships": "PARTENARIATS",
   "PartnershipsList": {
     "Canada": "Canada (GTIC)"
   },
@@ -460,6 +460,7 @@
     "PrivateSectorReports": "Rapports sur les pratiques de dépistage et de test de la COVID-19 dans le secteur privé canadien"
   },
   "Publications": "Publications",
+  "PublicationsHeader": "PUBLICATIONS",
   "Published": "Publié",
   "DataTable": "Table de données",
   "RegionalEstimateRange": "Plage d'estimation régionale",
@@ -561,7 +562,9 @@
   "SublocalStudyDetails": "Étude sous-locale",
   "SubmitSource": "Soumettre un article",
   "Summary": "Résumé",
-  "SummaryStatistics": "Statistiques sommaires",
+  "SummaryStatistics": "APERÇUS CLÉS",
+  "SummaryStatisticsLink1": "Lisez les aperçus bihebdomadaires",
+  "SummaryStatisticsLink2": "ici",
   "Team": "L'équipe",
   "TeamLead": "Responsables d'équipes",
   "TemporaryMaintenance": "Entretien provisoire",

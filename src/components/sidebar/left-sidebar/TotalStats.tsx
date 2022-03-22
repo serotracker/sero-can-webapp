@@ -34,9 +34,9 @@ export default function TotalStats({ page }: TotalStatsProps) {
 
   return (
     <div className="col-12 p-0 stats-container">
-      <h3 className="mt-3 mb-2 center">
+      <div className="mt-3 mb-2 center subheading">
         {Translate("SummaryStatistics")}
-      </h3>
+      </div>
       <div className="flex middle py-2">
         <div className="secondary-statistic">{numStudies}</div>
         <div className="secondary-statistic-title px-1 center">
@@ -62,6 +62,18 @@ export default function TotalStats({ page }: TotalStatsProps) {
         </div>
       </div>
       <br />
+      <div className="flex middle py-2">
+        <div className="secondary-statistic-title px-1 center">
+          {Translate("SummaryStatisticsLink1")}
+        </div>
+        <div className="secondary-statistic-title px-1 center">
+          <a
+            href="https://drive.google.com/file/d/1PME1WFA-ItYAzzuPfGNSvLvJyKXQAezl/view"
+            target="_blank" rel="noreferrer noopener">
+            {Translate("SummaryStatisticsLink2")}
+          </a>
+        </div>
+      </div>     
     </div>
   );
 }

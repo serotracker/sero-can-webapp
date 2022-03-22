@@ -83,7 +83,11 @@
 }
 
 .cite-link {
-    color: #55A6BA;
+    color: #0066CC;
+    cursor: pointer;
+    &:hover {
+        color: #2f00a1;
+    }
 }
 
 .italics{
@@ -341,9 +345,10 @@
 }
 
 .link {
-    color: #0066CC;
-    cursor: pointer;
-    &:hover {
-        color: #2f00a1;
-    }
+    text-decoration: underline;
+    font-weight: 900;
+}
+
+.full-width {
+    width: 100%;
 }
