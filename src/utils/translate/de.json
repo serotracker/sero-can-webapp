@@ -413,6 +413,7 @@
   "PlannedSerosurveys": "Geplante Serosurveys",
   "Population": "Bevölkerung",
   "PopulationGroup": "Bevölkerungsgruppe",
+  "DateRangeTo": "bis",
   "PopulationGroupOptions": {
     "All": "Alle",
     "BloodDonors": "Blutspendende",
@@ -433,7 +434,7 @@
     "Unspecified": "Nicht spezifiziert"
   },
   "Populations": "Bevölkerungen",
-  "PositiveCases": "Positive cases",
+  "PositiveCases": "Positive Fälle",
   "Prevalence": "Prävalenz",
   "PrevalenceEstimateDetails": "Details zur Prävalenzschätzung",
   "PrivacyPolicy": "Datenschutzrichtlinie",
