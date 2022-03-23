@@ -1,14 +1,56 @@
-import React from "react";
-import Translate from "utils/translate/translateService";
+import React, { useContext, useState } from "react";
+import Translate, {TranslateDate} from "utils/translate/translateService";
 import TotalStats from "./TotalStats";
 import { Divider } from 'semantic-ui-react'
 import DownloadButton from "components/shared/DownloadButton";
 import { PAGE_HASHES } from "../../../constants";
 import {IconName} from "../../../types";
 import "../sidebar.scss";
+import { AppContext } from "../../../context"
+import { useMediaQuery } from 'react-responsive'
+import { mobileDeviceOrTabletWidth } from '../../../constants'
 
 interface SideBarProps {
   page: string
+}
+
+type UpdatedAtProps = {
+  updatedAt: string;
+}
+
+export const Footer = () => {
+  const [{updatedAt}] = useContext(AppContext);
+
+  const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
+
+  return isMobileDeviceOrTablet ? renderMobileFooter(updatedAt) : renderDesktopFooter(updatedAt)
+}
+
+const renderDesktopFooter = (updatedAt: string) => (
+  <footer className={'container-fluid mx-0 footer'}>
+  <div className="footer__visible-section row justify-content-between d-flex align-items-center text-center">
+    <div className="col-2">
+      <UpdatedAt updatedAt={updatedAt}/>
+    </div>
+  </div>
+  </footer>
+)
+
+const renderMobileFooter = (updatedAt: string) => (
+  <footer className={'container-fluid mx-0 footer'}>
+    <div className="footer__visible-section row d-flex p-2">
+        <UpdatedAt updatedAt={updatedAt}/>
+    </div>
+  </footer>
+)
+
+const UpdatedAt = ({updatedAt}: UpdatedAtProps) => {
+  // only renders 'last updated' when we have a valid date
+  return updatedAt ? (
+  <span className='pr-2'>
+    {Translate("Footer", ["LastUpdated"])}: <b className='updated-at-bold'>{TranslateDate(updatedAt)}</b>
+  </span>
+  ): null
 }
 
 const lancetId = "https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30631-9/fulltext#%20"
@@ -73,6 +115,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
       <div>
         <p>
         <Citation/>
+       <UpdatedAt updatedAt={updatedAt}/>
         </p>
       </div>
     </div>
