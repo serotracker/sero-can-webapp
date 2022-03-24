@@ -128,7 +128,7 @@ const PageLinks = () => (
       Object.keys(PAGE_HASHES).map((page) => {
         return(
         <div className="col mx-2">
-          <p className="row subheading">{Translate(page)}</p>
+          <h3 className="row subheading">{Translate(page)}</h3>
           {
           Object.keys(PAGE_HASHES[page]).map(h => (
           <HashLink to={`${withLocaleUrl(page)}#${h}`} className="row mt-3 footer__link">

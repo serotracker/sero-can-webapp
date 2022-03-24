@@ -2,7 +2,8 @@
   ",": " ",
   "95%ConfidenceInterval": "Intervalle de confiance de 95 %",
   "95%ConfidenceIntervalTooltip": "Les barres d'erreur plus larges indiquent une incertitude plus accentuée dans l'estimation regroupée de séroprévalence.",
-  "About": "À PROPOS",
+  "About": "À Propos",
+  "AboutCaps": "À PROPOS",
   "AboutPage": {
     "AboutSection": {
       "Covid19ImmunityTaskForce": "Groupe de travail sur l'immunité face à la COVID-19,",
@@ -76,7 +77,8 @@
     "Title": "Méthodes d'analyse",
     "Tooltip": "La technique d'agrégation est à effets fixes, méta-analyse pondérée inverse la variance de la prévalence, avec la double arcsin Freeman-Tukey transformée utilisés pour stabiliser la variance sur la taille des échantillons MIN_DENOMINATOR dossiers considérés."
   },
-  "Analyze": "ANALYSER",
+  "Analyze": "Analyser",
+  "AnalyzeCaps": "ANALYSER",
   "AntibodyTarget": "Cible d'anticorps",
   "AntibodyTargetOptions": {
     "EnvelopeProtein": "Protéine d'enveloppe",
@@ -130,7 +132,8 @@
   "CPPInvestmentBoard": "Office d'investissement du RPC",
   "COVIDImmunityTaskForce": "Groupe de travail sur l'immunité face à COVID-19",
   "Dashboard": "Tableau de bord",
-  "Data": "DONNÉES",
+  "Data": "Données",
+  "DataCaps": "DONNÉES",
   "DatabaseUptoDateTo": "Base de données à jour jusqu'au",
   "DataDictionary": "Dictionnaire de données",
   "DataDictionaryText": {
@@ -225,7 +228,8 @@
   },
   "EstimateRange": "Plage d'estimation",
   "ExecutiveDirector": "Directeur général",
-  "Explore": "EXPLORER",
+  "Explore": "Explorer",
+  "ExploreCaps": "EXPLORER",
   "ExploreBlurb": {
     "FirstParagraph": "SeroTracker est un tableau de bord et une plate-forme de données pour les enquêtes sérologiques sur le SRAS-CoV-2. Les anticorps contre le SRAS-CoV-2, le virus qui cause la COVID-19, indiquent une infection ou une vaccination antérieure. Nous menons une revue systématique continue pour suivre les enquêtes sérologiques (efforts de surveillance basés sur les tests d’anticorps) à travers le monde, et nous visualisons les résultats sur ce tableau de bord.",
     "SecondParagraph": "Vous pouvez configurer les données affichées utilisant le barre 'filtre' à droite, et consulter la liste complète des études que nous suivons sur la page 'Les données'. "
@@ -403,7 +407,8 @@
   "Paper": "Article",
   "PaperText": "Vous trouverez notre premier manuscrit décrivant les enseignements des sérosondages jusqu'au 1er mai sur",
   "PaperTextTwo": "Pour plus d'informations sur notre tableau de bord, consultez",
-  "Partnerships": "PARTENARIATS",
+  "Partnerships": "Partenariats",
+  "PartnershipsCaps": "PARTENARIATS",
   "PartnershipsList": {
     "Canada": "Canada (GTIC)"
   },

@@ -2,7 +2,8 @@
   ",": ",",
   "95%ConfidenceInterval": "95% Konfidenzintervall",
   "95%ConfidenceIntervalTooltip": "Breitere Fehlerbalken weisen auf eine größere Unsicherheit in der aggregierten Seroprävalenzschätzung hin.",
-  "About": "ÜBER UNS",
+  "About": "Über uns",
+  "AboutCaps": "ÜBER UNS",
   "AboutPage": {
     "AboutSection": {
       "Covid19ImmunityTaskForce": "COVID-19-Arbeitsgruppe Immunität.",
@@ -76,7 +77,8 @@
     "Title": "Analysemethoden",
     "Tooltip": "Die verwendete Aggregationsmethode ist eine mit fixen Effekten und inverser Varianz gewichtete Meta-Analyse der Prävalenz, wobei die Freeman-Tukey-Transformation mit doppeltem Arkussinus zur Stabilisierung der Varianz verwendet wird. Datensätze über dem Stichprobenumfang MIN_DENOMINATOR werden berücksichtigt."
   },
-  "Analyze": "ANALYSIEREN",
+  "Analyze": "Analysiren",
+  "AnalyzeCaps": "ANALYSIEREN",
   "AntibodyTarget": "Antikörper-Target",
   "AntibodyTargetOptions": {
     "EnvelopeProtein": "Hüllprotein",
@@ -132,7 +134,8 @@
   },
   "COVIDImmunityTaskForce": "Covid-19-Arbeitsgruppe Immunität",
   "Dashboard": "Dashboard",
-  "Data": "DATEN",
+  "Data": "Daten",
+  "DataCaps": "DATEN",
   "DatabaseUptoDateTo": "Datenbank aktuell bis",
   "DataDictionary": "Datenwörterbuch",
   "DataDictionaryText": {
@@ -226,7 +229,8 @@
   },
   "EstimateRange": "Schätzbereich",
   "ExecutiveDirector": "Exekutivdirektor",
-  "Explore": "ERKUNDEN/EXPLORE",
+  "Explore": "Erkunden/Explore",
+  "ExploreCaps": "ERKUNDEN/EXPLORE",
   "ExploreBlurb": {
     "FirstParagraph": "SeroTracker ist eine Dashboard- und Datenplattform für SARS-CoV-2-Serosurveys.",
     "SecondParagraph": "Wir führen einen fortlaufenden systematischen Review durch, um Serosurveys (auf Antikörpertests basierende Surveillancemaßnahmen) auf der ganzen Welt zu verfolgen und die Ergebnisse auf diesem Dashboard sichtbar zu machen.",
@@ -391,7 +395,8 @@
   "Paper": "Papier",
   "PaperText": "Unser erstes Manuskript, in dem die Erkenntnisse aus den Serosurveys bis zum 1. Mai beschrieben werden, finden Sie unter",
   "PaperTextTwo": "Weitere Informationen über unser Dashboard finden Sie unter",
-  "Partnerships": "PARTNERSCHAFTEN",
+  "Partnerships": "Partnerchaften",
+  "PartnershipsCaps": "PARTNERSCHAFTEN",
   "PartnershipsList": {
     "Canada": "Kanada (CITF)"
   },
@@ -447,7 +452,7 @@
     "PrivateSectorReports": "Berichte über COVID-19-Screening- und Testpraktiken im gesamten kanadischen Privatsektor"
   },
   "Publications": "Veröffentlichung",
-  "PublicationsHeader": "VERÖFFENTLICHUNG",
+  "PublicationsCaps": "VERÖFFENTLICHUNG",
   "Published": "Veröffentlicht",
   "DataTable": "Referenzentabelle",
   "RegionalEstimateRange": "Regionaler Schätzbereich",
