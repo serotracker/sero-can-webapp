@@ -29,9 +29,6 @@ export const Footer = () => {
 const renderDesktopFooter = (updatedAt: string) => (
   <footer className={'container-fluid mx-0 footer'}>
       <div className="footer__visible-section row justify-content-between d-flex align-items-center text-center">
-        <div className="col-2">
-          <UpdatedAt updatedAt={updatedAt}/>
-        </div>
       </div>
       <div className="row justify-content-center mt-3">
         <div className="col-8">
@@ -60,9 +57,6 @@ const renderDesktopFooter = (updatedAt: string) => (
 
 const renderMobileFooter = (updatedAt: string) => (
   <footer className={'container-fluid mx-0 footer'}>
-      <div className="footer__visible-section row d-flex p-2">
-          <UpdatedAt updatedAt={updatedAt}/>
-      </div>
       <div className="row justify-content-center mt-5">
         <div className="col-10 ">
           <MobilePageLinks />
