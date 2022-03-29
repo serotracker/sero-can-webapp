@@ -38,10 +38,7 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
       return geo.trim() + ", "
     }
     else {
-      var geoTrimmed = []
-      for (let i = 0; i < geo.length; i++) {
-        geoTrimmed.push(geo[i].trim())
-      }
+      const geoTrimmed = geo.map((g) => g.trim())
       return geoTrimmed.join(", ") + ", ";
     }
   }
@@ -70,13 +67,9 @@ export const translateAntibodyTargets = (antibodyTarget: string | string[]) => {
     return Translate("AntibodyTargetOptions", [antibodyTarget.replace(/\s/g, "")])
   }
   else {
-    let i = 0
-    let returnString = ""
-    while(antibodyTarget[i]) {
-      if(i > 0) {returnString += ", "}
-      returnString += Translate("AntibodyTargetOptions", [antibodyTarget[i].replace(/\s/g, "")])
-      i++
-    }
-    return returnString
+    const initialValue = ""
+    let returnString = antibodyTarget.reduce((previousValue, currentValue) => previousValue
+        + Translate("AntibodyTargetOptions", [currentValue.replace(/\s/g, "")]) + ", ", initialValue)
+    return returnString.slice(0, -2)
   }
 }
