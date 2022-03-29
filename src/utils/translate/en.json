@@ -99,11 +99,12 @@
     "Published": "Published:",
     "NewSerosurveys": "New serosurveys identified",
     "AFRO": "African",
-    "EMRO": "Eastern Medditerranean",
+    "EMRO": "Eastern Mediterranean",
     "EURO": "European",
     "PAHO": "Region of the Americas",
     "SEARO": "South-East Asia",
     "WPRO": "Western Pacific",
+    "NonMember": "Non-Member States",
     "NewSources": "New sources added"
   },
   "BlankUniversity": "NAME University",
@@ -111,6 +112,7 @@
   "ByPopulation": "By Population",
   "CentreHealthInformatics": "Centre for Health Informatics",
   "ChangeLog": "Change log",
+  "ClearAllFilters": "Clear all filters",
   "CPPInvestmentBoard": "CPP Investment Board",
   "ChangeSettings": "Change Settings",
   "CoDirector": "Co-Director",
@@ -135,6 +137,7 @@
   "Dashboard": "Dashboard",
   "Data": "Data",
   "DatabaseUptoDateTo": "Database up to date to",
+  "DateRangeTo": "to",
   "DataDictionary": "Data dictionary",
   "DataDictionaryText": {
     "FirstParagraph": "For more information and context about our data, please take a look at our",
@@ -293,10 +296,13 @@
     "InsuringTheEconomy": "Insuring the Economy Against a Second Pandemic Wave"
   },
   "ResearchArticleTitles": {
-    "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys",
-    "MedRxivPub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
+    "MedRxivNLP": "A real-world evaluation of the implementation of NLP technology in abstract screening of a systematic review",
+    "MedRxivMeta": "Global epidemiology of SARS-CoV-2 infection: a systematic review and meta-analysis of standardized population-based seroprevalence studies, Jan 2020-Oct 2021",
+    "MedRxivROB": "SeroTracker-ROB: reproducible decision rules for risk of bias assessment of seroprevalence studies",
+    "MedRxivPrivate": "Uptake of SARS-CoV-2 workplace testing programs, March 2020 to March 2021",
+    "PlosOnePub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis",
     "LancetID": "SeroTracker: a global SARS-CoV-2 seroprevalence dashboard",
-    "PlosOnePub": "Global seroprevalence of SARS-CoV-2 antibodies: a systematic review and meta-analysis"
+    "PrePrint": "Lessons from a rapid systematic review of early SARS-CoV-2 serosurveys"
   },
   "BiblioDigestTitles": {
     "December": "December Literature Update Report",
@@ -343,7 +349,7 @@
   "Media": "Media",
   "MediaMentions": "Media Mentions",
   "MemorialUniversityOfNewfoundland": "Memorial university of Newfoundland",
-  "MonthlyReports": "Monthly Reports",
+  "PrivateSectorReports": "Private Sector Reports",
   "Months": {
     "January": "January",
     "February": "February",
@@ -396,13 +402,14 @@
     "Canada": "Canada (CITF)"
   },
   "PartnershipsPageTitle": {
-    "Canada": "Canada - Covid-19 Immunity Task Force"
+    "Canada": "Canadian Covid-19 Immunity Task Force"
   },
   "PartnershipsPageDescription": {
     "Canada": {
       "PartOne": "SeroTracker is financially supported by the Public Health Agency of Canada through the COVID-19 Immunity Task Force (CITF). The CITF has funded many high-calibre serological surveys among other immunity related research that you can learn more about on",
       "PartTwo": "their website.",
-      "PartThree": "This page presents data from Canadian serological surveys and modeling based on these data."
+      "PartThree": "They also provide modelled estimates of seroprevalence due to infection in the Canadian population which you can find",
+      "PartFour": "here."
     }
   },
   "PartnershipsView": {
@@ -439,16 +446,15 @@
   "PrivacyPolicy": "Privacy Policy",
   "Publication": "Publication",
   "PublicationDescriptions": {
-    "Publications": "Learn more about SeroTracker’s impact in research articles, summaries, and media mentions.",
-    "ResearchArticles": "Peer-reviewed research papers published by the SeroTracker team.",
-    "LiteratureUpdateReports": "Monthly overviews and updates on trends in serosurvey literature and WHO-supplied metrics.",
+    "Publications": "Learn more about SeroTracker’s impact in research articles, summaries, and media mentions",
+    "ResearchArticles": "Peer-reviewed and pre-print research papers published by the SeroTracker team",
+    "LiteratureUpdateReports": "Monthly overviews and updates on trends in serosurvey literature and WHO-supplied metrics",
     "GeneralSerotrackerCommunications": "Updates and insights from across the SeroTracker team",
-    "MediaMentions": "Worldwide media publications featuring SeroTracker.",
-    "MonthlyReports": "COVID-19 Screening & Testing in Canada’s Private Sector"
+    "MediaMentions": "Worldwide media publications featuring SeroTracker",
+    "PrivateSectorReports": "Reports on COVID-19 screening and testing practices across Canada’s private sector"
   },
   "Publications": "Publications",
   "Published": "Published",
-  "References": "References",
   "DataTable": "Data Table",
   "RegionalEstimateRange": "Regional Estimate Range",
   "RegionalEstimates": "Regional Estimates",
@@ -490,7 +496,7 @@
   },
   "Serosurveys": "Serosurveys",
   "SerosurveysReportingPrevalence": "Serosurveys Reporting Prevalence",
-  "SeroprevalenceEstimatesInRegion": "Seroprevalence estimates in NAME by their geographic area",
+  "SeroprevalenceEstimatesInRegion": "Seroprevalence Estimates in Canada by Geographic Area",
   "SeroTrackerTeam": "SeroTracker team",
   "Settings": "Settings",
   "Sex": "Sex",

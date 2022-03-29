@@ -40,6 +40,7 @@ export default function Explore({initialFilters}: ExploreProps) {
                 sendUnityAnalyticsEvent();
             }
         }
+
         fetchExploreData(dispatch, state.explore.filters, PageStateEnum.explore)
         // We only want this to run once so we pass no dependencies. Do not remove this
         // eslint-disable-next-line react-hooks/exhaustive-deps

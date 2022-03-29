@@ -18,7 +18,7 @@
       "UnityStudies": "séroprévalence Unity.",
       "WHO1": "SeroTracker travaille avec",
       "WHO2": "de la santé pour visualiser et synthétiser les résultats des études de",
-      "WHO3": "SeroTracker et l’Organisation mondiale de la santé remercions le Ministère Fédéral Allemand de la Santé (BMG) Recherche et Développement COVID-19 pour le financement pour soutenir cet effort",
+      "WHO3": "SeroTracker et l’Organisation mondiale de la santé remercions le Ministère Fédéral Allemand de la Santé (BMG) Recherche et Développement COVID-19 pour le financement pour soutenir cet effort.",
       "WorldHealthOrganization": "l’Organisation mondiale de la santé"
     },
     "ContactSection": {
@@ -100,6 +100,7 @@
     "PAHO": "Amériques",
     "SEARO": "Asie du Sud-Est",
     "WPRO": "Pacifique occidental",
+    "NonMember": "États non membres",
     "NewSources": "Nouvelles sources ajoutées"
   },
   "BlankUniversity": "Université de NAME",
@@ -107,6 +108,7 @@
   "ByPopulation": "Par population",
   "CentreHealthInformatics": "Centre d'informatique de la santé",
   "ChangeLog": "Un registre de modifications",
+  "ClearAllFilters": "Effacer tous les filtres",
   "ChangeSettings": "Modifier les paramètres",
   "CoDirector": "Codirecteur",
   "CookiePolicy": "Politique sur les fichiers témoins",
@@ -130,6 +132,7 @@
   "Dashboard": "Tableau de bord",
   "Data": "Données",
   "DatabaseUptoDateTo": "Base de données à jour jusqu'au",
+  "DateRangeTo": "au",
   "DataDictionary": "Dictionnaire de données",
   "DataDictionaryText": {
     "FirstParagraph": "Pour plus d'informations et de contexte sur nos données, veuillez s'il vous plait consulter notre",
@@ -288,10 +291,13 @@
     "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie"
   },
   "ResearchArticleTitles": {
-    "PrePrint": "Leçons d'un examen rapide et systématique du début des SRAS-CoV-2 enquêtes sérologiques",
-    "MedRxivPub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse",
+    "MedRxivNLP": "Une évaluation concrète de la mise en oeuvre de la technologie NLP dans le triage d'abstraits pour une revue systématique",
+    "MedRxivMeta": "Épidémiologie mondiale de l'infection par le SRAS-CoV-2: une revue systématique et une méta-analyse d'études de séroprévalence standardisées basées sur la population, janvier 2020-octobre 2021",
+    "MedRxivROB": "SeroTracker-ROB: règles de décision reproductibles pour l'évaluation du risque de biais des études de séroprévalence",
+    "MedRxivPrivate": "Adoption des programmes de dépistage du SRAS-CoV-2 sur le lieu de travail, mars 2020 à mars 2021",
+    "PlosOnePub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse",
     "LancetID": "SeroTracker: un tableau de bord global de séroprévalence du SRAS-CoV-2",
-    "PlosOnePub": "Séroprévalence globale des anticorps contre la SRAS-CoV-2: une revue systématique et méta-analyse"
+    "PrePrint": "Leçons d'un examen rapide et systématique du début des SRAS-CoV-2 enquêtes sérologiques"
   },
   "BiblioDigestTitles": {
     "December": "Le bulletin de mise à jour de la littérature de decembre",
@@ -337,7 +343,7 @@
   "Media": "Médias",
   "MediaMentions": "Mentions dans les médias",
   "MemorialUniversityOfNewfoundland": "Université commémorative de Terre-Neuve",
-  "MonthlyReports": "Rapports mensuels",
+  "PrivateSectorReports": "Rapports du secteur privé",
   "Months": {
     "January": "janvier",
     "February": "février",
@@ -397,13 +403,14 @@
     "Canada": "Canada (GTIC)"
   },
   "PartnershipsPageTitle": {
-    "Canada": "Canada - Groupe de travail sur l'immunité contre le Covid-19"
+    "Canada": "Groupe de travail canadien sur l'immunité contre le Covid-19"
   },
   "PartnershipsPageDescription": {
     "Canada": {
       "PartOne": "SeroTracker est soutenu financièrement par l'Agence de la santé publique du Canada par le biais du Groupe de travail sur l’immunité face à la COVID-19 (GTIC). Le GTIC a financé de nombreuses enquêtes sérologiques de haut calibre parmi d'autres recherches sur lesquelles vous pouvez en apprendre davantage sur",
       "PartTwo": "leur site Web.",
-      "PartThree": "Cette page présente les données des enquêtes sérologiques canadiennes et la modélisation basée sur ces données."
+      "PartThree": "Ils fournissent également des estimations modélisées de la séroprévalence due à l'infection dans la population canadienne que vous pouvez trouver",
+      "PartFour": "ici."
     }
   },
   "PartnershipsView": {
@@ -441,16 +448,15 @@
 
   "Publication": "Publication",
   "PublicationDescriptions": {
-    "Publications": "Apprenez-en plus sur l'impact de SeroTracker dans des articles de recherche, des résumés et des mentions dans les médias.",
-    "ResearchArticles": "Articles de recherche évalués par des pairs publiés par l'équipe SeroTracker.",
-    "LiteratureUpdateReports": "Aperçus mensuels et mises à jour sur les tendances dans la littérature des enquêtes sérologiques et les paramètres fournis par l'OMS.",
-    "GeneralSerotrackerCommunications": "Mises à jour et réflexions de l'ensemble de l'équipe SeroTracker.",
-    "MediaMentions": "Publications médiatiques mondiales mettant en vedette SeroTracker.",
-    "MonthlyReports": "Covid-19 Dépistage et d'essais dans le secteur privé du Canada"
+    "Publications": "Apprenez-en plus sur l'impact de SeroTracker dans des articles de recherche, des résumés et des mentions dans les médias",
+    "ResearchArticles": "Articles de recherche évalués par des pairs et pré-imprimés publiés par l'équipe SeroTracker",
+    "LiteratureUpdateReports": "Aperçus mensuels et mises à jour sur les tendances dans la littérature des enquêtes sérologiques et les paramètres fournis par l'OMS",
+    "GeneralSerotrackerCommunications": "Mises à jour et réflexions de l'ensemble de l'équipe SeroTracker",
+    "MediaMentions": "Publications médiatiques mondiales mettant en vedette SeroTracker",
+    "PrivateSectorReports": "Rapports sur les pratiques de dépistage et de test de la COVID-19 dans le secteur privé canadien"
   },
   "Publications": "Publications",
   "Published": "Publié",
-  "References": "Références",
   "DataTable": "Table de données",
   "RegionalEstimateRange": "Plage d'estimation régionale",
   "RegionalEstimates": "Estimations régionales",
@@ -490,7 +496,7 @@
   },
   "Serosurveys": "Sérosondages",
   "SerosurveysReportingPrevalence": "Prévalence de signalement des sérosondages",
-  "SeroprevalenceEstimatesInRegion": "Estimations de la séroprévalence dans NAME par zone géographique",
+  "SeroprevalenceEstimatesInRegion": "Estimations de la séroprévalence dans Canada par zone géographique",
   "SeroTrackerTeam": "l’équipe SeroTracker",
   "Settings": "Paramètres",
   "Sex": "Sexe",

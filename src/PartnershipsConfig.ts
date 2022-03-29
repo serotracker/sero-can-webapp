@@ -1,14 +1,12 @@
 import { Partnership } from './types';
+import { CANADA_URLS } from "./constants";
 
 const PartnershipsConfig: Partnership[] = [
         {
             iso3: 'CAN',
             routeName: "Canada",
             tableauKey: "CanadianTableau",
-            tableauUrl: {
-                "en": "https://public.tableau.com/views/Canada-EN/Canadiancharts?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link",
-                "fr": "https://public.tableau.com/views/Canada-FR/CanadianchartsFR?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
-            },
+            tableauUrl: CANADA_URLS,
             mapboxMapOptions: {
                 bounds: [
                     [-148, 39], // Southwest coordinates

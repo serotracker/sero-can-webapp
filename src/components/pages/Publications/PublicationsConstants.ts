@@ -49,6 +49,7 @@ export interface BiblioDigestProps {
     serosurveysPAHO: number,
     serosurveysSEARO: number,
     serosurveysWPRO: number,
+    serosurveysNonMember: number,
     screeningStartDate: string,
     screeningEndDate: string,
     publishDate: string
@@ -86,6 +87,42 @@ export const listOfReports: PublicationProps[] = [
 ]
 
 export const listOfResearchArticles: PublicationProps[] = [
+    {
+        date: "2022-02-25",
+        img: MedRxiv,
+        titleKey1: 'ResearchArticleTitles',
+        titleKey2: ['MedRxivNLP'],
+        publicationName: "medRxiv",
+        authors: "Sara Perlman-Arrow, Noel Loo, Niklas Bobrovitz et al.",
+        url: "https://www.medrxiv.org/content/10.1101/2022.02.24.22268947v1"
+    },
+    {
+        date: "2021-12-15",
+        img: MedRxiv,
+        titleKey1: 'ResearchArticleTitles',
+        titleKey2: ['MedRxivMeta'],
+        publicationName: "medRxiv",
+        authors: "Isabel Bergeri, Mairead Whelan, Harriet Ware et al.",
+        url: "https://www.medrxiv.org/content/10.1101/2021.12.14.21267791v1"
+    },
+    {
+        date: "2021-11-21",
+        img: MedRxiv,
+        titleKey1: 'ResearchArticleTitles',
+        titleKey2: ['MedRxivROB'],
+        publicationName: "medRxiv",
+        authors: "Niklas Bobrovitz, Kim Noël, Zihan Li et al.",
+        url: "https://www.medrxiv.org/content/10.1101/2021.11.17.21266471v1"
+    },
+    {
+        date: "2021-07-03",
+        img: MedRxiv,
+        titleKey1: 'ResearchArticleTitles',
+        titleKey2: ['MedRxivPrivate'],
+        publicationName: "medRxiv",
+        authors: "Nathan Duarte, Sean D'Mello, Nathalie A Duarte et al.",
+        url: "https://www.medrxiv.org/content/10.1101/2021.06.29.21259730v1"
+    },
     {
         date: "2021-06-23",
         img: PlosOnePub,
@@ -329,58 +366,107 @@ export const listOfMediaPublicationsProps: PublicationProps[] = [
 // Note: for biblio digests, date = date published
 export const listOfBiblioDigests: BiblioDigestProps[] = [
     {
-        url: "https://drive.google.com/file/d/1u2g7tmbP9kD0oi0syLgapmoBP4BCV0NF/view?usp=sharing",
-        sourcesAdded: 56,
-        serosurveysTotal: 118,
-        serosurveysAFRO: 37,
-        serosurveysEMRO: 2,
-        serosurveysEURO: 39,
-        serosurveysPAHO: 24,
-        serosurveysSEARO: 5,
-        serosurveysWPRO: 10,
-        publishDate: "2021-12-10",
-        screeningStartDate: "2021-11-20",
-        screeningEndDate: "2021-12-03"
+        url: "https://drive.google.com/file/d/1h7RpDI_EWi2qu2KTjErME03jlhY1hS5Y/view?usp=sharing",
+        sourcesAdded: 128,
+        serosurveysTotal: 310,
+        serosurveysAFRO: 29,
+        serosurveysEMRO: 4,
+        serosurveysEURO: 185,
+        serosurveysPAHO: 58,
+        serosurveysSEARO: 21,
+        serosurveysWPRO: 13,
+        serosurveysNonMember: 0,
+        publishDate: "2022-03-10",
+        screeningStartDate: "2022-02-05",
+        screeningEndDate: "2022-03-04"
     },
     {
-        url: "https://drive.google.com/file/d/1kwMjD6w2onk9lh-sCOgAcEBH-I1DrW7_/view",
+        url: "https://drive.google.com/file/d/1PME1WFA-ItYAzzuPfGNSvLvJyKXQAezl/view?usp=sharing",
+        sourcesAdded: 98,
+        serosurveysTotal: 160,
+        serosurveysAFRO: 20,
+        serosurveysEMRO: 3,
+        serosurveysEURO: 66,
+        serosurveysPAHO: 36,
+        serosurveysSEARO: 14,
+        serosurveysWPRO: 20,
+        serosurveysNonMember: 1,
+        publishDate: "2022-02-11",
+        screeningStartDate: "2022-01-08",
+        screeningEndDate: "2022-02-04"
+    },
+    {
+        url: "https://drive.google.com/file/d/1J51-liWMXACBdMgl2Yqc_litXSIukkBQ/view?usp=sharing",
+        sourcesAdded: 65,
+        serosurveysTotal: 102,
+        serosurveysAFRO: 6,
+        serosurveysEMRO: 2,
+        serosurveysEURO: 49,
+        serosurveysPAHO: 24,
+        serosurveysSEARO: 15,
+        serosurveysWPRO: 6,
+        serosurveysNonMember: 0,
+        publishDate: "2022-01-14",
+        screeningStartDate: "2021-12-11",
+        screeningEndDate: "2022-01-07"
+    },
+    {
+        url: "https://drive.google.com/file/d/1ibebgdbG5C-k0whOJfjeEuECrybmHlQ2/view?usp=sharing",
+        sourcesAdded: 85,
+        serosurveysTotal: 176,
+        serosurveysAFRO: 37,
+        serosurveysEMRO: 5,
+        serosurveysEURO: 67,
+        serosurveysPAHO: 40,
+        serosurveysSEARO: 11,
+        serosurveysWPRO: 15,
+        serosurveysNonMember: 1,
+        publishDate: "2021-12-17",
+        screeningStartDate: "2021-11-20",
+        screeningEndDate: "2021-12-10"
+    },
+    {
+        url: "https://drive.google.com/file/d/1v1Tzyatwzg-1v7f0H6qO1JGfL9Hk3_jN/view?usp=sharing",
         sourcesAdded: 133,
-        serosurveysTotal: 270,
+        serosurveysTotal: 269,
         serosurveysAFRO: 14,
         serosurveysEMRO: 10,
         serosurveysEURO: 153,
         serosurveysPAHO: 55,
         serosurveysSEARO: 24,
         serosurveysWPRO: 13,
+        serosurveysNonMember: 0,
         publishDate: "2021-11-26",
         screeningStartDate: "2021-10-23",
         screeningEndDate: "2021-11-09"
     },
     {
-        url: "https://drive.google.com/file/d/11JHvvKtR9_s2HQHeHmp6j-hx8Y1sIF-O/view?usp=sharing",
+        url: "https://drive.google.com/file/d/1Fy-fQS0fVzMPW75ZpWQRLZoU1EVYdeaF/view?usp=sharing",
         sourcesAdded: 171,
-        serosurveysTotal: 264,
+        serosurveysTotal: 263,
         serosurveysAFRO: 18,
         serosurveysEMRO: 24,
         serosurveysEURO: 134,
         serosurveysPAHO: 66,
         serosurveysSEARO: 11,
         serosurveysWPRO: 10,
+        serosurveysNonMember: 0,
         publishDate: "2021-10-29",
         screeningStartDate: "2021-09-25",
         screeningEndDate: "2021-10-22"
     },
     {
-        url: "https://drive.google.com/file/d/1uOhhQ8ToNYbXYcQ8acqVljHTksH8v-em/view?usp=sharing",
+        url: "https://drive.google.com/file/d/12u72w5ZpgNV1JykEasxVD1QYWi3F9mV4/view?usp=sharing",
         sourcesAdded: 117,
-        serosurveysTotal: 297,
+        serosurveysTotal: 289,
         serosurveysAFRO: 6,
         serosurveysEMRO: 8,
         serosurveysEURO: 136,
         serosurveysPAHO: 117,
         serosurveysSEARO: 18,
         serosurveysWPRO: 4,
-        publishDate: "2021-12-01",
+        serosurveysNonMember: 0,
+        publishDate: "2021-10-01",
         screeningStartDate: "2021-08-28",
         screeningEndDate: "2021-09-24"
     },
@@ -393,6 +479,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 63,
         serosurveysSEARO: 14,
         serosurveysWPRO: 4,
+        serosurveysNonMember: 0,
         publishDate: "2021-09-03",
         screeningStartDate: "2021-07-31",
         screeningEndDate: "2021-08-27"
@@ -406,6 +493,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 46,
         serosurveysSEARO: 12,
         serosurveysWPRO: 14,
+        serosurveysNonMember: 0,
         publishDate: "2021-08-06",
         screeningStartDate: "2021-07-03",
         screeningEndDate: "2021-07-30"
@@ -419,6 +507,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 44,
         serosurveysSEARO: 21,
         serosurveysWPRO: 20,
+        serosurveysNonMember: 0,
         publishDate: "2021-07-09",
         screeningStartDate: "2021-06-05",
         screeningEndDate: "2021-07-02"
@@ -432,13 +521,14 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysPAHO: 51,
         serosurveysSEARO: 11,
         serosurveysWPRO: 8,
+        serosurveysNonMember: 0,
         publishDate: "2021-06-10",
         screeningStartDate: "2021-04-25",
         screeningEndDate: "2021-06-04"
     },
 ]
 
-export const listOfMonthlyReports: PublicationProps[] = [
+export const listOfPrivateSectorReports: PublicationProps[] = [
     {
         titleKey1: 'IndustryReportTitles',
         titleKey2: ["OctoberReport"],

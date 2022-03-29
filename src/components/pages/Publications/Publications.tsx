@@ -8,7 +8,7 @@ import {
     listOfReports, 
     listOfBiblioDigests, 
     listOfMediaPublicationsProps, 
-    listOfMonthlyReports, 
+    listOfPrivateSectorReports, 
     listOfResearchArticles,
     PublicationProps
 } from "./PublicationsConstants";
@@ -45,8 +45,8 @@ export default function Publications() {
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
-                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.MonthlyReports}>
-                            {Translate('MonthlyReports')}
+                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.PrivateSectorReports}>
+                            {Translate('PrivateSectorReports')}
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
@@ -81,13 +81,13 @@ export default function Publications() {
                 </p>
                 {getBiblioDigestCarousel()}
 
-                <h2 id={PAGE_HASHES.Publications.MonthlyReports}>
-                    {"Monthly Reports"}
+                <h2 id={PAGE_HASHES.Publications.PrivateSectorReports}>
+                    {Translate('PrivateSectorReports')}
                 </h2>
                 <p>
-                    {Translate("PublicationDescriptions", ["MonthlyReports"])}
+                    {Translate("PublicationDescriptions", ["PrivateSectorReports"])}
                 </p>
-                {getPublicationsLinks(listOfMonthlyReports)}
+                {getPublicationsLinks(listOfPrivateSectorReports)}
 
                 <h2 id={PAGE_HASHES.Publications.MediaMentions}>
                     {Translate('MediaMentions')}

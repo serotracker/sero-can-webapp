@@ -100,6 +100,7 @@
     "PAHO": "Region Amerikas",
     "SEARO": "Südostasien",
     "WPRO": "Westpazifik",
+    "NonMember": "Nichtmitgliedstaaten",
     "NewSources": "Neue quellen hinzugefügt"
   },
   "BestSeroprevalenceEstimate": "Beste Schätzung der Seroprävalenz",
@@ -108,6 +109,7 @@
   "ByPopulation": "Nach Bevölkerung,",
   "CentreHealthInformatics": "Zentrum für Gesundheitsinformatik",
   "ChangeLog": "Änderungsprotokoll",
+  "ClearAllFilters": "Alle Filter löschen",
   "CPPInvestmentBoard": "CPP-Investitionsausschuss",
   "ChangeSettings": "Einstellungen ändern",
   "CoDirector": "Co-Direktor",
@@ -290,10 +292,13 @@
     "InsuringTheEconomy": "Absicherung der Wirtschaft gegen eine zweite Pandemiewelle"
   },
   "ResearchArticleTitles": {
-    "PrePrint": "Lehren aus einer raschen systematischen Überprüfung der ersten SARS-CoV-2-Serosurveys",
-    "MedRxivPub": "Globale Seroprävalenz von SARS-CoV-2-Antikörpern: eine systematische Überprüfung und Meta-Analyse",
+    "MedRxivNLP": "Eine reale Bewertung der Implementierung der NLP-Technologie in einem abstrakten Screening einer systematischen Überprüfung",
+    "MedRxivMeta": "Globale Epidemiologie der SARS-CoV-2-Infektion: eine systematische Überprüfung und Metaanalyse standardisierter populationsbasierter Seroprävalenzstudien, Januar 2020 bis Oktober 2021",
+    "MedRxivROB": "SeroTracker-ROB: reproduzierbare Entscheidungsregeln zur Risiko-Bias-Bewertung von Seroprävalenzstudien",
+    "MedRxivPrivate": "Aufnahme von SARS-CoV-2-Arbeitsplatztestprogrammen, März 2020 bis März 2021",
+    "PlosOnePub": "Globale Seroprävalenz von SARS-CoV-2-Antikörpern: eine systematische Überprüfung und Meta-Analyse",
     "LancetID": "SeroTracker: ein globales SARS-CoV-2 Seroprävalenz-Dashboard",
-    "PlosOnePub": "Globale Seroprävalenz von SARS-CoV-2-Antikörpern: eine systematische Überprüfung und Meta-Analyse"
+    "PrePrint": "Lehren aus einer raschen systematischen Überprüfung der ersten SARS-CoV-2-Serosurveys"
   },
   "BiblioDigestTitles": {
     "November": "Literatur-Update-Bericht November",
@@ -338,7 +343,7 @@
   "Media": "Medien ",
   "MediaMentions": "Erwähnungen in den Medien",
   "MemorialUniversityOfNewfoundland": "Memorial-Universität von Neufundland",
-  "MonthlyReports": "Monatliche Berichte",
+  "PrivateSectorReports": "Berichte aus dem Privatsektore",
   "Months": {
     "January": "Januar",
     "February": "Februar",
@@ -391,13 +396,14 @@
     "Canada": "Kanada (CITF)"
   },
   "PartnershipsPageTitle": {
-    "Canada": "Kanada – Covid-19-Arbeitsgruppe Immunität"
+    "Canada": "Kanadische Covid-19-Arbeitsgruppe Immunität"
   },
   "PartnershipsPageDescription": {
     "Canada": {
       "PartOne": "SeroTracker wird von der Agentur für öffentliche Gesundheit, Kanada, über die COVID-19-Arbeitsgruppe Immunität (CITF) finanziell unterstützt. Die CITF hat viele hochkarätige serologische Untersuchungen und andere immunitätsbezogene Forschungsarbeiten finanziert, über die Sie",
-      "PartTwo": "auf seiner Website mehr erfahren können. (https://www.covid19immunitytaskforce.ca/) ",
-      "PartThree": "Auf dieser Seite werden Daten aus kanadischen serologischen Erhebungen und darauf basierenden Modellierungen vorgestellt."
+      "PartTwo": "auf seiner Website mehr erfahren können.",
+      "PartThree": "Sie bieten auch modellierte Schätzungen der Seroprävalenz aufgrund von Infektionen in der kanadischen Bevölkerung",
+      "PartFour": "die Sie hier finden können."
     }
   },
   "PartnershipsView": {
@@ -408,6 +414,7 @@
   "PlannedSerosurveys": "Geplante Serosurveys",
   "Population": "Bevölkerung",
   "PopulationGroup": "Bevölkerungsgruppe",
+  "DateRangeTo": "bis",
   "PopulationGroupOptions": {
     "All": "Alle",
     "BloodDonors": "Blutspendende",
@@ -428,22 +435,21 @@
     "Unspecified": "Nicht spezifiziert"
   },
   "Populations": "Bevölkerungen",
-  "PositiveCases": "Positive cases",
+  "PositiveCases": "Positive Fälle",
   "Prevalence": "Prävalenz",
   "PrevalenceEstimateDetails": "Details zur Prävalenzschätzung",
   "PrivacyPolicy": "Datenschutzrichtlinie",
   "Publication": "Veröffentlichung",
   "PublicationDescriptions": {
-    "Publications": "Erfahren Sie mehr über den Einfluss von SeroTracker in Forschungsartikeln Zusammenfassungen und Medienberichten.",
-    "ResearchArticles": "Von Fachleuten begutachtete Forschungsarbeiten, die vom SeroTracker-Team veröffentlicht wurden.",
-    "LiteratureUpdateReports": "Monatliche Übersichten und Updates zu Trends in der Literatur über Serosurveys und zu den von der WHO bereitgestellten Metriken.",
+    "Publications": "Erfahren Sie mehr über den Einfluss von SeroTracker in Forschungsartikeln Zusammenfassungen und Medienberichten",
+    "ResearchArticles": "Peer-Review- und Pre-Print-Forschungspapiere, die vom SeroTracker-Team veröffentlicht wurden",
+    "LiteratureUpdateReports": "Monatliche Übersichten und Updates zu Trends in der Literatur über Serosurveys und zu den von der WHO bereitgestellten Metriken",
     "GeneralSerotrackerCommunications": "Updates und Einblicke aus dem gesamten SeroTracker-Team",
-    "MediaMentions": "Weltweite Medienveröffentlichungen, die SeroTracker vorstellen.",
-    "MonthlyReports": "Updates zu COVID-19-Screening und -Tests im privatwirtschaftlichen Sektor Kanadas"
+    "MediaMentions": "Weltweite Medienveröffentlichungen, die SeroTracker vorstellen",
+    "PrivateSectorReports": "Berichte über COVID-19-Screening- und Testpraktiken im gesamten kanadischen Privatsektor"
   },
   "Publications": "Veröffentlichung",
   "Published": "Veröffentlicht",
-  "References": "Referenzen",
   "DataTable": "Referenzentabelle",
   "RegionalEstimateRange": "Regionaler Schätzbereich",
   "RegionalEstimates": "Regionale Schätzungen",
@@ -485,7 +491,7 @@
   },
   "Serosurveys": "Serosurveys",
   "SerosurveysReportingPrevalence": "Serosurveys, die eine Prävalenz melden",
-  "SeroprevalenceEstimatesInRegion": "Seroprävalenzschätzungen in NAME nach geografischem Gebiet",
+  "SeroprevalenceEstimatesInRegion": "Seroprävalenzschätzungen in Kanada nach geografischem Gebiet",
   "SeroTrackerTeam": "SeroTracker-Team",
   "Settings": "Einstellungen",
   "Sex": "Geschlecht",

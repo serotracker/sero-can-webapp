@@ -5,11 +5,12 @@ import { Button, Popup } from "semantic-ui-react";
 import { Icon } from 'semantic-ui-react';
 import { SemanticICONS } from "semantic-ui-react/dist/commonjs/generic";
 import airtableLogo from '../../assets/images/airtable-icon.svg';
+import { IconName } from '../../types';
 interface DownloadButtonProps {
     buttonLabelKey?: string;
     downloadLink?: string;
     formLink?: string;
-    iconName: string;
+    iconName: IconName;
     popupText: string;
     id?: string;
   }
@@ -43,13 +44,13 @@ export default function DownloadButton(props: DownloadButtonProps) {
     }
     
     return (
-        iconName === "" ?       
-        <Popup content={Translate(popupText)} style={{textAlign: "left"}} position="top right" trigger={
-            <Button key={buttonLabelKey} size="large" iconName={iconName} className="download-data-btn mb-2 mr-2" id={props.id} >
+        iconName === IconName.airtable ?       
+        <Popup  popperModifiers={{ preventOverflow: { boundariesElement: "window" } }} content={Translate(popupText)} size="small" style={{textAlign: "left"}} position="top left" trigger={
+            <Button key={buttonLabelKey} size="large" iconName={iconName} className="download-data-btn mb-2" id={props.id} >
                 <a
                     onClick={() => clickButton()}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     href={getButtonLink()}
                     className='d-flex align-items-center'
                 >
@@ -61,12 +62,12 @@ export default function DownloadButton(props: DownloadButtonProps) {
   
     :  
 
-    <Popup id={props.id} offset={-10} style={{textAlign: "left"}}content={Translate(popupText)} position="top right" trigger={
-        <Button id={props.id} key={buttonLabelKey} size="large" iconName={iconName} className="download-data-btn mb-2 mr-2">
+    <Popup  popperModifiers={{ preventOverflow: { boundariesElement: "window" } }} id={props.id} size="small" style={{textAlign: "left"}}content={Translate(popupText)} position="top left" trigger={
+        <Button id={props.id} key={buttonLabelKey}  size="large" iconName={iconName} className="download-data-btn mb-2">
             <a
                 onClick={() => clickButton()}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 href={getButtonLink()}
                 className='d-flex align-items-center'
             >

@@ -20,7 +20,10 @@ export default function CanadaPartnership({partnershipConfig}:CanadaPartnershipP
         <a target="_blank" rel="noopener noreferrer" href="https://www.covid19immunitytaskforce.ca/">
           {Translate("PartnershipsPageDescription", [partnershipConfig.routeName, "PartTwo"], null, [false, true])}
         </a>
-        {Translate("PartnershipsPageDescription", [partnershipConfig.routeName, "PartThree"])}
+        {Translate("PartnershipsPageDescription", [partnershipConfig.routeName, "PartThree"], null, [false, true])}
+        <a target="_blank" rel="noopener noreferrer" href="https://www.covid19immunitytaskforce.ca/seroprevalence-modelling/">
+          {Translate("PartnershipsPageDescription", [partnershipConfig.routeName, "PartFour"], null, [false, true])}
+        </a>
       </div>
       <div className="mt-5 mb-1">
         <h3>
@@ -36,7 +39,7 @@ export default function CanadaPartnership({partnershipConfig}:CanadaPartnershipP
         key={partnershipConfig.tableauKey}
         desktopOptions={{
           width: "100%",
-          height: "5100px",
+          height: "3100px",
         }}
         mobileOptions={{
           width: "100%",

@@ -32,7 +32,7 @@ export async function getEsriVectorSourceStyle(url: string) {
     const l = style.layers[0] as mapboxgl.Layer;
     if (l.id === "Countries") {
       source.promoteId = { "Countries": "CODE" }
-      l.paint = Expressions.Countries
+      l.paint = Expressions.Countries as any
     }
 
     return style
