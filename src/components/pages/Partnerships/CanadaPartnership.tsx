@@ -11,8 +11,9 @@ type CanadaPartnershipProps = {
 
 export default function CanadaPartnership({partnershipConfig}:CanadaPartnershipProps) {
   const [state] = useContext(AppContext);
+    console.log(partnershipConfig.tableauKey + state.language)
 
-  return (
+    return (
     <>
       <h1 className="mt-5">{Translate("PartnershipsPageTitle", [partnershipConfig.routeName])}</h1>
       <div className="mt-2">
@@ -36,7 +37,7 @@ export default function CanadaPartnership({partnershipConfig}:CanadaPartnershipP
       <TableauEmbed
         className="row"
         url={partnershipConfig.tableauUrl}
-        key={partnershipConfig.tableauKey}
+        key={partnershipConfig.tableauKey + state.language}
         desktopOptions={{
           width: "100%",
           height: "3100px",

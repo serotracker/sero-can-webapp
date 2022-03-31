@@ -27,6 +27,7 @@ interface TableauEmbedProps {
 export default function TableauEmbed(props: TableauEmbedProps) {
     const [{ language }, dispatch] = useContext(AppContext);
     const isMobileDeviceOrTablet = useMediaQuery({ maxWidth: mobileDeviceOrTabletWidth });
+    console.log(props.url)
     const url = language in props.url ? props.url[language as LanguageType] : props.url["en"];
 
     let options = {}
