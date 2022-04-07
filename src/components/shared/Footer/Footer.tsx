@@ -28,8 +28,8 @@ export const Footer = () => {
 
 const renderDesktopFooter = (updatedAt: string) => (
   <footer className={'container-fluid mx-0 footer'}>
-      <div className="footer__visible-section row justify-content-between d-flex align-items-center text-center">
-      </div>
+    <div className="footer__visible-section row justify-content-between d-flex align-items-center text-center">
+    </div>
       <div className="row justify-content-center mt-3">
         <div className="col-8">
           <div className="row">
@@ -52,7 +52,7 @@ const renderDesktopFooter = (updatedAt: string) => (
         |
           <Link className="footer__link px-1" to={withLocaleUrl("TermsOfUse")}>{Translate('TermsOfUse')}</Link>
       </div>
-    </footer>
+  </footer>
 )
 
 const renderMobileFooter = (updatedAt: string) => (
@@ -128,7 +128,7 @@ const PageLinks = () => (
       Object.keys(PAGE_HASHES).map((page) => {
         return(
         <div className="col mx-2">
-          <h3 className="row subheading">{Translate(page)}</h3>
+          <h3 className="row h3">{Translate(page)}</h3>
           {
           Object.keys(PAGE_HASHES[page]).map(h => (
           <HashLink to={`${withLocaleUrl(page)}#${h}`} className="row mt-3 footer__link">

@@ -317,7 +317,7 @@
     "July": "July Literature Update Report",
     "June": "June Literature Update Report"
   },
-  "BiblioDigests": "Literature Update Reports",
+  "BiblioDigests": "Biweekly Key Insights",
   "InitInfoModalText": {
     "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
     "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high Risk of bias. You can explore the source literature in depth on the references card at the bottom of this page.",

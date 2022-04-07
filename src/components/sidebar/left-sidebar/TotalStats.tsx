@@ -64,14 +64,18 @@ export default function TotalStats({ page }: TotalStatsProps) {
       <br />
       <div className="flex middle py-2">
         <div className="secondary-statistic-title px-1 center">
+        <span className="text-right">
           {Translate("SummaryStatisticsLink1")}
-        </div>
-        <div className="secondary-statistic-title px-1 center">
-          <a
-            href="https://drive.google.com/file/d/1PME1WFA-ItYAzzuPfGNSvLvJyKXQAezl/view"
-            target="_blank" rel="noreferrer noopener">
-            {Translate("SummaryStatisticsLink2")}
-          </a>
+            <a
+              href="https://serotracker.com/en/Publications#BiblioDigests"
+              target="__blank"
+              rel="noopener noreferrer"
+              className="cite-link"
+            >
+              {" "}
+              {Translate("SummaryStatisticsLink2")}
+            </a>
+          </span>
         </div>
       </div>     
     </div>
