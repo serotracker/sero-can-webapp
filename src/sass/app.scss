@@ -6,9 +6,8 @@
     flex: 1 1 auto;
     flex-direction: column;
     flex-wrap: nowrap;
-    overflow-y: auto;
     height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-    height: calc(var(--vh, 1vh) * 100);
+    height: calc(var(--vh, 1vh) * 107);
 }
 
 .App-header {
