@@ -135,6 +135,7 @@
   "Data": "Données",
   "DataCaps": "DONNÉES",
   "DatabaseUptoDateTo": "Base de données à jour jusqu'au",
+  "DateRangeTo": "au",
   "DataDictionary": "Dictionnaire de données",
   "DataDictionaryText": {
     "FirstParagraph": "Pour plus d'informations et de contexte sur nos données, veuillez s'il vous plait consulter notre",
@@ -462,7 +463,7 @@
     "LiteratureUpdateReports": "Aperçus mensuels et mises à jour sur les tendances dans la littérature des enquêtes sérologiques et les paramètres fournis par l'OMS",
     "GeneralSerotrackerCommunications": "Mises à jour et réflexions de l'ensemble de l'équipe SeroTracker",
     "MediaMentions": "Publications médiatiques mondiales mettant en vedette SeroTracker",
-    "PrivateSectorReports": "Rapports sur les pratiques de dépistage et de test de la COVID-19 dans le secteur privé canadien"
+    "PrivateSectorReports": "Rapports sur les pratiques de dépistage et de test de la COVID-19 dans le secteur privé canadien en 2020"
   },
   "Publications": "Publications",
   "PublicationsHeader": "PUBLICATIONS",

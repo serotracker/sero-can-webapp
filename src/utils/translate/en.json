@@ -140,6 +140,7 @@
   "Data": "Data",
   "DataCaps": "DATA",
   "DatabaseUptoDateTo": "Database up to date to",
+  "DateRangeTo": "to",
   "DataDictionary": "Data dictionary",
   "DataDictionaryText": {
     "FirstParagraph": "For more information and context about our data, please take a look at our",
@@ -454,7 +455,7 @@
     "LiteratureUpdateReports": "Monthly overviews and updates on trends in serosurvey literature and WHO-supplied metrics",
     "GeneralSerotrackerCommunications": "Updates and insights from across the SeroTracker team",
     "MediaMentions": "Worldwide media publications featuring SeroTracker",
-    "PrivateSectorReports": "Reports on COVID-19 screening and testing practices across Canada’s private sector"
+    "PrivateSectorReports": "Reports on COVID-19 screening and testing practices across Canada’s private sector in 2020"
   },
   "Publications": "Publications",
   "PublicationsCaps": "PUBLICATIONS",
