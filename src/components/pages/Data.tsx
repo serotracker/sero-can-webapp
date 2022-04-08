@@ -27,7 +27,7 @@ function DataButtons() {
   const dataButtons: { label: string; link: string; id?: string }[] = [
     {
       label: "OurProtocol",
-      link: "https://docs.google.com/document/d/1NYpszkr-u__aZspFDFa_fa4VBzjAAAAxNxM1rZ1txWU/edit",
+      link: "https://docs.google.com/document/d/1Jj68WUwuxPxhjcZDUaHdtGSIhjXCnMYNXsUdYsNgvqQ/edit",
     },
     {
       label: "DataDictionary",
