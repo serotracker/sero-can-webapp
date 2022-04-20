@@ -83,7 +83,7 @@
     "MembraneProtein": "Protéine membranaire",
     "NR": "NR",
     "NotReported": "Non reporté",
-    "NucleocapsidNProtein": "Nucléocapside (Protéine N)",
+    "Nucleocapsid(N-protein)": "Nucléocapside (Protéine N)",
     "Spike": "Péplomère",
     "WholeVirusAntigen": "Antigène de virus entier"
   },
@@ -395,12 +395,6 @@
   },
   "OurProtocol": "Notre protocole",
   "OverallRiskOfBias": "Risque général de partialité",
-  "OverallRiskOfBiasOptions": {
-    "Low": "Bas",
-    "Moderate": "Modérer",
-    "High": "Élevé",
-    "Unclear": "Pas clair"
-  },
   "Paper": "Article",
   "PaperText": "Vous trouverez notre premier manuscrit décrivant les enseignements des sérosondages jusqu'au 1er mai sur",
   "PaperTextTwo": "Pour plus d'informations sur notre tableau de bord, consultez",
@@ -423,6 +417,7 @@
     "MapNote1": "La carte affiche des estimations pour toutes les estimations géographiques (y compris les sous-estimations rapportées, par exemple les estimations régionales provinciales rapportées dans une étude nationale). Les épingles sont disposées autour du centre de leur(s) emplacement(s) géographique(s).",
     "MapNote2": "Le nombre de cas et de décès (au milieu de l'échantillonnage de l'étude) est tiré au niveau national du SITE WEB (sous-source : coronavirus.jhu.edu)"
   },
+  "Per100": " pour 100",
   "PlannedSerosurveys": "Sérosondages planifiés",
   "Population": "Population",
   "PopulationGroup": "Groupe de population",
@@ -470,7 +465,7 @@
   "Report": "Rapport",
   "ReportsAndArticles": "Rapports et articles",
   "ResearchArticles": "Articles de recherche",
-  "RiskOfBias": "Risque de partialité",
+  "RiskOfBias": "risque de partialité",
   "RiskOfBiasOptions": {
     "High": "Élevé",
     "Low": "Faible",

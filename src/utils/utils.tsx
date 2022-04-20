@@ -38,7 +38,8 @@ export const getGeography = (city: string[] | null | undefined, state: string[] 
       return geo.trim() + ", "
     }
     else {
-      return geo.join(", ") + ", ";
+      const geoTrimmed = geo.map((g) => g.trim())
+      return geoTrimmed.join(", ") + ", ";
     }
   }
 
@@ -59,4 +60,16 @@ export const getMapboxLatitudeOffset = (map: mapboxgl.Map | undefined) => {
 
 export const withLocaleUrl = (path: string) => {
   return `/${language}/${path}`;
+}
+
+export const translateAntibodyTargets = (antibodyTarget: string | string[]) => {
+  if (typeof antibodyTarget == "string") {
+    return Translate("AntibodyTargetOptions", [antibodyTarget.replace(/\s/g, "")])
+  }
+  else {
+    const initialValue = ""
+    let returnString = antibodyTarget.reduce((previousValue, currentValue) => previousValue
+        + Translate("AntibodyTargetOptions", [currentValue.replace(/\s/g, "")]) + ", ", initialValue)
+    return returnString.slice(0, -2)
+  }
 }
