@@ -69,7 +69,7 @@ export default function StudyPopup(record: AirtableRecord, popGroupOptions: Reco
                 <div className={"popup-text"}>
                     {(record.sampling_start_date && record.sampling_end_date) && (
                         <>
-                            {`${TranslateDate(record.sampling_start_date)} → ${TranslateDate(record.sampling_end_date)}`}
+                            {`${TranslateDate(record.sampling_start_date)} ${Translate("DateRangeTo")} ${TranslateDate(record.sampling_end_date)}`}
                         </>)
                     }
                 </div>
