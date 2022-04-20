@@ -29,28 +29,46 @@ export const Footer = () => {
 }
 
 const renderDesktopFooter = (updatedAt: string) => (
-  <footer className={'container-fluid mx-0 footer'}>
-      <div className="footer__visible-section row justify-content-between d-flex align-items-center text-center">
-        <div className="col-2">
-          <UpdatedAt updatedAt={updatedAt}/>
-        </div>
-        <div className="col-2">
-            <Citation/>
-        </div>
-      </div>
+  <footer className={'container-fluid mx-0 pt-4 footer'}>
+      {/*<div className="footer__visible-section row justify-content-between d-flex align-items-center text-center">*/}
+      {/*  <div className="col-2">*/}
+      {/*    <UpdatedAt updatedAt={updatedAt}/>*/}
+      {/*  </div>*/}
+      {/*  /!*<div className="col-2">*!/*/}
+      {/*  /!*    <Citation/>*!/*/}
+      {/*  /!*</div>*!/*/}
+      {/*</div>*/}
       <div className="row justify-content-center mt-3">
-        <div className="col-8">
+        <div className="col-10">
           <div className="row">
-            <PageLinks/>
+              <div className={"col-8"}>
+                  <div className="row">
+                    <PageLinks/>
+                  </div>
+              </div>
+              <div className={"col"}>
+                  <iframe
+                      src="https://serotracker.substack.com/embed"
+                      width="320" height="280"
+                      frameBorder="0"
+                      scrolling="no"
+                  />
+              </div>
           </div>
         </div>
       </div>
       <div className="row justify-content-center mt-5">
-        <div className="col-8">
-          <div className="footer__sponsers-pill my-2">
-            <Sponsers/>
-          </div>
-          <WhoDisclaimer/>
+        <div className="col-10">
+            <div className="row">
+                <div className={"col"}>
+                    <div className="footer__sponsers-pill my-2">
+                        <Sponsers/>
+                    </div>
+                </div>
+                <div className={"col"}>
+                    <WhoDisclaimer/>
+                </div>
+            </div>
         </div>
       </div>
       <div className="row justify-content-center py-5 text-center">
@@ -144,21 +162,22 @@ export const Sponsers = () => (
 )
 
 const PageLinks = () => (
-  <React.Fragment>
+
+  <div className="d-flex flex-column flex-wrap" style={{maxHeight: "360px"}}>
     {
       Object.keys(PAGE_HASHES).map((page) => {
         return(
-        <div className="col mx-2">
-          <h3 className="row">{Translate(page)}</h3>
+        <div className="d-flex flex-column m-2 w-50">
+          <h4>{Translate(page).toUpperCase()}</h4>
           {
           Object.keys(PAGE_HASHES[page]).map(h => (
-          <HashLink to={`${withLocaleUrl(page)}#${h}`} className="row mt-3 footer__link">
+          <HashLink to={`${withLocaleUrl(page)}#${h}`} className="mt-3 footer__link">
             {Translate(h)}
           </HashLink>))
           }
         </div>)})
     }
-  </React.Fragment>)
+  </div>)
 
 const MobilePageLinks = () => {
   const [activeIndex, setIndex] = useState(0);
