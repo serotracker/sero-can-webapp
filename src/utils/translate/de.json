@@ -292,6 +292,7 @@
     "InsuringTheEconomy": "Absicherung der Wirtschaft gegen eine zweite Pandemiewelle"
   },
   "ResearchArticleTitles": {
+    "MedRxivNLP": "Eine reale Bewertung der Implementierung der NLP-Technologie in einem abstrakten Screening einer systematischen Überprüfung",
     "MedRxivMeta": "Globale Epidemiologie der SARS-CoV-2-Infektion: eine systematische Überprüfung und Metaanalyse standardisierter populationsbasierter Seroprävalenzstudien, Januar 2020 bis Oktober 2021",
     "MedRxivROB": "SeroTracker-ROB: reproduzierbare Entscheidungsregeln zur Risiko-Bias-Bewertung von Seroprävalenzstudien",
     "MedRxivPrivate": "Aufnahme von SARS-CoV-2-Arbeitsplatztestprogrammen, März 2020 bis März 2021",
@@ -413,6 +414,7 @@
   "PlannedSerosurveys": "Geplante Serosurveys",
   "Population": "Bevölkerung",
   "PopulationGroup": "Bevölkerungsgruppe",
+  "DateRangeTo": "bis",
   "PopulationGroupOptions": {
     "All": "Alle",
     "BloodDonors": "Blutspendende",
@@ -433,7 +435,7 @@
     "Unspecified": "Nicht spezifiziert"
   },
   "Populations": "Bevölkerungen",
-  "PositiveCases": "Positive cases",
+  "PositiveCases": "Positive Fälle",
   "Prevalence": "Prävalenz",
   "PrevalenceEstimateDetails": "Details zur Prävalenzschätzung",
   "PrivacyPolicy": "Datenschutzrichtlinie",
