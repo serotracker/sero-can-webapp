@@ -100,6 +100,15 @@ export const listOfResearchArticles: PublicationProps[] = [
         url: "https://www.medrxiv.org/content/10.1101/2022.02.24.22268947v1"
     },
     {
+        date: "2022-02-15",
+        img: MedRxiv,
+        titleKey1: 'ResearchArticleTitles',
+        titleKey2: ['MedRxivAfr'],
+        publicationName: "medRxiv",
+        authors: "Hannah Lewis, Harriet Ware, Mairead Whelan, et al.",
+        url: "https://www.medrxiv.org/content/10.1101/2022.02.14.22270934v1"
+    },
+    {
         date: "2021-12-15",
         img: MedRxiv,
         titleKey1: 'ResearchArticleTitles',
@@ -368,6 +377,21 @@ export const listOfMediaPublicationsProps: PublicationProps[] = [
 
 // Note: for biblio digests, date = date published
 export const listOfBiblioDigests: BiblioDigestProps[] = [
+    {
+        url: "https://drive.google.com/file/d/1_1YXlK8DrUsJz533Lu8do11g5TuF-ATS/view?usp=sharing",
+        sourcesAdded: 106,
+        serosurveysTotal: 172,
+        serosurveysAFRO: 22,
+        serosurveysEMRO: 3,
+        serosurveysEURO: 61,
+        serosurveysPAHO: 63,
+        serosurveysSEARO: 13,
+        serosurveysWPRO: 10,
+        serosurveysNonMember: 0,
+        publishDate: "2022-04-07",
+        screeningStartDate: "2022-03-05",
+        screeningEndDate: "2022-04-01"
+    },
     {
         url: "https://drive.google.com/file/d/1h7RpDI_EWi2qu2KTjErME03jlhY1hS5Y/view?usp=sharing",
         sourcesAdded: 128,
