@@ -14,8 +14,6 @@ import UcalgaryLogo from 'assets/images/University-Of-Calgary-Logo.png';
 import AmcJoule from 'assets/images/amc-joule.png';
 import './Footer.scss';
 
-const lancetId = "https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30631-9/fulltext#%20"
-
 type UpdatedAtProps = {
   updatedAt: string;
 }
@@ -80,15 +78,11 @@ const renderDesktopFooter = (updatedAt: string) => (
         |
           <Link className="footer__link px-1" to={withLocaleUrl("TermsOfUse")}>{Translate('TermsOfUse')}</Link>
       </div>
-    </footer>
+  </footer>
 )
 
 const renderMobileFooter = (updatedAt: string) => (
   <footer className={'container-fluid mx-0 footer'}>
-      <div className="footer__visible-section row d-flex p-2">
-          <UpdatedAt updatedAt={updatedAt}/>
-          <Citation/>
-      </div>
       <div className="row justify-content-center mt-5">
         <div className="col-10 ">
           <MobilePageLinks />
@@ -127,15 +121,6 @@ const UpdatedAt = ({updatedAt}: UpdatedAtProps) => {
   </span>
   ): null
 }
-
-const Citation = () => (
-  <span className="text-right">
-    {Translate("Footer", ["CiteAs"])}
-    <a href={lancetId} target="__blank" rel="noopener noreferrer" className="cite-link">
-      <i>{Translate("Footer", ["LancetInfDis"])}</i> {Translate("Footer", ["Article"])}
-    </a> 
-  </span>
-)
 
 const WhoDisclaimer = () => (
   <small className="whoDisclaimer">

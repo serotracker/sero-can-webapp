@@ -220,4 +220,3 @@ export const Header = () => {
     </header >
   )
 }
-

@@ -25,7 +25,7 @@ export default function Publications() {
         <div className="col-12 page pb-4">
             <div className={isMobileDeviceOrTablet ? "pb-2 policy-container static-content w-100" : "policy-container static-content"}>
                 <h1 className="col-12 p-0 fit">
-                    {Translate('Publications')}
+                    {Translate('PublicationsHeader')}
                 </h1>
                 <p>
                     {Translate("PublicationDescriptions", ["Publications"])}
@@ -191,5 +191,5 @@ const getCarousel = (pubCollectionName: publicationCarouselCollectionNames, slid
                 {renderCorrectCarousel(pubCollectionName)}
             </Slider>
         </div>
-        )
+    )
 }
