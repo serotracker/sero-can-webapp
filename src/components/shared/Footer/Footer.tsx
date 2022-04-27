@@ -61,11 +61,13 @@ const renderDesktopFooter = (updatedAt: string) => (
         <div className="col-10">
             <div className="row">
                 <div className={"col"}>
+                    <h5 className={"pb-2"}>Our Affiliations</h5>
                     <div className="footer__sponsers-pill my-2">
                         <Sponsers/>
                     </div>
                 </div>
                 <div className={"col"}>
+                    <h5 className={"pb-2"}>Map Disclaimer</h5>
                     <WhoDisclaimer/>
                 </div>
             </div>
@@ -167,8 +169,8 @@ const PageLinks = () => (
     {
       Object.keys(PAGE_HASHES).map((page) => {
         return(
-        <div className="d-flex flex-column m-2 w-50">
-          <h4>{Translate(page).toUpperCase()}</h4>
+        <div className="d-flex flex-column m-2 w-50 justify-content-between">
+          <h5>{Translate(page).toUpperCase()}</h5>
           {
           Object.keys(PAGE_HASHES[page]).map(h => (
           <HashLink to={`${withLocaleUrl(page)}#${h}`} className="mt-3 footer__link">
