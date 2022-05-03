@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link';
-import { Accordion, Icon } from 'semantic-ui-react'
+import {Accordion, Icon, Input} from 'semantic-ui-react'
 import { mobileDeviceOrTabletWidth } from '../../../constants'
 import Translate, {TranslateDate} from '../../../utils/translate/translateService'
 import { AppContext } from "../../../context"
@@ -13,6 +13,7 @@ import HealthAgencyLogo from 'assets/images/public-health-agency.svg';
 import UcalgaryLogo from 'assets/images/University-Of-Calgary-Logo.png';
 import AmcJoule from 'assets/images/amc-joule.png';
 import './Footer.scss';
+import NewsletterEmailInput from "./NewsletterEmailInput";
 
 type UpdatedAtProps = {
   updatedAt: string;
@@ -23,63 +24,56 @@ export const Footer = () => {
 
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
 
-  return isMobileDeviceOrTablet ? renderMobileFooter(updatedAt) : renderDesktopFooter(updatedAt)
+  return isMobileDeviceOrTablet ? renderMobileFooter(updatedAt) : renderDesktopFooter()
 }
 
-const renderDesktopFooter = (updatedAt: string) => (
-  <footer className={'container-fluid mx-0 pt-4 footer'}>
-      {/*<div className="footer__visible-section row justify-content-between d-flex align-items-center text-center">*/}
-      {/*  <div className="col-2">*/}
-      {/*    <UpdatedAt updatedAt={updatedAt}/>*/}
-      {/*  </div>*/}
-      {/*  /!*<div className="col-2">*!/*/}
-      {/*  /!*    <Citation/>*!/*/}
-      {/*  /!*</div>*!/*/}
-      {/*</div>*/}
-      <div className="row justify-content-center mt-3">
-        <div className="col-10">
-          <div className="row">
-              <div className={"col-8"}>
+const renderDesktopFooter = () => {
+    //sheets URL: https://script.google.com/macros/s/AKfycbyHv8eIY3PhdbLJCyLuXaGVaVWiSa5KafqErekjHw4uQ1je5-cslUCOA747-rWc6FIN/exec
+
+
+
+
+    return (
+          <footer className={'container-fluid mx-0 pt-4 footer'}>
+              <div className="row justify-content-center mt-3">
+                <div className="col-10">
                   <div className="row">
-                    <PageLinks/>
+                      <div className={"col-8"}>
+                          <div className="row">
+                            <PageLinks/>
+                          </div>
+                      </div>
+                      <div className={"col"}>
+                          <NewsletterEmailInput />
+                      </div>
                   </div>
+                </div>
               </div>
-              <div className={"col"}>
-                  <iframe
-                      src="https://serotracker.substack.com/embed"
-                      width="320" height="280"
-                      frameBorder="0"
-                      scrolling="no"
-                  />
-              </div>
-          </div>
-        </div>
-      </div>
-      <div className="row justify-content-center mt-5">
-        <div className="col-10">
-            <div className="row">
-                <div className={"col"}>
-                    <h5 className={"pb-2"}>Our Affiliations</h5>
-                    <div className="footer__sponsers-pill my-2">
-                        <Sponsers/>
+              <div className="row justify-content-center mt-5">
+                <div className="col-10">
+                    <div className="row">
+                        <div className={"col"}>
+                            <h5 className={"pb-2"}>Our Affiliations</h5>
+                            <div className="footer__sponsers-pill my-2">
+                                <Sponsers/>
+                            </div>
+                        </div>
+                        <div className={"col"}>
+                            <h5 className={"pb-2"}>Map Disclaimer</h5>
+                            <WhoDisclaimer/>
+                        </div>
                     </div>
                 </div>
-                <div className={"col"}>
-                    <h5 className={"pb-2"}>Map Disclaimer</h5>
-                    <WhoDisclaimer/>
-                </div>
-            </div>
-        </div>
-      </div>
-      <div className="row justify-content-center py-5 text-center">
-          <Link className="footer__link px-1" to={withLocaleUrl("PrivacyPolicy")}>{Translate('PrivacyPolicy')}</Link>
-        |
-          <Link className="footer__link px-1" to={withLocaleUrl("CookiePolicy")}>{Translate('CookiePolicy')}</Link>
-        |
-          <Link className="footer__link px-1" to={withLocaleUrl("TermsOfUse")}>{Translate('TermsOfUse')}</Link>
-      </div>
-  </footer>
-)
+              </div>
+              <div className="row justify-content-center py-5 text-center">
+                  <Link className="footer__link px-1" to={withLocaleUrl("PrivacyPolicy")}>{Translate('PrivacyPolicy')}</Link>
+                |
+                  <Link className="footer__link px-1" to={withLocaleUrl("CookiePolicy")}>{Translate('CookiePolicy')}</Link>
+                |
+                  <Link className="footer__link px-1" to={withLocaleUrl("TermsOfUse")}>{Translate('TermsOfUse')}</Link>
+              </div>
+          </footer>
+)}
 
 const renderMobileFooter = (updatedAt: string) => (
   <footer className={'container-fluid mx-0 footer'}>
