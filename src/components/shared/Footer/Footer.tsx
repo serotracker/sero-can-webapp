@@ -18,7 +18,7 @@ import NewsletterEmailInput from "./NewsletterEmailInput";
 type UpdatedAtProps = {
   updatedAt: string;
 }
-//TODO: update footer design using figma
+//TODO: update footer design for mobile
 export const Footer = () => {
   const [{updatedAt}] = useContext(AppContext);
 
@@ -28,10 +28,6 @@ export const Footer = () => {
 }
 
 const renderDesktopFooter = () => {
-    //sheets URL: https://script.google.com/macros/s/AKfycbyHv8eIY3PhdbLJCyLuXaGVaVWiSa5KafqErekjHw4uQ1je5-cslUCOA747-rWc6FIN/exec
-
-
-
 
     return (
           <footer className={'container-fluid mx-0 pt-4 footer'}>
@@ -44,7 +40,8 @@ const renderDesktopFooter = () => {
                           </div>
                       </div>
                       <div className={"col"}>
-                          <NewsletterEmailInput />
+                          <h5 className={"mb-2"}>MAP DISCLAIMER</h5>
+                          <WhoDisclaimer/>
                       </div>
                   </div>
                 </div>
@@ -52,15 +49,17 @@ const renderDesktopFooter = () => {
               <div className="row justify-content-center mt-5">
                 <div className="col-10">
                     <div className="row">
-                        <div className={"col"}>
-                            <h5 className={"pb-2"}>Our Affiliations</h5>
-                            <div className="footer__sponsers-pill my-2">
+                        <div className={"col-8"}>
+                            {
+                                //TODO: translations for this and above
+                            }
+                            <h5 className={"mb-2"}>OUR AFFILIATIONS</h5>
+                            <div className="footer__sponsers-pill">
                                 <Sponsers/>
                             </div>
                         </div>
-                        <div className={"col"}>
-                            <h5 className={"pb-2"}>Map Disclaimer</h5>
-                            <WhoDisclaimer/>
+                        <div className={"col d-flex flex-column"}>
+                            <NewsletterEmailInput />
                         </div>
                     </div>
                 </div>
@@ -117,9 +116,9 @@ const UpdatedAt = ({updatedAt}: UpdatedAtProps) => {
 }
 
 const WhoDisclaimer = () => (
-  <small className="whoDisclaimer">
+  <p className="whoDisclaimer">
     {Translate('WhoSerotrackAndPartnersDisclaimerSmall')}
-  </small>
+  </p>
 )
 
 export const Sponsers = () => (
@@ -144,15 +143,15 @@ export const Sponsers = () => (
 
 const PageLinks = () => (
 
-  <div className="d-flex flex-column flex-wrap" style={{maxHeight: "360px"}}>
+  <div className="d-flex flex-row justify-content-between w-100" style={{maxHeight: "360px"}}>
     {
       Object.keys(PAGE_HASHES).map((page) => {
         return(
-        <div className="d-flex flex-column m-2 w-50 justify-content-between">
+        <div className="d-flex flex-column flex-1 mr-1" style={{flexGrow: 1, flexBasis: 0}}>
           <h5>{Translate(page).toUpperCase()}</h5>
           {
           Object.keys(PAGE_HASHES[page]).map(h => (
-          <HashLink to={`${withLocaleUrl(page)}#${h}`} className="mt-3 footer__link">
+          <HashLink to={`${withLocaleUrl(page)}#${h}`} className="mt-2 footer__link">
             {Translate(h)}
           </HashLink>))
           }
