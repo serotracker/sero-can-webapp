@@ -13,61 +13,25 @@ export default function NewsletterEmailInput() {
     const clientSecret = "d_czX--a8VT3JYOy3tw1ET0b"
     const refreshToken = "1//0deroSpHjRem7CgYIARAAGA0SNwF-L9Ir-WddqsdH71PPLoNMC2Ie_Ac24x7A-_gD9t1wsZN_wVg2CRMJlnK-imdNvTfy_eJG2nE"
 
-    // const makeOAuth2Client = new google.auth.OAuth2(
-    //     /* YOUR_CLIENT_ID */ clientId,
-    //     /* YOUR_CLIENT_SECRET */ clientSecret,
-    //     /* YOUR_REDIRECT_URL */ 'http://localhost'
-    // );
-    //
-    // makeOAuth2Client.setCredentials({
-    //     refresh_token: refreshToken,
-    // });
-    //
-    // const sheets = google.client.sheets('v4')
-
     const handleNewsletterSubmit = () => {
         if(newsletterEmail.match(emailRegex)){
-            // setInvalidEntry(false)
-            //
-            // sheets.spreadsheets.values.append({
-            //     spreadsheetId: SHEET_ID,
-            //     range: "Sheet1!A1:C1",
-            //     valueInputOption: "USER_ENTERED",
-            //     resource: {values: [
-            //             [newsletterEmail]
-            //         ]},
-            //     auth: makeOAuth2Client
-            // })
-
-            // fetch(url, {
-            //     method: 'POST',
-            //     mode: "cors",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //         Authorization: `Bearer ${ACCESS_TOKEN}`
-            //     },
-            //     body: JSON.stringify({
-            //         "range": "Sheet1!A1:C1",
-            //         "majorDimension": "ROWS",
-            //         "values": [
-            //             [newsletterEmail],
-            //         ],
-            //     })
-            // }).then(response => {
-            //     console.log(response.status)
-            //     if(response.status === 200) {
-            //         alert(newsletterEmail + " is registered for newsletters!")
-            //     }
-            //     else {
-            //         alert("Failed to register");
-            //     }
-            //     return response.json()
-            // }).then(data => {
-            //     console.log(data);
-            // }).catch((error) => {
-            //     // Errors are reported there
-            //     console.log(error);
-            // });
+            fetch("https://sheet.best/api/sheets/63b3e9c5-bf7d-4e7d-880b-b65923a84db5", {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({Email: newsletterEmail}),
+            })
+                .then((r) => r.json())
+                .then((data) => {
+                    // The response comes here
+                    console.log(data);
+                })
+                .catch((error) => {
+                    // Errors are reported there
+                    console.log(error);
+                });
         }
         else {
             alert("INVALID EMAIL: Please enter a valid email")
