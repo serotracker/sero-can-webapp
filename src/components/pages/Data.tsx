@@ -132,7 +132,7 @@ function DataDropdowns() {
               ))}
             </div>
           ) : (
-            <p>{dropdownQuestion[1]["Answer"]}</p>
+            <p>{dropdownQuestion[1]["Answer"] as string}</p>
           )}
         </Accordion.Content>
       </Accordion>

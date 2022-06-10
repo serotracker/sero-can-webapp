@@ -1,0 +1,5 @@
+export const SHEET_ID = "1g81L58QA0gu0zeNBTO52Ebnzjh-EwIJy2ydJOXDqAfw";
+
+export const REFRESH_TOKEN = "1//04d2MnODnUwY2CgYIARAAGAQSNwF-L9IrvFnKNCFSib2PtQcMTbdak__oRPCe8zk7_iV-LsknB8n1tz0j4MiVWbhNnue6eX-IYtA"
+
+export const ACCESS_TOKEN = "ya29.a0ARrdaM8tdEOZ8s_2Yp5q_3TFrVYRdjEmOthmgaW9I2j_bVQyZDG1Uo6q3AG-ehApxcyaUbyp222D5zh5UvlcdhlpCvtA2j_BxdZiuymp5rhDBKDt7ysRffq24eki_nuXiep7sQRwLzSPqEWUtv_IJln_xpGe"
