@@ -85,7 +85,7 @@
     "MembraneProtein": "Protéine membranaire",
     "NR": "NR",
     "NotReported": "Non reporté",
-    "NucleocapsidNProtein": "Nucléocapside (Protéine N)",
+    "Nucleocapsid(N-protein)": "Nucléocapside (Protéine N)",
     "Spike": "Péplomère",
     "WholeVirusAntigen": "Antigène de virus entier"
   },
@@ -295,7 +295,8 @@
     "InsuringTheEconomy": "Assurer l'économie contre une deuxième vague de pandémie"
   },
   "ResearchArticleTitles": {
-    "MedRxivNLP": "Une évaluation concrète de la mise en oeuvre de la technologie NLP dans le triage d'abstraits pour une revue systématique",    
+    "MedRxivAfr": "Infection par le SRAS-CoV-2 en Afrique : une revue systématique et une méta-analyse des études de séroprévalence standardisées, de janvier 2020 à décembre 2021",
+    "MedRxivNLP": "Une évaluation concrète de la mise en oeuvre de la technologie NLP dans le triage d'abstraits pour une revue systématique",
     "MedRxivMeta": "Épidémiologie mondiale de l'infection par le SRAS-CoV-2: une revue systématique et une méta-analyse d'études de séroprévalence standardisées basées sur la population, janvier 2020-octobre 2021",
     "MedRxivROB": "SeroTracker-ROB: règles de décision reproductibles pour l'évaluation du risque de biais des études de séroprévalence",
     "MedRxivPrivate": "Adoption des programmes de dépistage du SRAS-CoV-2 sur le lieu de travail, mars 2020 à mars 2021",
@@ -399,12 +400,6 @@
   },
   "OurProtocol": "Notre protocole",
   "OverallRiskOfBias": "Risque général de partialité",
-  "OverallRiskOfBiasOptions": {
-    "Low": "Bas",
-    "Moderate": "Modérer",
-    "High": "Élevé",
-    "Unclear": "Pas clair"
-  },
   "Paper": "Article",
   "PaperText": "Vous trouverez notre premier manuscrit décrivant les enseignements des sérosondages jusqu'au 1er mai sur",
   "PaperTextTwo": "Pour plus d'informations sur notre tableau de bord, consultez",
@@ -428,6 +423,7 @@
     "MapNote1": "La carte affiche des estimations pour toutes les estimations géographiques (y compris les sous-estimations rapportées, par exemple les estimations régionales provinciales rapportées dans une étude nationale). Les épingles sont disposées autour du centre de leur(s) emplacement(s) géographique(s).",
     "MapNote2": "Le nombre de cas et de décès (au milieu de l'échantillonnage de l'étude) est tiré au niveau national du SITE WEB (sous-source : coronavirus.jhu.edu)"
   },
+  "Per100": " pour 100",
   "PlannedSerosurveys": "Sérosondages planifiés",
   "Population": "Population",
   "PopulationGroup": "Groupe de population",
@@ -476,7 +472,7 @@
   "Report": "Rapport",
   "ReportsAndArticles": "Rapports et articles",
   "ResearchArticles": "Articles de recherche",
-  "RiskOfBias": "Risque de partialité",
+  "RiskOfBias": "risque de partialité",
   "RiskOfBiasOptions": {
     "High": "Élevé",
     "Low": "Faible",

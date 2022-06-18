@@ -81,7 +81,7 @@ export default function Explore({initialFilters}: ExploreProps) {
                             </div>
                             <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
                     </div>)}
-                        <div className="flex w-100">
+                        <div className="flex h-100 w-100">
                             <div className="col-2 p-0 flex">
                                 <LeftSidebar page={PageStateEnum.explore}/>
                             </div>

@@ -88,7 +88,7 @@
     "MembraneProtein": "Membrane protein",
     "NR": "NR",
     "NotReported": "Not reported",
-    "NucleocapsidNProtein": "Nucleocapsid (N-protein)",
+    "Nucleocapsid(N-protein)": "Nucleocapsid (N-protein)",
     "Spike": "Spike",
     "WholeVirusAntigen": "Whole-virus antigen"
   },
@@ -300,6 +300,7 @@
     "InsuringTheEconomy": "Insuring the Economy Against a Second Pandemic Wave"
   },
   "ResearchArticleTitles": {
+    "MedRxivAfr": "SARS-CoV-2 infection in Africa: A systematic review and meta-analysis of standardised seroprevalence studies, from January 2020 to December 2021",
     "MedRxivNLP": "A real-world evaluation of the implementation of NLP technology in abstract screening of a systematic review",
     "MedRxivMeta": "Global epidemiology of SARS-CoV-2 infection: a systematic review and meta-analysis of standardized population-based seroprevalence studies, Jan 2020-Oct 2021",
     "MedRxivROB": "SeroTracker-ROB: reproducible decision rules for risk of bias assessment of seroprevalence studies",
@@ -421,6 +422,7 @@
     "MapNote1": "The map displays seroprevalence estimates for all geographic based estimates (including sub-estimates reported e.g. regional provincial estimates reported in a country-wide study). Pins are arranged around the center of their geographic location(s).",
     "MapNote2": "Case and death counts (at the midpoint in study sampling) are taken at a national level from ourworldindata.org (subsource: coronavirus.jhu.edu)"
   },
+  "Per100": " per 100",
   "PlannedSerosurveys": "Planned Serosurveys",
   "Population": "Population",
   "PopulationGroup": "Population group",
