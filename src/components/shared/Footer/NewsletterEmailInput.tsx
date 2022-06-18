@@ -1,10 +1,9 @@
 import React, {useState} from "react";
 import {Input} from "semantic-ui-react";
-import {ACCESS_TOKEN, SHEET_ID} from "./GoogleApi/sheetConstants";
 // import {google} from "googleapis";
 
 export default function NewsletterEmailInput() {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Sheet1!A1:C1:append?valueInputOption=USER_ENTERED`
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/1g81L58QA0gu0zeNBTO52Ebnzjh-EwIJy2ydJOXDqAfw/values/Sheet1!A1:C1:append?valueInputOption=USER_ENTERED`
     const emailRegex = "^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"
     const [newsletterEmail, setNewsletterEmail] = useState("");
     const [invalidEntry, setInvalidEntry] = useState(false);
@@ -27,6 +26,8 @@ export default function NewsletterEmailInput() {
                 .then((data) => {
                     // The response comes here
                     console.log(data);
+                    alert(newsletterEmail + " has been signed up for newletters");
+                    setNewsletterEmail("");
                 })
                 .catch((error) => {
                     // Errors are reported there
@@ -46,6 +47,7 @@ export default function NewsletterEmailInput() {
             <Input
                 action={{content: "Sign Up", onClick: handleNewsletterSubmit, color: "blue"}}
                 placeholder={"example@somecompany.ext"}
+                value={newsletterEmail}
                 className={"w-100 align-self-end"}
                 type={"email"}
                 error={invalidEntry}
