@@ -221,12 +221,6 @@ export default function About() {
               "ccao.canada@gmail.com"
           )}
           {renderBioBlock(
-              "Gabriel Deveaux",
-              [Translate("MemorialUniversityOfNewfoundland")],
-              "https://www.linkedin.com/in/grdeveaux/",
-              "grdeveaux@mun.ca"
-          )}
-          {renderBioBlock(
               "Harriet Ware",
               [Translate("UniversityOf", null, { NAME: "Toronto" }), Translate("BlankUniversity", null, { NAME: "Queen's"})],
               null,
@@ -415,6 +409,12 @@ export default function About() {
               null,
               "claire.donnici@ucalgary.ca",
               "https://twitter.com/ClaireDonnici"
+          )}
+          {renderBioBlock(
+              "Gabriel Deveaux",
+              [Translate("MemorialUniversityOfNewfoundland")],
+              "https://www.linkedin.com/in/grdeveaux/",
+              "grbdeveaux@dal.ca"
           )}
         </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "ScientificAdvisors"])}</h2>
