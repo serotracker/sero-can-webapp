@@ -34,9 +34,9 @@ export default function TotalStats({ page }: TotalStatsProps) {
 
   return (
     <div className="col-12 p-0 stats-container">
-      <h3 className="mt-3 mb-2 center">
+      <div className="mt-3 mb-2 center subheading">
         {Translate("SummaryStatistics")}
-      </h3>
+      </div>
       <div className="flex middle py-2">
         <div className="secondary-statistic">{numStudies}</div>
         <div className="secondary-statistic-title px-1 center">
@@ -62,6 +62,22 @@ export default function TotalStats({ page }: TotalStatsProps) {
         </div>
       </div>
       <br />
+      <div className="flex middle py-2">
+        <div className="secondary-statistic-title px-1 center">
+        <span className="text-right">
+          {Translate("SummaryStatisticsLink1")}
+            <a
+              href="https://serotracker.com/en/Publications#BiblioDigests"
+              target="__blank"
+              rel="noopener noreferrer"
+              className="cite-link"
+            >
+              {" "}
+              {Translate("SummaryStatisticsLink2")}
+            </a>
+          </span>
+        </div>
+      </div>     
     </div>
   );
 }

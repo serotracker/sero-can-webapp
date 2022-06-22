@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link';
-import { Accordion, Icon } from 'semantic-ui-react'
+import {Accordion, Icon, Input} from 'semantic-ui-react'
 import { mobileDeviceOrTabletWidth } from '../../../constants'
 import Translate, {TranslateDate} from '../../../utils/translate/translateService'
 import { AppContext } from "../../../context"
@@ -13,62 +13,69 @@ import HealthAgencyLogo from 'assets/images/public-health-agency.svg';
 import UcalgaryLogo from 'assets/images/University-Of-Calgary-Logo.png';
 import AmcJoule from 'assets/images/amc-joule.png';
 import './Footer.scss';
-
-const lancetId = "https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30631-9/fulltext#%20"
+import NewsletterEmailInput from "./NewsletterEmailInput";
 
 type UpdatedAtProps = {
   updatedAt: string;
 }
-
+//TODO: update footer design for mobile
 export const Footer = () => {
   const [{updatedAt}] = useContext(AppContext);
 
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
 
-  return isMobileDeviceOrTablet ? renderMobileFooter(updatedAt) : renderDesktopFooter(updatedAt)
+  return isMobileDeviceOrTablet ? renderMobileFooter(updatedAt) : renderDesktopFooter()
 }
 
-const renderDesktopFooter = (updatedAt: string) => (
-  <footer className={'container-fluid mx-0 footer'}>
-      <div className="footer__visible-section row justify-content-between d-flex align-items-center text-center">
-        <div className="col-2">
-          <UpdatedAt updatedAt={updatedAt}/>
-        </div>
-        <div className="col-2">
-            <Citation/>
-        </div>
-      </div>
-      <div className="row justify-content-center mt-3">
-        <div className="col-8">
-          <div className="row">
-            <PageLinks/>
-          </div>
-        </div>
-      </div>
-      <div className="row justify-content-center mt-5">
-        <div className="col-8">
-          <div className="footer__sponsers-pill my-2">
-            <Sponsers/>
-          </div>
-          <WhoDisclaimer/>
-        </div>
-      </div>
-      <div className="row justify-content-center py-5 text-center">
-          <Link className="footer__link px-1" to={withLocaleUrl("PrivacyPolicy")}>{Translate('PrivacyPolicy')}</Link>
-        |
-          <Link className="footer__link px-1" to={withLocaleUrl("CookiePolicy")}>{Translate('CookiePolicy')}</Link>
-        |
-          <Link className="footer__link px-1" to={withLocaleUrl("TermsOfUse")}>{Translate('TermsOfUse')}</Link>
-      </div>
-    </footer>
-)
+const renderDesktopFooter = () => {
+
+    return (
+          <footer className={'container-fluid mx-0 pt-4 footer'}>
+              <div className="row justify-content-center mt-3">
+                <div className="col-10">
+                  <div className="row">
+                      <div className={"col-8"}>
+                          <div className="row">
+                            <PageLinks/>
+                          </div>
+                      </div>
+                      <div className={"col"}>
+                          <h5 className={"mb-2"}>MAP DISCLAIMER</h5>
+                          <WhoDisclaimer/>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div className="row justify-content-center mt-5">
+                <div className="col-10">
+                    <div className="row">
+                        <div className={"col-8"}>
+                            {
+                                //TODO: translations for this and above
+                            }
+                            <h5 className={"mb-2"}>OUR AFFILIATIONS</h5>
+                            <div className="footer__sponsers-pill">
+                                <Sponsers/>
+                            </div>
+                        </div>
+                        <div className={"col d-flex flex-column"}>
+                            <NewsletterEmailInput />
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div className="row justify-content-center py-5 text-center">
+                  <Link className="footer__link px-1" to={withLocaleUrl("PrivacyPolicy")}>{Translate('PrivacyPolicy')}</Link>
+                |
+                  <Link className="footer__link px-1" to={withLocaleUrl("CookiePolicy")}>{Translate('CookiePolicy')}</Link>
+                |
+                  <Link className="footer__link px-1" to={withLocaleUrl("TermsOfUse")}>{Translate('TermsOfUse')}</Link>
+              </div>
+          </footer>
+)}
 
 const renderMobileFooter = (updatedAt: string) => (
   <footer className={'container-fluid mx-0 footer'}>
-      <div className="footer__visible-section row d-flex p-2">
-          <UpdatedAt updatedAt={updatedAt}/>
-          <Citation/>
-      </div>
       <div className="row justify-content-center mt-5">
         <div className="col-10 ">
           <MobilePageLinks />
@@ -108,19 +115,10 @@ const UpdatedAt = ({updatedAt}: UpdatedAtProps) => {
   ): null
 }
 
-const Citation = () => (
-  <span className="text-right">
-    {Translate("Footer", ["CiteAs"])}
-    <a href={lancetId} target="__blank" rel="noopener noreferrer" className="cite-link">
-      <i>{Translate("Footer", ["LancetInfDis"])}</i> {Translate("Footer", ["Article"])}
-    </a> 
-  </span>
-)
-
 const WhoDisclaimer = () => (
-  <small className="whoDisclaimer">
+  <p className="whoDisclaimer">
     {Translate('WhoSerotrackAndPartnersDisclaimerSmall')}
-  </small>
+  </p>
 )
 
 export const Sponsers = () => (
@@ -144,21 +142,22 @@ export const Sponsers = () => (
 )
 
 const PageLinks = () => (
-  <React.Fragment>
+
+  <div className="d-flex flex-row justify-content-between w-100" style={{maxHeight: "360px"}}>
     {
       Object.keys(PAGE_HASHES).map((page) => {
         return(
-        <div className="col mx-2">
-          <h3 className="row">{Translate(page)}</h3>
+        <div className="d-flex flex-column flex-1 mr-1" style={{flexGrow: 1, flexBasis: 0}}>
+          <h5>{Translate(page).toUpperCase()}</h5>
           {
           Object.keys(PAGE_HASHES[page]).map(h => (
-          <HashLink to={`${withLocaleUrl(page)}#${h}`} className="row mt-3 footer__link">
+          <HashLink to={`${withLocaleUrl(page)}#${h}`} className="mt-2 footer__link">
             {Translate(h)}
           </HashLink>))
           }
         </div>)})
     }
-  </React.Fragment>)
+  </div>)
 
 const MobilePageLinks = () => {
   const [activeIndex, setIndex] = useState(0);

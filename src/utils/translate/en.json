@@ -3,6 +3,7 @@
   "95%ConfidenceInterval": "95% Confidence Interval",
   "95%ConfidenceIntervalTooltip": "Wider error bars indicate greater uncertainty in the pooled seroprevalence estimate.",
   "About": "About",
+  "AboutCaps": "ABOUT",
   "AboutPage": {
     "AboutSection": {
       "Covid19ImmunityTaskForce": "COVID-19 Immunity Task Force.",
@@ -80,6 +81,7 @@
     "Tooltip": "The aggregation technique used is fixed-effects, inverse-variance-weighted meta-analysis of prevalence, with the Freeman-Tukey double arcsin transform used to stabilize variance. Records over sample size MIN_DENOMINATOR considered."
   },
   "Analyze": "Analyze",
+  "AnalyzeCaps": "ANALYZE",
   "AntibodyTarget": "Antibody Target",
   "AntibodyTargetOptions": {
     "EnvelopeProtein": "Envelope protein",
@@ -136,6 +138,7 @@
   "COVIDImmunityTaskForce": "COVID-19 Immunity Task Force",
   "Dashboard": "Dashboard",
   "Data": "Data",
+  "DataCaps": "DATA",
   "DatabaseUptoDateTo": "Database up to date to",
   "DateRangeTo": "to",
   "DataDictionary": "Data dictionary",
@@ -231,12 +234,13 @@
   "EstimateRange": "Estimate Range",
   "ExecutiveDirector": "Executive Director",
   "Explore": "Explore",
+  "ExploreCaps": "EXPLORE",
   "ExploreBlurb": {
     "FirstParagraph": "SeroTracker is a dashboard and data platform for SARS-CoV-2 serosurveys.",
     "SecondParagraph": "We conduct an ongoing systematic review to track serosurveys (antibody testing-based surveillance efforts) around the world and visualize findings on this dashboard.",
     "ThirdParagraph": "Antibodies against SARS-CoV-2, the virus that causes COVID-19, indicate previous infection or vaccination. "
   },
-  "Filter": "Filter",
+  "Filter": "FILTERS",
   "FilterTooltip": "Filter the SeroTracker dataset based on geography, study, demographics, and test. Only studies matching all of the listed filters will be included.",
   "For": "For",
   "Footer": {
@@ -315,7 +319,7 @@
     "July": "July Literature Update Report",
     "June": "June Literature Update Report"
   },
-  "BiblioDigests": "Literature Update Reports",
+  "BiblioDigests": "Biweekly Key Insights",
   "InitInfoModalText": {
     "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
     "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high Risk of bias. You can explore the source literature in depth on the references card at the bottom of this page.",
@@ -399,6 +403,7 @@
   "PaperText": "Our first manuscript, describing lessons from serosurveys up to May 1, can be found on",
   "PaperTextTwo": "More information about our dashboard can be found in",
   "Partnerships": "Partnerships",
+  "PartnershipsCaps": "PARTNERSHIPS",
   "PartnershipsList": {
     "Canada": "Canada (CITF)"
   },
@@ -455,6 +460,8 @@
     "PrivateSectorReports": "Reports on COVID-19 screening and testing practices across Canada’s private sector in 2020"
   },
   "Publications": "Publications",
+  "PublicationsCaps": "PUBLICATIONS",
+  "PublicationsHeader": "Publications",
   "Published": "Published",
   "DataTable": "Data Table",
   "RegionalEstimateRange": "Regional Estimate Range",
@@ -557,7 +564,9 @@
   "SublocalStudyDetails": "Sublocal Study",
   "SubmitSource": "Submit source",
   "Summary": "Summary",
-  "SummaryStatistics": "Summary Statistics",
+  "SummaryStatistics": "KEY INSIGHTS",
+  "SummaryStatisticsLink1": "Read biweekly insights",
+  "SummaryStatisticsLink2": "here",
   "Team": "Team",
   "TeamLead": "Team Leads",
   "TemporaryMaintenance": "Temporary Maintenance",
@@ -606,7 +615,7 @@
   "ViewPartnership": "View Partnership",
   "ViewFile": "View File",
   "ViewHere": "View Here",
-  "Welcome": "Welcome to SeroTracker",
+  "Welcome": "ABOUT US",
   "WhatWeDoText": {
     "FirstParagraph": "At SeroTracker, we collect data and information on SARS-CoV-2 seroprevalence studies by conducting a live systematic review and meta-analysis of published and unpublished data on  seroprevalence. Data is extracted for each source's primary estimate and certain relevant subgroups. Full methods are available in our protocol.",
     "SecondParagraph": "We produce data for both academic and public use on our dashboard. We aim to update our dashboard weekly. For further information beyond the following high-level summary, please see our study protocol and supplementary methods for a detailed explanation of our research processes."
