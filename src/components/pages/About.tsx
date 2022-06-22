@@ -217,6 +217,18 @@ export default function About() {
               "https://www.linkedin.com/in/jane-yuan-291682152/?originalSubdomain=ca",
               "jyuan58@uwo.ca"
           )}
+          {renderBioBlock(
+              "Sabah Shaikh",
+              [Translate("BlankUniversity", null, {NAME: "New York"})],
+              null,
+              "sabah.nshaikh@gmail.com"
+          )}
+          {renderBioBlock(
+              "Margaret Jamieson",
+              [Translate("UniversityOf", null, {NAME: "Toronto"})],
+              null,
+              "margaret.jamieson@mail.utoronto.ca"
+          )}
         </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "DataInfrastructure"])}</h2>
         <div className="bio-grid-container">
