@@ -269,7 +269,7 @@ export default function About() {
           )}
           {renderBioBlock(
               "Brianna Cheng",
-              [Translate("BlankUniversity", null, { NAME: "McGill"})],
+              [Translate("UniversityOf", null, { NAME: "Toronto"})],
               null,
               "brianna.cheng2@mail.mcgill.ca",
               null
