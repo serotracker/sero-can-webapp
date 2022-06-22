@@ -211,6 +211,12 @@ export default function About() {
               "https://www.linkedin.com/in/sara-perlman-arrow-5075421b6/",
               "sara.perlman-arrow@mail.mcgill.ca"
           )}
+          {renderBioBlock(
+              "Jane Yuan",
+              [Translate("BlankUniversity", null, {NAME: "Western"})],
+              "https://www.linkedin.com/in/jane-yuan-291682152/?originalSubdomain=ca",
+              "jyuan58@uwo.ca"
+          )}
         </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "DataInfrastructure"])}</h2>
         <div className="bio-grid-container">
@@ -260,6 +266,13 @@ export default function About() {
               "https://www.linkedin.com/in/zihanli/",
               "zihan.li@uwaterloo.ca",
               "https://twitter.com/emma_loeschnik"
+          )}
+          {renderBioBlock(
+              "Brianna Cheng",
+              [Translate("BlankUniversity", null, { NAME: "McGill"})],
+              null,
+              "brianna.cheng2@mail.mcgill.ca",
+              null
           )}
         </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "DevelopmentTeam"])}</h2>
