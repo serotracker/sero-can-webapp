@@ -43,7 +43,7 @@ export default function NewsletterEmailInput() {
     return (
         <>
             <h5 className={" text-left mb-2"}>{"SEROTRACKER NEWSLETTER"}</h5>
-            <p className={"text-left"}>Monthly summaries of recent seroprevalence ltierature and product updates</p>
+            <p className={"text-left"}>Monthly summaries of recent seroprevalence literature and product updates</p>
             <Input
                 action={{content: "Sign Up", onClick: handleNewsletterSubmit, color: "blue"}}
                 placeholder={"example@somecompany.ext"}
