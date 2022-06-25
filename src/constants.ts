@@ -47,7 +47,7 @@ export const PAGE_HASHES = {
     },
     [PAGES.Publications]: {
         ResearchArticles: "ResearchArticles",
-        GeneralSerotrackerCommunications: "GeneralSerotrackerCommunications",
+        GeneralCommunications: "GeneralCommunications",
         BiblioDigests: "BiblioDigests",
         PrivateSectorReports: "PrivateSectorReports",
         MediaMentions: "MediaMentions"

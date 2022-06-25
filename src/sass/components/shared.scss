@@ -57,6 +57,16 @@ div#root div.App div.static-content table tbody tr.highlight {
     background: white;
   }
 
+  &-content-mobile {
+    position: absolute;
+    width: 75%;
+    height: 50%;
+    top: calc(50vh - 25%);
+    left: calc(50vw - 37.5%);
+    border: 1px solid #EEE;
+    background: white;
+  }
+
   &-close-button {
     position: absolute;
     top: calc(50vh - 150px);
@@ -69,8 +79,20 @@ div#root div.App div.static-content table tbody tr.highlight {
     &:hover {
       background-color: lightgray !important;
     }
+  }
 
+  &-close-button-mobile {
+    position: absolute;
+    top: calc(50vh - 25%);
+    right: calc(50vw - 37.5%);
+    z-index: 1000;
+    background-color: white !important;
+    //TODO: fix padding issue
+    padding: 0;
 
+    &:hover {
+      background-color: lightgray !important;
+    }
   }
 
 }

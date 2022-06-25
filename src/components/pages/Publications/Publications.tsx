@@ -37,7 +37,7 @@ export default function Publications() {
                         </a>
                     </p>
                     <p className={"publication-menu-item"}>
-                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.GeneralSerotrackerCommunications}>
+                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.GeneralCommunications}>
                             {Translate('GeneralSerotrackerCommunications')}
                         </a>
                     </p>
@@ -74,7 +74,7 @@ export default function Publications() {
 
 
 
-                <h2 id={PAGE_HASHES.Publications.GeneralSerotrackerCommunications}>
+                <h2 id={PAGE_HASHES.Publications.GeneralCommunications}>
                     {Translate('GeneralSerotrackerCommunications')}
                 </h2>
                 <p>

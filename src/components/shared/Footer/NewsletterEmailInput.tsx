@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 import {Input} from "semantic-ui-react";
+import Translate from "../../../utils/translate/translateService";
+import {useMediaQuery} from "react-responsive";
+import {mobileDeviceOrTabletWidth} from "../../../constants";
 // import {google} from "googleapis";
 
 export default function NewsletterEmailInput() {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/1g81L58QA0gu0zeNBTO52Ebnzjh-EwIJy2ydJOXDqAfw/values/Sheet1!A1:C1:append?valueInputOption=USER_ENTERED`
     const emailRegex = "^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"
     const [newsletterEmail, setNewsletterEmail] = useState("");
     const [invalidEntry, setInvalidEntry] = useState(false);
+    const isMobileDeviceOrTablet = useMediaQuery({maxDeviceWidth: mobileDeviceOrTabletWidth})
 
-    const clientId = "702218053502-fcrju4976lt0p1dntbln2qdolo72qjki.apps.googleusercontent.com"
-    const clientSecret = "d_czX--a8VT3JYOy3tw1ET0b"
-    const refreshToken = "1//0deroSpHjRem7CgYIARAAGA0SNwF-L9Ir-WddqsdH71PPLoNMC2Ie_Ac24x7A-_gD9t1wsZN_wVg2CRMJlnK-imdNvTfy_eJG2nE"
 
     const handleNewsletterSubmit = () => {
         if(newsletterEmail.match(emailRegex)){
@@ -42,13 +42,13 @@ export default function NewsletterEmailInput() {
 
     return (
         <>
-            <h5 className={" text-left mb-2"}>{"SEROTRACKER NEWSLETTER"}</h5>
-            <p className={"text-left"}>Monthly summaries of recent seroprevalence ltierature and product updates</p>
+            <h5 className={" text-left mb-2"}>{Translate("Footer", ["SeroNewsletter"]).toUpperCase()}</h5>
+            <p className={"text-left"}>{Translate("SeroNewsletterDescription")}</p>
             <Input
                 action={{content: "Sign Up", onClick: handleNewsletterSubmit, color: "blue"}}
                 placeholder={"example@somecompany.ext"}
                 value={newsletterEmail}
-                className={"w-100 align-self-end"}
+                className={isMobileDeviceOrTablet ?  "w-75 align-self-end" : "w-100 align-self-end"}
                 type={"email"}
                 error={invalidEntry}
                 onChange={(event) => setNewsletterEmail(event.target.value)}

@@ -40,7 +40,7 @@ const renderDesktopFooter = () => {
                           </div>
                       </div>
                       <div className={"col"}>
-                          <h5 className={"mb-2"}>MAP DISCLAIMER</h5>
+                          <h5 className={"mb-2"}>{Translate("Footer", ["MapDisclaimer"]).toUpperCase()}</h5>
                           <WhoDisclaimer/>
                       </div>
                   </div>
@@ -50,10 +50,7 @@ const renderDesktopFooter = () => {
                 <div className="col-10">
                     <div className="row">
                         <div className={"col-8"}>
-                            {
-                                //TODO: translations for this and above
-                            }
-                            <h5 className={"mb-2"}>OUR AFFILIATIONS</h5>
+                            <h5 className={"mb-2"}>{Translate("Footer", ["OurAffiliations"]).toUpperCase()}</h5>
                             <div className="footer__sponsers-pill">
                                 <Sponsers/>
                             </div>
@@ -76,18 +73,30 @@ const renderDesktopFooter = () => {
 
 const renderMobileFooter = (updatedAt: string) => (
   <footer className={'container-fluid mx-0 footer'}>
-      <div className="row justify-content-center mt-5">
-        <div className="col-10 ">
-          <MobilePageLinks />
+      <div className="row justify-content-center">
+        <div className="col-10 mt-5">
+            <h5 className={"mb-2"}>{Translate("Footer", ["Pages"]).toUpperCase()}</h5>
+            <MobilePageLinks />
         </div>
       </div>
       <div className="row justify-content-center mt-5">
-        <div className="col-8">
-          <div className="footer__sponsers-pill row">
-            <Sponsers/>
-          </div>
-          <WhoDisclaimer/>
+        <div className="col-10">
+            <h5 className={"mb-2"}>{Translate("Footer", ["OurAffiliations"]).toUpperCase()}</h5>
+            <div className="footer__sponsers-pill row">
+                <Sponsers/>
+            </div>
         </div>
+      </div>
+        <div className="row justify-content-center mt-5">
+            <div className="col-10">
+                <h5 className={"mb-2"}>{Translate("Footer", ["MapDisclaimer"]).toUpperCase()}</h5>
+                <WhoDisclaimer/>
+            </div>
+        </div>
+      <div className="row justify-content-center mt-5">
+          <div className="col-10">
+              <NewsletterEmailInput />
+          </div>
       </div>
       <div className="row justify-content-center mt-5 pb-5 text-center">
         <div>
@@ -147,7 +156,7 @@ const PageLinks = () => (
     {
       Object.keys(PAGE_HASHES).map((page) => {
         return(
-        <div className="d-flex flex-column flex-1 mr-1" style={{flexGrow: 1, flexBasis: 0}}>
+        <div className="d-flex flex-column flex-1 mr-3" style={{flexGrow: 1, flexBasis: 0}}>
           <h5>{Translate(page).toUpperCase()}</h5>
           {
           Object.keys(PAGE_HASHES[page]).map(h => (
@@ -181,7 +190,7 @@ const MobilePageLinks = () => {
           <Accordion.Content active={activeIndex === i}>
             {
             Object.keys(PAGE_HASHES[page]).map(h => (
-              <HashLink to={`${withLocaleUrl(page)}#${h}`} className="row mt-3 footer__link">
+              <HashLink to={`${withLocaleUrl(page)}#${h}`} className="row ml-4 mt-3 footer__link">
                 {Translate(h)}
               </HashLink>))
             }
