@@ -173,13 +173,6 @@ export default function About() {
               "zhangcaseng@gmail.com"
           )}
           {renderBioBlock(
-              "Claire Donnici",
-              [Translate("UniversityOf", null, { NAME: "Calgary" })],
-              null,
-              "claire.donnici@ucalgary.ca",
-              "https://twitter.com/ClaireDonnici"
-          )}
-          {renderBioBlock(
               "Dayoung Kim",
               [Translate("UniversityOf", null, { NAME: "Calgary" })],
               "https://www.linkedin.com/in/dayoung-kim-448425198/",
@@ -206,17 +199,6 @@ export default function About() {
               null
           )}
           {renderBioBlock(
-              "Natalie Duarte",
-              [Translate("UniversityOf", null, { NAME: "Toronto" })],
-              null,
-              "natalieaduarte@gmail.com")}
-          {renderBioBlock(
-              "Natasha Ilincic",
-              [Translate("UniversityOf", null, { NAME: "Toronto" }), Translate("UniversityOf", null, { NAME: "Guelph" })],
-              "https://www.linkedin.com/in/natasha-ilincic/",
-              "natasha.ilincic@gmail.com"
-          )}
-          {renderBioBlock(
             "Niklas Bobrovitz ",
             [Translate("UniversityOf", null, { NAME: "Oxford" }), Translate("UniversityOf", null, { NAME: "Toronto" })],
             "https://www.linkedin.com/in/nik-bobrovitz-19a117179/",
@@ -229,6 +211,24 @@ export default function About() {
               "https://www.linkedin.com/in/sara-perlman-arrow-5075421b6/",
               "sara.perlman-arrow@mail.mcgill.ca"
           )}
+          {renderBioBlock(
+              "Jane Yuan",
+              [Translate("BlankUniversity", null, {NAME: "Western"})],
+              "https://www.linkedin.com/in/jane-yuan-291682152/?originalSubdomain=ca",
+              "jyuan58@uwo.ca"
+          )}
+          {renderBioBlock(
+              "Sabah Shaikh",
+              [Translate("BlankUniversity", null, {NAME: "New York"})],
+              null,
+              "sabah.nshaikh@gmail.com"
+          )}
+          {renderBioBlock(
+              "Margaret Jamieson",
+              [Translate("UniversityOf", null, {NAME: "Toronto"})],
+              null,
+              "margaret.jamieson@mail.utoronto.ca"
+          )}
         </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "DataInfrastructure"])}</h2>
         <div className="bio-grid-container">
@@ -237,12 +237,6 @@ export default function About() {
               [Translate("UniversityOf", null, { NAME: "Calgary" })],
               "https://ca.linkedin.com/in/christian-cao-275b78190",
               "ccao.canada@gmail.com"
-          )}
-          {renderBioBlock(
-              "Gabriel Deveaux",
-              [Translate("MemorialUniversityOfNewfoundland")],
-              "https://www.linkedin.com/in/grdeveaux/",
-              "grdeveaux@mun.ca"
           )}
           {renderBioBlock(
               "Harriet Ware",
@@ -285,6 +279,13 @@ export default function About() {
               "zihan.li@uwaterloo.ca",
               "https://twitter.com/emma_loeschnik"
           )}
+          {renderBioBlock(
+              "Brianna Cheng",
+              [Translate("UniversityOf", null, { NAME: "Toronto"})],
+              null,
+              "brianna.cheng2@mail.mcgill.ca",
+              null
+          )}
         </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "DevelopmentTeam"])}</h2>
 
@@ -313,6 +314,12 @@ export default function About() {
             [Translate("UniversityOf", null, { NAME: "Waterloo" })],
             "https://www.linkedin.com/in/simona-rocco/",
             "serocco@uwaterloo.ca"
+          )}
+          {renderBioBlock(
+              "Gurman Brar",
+              [Translate("UniversityOf", null, { NAME: "Waterloo" })],
+              "https://www.linkedin.com/in/gurman-brar/",
+              "g9brar@uwaterloo.ca"
           )}
         </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "Alumni"])}</h2>
@@ -409,6 +416,30 @@ export default function About() {
               "https://www.linkedin.com/in/dmellosean/",
               "sean.dmello@uwaterloo.ca",
               "https://twitter.com/SeanDMello1"
+          )}
+          {renderBioBlock(
+              "Natalie Duarte",
+              [Translate("UniversityOf", null, { NAME: "Toronto" })],
+              null,
+              "natalieaduarte@gmail.com")}
+          {renderBioBlock(
+              "Natasha Ilincic",
+              [Translate("UniversityOf", null, { NAME: "Toronto" }), Translate("UniversityOf", null, { NAME: "Guelph" })],
+              "https://www.linkedin.com/in/natasha-ilincic/",
+              "natasha.ilincic@gmail.com"
+          )}
+          {renderBioBlock(
+              "Claire Donnici",
+              [Translate("UniversityOf", null, { NAME: "Calgary" })],
+              null,
+              "claire.donnici@ucalgary.ca",
+              "https://twitter.com/ClaireDonnici"
+          )}
+          {renderBioBlock(
+              "Gabriel Deveaux",
+              [Translate("MemorialUniversityOfNewfoundland")],
+              "https://www.linkedin.com/in/grdeveaux/",
+              "grbdeveaux@dal.ca"
           )}
         </div>
         <h2 className="team-name-text">{Translate("AboutPage", ["SubHeaders", "ScientificAdvisors"])}</h2>
