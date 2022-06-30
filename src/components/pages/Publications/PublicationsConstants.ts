@@ -25,6 +25,7 @@ import oxford from '../../../assets/images/PubMedia/oxford.jpg'
 import UCalgary from '../../../assets/images/PubMedia/UCalgary.svg'
 import waterloo from '../../../assets/images/PubMedia/waterloo.png'
 import covidend from '../../../assets/images/PubMedia/covidend-global-logo.png'
+import reuters from '../../../assets/images/PubMedia/reuters-logo.png'
 
 
 // Note: Dates should be strings in YYYY-MM-DD format
@@ -172,7 +173,34 @@ export const listOfResearchArticles: PublicationProps[] = [
     },
 ]
 
-export const listOfMediaPublicationsProps: PublicationProps[] = [
+export const listOfMediaPublications: PublicationProps[] = [
+    {
+        date: "2022-04-07",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['AfricaCovid2/3'],
+        publicationName: "Reuters",
+        img: reuters,
+        authors: "",
+        url: "https://www.reuters.com/world/africa/over-two-thirds-africans-infected-by-covid-virus-since-pandemic-began-who-2022-04-07",
+    },
+    {
+        date: "2022-04-07",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['AfricaCovidCount'],
+        publicationName: "Bloomberg",
+        img: bloomberg,
+        authors: "Janice Kew",
+        url: "https://www.bloomberg.com/news/articles/2022-04-07/eight-hundred-million-africans-may-have-had-covid-19-who-says",
+    },
+    {
+        date: "2022-03-23",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['AfricaLowDeathRate'],
+        publicationName: "The New York Times",
+        img: NYT,
+        authors: "",
+        url: "https://www.nytimes.com/2022/03/23/health/covid-africa-deaths.html",
+    },
     {
         date: "2021-06-25",
         titleKey1: 'IndustryMediaTitles',

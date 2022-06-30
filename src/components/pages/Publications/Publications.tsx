@@ -7,7 +7,7 @@ import {BiblioDigestCard} from "./BiblioDigestCard";
 import {
     listOfReports, 
     listOfBiblioDigests, 
-    listOfMediaPublicationsProps, 
+    listOfMediaPublications,
     listOfPrivateSectorReports, 
     listOfResearchArticles,
     PublicationProps
@@ -159,7 +159,7 @@ const renderCorrectCarousel = (pubCollectionName: publicationCarouselCollectionN
     switch (pubCollectionName) {
         case "Media":
             return (
-                listOfMediaPublicationsProps.map((publicationsProps) => {
+                listOfMediaPublications.map((publicationsProps) => {
                     return <MediaCard {...publicationsProps}/>
                 })
             )
