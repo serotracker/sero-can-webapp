@@ -91,6 +91,14 @@ export const listOfReports: PublicationProps[] = [
 
 export const listOfResearchArticles: PublicationProps[] = [
     {
+        date: "2022-05-19",
+        titleKey1: 'ResearchArticleTitles',
+        titleKey2: ['NIH-UCES'],
+        publicationName: "Frontiers in Research Metrics and Analytics",
+        authors: "Tingting Yan and Rahul K Arora",
+        url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9160358/"
+    },
+    {
         date: "2022-02-25",
         img: MedRxiv,
         titleKey1: 'ResearchArticleTitles',
