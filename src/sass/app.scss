@@ -11,7 +11,7 @@
 }
 
 .App-header {
-    background-color: $sero-dark-blue;
+    //background-color: $sero-dark-blue;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -20,8 +20,11 @@
     flex: 1 1;
     color: lightgrey;
     font-weight: 300;
+    //font-color: $sero-dark-blue
     height: 50px;
     z-index: 10000;
+    background: white;
+    border-bottom: 2px solid $sero-dark-blue;
     //background: rgba(54, 78, 96, 0.51);
     //backdrop-filter: blur(20px);
 }
@@ -35,8 +38,9 @@
 }
 
 .nav__item--active a{
-    font-weight: 500 !important;
-    color: white !important;
+    font-weight: 700 !important;
+    //color: white !important;
+    color: $sero-dark-blue !important;
     font-size: 14px;
     line-height: 18px;
     font-style: normal;
@@ -44,15 +48,19 @@
 
 .nav__item a{
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 14px;
     line-height: 18px;
-    color: white !important;
+    //color: white !important;
+    color: $sero-dark-blue !important;
+
 
 }
 
 .nav__item a:hover {
-    color: gray !important;
+    //color: #C4C4C4 !important;
+    color: $sero-blue !important;
+
     text-decoration: none;
 }
 
@@ -68,6 +76,13 @@
     display: flex;
     align-items: center;
     height: 19px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    //color: white !important;
+    color: $sero-dark-blue !important;
+
 }
 
 .ui.accordion .title{

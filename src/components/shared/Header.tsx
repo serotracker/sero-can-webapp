@@ -49,7 +49,7 @@ export const Header = () => {
 
   const AppTitle = () => {
     return (
-    <div className="App-title col-auto py-5 px-0 w-25">
+    <div className="App-title py-5 pl-2">
       <Link to={withLocaleUrl("Explore")} className="flex align-items-center">
         <img src={Img} width={23} height={23} alt="" />
         {/*<div className="col-auto px-2 align-middle" >SeroTracker</div>*/}
@@ -157,7 +157,7 @@ export const Header = () => {
       </Link>
     </div>
     <div className={'nav__item col-auto h-100 flex center-item'}>
-      <Dropdown text={Translate("Partnerships").toUpperCase()}>
+      <Dropdown className={"nav__item"} text={Translate("Partnerships").toUpperCase()}>
         {renderPartnershipsDropDownMenu()}
       </Dropdown>
     </div>
@@ -207,13 +207,13 @@ export const Header = () => {
 
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
   return (
-    <header className="App-header col-12 px-3">
+    <header className="App-header col-12 px-2">
       <AppTitle />
       { isMobileDeviceOrTablet ? mobileNav(partnershipDrownDownActive, languageDropdownActive, handlePartnershipClick, handleLanguageClick, changeLanguages, state.language) : desktopNav( getTabClass, changeLanguages, state.language) }
       {/*<div className={'col-auto h-100 px-0'}>*/}
       {/*  |*/}
       {/*</div>*/}
-      <div className={"nav__item col-auto h-100 flex justify-content-end center-item cursor w-25"} >
+      <div className={"nav__item h-100 flex justify-content-end center-item cursor"} >
         <Dropdown text={state.language.toUpperCase()}>
           {renderLanguageDropDownMenu()}
         </Dropdown>
