@@ -424,7 +424,7 @@ export const listOfBiblioDigests: BiblioDigestProps[] = [
         serosurveysSEARO: 7,
         serosurveysWPRO: 11,
         serosurveysNonMember: 0,
-        publishDate: "2022-06-03",
+        publishDate: "2022-06-06",
         screeningStartDate: "2022-04-30",
         screeningEndDate: "2022-05-27"
     },
