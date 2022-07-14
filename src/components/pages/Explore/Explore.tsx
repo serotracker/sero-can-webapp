@@ -81,11 +81,11 @@ export default function Explore({initialFilters}: ExploreProps) {
                             </div>
                             <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
                     </div>)}
-                        <div className="flex h-100 w-100">
-                            <div className="col-2 p-0 flex">
+                        <div className="flex h-100 w-100 explore">
+                            <div className="left-sidebar col-2 px-2 py-0 flex sidebar-container">
                                 <LeftSidebar page={PageStateEnum.explore}/>
                             </div>
-                            <div className="col-8 p-0 flex" id={PAGE_HASHES.Explore.Map}>
+                            <div className="map-section col-12 p-0 flex" id={PAGE_HASHES.Explore.Map}>
                                 <Loader indeterminate active={state.explore.isLoading}/>
                                 <div className="info flex legend center-item">
                                     <Legend/>
@@ -99,7 +99,7 @@ export default function Explore({initialFilters}: ExploreProps) {
                                     }}
                                 />
                             </div>
-                            <div className="col-2 p-0 flex sidebar-container">
+                            <div className="col-2 p-0 flex right-sidebar sidebar-container">
                                 <Filters page={PageStateEnum.explore}/>
                             </div>
                         </div>

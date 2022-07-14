@@ -11,6 +11,9 @@
   }
 
 .explore {
+
+    position: relative;
+
     .sidebar {
         &__info-btn {
             @include icon-container;
@@ -29,5 +32,39 @@
             bottom: 10px;
             right: 10px;
         }
+    }
+}
+
+.left-sidebar {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: calc(100% - 20px);
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(30px);
+    padding-left: 10px;
+    border-radius: 10px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.right-sidebar {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: calc(100% - 20px);
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(30px);
+    border-radius: 10px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    &::-webkit-scrollbar {
+        display: none;
     }
 }

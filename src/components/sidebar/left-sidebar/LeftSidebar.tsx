@@ -66,7 +66,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
   };
 
   return (
-    <div className="sidebar-container flex left-sidebar">
+    <>
       <TotalStats page={page} />
       <Divider />
       <div className="mt-3 mb-2 center subheading">
@@ -99,6 +99,6 @@ export default function LeftSidebar({ page }: SideBarProps) {
           <UpdatedAt updatedAt={updatedAt} />
         </p>
       </div>
-    </div>
+    </>
   );
 }
