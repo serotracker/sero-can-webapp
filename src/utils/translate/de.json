@@ -281,7 +281,10 @@
     "NYTIndia": "Wie hoch könnte die tatsächliche Covid-Opferzahl in Indien sein?",
     "EconomistDeathToll": "Wie wir die tatsächliche Zahl der Todesopfer der Pandemie geschätzt haben",
     "EconomistDeathToll2": "Die wahre Zahl der Todesopfer der Pandemie",
-    "InventoryEvidenceSynthesis": "Bestandsaufnahme der Synthese der besten Erkenntnisse"
+    "InventoryEvidenceSynthesis": "Bestandsaufnahme der Synthese der besten Erkenntnisse",
+    "AfricaLowDeathRate": "Der Versuch, ein Rätsel zu lösen: Afrikas niedrige Sterberaten",
+    "AfricaCovidCount" : "800 Millionen Afrikaner haben Covid, sagt die WHO",
+    "AfricaCovid2/3": "Über zwei Drittel der Afrikaner seit Beginn der Pandemie mit dem COVID-Virus infiziert - WHO"
   },
   "IndustryReportTitles": {
     "AugustReport": "August-Bericht",
@@ -303,7 +306,8 @@
     "MedRxivPrivate": "Aufnahme von SARS-CoV-2-Arbeitsplatztestprogrammen, März 2020 bis März 2021",
     "PlosOnePub": "Globale Seroprävalenz von SARS-CoV-2-Antikörpern: eine systematische Überprüfung und Meta-Analyse",
     "LancetID": "SeroTracker: ein globales SARS-CoV-2 Seroprävalenz-Dashboard",
-    "PrePrint": "Lehren aus einer raschen systematischen Überprüfung der ersten SARS-CoV-2-Serosurveys"
+    "PrePrint": "Lehren aus einer raschen systematischen Überprüfung der ersten SARS-CoV-2-Serosurveys",
+    "NIH-UCES": "Forschungsprodukte jenseits des Forschungspapiers: Überlegungen zur nutzerzentrierten Evidenzsynthese von SeroTracker"
   },
   "BiblioDigestTitles": {
     "November": "Literatur-Update-Bericht November",

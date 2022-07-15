@@ -25,6 +25,7 @@ import oxford from '../../../assets/images/PubMedia/oxford.jpg'
 import UCalgary from '../../../assets/images/PubMedia/UCalgary.svg'
 import waterloo from '../../../assets/images/PubMedia/waterloo.png'
 import covidend from '../../../assets/images/PubMedia/covidend-global-logo.png'
+import reuters from '../../../assets/images/PubMedia/reuters-logo.png'
 
 
 // Note: Dates should be strings in YYYY-MM-DD format
@@ -90,6 +91,14 @@ export const listOfReports: PublicationProps[] = [
 ]
 
 export const listOfResearchArticles: PublicationProps[] = [
+    {
+        date: "2022-05-19",
+        titleKey1: 'ResearchArticleTitles',
+        titleKey2: ['NIH-UCES'],
+        publicationName: "Frontiers in Research Metrics and Analytics",
+        authors: "Tingting Yan and Rahul K Arora",
+        url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9160358/"
+    },
     {
         date: "2022-02-25",
         img: MedRxiv,
@@ -164,7 +173,34 @@ export const listOfResearchArticles: PublicationProps[] = [
     },
 ]
 
-export const listOfMediaPublicationsProps: PublicationProps[] = [
+export const listOfMediaPublications: PublicationProps[] = [
+    {
+        date: "2022-04-07",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['AfricaCovid2/3'],
+        publicationName: "Reuters",
+        img: reuters,
+        authors: "",
+        url: "https://www.reuters.com/world/africa/over-two-thirds-africans-infected-by-covid-virus-since-pandemic-began-who-2022-04-07",
+    },
+    {
+        date: "2022-04-07",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['AfricaCovidCount'],
+        publicationName: "Bloomberg",
+        img: bloomberg,
+        authors: "Janice Kew",
+        url: "https://www.bloomberg.com/news/articles/2022-04-07/eight-hundred-million-africans-may-have-had-covid-19-who-says",
+    },
+    {
+        date: "2022-03-23",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['AfricaLowDeathRate'],
+        publicationName: "The New York Times",
+        img: NYT,
+        authors: "",
+        url: "https://www.nytimes.com/2022/03/23/health/covid-africa-deaths.html",
+    },
     {
         date: "2021-06-25",
         titleKey1: 'IndustryMediaTitles',
@@ -377,6 +413,36 @@ export const listOfMediaPublicationsProps: PublicationProps[] = [
 
 // Note: for biblio digests, date = date published
 export const listOfBiblioDigests: BiblioDigestProps[] = [
+    {
+        url: "https://drive.google.com/file/d/1rpTWCbMcvx3x-bgkXKicyeBcVKjuUQ_X/view?usp=sharing",
+        sourcesAdded: 93,
+        serosurveysTotal: 135,
+        serosurveysAFRO: 19,
+        serosurveysEMRO: 10,
+        serosurveysEURO: 62,
+        serosurveysPAHO: 26,
+        serosurveysSEARO: 7,
+        serosurveysWPRO: 11,
+        serosurveysNonMember: 0,
+        publishDate: "2022-06-06",
+        screeningStartDate: "2022-04-30",
+        screeningEndDate: "2022-05-27"
+    },
+    {
+        url: "https://drive.google.com/file/d/1tAX6bm5FvWAGliXD9U7hiOaHi613KYn1/view?usp=sharing",
+        sourcesAdded: 74,
+        serosurveysTotal: 111,
+        serosurveysAFRO: 2,
+        serosurveysEMRO: 8,
+        serosurveysEURO: 41,
+        serosurveysPAHO: 40,
+        serosurveysSEARO: 16,
+        serosurveysWPRO: 4,
+        serosurveysNonMember: 0,
+        publishDate: "2022-05-06",
+        screeningStartDate: "2022-04-02",
+        screeningEndDate: "2022-04-29"
+    },
     {
         url: "https://drive.google.com/file/d/1_1YXlK8DrUsJz533Lu8do11g5TuF-ATS/view?usp=sharing",
         sourcesAdded: 106,
