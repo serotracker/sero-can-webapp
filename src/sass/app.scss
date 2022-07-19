@@ -11,7 +11,7 @@
 }
 
 .App-header {
-    //background-color: $sero-dark-blue;
+    background-color: $sero-dark-blue;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -20,13 +20,8 @@
     flex: 1 1;
     color: lightgrey;
     font-weight: 300;
-    //font-color: $sero-dark-blue
     height: 50px;
     z-index: 10000;
-    background: white;
-    border-bottom: 2px solid $sero-dark-blue;
-    //background: rgba(54, 78, 96, 0.51);
-    //backdrop-filter: blur(20px);
 }
 
 .app-header-font {
@@ -39,8 +34,7 @@
 
 .nav__item--active a{
     font-weight: 700 !important;
-    //color: white !important;
-    color: $sero-dark-blue !important;
+    color: white !important;
     font-size: 14px;
     line-height: 18px;
     font-style: normal;
@@ -51,15 +45,14 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
-    //color: white !important;
-    color: $sero-dark-blue !important;
+    color: white !important;
 
 
 }
 
 .nav__item a:hover {
-    //color: #C4C4C4 !important;
-    color: $sero-blue !important;
+    color: #C4C4C4 !important;
+    //color: $sero-blue !important;
 
     text-decoration: none;
 }
@@ -80,8 +73,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
-    //color: white !important;
-    color: $sero-dark-blue !important;
+    color: white !important;
 
 }
 
