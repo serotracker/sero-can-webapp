@@ -70,7 +70,9 @@ export default function Publications() {
                 <p>
                     {Translate("PublicationDescriptions", ["ResearchArticles"])}
                 </p>
-                {getPublicationsItems(listOfResearchArticles)}
+                <div className={"research-article-scroll-container"}>
+                    {getPublicationsItems(listOfResearchArticles)}
+                </div>
 
 
 

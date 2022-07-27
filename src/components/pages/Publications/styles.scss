@@ -118,3 +118,8 @@
 .publication-link:hover {
    color: #0000B8 !important;
 }
+
+.research-article-scroll-container {
+  max-height: 500px;
+  overflow-y: scroll;
+}
