@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, {Dispatch, SetStateAction, useContext, useState} from "react";
 import { Dropdown, Button } from 'semantic-ui-react';
 import { AppContext } from "../../../context";
 import { FilterType, PageState, State } from '../../../types';
@@ -13,7 +13,8 @@ import "./Filters.css";
 import { LanguageType } from "../../../types";
 
 interface FilterProps {
-  page: string,
+  page: string;
+  toggleSidebar: () => void;
 }
 
 interface PopulationGroupFilterOption {
@@ -22,7 +23,7 @@ interface PopulationGroupFilterOption {
   french: string
 }
 
-export default function Filters({ page }: FilterProps) {
+export default function Filters({ page, toggleSidebar }: FilterProps) {
   const [state, dispatch] = useContext(AppContext);
   const filters = (state[page as keyof State] as PageState).filters;
 
@@ -136,7 +137,8 @@ export default function Filters({ page }: FilterProps) {
   }
 
   return (
-    <div className="col-12 p-0">
+    <div className="col-12 py-0 px-2">
+      <Button className={"mt-2"} onClick={toggleSidebar} style={{width: "100%"}}> Collapse </Button>
       <div className="py-3 center flex">
         <div className="subheading">
           {Translate("Filter")}
