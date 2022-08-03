@@ -40,7 +40,7 @@ export default function ExploreMobile() {
           visible={showMobileFilters}
           width='wide'
         >
-        <Filters page={PageStateEnum.explore} />
+        <Filters page={PageStateEnum.explore}  toggleSidebar={() => {}}/>
           <FontAwesomeIcon
             icon={faTimes}
             onClick={() => handleFilterToggle()}
@@ -66,7 +66,7 @@ export default function ExploreMobile() {
             color={'#455a64'}
             style={{ fontWeight: 300, position: 'absolute', zIndex: 3000, top: 10, right: 20 }}
             size={"lg"} />
-          <LeftSidebar page={PageStateEnum.explore}/>
+          <LeftSidebar page={PageStateEnum.explore} toggleSidebar={() => {}}/>
         </Sidebar>
         <Sidebar
           as={Menu}
