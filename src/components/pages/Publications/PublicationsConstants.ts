@@ -92,6 +92,14 @@ export const listOfReports: PublicationProps[] = [
 
 export const listOfResearchArticles: PublicationProps[] = [
     {
+        date: "2022-07-26",
+        titleKey1: 'ResearchArticleTitles',
+        titleKey2: ['MedRxivSero'],
+        publicationName: "mexRxiv",
+        authors: "Isabel Bergeri, Mairead Whelan, Harriet Ware et al.",
+        url: "https://www.medrxiv.org/content/10.1101/2021.12.14.21267791v3.full"
+    },
+    {
         date: "2022-05-19",
         titleKey1: 'ResearchArticleTitles',
         titleKey2: ['NIH-UCES'],
