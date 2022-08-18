@@ -138,7 +138,6 @@ export default function Filters({ page, toggleSidebar }: FilterProps) {
 
   return (
     <div className="col-12 py-0 px-2">
-      <Button className={"mt-2"} onClick={toggleSidebar} style={{width: "100%"}}> Collapse </Button>
       <div className="py-3 center flex">
         <div className="subheading">
           {Translate("Filter")}

@@ -68,7 +68,6 @@ export default function LeftSidebar({ page, toggleSidebar }: SideBarProps) {
 
   return (
     <>
-        <Button className={"mt-2"} onClick={toggleSidebar} style={{width: "100%"}}> Collapse </Button>
       <TotalStats page={page} />
       <Divider />
       <div className="mt-3 mb-2 center subheading">
