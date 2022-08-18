@@ -42,7 +42,7 @@
     left: -16.666vw;
     top: 10px;
     height: calc(100% - 20px);
-    transition: left 0.3s ease-in-out;
+    transition: left 0.2s ease-in-out;
     z-index: 999;
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(30px);
@@ -63,7 +63,7 @@
     position: absolute;
     top: 10px;
     right: -16.66vw;
-    transition: right 0.3s ease-in-out;
+    transition: right 0.2s ease-in-out;
     height: calc(100% - 20px);
     z-index: 999;
     background: rgba(255, 255, 255, 0.5);
@@ -81,30 +81,46 @@
     right: 10px;
 }
 
-.show{
+.sidebar-toggle-button{
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 30px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(54, 78, 96, 0.75);
     height: 20vh;
-    top: 40vh;
+    top: 30vh;
     z-index: 100;
+    color: white;
 
-    &-left {
+
+    &-left-close {
         left: 0;
-        border-radius: 0 10px 10px 0 ;
+        transition: left 0.2s ease-in-out;
+        border-radius: 0 10px 10px 0;
     }
 
-    &-right {
+    &-left-open {
+        left: calc(16.66vw + 6.5px);
+        transition: left 0.2s ease-in-out;
+        border-radius: 0 10px 10px 0;
+    }
+
+    &-right-close {
         right: 0;
+        transition: right 0.2s ease-in-out;
+        border-radius: 10px 0 0 10px;
+    }
+
+    &-right-open {
+        right: calc(16.66vw + 6.5px);
+        transition: right 0.2s ease-in-out;
         border-radius: 10px 0 0 10px;
     }
 
     &:hover {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(54, 78, 96, 1);
     }
 }
 
