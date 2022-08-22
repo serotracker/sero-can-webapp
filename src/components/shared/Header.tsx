@@ -49,10 +49,10 @@ export const Header = () => {
 
   const AppTitle = () => {
     return (
-    <div className="App-title col-auto py-3 px-0">
+    <div className="App-title py-5 pl-2">
       <Link to={withLocaleUrl("Explore")} className="flex align-items-center">
         <img src={Img} width={23} height={23} alt="" />
-        <div className="col-auto px-2 align-middle" >SeroTracker</div>
+        {/*<div className="col-auto px-2 align-middle" >SeroTracker</div>*/}
       </Link>
     </div>)
   }
@@ -131,44 +131,37 @@ export const Header = () => {
   
   const desktopNav = ( getTabClass: any, changeLanguages:any, language: any) => {
     return (<div className={`App-tabs col-auto space-evenly p-0`}>
-    <div className={getTabClass('/Explore')}>
+    <div className={getTabClass('/Explore') + "app-header-font"}>
       <Link to={withLocaleUrl("Explore")}>
-        {Translate('Explore')}
+        {Translate('Explore').toUpperCase()}
       </Link>
     </div>
-    <div className={getTabClass('/Analyze')}>
+    <div className={getTabClass('/Analyze') + "app-header-font"}>
       <Link to={withLocaleUrl("Analyze")}>
-        {Translate('Analyze')}
+        {Translate('Analyze').toUpperCase()}
       </Link>
     </div>
-    <div className={getTabClass('/Data')}>
+    <div className={getTabClass('/Data') + "app-header-font"}>
       <Link to={withLocaleUrl("Data")}>
-        {Translate('Data')}
+        {Translate('Data').toUpperCase()}
       </Link>
     </div>
-    <div className={getTabClass('/Publications')}>
+    <div className={getTabClass('/Publications') + "app-header-font"}>
       <Link to={withLocaleUrl("Publications")}>
-        {Translate('Publications')}
+        {Translate('Publications').toUpperCase()}
       </Link>
     </div>
-    <div className={getTabClass('/About')}>
+    <div className={getTabClass('/About') + "app-header-font"}>
       <Link to={withLocaleUrl("About")}>
-        {Translate('About')}
+        {Translate('About').toUpperCase()}
       </Link>
     </div>
     <div className={'nav__item col-auto h-100 flex center-item'}>
-      <Dropdown text={Translate("Partnerships")}>
+      <Dropdown className={"nav__item"} text={Translate("Partnerships").toUpperCase()}>
         {renderPartnershipsDropDownMenu()}
       </Dropdown>
     </div>
-    <div className={'col-auto h-100 px-0'}>
-      |
-    </div>
-    <div className={"nav__item col-auto h-100 flex center-item cursor"} >
-    <Dropdown text={language.toUpperCase()}>
-        {renderLanguageDropDownMenu()}
-      </Dropdown>
-    </div>
+
   </div>)
   }
   
@@ -214,9 +207,17 @@ export const Header = () => {
 
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth })
   return (
-    <header className="App-header col-12 px-3">
+    <header className="App-header col-12 px-2">
       <AppTitle />
       { isMobileDeviceOrTablet ? mobileNav(partnershipDrownDownActive, languageDropdownActive, handlePartnershipClick, handleLanguageClick, changeLanguages, state.language) : desktopNav( getTabClass, changeLanguages, state.language) }
+      {/*<div className={'col-auto h-100 px-0'}>*/}
+      {/*  |*/}
+      {/*</div>*/}
+      <div className={"nav__item h-100 flex justify-content-end center-item cursor"} >
+        <Dropdown text={state.language.toUpperCase()}>
+          {renderLanguageDropDownMenu()}
+        </Dropdown>
+      </div>
     </header >
   )
 }

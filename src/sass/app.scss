@@ -24,36 +24,66 @@
     z-index: 10000;
 }
 
+.app-header-font {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+}
+
 .nav__item--active a{
-    font-weight: 500 !important;
+    font-weight: 700 !important;
     color: white !important;
+    font-size: 14px;
+    line-height: 18px;
+    font-style: normal;
 }
 
 .nav__item a{
-    color: lightgrey !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: white !important;
+
+
 }
 
 .nav__item a:hover {
-    color: white !important;
+    color: #C4C4C4 !important;
+    //color: $sero-blue !important;
+
     text-decoration: none;
 }
 
 .nav__item--accordion {
-    font-weight: 400 !important;
-    color: lightgrey;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: white !important;
 }
 
 .nav__item > .ui.dropdown {
     display: flex;
     align-items: center;
     height: 19px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: white !important;
+
 }
 
 .ui.accordion .title{
-    font-family: 'Open Sans', sans-serif !important;
-    font-size: 14px !important;
-    font-weight: 500 !important;
-    color: #333333 !important;
+    //font-family: 'Open Sans', sans-serif !important;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: white !important;
 }
 
 .dropdown__icon{
