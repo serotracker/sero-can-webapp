@@ -422,6 +422,21 @@ export const listOfMediaPublications: PublicationProps[] = [
 // Note: for biblio digests, date = date published
 export const listOfBiblioDigests: BiblioDigestProps[] = [
     {
+        url: "https://drive.google.com/file/d/1HN4e2lVkPeU3xHpC7fkK5Caj5vfu4MVh/view",
+        sourcesAdded: 62,
+        serosurveysTotal: 139,
+        serosurveysAFRO: 12,
+        serosurveysEMRO: 6,
+        serosurveysEURO: 44,
+        serosurveysPAHO: 69,
+        serosurveysSEARO: 6,
+        serosurveysWPRO: 2,
+        serosurveysNonMember: 0,
+        publishDate: "2022-09-23",
+        screeningStartDate: "2022-08-20",
+        screeningEndDate: "2022-09-16"
+    },
+    {
         url: "https://drive.google.com/file/d/1E9i39QPOD4hSbdFf-UYJxzkv6oEJslvm/view",
         sourcesAdded: 54,
         serosurveysTotal: 72,
