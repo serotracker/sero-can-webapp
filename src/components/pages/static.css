@@ -136,7 +136,7 @@
 .ui.accordion .title:not(.ui) {
   font-size: 16px;
   font-weight: 600;
-  color: #212121;
+  color: #212121 !important;
 }
 
 .button-text {
