@@ -35,7 +35,7 @@
     "react-responsive": "^8.0.3",
     "react-router-dom": "^5.2.0",
     "react-router-hash-link": "^2.4.3",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^5.0.1",
     "react-slick": "^0.28.0",
     "recharts": "^1.8.5",
     "sass": "^1.49.9",
