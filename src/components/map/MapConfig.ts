@@ -1,5 +1,3 @@
-import mapboxgl from "mapbox-gl";
-
 export const MapSymbology = {
     StudyFeature: {
         National: {
@@ -115,18 +113,20 @@ export const Expressions = {
             0.6
         ]
       },
-
-      Countries : {
-        'fill-color': [
-          'case',
-          ['boolean', ['feature-state', 'isHighlighted'], true], MapSymbology.CountryFeature.IsHighlighted.Color,
-          ['boolean', ['feature-state', 'hasData'], true], MapSymbology.CountryFeature.HasData.Color,
-          MapSymbology.CountryFeature.Default.Color
-        ],
-        'fill-opacity': [
-          'case',
-          ['boolean', ['feature-state', 'hasData'], false], MapSymbology.CountryFeature.HasData.Opacity,  
-          MapSymbology.CountryFeature.Default.Opacity
-        ]
-      }
+    CountriesPaint : {
+    'fill-color': [
+      'case',
+      ['boolean', ['feature-state', 'isHighlighted'], true], MapSymbology.CountryFeature.IsHighlighted.Color,
+      ['boolean', ['feature-state', 'hasData'], true], MapSymbology.CountryFeature.HasData.Color,
+      MapSymbology.CountryFeature.Default.Color
+    ],
+    'fill-opacity': [
+      'case',
+      ['boolean', ['feature-state', 'hasData'], false], MapSymbology.CountryFeature.HasData.Opacity,
+      MapSymbology.CountryFeature.Default.Opacity
+    ]
+    },
+    CountriesLayout : {
+        'visibility': "visible"
+    }
 }

@@ -21,7 +21,6 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
 
     estimateGradePrevalences.forEach((country: EstimateGradePrevalence) => {
         if (country && country.testsAdministered && country.alpha3Code) {
-
             const partnershipConfig = PartnershipsConfig.find(x => x.iso3 === country.alpha3Code)
 
             map.setFeatureState(
@@ -60,7 +59,6 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
     const [highlight, setHighlight] = useState<string | undefined>(undefined);
     const [countriesLoaded, setCountriesLoaded] = useState<boolean>(false);
     const history = useHistory();
-
     // If estimates are updated, maps estimate data to country features
     useEffect(() => {
         if (map && estimateGradePrevalences && countriesLoaded)

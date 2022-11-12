@@ -32,7 +32,11 @@ export async function getEsriVectorSourceStyle(url: string) {
     const l = style.layers[0] as mapboxgl.Layer;
     if (l.id === "Countries") {
       source.promoteId = { "Countries": "CODE" }
-      l.paint = Expressions.Countries as any
+      // the map type for this layer changed to a line
+      // had to change to a fill and edit other properties to make the layer show.
+      l.type = "fill"
+      l.paint = Expressions.CountriesPaint as any
+      l.layout = Expressions.CountriesLayout as any
     }
 
     return style
