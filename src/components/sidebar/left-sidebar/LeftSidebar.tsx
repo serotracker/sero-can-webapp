@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, {Dispatch, useContext, useState, SetStateAction} from "react";
 import Translate, { TranslateDate } from "utils/translate/translateService";
 import TotalStats from "./TotalStats";
-import { Divider } from "semantic-ui-react";
+import { Divider, Button } from "semantic-ui-react";
 import DownloadButton from "components/shared/DownloadButton";
 import { PAGE_HASHES } from "../../../constants";
 import { IconName } from "../../../types";
@@ -12,6 +12,7 @@ import { mobileDeviceOrTabletWidth } from "../../../constants";
 
 interface SideBarProps {
   page: string;
+    toggleSidebar: () => void;
 }
 
 const UpdatedAt = ({ updatedAt }: { updatedAt: string }) => {
@@ -43,7 +44,7 @@ const Citation = () => (
   </span>
 );
 
-export default function LeftSidebar({ page }: SideBarProps) {
+export default function LeftSidebar({ page, toggleSidebar }: SideBarProps) {
   const [{ updatedAt }] = useContext(AppContext);
 
   const airtableDownloadProps = {
@@ -66,7 +67,7 @@ export default function LeftSidebar({ page }: SideBarProps) {
   };
 
   return (
-    <div className="sidebar-container flex left-sidebar">
+    <>
       <TotalStats page={page} />
       <Divider />
       <div className="mt-3 mb-2 center subheading">
@@ -99,6 +100,6 @@ export default function LeftSidebar({ page }: SideBarProps) {
           <UpdatedAt updatedAt={updatedAt} />
         </p>
       </div>
-    </div>
+    </>
   );
 }

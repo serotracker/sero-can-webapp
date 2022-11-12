@@ -23,6 +23,15 @@ export default function Explore({initialFilters}: ExploreProps) {
     const [state, dispatch] = useContext(AppContext);
     const [showUnityBanner, setShowUnityBanner] = useState(false);
     const [mobileModalOpen, setMobileModalOpen] = useState(isMobileDeviceOrTablet);
+    const [showSidebar, setShowSidebar] = useState({left: false, right: true});
+
+    const toggleLeftSidebar = () => {
+        setShowSidebar({left: !showSidebar.left, right: showSidebar.right})
+    }
+
+    const toggleRightSidebar = () => {
+        setShowSidebar({left: showSidebar.left, right: !showSidebar.right})
+    }
 
     // Apply initial input filters and get records
     useEffect(() => {
@@ -81,11 +90,14 @@ export default function Explore({initialFilters}: ExploreProps) {
                             </div>
                             <Icon link onClick={() => {setShowUnityBanner(false)}} name='close'/>
                     </div>)}
-                        <div className="flex h-100 w-100">
-                            <div className="col-2 p-0 flex">
-                                <LeftSidebar page={PageStateEnum.explore}/>
+                        <div className="flex h-100 w-100 explore" style={{overflow: "hidden"}}>
+                            <div className = {"col-2 px-2 py-0 flex sidebar-container left-sidebar " + (showSidebar.left ? "open" : "")}>
+                                <LeftSidebar page={PageStateEnum.explore} toggleSidebar={toggleLeftSidebar}/>
                             </div>
-                            <div className="col-8 p-0 flex" id={PAGE_HASHES.Explore.Map}>
+                            <div className={("sidebar-toggle-button sidebar-toggle-button-left-" + (showSidebar.left ? "open" : "close"))} onClick={toggleLeftSidebar}>
+                                {showSidebar.left ? <Icon name={"angle left"} /> : <Icon name={"angle right"} />}
+                            </div>
+                            <div className="map-section col-12 p-0 flex" id={PAGE_HASHES.Explore.Map}>
                                 <Loader indeterminate active={state.explore.isLoading}/>
                                 <div className="info flex legend center-item">
                                     <Legend/>
@@ -99,8 +111,11 @@ export default function Explore({initialFilters}: ExploreProps) {
                                     }}
                                 />
                             </div>
-                            <div className="col-2 p-0 flex sidebar-container">
-                                <Filters page={PageStateEnum.explore}/>
+                            <div className={("sidebar-toggle-button sidebar-toggle-button-right-" + (showSidebar.right ? "open" : "close"))} onClick={toggleRightSidebar}>
+                                {showSidebar.right ? <Icon name={"angle right"} /> : <Icon name={"angle left"} />}
+                            </div>
+                            <div className={"col-2 p-0 flex sidebar-container right-sidebar" + (showSidebar.right ? " open" : "")}>
+                                <Filters page={PageStateEnum.explore} toggleSidebar={toggleRightSidebar}/>
                             </div>
                         </div>
                     </>) :
