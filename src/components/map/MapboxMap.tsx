@@ -41,6 +41,8 @@ function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>) {
       }
     }
   });
+
+
 }
 
 interface MapboxMapProps {
@@ -68,6 +70,8 @@ const MapboxMap = ( {mapConfig, countriesConfig, studyPinsConfig}: MapboxMapProp
         ...mapConfig,
       };
 
+      //base map style has 31 layers
+      //Countries layer is added on top later.
       const m = new mapboxgl.Map(mergedOptions).addControl(new mapboxgl.NavigationControl());
 
       m.on("load", () => {
@@ -86,7 +90,7 @@ const MapboxMap = ( {mapConfig, countriesConfig, studyPinsConfig}: MapboxMapProp
 
   return (
     //@ts-ignore
-    <div className="w-100 h-100 overflow-hidden" ref={(el) => (mapContainerRef.current = el)}></div>
+    <div className="w-100 h-100 overflow-hidden" ref={(el) => (mapContainerRef.current = el)}/>
   );
 };
 

@@ -25,13 +25,11 @@ export default function NewsletterEmailInput() {
                 .then((r) => r.json())
                 .then((data) => {
                     // The response comes here
-                    console.log(data);
                     alert(newsletterEmail + " has been signed up for newletters");
                     setNewsletterEmail("");
                 })
                 .catch((error) => {
                     // Errors are reported there
-                    console.log(error);
                 });
         }
         else {

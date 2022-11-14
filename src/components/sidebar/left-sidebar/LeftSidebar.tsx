@@ -15,8 +15,6 @@ interface SideBarProps {
 }
 
 const UpdatedAt = ({ updatedAt }: { updatedAt: string }) => {
-  // only renders 'last updated' when we have a valid date
-  console.log("updatedAt", updatedAt);
   return updatedAt ? (
     <span className="pr-2">
       {Translate("Footer", ["LastUpdated"])}:{" "}
