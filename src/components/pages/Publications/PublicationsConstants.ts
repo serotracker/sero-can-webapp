@@ -423,7 +423,7 @@ export const listOfMediaPublications: PublicationProps[] = [
 export const listOfBiblioDigests: BiblioDigestProps[] = [
     {
         url: "https://drive.google.com/file/d/1vJ1SYAmuDE-Gpx6wlWIV6gY_tploGujn/view",
-        sourcesAdded: 541,
+        sourcesAdded: 41,
         serosurveysTotal: 62,
         serosurveysAFRO: 20,
         serosurveysEMRO: 5,
