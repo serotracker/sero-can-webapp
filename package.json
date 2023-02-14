@@ -39,7 +39,7 @@
     "react-router-hash-link": "^2.4.3",
     "react-scripts": "^3.4.1",
     "react-slick": "^0.28.0",
-    "recharts": "^1.8.5",
+    "recharts": "^2.4.1",
     "sass": "^1.49.9",
     "semantic-ui-react": "^0.88.2",
     "shallowequal": "^0.2.2",
