@@ -422,6 +422,51 @@ export const listOfMediaPublications: PublicationProps[] = [
 // Note: for biblio digests, date = date published
 export const listOfBiblioDigests: BiblioDigestProps[] = [
     {
+        url: "https://drive.google.com/file/d/1PWRgKQsdgIIhoVY-eqLhti4LiM3w-zyR/view",
+        sourcesAdded: 30,
+        serosurveysTotal: 45,
+        serosurveysAFRO: 10,
+        serosurveysEMRO: 4,
+        serosurveysEURO: 18,
+        serosurveysPAHO: 5,
+        serosurveysSEARO: 3,
+        serosurveysWPRO: 5,
+        serosurveysNonMember: 0,
+        publishDate: "2023-04-12",
+        screeningStartDate: "2023-02-25",
+        screeningEndDate: "2023-03-24"
+    },
+    {
+        url: "https://drive.google.com/file/d/1nWX9AiU_B9zYhIaIhkqOSEHmBZDu7U4P/view",
+        sourcesAdded: 28,
+        serosurveysTotal: 44,
+        serosurveysAFRO: 12,
+        serosurveysEMRO: 1,
+        serosurveysEURO: 18,
+        serosurveysPAHO: 7,
+        serosurveysSEARO: 4,
+        serosurveysWPRO: 2,
+        serosurveysNonMember: 0,
+        publishDate: "2023-03-10",
+        screeningStartDate: "2023-01-28",
+        screeningEndDate: "2023-02-24"
+    },
+    {
+        url: "https://drive.google.com/file/d/19PIVNVfmi2iiWvXs2R_26KQafUCpDa_F/view",
+        sourcesAdded: 41,
+        serosurveysTotal: 48,
+        serosurveysAFRO: 4,
+        serosurveysEMRO: 5,
+        serosurveysEURO: 17,
+        serosurveysPAHO: 14,
+        serosurveysSEARO: 4,
+        serosurveysWPRO: 4,
+        serosurveysNonMember: 0,
+        publishDate: "2023-02-10",
+        screeningStartDate: "2022-12-31",
+        screeningEndDate: "2023-01-27"
+    },
+    {
         url: "https://drive.google.com/file/d/1vJ1SYAmuDE-Gpx6wlWIV6gY_tploGujn/view",
         sourcesAdded: 41,
         serosurveysTotal: 62,
