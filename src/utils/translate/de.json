@@ -241,9 +241,11 @@
   "For": "Für",
   "Footer": {
     "CiteAs": "Zitieren Sie bitte als:",
-    "LastUpdated": "Datenbank aktuell bis",
+    "LastUpdated": "Datenbank zuletzt aktualisiert",
     "LancetInfDis": "Lancet Inf Dis",
-    "Article": "Artikel"
+    "Article": "Artikel",
+    "MostRecentPubDate": "Zuletzt veröffentlichte Studie"
+
   },
   "French": "Français",
   "FAQ": "FAQ",

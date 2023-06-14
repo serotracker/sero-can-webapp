@@ -28,15 +28,21 @@ function App() {
   useEffect(() => {
     const api = new httpClient()
     const allFilterOptions = async () => {
-      const { options, updatedAt, maxDate, minDate } = await api.getAllFilterOptions();
+      const { options, lastUpdated, maxDate, minDate, mostRecentPubDate } = await api.getAllFilterOptions();
+
       dispatch({
         type: 'GET_ALL_FILTER_OPTIONS',
         payload: options
       })
 
       dispatch({
-        type: "UPDATED_AT",
-        payload: updatedAt
+        type: "LAST_UPDATED",
+        payload: lastUpdated
+      })
+
+      dispatch({
+        type: "MOST_RECENT_PUB",
+        payload: mostRecentPubDate
       })
 
       dispatch({

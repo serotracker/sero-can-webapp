@@ -48,7 +48,8 @@ const initialState: State = {
     maxDate: initialMaxDate,
   },
   language: LanguageType.english,
-  updatedAt: "",
+  lastUpdated: "",
+  mostRecentPubDate: "",
   showCookieBanner: false,
   pulsateUnityFilter: false,
 };
@@ -89,10 +90,15 @@ const reducer = (state: State, action: Record<string, any>): State => {
       pageState.records = records;
       return newState;
     }
-    case "UPDATED_AT":
+    case "LAST_UPDATED":
       return {
         ...state,
-        updatedAt: action.payload,
+        lastUpdated: action.payload,
+      };
+    case "MOST_RECENT_PUB":
+      return {
+        ...state,
+        mostRecentPubDate: action.payload,
       };
     case "UPDATE_FILTER": {
       const { pageStateEnum, filterType, filterValue } = action.payload;
