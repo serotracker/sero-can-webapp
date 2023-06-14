@@ -6,11 +6,8 @@ import mapboxgl from '!mapbox-gl';
 import {DefaultMapboxMapOptions, MapResources, MapSymbology} from "../../map/MapConfig";
 import {getEsriVectorSourceStyle} from "../../../utils/MappingUtil";
 import ReactDOMServer from "react-dom/server";
-import StudyPopup from "../../map/Popups/StudyPopup";
 import {AppContext} from "../../../context";
 import ArboStudyPopup from "./ArboStudyPopup";
-import Legend from "../../map/Legend";
-import Translate from "../../../utils/translate/translateService";
 import {Checkbox} from "semantic-ui-react"; // or "const mapboxgl = require('mapbox-gl');"
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -130,6 +127,40 @@ export default function ArboVirusMap() {
                             "circle-stroke-width": 1,
                         },
                     })
+
+                    let pinPopup: mapboxgl.Popup | undefined = undefined;
+                    console.log("adding event listeners")
+                    map.on("mouseenter", "arbo-pins", function () {
+                        map.getCanvas().style.cursor = "pointer";
+                    });
+                    map.on("mouseleave", "arbo-pins", function () {
+                        map.getCanvas().style.cursor = "";
+                    });
+
+                    map.on("click", "arbo-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
+
+                        console.log("map clicked")
+
+                        if (pinPopup !== undefined) {
+                            pinPopup.remove()
+                        }
+
+                        let study = query.data.records.filter((record: any) => record.estimate_id === e.features[0].properties.id);
+
+                        console.log(study)
+
+                        if(study !== undefined && study.length > 0) {
+                            pinPopup = new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
+                                .setLngLat(e.lngLat)
+                                .setMaxWidth("480px")
+                                .setHTML(ReactDOMServer.renderToString(ArboStudyPopup(study[0])))
+                                .addTo(map);
+                        }
+
+                        pinPopup.on("close",()=>{
+                            console.log("closed pip popup")
+                        })
+                    })
                 }
             }
         }
@@ -138,39 +169,7 @@ export default function ArboVirusMap() {
     useEffect(() => {
         if(map) {
 
-            let pinPopup: mapboxgl.Popup | undefined = undefined;
-            console.log("adding event listeners")
-            map.on("mouseenter", "arbo-pins", function () {
-                map.getCanvas().style.cursor = "pointer";
-            });
-            map.on("mouseleave", "arbo-pins", function () {
-                map.getCanvas().style.cursor = "";
-            });
 
-            map.on("click", "arbo-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
-
-                console.log("map clicked")
-
-                if (pinPopup !== undefined) {
-                    pinPopup.remove()
-                }
-
-                let study = query.data.records.filter((record: any) => record.estimate_id === e.features[0].properties.id);
-
-                console.log(study)
-
-                if(study !== undefined && study.length > 0) {
-                    pinPopup = new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
-                        .setLngLat(e.lngLat)
-                        .setMaxWidth("480px")
-                        .setHTML(ReactDOMServer.renderToString(ArboStudyPopup(study[0])))
-                        .addTo(map);
-                }
-
-                pinPopup.on("close",()=>{
-                    console.log("closed pip popup")
-                })
-            })
         }
     }, [map])
 
