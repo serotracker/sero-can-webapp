@@ -14,13 +14,22 @@ interface SideBarProps {
   page: string;
 }
 
-const UpdatedAt = ({ updatedAt }: { updatedAt: string }) => {
-  return updatedAt ? (
+const LastUpdated = ({ lastUpdated }: { lastUpdated: string }) => {
+    return lastUpdated ? (
     <span className="pr-2">
       {Translate("Footer", ["LastUpdated"])}:{" "}
-      <b className="updated-at-bold">{TranslateDate(updatedAt)}</b>
+      <b className="updated-at-bold">{TranslateDate(lastUpdated)}</b>
     </span>
   ) : null;
+};
+
+const MostRecentPubDate = ({ mostRecentPubDate }: { mostRecentPubDate: string }) => {
+    return mostRecentPubDate ? (
+        <span className="pr-2">
+      {Translate("Footer", ["MostRecentPubDate"])}:{" "}
+            <b className="updated-at-bold">{TranslateDate(mostRecentPubDate)}</b>
+    </span>
+    ) : null;
 };
 
 const lancetId =
@@ -42,7 +51,7 @@ const Citation = () => (
 );
 
 export default function LeftSidebar({ page }: SideBarProps) {
-  const [{ updatedAt }] = useContext(AppContext);
+  const [{ lastUpdated, mostRecentPubDate }] = useContext(AppContext);
 
   const airtableDownloadProps = {
     buttonLabelKey: "DownloadCsv",
@@ -94,8 +103,11 @@ export default function LeftSidebar({ page }: SideBarProps) {
           <Citation /> 
         </p>
         <p>
-          <UpdatedAt updatedAt={updatedAt} />
+          <LastUpdated lastUpdated={lastUpdated} />
         </p>
+          <p>
+              <MostRecentPubDate mostRecentPubDate={mostRecentPubDate} />
+          </p>
       </div>
     </div>
   );

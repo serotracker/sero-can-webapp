@@ -240,9 +240,10 @@
   "For": "Pour",
   "Footer": {
     "CiteAs": "Citez ceci comme: ",
-    "LastUpdated": "Base de données à jour jusqu'au",
+    "LastUpdated": "Base de données mise à jour pour la dernière fois",
     "LancetInfDis": "Lancet Inf Dis",
-    "Article": "article"
+    "Article": "article",
+    "MostRecentPubDate": "Étude la plus récemment publiée"
   },
   "French": "français",
   "FAQ": "FAQ",

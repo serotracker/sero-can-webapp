@@ -82,14 +82,15 @@ export default class httpClient {
         const options: Record<string, any> = response;
         // We know that only these 3 isotypes will ever be reported, thus we can hardcode
         options.isotypes_reported = ["IgG", "IgA", "IgM"];
-        const updatedAt = format(parseISO(response.updated_at), "yyyy/MM/dd");
+        const lastUpdated = format(parseISO(response.last_updated), "yyyy/MM/dd");
+        const mostRecentPubDate = format(parseISO(response.most_recent_publication_date), "yyyy/MM/dd")
 
         const maxDate = parseISO(response.max_publication_end_date);
         const minDate = parseISO(response.min_publication_end_date);
         delete options.min_date;
         delete options.max_date;
 
-        return { options, updatedAt, maxDate, minDate };
+        return { options, lastUpdated, maxDate, minDate, mostRecentPubDate };
     }
 
 

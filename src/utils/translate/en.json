@@ -245,9 +245,10 @@
   "For": "For",
   "Footer": {
     "CiteAs": "Cite as: ",
-    "LastUpdated": "Database up to date to",
+    "LastUpdated": "Database last updated",
     "LancetInfDis": "Lancet Inf Dis",
-    "Article": "article"
+    "Article": "article",
+    "MostRecentPubDate": "Most recently published study"
   },
   "French": "Français",
   "FAQ": "FAQ",
