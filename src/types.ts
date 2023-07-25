@@ -92,7 +92,8 @@ export type State = {
   chartAggregationFactor: AggregationFactor;
   explore: PageState;
   allFilterOptions: FiltersConfig;
-  updatedAt: string;
+  lastUpdated: string;
+  mostRecentPubDate: string;
   calendarStartDates: StartDates;
   language: LanguageType;
   showCookieBanner: boolean;

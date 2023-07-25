@@ -20,11 +20,11 @@ type UpdatedAtProps = {
 }
 //TODO: update footer design for mobile
 export const Footer = () => {
-  const [{updatedAt}] = useContext(AppContext);
+  const [{lastUpdated}] = useContext(AppContext);
 
   const isMobileDeviceOrTablet = useMediaQuery({ maxDeviceWidth: mobileDeviceOrTabletWidth });
 
-  return isMobileDeviceOrTablet ? renderMobileFooter(updatedAt) : renderDesktopFooter()
+  return isMobileDeviceOrTablet ? renderMobileFooter(lastUpdated) : renderDesktopFooter()
 }
 
 const renderDesktopFooter = () => {
