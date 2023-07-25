@@ -289,7 +289,12 @@
     "InventoryEvidenceSynthesis": "Inventory of Best Evidence Synthesis",
     "AfricaLowDeathRate": "Trying to Solve a Covid Mystery: Africa’s Low Death Rates",
     "AfricaCovidCount" : "800 Million Africans Have Had Covid, WHO Says",
-    "AfricaCovid2/3": "Over two thirds of Africans infected by COVID virus since pandemic began - WHO"
+    "AfricaCovid2/3": "Over two thirds of Africans infected by COVID virus since pandemic began - WHO",
+    "HybridImmunitySFChronicle": "COVID in California: Hybrid immunity protects better than infection alone",
+    "HybridImmunityUSNews": "WHO Analysis: Hybrid Immunity Offers High Protection Against COVID-19",
+    "HybridImmunityFortuneWell": "Recovering from COVID doesn’t give you bulletproof immunity—’hybrid’ immunity is way better, according to a new WHO study",
+    "ImmunityLastsAtLeastaYear": "Covid Immunity Lasts at Least a Year After Infection Plus Shots",
+    "CovidLastWord": "With a virus still evolving, COVID-19 has not said its last word"
   },
   "IndustryReportTitles": {
     "AugustReport": "August Report",
@@ -325,7 +330,7 @@
     "July": "July Literature Update Report",
     "June": "June Literature Update Report"
   },
-  "BiblioDigests": "Biweekly Key Insights",
+  "BiblioDigests": "Monthly Key Insights",
   "InitInfoModalText": {
     "PartOne": "Welcome to the SeroTracker Analyze tab! We are conducting a systematic review of SARS-CoV-2 serosurveys, and using the data from our review to build this dashboard.",
     "PartThree": "These aggregated estimates should be interpreted with caution, especially if the studies that were aggregated did not include representative samples or were at high Risk of bias. You can explore the source literature in depth on the references card at the bottom of this page.",
@@ -571,7 +576,7 @@
   "SubmitSource": "Submit source",
   "Summary": "Summary",
   "SummaryStatistics": "KEY INSIGHTS",
-  "SummaryStatisticsLink1": "Read biweekly insights",
+  "SummaryStatisticsLink1": "Read monthly insights",
   "SummaryStatisticsLink2": "here",
   "Team": "Team",
   "TeamLead": "Team Leads",

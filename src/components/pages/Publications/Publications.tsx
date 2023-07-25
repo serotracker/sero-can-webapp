@@ -31,6 +31,11 @@ export default function Publications() {
                     {Translate("PublicationDescriptions", ["Publications"])}
                 </p>
                 <div className={"publication-menu"} style={{flexDirection: isMobileDeviceOrTablet ? "column" : "row"}}>
+                    <p className={"publication-menu-item"}>
+                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.MediaMentions}>
+                            {Translate('MediaMentions')}
+                        </a>
+                    </p>
                     <p className={isMobileDeviceOrTablet ? "publication-menu-item" : "pl-0 publication-menu-item"}>
                         <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.ResearchArticles}>
                             {Translate("ResearchArticles")}
@@ -51,17 +56,19 @@ export default function Publications() {
                             {Translate('PrivateSectorReports')}
                         </a>
                     </p>
-                    <p className={"publication-menu-item"}>
-                        <a className={"publication-link"} href={"#" + PAGE_HASHES.Publications.MediaMentions}>
-                            {Translate('MediaMentions')}
-                        </a>
-                    </p>
                 </div>
 
 
 
                 <hr style={{borderTop: "2px solid #bbb", width: "100%"}}/>
 
+                <h2 id={PAGE_HASHES.Publications.MediaMentions}>
+                    {Translate('MediaMentions')}
+                </h2>
+                <p>
+                    {Translate("PublicationDescriptions", ["MediaMentions"])}
+                </p>
+                {getCarousel("Media", 3)}
 
 
                 <h2 id={PAGE_HASHES.Publications.ResearchArticles}>
@@ -104,15 +111,6 @@ export default function Publications() {
                 </p>
                 {getCarousel("PrivateReports", 3)}
 
-
-
-                <h2 id={PAGE_HASHES.Publications.MediaMentions}>
-                    {Translate('MediaMentions')}
-                </h2>
-                <p>
-                    {Translate("PublicationDescriptions", ["MediaMentions"])}
-                </p>
-                {getCarousel("Media", 3)}
             </div>
         </div>
     )

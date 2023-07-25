@@ -286,7 +286,12 @@
     "InventoryEvidenceSynthesis": "Bestandsaufnahme der Synthese der besten Erkenntnisse",
     "AfricaLowDeathRate": "Der Versuch, ein Rätsel zu lösen: Afrikas niedrige Sterberaten",
     "AfricaCovidCount" : "800 Millionen Afrikaner haben Covid, sagt die WHO",
-    "AfricaCovid2/3": "Über zwei Drittel der Afrikaner seit Beginn der Pandemie mit dem COVID-Virus infiziert - WHO"
+    "AfricaCovid2/3": "Über zwei Drittel der Afrikaner seit Beginn der Pandemie mit dem COVID-Virus infiziert - WHO",
+    "HybridImmunitySFChronicle": "COVID in Kalifornien: Hybride Immunität schützt besser als die Infektion allein",
+    "HybridImmunityUSNews": "WHO-Analyse: Hybridimmunität bietet hohen Schutz gegen COVID-19",
+    "HybridImmunityFortuneWell": "Hybridimmunität ist laut neuer WHO-Studie viel besser",
+    "ImmunityLastsAtLeastaYear": "Die Covid-Immunität hält mindestens ein Jahr nach der Infektion mit Plus Shots an",
+    "CovidLastWord": "COVID-19 hat noch nicht das letzte Wort bei einem sich weiterentwickelnden Virus"
   },
   "IndustryReportTitles": {
     "AugustReport": "August-Bericht",
@@ -566,7 +571,7 @@
   "SubmitSource": "Quelle einreichen",
   "Summary": "Zusammenfassung",
   "SummaryStatistics": "WICHTIGE ERKENNTNISSE",
-  "SummaryStatisticsLink1": "Zweiwöchentliche Einblicke lesen",
+  "SummaryStatisticsLink1": "Monatliche Einblicke lesen",
   "SummaryStatisticsLink2": "hier",
   "Team": "Unser Team",
   "TeamLead": "Teamleiter",

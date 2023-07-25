@@ -284,7 +284,12 @@
     "InventoryEvidenceSynthesis": "Inventaire des meilleures synthèses de preuves",
     "AfricaLowDeathRate": "Tenter de résoudre un mystère de la covidie : Les faibles taux de mortalité en Afrique",
     "AfricaCovidCount" : "800 millions d'Africains ont eu le covid, selon l'OMS",
-    "AfricaCovid2/3": "Plus des deux tiers des Africains ont été infectés par le virus COVID depuis le début de la pandémie - OMS"
+    "AfricaCovid2/3": "Plus des deux tiers des Africains ont été infectés par le virus COVID depuis le début de la pandémie - OMS",
+    "HybridImmunitySFChronicle": "COVID en Californie : L'immunité hybride protège mieux que l'infection seule",
+    "HybridImmunityUSNews": "Analyse de l'OMS : l'immunité hybride offre une protection élevée contre le COVID-19",
+    "HybridImmunityFortuneWell": "Une immunité hybride est bien meilleure, selon une nouvelle étude de l'OMS.",
+    "ImmunityLastsAtLeastaYear": "L'immunité Covid dure au moins un an après l'infection Plus Shots",
+    "CovidLastWord": "Le COVID-19 n'a pas dit son dernier mot avec un virus qui évolue encore"
   },
   "IndustryReportTitles": {
     "AugustReport": "Le bulletin d'Août",
@@ -571,7 +576,7 @@
   "SubmitSource": "Soumettre un article",
   "Summary": "Résumé",
   "SummaryStatistics": "APERÇUS CLÉS",
-  "SummaryStatisticsLink1": "Lisez les aperçus bihebdomadaires",
+  "SummaryStatisticsLink1": "Lisez les aperçus mensuels",
   "SummaryStatisticsLink2": "ici",
   "Team": "L'équipe",
   "TeamLead": "Responsables d'équipes",
