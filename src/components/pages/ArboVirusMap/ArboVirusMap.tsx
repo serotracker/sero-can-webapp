@@ -3,12 +3,16 @@ import {useQuery} from "@tanstack/react-query";
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import mapboxgl from '!mapbox-gl';
-import {DefaultMapboxMapOptions, MapResources, MapSymbology} from "../../map/MapConfig";
+import {DefaultMapboxMapOptions, MapResources} from "../../map/MapConfig";
 import {getEsriVectorSourceStyle} from "../../../utils/MappingUtil";
 import ReactDOMServer from "react-dom/server";
 import {AppContext} from "../../../context";
 import ArboStudyPopup from "./ArboStudyPopup";
-import {Checkbox} from "semantic-ui-react"; // or "const mapboxgl = require('mapbox-gl');"
+import {Checkbox, Dropdown} from "semantic-ui-react";
+import Translate from "../../../utils/translate/translateService";
+import InformationIcon from "../../shared/InformationIcon";
+import SectionHeader from "../../sidebar/right-sidebar/SectionHeader";
+
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
@@ -20,20 +24,81 @@ export default function ArboVirusMap() {
     const [state] = useContext(AppContext);
     const [map, setMap] = useState<mapboxgl.Map | undefined>(undefined);
     const mapContainer = useRef(null);
+    const [selectedFilters, setSelectedFilters] = useState<{ [key: string]: string[] }>({})
 
+
+    const addFilter = (value: string[], newFilter: string) => {
+        setSelectedFilters(prevState => {
+            let mapboxFilters = []
+
+            Object.keys(prevState).forEach((filter: string) => {
+                if (filter !== newFilter && prevState[filter].length > 0)
+                    mapboxFilters.push(['in', filter, ...prevState[filter]])
+            })
+
+            if(value.length > 0) mapboxFilters.push(['in', newFilter, ...value]);
+
+            console.log("Filters: ", mapboxFilters);
+            map?.setFilter('arbo-pins', ['all', ...mapboxFilters])
+
+            return ({
+            ...prevState, [newFilter]: value
+            })
+        });
+    }
+
+    const buildFilterDropdown = (filter: string, placeholder: string) => {
+        return (
+            <div className="pb-3">
+                <Dropdown
+                    text={placeholder}
+                    fluid
+                    multiple
+                    search
+                    clearable
+                    selection
+                    options={filters.data[filter].map((filterOption: string) => (
+                        {
+                            key: filterOption,
+                            text: filterOption,
+                            value: filterOption
+                        })
+                    )}
+                    onChange={(e: any, data: any) => {
+                        addFilter(data.value, filter)
+                    }}
+                    value={selectedFilters[filter] as string[]}
+                    defaultValue={selectedFilters[filter] as string[]}
+                />
+            </div>
+        )
+    }
 
     const query = useQuery({
         queryKey: ['ArbovirusRecords'],
         queryFn: () => fetch("http://localhost:5000/data_provider/records/arbo").then(
             (response) => response.json()
-        )
+        ),
     })
+
+    const filters = useQuery({
+        queryKey: ['ArbovirusFilters'],
+        queryFn: () => fetch("http://localhost:5000/data_provider/arbo/filter_options").then(
+            (response) => response.json()
+        ),
+    })
+
+    if(!filters.isLoading && !filters.isError) {
+        console.log(filters.data)
+    } else {
+        console.log("loading or errored filters", filters.error, filters.isError, filters.isLoading)
+    }
 
     if(!query.isLoading && !query.isError) {
         console.log(query.data)
+    } else {
+        console.log("loading or errored", query.error, query.isError, query.isLoading)
     }
-
-
 
     // Creates map, only runs once
     useEffect(() => {
@@ -55,7 +120,6 @@ export default function ArboVirusMap() {
             m.on('load', () => {
                 setMap(m);
             })
-
         })();
 
         return () => map.remove()
@@ -65,7 +129,6 @@ export default function ArboVirusMap() {
     useEffect(() => {
         if(map && query.data) {
             // Add arbo pins
-
             // Once data loads then populate map
             if(query.data) {
                 // Create array of pin features
@@ -74,12 +137,18 @@ export default function ArboVirusMap() {
                         type: 'Feature',
                         geometry: {
                             type: 'Point',
-                            coordinates: [record.longitude, record.latitude]
+                            coordinates: [record.latitude, record.longitude]
                         },
                         properties: {
                             title: record.title,
                             pathogen: record.pathogen,
-                            id: record.estimate_id
+                            id: record.id,
+                            age_group: record.age_group,
+                            sex: record.sex,
+                            country: record.country,
+                            assay: record.assay,
+                            producer: record.producer,
+                            sample_frame: record.sample_frame
                         }
                     }
                 })
@@ -90,7 +159,7 @@ export default function ArboVirusMap() {
                     features: arboStudyPins
                 }
 
-                console.log(pinSourceData)
+                console.log("Pin Source Data", pinSourceData)
 
                 if(map.getLayer('arbo-pins') == undefined) {
                     // Create mapbox source
@@ -138,17 +207,12 @@ export default function ArboVirusMap() {
                     });
 
                     map.on("click", "arbo-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
-
-                        console.log("map clicked")
-
                         if (pinPopup !== undefined) {
                             pinPopup.remove()
                         }
 
-                        let study = query.data.records.filter((record: any) => record.estimate_id === e.features[0].properties.id);
-
-                        console.log(study)
-
+                        let study = query.data.records.filter((record: any) => record.id === e.features[0].properties.id);
+                        
                         if(study !== undefined && study.length > 0) {
                             pinPopup = new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
                                 .setLngLat(e.lngLat)
@@ -157,21 +221,11 @@ export default function ArboVirusMap() {
                                 .addTo(map);
                         }
 
-                        pinPopup.on("close",()=>{
-                            console.log("closed pip popup")
-                        })
                     })
                 }
             }
         }
     }, [query.data, map])
-
-    useEffect(() => {
-        if(map) {
-
-
-        }
-    }, [map])
 
     return (
         <>
@@ -209,8 +263,85 @@ export default function ArboVirusMap() {
                     </div>
                 </div>
             </div>
-            <div ref={mapContainer} className={"w-100 h-100 overflow-hidden"}>
+            <div>
+                <div className={"w-1/5 h-100"}>
+                    <div className="flex legend center-item">
+                        {/*{!filters.isLoading && !filters.isError &&*/}
+                        {/*    (Object.keys(filters.data.filters).map((filterKey: any) =>*/}
+                        {/*    <div className="pb-3">*/}
+                        {/*        {filterKey} : {filters.data.filters[filterKey]}*/}
+                        {/*    </div>*/}
+                        {/*))}*/}
+
+                    </div>
+                </div>
             </div>
+            <div className={"flex w-100 h-100 flex-col"}>
+                {!filters.isLoading && !filters.isError && (
+                    <div className="col-2 p-0 h-100">
+                        <div className="py-3 center flex">
+                            <div className="subheading">
+                                {Translate("Filter")}
+                            </div>
+                            <div className="tooltip-vert-adj">
+                                <InformationIcon
+                                    offset={10}
+                                    position="bottom right"
+                                    color="#455a64"
+                                    tooltipHeader={Translate("Filter")}
+                                    popupSize="small"
+                                    size="sm"
+                                    tooltip={Translate('FilterTooltip')} />
+                            </div>
+                        </div>
+                        <div className="row justify-content-center">
+                            <div className="col-10 col align-items-center p-0">
+                                <div className="p-0">
+                                    <div>
+                                        <SectionHeader
+                                            header_text={"Demographics"}
+                                            tooltip_text={"Participant related data"}
+                                        />
+                                    </div>
+                                    <div>
+                                        {buildFilterDropdown('age_group', "Age Group")}
+                                    </div>
+                                    <div>
+                                        {buildFilterDropdown('sex', "Sex")}
+                                    </div>
+                                    <div>
+                                        {buildFilterDropdown('country', "Country")}
+                                    </div>
+                                </div>
+                                <div className="p-0">
+                                    <div>
+                                        <SectionHeader header_text={"Study Information"} tooltip_text={"Filter on different types of study based metadata"}/>
+                                    </div>
+                                    <div>
+                                        {buildFilterDropdown('assay',"Assay")}
+                                    </div>
+                                    <div>
+                                        {buildFilterDropdown('producer', "Producer")}
+                                    </div>
+                                    <div>
+                                        {buildFilterDropdown('sample_frame', "Sample Frame")}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/*<div className="row justify-content-center">*/}
+                        {/*    <div className="col-10 col align-items-center p-0">*/}
+                        {/*        <div className="pb-3">*/}
+                        {/*            <Button  className="clear-filters-btn" size="medium" onClick={clearFilter}> {Translate('ClearAllFilters')}</Button>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
+                    </div>
+                )}
+                <div ref={mapContainer} className={"col-10 h-100 overflow-hidden"}>
+                </div>
+            </div>
+
         </>
     )
 }
