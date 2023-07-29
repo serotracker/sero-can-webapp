@@ -26,7 +26,9 @@ import UCalgary from '../../../assets/images/PubMedia/UCalgary.svg'
 import waterloo from '../../../assets/images/PubMedia/waterloo.png'
 import covidend from '../../../assets/images/PubMedia/covidend-global-logo.png'
 import reuters from '../../../assets/images/PubMedia/reuters-logo.png'
-
+import sfchronicle from '../../../assets/images/PubMedia/sfchronicle.svg'
+import usnews from '../../../assets/images/PubMedia/usn-logo-large.svg'
+import radiocanada from '../../../assets/images/PubMedia/cbc-radio-canada-white.svg'
 
 // Note: Dates should be strings in YYYY-MM-DD format
 export interface PublicationProps {
@@ -183,6 +185,24 @@ export const listOfResearchArticles: PublicationProps[] = [
 
 export const listOfMediaPublications: PublicationProps[] = [
     {
+        date: "2021-05-13",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['EconomistDeathToll'],
+        publicationName: "The Economist",
+        authors: "",
+        url: "https://www.economist.com/graphic-detail/2021/05/13/how-we-estimated-the-true-death-toll-of-the-pandemic",
+        img: theEconomist
+    },
+    {
+        date: "2021-05-25",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['NYTIndia'],
+        publicationName: "The New York Times",
+        authors: "",
+        url: "https://www.nytimes.com/interactive/2021/05/25/world/asia/india-covid-death-estimates.html",
+        img: NYT
+    },
+    {
         date: "2022-04-07",
         titleKey1: 'IndustryMediaTitles',
         titleKey2: ['AfricaCovid2/3'],
@@ -190,6 +210,42 @@ export const listOfMediaPublications: PublicationProps[] = [
         img: reuters,
         authors: "",
         url: "https://www.reuters.com/world/africa/over-two-thirds-africans-infected-by-covid-virus-since-pandemic-began-who-2022-04-07",
+    },
+    {
+        date: "2023-01-18",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['HybridImmunitySFChronicle'],
+        publicationName: "San Francisco Chronicle",
+        img: sfchronicle,
+        authors: "Aidin Vaziri, Rita Beamish",
+        url: "https://www.sfchronicle.com/health/article/COVID-in-California-17724112.php",
+    },
+    {
+        date: "2023-01-18",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['HybridImmunityUSNews'],
+        publicationName: "U.S. News",
+        img: usnews,
+        authors: "Cecilia Smith-Schoenwalder",
+        url: "https://www.usnews.com/news/health-news/articles/2023-01-18/who-analysis-hybrid-immunity-offers-high-protection-against-covid-19-hospitalization",
+    },
+    {
+        date: "2023-01-18",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['ImmunityLastsAtLeastaYear'],
+        publicationName: "Bloomberg",
+        img: bloomberg,
+        authors: "Tanaz Meghjani",
+        url: "https://www.bloomberg.com/news/articles/2023-01-18/covid-19-immunity-lasts-at-least-a-year-after-infection-plus-shots-who-says#xj4y7vzkg",
+    },
+    {
+        date: "2022-10-09",
+        titleKey1: 'IndustryMediaTitles',
+        titleKey2: ['CovidLastWord'],
+        publicationName: "Radio-Canada",
+        img: radiocanada,
+        authors: "Melanie Meloche-Holubowski",
+        url: "https://www.bloomberg.com/news/articles/2023-01-18/covid-19-immunity-lasts-at-least-a-year-after-infection-plus-shots-who-says#xj4y7vzkg",
     },
     {
         date: "2022-04-07",
@@ -217,24 +273,6 @@ export const listOfMediaPublications: PublicationProps[] = [
         img: journalQuebec,
         authors: "",
         url: "https://www.journaldequebec.com/2021/06/25/la-population-mondiale-toujours-vulnerable-a-la-covid-19",
-    },
-    {
-        date: "2021-05-25",
-        titleKey1: 'IndustryMediaTitles',
-        titleKey2: ['NYTIndia'],
-        publicationName: "The New York Times",
-        authors: "",
-        url: "https://www.nytimes.com/interactive/2021/05/25/world/asia/india-covid-death-estimates.html",
-        img: NYT
-    },
-    {
-        date: "2021-05-13",
-        titleKey1: 'IndustryMediaTitles',
-        titleKey2: ['EconomistDeathToll'],
-        publicationName: "The Economist",
-        authors: "",
-        url: "https://www.economist.com/graphic-detail/2021/05/13/how-we-estimated-the-true-death-toll-of-the-pandemic",
-        img: theEconomist
     },
     {
         date: "2021-01-23",
@@ -421,6 +459,21 @@ export const listOfMediaPublications: PublicationProps[] = [
 
 // Note: for biblio digests, date = date published
 export const listOfBiblioDigests: BiblioDigestProps[] = [
+    {
+        url: "https://drive.google.com/file/d/1iwIb32XudIc1I1wiJBFw3fKySgjids4j/view",
+        sourcesAdded: 41,
+        serosurveysTotal: 56,
+        serosurveysAFRO: 13,
+        serosurveysEMRO: 2,
+        serosurveysEURO: 17,
+        serosurveysPAHO: 20,
+        serosurveysSEARO: 4,
+        serosurveysWPRO: 0,
+        serosurveysNonMember: 0,
+        publishDate: "2023-06-30",
+        screeningStartDate: "2023-05-20",
+        screeningEndDate: "2023-06-16"
+    },
     {
         url: "https://drive.google.com/file/d/14cho5XuKkH95XTnLo8GlsmDrTPe3aoIC/view",
         sourcesAdded: 38,
