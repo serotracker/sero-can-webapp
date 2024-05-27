@@ -13,6 +13,7 @@ import Legend from "components/map/Legend";
 import { fetchExploreData } from "../../../utils/stateUpdateUtils";
 import { sendFiltersAnalyticsEvent, sendUnityAnalyticsEvent } from "../../../utils/analyticsUtils";
 import Translate from "../../../utils/translate/translateService";
+import { ArboTrackerBanner } from "components/map/ArbotrackerBanner";
 
 interface ExploreProps {
     initialFilters?: FiltersConfig;
@@ -90,6 +91,7 @@ export default function Explore({initialFilters}: ExploreProps) {
                                 <div className="info flex legend center-item">
                                     <Legend/>
                                 </div>
+                                <ArboTrackerBanner />
                                 <MapboxMap
                                     countriesConfig={{
                                         estimateGradePrevalences: state.explore.estimateGradePrevalences
