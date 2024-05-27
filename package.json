@@ -79,9 +79,5 @@
     "@types/react-router-hash-link": "^2.4.1",
     "ts-jest": "^25.5.0",
     "typescript": "^3.8.3"
-  },
-  "engines" : { 
-    "npm" : ">=8.0.0 <9.0.0",
-    "node" : ">=16.0.0 <17.0.0"
   }
 }
