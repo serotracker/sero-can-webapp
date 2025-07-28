@@ -47,7 +47,7 @@ export const MapSymbology = {
 }
 
 export const MapResources = {
-    WHO_BASEMAP : "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_Polygon_Basemap_no_labels/VectorTileServer",
+    WHO_BASEMAP_BB: "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_BASEMAP_BB/VectorTileServer",
     WHO_COUNTRY_VECTORTILES : "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer"
 }
 

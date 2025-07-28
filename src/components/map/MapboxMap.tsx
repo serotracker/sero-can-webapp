@@ -51,6 +51,25 @@ interface MapboxMapProps {
   studyPinsConfig: StudyPinsMapConfig
 }
 
+const adjustMapStyle = (mapStyle: any): any => {
+  return {
+    ...mapStyle,
+    layers: mapStyle.layers.map((layer: any) => {
+      if(layer.id === 'GLOBAL/1') {
+        return {
+          ...layer,
+          paint: (layer.paint ? {
+            ...layer.paint,
+            "fill-color": "#FFFFFF"
+          } : layer.paint)
+        }
+      }
+
+      return layer
+    })
+  }
+}
+
 const MapboxMap = ( {mapConfig, countriesConfig, studyPinsConfig}: MapboxMapProps ): any => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [state, dispatch] = useContext(AppContext);
@@ -59,12 +78,13 @@ const MapboxMap = ( {mapConfig, countriesConfig, studyPinsConfig}: MapboxMapProp
   // Creates map, only runs once
   useEffect(() => {
     (async () => {
-      const baseMapStyle = await getEsriVectorSourceStyle(MapResources.WHO_BASEMAP);
+      const baseMapStyle = await getEsriVectorSourceStyle(MapResources.WHO_BASEMAP_BB);
+      const adjustedBaseMapStyle = adjustMapStyle(baseMapStyle);
 
       const mergedOptions = { // Merges options together to configure map
         ...{
           container: mapContainerRef.current,
-          style: baseMapStyle,
+          style: adjustedBaseMapStyle,
         },
         ...DefaultMapboxMapOptions,
         ...mapConfig,
