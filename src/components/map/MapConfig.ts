@@ -52,7 +52,7 @@ export const MapResources = {
 }
 
 export const DefaultMapboxMapOptions = {
-    center: [10, 30],
+    center: [10, 30] as [number, number],
     zoom: 2,
     minZoom: 2,
     maxZoom: 14,

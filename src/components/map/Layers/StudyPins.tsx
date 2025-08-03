@@ -87,8 +87,7 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
       let pinPopup: mapboxgl.Popup | undefined = undefined;
 
       map.on("click", "study-pins", function (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
-        if (pinPopup !== undefined)
-        {
+        if (pinPopup !== undefined) {
           pinPopup.remove()
         }
         const source_id = e.features[0].properties.source_id;
@@ -97,21 +96,25 @@ const StudyPins = (map: mapboxgl.Map | undefined, {records}: StudyPinsMapConfig)
           if (record !== null) {
             setSelectedPinId(source_id);
             togglePinBlur(map, source_id);
+
             pinPopup = new mapboxgl.Popup({ offset: 5, className: "pin-popup" })
               .setLngLat(e.lngLat)
               .setMaxWidth("480px")
               .setHTML(ReactDOMServer.renderToString(StudyPopup(record, state.allFilterOptions.population_group)))
               .addTo(map);
+
             map.flyTo({
               center: [e.lngLat.lng, e.lngLat.lat - offset],
               curve: 0.5,
               speed: 0.5,
               });
+
             sendAnalyticsEvent({
               category: "Study pin popup",
               action: "open",
               label: `${source_id} - ${record.source_name}`,
             });
+
             pinPopup.on("close",()=>{
               setSelectedPinId(undefined);
               togglePinBlur(map);
