@@ -48,7 +48,7 @@ export const MapSymbology = {
 
 export const MapResources = {
     WHO_BASEMAP_BB: "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/WHO_BASEMAP_BB/VectorTileServer",
-    WHO_COUNTRY_VECTORTILES : "https://tiles.arcgis.com/tiles/5T5nSi527N4F7luB/arcgis/rest/services/Countries/VectorTileServer"
+    WHO_COUNTRY_VECTORTILES : "https://services.arcgis.com/5T5nSi527N4F7luB/ArcGIS/rest/services/POLIO_ADMINISTRATIVE_BOUNDARIES/FeatureServer/6"
 }
 
 export const DefaultMapboxMapOptions = {
