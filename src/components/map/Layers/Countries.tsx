@@ -77,17 +77,12 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
             ...estimateGradePrevalences.flatMap((country: EstimateGradePrevalence) => [
                 country.alpha3Code,
                 MapSymbology.CountryFeature.HasData.Opacity,
-                country.alpha3Code !== 'SDN' ? MapSymbology.CountryFeature.HasData.Opacity : [
-                  "match",
-                  ["get", "OBJECTID"],
-                  695,
-                  MapSymbology.CountryFeature.HasData.Opacity,
-                  0
-                ],
             ]),
             MapSymbology.CountryFeature.Default.Opacity
         ]
     )
+
+    console.log('chinese study count', estimateGradePrevalences.find((country) => country.alpha3Code === 'CHN')?.numberOfStudies);
     // estimateGradePrevalences.forEach((country: EstimateGradePrevalence) => {
     //     if (country && country.testsAdministered && country.alpha3Code) {
     //         const partnershipConfig = PartnershipsConfig.find(x => x.iso3 === country.alpha3Code)
@@ -151,7 +146,6 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
         }
     }, [map]);
 
-
     // wait until map is loaded then creates and binds popup to map events
     useEffect(() => {
         if (map) {
@@ -159,10 +153,15 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
                 if (map.queryRenderedFeatures(e.point).filter((f) => f.source === "study-pins").length === 0) {
                     const country = e.features[0];
                     const offset = getMapboxLatitudeOffset(map)
-                   
+
+                    const popups = document.getElementsByClassName('mapboxgl-popup');
+                    for(let i = 0; i < popups.length; i++) {
+                        popups[i].remove();
+                    }
+
                     new mapboxgl.Popup({offset: 25, className: "pin-popup",})
                       .setMaxWidth("370px")
-                      .setHTML(ReactDOMServer.renderToString(CountryPopup(country, state.language)))
+                      .setHTML(ReactDOMServer.renderToString(CountryPopup(country, state.language, estimateGradePrevalences)))
                       .setLngLat(e.lngLat)
                       .addTo(map);
                     map.flyTo({
@@ -178,7 +177,7 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
                 }
             });
         }
-    }, [map, state.language, history])
+    }, [map, state.language, history, estimateGradePrevalences])
 
     useEffect(() => {
         if (map) {

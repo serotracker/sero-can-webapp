@@ -28,6 +28,7 @@ function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>) {
     paint: Expressions.CountriesPaint as any,
     layout: Expressions.CountriesLayout as any,
     promoteId: 'ISO_3_CODE',
+    filter: ['!=', 'OBJECTID', 694]
   })
   map.moveLayer("Countries", layerId); // HACK for now, moves countries layer behind border once loaded.
   map.on("mouseenter", layerId, function (e: any) {
