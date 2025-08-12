@@ -37,31 +37,6 @@ function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>) {
   map.on("mouseleave", layerId, function (e: any) {
     dispatch({ type: 'SHOW_COUNTRY_HOVER' })
   });
-  /*
-  getEsriVectorSourceStyle(MapResources.WHO_COUNTRY_VECTORTILES).then((style: mapboxgl.Style) => {
-    addEsriLayersFromVectorSourceStyle(style, map);
-    const styleJson: Style = map.getStyle();
-    let CountryPolygonsMoved = false;
-    if (styleJson && styleJson.layers) {
-      for (let layer of styleJson.layers as any) {
-        const source = layer["source-layer"];
-        if (source === "DISPUTED_AREAS") {
-          if (!CountryPolygonsMoved)
-          {
-            map.moveLayer("Countries", layer.id); // HACK for now, moves countries layer behind border once loaded.
-          }
-
-          map.on("mouseenter", layer.id, function (e: any) {
-            dispatch({ type: 'HIDE_COUNTRY_HOVER' })
-          });
-          map.on("mouseleave", layer.id, function (e: any) {
-            dispatch({ type: 'SHOW_COUNTRY_HOVER' })
-          });
-        }
-      }
-    }
-  });
-  */
 }
 
 interface MapboxMapProps {
