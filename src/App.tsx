@@ -19,6 +19,10 @@ import { LanguageType } from "./types";
 import { setLanguageType } from "./utils/translate/translateService";
 import Partnerships from "components/pages/Partnerships/Partnerships";
 import NewsletterPopup from "./components/shared/NewsletterPopup";
+import ArboVirusMap from "./components/pages/ArboVirusMap/ArboVirusMap";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   const [{ language, explore }, dispatch] = useContext(AppContext);
@@ -104,53 +108,59 @@ function App() {
   let unityInitialFilters = getEmptyFilters();
   unityInitialFilters.unity_aligned_only = true;
 
+
   return (
     <div className="App">
       <Header />
       <CookieBanner />
       <NewsletterPopup />
-      <Switch>
-        <Route path="/:language/About">
-          <About />
-        </Route>
-        <Route path="/:language/Explore">
-          <Explore key="Explore"/>
-        </Route>
-        <Route path="/:language/Dashboard">
-          <Redirect to="/:language/Explore" />
-        </Route>
-        <Route path="/:language/Analyze">
-          <Analyze />
-        </Route>
-        <Route path="/:language/Partnerships/:name">
-          <Partnerships />
-        </Route>
-        <Route path="/:language/Data">
-          <Data />
-        </Route>
-        <Route path="/:language/PrivacyPolicy">
-          <PrivacyPolicy />
-        </Route>
-        <Route path="/:language/CookiePolicy">
-          <CookiePolicy />
-        </Route>
-        <Route path="/:language/TermsOfUse">
-          <TermsOfUse />
-        </Route>
-        <Route path="/:language/Publications">
-          <Publications />
-        </Route>
-        <Route path="/:language/Unity">
-          {/*Key added to differentiate Unity view from Explore view and force a rerender*/}
-          <Explore initialFilters={unityInitialFilters} key="Unity"/>
-        </Route>
-        <Redirect exact from="/" to={`/${language}/Explore`} />
-        {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Publications", "Canada"].map(route =>
-          <Redirect from={`/${route}`} to={`${language}/${route}`}></Redirect>)}
-        <Route>
-          <NotFoundPage/>
-        </Route>
-      </Switch>
+      <QueryClientProvider client={queryClient}>
+        <Switch>
+          <Route path="/:language/About">
+            <About />
+          </Route>
+          <Route path="/:language/Explore">
+            <Explore key="Explore"/>
+          </Route>
+          <Route path="/:language/Dashboard">
+            <Redirect to="/:language/Explore" />
+          </Route>
+          <Route path="/:language/Analyze">
+            <Analyze />
+          </Route>
+          <Route path="/:language/Partnerships/:name">
+            <Partnerships />
+          </Route>
+          <Route path="/:language/Data">
+            <Data />
+          </Route>
+          <Route path="/:language/Arbovirus" >
+            <ArboVirusMap />
+          </Route>
+          <Route path="/:language/PrivacyPolicy">
+            <PrivacyPolicy />
+          </Route>
+          <Route path="/:language/CookiePolicy">
+            <CookiePolicy />
+          </Route>
+          <Route path="/:language/TermsOfUse">
+            <TermsOfUse />
+          </Route>
+          <Route path="/:language/Publications">
+            <Publications />
+          </Route>
+          <Route path="/:language/Unity">
+            {/*Key added to differentiate Unity view from Explore view and force a rerender*/}
+            <Explore initialFilters={unityInitialFilters} key="Unity"/>
+          </Route>
+          <Redirect exact from="/" to={`/${language}/Explore`} />
+          {language && ["About", "Explore", "Analyze", "Data", "PrivacyPolicy", "CookiePolicy", "TermsOfUse", "Publications", "Canada"].map(route =>
+            <Redirect from={`/${route}`} to={`${language}/${route}`}></Redirect>)}
+          <Route>
+            <NotFoundPage/>
+          </Route>
+        </Switch>
+      </QueryClientProvider>
       <Footer />
     </div>
   );
