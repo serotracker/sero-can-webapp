@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useRef, useState, Dispatch } from "react";
+import FeatureService from 'mapbox-gl-arcgis-featureserver';
 import { AppContext } from "context";
 import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "utils/MappingUtil";
 import Countries from "components/map/Layers/Countries";
 import StudyPins from "components/map/Layers/StudyPins";
-import { MapResources, DefaultMapboxMapOptions } from 'components/map/MapConfig'
+import { MapResources, DefaultMapboxMapOptions, Expressions } from 'components/map/MapConfig'
 import { CountriesMapConfig, StudyPinsMapConfig } from "types";
 // @ts-ignore
 // eslint-disable-next-line
@@ -18,31 +19,24 @@ mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worke
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY as string;
 
 function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>) {
-  getEsriVectorSourceStyle(MapResources.WHO_COUNTRY_VECTORTILES).then((style: mapboxgl.Style) => {
-    addEsriLayersFromVectorSourceStyle(style, map);
-    const styleJson: Style = map.getStyle();
-    let CountryPolygonsMoved = false;
-    if (styleJson && styleJson.layers) {
-      for (let layer of styleJson.layers as any) {
-        const source = layer["source-layer"];
-        if (source === "DISPUTED_AREAS") {
-          if (!CountryPolygonsMoved)
-          {
-            map.moveLayer("Countries", layer.id); // HACK for now, moves countries layer behind border once loaded.
-          }
+  const layerId = 'Countries';
 
-          map.on("mouseenter", layer.id, function (e: any) {
-            dispatch({ type: 'HIDE_COUNTRY_HOVER' })
-          });
-          map.on("mouseleave", layer.id, function (e: any) {
-            dispatch({ type: 'SHOW_COUNTRY_HOVER' })
-          });
-        }
-      }
-    }
+  map.addLayer({
+    id: layerId,
+    type: 'fill',
+    source: 'Countries',
+    paint: Expressions.CountriesPaint as any,
+    layout: Expressions.CountriesLayout as any,
+    promoteId: 'ISO_3_CODE',
+    filter: ['!=', 'OBJECTID', 694]
+  })
+  map.moveLayer("Countries", layerId); // HACK for now, moves countries layer behind border once loaded.
+  map.on("mouseenter", layerId, function (e: any) {
+    dispatch({ type: 'HIDE_COUNTRY_HOVER' })
   });
-
-
+  map.on("mouseleave", layerId, function (e: any) {
+    dispatch({ type: 'SHOW_COUNTRY_HOVER' })
+  });
 }
 
 interface MapboxMapProps {
@@ -95,6 +89,13 @@ const MapboxMap = ( {mapConfig, countriesConfig, studyPinsConfig}: MapboxMapProp
       const m = new mapboxgl.Map(mergedOptions).addControl(new mapboxgl.NavigationControl());
 
       m.on("load", () => {
+        const featureService = new FeatureService(
+          "Countries",
+          m,
+          {
+            url: MapResources.WHO_COUNTRY_VECTORTILES,
+          }
+        )
         mapOnLoad(m, dispatch);
         setMap(m);
       });

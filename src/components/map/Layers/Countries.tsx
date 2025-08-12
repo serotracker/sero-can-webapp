@@ -8,42 +8,55 @@ import PartnershipsConfig from '../../../PartnershipsConfig'
 import { useHistory } from 'react-router-dom';
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import {getMapboxLatitudeOffset} from "../../../utils/utils";
+import { MapSymbology } from "../MapConfig";
 
 const COUNTRY_LAYER_ID = 'Countries';
 
 // Maps estimate grade prevalence data to a match ISO3 code in the countries feature layer
 function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
 
-    map.removeFeatureState({
-        source: COUNTRY_LAYER_ID,
-        sourceLayer: COUNTRY_LAYER_ID
-        });
+    if(estimateGradePrevalences.length === 0) {
+        map.setPaintProperty(
+            COUNTRY_LAYER_ID,
+            'fill-color',
+            MapSymbology.CountryFeature.Default.Color
+        )
 
-    estimateGradePrevalences.forEach((country: EstimateGradePrevalence) => {
-        if (country && country.testsAdministered && country.alpha3Code) {
-            const partnershipConfig = PartnershipsConfig.find(x => x.iso3 === country.alpha3Code)
+        map.setPaintProperty(
+            COUNTRY_LAYER_ID,
+            'fill-opacity',
+            0
+        )
 
-            map.setFeatureState(
-                {
-                    source: COUNTRY_LAYER_ID,
-                    sourceLayer: COUNTRY_LAYER_ID,
-                    id: country.alpha3Code,
-                },
-                {
-                    hasData: true,
-                    isHighlighted: false,
-                    testsAdministered: country.testsAdministered,
-                    geographicalName: country.geographicalName,
-                    numberOfStudies: country.numberOfStudies,
-                    localEstimate: country.localEstimate,
-                    nationalEstimate: country.nationalEstimate,
-                    regionalEstimate: country.regionalEstimate,
-                    sublocalEstimate: country.sublocalEstimate,
-                    partnershipConfig: partnershipConfig
-                }
-            );
-        }
-    });
+        return;
+    }
+
+    map.setPaintProperty(
+        COUNTRY_LAYER_ID,
+        'fill-color',
+        [
+            "match",
+            ["get", "ISO_3_CODE"],
+            ...estimateGradePrevalences.flatMap((country: EstimateGradePrevalence) => [
+                country.alpha3Code,
+                MapSymbology.CountryFeature.HasData.Color,
+            ]),
+            MapSymbology.CountryFeature.Default.Color
+        ]
+    )
+    map.setPaintProperty(
+        COUNTRY_LAYER_ID,
+        'fill-opacity',
+        [
+            "match",
+            ["get", "ISO_3_CODE"],
+            ...estimateGradePrevalences.flatMap((country: EstimateGradePrevalence) => [
+                country.alpha3Code,
+                MapSymbology.CountryFeature.HasData.Opacity,
+            ]),
+            MapSymbology.CountryFeature.Default.Opacity
+        ]
+    )
 }
 
 function SetMapData(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
@@ -82,7 +95,6 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
         }
     }, [map]);
 
-
     // wait until map is loaded then creates and binds popup to map events
     useEffect(() => {
         if (map) {
@@ -90,10 +102,15 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
                 if (map.queryRenderedFeatures(e.point).filter((f) => f.source === "study-pins").length === 0) {
                     const country = e.features[0];
                     const offset = getMapboxLatitudeOffset(map)
-                   
+
+                    const popups = document.getElementsByClassName('mapboxgl-popup');
+                    for(let i = 0; i < popups.length; i++) {
+                        popups[i].remove();
+                    }
+
                     new mapboxgl.Popup({offset: 25, className: "pin-popup",})
                       .setMaxWidth("370px")
-                      .setHTML(ReactDOMServer.renderToString(CountryPopup(country, state.language)))
+                      .setHTML(ReactDOMServer.renderToString(CountryPopup(country, state.language, estimateGradePrevalences)))
                       .setLngLat(e.lngLat)
                       .addTo(map);
                     map.flyTo({
@@ -109,7 +126,7 @@ const Countries = (map: mapboxgl.Map | undefined, {estimateGradePrevalences, cou
                 }
             });
         }
-    }, [map, state.language, history])
+    }, [map, state.language, history, estimateGradePrevalences])
 
     useEffect(() => {
         if (map) {

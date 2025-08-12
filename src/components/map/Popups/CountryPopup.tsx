@@ -1,5 +1,5 @@
 import React from "react";
-import { RegionalPrevalenceEstimate } from "types";
+import { EstimateGradePrevalence, RegionalPrevalenceEstimate } from "types";
 import { LanguageType } from "types";
 import {Button, Divider} from 'semantic-ui-react'
 import Translate, { getCountryName } from 'utils/translate/translateService';
@@ -33,19 +33,31 @@ const createPopupGeographySection = (regionalEstimate: RegionalPrevalenceEstimat
   )
 }
 
-const CountryPopup = (country : any, language : LanguageType, onDetailsClick?: any) => {
+const CountryPopup = (country : any, language : LanguageType, estimateGradePrevalences: EstimateGradePrevalence[] | undefined, onDetailsClick?: any) => {
+  const properties = estimateGradePrevalences?.find((prevalence) => 
+    country &&
+    country.properties &&
+    country.properties.ISO_3_CODE &&
+    prevalence.alpha3Code === country.properties.ISO_3_CODE
+  );
 
-  const properties = country?.state
-
-  if (properties.testsAdministered) {
+  if (properties && properties.testsAdministered) {
     const regions: Array<any> = []
     let addRegion = (r: RegionalPrevalenceEstimate, name: string) => { 
       return (r !== undefined && r.numEstimates !== 0 ? regions.push({Region: r, Name: name}) : null) 
     }
-    addRegion(properties.nationalEstimate, Translate('NationalEstimates'));
-    addRegion(properties.regionalEstimate, Translate('RegionalEstimates'));
-    addRegion(properties.localEstimate, Translate('LocalEstimates'));
-    addRegion(properties.sublocalEstimate, Translate('SublocalEstimates'));
+    if(properties.nationalEstimate) {
+      addRegion(properties.nationalEstimate, Translate('NationalEstimates'));
+    }
+    if(properties.regionalEstimate) {
+      addRegion(properties.regionalEstimate, Translate('RegionalEstimates'));
+    }
+    if(properties.localEstimate) {
+      addRegion(properties.localEstimate, Translate('LocalEstimates'));
+    }
+    if(properties.sublocalEstimate) {
+      addRegion(properties.sublocalEstimate, Translate('SublocalEstimates'));
+    }
 
     return (
       <div className="country-popup-content p-4" >
@@ -53,20 +65,21 @@ const CountryPopup = (country : any, language : LanguageType, onDetailsClick?: a
             {getCountryName(properties.geographicalName, language, "CountryOptions")}
         </div>
           <Divider />
-        {row(Translate("TestsAdministered"), <b>{properties?.testsAdministered}</b>)}
-        {row(Translate('NumSeroprevalenceEstimates'), <b>{properties?.numberOfStudies}</b>)}
+        {row(Translate("TestsAdministered"), <b>{properties.testsAdministered}</b>)}
+        {row(Translate('NumSeroprevalenceEstimates'), <b>{properties.numberOfStudies}</b>)}
         {regions.map((o) => createPopupGeographySection(o.Region, o.Name))}
         {onDetailsClick ? 
             <Button className="not-found-button mt-2" onClick={()=>{ onDetailsClick()}}>
               {Translate("ViewPartnership")}
             </Button> : ""
         }
-      </div>)
+      </div>
+    );
   }
 
   return (
     <div className="country-popup-content">
-      <div className="country-popup-title">{getCountryName(properties.geographicalName, language, "CountryOptions")}</div>
+      <div className="country-popup-title">{getCountryName(properties?.geographicalName ?? '', language, "CountryOptions")}</div>
       <div className="col-12 p-0 flex country-popup-text">{Translate('NoData')}</div>
     </div>)
 }
