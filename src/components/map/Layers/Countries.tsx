@@ -31,11 +31,6 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
         return;
     }
 
-    //map.removeFeatureState({
-    //    source: COUNTRY_LAYER_ID,
-    //    sourceLayer: COUNTRY_LAYER_ID
-    //    });
-
     map.setPaintProperty(
         COUNTRY_LAYER_ID,
         'fill-color',
@@ -49,25 +44,6 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
             MapSymbology.CountryFeature.Default.Color
         ]
     )
-
-    console.log('fill-opacity', 
-        [
-            "match",
-            ["get", "ISO_3_CODE"],
-            ...estimateGradePrevalences.flatMap((country: EstimateGradePrevalence) => [
-                country.alpha3Code,
-                MapSymbology.CountryFeature.HasData.Opacity,
-                // country.alpha3Code !== 'SDN' ? MapSymbology.CountryFeature.HasData.Opacity : [
-                //   "match",
-                //   ["get", "OBJECTID"],
-                //   695,
-                //   MapSymbology.CountryFeature.HasData.Opacity,
-                //   0
-                // ],
-            ]),
-            MapSymbology.CountryFeature.Default.Opacity
-        ]
-    );
     map.setPaintProperty(
         COUNTRY_LAYER_ID,
         'fill-opacity',
@@ -81,33 +57,6 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
             MapSymbology.CountryFeature.Default.Opacity
         ]
     )
-
-    console.log('chinese study count', estimateGradePrevalences.find((country) => country.alpha3Code === 'CHN')?.numberOfStudies);
-    // estimateGradePrevalences.forEach((country: EstimateGradePrevalence) => {
-    //     if (country && country.testsAdministered && country.alpha3Code) {
-    //         const partnershipConfig = PartnershipsConfig.find(x => x.iso3 === country.alpha3Code)
-
-    //         map.setFeatureState(
-    //             {
-    //                 source: COUNTRY_LAYER_ID,
-    //                 sourceLayer: COUNTRY_LAYER_ID,
-    //                 id: country.alpha3Code,
-    //             },
-    //             {
-    //                 hasData: true,
-    //                 isHighlighted: false,
-    //                 testsAdministered: country.testsAdministered,
-    //                 geographicalName: country.geographicalName,
-    //                 numberOfStudies: country.numberOfStudies,
-    //                 localEstimate: country.localEstimate,
-    //                 nationalEstimate: country.nationalEstimate,
-    //                 regionalEstimate: country.regionalEstimate,
-    //                 sublocalEstimate: country.sublocalEstimate,
-    //                 partnershipConfig: partnershipConfig
-    //             }
-    //         );
-    //     }
-    // });
 }
 
 function SetMapData(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {
