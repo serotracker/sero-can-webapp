@@ -59,6 +59,16 @@ const adjustMapStyle = (mapStyle: any): any => {
         }
       }
 
+      if(layer.type === 'line') {
+        return {
+          ...layer,
+          paint: {
+            ...layer.paint,
+            "line-color": "#A9A9A9"
+          }
+        }
+      }
+
       return layer
     })
   }
