@@ -57,6 +57,32 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
             MapSymbology.CountryFeature.Default.Opacity
         ]
     )
+
+    const doesChinaHaveData = !!estimateGradePrevalences.find((country) => country.alpha3Code === 'CHN');
+
+    if(doesChinaHaveData) {
+        map.setPaintProperty(
+            'aksai-chin-china-shaded',
+            'raster-opacity',
+            1
+        );
+        map.setPaintProperty(
+            'aksai-chin-china-not-shaded',
+            'raster-opacity',
+            0
+        )
+    } else {
+        map.setPaintProperty(
+            'aksai-chin-china-shaded',
+            'raster-opacity',
+            0
+        );
+        map.setPaintProperty(
+            'aksai-chin-china-not-shaded',
+            'raster-opacity',
+            1
+        )
+    }
 }
 
 function SetMapData(map: mapboxgl.Map, estimateGradePrevalences: EstimateGradePrevalence[]) {

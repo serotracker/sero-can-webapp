@@ -44,8 +44,6 @@ export default function Legend({hideLayers}: LegendProps) {
         <Checkbox className="legend-checkbox" checked={state.explore.legendLayers.Local}/>
       </div>
       { hideLayers ? null : null }
-      {/*
-      @TODO Sean Kenny - Revert this temporary fix once you've got better country borders working.
       <div className="legend-item">
         <i className="block legend-icon" style={{ background: MapSymbology.CountryFeature.HasData.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
         <label>{Translate("CountryEstimatesExist")}</label>
@@ -58,7 +56,6 @@ export default function Legend({hideLayers}: LegendProps) {
         <i className="block legend-icon" style={{ background: MapSymbology.CountryFeature.Disputed.Color, outlineWidth: 1, outlineStyle: "solid" }}></i>
         <label>{Translate("NotApplicable")}</label>
       </div>
-      */}
     </div>
   )
 }
