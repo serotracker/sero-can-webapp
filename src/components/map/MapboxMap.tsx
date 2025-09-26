@@ -18,7 +18,7 @@ mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worke
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY as string;
 
-function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>) {
+function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>, baseMapStyle: any) {
   const layerId = 'Countries';
 
   map.addLayer({
@@ -37,6 +37,72 @@ function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>) {
   map.on("mouseleave", layerId, function (e: any) {
     dispatch({ type: 'SHOW_COUNTRY_HOVER' })
   });
+
+  const { id: _, ...jammuKashmirLayer } = baseMapStyle.layers.find((layer: any) => layer.id === 'DISPUTED BORDERS AND AREAS/DISPUTED_AREAS_BB/Not applicable/1');
+
+  map.addLayer({
+    ...jammuKashmirLayer,
+    id: 'jammu-kashmir-layer'
+  });
+
+  map.addSource('aksai-chin-china-shaded-source', {
+    type: 'image',
+    url: 'https://raw.githubusercontent.com/serotracker/iit-backend-v2/refs/heads/main/images/aksai-chin-china-shaded.png',
+    coordinates: [
+      [77.84, 36.00],
+      [80.44, 36.00],
+      [80.44, 33.37],
+      [77.84, 33.37]
+    ]
+  });
+
+  map.addSource('aksai-chin-china-not-shaded-source', {
+    type: 'image',
+    url: 'https://raw.githubusercontent.com/serotracker/iit-backend-v2/refs/heads/main/images/aksai-chin-china-not-shaded.png',
+    coordinates: [
+      [77.84, 36.00],
+      [80.44, 36.00],
+      [80.44, 33.37],
+      [77.84, 33.37]
+    ]
+  });
+
+  map.addLayer({
+    id: 'aksai-chin-china-not-shaded',
+    type: 'raster',
+    source: 'aksai-chin-china-not-shaded-source',
+    paint: {
+      'raster-fade-duration': 0,
+      'raster-opacity': 0
+    }
+  });
+
+  map.addLayer({
+    id: 'aksai-chin-china-shaded',
+    type: 'raster',
+    source: 'aksai-chin-china-shaded-source',
+    paint: {
+      'raster-fade-duration': 0,
+      'raster-opacity': 1,
+    }
+  });
+
+  const lineLayers = baseMapStyle.layers
+    .filter((layer: any) => layer.type === 'line')
+    .map((layer: any) => ({
+      ...layer,
+      paint: {
+        ...layer.paint,
+        "line-color": "#A9A9A9"
+      }
+    }));
+  
+  for (const lineLayer of lineLayers) {
+    map.addLayer({
+      ...lineLayer,
+      id: `${lineLayer.id}-2`
+    });
+  }
 }
 
 interface MapboxMapProps {
@@ -96,8 +162,7 @@ const MapboxMap = ( {mapConfig, countriesConfig, studyPinsConfig}: MapboxMapProp
 
       //base map style has 31 layers
       //Countries layer is added on top later.
-      const m = new mapboxgl.Map(mergedOptions).addControl(new mapboxgl.NavigationControl());
-
+      const m: mapboxgl.Map = new mapboxgl.Map(mergedOptions).addControl(new mapboxgl.NavigationControl());
       m.on("load", () => {
         const featureService = new FeatureService(
           "Countries",
@@ -106,7 +171,7 @@ const MapboxMap = ( {mapConfig, countriesConfig, studyPinsConfig}: MapboxMapProp
             url: MapResources.WHO_COUNTRY_VECTORTILES,
           }
         )
-        mapOnLoad(m, dispatch);
+        mapOnLoad(m, dispatch, baseMapStyle);
         setMap(m);
       });
     })();
