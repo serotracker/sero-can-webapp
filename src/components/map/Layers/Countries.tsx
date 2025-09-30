@@ -4,7 +4,6 @@ import ReactDOMServer from "react-dom/server";
 import { EstimateGradePrevalence, CountriesMapConfig } from "types";
 import mapboxgl from "mapbox-gl";
 import CountryPopup from 'components/map/Popups/CountryPopup'
-import PartnershipsConfig from '../../../PartnershipsConfig'
 import { useHistory } from 'react-router-dom';
 import { sendAnalyticsEvent } from "../../../utils/analyticsUtils";
 import {getMapboxLatitudeOffset} from "../../../utils/utils";
@@ -62,25 +61,57 @@ function SetCountryEstimates(map: mapboxgl.Map, estimateGradePrevalences: Estima
 
     if(doesChinaHaveData) {
         map.setPaintProperty(
-            'aksai-chin-china-shaded',
-            'raster-opacity',
-            1
+            'aksai-chin-polygon-layer',
+            'fill-color',
+            [
+                'match',
+                ['get', 'zone'],
+                "zone-one",
+                MapSymbology.CountryFeature.HasData.Color,
+                "zone-two",
+                MapSymbology.CountryFeature.Disputed.Color,
+                MapSymbology.CountryFeature.Default.Color,
+            ],
         );
         map.setPaintProperty(
-            'aksai-chin-china-not-shaded',
-            'raster-opacity',
-            0
+            'aksai-chin-polygon-layer',
+            'fill-opacity',
+            [
+                'match',
+                ['get', 'zone'],
+                "zone-one",
+                MapSymbology.CountryFeature.HasData.Opacity,
+                "zone-two",
+                MapSymbology.CountryFeature.Disputed.Opacity,
+                MapSymbology.CountryFeature.Default.Opacity,
+            ]
         )
     } else {
         map.setPaintProperty(
-            'aksai-chin-china-shaded',
-            'raster-opacity',
-            0
+            'aksai-chin-polygon-layer',
+            'fill-color',
+            [
+                'match',
+                ['get', 'zone'],
+                "zone-one",
+                MapSymbology.CountryFeature.Default.Color,
+                "zone-two",
+                MapSymbology.CountryFeature.Disputed.Color,
+                MapSymbology.CountryFeature.Default.Color,
+            ],
         );
         map.setPaintProperty(
-            'aksai-chin-china-not-shaded',
-            'raster-opacity',
-            1
+            'aksai-chin-polygon-layer',
+            'fill-opacity',
+            [
+                'match',
+                ['get', 'zone'],
+                "zone-one",
+                MapSymbology.CountryFeature.Default.Opacity,
+                "zone-two",
+                MapSymbology.CountryFeature.Disputed.Opacity,
+                MapSymbology.CountryFeature.Default.Opacity,
+            ]
         )
     }
 }
