@@ -4,7 +4,7 @@ import { AppContext } from "context";
 import { getEsriVectorSourceStyle, addEsriLayersFromVectorSourceStyle } from "utils/MappingUtil";
 import Countries from "components/map/Layers/Countries";
 import StudyPins from "components/map/Layers/StudyPins";
-import { MapResources, DefaultMapboxMapOptions, Expressions } from 'components/map/MapConfig'
+import { MapResources, DefaultMapboxMapOptions, Expressions, MapSymbology } from 'components/map/MapConfig'
 import { CountriesMapConfig, StudyPinsMapConfig } from "types";
 // @ts-ignore
 // eslint-disable-next-line
@@ -45,45 +45,105 @@ function mapOnLoad(map: mapboxgl.Map, dispatch: Dispatch<any>, baseMapStyle: any
     id: 'jammu-kashmir-layer'
   });
 
-  map.addSource('aksai-chin-china-shaded-source', {
-    type: 'image',
-    url: 'https://raw.githubusercontent.com/serotracker/iit-backend-v2/refs/heads/main/images/aksai-chin-china-shaded.png',
-    coordinates: [
-      [77.84, 36.00],
-      [80.44, 36.00],
-      [80.44, 33.37],
-      [77.84, 33.37]
-    ]
-  });
-
-  map.addSource('aksai-chin-china-not-shaded-source', {
-    type: 'image',
-    url: 'https://raw.githubusercontent.com/serotracker/iit-backend-v2/refs/heads/main/images/aksai-chin-china-not-shaded.png',
-    coordinates: [
-      [77.84, 36.00],
-      [80.44, 36.00],
-      [80.44, 33.37],
-      [77.84, 33.37]
-    ]
+  map.addSource('abyei-polygon-source', {
+    type: 'geojson',
+    data: 'https://raw.githubusercontent.com/serotracker/iit-backend-v2/refs/heads/main/geojson/abyei-polygon.geojson'
   });
 
   map.addLayer({
-    id: 'aksai-chin-china-not-shaded',
-    type: 'raster',
-    source: 'aksai-chin-china-not-shaded-source',
+    id: 'abyei-polygon-layer',
+    source: 'abyei-polygon-source',
+    type: 'fill',
     paint: {
-      'raster-fade-duration': 0,
-      'raster-opacity': 0
+      'fill-color': MapSymbology.CountryFeature.Disputed.Color,
+      'fill-opacity': MapSymbology.CountryFeature.Disputed.Opacity
+    },
+  });
+
+  map.addSource('abyei-line-source', {
+    type: 'geojson',
+    data: 'https://raw.githubusercontent.com/serotracker/iit-backend-v2/refs/heads/main/geojson/abyei-line.geojson'
+  });
+
+  map.addLayer({
+    id: 'abyei-line-layer',
+    source: 'abyei-line-source',
+    type: 'line',
+    paint: {
+      'line-color': '#AEAEAE',
+      'line-dasharray': [3, 3],
+      'line-width': 1
+    }
+  });
+
+  map.addSource('aksai-chin-bandaid-source', {
+    type: 'geojson',
+    data: 'https://raw.githubusercontent.com/serotracker/iit-backend-v2/refs/heads/main/geojson/aksai-chin-bandaid-polygon.geojson'
+  });
+
+  map.addLayer({
+    id: 'aksai-chin-bandaid-layer',
+    source: 'aksai-chin-bandaid-source',
+    type: 'fill',
+    paint: {
+      'fill-color': MapSymbology.CountryFeature.Disputed.Color,
+      'fill-opacity': 1
+    }
+  });
+
+  map.addSource('aksai-chin-polygon-source', {
+    type: 'geojson',
+    data: 'https://raw.githubusercontent.com/serotracker/iit-backend-v2/refs/heads/main/geojson/aksai-chin-polygon.geojson'
+  });
+
+  map.addLayer({
+    id: 'aksai-chin-polygon-background-layer',
+    source: 'aksai-chin-polygon-source',
+    type: 'fill',
+    paint: {
+      'fill-color': MapSymbology.CountryFeature.Default.Color,
+      'fill-opacity': 1
     }
   });
 
   map.addLayer({
-    id: 'aksai-chin-china-shaded',
-    type: 'raster',
-    source: 'aksai-chin-china-shaded-source',
+    id: 'aksai-chin-polygon-layer',
+    source: 'aksai-chin-polygon-source',
+    type: 'fill',
     paint: {
-      'raster-fade-duration': 0,
-      'raster-opacity': 1,
+      'fill-color': [
+        'match',
+        ['get', 'zone'],
+        "zone-one",
+        MapSymbology.CountryFeature.Default.Color,
+        "zone-two",
+        MapSymbology.CountryFeature.Disputed.Color,
+        MapSymbology.CountryFeature.Default.Color,
+      ],
+      'fill-opacity': [
+        'match',
+        ['get', 'zone'],
+        "zone-one",
+        MapSymbology.CountryFeature.Default.Opacity,
+        "zone-two",
+        MapSymbology.CountryFeature.Disputed.Opacity,
+        MapSymbology.CountryFeature.Default.Opacity,
+      ]
+    }
+  });
+
+  map.addSource('aksai-chin-border-line-source', {
+    type: 'geojson',
+    data: 'https://raw.githubusercontent.com/serotracker/iit-backend-v2/refs/heads/main/geojson/aksai-chin-border-line.geojson'
+  });
+
+  map.addLayer({
+    id: 'aksai-chin-border-line-layer',
+    source: 'aksai-chin-border-line-source',
+    type: 'line',
+    paint: {
+      'line-color': '#AEAEAE',
+      'line-width': 1
     }
   });
 
