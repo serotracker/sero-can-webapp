@@ -2,6 +2,8 @@ import { AirtableRecord, FiltersConfig, StudiesFilters } from "./types";
 import { formatDates } from "./utils/utils";
 import {parseISO, format } from "date-fns";
 
+const URL_START_TEMP = "http://localhost:5000"
+
 const RECORDS_URL = "/data_provider/records";
 const RECORD_DETAILS_URL = "/data_provider/record_details";
 const FILTER_OPTIONS_URL = "/data_provider/filter_options";
@@ -15,8 +17,9 @@ export default class httpClient {
 
     async httpGet(url: string, useAppRoute: boolean) {
         let url_full = url;
-        if (useAppRoute && process.env.REACT_APP_ROUTE) {
-            url_full = process.env.REACT_APP_ROUTE + url_full;
+        //process.env.REACT_APP_ROUTE
+        if (useAppRoute && URL_START_TEMP) {
+            url_full = URL_START_TEMP + url_full;
         }
         const res = await fetch(url_full);
         if (res.status !== 200) {
@@ -32,8 +35,8 @@ export default class httpClient {
 
     async httpPost(url: string, data: Record<string, any>) {
         let url_full = url;
-        if (process.env.REACT_APP_ROUTE) {
-            url_full = process.env.REACT_APP_ROUTE + url_full;
+        if (URL_START_TEMP) {
+            url_full = URL_START_TEMP + url_full;
         }
         const res = await fetch(url_full, {
             method: 'POST',
