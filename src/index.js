@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import 'sass/index.scss';
 import * as serviceWorker from './serviceWorker';
-import { AppContextProvider } from './context'
+import { AppContextProvider } from './context';
+import { SarsCov2DataProvider } from './sarscov2-data-context';
 import {Router} from 'react-router-dom';
 import GAListener from "./utils/analyticsUtils";
 import {createBrowserHistory} from 'history';
@@ -26,7 +27,9 @@ ReactDOM.render(
     <Router history={history}>
       <GAListener>
         <AppContextProvider>
-          <App />
+          <SarsCov2DataProvider>
+            <App />
+          </SarsCov2DataProvider>
         </AppContextProvider>
       </GAListener>
     </Router>

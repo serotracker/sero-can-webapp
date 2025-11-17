@@ -54,7 +54,11 @@ export default function Datepicker({ page }: DatepickerProps) {
       setChosenDates(dates)
   }
 
-  const onUpdate = (isStart: Boolean, date: Date) => {
+  const onUpdate = (isStart: Boolean, date: Date | null) => {
+    if(!date) {
+      return;
+    }
+
     let newDates: Date[];
 
     if (isStart) {
@@ -97,7 +101,7 @@ export default function Datepicker({ page }: DatepickerProps) {
               <DatePicker
                   selected={toDateSinceMinDate(chosenDates[0])}
                   onChange={() => { }}
-                  onSelect={(date: Date) => onUpdate(true, date)}
+                  onSelect={(date) => onUpdate(true, date)}
                   dateFormatCalendar={"MMMM yyyy "}
                   dateFormat="yyyy/MM/dd"
                   minDate={earliestPublicationDate}
@@ -118,7 +122,7 @@ export default function Datepicker({ page }: DatepickerProps) {
                <DatePicker
                   selected={toDateSinceMinDate(chosenDates[1])}
                   onChange={() => { }}
-                  onSelect={(date: Date) => onUpdate(false, date)}
+                  onSelect={(date) => onUpdate(false, date)}
                   dateFormat="yyyy/MM/dd"
                   dateFormatCalendar={"MMM yyyy"}
                   minDate={toDateSinceMinDate(chosenDates[0])}
